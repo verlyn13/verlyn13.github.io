@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">ScopeCam Research Icon</title>
+  <desc id="desc">USB microscope integration research project</desc>
+  <defs>
+    <linearGradient id="deviceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4C70A0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0B12;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="lensGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#E0E1E6;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#4C70A0;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0A0B12;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+  
+  <g transform="translate(256,256)">
+    <!-- Main device body -->
+    <rect x="-120" y="-80" width="240" height="160" rx="20" 
+          fill="url(#deviceGrad)" stroke="#0A0B12" stroke-width="4"/>
+    
+    <!-- Screen/display area -->
+    <rect x="-100" y="-60" width="200" height="120" rx="10" 
+          fill="#E0E1E6" stroke="#4C70A0" stroke-width="2" opacity="0.9"/>
+    
+    <!-- Lens assembly -->
+    <circle cx="0" cy="0" r="80" fill="url(#lensGrad)" stroke="#0A0B12" stroke-width="3"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#4C70A0" stroke-width="2" opacity="0.6"/>
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#0A0B12" stroke-width="2"/>
+    <circle cx="0" cy="0" r="20" fill="#0A0B12"/>
+    
+    <!-- USB connector -->
+    <g transform="translate(0,140)">
+      <rect x="-15" y="0" width="30" height="40" rx="5" 
+            fill="#4C70A0" stroke="#0A0B12" stroke-width="2"/>
+      <rect x="-12" y="5" width="24" height="15" rx="2" 
+            fill="#0A0B12"/>
+      <!-- USB pins -->
+      <rect x="-8" y="8" width="4" height="9" fill="#E0E1E6"/>
+      <rect x="-2" y="8" width="4" height="9" fill="#E0E1E6"/>
+      <rect x="4" y="8" width="4" height="9" fill="#E0E1E6"/>
+    </g>
+    
+    <!-- Connection indicators -->
+    <g stroke="#4C70A0" stroke-width="2" fill="none" opacity="0.5">
+      <path d="M-140,-120 L-120,-100"/>
+      <path d="M140,-120 L120,-100"/>
+      <path d="M140,120 L120,100"/>
+      <path d="M-140,120 L-120,100"/>
+    </g>
+    
+    <!-- Status LED -->
+    <circle cx="80" cy="-50" r="6" fill="#D4AF37" opacity="0.8"/>
+  </g>
+</svg>

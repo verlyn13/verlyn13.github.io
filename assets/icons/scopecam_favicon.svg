@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 16 16">
+  <g transform="translate(8,8)">
+    <!-- Device body -->
+    <rect x="-6" y="-4" width="12" height="8" rx="1" 
+          fill="none" stroke="#4C70A0" stroke-width="0.5"/>
+    
+    <!-- Lens -->
+    <circle cx="0" cy="0" r="3" fill="none" stroke="#4C70A0" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.5" fill="#4C70A0"/>
+    
+    <!-- USB connector -->
+    <rect x="-1" y="5" width="2" height="2" fill="#4C70A0"/>
+  </g>
+</svg>
