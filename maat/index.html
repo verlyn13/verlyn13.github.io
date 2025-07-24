@@ -6,31 +6,69 @@
     <title>MAAT Framework - Mathematical Agent Architecture</title>
     <meta name="description" content="MAAT: Multi-Agent Autonomous Development Framework - Research Project by Dr. Jeffrey Johnson">
     <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/menu.js" defer></script>
 </head>
 <body>
-    <nav class="back-nav">
-        <a href="/" class="back-link">← Portfolio</a>
-    </nav>
-
-    <header class="project-header container">
-        <h1>MAAT Framework</h1>
-        <p class="subtitle">Mathematical Agent Architecture for Autonomous Systems</p>
-        
-        <div class="project-meta">
-            <div class="meta-item">
-                <span class="meta-label">Type</span>
-                <span class="meta-value">Research Framework</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Status</span>
-                <span class="meta-value">Active Development</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Domain</span>
-                <span class="meta-value">Autonomous Systems</span>
-            </div>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-name">Jeffrey Johnson</a>
+            <a href="/" class="back-link">← Back to Portfolio</a>
         </div>
     </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>MAAT Framework</h1>
+            <p class="subtitle">Multi-Agent Autonomous Development</p>
+            <p class="credentials">Research Project · Autonomous Systems</p>
+            
+            <div class="hexagon-visualization">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(200,150)">
+                        <!-- Hexagon pattern with 12 nodes -->
+                        <g class="hex-group">
+                            <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" 
+                                     fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+                            <polygon points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" 
+                                     fill="none" stroke="currentColor" stroke-width="2"/>
+                            <!-- 12 nodes in pattern -->
+                            <circle cx="0" cy="-60" r="5" fill="currentColor" class="node"/>
+                            <circle cx="52" cy="-30" r="5" fill="currentColor" class="node"/>
+                            <circle cx="52" cy="30" r="5" fill="currentColor" class="node"/>
+                            <circle cx="0" cy="60" r="5" fill="currentColor" class="node"/>
+                            <circle cx="-52" cy="30" r="5" fill="currentColor" class="node"/>
+                            <circle cx="-52" cy="-30" r="5" fill="currentColor" class="node"/>
+                            <circle cx="0" cy="-40" r="4" fill="currentColor" class="node"/>
+                            <circle cx="34.64" cy="-20" r="4" fill="currentColor" class="node"/>
+                            <circle cx="34.64" cy="20" r="4" fill="currentColor" class="node"/>
+                            <circle cx="0" cy="40" r="4" fill="currentColor" class="node"/>
+                            <circle cx="-34.64" cy="20" r="4" fill="currentColor" class="node"/>
+                            <circle cx="-34.64" cy="-20" r="4" fill="currentColor" class="node"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="evidence-strip">
+        <div class="container">
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <div class="evidence-number">1,861</div>
+                    <div class="evidence-label">Patterns</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-number">26.9%</div>
+                    <div class="evidence-label">Observable</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-number">12</div>
+                    <div class="evidence-label">Agents</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main class="container">
         <section class="section">
@@ -110,8 +148,9 @@
             <h3>Explore MAAT</h3>
             <p>Dive into the mathematical foundations and practical implementations of autonomous agent systems.</p>
             <div class="cta-buttons">
-                <a href="https://github.com/verlyn13/maat" class="cta-button">View on GitHub</a>
+                <a href="https://github.com/verlyn13/maat" class="cta-button">Explore the Code</a>
                 <a href="https://maat.dev" class="cta-button secondary">Read Documentation</a>
+                <a href="/scopecam/" class="cta-button secondary">View ScopeCam</a>
             </div>
         </div>
     </main>

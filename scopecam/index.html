@@ -6,31 +6,61 @@
     <title>ScopeCam - Intelligent Screen Capture</title>
     <meta name="description" content="ScopeCam: An experimental tool that transforms screen capture into an intelligent workflow assistant">
     <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/menu.js" defer></script>
 </head>
 <body>
-    <nav class="back-nav">
-        <a href="/" class="back-link">← Portfolio</a>
-    </nav>
-
-    <header class="project-header container">
-        <h1>ScopeCam</h1>
-        <p class="subtitle">Intelligent Screen Capture with Contextual Understanding</p>
-        
-        <div class="project-meta">
-            <div class="meta-item">
-                <span class="meta-label">Type</span>
-                <span class="meta-value">Experimental Tool</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Platform</span>
-                <span class="meta-value">macOS</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Domain</span>
-                <span class="meta-value">Computer Vision</span>
-            </div>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-name">Jeffrey Johnson</a>
+            <a href="/" class="back-link">← Back to Portfolio</a>
         </div>
     </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>ScopeCam</h1>
+            <p class="subtitle">Android USB Camera Integration</p>
+            <p class="credentials">Research Project · Hardware Integration</p>
+            
+            <div class="device-visualization">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(200,150)">
+                        <!-- Device representation -->
+                        <rect x="-80" y="-50" width="160" height="100" rx="12" 
+                              fill="none" stroke="currentColor" stroke-width="2"/>
+                        <rect x="-70" y="-40" width="140" height="80" rx="8" 
+                              fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                        <!-- Camera lens -->
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="0" cy="0" r="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="10" fill="none" stroke="currentColor" stroke-width="1"/>
+                        <!-- Connection indicator -->
+                        <line x1="-80" y1="0" x2="-120" y2="0" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="-120" cy="0" r="4" fill="currentColor"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="evidence-strip">
+        <div class="container">
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <div class="evidence-number">3ms</div>
+                    <div class="evidence-label">Latency</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-number">60fps</div>
+                    <div class="evidence-label">Capture</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-number">5</div>
+                    <div class="evidence-label">Protocols</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main class="container">
         <section class="section">
@@ -101,10 +131,11 @@
 
         <div class="cta-section">
             <h3>Explore ScopeCam</h3>
-            <p>Discover how intelligent screen capture can transform your workflow.</p>
+            <p>Discover how USB camera integration enables new research possibilities.</p>
             <div class="cta-buttons">
-                <a href="https://github.com/verlyn13/scopecam" class="cta-button">View on GitHub</a>
-                <a href="https://scopecam.app" class="cta-button secondary">Download Beta</a>
+                <a href="https://github.com/verlyn13/scopecam" class="cta-button">Explore the Code</a>
+                <a href="https://scopecam.app" class="cta-button secondary">Read Documentation</a>
+                <a href="/maat/" class="cta-button secondary">View MAAT</a>
             </div>
         </div>
     </main>
