@@ -103,11 +103,7 @@ main {
 
 /* Introduction Section - Homepage */
 .intro-section {
-    min-height: 40vh;
-    min-height: max(40vh, 320px);
-    display: flex;
-    align-items: center;
-    padding: var(--space-2xl) 0;
+    padding: var(--space-lg) 0 var(--space-md);
     text-align: center;
 }
 
@@ -176,17 +172,23 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: var(--space-md) 0;
+    margin: var(--space-sm) 0;
     color: var(--color-text-secondary);
+    max-height: 200px;
+    overflow: hidden;
 }
 
+.project-visual img,
 .project-visual svg {
-    width: 120px;
-    height: 120px;
+    max-width: 140px;
+    max-height: 140px;
+    width: auto;
+    height: auto;
     opacity: 0.6;
     transition: opacity 0.2s;
 }
 
+.project-card-home:hover .project-visual img,
 .project-card-home:hover .project-visual svg {
     opacity: 0.8;
 }
@@ -312,9 +314,7 @@ main {
 
 /* Hero Section - Project Pages */
 .hero-section {
-    min-height: 60vh;
-    min-height: max(60vh, 480px);
-    padding-top: var(--space-2xl);
+    padding: var(--space-xl) 0 var(--space-lg);
     text-align: center;
 }
 
@@ -345,15 +345,18 @@ main {
 /* Visualizations */
 .hexagon-visualization,
 .device-visualization {
-    margin: var(--space-lg) auto;
-    max-width: 400px;
+    margin: var(--space-md) auto;
+    max-width: 300px;
     color: var(--color-accent);
 }
 
+.hexagon-visualization img,
 .hexagon-visualization svg,
+.device-visualization img,
 .device-visualization svg {
     width: 100%;
     height: auto;
+    max-height: 250px;
 }
 
 .node {
@@ -639,8 +642,21 @@ main {
     }
     
     .intro-section {
-        min-height: auto;
-        padding: var(--space-xl) 0;
+        padding: var(--space-md) 0 var(--space-sm);
+    }
+    
+    .hero-section {
+        padding: var(--space-md) 0 var(--space-sm);
+    }
+    
+    .project-visual {
+        max-height: 120px;
+    }
+    
+    .project-visual img,
+    .project-visual svg {
+        max-width: 80px;
+        max-height: 80px;
     }
     
     .intro-section h1 {
