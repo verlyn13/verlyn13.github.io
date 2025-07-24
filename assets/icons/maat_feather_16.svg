@@ -1,0 +1,21 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(8,8)" fill="none" stroke="#4C70A0" stroke-width="0.5">
+    <!-- Hexagon -->
+    <polygon points="0,-4 3.46,-2 3.46,2 0,4 -3.46,2 -3.46,-2" fill="#4C70A0" fill-opacity="0.1"/>
+    
+    <!-- Ankh -->
+    <circle cx="0" cy="-1" r="1" stroke-width="0.4"/>
+    <line x1="0" y1="0" x2="0" y2="2" stroke-width="0.4"/>
+    <line x1="-1" y1="1" x2="1" y2="1" stroke-width="0.4"/>
+    
+    <!-- Nodes -->
+    <g fill="#4C70A0">
+      <circle cx="0" cy="-4" r="0.5"/>
+      <circle cx="3.46" cy="-2" r="0.5"/>
+      <circle cx="3.46" cy="2" r="0.5"/>
+      <circle cx="0" cy="4" r="0.5"/>
+      <circle cx="-3.46" cy="2" r="0.5"/>
+      <circle cx="-3.46" cy="-2" r="0.5"/>
+    </g>
+  </g>
+</svg>
