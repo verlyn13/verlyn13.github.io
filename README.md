@@ -1,21 +1,14 @@
 # Research Portfolio
 
-Personal research portfolio for Dr. Jeffrey Johnson.
+Dr. Jeffrey Johnson  
+Autonomous Systems and AI Tool Integration
 
-## Development
+## Overview
 
-```bash
-npm install
-npm run dev      # Local development
-npm run build    # Production build
-npm run preview  # Preview production build
-```
+This portfolio presents research in autonomous systems architecture and intelligent tool integration, with focus on two primary projects:
 
-## Structure
-
-- `/` - Portfolio home page
-- `/maat/` - MAAT Framework project details
-- `/scopecam/` - ScopeCam project details
+- **MAAT Framework** - Mathematical Agent Architecture for Tabular operations
+- **ScopeCam** - Intelligent screen capture with hardware-inspired efficiency
 
 ## License
 

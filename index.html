@@ -10,40 +10,60 @@
     <script src="/assets/menu.js" defer></script>
 </head>
 <body>
-    <header class="site-header-home">
+    <nav class="site-nav">
         <div class="container">
-            <span class="site-name"></span>
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/research/" class="active">Research</a></li>
+                <li><a href="/academic/">Academic</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <main>
-        <section class="intro-section">
+        <section class="hero-home">
             <div class="container">
                 <h1>Jeffrey Johnson, PhD</h1>
-                <p class="intro-subtitle">Mathematics Professor exploring AI through practical implementation</p>
-                <p class="intro-subtitle">Building autonomous systems to understand their capabilities and constraints</p>
+                <p class="hero-title">Mathematics Professor | AI Research Explorer</p>
+                
+                <div class="hero-bio">
+                    <p>Twenty years in mathematical research and education, now exploring the intersection of pure mathematics and artificial intelligence through practical implementation. My work focuses on understanding AI capabilities by building systems that embody mathematical principles.</p>
+                    
+                    <p>Currently developing autonomous systems and tool integration frameworks that bridge theoretical foundations with real-world applications. This hands-on approach provides insights into both the power and limitations of modern AI architectures.</p>
+                </div>
+
+                <div class="hero-links">
+                    <a href="/research/" class="hero-link">
+                        <span class="link-label">View Research Projects</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="/academic/" class="hero-link">
+                        <span class="link-label">Academic Background</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                    <a href="/cv.html" class="hero-link">
+                        <span class="link-label">Download CV</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="projects-section">
+        <section class="featured-work">
             <div class="container">
-                <div class="projects-grid">
-                    <article class="project-card-home">
-                        <h2>MAAT Framework</h2>
-                        <p class="project-desc">Multi-agent system orchestration</p>
-                        <div class="project-visual hexagon-visual">
-                            <img src="/assets/icons/maat_feather_mono.svg" alt="MAAT Framework icon" />
-                        </div>
-                        <a href="/maat/" class="project-link">View Project →</a>
+                <h2>Current Research</h2>
+                <div class="featured-grid">
+                    <article class="featured-project">
+                        <h3>MAAT Framework</h3>
+                        <p>Mathematical Agent Architecture for autonomous task execution. Exploring how category-theoretic principles can guide multi-agent system design.</p>
+                        <a href="/research/maat.html" class="featured-link">Learn more →</a>
                     </article>
-
-                    <article class="project-card-home">
-                        <h2>ScopeCam</h2>
-                        <p class="project-desc">USB microscope integration</p>
-                        <div class="project-visual device-visual">
-                            <img src="/assets/icons/scopecam_mono.svg" alt="ScopeCam device icon" />
-                        </div>
-                        <a href="/scopecam/" class="project-link">View Project →</a>
+                    <article class="featured-project">
+                        <h3>ScopeCam</h3>
+                        <p>Intelligent screen capture with hardware-inspired efficiency. Building tools that demonstrate AI enhancement of traditional computing tasks.</p>
+                        <a href="/research/scopecam.html" class="featured-link">Learn more →</a>
                     </article>
                 </div>
             </div>
