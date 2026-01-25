@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jeffrey Johnson - Career journey from rural Wisconsin to mathematics professor and software architect. Thirty years of continuous work, learning, and building.">
+
+  <title>Experience | Jeffrey Johnson</title>
+
+  <link rel="icon" href="/assets/icons/maat_feather_16.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/jeffrey.css">
+  <script src="/assets/menu.js" defer></script>
+</head>
+
+<body class="experience-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       SITE NAVIGATION
+       ============================================ -->
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="/" class="nav-left">Jeffrey Johnson</a>
+      <ul class="nav-links">
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/experience/" class="active">Experience</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/cv.html">CV</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO / BRAID NAVIGATOR
+       ============================================ -->
+
+  <header class="experience-hero" id="top">
+    <h1 class="experience-hero__title">Jeffrey Johnson</h1>
+    <p class="experience-hero__subtitle">Mathematician · Systems Architect · Builder</p>
+
+    <nav class="braid-container" aria-label="Career timeline navigation">
+      <svg class="braid-svg" id="braid-timeline-svg" width="1000" height="200" aria-labelledby="braid-title braid-desc" viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg">
+        <title id="braid-title">Career Journey: A Braided Path</title>
+        <desc id="braid-desc">
+          A three-strand braid visualization showing the interweaving of analytical, technical, and experiential threads from 1992 to present.
+        </desc>
+        <defs id="defs1">
+          <filter id="shadow-filter" width="140%" height="140%" x="-20%" y="-20%">
+            <feDropShadow dx="0" dy="2" flood-opacity=".25" stdDeviation="2"/>
+          </filter>
+          <style id="style1">
+            /* Timing & Easing */
+            #braid-timeline-svg {
+              --t-fast: 120ms;
+              --t-normal: 200ms;
+              --t-slow: 350ms;
+              --ease-out: cubic-bezier(0.2, 0, 0, 1);
+            }
+
+            /* Strands */
+            .strand {
+              fill: none;
+              stroke-width: 5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              transition: opacity var(--t-normal) var(--ease-out);
+            }
+            .strand-analytical { stroke: hsl(212, 85%, 45%); }
+            .strand-technical { stroke: hsl(160, 55%, 35%); }
+            .strand-experiential { stroke: hsl(22, 90%, 52%); }
+
+            /* Hit Areas - invisible until needed */
+            .era-hitarea {
+              fill: transparent;
+              stroke: none;
+              cursor: pointer;
+              outline: none;
+              transition: fill var(--t-normal) var(--ease-out), stroke var(--t-normal) var(--ease-out);
+            }
+            .era-hitarea:hover {
+              fill: hsla(45, 30%, 50%, 0.08);
+            }
+            .era-hitarea:active {
+              fill: hsla(212, 85%, 45%, 0.1);
+            }
+            .era-hitarea:focus-visible {
+              fill: hsla(212, 85%, 45%, 0.08);
+              stroke: hsl(212, 85%, 45%);
+              stroke-width: 1.5;
+              stroke-opacity: 0.5;
+            }
+            .era-hitarea.active {
+              fill: hsla(212, 85%, 45%, 0.08);
+            }
+            /* Slower exit transition */
+            .era-hitarea:not(:hover):not(:active):not(.active) {
+              transition: fill var(--t-slow) var(--ease-out);
+            }
+
+            /* Labels */
+            .era-label {
+              font-family: system-ui, -apple-system, sans-serif;
+              font-size: 11px;
+              font-weight: 600;
+              fill: hsl(220, 18%, 18%);
+              text-anchor: middle;
+              cursor: pointer;
+              outline: none;
+              transition: fill var(--t-fast) var(--ease-out);
+            }
+            .era-label:hover,
+            .era-label:focus-visible,
+            .era-label.active {
+              fill: hsl(212, 85%, 45%);
+            }
+            .era-label:active {
+              fill: hsl(212, 85%, 38%);
+            }
+
+            /* Year markers - non-interactive */
+            .year-marker {
+              font-family: ui-monospace, monospace;
+              font-size: 9px;
+              fill: hsl(220, 12%, 45%);
+              text-anchor: middle;
+              pointer-events: none;
+              user-select: none;
+            }
+
+            /* Convergence ring with subtle pulse */
+            .convergence-ring {
+              fill: none;
+              stroke: hsl(220, 18%, 18%);
+              stroke-width: 1.5;
+            }
+            #convergence-inner { opacity: 0.3; }
+            #convergence-outer {
+              opacity: 0.12;
+              transform-origin: 980px 68px;
+              animation: convergence-pulse 3s ease-in-out infinite;
+            }
+            @keyframes convergence-pulse {
+              0%, 100% { opacity: 0.08; transform: scale(1); }
+              50% { opacity: 0.15; transform: scale(1.05); }
+            }
+
+            /* Accessibility: reduce motion */
+            @media (prefers-reduced-motion: reduce) {
+              #convergence-outer { animation: none; opacity: 0.12; }
+              .strand, .era-hitarea, .era-label { transition-duration: 0.01ms !important; }
+            }
+
+            /* High contrast mode */
+            @media (prefers-contrast: high) {
+              .era-hitarea:hover { fill: hsla(212, 85%, 45%, 0.2); }
+              .era-hitarea:focus-visible { stroke-width: 2; stroke-opacity: 0.8; }
+              .era-label:hover, .era-label.active { fill: hsl(212, 100%, 35%); }
+            }
+          </style>
+        </defs>
+        <g id="layer-hitareas">
+          <rect id="hitarea-wisconsin" width="135" height="115" x="20" y="30" class="era-hitarea" data-era="wisconsin" rx="4"/>
+          <rect id="hitarea-duluth" width="115" height="115" x="155" y="30" class="era-hitarea" data-era="duluth" rx="4"/>
+          <rect id="hitarea-california" width="130" height="115" x="270" y="30" class="era-hitarea" data-era="california" rx="4"/>
+          <rect id="hitarea-peacecorps" width="90" height="115" x="400" y="30" class="era-hitarea" data-era="peacecorps" rx="4"/>
+          <rect id="hitarea-montana" width="205" height="115" x="490" y="30" class="era-hitarea" data-era="montana" rx="4"/>
+          <rect id="hitarea-cairo" width="55" height="115" x="695" y="30" class="era-hitarea" data-era="cairo" rx="4"/>
+          <rect id="hitarea-alaska" width="230" height="115" x="750" y="30" class="era-hitarea" data-era="alaska" rx="4"/>
+        </g>
+        <g id="layer-strands">
+          <g id="strand-experiential-group">
+            <path id="strand-E" d="M20.34 53.4c16 0 29.28 1.92 45.381 9.085M80 75.403c13.2 12.479 105.439 10.68 185.439 30.68 40 12 70.481 9.159 85.481-3.841m8.839-14.618c19.124-24.942 68.484-22.904 91.484-29.904 20-8 102.154-21.038 126.64 2.72m15.978 17.677c30 20 106.799 33.64 166.799 18.64 25-6 100.753 20.115 110.073-26.84m4.76-20.738c15-12 86.233-3.881 101.233 1.119" class="strand strand-experiential"/>
+          </g>
+          <g id="strand-technical-group">
+            <path id="strand-T" d="M20 80c27-9 54-14 70-10 3 1 5 2 5 2 20 8 55-20 95-22m-1.02 0c30-3 42 0 47 5m10.539 12.238C266 82 321.359 90.64 381.359 98.64c20 3 62.72 3.16 102.72-11.84 40-5 92.185 23.667 117.28 6.84m10.54-13.598c25-18 78.64 6.36 138.64 3.36 40-2 92.677-8.201 107.238-7.762m26.856-3.06c25 2 63.117 36.318 93.117 36.318" class="strand strand-technical"/>
+          </g>
+          <g id="strand-analytical-group">
+            <path id="strand-A" d="M17.28 110c30 0 50.482-8.2 90.482-13.2 25-3 34.801 17.917 56 0m12.918-14.62c20.44-18.839 52.238-18.8 82.238-21.8C300 58 421.475 38.402 440 55m10.879 11.898c17.28 19.52 103.117 5.96 183.117-2.04 96.15-4.807 181.577-3.058 279.126-5.266 30.424-.69 61.5 19.024 65.35 19.024" class="strand strand-analytical"/>
+          </g>
+        </g>
+        <g id="layer-convergence">
+          <circle id="convergence-inner" cx="980" cy="68" r="8" class="convergence-ring"/>
+          <circle id="convergence-outer" cx="980" cy="68" r="14" class="convergence-ring" opacity=".12"/>
+        </g>
+        <g id="layer-labels">
+          <text id="label-wisconsin" x="87" y="158" class="era-label" data-era="wisconsin">Work ethic</text>
+          <text id="label-duluth" x="212" y="158" class="era-label" data-era="duluth">First proofs</text>
+          <text id="label-california" x="335" y="158" class="era-label" data-era="california">Identity</text>
+          <text id="label-peacecorps" x="445" y="158" class="era-label" data-era="peacecorps">Service</text>
+          <text id="label-montana" x="592" y="158" class="era-label" data-era="montana">Deep theory</text>
+          <text id="label-cairo" x="722" y="158" class="era-label" data-era="cairo">International</text>
+          <text id="label-alaska" x="865" y="158" class="era-label" data-era="alaska">Synthesis</text>
+        </g>
+        <g id="layer-years">
+          <text id="year-1992" x="20" y="178" class="year-marker">1992</text>
+          <text id="year-1998" x="155" y="178" class="year-marker">'98</text>
+          <text id="year-2001" x="270" y="178" class="year-marker">'01</text>
+          <text id="year-2005" x="400" y="178" class="year-marker">'05</text>
+          <text id="year-2008" x="490" y="178" class="year-marker">'08</text>
+          <text id="year-2015" x="695" y="178" class="year-marker">'15</text>
+          <text id="year-2017" x="750" y="178" class="year-marker">'17</text>
+          <text id="year-now" x="980" y="178" class="year-marker">now</text>
+        </g>
+      </svg>
+    </nav>
+
+    <p class="experience-hero__hint">Three threads. Thirty years. Click any era to explore.</p>
+  </header>
+
+
+  <!-- ============================================
+       MAIN CONTENT - ERA SECTIONS
+       ============================================ -->
+
+  <main id="main-content" class="experience-content">
+
+    <!-- ==========================================
+         ALASKA: SYNTHESIS (2017-present)
+         Full bento box - this is the showcase
+         ========================================== -->
+
+    <section class="era-section era-section--detailed" id="alaska" data-era="alaska">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Synthesis</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2017-present</span>
+          <span class="era-section__meta-item">Homer, Alaska</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          The threads converge. Tenured mathematics professor developing online pedagogy
+          while simultaneously building production software. The logic of the PhD, the grit
+          of early labor, and the architecture of code are now inseparable.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Roles Card -->
+        <div class="bento-card">
+          <h3 class="bento-card__title">Roles</h3>
+          <div class="bento-card__content">
+
+            <div class="role">
+              <p class="role__title">Associate Professor of Mathematics <span class="badge badge--tenured">Tenured</span></p>
+              <p class="role__org">Kenai Peninsula College · University of Alaska</p>
+              <p class="role__detail">Calculus I, Applied Calculus, Applied Statistics. Online course development and pedagogical technology.</p>
+            </div>
+
+            <div class="role">
+              <p class="role__title">Software Engineer</p>
+              <p class="role__org">Happy Patterns LLC</p>
+              <p class="role__detail">Full-stack development, AI integration, mobile applications. Production systems for industrial clients.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Projects Card -->
+        <div class="bento-card">
+          <h3 class="bento-card__title">Current Projects</h3>
+          <div class="bento-card__content">
+
+            <div class="project">
+              <div>
+                <p class="project__name">ScopeCam</p>
+                <p class="project__desc">Android UVC camera application for industrial use. Native C++, JNI, USB protocols.</p>
+              </div>
+              <span class="badge badge--production">Production</span>
+            </div>
+
+            <div class="project">
+              <div>
+                <p class="project__name">Budget Triage</p>
+                <p class="project__desc">Financial document processing system. TypeScript, PostgreSQL, OCR/VLM pipelines.</p>
+              </div>
+              <span class="badge badge--development">Development</span>
+            </div>
+
+            <div class="project">
+              <div>
+                <p class="project__name">Dicee</p>
+                <p class="project__desc">Multiplayer probability game. Rust/WASM engine, Cloudflare Durable Objects, WebSocket.</p>
+              </div>
+              <span class="badge badge--live">Live</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tech Stack Card - spans full width -->
+        <div class="bento-card bento-grid__item--wide">
+          <h3 class="bento-card__title">Technical Proficiency</h3>
+          <div class="bento-card__content">
+            <div class="tech-stack">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">Rust</span>
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Android/JNI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Cloudflare Workers</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Terraform</span>
+              <span class="tech-tag">Git workflows</span>
+              <span class="tech-tag">CI/CD</span>
+              <span class="tech-tag">OpenTelemetry</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative Card -->
+        <div class="bento-card bento-grid__item--wide">
+          <h3 class="bento-card__title">The Convergence</h3>
+          <div class="bento-card__content">
+            <p>
+              2024 marked an interdisciplinary publication in the Journal of Pediatric Physical
+              Therapy-collaboration with nursing researchers applying statistical methods to
+              clinical outcomes. The same year, a production Android application shipped for
+              industrial camera systems, requiring native code architecture and USB protocol
+              expertise.
+            </p>
+            <p style="margin-top: var(--space-3);">
+              This is what thirty years of continuous work produces: the ability to move between
+              domains, to see systems clearly, to build things that work.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         CAIRO: INTERNATIONAL (2015-2017)
+         Medium depth
+         ========================================== -->
+
+    <section class="era-section era-section--medium" id="cairo" data-era="cairo">
+      <header class="era-section__header">
+        <h2 class="era-section__title">International</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2015-2017</span>
+          <span class="era-section__meta-item">Cairo, Egypt</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          Associate Professor of Mathematics at the American University in Cairo.
+          Taught calculus and upper-division mathematics to an international student body.
+          Continued research in functional analysis, attending a multi-day conference on
+          Lineability in the Czech Republic.
+        </p>
+        <p>
+          Two years of navigating cross-cultural academic environments, adapting pedagogy
+          for students from dozens of countries, and maintaining research productivity
+          while teaching a full course load.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         MONTANA: DEEP THEORY (2008-2015)
+         Medium depth
+         ========================================== -->
+
+    <section class="era-section era-section--medium" id="montana" data-era="montana">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Deep Theory</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2008-2015</span>
+          <span class="era-section__meta-item">Missoula, Montana</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          PhD in Mathematics from the University of Montana, specializing in commutative
+          Banach algebras. Published research in Communications in Mathematics and Applications.
+          Presented at conferences. Six years of deep immersion in abstract mathematics.
+        </p>
+        <p>
+          Teaching assistant for Applied Statistics, Applied Calculus, and Calculus III
+          throughout the program. Postdoctoral lecturer in 2014-2015, coordinating large
+          lecture sections and managing teaching assistants.
+        </p>
+        <p>
+          Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick-
+          algebraic topology and topological combinatorics.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         PEACE CORPS: SERVICE (2005-2007)
+         Light-medium depth
+         ========================================== -->
+
+    <section class="era-section era-section--medium" id="peacecorps" data-era="peacecorps">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Service</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2005-2007</span>
+          <span class="era-section__meta-item">South Africa</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          Peace Corps education volunteer and teacher trainer. Project management workshops,
+          community improvement initiatives, and daily classroom teaching. Secured a Dell
+          Computers Success Grant for a partner school-one of the early programs bringing
+          technology to rural South African education.
+        </p>
+        <p>
+          This is where teaching became more than a job. Two years of learning how to
+          communicate complex ideas to people with entirely different frames of reference.
+          The human experience taking precedence over abstraction.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         CALIFORNIA: IDENTITY (2001-2005)
+         Light depth
+         ========================================== -->
+
+    <section class="era-section era-section--light" id="california" data-era="california">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Identity</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2001-2005</span>
+          <span class="era-section__meta-item">Eureka, California</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          Moved 2,000 miles from family at 21. BA in Mathematics from Humboldt State University,
+          2004. Entered the graduate program in Mathematical Modeling of Environmental Systems-
+          stochastic processes, dynamic systems, abstract algebra. Left before thesis work;
+          pure mathematics was the real draw.
+        </p>
+        <ul class="highlights">
+          <li>Teaching assistant, remedial courses and MathLab tutor</li>
+          <li>First formal exposure to mathematical proof and rigor</li>
+          <li>Continued Linux administration and self-hosting</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         DULUTH: FIRST PROOFS (1998-2000)
+         Light depth
+         ========================================== -->
+
+    <section class="era-section era-section--light" id="duluth" data-era="duluth">
+      <header class="era-section__header">
+        <h2 class="era-section__title">First Proofs</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">1998-2000</span>
+          <span class="era-section__meta-item">Duluth, Minnesota</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          University of Minnesota Duluth. First exposure to higher mathematics-the moment
+          when abstraction clicked. Full-time student, part-time worker: midnight stock
+          shifts at Kohl's, summer landscaping, evenings at Pizza Hut.
+        </p>
+        <ul class="highlights">
+          <li>First higher mathematics coursework</li>
+          <li>Linux servers and self-hosting begins in earnest</li>
+          <li>Working nights to pay for school</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         WISCONSIN: WORK ETHIC (1992-1998)
+         Light depth - origin story
+         ========================================== -->
+
+    <section class="era-section era-section--light" id="wisconsin" data-era="wisconsin">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Work Ethic</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">1992-1998</span>
+          <span class="era-section__meta-item">Grantsburg, Wisconsin</span>
+        </div>
+      </header>
+
+      <div class="era-section__body">
+        <p>
+          Six years of continuous employment before graduating high school. Farm work,
+          restaurant kitchen (mower to dishwasher to prep cook to line cook), landscaping
+          with heavy equipment operation. First in family to attend college.
+          Built first computer in 1996. Co-system operator for the high school BBS, 1996-1997.
+        </p>
+        <ul class="highlights">
+          <li>Blue-collar foundation</li>
+          <li>Heavy equipment certified before driving age</li>
+          <li>First computer build, age 16</li>
+          <li>Technology interest begins-and never stops</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-links" aria-label="Additional resources">
+        <a href="/cv.html">Full CV</a>
+        <a href="/research/">Research</a>
+        <a href="https://github.com/verlyn13" target="_blank" rel="noopener">GitHub</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <p>Built with care in Homer, Alaska.</p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================
+       BACK TO TOP BUTTON
+       ============================================ -->
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to timeline">
+    ↑ Timeline
+  </button>
+
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ----------------------------------------
+      // BRAID NAVIGATION
+      // Click era → scroll to section
+      // ----------------------------------------
+
+      const hitareas = document.querySelectorAll('.era-hitarea');
+      const labels = document.querySelectorAll('.era-label');
+
+      [...hitareas, ...labels].forEach(el => {
+        const era = el.dataset.era;
+        if (!era) return;
+
+        // Make keyboard accessible
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('role', 'link');
+        el.setAttribute('aria-label', `Jump to ${era} section`);
+
+        // Click handler
+        el.addEventListener('click', () => {
+          const target = document.getElementById(era);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, '', `#${era}`);
+          }
+        });
+
+        // Keyboard handler (Enter or Space)
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            el.click();
+          }
+        });
+      });
+
+
+      // ----------------------------------------
+      // BACK TO TOP BUTTON
+      // Show when scrolled past braid
+      // ----------------------------------------
+
+      const backToTop = document.getElementById('back-to-top');
+      const hero = document.querySelector('.experience-hero');
+
+      if (backToTop && hero) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                backToTop.classList.remove('visible');
+              } else {
+                backToTop.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
+        );
+
+        observer.observe(hero);
+
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.pushState(null, '', window.location.pathname);
+        });
+      }
+
+
+      // ----------------------------------------
+      // ACTIVE ERA HIGHLIGHTING
+      // Update braid to show current section
+      // ----------------------------------------
+
+      const sections = document.querySelectorAll('.era-section');
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const era = entry.target.dataset.era;
+
+              // Remove active class from all
+              document.querySelectorAll('.era-hitarea').forEach(h =>
+                h.classList.remove('active')
+              );
+              document.querySelectorAll('.era-label').forEach(l =>
+                l.classList.remove('active')
+              );
+
+              // Add active class to current
+              const hitarea = document.querySelector(`.era-hitarea[data-era="${era}"]`);
+              const label = document.querySelector(`.era-label[data-era="${era}"]`);
+
+              if (hitarea) hitarea.classList.add('active');
+              if (label) label.classList.add('active');
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: '-20% 0px -20% 0px' }
+      );
+
+      sections.forEach(section => sectionObserver.observe(section));
+
+
+      // ----------------------------------------
+      // HANDLE DIRECT HASH NAVIGATION
+      // If URL has #era, scroll to it on load
+      // ----------------------------------------
+
+      if (window.location.hash) {
+        const targetId = window.location.hash.slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          // Slight delay to let page render
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+
+    })();
+  </script>
+
+</body>
+</html>

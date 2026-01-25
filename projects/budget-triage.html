@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Triage - Enterprise Architecture | Jeffrey Johnson</title>
+    <meta name="description" content="Learning platform exploring ADR governance, observability patterns, and modern enterprise architecture">
+    <link rel="icon" href="/assets/icons/maat_feather_16.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/jeffrey.css">
+    <script src="/assets/menu.js" defer></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/#approach">Approach</a></li>
+                <li><a href="/experience/">Experience</a></li>
+                <li><a href="/research/">Research</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="back-nav">
+            <a href="/#approach">← Back to Approach</a>
+        </div>
+
+        <article class="project-detail">
+            <div class="container">
+                <header class="project-header-detail">
+                    <p class="case-study-context">
+                        <a href="/#approach">Approach</a> · The Governance Laboratory
+                    </p>
+                    <h1>Budget Triage</h1>
+                    <p class="project-subtitle">Enterprise Architecture Exploration</p>
+                    <div class="project-meta">
+                        <span class="project-status development">Active Development</span>
+                    </div>
+                </header>
+
+                <section class="project-overview">
+                    <h2>Overview</h2>
+                    <p>Personal finance management system built with enterprise-grade architecture patterns. Intentionally over-engineered to explore modern governance frameworks, observability patterns, and policy-based development.</p>
+                    <p>This is a learning platform—using a practical application to deeply understand enterprise patterns that would be appropriate at larger scale.</p>
+                </section>
+
+                <section class="project-architecture">
+                    <h2>Technical Stack</h2>
+
+                    <div class="architecture-section">
+                        <h3>Runtime & Core</h3>
+                        <ul>
+                            <li>Bun (modern TypeScript runtime)</li>
+                            <li>Express + Hono (dual API framework exploration)</li>
+                            <li>PostgreSQL with type-safe schema generation (Kanel)</li>
+                            <li>ts-rest for end-to-end type contracts</li>
+                        </ul>
+                    </div>
+
+                    <div class="architecture-section">
+                        <h3>Infrastructure & Security</h3>
+                        <ul>
+                            <li>Infisical (self-hosted secrets management)</li>
+                            <li>Machine identity patterns for automated access</li>
+                            <li>Docker containerization</li>
+                            <li>OpenTelemetry instrumentation throughout</li>
+                        </ul>
+                    </div>
+
+                    <div class="architecture-section">
+                        <h3>Governance Framework</h3>
+                        <ul>
+                            <li>ADR-020 (Architecture Decision Records)</li>
+                            <li>Runtime/config/toolchain compliance verification</li>
+                            <li>Script governance rules</li>
+                            <li>Cross-surface validation</li>
+                            <li>Evidence-based logging</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project-patterns">
+                    <h2>Key Patterns Explored</h2>
+
+                    <div class="pattern-section">
+                        <h3>Architecture Decision Records (ADR)</h3>
+                        <p>Formal governance framework ensuring runtime, configuration, and toolchain compliance. Every architectural decision is documented, verified, and enforced.</p>
+                        <p>This isn't typical for personal projects—it's practicing enterprise patterns where they matter at scale.</p>
+                    </div>
+
+                    <div class="pattern-section">
+                        <h3>Secrets Management</h3>
+                        <p>Self-hosted Infisical with machine identity patterns. Automated validation, rotation policies, evidence-based audit logs. Production-grade security for learning purposes.</p>
+                    </div>
+
+                    <div class="pattern-section">
+                        <h3>Type Safety End-to-End</h3>
+                        <p>Database schema → TypeScript types (Kanel), API contracts (ts-rest), frontend types. One source of truth, compile-time safety across all layers.</p>
+                    </div>
+
+                    <div class="pattern-section">
+                        <h3>Observability</h3>
+                        <p>OpenTelemetry instrumentation throughout. Traces, metrics, structured logging. Understanding how to build observable systems from the ground up.</p>
+                    </div>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why This Matters</h2>
+
+                    <div class="significance-grid">
+                        <div class="significance-point">
+                            <h3>Governance at Scale</h3>
+                            <p>ADR frameworks and policy-based development are crucial for large teams. Learning the patterns in a controlled environment.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Security Best Practices</h3>
+                            <p>Secrets management, machine identity, audit logging—production security patterns in practice.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Modern TypeScript Ecosystem</h3>
+                            <p>Bun, modern frameworks, type-safe patterns. Staying current with evolving JavaScript/TypeScript landscape.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Observability Mindset</h3>
+                            <p>Building systems that are observable from day one. OpenTelemetry, structured logging, traces.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-context">
+                    <h2>Development Philosophy</h2>
+                    <p>This project is intentionally over-engineered for its scope. The goal isn't to ship the perfect budgeting app—it's to deeply understand enterprise patterns that become essential at scale.</p>
+
+                    <p>Would you use ADR governance for a personal project in production? Probably not. But understanding ADR frameworks by implementing them teaches patterns applicable to large codebases, distributed teams, and regulated environments.</p>
+
+                    <p>Projects as learning experiences—using practical applications to explore theoretical and architectural concepts.</p>
+                </section>
+
+                <section class="project-technical-depth">
+                    <h2>Technical Depth</h2>
+                    <p>This project demonstrates understanding of:</p>
+                    <ul class="depth-list">
+                        <li>Enterprise governance frameworks (ADR)</li>
+                        <li>Secrets management and security patterns</li>
+                        <li>Type-safe architecture across boundaries</li>
+                        <li>Observability instrumentation (OpenTelemetry)</li>
+                        <li>Modern TypeScript ecosystem and tooling</li>
+                        <li>Policy-based development and compliance verification</li>
+                        <li>Infrastructure as code and containerization</li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="footer-links" aria-label="Navigation">
+                <a href="/">← Back to Portfolio</a>
+            </nav>
+            <p>&copy; 2025 Jeffrey Johnson</p>
+        </div>
+    </footer>
+</body>
+</html>

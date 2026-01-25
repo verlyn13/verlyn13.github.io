@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScopeCam - Industrial Camera Application | Jeffrey Johnson</title>
+    <meta name="description" content="Android application for USB OTG industrial cameras, built for commercial deployment">
+    <link rel="icon" href="/assets/icons/maat_feather_16.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/jeffrey.css">
+    <script src="/assets/menu.js" defer></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/#approach">Approach</a></li>
+                <li><a href="/experience/">Experience</a></li>
+                <li><a href="/research/">Research</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="back-nav">
+            <a href="/#approach">← Back to Approach</a>
+        </div>
+
+        <article class="project-detail">
+            <div class="container">
+                <header class="project-header-detail">
+                    <p class="case-study-context">
+                        <a href="/#approach">Approach</a> · Safety-Critical Systems
+                    </p>
+                    <h1>ScopeCam</h1>
+                    <p class="project-subtitle">Industrial Camera Application</p>
+                    <div class="project-meta">
+                        <span class="project-status mvp">Near MVP</span>
+                    </div>
+                </header>
+
+                <section class="project-overview">
+                    <h2>Overview</h2>
+                    <p>Android application enabling USB OTG industrial cameras (UVC standard) to work with mobile devices. Built for production and industrial environments requiring specialized camera hardware.</p>
+                    <p>Being developed for commercial deployment in a friend's business that requires reliable industrial camera integration on mobile platforms.</p>
+                </section>
+
+                <section class="project-technical-details">
+                    <h2>Technical Details</h2>
+
+                    <div class="architecture-section">
+                        <h3>Platform & Stack</h3>
+                        <ul>
+                            <li>Android (Kotlin)</li>
+                            <li>libuvc integration via JNI/NDK (native C library)</li>
+                            <li>Performance: 25-30 FPS with &lt;5% frame drop</li>
+                            <li>Refactored from AUSBC project with production-ready Frame API</li>
+                        </ul>
+                    </div>
+
+                    <div class="architecture-section">
+                        <h3>Technical Challenges</h3>
+                        <ul>
+                            <li>USB OTG communication protocols</li>
+                            <li>Native library integration (C → Kotlin via JNI)</li>
+                            <li>Memory pooling for efficient frame processing</li>
+                            <li>Camera initialization and configuration management</li>
+                            <li>Real-time frame delivery pipeline</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why This Matters</h2>
+                    <div class="significance-grid">
+                        <div class="significance-point">
+                            <h3>Commercial Development</h3>
+                            <p>Built for real business requirements with deployment constraints and reliability expectations.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Hardware Integration</h3>
+                            <p>Working with USB protocols and native hardware interfaces, not just high-level APIs.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Performance Optimization</h3>
+                            <p>Real-time frame processing with memory management constraints on mobile hardware.</p>
+                        </div>
+                        <div class="significance-point">
+                            <h3>Production Requirements</h3>
+                            <p>Meeting commercial reliability and performance standards for industrial use cases.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-context">
+                    <h2>Development Context</h2>
+                    <p>This project emerged from a practical need—enabling industrial-grade cameras to work reliably on Android devices for production environments. The constraints are real: commercial deployment timelines, hardware compatibility requirements, performance expectations.</p>
+                    <p>Working at the intersection of hardware protocols, native libraries, and Android development. Demonstrates ability to integrate low-level systems with mobile platforms.</p>
+                </section>
+
+                <section class="project-technical-depth">
+                    <h2>Technical Depth</h2>
+                    <p>This project demonstrates understanding of:</p>
+                    <ul class="depth-list">
+                        <li>Android platform development and architecture</li>
+                        <li>USB OTG protocols and device communication</li>
+                        <li>JNI/NDK for native library integration</li>
+                        <li>Memory management in performance-critical contexts</li>
+                        <li>Real-time data processing pipelines</li>
+                        <li>Hardware compatibility and driver-level work</li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="footer-links" aria-label="Navigation">
+                <a href="/">← Back to Portfolio</a>
+            </nav>
+            <p>&copy; 2025 Jeffrey Johnson</p>
+        </div>
+    </footer>
+</body>
+</html>
