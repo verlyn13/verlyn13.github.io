@@ -1,5 +1,37 @@
+# Dependencies
 node_modules/
+.venv/
+vendor/
+
+# Build outputs
 dist/
-.DS_Store
-*.local
+build/
+.next/
+out/
+
+# Environment (secrets)
 .env
+.env.*
+!.env.example
+.envrc.local
+
+# mise local overrides
+.mise.local.toml
+
+# IDE & agent config
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+tmp/
+temp/
+coverage/
+.pytest_cache/

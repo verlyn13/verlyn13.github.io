@@ -1,0 +1,42 @@
+[tools]
+node = "24"
+
+[tasks.dev]
+run = "npm run dev"
+description = "Start Vite development server"
+
+[tasks.build]
+run = "npm run build"
+description = "Build for production"
+
+[tasks.preview]
+run = "npm run preview"
+description = "Preview production build locally"
+
+[tasks.lint]
+run = "npm run lint"
+description = "Lint with Biome"
+
+[tasks."lint:fix"]
+run = "npm run lint:fix"
+description = "Lint and auto-fix with Biome"
+
+[tasks.format]
+run = "npm run format"
+description = "Format code with Biome"
+
+[tasks."format:check"]
+run = "npm run format:check"
+description = "Check formatting without writing"
+
+[tasks.clean]
+run = "npm run clean"
+description = "Clean build artifacts and dependencies"
+
+[tasks.deploy]
+run = "npm run deploy"
+description = "Lint, build, and preview (for local deploy verification)"
+
+[tasks.ci]
+run = "npm run lint && npm run format:check && npm run build"
+description = "Run CI checks (lint, format, build)"
