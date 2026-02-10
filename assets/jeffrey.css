@@ -6,22 +6,22 @@
 
 :root {
   /* Calm, high-contrast, readable. */
-  --ink: hsl(220 18% 18%);          /* precise, not harsh */
-  --paper: hsl(45 25% 97%);         /* warm-white, "real notebook" */
-  --muted: hsl(220 12% 45%);        /* explanatory, not shouty */
-  --accent: hsl(212 85% 45%);       /* clear "this matters" */
+  --ink: hsl(220 18% 18%); /* precise, not harsh */
+  --paper: hsl(45 25% 97%); /* warm-white, "real notebook" */
+  --muted: hsl(220 12% 45%); /* explanatory, not shouty */
+  --accent: hsl(212 85% 45%); /* clear "this matters" */
   --accent-light: hsl(212 85% 90%); /* light variant for backgrounds */
-  --accent-subtle: hsl(212 85% 96%);/* subtle variant for hover states */
-  --accent-dark: hsl(212 85% 35%);  /* dark variant for emphasis */
-  --accent-2: hsl(160 55% 35%);     /* grounded "ship it" */
-  --warn: hsl(22 90% 52%);          /* practical caution */
+  --accent-subtle: hsl(212 85% 96%); /* subtle variant for hover states */
+  --accent-dark: hsl(212 85% 35%); /* dark variant for emphasis */
+  --accent-2: hsl(160 55% 35%); /* grounded "ship it" */
+  --warn: hsl(22 90% 52%); /* practical caution */
   --ok: hsl(140 55% 35%);
 
   /* Structure + breathing room. */
-  --radius: 14px;                   /* friendly, not fluffy */
+  --radius: 14px; /* friendly, not fluffy */
   --radius-sm: 10px;
-  --shadow: 0 10px 30px hsl(220 25% 15% / .10);
-  --shadow-hard: 0 1px 0 hsl(220 25% 15% / .15);
+  --shadow: 0 10px 30px hsl(220 25% 15% / 0.1);
+  --shadow-hard: 0 1px 0 hsl(220 25% 15% / 0.15);
   --border: 1px solid hsl(220 18% 88%);
 
   /* "Teach it so it sticks." */
@@ -30,9 +30,9 @@
   --lh: 1.55;
 
   /* Deliberate pace. */
-  --space-1: .35rem;
-  --space-2: .6rem;
-  --space-3: .95rem;
+  --space-1: 0.35rem;
+  --space-2: 0.6rem;
+  --space-3: 0.95rem;
   --space-4: 1.4rem;
   --space-5: 2rem;
 
@@ -59,7 +59,7 @@ body {
   background: linear-gradient(180deg, var(--paper), hsl(45 25% 95%));
   font-family: var(--font);
   line-height: var(--lh);
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -186,7 +186,9 @@ section {
     height: 2px;
     background: var(--ink);
     border-radius: 1px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
   }
 
   .nav-toggle--active .nav-toggle__bar:nth-child(1) {
@@ -221,7 +223,12 @@ section {
 /* ------------------------------------------------------------
    Headings: decisive, not dramatic
    ------------------------------------------------------------ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.15;
   margin: 0 0 var(--space-3) 0;
   font-weight: 600;
@@ -279,7 +286,7 @@ em {
 a {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid hsl(212 85% 45% / .35);
+  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
   transition: border-color 0.2s ease;
 }
 
@@ -288,7 +295,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 3px solid hsl(212 85% 45% / .35);
+  outline: 3px solid hsl(212 85% 45% / 0.35);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -335,18 +342,21 @@ a:focus-visible {
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / .35);
-  background: hsl(0 0% 100% / .65);
+  border: 1px solid hsl(212 85% 45% / 0.35);
+  background: hsl(0 0% 100% / 0.65);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
-  transition: transform .06s ease, box-shadow .12s ease, background .12s ease;
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
   min-height: 44px;
 }
 
 .hero-link:hover {
-  background: hsl(0 0% 100% / .9);
+  background: hsl(0 0% 100% / 0.9);
   box-shadow: var(--shadow);
-  border-bottom: 1px solid hsl(212 85% 45% / .35);
+  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
 }
 
 .hero-link:active {
@@ -398,19 +408,23 @@ a:focus-visible {
 .publication,
 .tech-project-card,
 .service-card {
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow), var(--shadow-hard);
   padding: var(--space-4);
   margin-bottom: var(--space-3);
-  transition: box-shadow 0.2s ease, transform 0.1s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
 }
 
 .card:hover,
 .project-card:hover,
 .position-card:hover {
-  box-shadow: 0 15px 40px hsl(220 25% 15% / .15), var(--shadow-hard);
+  box-shadow:
+    0 15px 40px hsl(220 25% 15% / 0.15),
+    var(--shadow-hard);
 }
 
 .project-header {
@@ -546,7 +560,7 @@ a:focus-visible {
 }
 
 .approach-card {
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
   border: var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
@@ -557,7 +571,9 @@ a:focus-visible {
 }
 
 .approach-card:hover {
-  box-shadow: 0 15px 40px hsl(220 25% 15% / .15), var(--shadow-hard);
+  box-shadow:
+    0 15px 40px hsl(220 25% 15% / 0.15),
+    var(--shadow-hard);
 }
 
 /* Theme-specific top borders */
@@ -937,7 +953,10 @@ a:focus-visible {
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    color 0.2s ease;
   box-shadow: 0 4px 12px hsl(220 25% 15% / 0.1);
   z-index: 100;
 }
@@ -1097,19 +1116,19 @@ a:focus-visible {
   border-radius: var(--radius);
   padding: var(--space-3) var(--space-4);
   border-left: 5px solid var(--accent);
-  background: hsl(212 85% 45% / .06);
+  background: hsl(212 85% 45% / 0.06);
   margin-bottom: var(--space-3);
   box-shadow: none;
 }
 
 .callout.ok {
   border-left-color: var(--ok);
-  background: hsl(140 55% 35% / .08);
+  background: hsl(140 55% 35% / 0.08);
 }
 
 .callout.warn {
   border-left-color: var(--warn);
-  background: hsl(22 90% 52% / .10);
+  background: hsl(22 90% 52% / 0.1);
 }
 
 .service-card h3 {
@@ -1129,7 +1148,7 @@ ol {
 }
 
 li {
-  margin: .25rem 0;
+  margin: 0.25rem 0;
 }
 
 .achievement-list,
@@ -1172,7 +1191,7 @@ li {
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-3);
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
   border-radius: var(--radius-sm);
   border: var(--border);
 }
@@ -1239,7 +1258,7 @@ li {
   padding: var(--space-3);
   border: var(--border);
   border-radius: var(--radius-sm);
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
 }
 
 .dev-item h4 {
@@ -1349,7 +1368,7 @@ li {
 .topic-area {
   margin-bottom: var(--space-3);
   padding: var(--space-3);
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
   border-radius: var(--radius-sm);
   border: var(--border);
 }
@@ -1469,7 +1488,7 @@ li {
   padding: var(--space-3);
   border: var(--border);
   border-radius: var(--radius-sm);
-  background: hsl(0 0% 100% / .75);
+  background: hsl(0 0% 100% / 0.75);
 }
 
 .significance-point h3 {
@@ -1531,7 +1550,9 @@ li {
   border: none;
   padding: var(--space-3) var(--space-4);
   border-radius: 999px;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
   min-height: 44px;
 }
 
@@ -1564,19 +1585,22 @@ li {
   font-size: 0.9rem;
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / .35);
-  background: hsl(0 0% 100% / .65);
+  border: 1px solid hsl(212 85% 45% / 0.35);
+  background: hsl(0 0% 100% / 0.65);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
-  transition: transform .06s ease, box-shadow .12s ease, background .12s ease;
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
   min-height: 44px;
 }
 
 .section-link:hover,
 .section-link-btn:hover {
-  background: hsl(0 0% 100% / .9);
+  background: hsl(0 0% 100% / 0.9);
   box-shadow: var(--shadow);
-  border-bottom: 1px solid hsl(212 85% 45% / .35);
+  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
 }
 
 .section-link:active,
@@ -1590,7 +1614,7 @@ li {
 code,
 pre {
   font-family: var(--mono);
-  font-size: .95em;
+  font-size: 0.95em;
 }
 
 pre {
@@ -1615,7 +1639,7 @@ table {
 th,
 td {
   border-bottom: var(--border);
-  padding: .6rem .5rem;
+  padding: 0.6rem 0.5rem;
   vertical-align: top;
 }
 
@@ -1631,19 +1655,22 @@ th {
 .button {
   display: inline-flex;
   align-items: center;
-  gap: .55rem;
-  padding: .6rem .9rem;
+  gap: 0.55rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / .35);
-  background: hsl(0 0% 100% / .65);
+  border: 1px solid hsl(212 85% 45% / 0.35);
+  background: hsl(0 0% 100% / 0.65);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
   cursor: pointer;
-  transition: transform .06s ease, box-shadow .12s ease, background .12s ease;
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
 }
 
 .button:hover {
-  background: hsl(0 0% 100% / .9);
+  background: hsl(0 0% 100% / 0.9);
   box-shadow: var(--shadow);
 }
 
@@ -1936,7 +1963,7 @@ th {
    Focus: accessibility as a quiet default
    ------------------------------------------------------------ */
 :focus-visible {
-  outline: 3px solid hsl(212 85% 45% / .35);
+  outline: 3px solid hsl(212 85% 45% / 0.35);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -1950,13 +1977,15 @@ th {
 
 .rule-of-thumb {
   font-weight: 650;
-  background: linear-gradient(180deg,
-      transparent 55%,
-      hsl(212 85% 45% / .15) 55%,
-      hsl(212 85% 45% / .15) 95%,
-      transparent 95%);
-  padding: 0 .12em;
-  border-radius: .25em;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    hsl(212 85% 45% / 0.15) 55%,
+    hsl(212 85% 45% / 0.15) 95%,
+    transparent 95%
+  );
+  padding: 0 0.12em;
+  border-radius: 0.25em;
 }
 
 /* ------------------------------------------------------------

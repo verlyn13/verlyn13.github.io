@@ -149,7 +149,7 @@
             /* Accessibility: reduce motion */
             @media (prefers-reduced-motion: reduce) {
               #convergence-outer { animation: none; opacity: 0.12; }
-              .strand, .era-hitarea, .era-label { transition-duration: 0.01ms !important; }
+              .strand, .era-hitarea, .era-label { transition-duration: 0.01ms; }
             }
 
             /* High contrast mode */
@@ -553,9 +553,7 @@
        ============================================ -->
 
   <script>
-    (function() {
-      'use strict';
-
+    (() => {
       // ----------------------------------------
       // BRAID NAVIGATION
       // Click era → scroll to section
@@ -637,12 +635,12 @@
               const era = entry.target.dataset.era;
 
               // Remove active class from all
-              document.querySelectorAll('.era-hitarea').forEach(h =>
+              document.querySelectorAll('.era-hitarea').forEach(h => {
                 h.classList.remove('active')
-              );
-              document.querySelectorAll('.era-label').forEach(l =>
+              });
+              document.querySelectorAll('.era-label').forEach(l => {
                 l.classList.remove('active')
-              );
+              });
 
               // Add active class to current
               const hitarea = document.querySelector(`.era-hitarea[data-era="${era}"]`);
@@ -656,7 +654,7 @@
         { threshold: 0.3, rootMargin: '-20% 0px -20% 0px' }
       );
 
-      sections.forEach(section => sectionObserver.observe(section));
+      sections.forEach(section => { sectionObserver.observe(section) });
 
 
       // ----------------------------------------
