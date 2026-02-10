@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Prototype - Jeffrey Johnson</title>
+    <link rel="stylesheet" href="/assets/jeffrey.css">
+    <style>
+        /* ============================================================
+           Timeline-specific styles (to be merged into jeffrey.css)
+           ============================================================ */
+
+        .timeline-page {
+            padding: var(--space-4) 0;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: var(--space-5);
+            padding-bottom: var(--space-4);
+            border-bottom: var(--border);
+        }
+
+        .timeline-tagline {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-top: var(--space-2);
+        }
+
+        /* ------------------------------------------------------------
+           Dual-Track Timeline Visualization
+           ------------------------------------------------------------ */
+        .timeline-visualization {
+            position: relative;
+            margin: var(--space-5) 0;
+            padding: var(--space-4) 0;
+        }
+
+        .timeline-tracks {
+            position: relative;
+            height: 60px;
+            margin-bottom: var(--space-3);
+        }
+
+        .track {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: flex;
+            gap: 2px; /* seam, not void */
+        }
+
+        .track-professional {
+            top: 0;
+            height: 4px;
+        }
+
+        .track-tech {
+            top: 12px;
+            height: 3px;
+        }
+
+        .track-segment {
+            position: relative;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+
+        .track-segment:first-child {
+            border-radius: 10px 2px 2px 10px;
+        }
+
+        .track-segment:last-child {
+            border-radius: 2px 10px 10px 2px;
+        }
+
+        .track-segment:hover {
+            transform: scaleY(1.5);
+            filter: brightness(1.1);
+            z-index: 10;
+        }
+
+        .track-professional .track-segment {
+            background: var(--accent);
+        }
+
+        .track-tech .track-segment {
+            background: var(--accent-2);
+        }
+
+        .track-tech .track-segment.dormant {
+            background: var(--muted);
+            opacity: 0.4;
+        }
+
+        .track-tech .track-segment.low {
+            opacity: 0.6;
+        }
+
+        .track-tech .track-segment.active {
+            opacity: 1;
+        }
+
+        /* Crossover bridge markers */
+        .crossover-marker {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: var(--warn);
+            top: -4px;
+            border-radius: 2px;
+        }
+
+        /* Era labels below tracks */
+        .era-labels {
+            display: flex;
+            gap: 2px;
+            margin-top: var(--space-4);
+        }
+
+        .era-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            padding: var(--space-1);
+            border-radius: var(--radius-sm);
+            transition: background 0.15s ease;
+        }
+
+        .era-label:hover {
+            background: hsl(220 25% 96%);
+        }
+
+        .era-label.active {
+            color: var(--accent);
+            background: hsl(212 85% 96%);
+        }
+
+        .era-label-flag {
+            font-size: 1rem;
+        }
+
+        .era-label-years {
+            font-size: 0.65rem;
+            color: var(--muted);
+            opacity: 0.7;
+        }
+
+        /* Year markers */
+        .year-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-2);
+            padding: 0 var(--space-2);
+        }
+
+        .year-marker {
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ------------------------------------------------------------
+           Hover Card
+           ------------------------------------------------------------ */
+        .hover-card {
+            position: absolute;
+            background: hsl(0 0% 100% / 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid hsl(220 18% 88%);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: var(--space-3);
+            max-width: 300px;
+            min-width: 240px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+        }
+
+        .hover-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hover-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+        }
+
+        .hover-card-flag {
+            font-size: 1.2rem;
+        }
+
+        .hover-card-years {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .hover-card-headline {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--space-2);
+        }
+
+        .hover-card-snippet {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink);
+            margin-bottom: var(--space-2);
+        }
+
+        .hover-card-divider {
+            height: 1px;
+            background: var(--muted);
+            opacity: 0.2;
+            margin: var(--space-2) 0;
+        }
+
+        .hover-card-hook {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--accent-2);
+        }
+
+        .hover-card-easter-egg {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-top: var(--space-1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hover-card-easter-egg.visible {
+            opacity: 1;
+        }
+
+        /* ------------------------------------------------------------
+           Era Detail Panel (Bento Box)
+           ------------------------------------------------------------ */
+        .era-detail {
+            display: none;
+            margin-top: var(--space-5);
+            padding-top: var(--space-4);
+            border-top: var(--border);
+            animation: slideIn 0.3s ease;
+        }
+
+        .era-detail.visible {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .era-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+        }
+
+        .era-detail-back {
+            font-size: 0.9rem;
+            color: var(--muted);
+            cursor: pointer;
+            border: none;
+            background: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .era-detail-back:hover {
+            color: var(--accent);
+        }
+
+        .era-detail-meta {
+            font-size: 0.9rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .era-detail-meta-flag {
+            font-size: 1.2rem;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3);
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bento-card {
+            background: hsl(0 0% 100% / 0.75);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-3);
+        }
+
+        .bento-card-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted);
+            margin-bottom: var(--space-2);
+        }
+
+        .bento-card.narrative {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, hsl(45 25% 96%), hsl(45 25% 94%));
+            border-left: 4px solid var(--warn);
+        }
+
+        .bento-card.narrative .bento-card-title {
+            color: var(--warn);
+        }
+
+        .bento-role {
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-3);
+            border-bottom: var(--border);
+        }
+
+        .bento-role:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .bento-role-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .bento-role-org {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .bento-role-scope {
+            font-size: 0.85rem;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .bento-role-status {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-left: var(--space-1);
+        }
+
+        .bento-role-status.tenured {
+            background: hsl(140 55% 90%);
+            color: var(--ok);
+        }
+
+        .tech-stack-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+        }
+
+        .tech-stack-tag {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            background: hsl(220 25% 96%);
+            border: var(--border);
+            border-radius: 6px;
+            color: var(--muted);
+        }
+
+        .project-item {
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-3);
+            border-bottom: var(--border);
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .project-item-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: 4px;
+        }
+
+        .project-item-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .project-item-status {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 999px;
+        }
+
+        .project-item-status.production {
+            background: hsl(140 55% 90%);
+            color: var(--ok);
+        }
+
+        .project-item-status.live {
+            background: hsl(160 55% 88%);
+            color: var(--accent-2);
+        }
+
+        .project-item-status.dev {
+            background: hsl(212 85% 90%);
+            color: var(--accent);
+        }
+
+        .project-item-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .narrative-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        /* Placeholder for unimplemented eras */
+        .era-placeholder {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* ------------------------------------------------------------
+           Mobile: Vertical Stepper
+           ------------------------------------------------------------ */
+        @media (max-width: 768px) {
+            .timeline-tracks {
+                display: none;
+            }
+
+            .era-labels {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .era-label {
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: var(--space-3);
+                border-left: 3px solid var(--accent);
+                margin-left: var(--space-4);
+                position: relative;
+            }
+
+            .era-label::before {
+                content: '';
+                position: absolute;
+                left: -8px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 12px;
+                background: var(--accent);
+                border-radius: 50%;
+                border: 2px solid var(--paper);
+            }
+
+            .era-label.active::before {
+                background: var(--accent-2);
+            }
+
+            .era-label-flag {
+                font-size: 1.2rem;
+                margin-right: var(--space-2);
+            }
+
+            .era-label-text {
+                flex: 1;
+            }
+
+            .era-label-years {
+                margin-left: auto;
+            }
+
+            .year-markers {
+                display: none;
+            }
+
+            .hover-card {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                border-radius: var(--radius) var(--radius) 0 0;
+                transform: translateY(100%);
+            }
+
+            .hover-card.visible {
+                transform: translateY(0);
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Legend
+           ------------------------------------------------------------ */
+        .timeline-legend {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .legend-swatch {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .legend-swatch.professional {
+            background: var(--accent);
+        }
+
+        .legend-swatch.tech {
+            background: var(--accent-2);
+        }
+
+        .legend-swatch.tech-dormant {
+            background: var(--muted);
+            opacity: 0.4;
+        }
+
+        .legend-swatch.crossover {
+            background: var(--warn);
+            width: 3px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/experience/">Experience</a></li>
+                <li><a href="/research/">Research</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="timeline-page">
+        <div class="container">
+            <header class="timeline-header">
+                <h1>Timeline</h1>
+                <p class="timeline-tagline">Mathematician &middot; Systems Architect &middot; Builder</p>
+            </header>
+
+            <div class="timeline-legend">
+                <div class="legend-item">
+                    <div class="legend-swatch professional"></div>
+                    <span>Academic & Professional</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch tech"></div>
+                    <span>Technology (Active)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch tech-dormant"></div>
+                    <span>Technology (Background)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch crossover"></div>
+                    <span>Convergence Point</span>
+                </div>
+            </div>
+
+            <section class="timeline-visualization">
+                <div class="timeline-tracks">
+                    <!-- Professional Track -->
+                    <div class="track track-professional" id="track-professional"></div>
+
+                    <!-- Tech Track -->
+                    <div class="track track-tech" id="track-tech"></div>
+                </div>
+
+                <div class="era-labels" id="era-labels"></div>
+
+                <div class="year-markers">
+                    <span class="year-marker">1992</span>
+                    <span class="year-marker">2000</span>
+                    <span class="year-marker">2010</span>
+                    <span class="year-marker">2020</span>
+                    <span class="year-marker">Present</span>
+                </div>
+            </section>
+
+            <!-- Hover Card (positioned via JS) -->
+            <div class="hover-card" id="hover-card">
+                <div class="hover-card-header">
+                    <span class="hover-card-flag" id="hover-flag"></span>
+                    <span class="hover-card-years" id="hover-years"></span>
+                </div>
+                <h3 class="hover-card-headline" id="hover-headline"></h3>
+                <p class="hover-card-snippet" id="hover-snippet"></p>
+                <div class="hover-card-divider"></div>
+                <p class="hover-card-hook" id="hover-hook"></p>
+                <p class="hover-card-easter-egg" id="hover-easter-egg"></p>
+            </div>
+
+            <!-- Era Detail Panel -->
+            <section class="era-detail" id="era-detail">
+                <div class="era-detail-header">
+                    <button class="era-detail-back" id="detail-back">
+                        <span>&larr;</span> Back to timeline
+                    </button>
+                    <div class="era-detail-meta">
+                        <span class="era-detail-meta-flag" id="detail-flag"></span>
+                        <span id="detail-meta-text"></span>
+                    </div>
+                </div>
+                <div id="detail-content"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>Timeline Prototype &middot; <a href="/">Back to Portfolio</a></p>
+    </footer>
+
+    <script>
+        // ============================================================
+        // Timeline Data (from your JSON schema)
+        // ============================================================
+        const timelineData = {
+            meta: {
+                name: "Jeffrey V. Johnson, Ph.D.",
+                tagline: "Mathematician · Systems Architect · Builder",
+                lastUpdated: "2025-01"
+            },
+            eras: [
+                {
+                    id: "wisconsin-roots",
+                    name: "Wisconsin",
+                    years: { start: 1992, end: 1998 },
+                    location: { place: "Grantsburg, WI", flag: "us" },
+                    visualWeight: 0.08,
+                    techIntensity: "low",
+                    professional: {
+                        title: "Foundations",
+                        roles: [
+                            { name: "Farm Work", org: "Private Farm", years: "1992-1996" },
+                            { name: "Line Cook", org: "Skol Haus Restaurant", years: "1996-1998", scope: "mower -> dishwasher -> prep -> line" },
+                            { name: "Landscaper", org: "Wood River Landscaping", years: "1997-1998" }
+                        ],
+                        narrative: "Six years of continuous work before graduating high school. Equipment operation, kitchen management, physical labor."
+                    },
+                    tech: {
+                        milestone: "Built first computer, 1996",
+                        skills: ["hardware assembly", "DOS", "early Windows"]
+                    },
+                    hoverCard: {
+                        headline: "Work Ethic Formation",
+                        snippet: "Farm, restaurant, landscaping. Built first computer at 16.",
+                        hook: "Heavy equipment certified before driving age."
+                    }
+                },
+                {
+                    id: "duluth-exploration",
+                    name: "Duluth",
+                    years: { start: 1998, end: 2000 },
+                    location: { place: "Duluth, MN", flag: "us" },
+                    visualWeight: 0.06,
+                    techIntensity: "low",
+                    professional: {
+                        title: "Working Student",
+                        roles: [
+                            { name: "Midnight Stocker", org: "Kohl's", years: "1998-1999" },
+                            { name: "Cook", org: "Pizza Hut", years: "1999-2000" }
+                        ],
+                        narrative: "Full-time university, part-time (often overnight) work. First exposure to higher mathematics."
+                    },
+                    tech: {
+                        milestone: "Linux servers, self-hosting begins",
+                        skills: ["Linux administration", "networking basics"],
+                        easterEgg: "xorg.conf"
+                    },
+                    hoverCard: {
+                        headline: "First Higher Math",
+                        snippet: "University coursework while working nights. Linux administration begins.",
+                        hook: "Midnight shifts, morning lectures."
+                    }
+                },
+                {
+                    id: "california-pivot",
+                    name: "California",
+                    years: { start: 2001, end: 2005 },
+                    location: { place: "Eureka, CA", flag: "us" },
+                    visualWeight: 0.10,
+                    techIntensity: "low",
+                    professional: {
+                        title: "Mathematical Identity",
+                        roles: [
+                            { name: "Data Entry", org: "CA Dept of Rehab", years: "2001-2002" },
+                            { name: "Teaching Assistant", org: "Humboldt State University", years: "2002-2004" }
+                        ],
+                        narrative: "Solo cross-country move at 21. BA in Mathematics. Entered graduate program. Pivoted toward pure mathematics."
+                    },
+                    tech: {
+                        milestone: "Continued self-hosting, server management",
+                        skills: ["Linux video drivers", "system administration"],
+                        easterEgg: "Yes, including the video drivers."
+                    },
+                    hoverCard: {
+                        headline: "Mathematical Identity Solidifies",
+                        snippet: "Cross-country solo move. BA in Mathematics. First graduate coursework.",
+                        hook: "2,000 miles from family at 21."
+                    }
+                },
+                {
+                    id: "peace-corps",
+                    name: "Peace Corps",
+                    years: { start: 2005, end: 2007 },
+                    location: { place: "South Africa", flag: "za" },
+                    visualWeight: 0.10,
+                    techIntensity: "dormant",
+                    crossover: { type: "origin", label: "Teaching career begins" },
+                    professional: {
+                        title: "Service & Teaching",
+                        roles: [
+                            { name: "Education Volunteer", org: "U.S. Peace Corps", years: "2005-2007" },
+                            { name: "Teacher Trainer", org: "Local Schools", years: "2005-2007" }
+                        ],
+                        narrative: "Project management workshops. Community improvement initiatives. Secured Dell Computers grant for partner school."
+                    },
+                    tech: {
+                        milestone: null,
+                        skills: [],
+                        note: "Limited infrastructure access"
+                    },
+                    hoverCard: {
+                        headline: "International Service",
+                        snippet: "Education volunteer and teacher trainer. Community project leadership.",
+                        hook: "Dell grant for rural school."
+                    }
+                },
+                {
+                    id: "montana-phd",
+                    name: "Montana PhD",
+                    years: { start: 2008, end: 2015 },
+                    location: { place: "Missoula, MT", flag: "us" },
+                    visualWeight: 0.15,
+                    techIntensity: "low",
+                    crossover: { type: "integration", label: "Logic meets code" },
+                    professional: {
+                        title: "Deep Specialization",
+                        roles: [
+                            { name: "Graduate Researcher", org: "University of Montana", years: "2008-2014" },
+                            { name: "Teaching Assistant", org: "University of Montana", years: "2008-2014" },
+                            { name: "Postdoctoral Lecturer", org: "University of Montana", years: "2014-2015" }
+                        ],
+                        narrative: "PhD in Mathematics specializing in commutative Banach algebras. Conference presentations. Published research.",
+                        publication: { title: "Journal of Banach Function Algebras", year: 2014 }
+                    },
+                    tech: {
+                        milestone: "Mathematical computing, continued server management",
+                        skills: ["LaTeX", "mathematical software", "Linux administration"],
+                        note: "Tech skills in service of mathematics"
+                    },
+                    hoverCard: {
+                        headline: "Theoretical Foundations",
+                        snippet: "PhD in commutative Banach algebras. Published researcher. Conference presenter.",
+                        hook: "Six years of pure mathematics."
+                    }
+                },
+                {
+                    id: "cairo",
+                    name: "Cairo",
+                    years: { start: 2015, end: 2017 },
+                    location: { place: "Cairo, Egypt", flag: "eg" },
+                    visualWeight: 0.12,
+                    techIntensity: "low",
+                    professional: {
+                        title: "International Academia",
+                        roles: [
+                            { name: "Associate Professor", org: "American University in Cairo", years: "2015-2017" }
+                        ],
+                        narrative: "International faculty position. Taught calculus and advanced courses. Attended Lineability conference in Czech Republic."
+                    },
+                    tech: {
+                        milestone: "Pedagogical technology exploration",
+                        skills: ["LMS administration", "online course tools"],
+                        note: "Seeds of ed-tech interest"
+                    },
+                    hoverCard: {
+                        headline: "International Faculty",
+                        snippet: "Associate Professor at American University in Cairo. Functional analysis research.",
+                        hook: "Teaching calculus near the pyramids."
+                    }
+                },
+                {
+                    id: "alaska-synthesis",
+                    name: "Alaska",
+                    years: { start: 2017, end: null },
+                    location: { place: "Homer, AK", flag: "us" },
+                    visualWeight: 0.39,
+                    techIntensity: "active",
+                    crossover: { type: "convergence", label: "Full integration" },
+                    professional: {
+                        title: "Dual Track",
+                        roles: [
+                            {
+                                name: "Associate Professor of Mathematics",
+                                org: "Kenai Peninsula College",
+                                years: "2017-present",
+                                status: "Tenured",
+                                scope: "Calculus, Applied Statistics, online course development"
+                            },
+                            {
+                                name: "Software Engineer",
+                                org: "Independent / Happy Patterns LLC",
+                                years: "2022-present",
+                                scope: "Full-stack development, AI integration, mobile applications"
+                            }
+                        ],
+                        narrative: "Tenured faculty developing online pedagogy while simultaneously building production software. Interdisciplinary publication in Journal of Pediatric Physical Therapy (2024). The two tracks—30 years of tech interest, 20 years of mathematical rigor—converge."
+                    },
+                    tech: {
+                        milestone: "Full convergence: professional-grade engineering",
+                        skills: [
+                            "TypeScript", "Python", "Go", "Rust",
+                            "React", "Android/JNI", "PostgreSQL",
+                            "Cloudflare Workers", "Docker", "Terraform"
+                        ],
+                        projects: [
+                            { name: "ScopeCam", description: "Android UVC camera application", status: "production", tech: ["Android", "JNI", "Native C++"] },
+                            { name: "Budget Triage", description: "Financial document processing", status: "dev", tech: ["TypeScript", "PostgreSQL"] },
+                            { name: "Dicee", description: "Multiplayer probability game", status: "live", tech: ["Rust/WASM", "Cloudflare"] }
+                        ],
+                        easterEgg: "30 years from first build to production Android app"
+                    },
+                    hoverCard: {
+                        headline: "Convergence",
+                        snippet: "Tenured professor and production software engineer. The tracks merge.",
+                        hook: "Teaching calculus. Shipping code."
+                    }
+                }
+            ]
+        };
+
+        // Flag emoji mapping
+        const flags = {
+            'us': '\u{1F1FA}\u{1F1F8}',
+            'za': '\u{1F1FF}\u{1F1E6}',
+            'eg': '\u{1F1EA}\u{1F1EC}'
+        };
+
+        // ============================================================
+        // Render Timeline
+        // ============================================================
+        function renderTimeline() {
+            const trackPro = document.getElementById('track-professional');
+            const trackTech = document.getElementById('track-tech');
+            const eraLabels = document.getElementById('era-labels');
+
+            timelineData.eras.forEach((era, index) => {
+                const width = `${era.visualWeight * 100}%`;
+
+                // Professional track segment
+                const proSegment = document.createElement('div');
+                proSegment.className = 'track-segment';
+                proSegment.style.flex = era.visualWeight;
+                proSegment.dataset.eraId = era.id;
+                proSegment.dataset.index = index;
+                if (era.crossover) {
+                    const marker = document.createElement('div');
+                    marker.className = 'crossover-marker';
+                    marker.style.right = '0';
+                    proSegment.appendChild(marker);
+                }
+                trackPro.appendChild(proSegment);
+
+                // Tech track segment
+                const techSegment = document.createElement('div');
+                techSegment.className = `track-segment ${era.techIntensity}`;
+                techSegment.style.flex = era.visualWeight;
+                techSegment.dataset.eraId = era.id;
+                techSegment.dataset.index = index;
+                trackTech.appendChild(techSegment);
+
+                // Era label
+                const label = document.createElement('div');
+                label.className = 'era-label';
+                label.style.flex = era.visualWeight;
+                label.dataset.eraId = era.id;
+                label.dataset.index = index;
+                label.innerHTML = `
+                    <span class="era-label-flag">${flags[era.location.flag] || ''}</span>
+                    <span class="era-label-text">${era.name}</span>
+                    <span class="era-label-years">${era.years.start}-${era.years.end || 'now'}</span>
+                `;
+                eraLabels.appendChild(label);
+            });
+        }
+
+        // ============================================================
+        // Hover Card Logic
+        // ============================================================
+        const hoverCard = document.getElementById('hover-card');
+        let hoverTimeout = null;
+        let easterEggTimeout = null;
+
+        function showHoverCard(era, element) {
+            const flag = document.getElementById('hover-flag');
+            const years = document.getElementById('hover-years');
+            const headline = document.getElementById('hover-headline');
+            const snippet = document.getElementById('hover-snippet');
+            const hook = document.getElementById('hover-hook');
+            const easterEgg = document.getElementById('hover-easter-egg');
+
+            flag.textContent = flags[era.location.flag] || '';
+            years.textContent = `${era.years.start}-${era.years.end || 'Present'}`;
+            headline.textContent = era.hoverCard.headline;
+            snippet.textContent = era.hoverCard.snippet;
+            hook.textContent = era.hoverCard.hook;
+
+            // Easter egg
+            easterEgg.classList.remove('visible');
+            if (era.tech.easterEgg) {
+                easterEgg.textContent = era.tech.easterEgg;
+                clearTimeout(easterEggTimeout);
+                easterEggTimeout = setTimeout(() => {
+                    easterEgg.classList.add('visible');
+                }, 2000);
+            } else {
+                easterEgg.textContent = '';
+            }
+
+            // Position the card
+            const rect = element.getBoundingClientRect();
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+
+            // Desktop positioning
+            if (window.innerWidth > 768) {
+                let left = rect.left - containerRect.left;
+                let top = rect.bottom + 12;
+
+                // Keep within bounds
+                const cardWidth = 300;
+                if (left + cardWidth > containerRect.width) {
+                    left = containerRect.width - cardWidth;
+                }
+                if (left < 0) left = 0;
+
+                hoverCard.style.left = `${left}px`;
+                hoverCard.style.top = `${top}px`;
+            }
+
+            hoverCard.classList.add('visible');
+        }
+
+        function hideHoverCard() {
+            hoverCard.classList.remove('visible');
+            clearTimeout(easterEggTimeout);
+            document.getElementById('hover-easter-egg').classList.remove('visible');
+        }
+
+        // ============================================================
+        // Era Detail Panel Logic
+        // ============================================================
+        const eraDetail = document.getElementById('era-detail');
+        const detailContent = document.getElementById('detail-content');
+        let activeEraId = null;
+
+        function showEraDetail(era) {
+            activeEraId = era.id;
+
+            document.getElementById('detail-flag').textContent = flags[era.location.flag] || '';
+            document.getElementById('detail-meta-text').textContent =
+                `${era.years.start}-${era.years.end || 'Present'} · ${era.location.place}`;
+
+            // Mark active era label
+            document.querySelectorAll('.era-label').forEach(el => {
+                el.classList.toggle('active', el.dataset.eraId === era.id);
+            });
+
+            // Generate content based on era
+            if (era.id === 'alaska-synthesis') {
+                detailContent.innerHTML = renderAlaskaDetail(era);
+            } else {
+                detailContent.innerHTML = renderPlaceholderDetail(era);
+            }
+
+            eraDetail.classList.add('visible');
+            eraDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function hideEraDetail() {
+            eraDetail.classList.remove('visible');
+            activeEraId = null;
+            document.querySelectorAll('.era-label').forEach(el => el.classList.remove('active'));
+        }
+
+        function renderAlaskaDetail(era) {
+            const pro = era.professional;
+            const tech = era.tech;
+
+            return `
+                <div class="bento-grid">
+                    <div class="bento-card">
+                        <div class="bento-card-title">Professional</div>
+                        ${pro.roles.map(role => `
+                            <div class="bento-role">
+                                <div class="bento-role-title">
+                                    ${role.name}
+                                    ${role.status ? `<span class="bento-role-status tenured">${role.status}</span>` : ''}
+                                </div>
+                                <div class="bento-role-org">${role.org} · ${role.years}</div>
+                                ${role.scope ? `<div class="bento-role-scope">${role.scope}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="bento-card">
+                        <div class="bento-card-title">Projects</div>
+                        ${tech.projects.map(proj => `
+                            <div class="project-item">
+                                <div class="project-item-header">
+                                    <span class="project-item-name">${proj.name}</span>
+                                    <span class="project-item-status ${proj.status}">${proj.status}</span>
+                                </div>
+                                <div class="project-item-desc">${proj.description}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="bento-card">
+                        <div class="bento-card-title">Tech Stack</div>
+                        <div class="tech-stack-grid">
+                            ${tech.skills.map(skill => `
+                                <span class="tech-stack-tag">${skill}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="bento-card narrative">
+                        <div class="bento-card-title">The Convergence</div>
+                        <p class="narrative-text">${pro.narrative}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPlaceholderDetail(era) {
+            return `
+                <div class="era-placeholder">
+                    <p><strong>${era.name}</strong> era detail coming soon.</p>
+                    <p style="margin-top: var(--space-2);">${era.hoverCard.snippet}</p>
+                </div>
+            `;
+        }
+
+        // ============================================================
+        // Event Listeners
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTimeline();
+
+            // Track segment hover events
+            document.querySelectorAll('.track-segment, .era-label').forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    const era = timelineData.eras[index];
+                    clearTimeout(hoverTimeout);
+                    hoverTimeout = setTimeout(() => showHoverCard(era, e.target), 150);
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    clearTimeout(hoverTimeout);
+                    hideHoverCard();
+                });
+
+                el.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    const era = timelineData.eras[index];
+                    hideHoverCard();
+                    showEraDetail(era);
+                });
+            });
+
+            // Back button
+            document.getElementById('detail-back').addEventListener('click', hideEraDetail);
+
+            // Close on escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideHoverCard();
+                    hideEraDetail();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braid Timeline SVG Preview</title>
+    <style>
+        :root {
+            --strand-analytical: hsl(212, 85%, 45%);
+            --strand-technical: hsl(160, 55%, 35%);
+            --strand-experiential: hsl(22, 90%, 52%);
+            --ink: hsl(220, 18%, 18%);
+            --muted: hsl(220, 12%, 45%);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(180deg, hsl(45, 25%, 97%) 0%, hsl(45, 20%, 94%) 100%);
+            color: var(--ink);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .preview-wrapper {
+            background: hsl(0, 0%, 100%, 0.75);
+            border: 1px solid hsl(220, 18%, 88%);
+            border-radius: 14px;
+            box-shadow: 0 10px 30px hsl(220, 25%, 15%, 0.10);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .svg-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .svg-container svg {
+            min-width: 800px;
+            display: block;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .legend-swatch {
+            width: 24px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .legend-swatch.analytical { background: var(--strand-analytical); }
+        .legend-swatch.technical { background: var(--strand-technical); }
+        .legend-swatch.experiential { background: var(--strand-experiential); }
+
+        .notes {
+            background: hsl(0, 0%, 100%, 0.5);
+            border-left: 4px solid var(--strand-analytical);
+            padding: 1rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-top: 1.5rem;
+        }
+
+        .notes h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .notes ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .notes li { margin-bottom: 0.25rem; }
+
+        .debug-info {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 1rem;
+            padding: 1rem;
+            background: hsl(220, 25%, 96%);
+            border-radius: 8px;
+        }
+
+        /* Hover effects for testing interactivity */
+        .era-hitarea:hover {
+            fill: hsla(220, 18%, 18%, 0.06) !important;
+        }
+
+        .era-label:hover {
+            fill: var(--strand-analytical) !important;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Braid Timeline Preview</h1>
+        <p class="subtitle">Testing the SVG before integration</p>
+
+        <div class="preview-wrapper">
+            <div class="svg-container" id="svg-container">
+                <!-- SVG will be loaded here -->
+                <p>Loading SVG...</p>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-swatch analytical"></div>
+                    <span>Analytical — math, pedagogy, logic</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch technical"></div>
+                    <span>Technical — systems, software, building</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch experiential"></div>
+                    <span>Experiential — labor, service, world</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>Checklist</h3>
+            <ul>
+                <li>[ ] Three distinct strand colors visible</li>
+                <li>[ ] Crossings show clear over/under (opacity difference)</li>
+                <li>[ ] Shadows appear on "over" strands at crossings</li>
+                <li>[ ] Era labels are readable and centered</li>
+                <li>[ ] Year markers align with era boundaries</li>
+                <li>[ ] Convergence ring visible at right edge</li>
+                <li>[ ] Hover over hitareas shows subtle highlight</li>
+                <li>[ ] Hover over labels changes color</li>
+            </ul>
+        </div>
+
+        <div class="notes" style="border-left-color: var(--strand-technical);">
+            <h3>Crossing Verification</h3>
+            <ul>
+                <li>x=110 (WI→MN): Technical (teal) should be OVER Experiential (orange)</li>
+                <li>x=225 (MN→CA): Analytical (blue) should be OVER Experiential (orange)</li>
+                <li>x=315 (CA): Analytical (blue) should be OVER Technical (teal)</li>
+                <li>x=400 (CA→PC): Experiential (orange) should be OVER Technical (teal)</li>
+                <li>x=430 (PC): Experiential (orange) should be OVER Analytical (blue)</li>
+                <li>x=490 (PC→MT): Analytical (blue) should be OVER Experiential (orange)</li>
+                <li>x=750+ : Tight weaving, strands converging</li>
+            </ul>
+        </div>
+
+        <div class="debug-info" id="debug-info">
+            Hover over eras to see debug info here...
+        </div>
+    </div>
+
+    <script>
+        // Load and inject SVG
+        fetch('braid-timeline.src.svg')
+            .then(response => response.text())
+            .then(svgContent => {
+                document.getElementById('svg-container').innerHTML = svgContent;
+
+                // Add debug hover listeners
+                const debugInfo = document.getElementById('debug-info');
+
+                document.querySelectorAll('.era-hitarea').forEach(hitarea => {
+                    hitarea.addEventListener('mouseenter', (e) => {
+                        const era = e.target.dataset.era;
+                        const rect = e.target.getBoundingClientRect();
+                        debugInfo.textContent = `Era: ${era} | x: ${e.target.getAttribute('x')} | width: ${e.target.getAttribute('width')}`;
+                    });
+
+                    hitarea.addEventListener('click', (e) => {
+                        const era = e.target.dataset.era;
+                        debugInfo.textContent = `Clicked: ${era} — would open detail panel`;
+                    });
+                });
+
+                document.querySelectorAll('.era-label').forEach(label => {
+                    label.addEventListener('click', (e) => {
+                        const era = e.target.dataset.era;
+                        debugInfo.textContent = `Label clicked: ${era}`;
+                    });
+                });
+            })
+            .catch(err => {
+                document.getElementById('svg-container').innerHTML =
+                    `<p style="color: red;">Error loading SVG: ${err.message}</p>`;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jeffrey Nash - Career journey from rural Wisconsin to mathematics professor and software architect. Thirty years of continuous work, learning, and building.">
+  
+  <title>Experience | Jeffrey Nash</title>
+  
+  <!-- Preconnect for performance if using external fonts -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  
+  <!-- Your existing styles -->
+  <link rel="stylesheet" href="/css/jeffrey.css">
+  
+  <!-- Page-specific styles (could be in jeffrey.css or separate) -->
+  <style>
+    /* ============================================
+       EXPERIENCE PAGE LAYOUT
+       ============================================ */
+    
+    .experience-page {
+      --section-gap: clamp(3rem, 8vw, 6rem);
+      --content-max-width: 72ch;
+      --braid-max-width: 1000px;
+    }
+    
+    /* --------------------------------------------
+       HERO / BRAID AREA
+       -------------------------------------------- */
+    
+    .experience-hero {
+      padding: var(--space-5) var(--space-4);
+      text-align: center;
+    }
+    
+    .experience-hero__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin: 0 0 var(--space-2);
+      color: var(--ink);
+    }
+    
+    .experience-hero__subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin: 0 0 var(--space-4);
+    }
+    
+    .braid-container {
+      max-width: var(--braid-max-width);
+      margin: 0 auto var(--space-3);
+      padding: 0 var(--space-3);
+    }
+    
+    .braid-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Enhance SVG interactivity */
+    .braid-svg .era-hitarea {
+      cursor: pointer;
+      transition: fill 0.2s ease;
+    }
+    
+    .braid-svg .era-hitarea:hover {
+      fill: hsla(220, 18%, 18%, 0.06);
+    }
+    
+    .braid-svg .era-hitarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    .braid-svg .era-label {
+      cursor: pointer;
+      transition: fill 0.2s ease;
+    }
+    
+    .braid-svg .era-label:hover {
+      fill: var(--accent);
+    }
+    
+    .experience-hero__hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    
+    /* --------------------------------------------
+       CONTENT SECTIONS
+       -------------------------------------------- */
+    
+    .experience-content {
+      max-width: calc(var(--content-max-width) + 2 * var(--space-4));
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+    }
+    
+    .era-section {
+      padding: var(--section-gap) 0;
+      border-top: 1px solid hsl(220 18% 18% / 0.08);
+    }
+    
+    .era-section:first-of-type {
+      border-top: none;
+    }
+    
+    /* Section header */
+    .era-section__header {
+      margin-bottom: var(--space-4);
+    }
+    
+    .era-section__title {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin: 0 0 var(--space-1);
+      color: var(--ink);
+    }
+    
+    .era-section__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2) var(--space-3);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    
+    .era-section__meta-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+    
+    /* For icons if you use them */
+    .era-section__meta-item svg {
+      width: 1em;
+      height: 1em;
+      opacity: 0.7;
+    }
+    
+    /* Section body - prose */
+    .era-section__body {
+      line-height: 1.65;
+    }
+    
+    .era-section__body p {
+      margin: 0 0 var(--space-3);
+    }
+    
+    .era-section__body p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* --------------------------------------------
+       BENTO BOX (for Alaska/detailed sections)
+       -------------------------------------------- */
+    
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    
+    @media (min-width: 640px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .bento-grid__item--wide {
+        grid-column: span 2;
+      }
+    }
+    
+    .bento-card {
+      background: hsl(0 0% 100% / 0.75);
+      border: 1px solid hsl(220 18% 18% / 0.08);
+      border-radius: 14px;
+      padding: var(--space-4);
+      transition: box-shadow 0.2s ease;
+    }
+    
+    .bento-card:hover {
+      box-shadow: 0 10px 30px hsl(220 25% 15% / 0.10);
+    }
+    
+    .bento-card__title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin: 0 0 var(--space-2);
+    }
+    
+    .bento-card__content {
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    
+    /* Role cards within bento */
+    .role {
+      margin-bottom: var(--space-3);
+    }
+    
+    .role:last-child {
+      margin-bottom: 0;
+    }
+    
+    .role__title {
+      font-weight: 600;
+      margin: 0 0 var(--space-1);
+    }
+    
+    .role__org {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .role__detail {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: var(--space-1) 0 0;
+    }
+    
+    /* Project cards within bento */
+    .project {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-2);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid hsl(220 18% 18% / 0.06);
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .project:first-child {
+      padding-top: 0;
+    }
+    
+    .project__name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .project__desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: var(--space-1) 0 0;
+    }
+    
+    /* Status badges */
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.2em 0.6em;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    
+    .badge--production {
+      background: hsl(140 55% 35%);
+      color: white;
+    }
+    
+    .badge--live {
+      background: hsl(160 55% 35%);
+      color: white;
+    }
+    
+    .badge--development {
+      background: hsl(212 85% 45%);
+      color: white;
+    }
+    
+    .badge--tenured {
+      background: hsl(212 85% 45%);
+      color: white;
+    }
+    
+    /* Tech stack pills */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+    }
+    
+    .tech-tag {
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.75rem;
+      background: hsl(220 18% 18% / 0.06);
+      border-radius: 6px;
+      padding: var(--space-1) var(--space-2);
+      color: var(--ink);
+    }
+    
+    /* --------------------------------------------
+       LIGHT SECTIONS (earlier eras)
+       -------------------------------------------- */
+    
+    .era-section--light .era-section__body {
+      max-width: 60ch;
+    }
+    
+    /* Highlights list for light sections */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+      padding: 0;
+      list-style: none;
+    }
+    
+    .highlights li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-left: 1.2em;
+      position: relative;
+    }
+    
+    .highlights li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    /* --------------------------------------------
+       BACK TO TOP BUTTON
+       -------------------------------------------- */
+    
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      background: hsl(0 0% 100% / 0.9);
+      border: 1px solid hsl(220 18% 18% / 0.1);
+      border-radius: 999px;
+      padding: var(--space-2) var(--space-3);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease, color 0.2s ease;
+      box-shadow: 0 4px 12px hsl(220 25% 15% / 0.1);
+      z-index: 100;
+    }
+    
+    .back-to-top:hover {
+      color: var(--accent);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* --------------------------------------------
+       FOOTER
+       -------------------------------------------- */
+    
+    .experience-footer {
+      border-top: 1px solid hsl(220 18% 18% / 0.08);
+      padding: var(--section-gap) var(--space-4);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .experience-footer__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-3);
+    }
+    
+    .experience-footer__links a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    
+    .experience-footer__links a:hover {
+      border-bottom-color: var(--accent);
+    }
+    
+    /* --------------------------------------------
+       RESPONSIVE ADJUSTMENTS
+       -------------------------------------------- */
+    
+    @media (max-width: 640px) {
+      .braid-container {
+        padding: 0 var(--space-2);
+      }
+      
+      .era-section {
+        padding: var(--space-5) 0;
+      }
+      
+      .bento-card {
+        padding: var(--space-3);
+      }
+      
+      .back-to-top {
+        bottom: var(--space-3);
+        right: var(--space-3);
+      }
+    }
+    
+    /* --------------------------------------------
+       PRINT STYLES
+       -------------------------------------------- */
+    
+    @media print {
+      .back-to-top,
+      .experience-hero__hint {
+        display: none;
+      }
+      
+      .era-section {
+        page-break-inside: avoid;
+      }
+      
+      .bento-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="experience-page">
+  
+  <!-- ============================================
+       HERO / BRAID NAVIGATOR
+       ============================================ -->
+  
+  <header class="experience-hero" id="top">
+    <h1 class="experience-hero__title">Jeffrey Nash</h1>
+    <p class="experience-hero__subtitle">Mathematician · Systems Architect · Builder</p>
+    
+    <nav class="braid-container" aria-label="Career timeline navigation">
+      <!-- 
+        BRAID SVG INTEGRATION
+        
+        Option A: Inline the SVG directly (better for styling/interaction)
+        Option B: Use <object> or <img> (cleaner HTML but less control)
+        
+        Inline is recommended for full interactivity.
+        Copy the contents of braid-timeline_src.svg here, 
+        removing the <?xml?> declaration.
+      -->
+      
+      <svg class="braid-svg" 
+           viewBox="0 0 1000 200" 
+           role="img" 
+           aria-labelledby="braid-title braid-desc"
+           id="braid-timeline-svg">
+        
+        <title id="braid-title">Career Journey: A Braided Path</title>
+        <desc id="braid-desc">Interactive timeline navigation. Click any era to jump to that section.</desc>
+        
+        <!-- SVG content from braid-timeline_src.svg goes here -->
+        <!-- Include: defs, layer-hitareas, layer-strands, layer-convergence, layer-labels, layer-years -->
+        
+      </svg>
+    </nav>
+    
+    <p class="experience-hero__hint">Three threads. Thirty years. Click any era to explore.</p>
+  </header>
+  
+  
+  <!-- ============================================
+       MAIN CONTENT - ERA SECTIONS
+       ============================================ -->
+  
+  <main class="experience-content">
+    
+    <!-- ==========================================
+         ALASKA: SYNTHESIS (2017–present)
+         Full bento box - this is the showcase
+         ========================================== -->
+    
+    <section class="era-section era-section--detailed" id="alaska" data-era="alaska">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Synthesis</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2017–present</span>
+          <span class="era-section__meta-item">Homer, Alaska</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          The threads converge. Tenured mathematics professor developing online pedagogy 
+          while simultaneously building production software. The logic of the PhD, the grit 
+          of early labor, and the architecture of code are now inseparable.
+        </p>
+      </div>
+      
+      <div class="bento-grid">
+        
+        <!-- Roles Card -->
+        <div class="bento-card">
+          <h3 class="bento-card__title">Roles</h3>
+          <div class="bento-card__content">
+            
+            <div class="role">
+              <p class="role__title">Associate Professor of Mathematics <span class="badge badge--tenured">Tenured</span></p>
+              <p class="role__org">Kenai Peninsula College · University of Alaska</p>
+              <p class="role__detail">Calculus I, Applied Calculus, Applied Statistics. Online course development and pedagogical technology.</p>
+            </div>
+            
+            <div class="role">
+              <p class="role__title">Software Engineer</p>
+              <p class="role__org">Happy Patterns LLC</p>
+              <p class="role__detail">Full-stack development, AI integration, mobile applications. Production systems for industrial clients.</p>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- Projects Card -->
+        <div class="bento-card">
+          <h3 class="bento-card__title">Current Projects</h3>
+          <div class="bento-card__content">
+            
+            <div class="project">
+              <div>
+                <p class="project__name">ScopeCam</p>
+                <p class="project__desc">Android UVC camera application for industrial use. Native C++, JNI, USB protocols.</p>
+              </div>
+              <span class="badge badge--production">Production</span>
+            </div>
+            
+            <div class="project">
+              <div>
+                <p class="project__name">Budget Triage</p>
+                <p class="project__desc">Financial document processing system. TypeScript, PostgreSQL, OCR/VLM pipelines.</p>
+              </div>
+              <span class="badge badge--development">Development</span>
+            </div>
+            
+            <div class="project">
+              <div>
+                <p class="project__name">Dicee</p>
+                <p class="project__desc">Multiplayer probability game. Rust/WASM engine, Cloudflare Durable Objects, WebSocket.</p>
+              </div>
+              <span class="badge badge--live">Live</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- Tech Stack Card - spans full width -->
+        <div class="bento-card bento-grid__item--wide">
+          <h3 class="bento-card__title">Technical Proficiency</h3>
+          <div class="bento-card__content">
+            <div class="tech-stack">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">Rust</span>
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Android/JNI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Cloudflare Workers</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Terraform</span>
+              <span class="tech-tag">Git workflows</span>
+              <span class="tech-tag">CI/CD</span>
+              <span class="tech-tag">OpenTelemetry</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Narrative Card -->
+        <div class="bento-card bento-grid__item--wide">
+          <h3 class="bento-card__title">The Convergence</h3>
+          <div class="bento-card__content">
+            <p>
+              2024 marked an interdisciplinary publication in the Journal of Pediatric Physical 
+              Therapy—collaboration with nursing researchers applying statistical methods to 
+              clinical outcomes. The same year, a production Android application shipped for 
+              industrial camera systems, requiring native code architecture and USB protocol 
+              expertise.
+            </p>
+            <p style="margin-top: var(--space-3);">
+              This is what thirty years of continuous work produces: the ability to move between 
+              domains, to see systems clearly, to build things that work.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         CAIRO: INTERNATIONAL (2015–2017)
+         Medium depth
+         ========================================== -->
+    
+    <section class="era-section era-section--medium" id="cairo" data-era="cairo">
+      <header class="era-section__header">
+        <h2 class="era-section__title">International</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2015–2017</span>
+          <span class="era-section__meta-item">Cairo, Egypt</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          Associate Professor of Mathematics at the American University in Cairo. 
+          Taught calculus and upper-division mathematics to an international student body. 
+          Continued research in functional analysis, attending a multi-day conference on 
+          Lineability in the Czech Republic.
+        </p>
+        <p>
+          Two years of navigating cross-cultural academic environments, adapting pedagogy 
+          for students from dozens of countries, and maintaining research productivity 
+          while teaching a full course load.
+        </p>
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         MONTANA: DEEP THEORY (2008–2015)
+         Medium depth
+         ========================================== -->
+    
+    <section class="era-section era-section--medium" id="montana" data-era="montana">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Deep Theory</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2008–2015</span>
+          <span class="era-section__meta-item">Missoula, Montana</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          PhD in Mathematics from the University of Montana, specializing in commutative 
+          Banach algebras. Published research in the Journal of Banach Function Algebras. 
+          Presented at conferences. Six years of deep immersion in abstract mathematics.
+        </p>
+        <p>
+          Teaching assistant for Applied Statistics, Applied Calculus, and Calculus III 
+          throughout the program. Postdoctoral lecturer in 2014–2015, coordinating large 
+          lecture sections and managing teaching assistants.
+        </p>
+        <p>
+          Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick—
+          algebraic topology and topological combinatorics. Volunteer Outward Bound instructor 
+          during a summer break.
+        </p>
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         PEACE CORPS: SERVICE (2005–2007)
+         Light-medium depth
+         ========================================== -->
+    
+    <section class="era-section era-section--medium" id="peacecorps" data-era="peacecorps">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Service</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2005–2007</span>
+          <span class="era-section__meta-item">South Africa</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          Peace Corps education volunteer and teacher trainer. Project management workshops, 
+          community improvement initiatives, and daily classroom teaching. Secured a Dell 
+          Computers Success Grant for a partner school—one of the early programs bringing 
+          technology to rural South African education.
+        </p>
+        <p>
+          This is where teaching became more than a job. Two years of learning how to 
+          communicate complex ideas to people with entirely different frames of reference. 
+          The human experience taking precedence over abstraction.
+        </p>
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         CALIFORNIA: IDENTITY (2001–2005)
+         Light depth
+         ========================================== -->
+    
+    <section class="era-section era-section--light" id="california" data-era="california">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Identity</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">2001–2005</span>
+          <span class="era-section__meta-item">Eureka → Arcata, California</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          Moved 2,000 miles from family at 21. BA in Mathematics from Humboldt State University, 
+          2004. Entered the graduate program in Mathematical Modeling of Environmental Systems—
+          stochastic processes, dynamic systems, abstract algebra. Left before thesis work; 
+          pure mathematics was the real draw.
+        </p>
+        <ul class="highlights">
+          <li>Teaching assistant, remedial courses and MathLab tutor</li>
+          <li>First formal exposure to mathematical proof and rigor</li>
+          <li>Continued Linux administration and self-hosting</li>
+        </ul>
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         DULUTH: FIRST PROOFS (1998–2000)
+         Light depth
+         ========================================== -->
+    
+    <section class="era-section era-section--light" id="duluth" data-era="duluth">
+      <header class="era-section__header">
+        <h2 class="era-section__title">First Proofs</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">1998–2000</span>
+          <span class="era-section__meta-item">Duluth, Minnesota</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          University of Minnesota Duluth. First exposure to higher mathematics—the moment 
+          when abstraction clicked. Full-time student, part-time worker: midnight stock 
+          shifts at Kohl's, summer landscaping, evenings at Pizza Hut.
+        </p>
+        <ul class="highlights">
+          <li>First higher mathematics coursework</li>
+          <li>Linux servers and self-hosting begins in earnest</li>
+          <li>Working nights to pay for school</li>
+        </ul>
+        <!-- Easter egg: visible to those who look -->
+        <!-- <small style="color: var(--muted); font-size: 0.75rem;">Yes, including the video drivers.</small> -->
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         WISCONSIN: WORK ETHIC (1992–1998)
+         Light depth - origin story
+         ========================================== -->
+    
+    <section class="era-section era-section--light" id="wisconsin" data-era="wisconsin">
+      <header class="era-section__header">
+        <h2 class="era-section__title">Work Ethic</h2>
+        <div class="era-section__meta">
+          <span class="era-section__meta-item">1992–1998</span>
+          <span class="era-section__meta-item">Grantsburg, Wisconsin</span>
+        </div>
+      </header>
+      
+      <div class="era-section__body">
+        <p>
+          Six years of continuous employment before graduating high school. Farm work, 
+          restaurant kitchen (mower → dishwasher → prep cook → line cook), landscaping 
+          with heavy equipment operation. First in family to attend college. 
+          Built first computer in 1996. Co-system operator for the high school BBS, 1995–1997.
+        </p>
+        <ul class="highlights">
+          <li>Blue-collar foundation</li>
+          <li>Heavy equipment certified before driving age</li>
+          <li>First computer build, age 16</li>
+          <li>Technology interest begins—and never stops</li>
+        </ul>
+      </div>
+    </section>
+    
+  </main>
+  
+  
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  
+  <footer class="experience-footer">
+    <nav class="experience-footer__links" aria-label="Additional resources">
+      <a href="/cv.pdf" download>Download CV</a>
+      <a href="https://github.com/verlyn13" target="_blank" rel="noopener">GitHub</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <p>© 2025 Jeffrey Nash. Built with care in Homer, Alaska.</p>
+  </footer>
+  
+  
+  <!-- ============================================
+       BACK TO TOP BUTTON
+       ============================================ -->
+  
+  <button class="back-to-top" id="back-to-top" aria-label="Back to timeline">
+    ↑ Timeline
+  </button>
+  
+  
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      // ----------------------------------------
+      // BRAID NAVIGATION
+      // Click era → scroll to section
+      // ----------------------------------------
+      
+      const eraElements = document.querySelectorAll('[data-era]');
+      
+      eraElements.forEach(el => {
+        // Make hit areas and labels keyboard accessible
+        if (el.classList.contains('era-hitarea') || el.classList.contains('era-label')) {
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('role', 'link');
+          el.setAttribute('aria-label', `Jump to ${el.dataset.era} section`);
+        }
+        
+        // Click handler
+        el.addEventListener('click', () => {
+          const targetId = el.dataset.era;
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update URL hash without jumping
+            history.pushState(null, '', `#${targetId}`);
+          }
+        });
+        
+        // Keyboard handler (Enter or Space)
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            el.click();
+          }
+        });
+      });
+      
+      
+      // ----------------------------------------
+      // BACK TO TOP BUTTON
+      // Show when scrolled past braid
+      // ----------------------------------------
+      
+      const backToTop = document.getElementById('back-to-top');
+      const hero = document.querySelector('.experience-hero');
+      
+      if (backToTop && hero) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                backToTop.classList.remove('visible');
+              } else {
+                backToTop.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
+        );
+        
+        observer.observe(hero);
+        
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.pushState(null, '', window.location.pathname);
+        });
+      }
+      
+      
+      // ----------------------------------------
+      // ACTIVE ERA HIGHLIGHTING (Optional)
+      // Update braid to show current section
+      // ----------------------------------------
+      
+      const sections = document.querySelectorAll('.era-section');
+      
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const era = entry.target.dataset.era;
+              
+              // Remove active class from all
+              document.querySelectorAll('.era-hitarea').forEach(h => 
+                h.classList.remove('active')
+              );
+              document.querySelectorAll('.era-label').forEach(l => 
+                l.classList.remove('active')
+              );
+              
+              // Add active class to current
+              const hitarea = document.querySelector(`.era-hitarea[data-era="${era}"]`);
+              const label = document.querySelector(`.era-label[data-era="${era}"]`);
+              
+              if (hitarea) hitarea.classList.add('active');
+              if (label) label.classList.add('active');
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: '-20% 0px -20% 0px' }
+      );
+      
+      sections.forEach(section => sectionObserver.observe(section));
+      
+      
+      // ----------------------------------------
+      // HANDLE DIRECT HASH NAVIGATION
+      // If URL has #era, scroll to it on load
+      // ----------------------------------------
+      
+      if (window.location.hash) {
+        const targetId = window.location.hash.slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          // Slight delay to let page render
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+      
+    })();
+  </script>
+  
+</body>
+</html>

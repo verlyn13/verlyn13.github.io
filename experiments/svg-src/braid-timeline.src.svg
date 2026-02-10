@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Braid Timeline - Inkscape Editing Version (Simplified paths)
+
+  GAPS (preserved exactly - do not modify):
+  E: m 14.278118,12.918298 | m 6.79911,-13.258254 | m 21.41718,19.037491 | m 6.11919,-15.977893
+  T: m -1.01987,0 | m 10.53861,12.238387 | m 10.53861,-13.598207 | m 9.8587,-12.578341
+  A: m 12.91828,-14.618076 | m 10.87857,11.898432
+
+  Backup: braid-timeline.src.svg.backup2
+-->
+
+<svg
+   width="1000"
+   height="200"
+   viewBox="0 0 1000 200"
+   role="img"
+   aria-labelledby="braid-title braid-desc"
+   id="braid-timeline-svg"
+   version="1.1"
+   sodipodi:docname="braid-timeline.src.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.08"
+     inkscape:cx="531.73077"
+     inkscape:cy="153.125"
+     inkscape:window-width="1512"
+     inkscape:window-height="856"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer-strands" />
+  <title
+     id="braid-title">Career Journey: A Braided Path</title>
+  <desc
+     id="braid-desc">A three-strand braid visualization showing the interweaving of analytical, technical, and experiential threads from 1992 to present.</desc>
+  <defs
+     id="defs1">
+    <filter
+       id="shadow-filter"
+       x="-20%"
+       y="-20%"
+       width="140%"
+       height="140%">
+      <feDropShadow
+         dx="0"
+         dy="2"
+         stdDeviation="2"
+         flood-opacity="0.25" />
+    </filter>
+    <style
+       id="style1">
+      .strand {
+        fill: none;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .strand-analytical { stroke: hsl(212, 85%, 45%); }
+      .strand-technical { stroke: hsl(160, 55%, 35%); }
+      .strand-experiential { stroke: hsl(22, 90%, 52%); }
+      .strand-over { filter: url(#shadow-filter); }
+
+      .era-hitarea {
+        fill: transparent;
+        cursor: pointer;
+      }
+      .era-hitarea:hover { fill: hsla(220, 18%, 18%, 0.05); }
+
+      .era-label {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        fill: hsl(220, 18%, 18%);
+        text-anchor: middle;
+      }
+
+      .year-marker {
+        font-family: ui-monospace, monospace;
+        font-size: 9px;
+        fill: hsl(220, 12%, 45%);
+        text-anchor: middle;
+      }
+
+      .convergence-ring {
+        fill: none;
+        stroke: hsl(220, 18%, 18%);
+        stroke-width: 1.5;
+        opacity: 0.3;
+      }
+    </style>
+  </defs>
+  <!-- LAYER: Hit Areas -->
+  <g
+     id="layer-hitareas"
+     inkscape:groupmode="layer"
+     inkscape:label="Hit Areas"
+     sodipodi:insensitive="true">
+    <rect
+       class="era-hitarea"
+       data-era="wisconsin"
+       x="20"
+       y="30"
+       width="135"
+       height="115"
+       rx="4"
+       id="hitarea-wisconsin" />
+    <rect
+       class="era-hitarea"
+       data-era="duluth"
+       x="155"
+       y="30"
+       width="115"
+       height="115"
+       rx="4"
+       id="hitarea-duluth" />
+    <rect
+       class="era-hitarea"
+       data-era="california"
+       x="270"
+       y="30"
+       width="130"
+       height="115"
+       rx="4"
+       id="hitarea-california" />
+    <rect
+       class="era-hitarea"
+       data-era="peacecorps"
+       x="400"
+       y="30"
+       width="90"
+       height="115"
+       rx="4"
+       id="hitarea-peacecorps" />
+    <rect
+       class="era-hitarea"
+       data-era="montana"
+       x="490"
+       y="30"
+       width="205"
+       height="115"
+       rx="4"
+       id="hitarea-montana" />
+    <rect
+       class="era-hitarea"
+       data-era="cairo"
+       x="695"
+       y="30"
+       width="55"
+       height="115"
+       rx="4"
+       id="hitarea-cairo" />
+    <rect
+       class="era-hitarea"
+       data-era="alaska"
+       x="750"
+       y="30"
+       width="230"
+       height="115"
+       rx="4"
+       id="hitarea-alaska" />
+  </g>
+  <!-- LAYER: Strands -->
+  <g
+     id="layer-strands"
+     inkscape:groupmode="layer"
+     inkscape:label="Strands">
+    <!-- EXPERIENTIAL (orange) - 4 gaps -->
+    <g
+       id="strand-experiential-group"
+       inkscape:label="Experiential (orange)">
+      <path
+         id="strand-E"
+         class="strand strand-experiential"
+         inkscape:label="E-path"
+         d="m 20.339956,53.399552 c 16,0 29.280358,1.920538 45.38145,9.085174 m 14.278118,12.918298 c 13.200896,12.479014 105.439286,10.67991 185.439286,30.679906 40,12 70.48125,9.15892 85.48125,-3.84107 m 8.83885,-14.618076 c 19.12414,-24.941633 68.48396,-22.904142 91.48396,-29.904142 20,-8 102.15444,-21.037491 126.64018,2.719641 m 15.97789,17.67767 c 30,20 106.79911,33.640177 166.79911,18.640179 25,-6 100.75265,20.114708 110.07274,-26.841075 m 4.75937,-20.737266 c 15,-12 86.2339,-3.880806 101.2339,1.119194"
+         sodipodi:nodetypes="ccccccccccccc" />
+    </g>
+    <!-- TECHNICAL (teal) - 4 gaps -->
+    <g
+       id="strand-technical-group"
+       inkscape:label="Technical (teal)">
+      <path
+         id="strand-T"
+         class="strand strand-technical"
+         inkscape:label="T-path"
+         d="m 20,80 c 27,-9 54,-14 70,-10 3,1 5,2 5,2 20,8 55,-20 95,-22 m -1.01987,0 c 30,-3 42,0 47,5 m 10.53861,12.238387 C 266,82 321.35982,90.640179 381.35982,98.640179 c 20,3.000001 62.71964,3.158921 102.71964,-11.841076 40,-5 92.18421,23.667997 117.28036,6.841076 m 10.53861,-13.598207 c 25,-18 78.64018,6.359821 138.64018,3.359821 40,-2 92.67767,-8.200896 107.23839,-7.761613 m 26.85646,-3.059596 c 25,2 63.11695,36.317846 93.11695,36.317846"
+         sodipodi:nodetypes="cccccccccccsccc" />
+    </g>
+    <!-- ANALYTICAL (blue) - 2 gaps -->
+    <g
+       id="strand-analytical-group"
+       inkscape:label="Analytical (blue)">
+      <path
+         id="strand-A"
+         class="strand strand-analytical"
+         inkscape:label="A-path"
+         d="m 17.280359,110 c 30,0 50.481255,-8.2009 90.481251,-13.200896 25,-3 34.80134,17.918296 56,0 M 176.67989,82.181028 C 197.11917,63.342193 228.91828,63.381924 258.91828,60.381924 300,58 421.47453,38.401793 440,55 m 10.87857,11.898432 c 17.28036,19.518745 103.11695,5.960269 183.11695,-2.039731 96.14982,-4.807491 181.5778,-3.058713 279.12664,-5.267074 30.4237,-0.688748 61.49995,19.024206 65.35014,19.024206"
+         sodipodi:nodetypes="ccccccccsc" />
+    </g>
+  </g>
+  <!-- LAYER: Convergence -->
+  <g
+     id="layer-convergence"
+     inkscape:groupmode="layer"
+     inkscape:label="Convergence"
+     sodipodi:insensitive="true">
+    <circle
+       class="convergence-ring"
+       cx="980"
+       cy="68"
+       r="8"
+       id="convergence-inner" />
+    <circle
+       class="convergence-ring"
+       cx="980"
+       cy="68"
+       r="14"
+       opacity="0.12"
+       id="convergence-outer" />
+  </g>
+  <!-- LAYER: Labels -->
+  <g
+     id="layer-labels"
+     inkscape:groupmode="layer"
+     inkscape:label="Labels"
+     sodipodi:insensitive="true">
+    <text
+       class="era-label"
+       data-era="wisconsin"
+       x="87"
+       y="158"
+       id="label-wisconsin">Work ethic</text>
+    <text
+       class="era-label"
+       data-era="duluth"
+       x="212"
+       y="158"
+       id="label-duluth">First proofs</text>
+    <text
+       class="era-label"
+       data-era="california"
+       x="335"
+       y="158"
+       id="label-california">Identity</text>
+    <text
+       class="era-label"
+       data-era="peacecorps"
+       x="445"
+       y="158"
+       id="label-peacecorps">Service</text>
+    <text
+       class="era-label"
+       data-era="montana"
+       x="592"
+       y="158"
+       id="label-montana">Deep theory</text>
+    <text
+       class="era-label"
+       data-era="cairo"
+       x="722"
+       y="158"
+       id="label-cairo">International</text>
+    <text
+       class="era-label"
+       data-era="alaska"
+       x="865"
+       y="158"
+       id="label-alaska">Synthesis</text>
+  </g>
+  <!-- LAYER: Year Markers -->
+  <g
+     id="layer-years"
+     inkscape:groupmode="layer"
+     inkscape:label="Year Markers"
+     sodipodi:insensitive="true">
+    <text
+       class="year-marker"
+       x="20"
+       y="178"
+       id="year-1992">1992</text>
+    <text
+       class="year-marker"
+       x="155"
+       y="178"
+       id="year-1998">'98</text>
+    <text
+       class="year-marker"
+       x="270"
+       y="178"
+       id="year-2001">'01</text>
+    <text
+       class="year-marker"
+       x="400"
+       y="178"
+       id="year-2005">'05</text>
+    <text
+       class="year-marker"
+       x="490"
+       y="178"
+       id="year-2008">'08</text>
+    <text
+       class="year-marker"
+       x="695"
+       y="178"
+       id="year-2015">'15</text>
+    <text
+       class="year-marker"
+       x="750"
+       y="178"
+       id="year-2017">'17</text>
+    <text
+       class="year-marker"
+       x="980"
+       y="178"
+       id="year-now">now</text>
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Career Journey: A Braided Path</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

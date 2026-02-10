@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Braided Path - Jeffrey Johnson</title>
+    <link rel="icon" href="/assets/icons/maat_feather_16.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/jeffrey.css">
+    <style>
+        /* ============================================================
+           Braid Timeline Styles
+           ============================================================ */
+
+        .timeline-page {
+            padding: var(--space-4) 0;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: var(--space-5);
+        }
+
+        .timeline-tagline {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-top: var(--space-2);
+        }
+
+        /* ------------------------------------------------------------
+           Braid Visualization Container
+           ------------------------------------------------------------ */
+        .braid-wrapper {
+            background: hsl(0 0% 100% / 0.75);
+            border: 1px solid hsl(220 18% 88%);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: var(--space-4) var(--space-5);
+            margin-bottom: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .braid-svg-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .braid-svg {
+            width: 100%;
+            min-width: 800px;
+            height: auto;
+            display: block;
+        }
+
+        /* Strand base styles */
+        .strand {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke-width 0.2s ease, filter 0.2s ease;
+        }
+
+        .strand-analytical { stroke: var(--accent); }
+        .strand-technical { stroke: var(--accent-2); }
+        .strand-experiential { stroke: var(--warn); }
+
+        .strand-under { opacity: 0.65; }
+
+        /* Era hit areas (invisible, for interaction) */
+        .era-hitarea {
+            fill: transparent;
+            cursor: pointer;
+            transition: fill 0.15s ease;
+        }
+
+        .era-hitarea:hover {
+            fill: hsl(220 18% 18% / 0.04);
+        }
+
+        .era-hitarea.active {
+            fill: hsl(212 85% 45% / 0.08);
+        }
+
+        /* Year markers */
+        .year-marker {
+            font-size: 0.65rem;
+            fill: var(--muted);
+            text-anchor: middle;
+            font-family: var(--mono);
+        }
+
+        /* Era labels */
+        .era-label {
+            font-size: 0.75rem;
+            fill: var(--muted);
+            text-anchor: middle;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: fill 0.15s ease;
+        }
+
+        .era-label:hover,
+        .era-label.active {
+            fill: var(--accent);
+        }
+
+        .era-label-primary {
+            font-weight: 600;
+            fill: var(--ink);
+        }
+
+        /* Convergence indicator */
+        .convergence-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; r: 6; }
+            50% { opacity: 0.6; r: 8; }
+        }
+
+        /* ------------------------------------------------------------
+           Legend
+           ------------------------------------------------------------ */
+        .braid-legend {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            margin-top: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .legend-swatch {
+            width: 24px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .legend-swatch.analytical { background: var(--accent); }
+        .legend-swatch.technical { background: var(--accent-2); }
+        .legend-swatch.experiential { background: var(--warn); }
+
+        /* ------------------------------------------------------------
+           Hover Card
+           ------------------------------------------------------------ */
+        .hover-card {
+            position: fixed;
+            background: hsl(0 0% 100% / 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid hsl(220 18% 88%);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: var(--space-3);
+            max-width: 320px;
+            min-width: 260px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+        }
+
+        .hover-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hover-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+            padding-bottom: var(--space-2);
+            border-bottom: var(--border);
+        }
+
+        .hover-card-flag {
+            font-size: 1.3rem;
+        }
+
+        .hover-card-location {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .hover-card-years {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-left: auto;
+        }
+
+        .hover-card-headline {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--space-2);
+        }
+
+        .hover-card-strands {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
+            padding: var(--space-2);
+            background: hsl(45 25% 96%);
+            border-radius: var(--radius-sm);
+        }
+
+        .strand-summary {
+            flex: 1;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .strand-summary-label {
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .strand-summary-label.analytical { color: var(--accent); }
+        .strand-summary-label.technical { color: var(--accent-2); }
+        .strand-summary-label.experiential { color: var(--warn); }
+
+        .strand-summary-text {
+            color: var(--muted);
+        }
+
+        .hover-card-hook {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--ink);
+            padding-top: var(--space-2);
+            border-top: var(--border);
+        }
+
+        .hover-card-cta {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: var(--space-2);
+        }
+
+        /* ------------------------------------------------------------
+           Era Detail Panel
+           ------------------------------------------------------------ */
+        .era-detail {
+            display: none;
+            margin-top: var(--space-4);
+            animation: slideIn 0.3s ease;
+        }
+
+        .era-detail.visible {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .era-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-3);
+            border-bottom: var(--border);
+        }
+
+        .era-detail-title {
+            margin: 0;
+        }
+
+        .era-detail-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-1);
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .era-detail-close {
+            background: none;
+            border: 1px solid hsl(220 18% 88%);
+            border-radius: 999px;
+            padding: var(--space-2) var(--space-3);
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .era-detail-close:hover {
+            background: hsl(0 0% 100%);
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        /* Three-column strand layout */
+        .strand-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+
+        @media (max-width: 900px) {
+            .strand-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .strand-column {
+            background: hsl(0 0% 100% / 0.75);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-3);
+            border-top: 4px solid;
+        }
+
+        .strand-column.analytical { border-top-color: var(--accent); }
+        .strand-column.technical { border-top-color: var(--accent-2); }
+        .strand-column.experiential { border-top-color: var(--warn); }
+
+        .strand-column-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-2);
+        }
+
+        .strand-column.analytical .strand-column-title { color: var(--accent); }
+        .strand-column.technical .strand-column-title { color: var(--accent-2); }
+        .strand-column.experiential .strand-column-title { color: var(--warn); }
+
+        .strand-column-content {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .strand-column-content ul {
+            margin: var(--space-2) 0 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .strand-column-content li {
+            margin-bottom: var(--space-1);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .strand-intensity {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-left: var(--space-1);
+            text-transform: uppercase;
+        }
+
+        .strand-intensity.dominant {
+            background: hsl(140 55% 90%);
+            color: var(--ok);
+        }
+
+        .strand-intensity.present {
+            background: hsl(220 25% 96%);
+            color: var(--muted);
+        }
+
+        .strand-intensity.dormant {
+            background: hsl(220 25% 96%);
+            color: var(--muted);
+            opacity: 0.6;
+        }
+
+        /* Education section */
+        .era-education-section {
+            background: hsl(212 85% 96%);
+            border-radius: var(--radius);
+            padding: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .era-education {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tech-milestone {
+            font-size: 0.85rem;
+            color: var(--accent-2);
+            margin-bottom: var(--space-2);
+        }
+
+        /* Narrative callout */
+        .era-narrative {
+            background: linear-gradient(135deg, hsl(45 25% 96%), hsl(45 25% 94%));
+            border-left: 4px solid var(--ink);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: var(--space-3) var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .era-narrative-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted);
+            margin-bottom: var(--space-2);
+        }
+
+        .era-narrative-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        /* Projects list for Alaska */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+
+        .project-mini {
+            background: hsl(0 0% 100% / 0.75);
+            border: var(--border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-2);
+        }
+
+        .project-mini-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            margin-bottom: 4px;
+        }
+
+        .project-mini-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-mini-status {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 999px;
+        }
+
+        .project-mini-status.live { background: hsl(140 55% 90%); color: var(--ok); }
+        .project-mini-status.production { background: hsl(160 55% 88%); color: var(--accent-2); }
+        .project-mini-status.dev { background: hsl(212 85% 90%); color: var(--accent); }
+
+        .project-mini-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* Tech stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-top: var(--space-2);
+        }
+
+        .tech-tag {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            background: hsl(160 55% 92%);
+            border-radius: 4px;
+            color: var(--accent-2);
+        }
+
+        /* ------------------------------------------------------------
+           Mobile Styles
+           ------------------------------------------------------------ */
+        @media (max-width: 768px) {
+            .braid-wrapper {
+                padding: var(--space-3);
+            }
+
+            .hover-card {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                min-width: 100%;
+                border-radius: var(--radius) var(--radius) 0 0;
+                transform: translateY(100%);
+            }
+
+            .hover-card.visible {
+                transform: translateY(0);
+            }
+
+            .hover-card-strands {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+
+            .braid-legend {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-2);
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Print Styles
+           ------------------------------------------------------------ */
+        @media print {
+            .hover-card,
+            .era-detail-close {
+                display: none;
+            }
+
+            .braid-wrapper {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/experience/">Experience</a></li>
+                <li><a href="/research/">Research</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="timeline-page">
+        <div class="container">
+            <header class="timeline-header">
+                <h1>The Braided Path</h1>
+                <p class="timeline-tagline">One life, three threads, continuously woven</p>
+            </header>
+
+            <div class="braid-wrapper">
+                <!-- External braid SVG loaded here -->
+                <div class="braid-svg-container" id="braid-container"></div>
+
+                <div class="braid-legend">
+                    <div class="legend-item">
+                        <div class="legend-swatch analytical"></div>
+                        <span>Analytical &mdash; math, pedagogy, logic</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-swatch technical"></div>
+                        <span>Technical &mdash; systems, software, building</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-swatch experiential"></div>
+                        <span>Experiential &mdash; labor, service, world</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hover Card -->
+            <div class="hover-card" id="hover-card"></div>
+
+            <!-- Era Detail Panel -->
+            <section class="era-detail" id="era-detail"></section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>The threads weave together &middot; <a href="/">Back to Portfolio</a></p>
+    </footer>
+
+    <script>
+        // ============================================================
+        // Timeline Data (loaded from JSON)
+        // ============================================================
+        let timelineData = null;
+        let eras = {};
+
+        // Flag emoji mapping
+        const FLAGS = {
+            'us': '\u{1F1FA}\u{1F1F8}',
+            'za': '\u{1F1FF}\u{1F1E6}',
+            'eg': '\u{1F1EA}\u{1F1EC}'
+        };
+
+        // Convert JSON data to working format
+        function processTimelineData(data) {
+            timelineData = data;
+            data.eras.forEach(era => {
+                eras[era.id] = {
+                    ...era,
+                    years: era.yearsLabel,
+                    location: era.location.place,
+                    flag: FLAGS[era.location.flag] || FLAGS['us']
+                };
+            });
+        }
+
+        // ============================================================
+        // Render Functions
+        // ============================================================
+        function renderHoverCard(era) {
+            const snippet = era.hoverCard?.snippet || era.narrative.substring(0, 100) + '...';
+            return `
+                <div class="hover-card-header">
+                    <span class="hover-card-flag">${era.flag}</span>
+                    <span class="hover-card-location">${era.location}</span>
+                    <span class="hover-card-years">${era.years}</span>
+                </div>
+                <h3 class="hover-card-headline">${era.headline}</h3>
+                <div class="hover-card-strands">
+                    <div class="strand-summary">
+                        <div class="strand-summary-label analytical">Analytical</div>
+                        <div class="strand-summary-text">${era.strands.analytical.summary}</div>
+                    </div>
+                    <div class="strand-summary">
+                        <div class="strand-summary-label technical">Technical</div>
+                        <div class="strand-summary-text">${era.strands.technical.summary}</div>
+                    </div>
+                    <div class="strand-summary">
+                        <div class="strand-summary-label experiential">Experiential</div>
+                        <div class="strand-summary-text">${era.strands.experiential.summary}</div>
+                    </div>
+                </div>
+                <p class="hover-card-hook">${era.hook}</p>
+                <p class="hover-card-cta">Click for details &rarr;</p>
+            `;
+        }
+
+        function renderEraDetail(era) {
+            const a = era.strands.analytical;
+            const t = era.strands.technical;
+            const e = era.strands.experiential;
+
+            // Render projects if present
+            let projectsHTML = '';
+            if (era.projects) {
+                projectsHTML = `
+                    <div class="projects-grid">
+                        ${era.projects.map(p => `
+                            <div class="project-mini">
+                                <div class="project-mini-header">
+                                    <span class="project-mini-name">${p.name}</span>
+                                    <span class="project-mini-status ${p.status}">${p.status}</span>
+                                </div>
+                                <div class="project-mini-desc">${p.description || p.desc}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            // Render roles - handle both string array and object array
+            function renderRoles(roles) {
+                if (!roles) return '';
+                return `<ul>${roles.map(r => {
+                    if (typeof r === 'string') return `<li>${r}</li>`;
+                    let roleText = r.name;
+                    if (r.org) roleText += ` @ ${r.org}`;
+                    if (r.years) roleText += ` (${r.years})`;
+                    return `<li>${roleText}</li>`;
+                }).join('')}</ul>`;
+            }
+
+            // Render education if present
+            let educationHTML = '';
+            if (era.education) {
+                educationHTML = `
+                    <div class="era-education">
+                        <strong>${era.education.institution}</strong>
+                        ${era.education.credential ? `<br>${era.education.credential}` : ''}
+                        ${era.education.specialization ? `<br><em>${era.education.specialization}</em>` : ''}
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="era-detail-header">
+                    <div>
+                        <h2 class="era-detail-title">${era.name}</h2>
+                        <div class="era-detail-meta">
+                            <span>${era.flag}</span>
+                            <span>${era.location}</span>
+                            <span>&middot;</span>
+                            <span>${era.years}</span>
+                        </div>
+                    </div>
+                    <button class="era-detail-close" id="detail-close">&times; Close</button>
+                </div>
+
+                <div class="strand-columns">
+                    <div class="strand-column analytical">
+                        <div class="strand-column-title">
+                            Analytical
+                            <span class="strand-intensity ${a.intensity}">${a.intensity}</span>
+                        </div>
+                        <div class="strand-column-content">
+                            <p>${a.summary}</p>
+                            ${a.skills ? `<ul>${a.skills.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="strand-column technical">
+                        <div class="strand-column-title">
+                            Technical
+                            <span class="strand-intensity ${t.intensity}">${t.intensity}</span>
+                        </div>
+                        <div class="strand-column-content">
+                            <p>${t.summary}</p>
+                            ${t.milestone ? `<p class="tech-milestone"><em>${t.milestone}</em></p>` : ''}
+                            ${t.skills ? `
+                                <div class="tech-stack">
+                                    ${t.skills.map(s => `<span class="tech-tag">${s}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            ${projectsHTML}
+                        </div>
+                    </div>
+
+                    <div class="strand-column experiential">
+                        <div class="strand-column-title">
+                            Experiential
+                            <span class="strand-intensity ${e.intensity}">${e.intensity}</span>
+                        </div>
+                        <div class="strand-column-content">
+                            <p>${e.summary}</p>
+                            ${renderRoles(e.roles)}
+                        </div>
+                    </div>
+                </div>
+
+                ${educationHTML ? `
+                <div class="era-education-section">
+                    <div class="era-narrative-title">Education</div>
+                    ${educationHTML}
+                </div>
+                ` : ''}
+
+                <div class="era-narrative">
+                    <div class="era-narrative-title">The Story</div>
+                    <p class="era-narrative-text">${era.narrative}</p>
+                    ${era.publication ? `
+                        <p class="era-narrative-text" style="margin-top: var(--space-2); font-style: italic;">
+                            Published: ${era.publication.venue} (${era.publication.year})
+                        </p>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // ============================================================
+        // Interaction Logic
+        // ============================================================
+        const hoverCard = document.getElementById('hover-card');
+        const eraDetail = document.getElementById('era-detail');
+        let activeEra = null;
+        let hoverTimeout = null;
+
+        function showHoverCard(eraId, event) {
+            const era = eras[eraId];
+            if (!era) return;
+
+            hoverCard.innerHTML = renderHoverCard(era);
+
+            // Position
+            const rect = event.target.getBoundingClientRect();
+            const cardWidth = 320;
+            const cardHeight = 280;
+
+            let left = rect.left + rect.width / 2 - cardWidth / 2;
+            let top = rect.bottom + 12;
+
+            // Keep on screen
+            if (left < 10) left = 10;
+            if (left + cardWidth > window.innerWidth - 10) left = window.innerWidth - cardWidth - 10;
+            if (top + cardHeight > window.innerHeight - 10) {
+                top = rect.top - cardHeight - 12;
+            }
+
+            // Mobile: bottom sheet
+            if (window.innerWidth <= 768) {
+                hoverCard.style.left = '0';
+                hoverCard.style.top = 'auto';
+                hoverCard.style.bottom = '0';
+            } else {
+                hoverCard.style.left = `${left}px`;
+                hoverCard.style.top = `${top}px`;
+                hoverCard.style.bottom = 'auto';
+            }
+
+            hoverCard.classList.add('visible');
+        }
+
+        function hideHoverCard() {
+            hoverCard.classList.remove('visible');
+        }
+
+        function showEraDetail(eraId) {
+            const era = eras[eraId];
+            if (!era) return;
+
+            activeEra = eraId;
+            eraDetail.innerHTML = renderEraDetail(era);
+            eraDetail.classList.add('visible');
+
+            // Mark active
+            document.querySelectorAll('.era-hitarea').forEach(el => {
+                el.classList.toggle('active', el.dataset.era === eraId);
+            });
+            document.querySelectorAll('.era-label').forEach(el => {
+                el.classList.toggle('active', el.dataset.era === eraId);
+            });
+
+            // Scroll to detail
+            eraDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Close button
+            document.getElementById('detail-close').addEventListener('click', hideEraDetail);
+        }
+
+        function hideEraDetail() {
+            eraDetail.classList.remove('visible');
+            activeEra = null;
+            document.querySelectorAll('.era-hitarea, .era-label').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+
+        // ============================================================
+        // Initialization
+        // ============================================================
+        async function initTimeline() {
+            const container = document.getElementById('braid-container');
+
+            try {
+                // Load SVG and JSON in parallel
+                const [svgResponse, jsonResponse] = await Promise.all([
+                    fetch('/assets/braid-timeline.svg'),
+                    fetch('/assets/timeline-data.json')
+                ]);
+
+                if (!svgResponse.ok || !jsonResponse.ok) {
+                    throw new Error('Failed to load timeline assets');
+                }
+
+                const [svgContent, jsonData] = await Promise.all([
+                    svgResponse.text(),
+                    jsonResponse.json()
+                ]);
+
+                // Inject SVG
+                container.innerHTML = svgContent;
+                const svg = container.querySelector('svg');
+                if (svg) {
+                    svg.classList.add('braid-svg');
+                }
+
+                // Process data
+                processTimelineData(jsonData);
+
+                // Wire up interactions
+                setupInteractions();
+
+            } catch (err) {
+                console.error('Timeline initialization failed:', err);
+                container.innerHTML = `<p style="color: var(--warn); padding: var(--space-3);">Failed to load timeline: ${err.message}</p>`;
+            }
+        }
+
+        function setupInteractions() {
+            const interactiveElements = document.querySelectorAll('.era-hitarea, .era-label');
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    clearTimeout(hoverTimeout);
+                    hoverTimeout = setTimeout(() => {
+                        showHoverCard(el.dataset.era, e);
+                    }, 100);
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    clearTimeout(hoverTimeout);
+                    hideHoverCard();
+                });
+
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    hideHoverCard();
+                    showEraDetail(el.dataset.era);
+                });
+            });
+
+            // Escape to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideHoverCard();
+                    hideEraDetail();
+                }
+            });
+
+            // Touch: tap to show card, tap again for detail
+            let lastTappedEra = null;
+            interactiveElements.forEach(el => {
+                el.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    const eraId = el.dataset.era;
+
+                    if (lastTappedEra === eraId) {
+                        hideHoverCard();
+                        showEraDetail(eraId);
+                        lastTappedEra = null;
+                    } else {
+                        showHoverCard(eraId, e);
+                        lastTappedEra = eraId;
+                    }
+                });
+            });
+        }
+
+        // Start initialization when DOM is ready
+        document.addEventListener('DOMContentLoaded', initTimeline);
+    </script>
+</body>
+</html>

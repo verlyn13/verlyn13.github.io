@@ -1,0 +1,440 @@
+{
+  "meta": {
+    "name": "Jeffrey Johnson",
+    "tagline": "Mathematician | Systems Architect | Builder",
+    "lastUpdated": "2025-01"
+  },
+  "tracks": {
+    "analytical": {
+      "color": "var(--accent)",
+      "label": "Analytical",
+      "description": "math, pedagogy, logic"
+    },
+    "technical": {
+      "color": "var(--accent-2)",
+      "label": "Technical",
+      "description": "systems, software, building"
+    },
+    "experiential": {
+      "color": "var(--warn)",
+      "label": "Experiential",
+      "description": "labor, service, world"
+    }
+  },
+  "eras": [
+    {
+      "id": "wisconsin",
+      "name": "Wisconsin Roots",
+      "years": { "start": 1992, "end": 1998 },
+      "yearsLabel": "1992-1998",
+      "location": { "place": "Grantsburg, WI", "flag": "us" },
+      "visualWeight": 0.08,
+
+      "headline": "Work Ethic Formation",
+      "hook": "Heavy equipment certified before driving age.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "dormant",
+          "summary": "Dormant but forming"
+        },
+        "technical": {
+          "intensity": "present",
+          "summary": "Built first computer (1996); BBS co-admin",
+          "milestone": "Built first computer, 1996",
+          "skills": ["hardware assembly", "DOS", "Windows 95", "BBS administration"],
+          "easterEgg": "Co-administered high school BBS, 1996-97"
+        },
+        "experiential": {
+          "intensity": "dominant",
+          "summary": "Six years continuous work",
+          "roles": [
+            { "name": "Farm Work", "org": "Private Farm", "years": "1992-1996" },
+            { "name": "Line Cook", "org": "Skol Haus Restaurant", "years": "1996-1998", "progression": "mower > dishwasher > prep > line" },
+            { "name": "Landscaper", "org": "Wood River Landscaping", "years": "1997-1998", "skills": ["heavy equipment", "skid steer", "construction"] }
+          ]
+        }
+      },
+
+      "education": {
+        "institution": "Grantsburg High School",
+        "credential": "Diploma, 1998"
+      },
+
+      "narrative": "Six years of continuous employment before high school graduation. Farm work, restaurant kitchen (mower to line cook progression), landscaping with heavy equipment operation. Built first computer at 16. Co-administered the high school BBS. The work ethic forms here.",
+
+      "hoverCard": {
+        "snippet": "Farm, restaurant, landscaping. Built first computer at 16. Ran the school BBS."
+      },
+      "navigation": {
+        "target": "/cv.html#early-work",
+        "label": "See full background"
+      }
+    },
+
+    {
+      "id": "duluth",
+      "name": "Duluth Exploration",
+      "years": { "start": 1998, "end": 2000 },
+      "yearsLabel": "1998-2000",
+      "location": { "place": "Duluth, MN", "flag": "us" },
+      "visualWeight": 0.06,
+
+      "headline": "First Higher Math",
+      "hook": "Midnight shifts, morning lectures.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "present",
+          "summary": "First exposure to proofs"
+        },
+        "technical": {
+          "intensity": "present",
+          "summary": "Linux servers, self-hosting begins",
+          "milestone": "Linux servers, self-hosting",
+          "skills": ["Linux administration", "networking basics"],
+          "easterEgg": "xorg.conf"
+        },
+        "experiential": {
+          "intensity": "present",
+          "summary": "Working student life",
+          "roles": [
+            { "name": "Midnight Stocker", "org": "Kohl's", "years": "1998-1999" },
+            { "name": "Landscaper", "org": "Great Lakes Landscaping", "years": "Summer 1999" },
+            { "name": "Cook", "org": "Pizza Hut", "years": "1999-2000" }
+          ]
+        }
+      },
+
+      "education": {
+        "institution": "University of Minnesota Duluth",
+        "credential": "Coursework, 1998-2000",
+        "note": "First exposure to higher mathematics"
+      },
+
+      "narrative": "Full-time university coursework while working overnight shifts. First exposure to higher mathematics and proof-based thinking. Linux administration begins. The analytical thread awakens.",
+
+      "hoverCard": {
+        "snippet": "University coursework while working nights. Linux administration begins."
+      },
+      "navigation": {
+        "target": "/cv.html#education",
+        "label": "See education history"
+      }
+    },
+
+    {
+      "id": "california",
+      "name": "California Pivot",
+      "years": { "start": 2001, "end": 2005 },
+      "yearsLabel": "2001-2005",
+      "location": { "place": "Eureka, CA", "flag": "us" },
+      "visualWeight": 0.10,
+
+      "headline": "Mathematical Identity Solidifies",
+      "hook": "2,000 miles from family at 21.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "dominant",
+          "summary": "BA Mathematics, grad coursework",
+          "skills": ["Abstract Algebra", "Analysis", "Stochastic Processes", "Dynamic Systems"]
+        },
+        "technical": {
+          "intensity": "present",
+          "summary": "Continued self-hosting",
+          "skills": ["Linux video drivers", "system administration"],
+          "easterEgg": "Yes, including the video drivers."
+        },
+        "experiential": {
+          "intensity": "present",
+          "summary": "Solo cross-country move",
+          "roles": [
+            { "name": "Data Entry / Accounting", "org": "Redwoods United / CA Dept of Rehab", "years": "2001-2002" },
+            { "name": "Teaching Assistant", "org": "Humboldt State University", "years": "2002-2004", "scope": "Remedial courses, MathLab tutor" }
+          ]
+        }
+      },
+
+      "education": {
+        "institution": "Humboldt State University",
+        "credential": "BA Mathematics, 2004",
+        "graduate": "Mathematical Modeling of Environmental Systems (coursework)"
+      },
+
+      "narrative": "Solo cross-country move at 21. BA in Mathematics from Humboldt State. Graduate coursework in Mathematical Modeling. The decision: pure mathematics. Identity as a mathematician crystallizes.",
+
+      "hoverCard": {
+        "snippet": "Cross-country solo move. BA in Mathematics. First graduate coursework."
+      },
+      "navigation": {
+        "target": "#era-california",
+        "label": "Teaching assistant years"
+      }
+    },
+
+    {
+      "id": "peacecorps",
+      "name": "Peace Corps",
+      "years": { "start": 2005, "end": 2007 },
+      "yearsLabel": "2005-2007",
+      "location": { "place": "South Africa", "flag": "za" },
+      "visualWeight": 0.10,
+
+      "headline": "International Service",
+      "hook": "Dell grant for rural school.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "present",
+          "summary": "Teaching methods"
+        },
+        "technical": {
+          "intensity": "dormant",
+          "summary": "Limited infrastructure",
+          "note": "Limited infrastructure access"
+        },
+        "experiential": {
+          "intensity": "dominant",
+          "summary": "Community development",
+          "roles": [
+            { "name": "Education Volunteer", "org": "U.S. Peace Corps", "years": "2005-2007" },
+            { "name": "Teacher Trainer", "org": "Local Schools", "years": "2005-2007" }
+          ],
+          "impact": "Dell Success Grant recipient"
+        }
+      },
+
+      "crossover": {
+        "type": "origin",
+        "label": "Teaching career begins",
+        "significance": "First formal teaching role outside academia"
+      },
+
+      "narrative": "Two years of service in South Africa. Education volunteer and teacher trainer. Project management workshops. Secured Dell Computers grant for partner school. The experiential thread dominates, but teaching begins here.",
+
+      "hoverCard": {
+        "snippet": "Education volunteer and teacher trainer. Community project leadership."
+      },
+      "navigation": {
+        "target": "#era-peacecorps",
+        "label": "Service & community"
+      }
+    },
+
+    {
+      "id": "montana",
+      "name": "Montana PhD",
+      "years": { "start": 2008, "end": 2015 },
+      "yearsLabel": "2008-2015",
+      "location": { "place": "Missoula, MT", "flag": "us" },
+      "visualWeight": 0.15,
+
+      "headline": "Theoretical Foundations",
+      "hook": "Six years of pure mathematics.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "dominant",
+          "summary": "PhD, publications, conferences",
+          "skills": ["Banach algebras", "Functional analysis", "Research methodology"]
+        },
+        "technical": {
+          "intensity": "present",
+          "summary": "Math computing, LaTeX mastery",
+          "skills": ["LaTeX", "Mathematical software", "Linux administration"],
+          "note": "Tech skills in service of mathematics"
+        },
+        "experiential": {
+          "intensity": "present",
+          "summary": "Teaching, coordination",
+          "roles": [
+            { "name": "Graduate Researcher", "org": "University of Montana", "years": "2008-2014" },
+            { "name": "Teaching Assistant", "org": "University of Montana", "years": "2008-2014", "courses": ["Applied Statistics", "Applied Calculus", "Calculus III"] },
+            { "name": "Postdoctoral Lecturer", "org": "University of Montana", "years": "2014-2015", "scope": "Lecture coordinator, TA management" }
+          ]
+        }
+      },
+
+      "education": {
+        "institution": "University of Montana",
+        "credential": "PhD Mathematics, 2014",
+        "specialization": "Commutative Banach Algebras",
+        "summer": "AARMS Summer Program, Fredericton NB (Algebraic Topology, Topological Combinatorics)"
+      },
+
+      "publication": {
+        "venue": "Communications in Mathematics and Applications",
+        "year": 2012,
+        "topic": "Peripherally-multiplicative spectral preservers"
+      },
+
+      "crossover": {
+        "type": "integration",
+        "label": "Logic meets code",
+        "significance": "Mathematical rigor shapes approach to systems"
+      },
+
+      "narrative": "PhD in Mathematics from University of Montana. Dissertation on peripherally-multiplicative spectral preservers in commutative Banach algebras. Published research. AARMS summer program. Course coordinator for 480 students. The analytical thread reaches its peak of focused intensity.",
+
+      "hoverCard": {
+        "snippet": "PhD in commutative Banach algebras. Published researcher. Conference presenter."
+      },
+      "navigation": {
+        "target": "#era-montana",
+        "label": "Graduate teaching & research"
+      }
+    },
+
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "years": { "start": 2015, "end": 2017 },
+      "yearsLabel": "2015-2017",
+      "location": { "place": "Cairo, Egypt", "flag": "eg" },
+      "visualWeight": 0.12,
+
+      "headline": "International Faculty",
+      "hook": "Teaching calculus near the pyramids.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "dominant",
+          "summary": "Faculty position"
+        },
+        "technical": {
+          "intensity": "present",
+          "summary": "Ed-tech exploration",
+          "skills": ["LMS administration", "online course tools"],
+          "note": "Seeds of ed-tech interest"
+        },
+        "experiential": {
+          "intensity": "present",
+          "summary": "International experience",
+          "roles": [
+            { "name": "Associate Professor of Mathematics", "org": "American University in Cairo", "years": "2015-2017", "scope": "Calculus, upper-division mathematics" }
+          ]
+        }
+      },
+
+      "conference": {
+        "topic": "Lineability (Functional Analysis)",
+        "location": "Czech Republic"
+      },
+
+      "narrative": "Associate Professor of Mathematics at American University in Cairo. Taught calculus and upper-division courses. Attended Lineability conference in Czech Republic. The analytical thread continues strong while experiential expands internationally.",
+
+      "hoverCard": {
+        "snippet": "Associate Professor at American University in Cairo. Functional analysis research."
+      },
+      "navigation": {
+        "target": "#era-cairo",
+        "label": "International faculty"
+      }
+    },
+
+    {
+      "id": "alaska",
+      "name": "Alaska Synthesis",
+      "years": { "start": 2017, "end": null },
+      "yearsLabel": "2017-present",
+      "location": { "place": "Homer, AK", "flag": "us" },
+      "visualWeight": 0.39,
+
+      "headline": "The Convergence",
+      "hook": "Teaching calculus. Shipping code.",
+
+      "strands": {
+        "analytical": {
+          "intensity": "dominant",
+          "summary": "Tenured professor, publication",
+          "skills": ["Pedagogy", "Online course design", "Statistical analysis"]
+        },
+        "technical": {
+          "intensity": "dominant",
+          "summary": "Production engineering",
+          "skills": [
+            "TypeScript", "Python", "Go", "Rust",
+            "React", "Android/JNI", "PostgreSQL",
+            "Cloudflare Workers", "Docker", "Terraform",
+            "Git workflows", "CI/CD", "IaC"
+          ],
+          "milestone": "Full convergence: professional-grade engineering",
+          "easterEgg": "30 years from first build to production Android app"
+        },
+        "experiential": {
+          "intensity": "present",
+          "summary": "Community, mentorship",
+          "roles": [
+            { "name": "Associate Professor of Mathematics", "org": "Kenai Peninsula College", "years": "2017-present", "status": "Tenured", "scope": "Calculus, Applied Statistics, online course development" },
+            { "name": "Software Engineer", "org": "Happy Patterns LLC", "years": "2022-present", "scope": "Full-stack development, AI integration, mobile applications" }
+          ]
+        }
+      },
+
+      "education": {
+        "type": "continuous",
+        "courses": ["Machine Learning", "OOP", "Discrete Optimization"],
+        "platforms": ["Self-directed", "Online courses"]
+      },
+
+      "publication": {
+        "venue": "Journal of Pediatric Physical Therapy",
+        "year": 2024,
+        "note": "Collaboration with nursing researchers"
+      },
+
+      "projects": [
+        {
+          "name": "ScopeCam",
+          "description": "Android UVC camera application for industrial use",
+          "status": "production",
+          "tech": ["Android", "JNI", "Native C++", "USB protocols"]
+        },
+        {
+          "name": "Budget Triage",
+          "description": "Financial document processing system",
+          "status": "dev",
+          "tech": ["TypeScript", "PostgreSQL", "OCR/VLM", "DI architecture"]
+        },
+        {
+          "name": "Dicee",
+          "description": "Multiplayer probability game",
+          "status": "live",
+          "tech": ["Rust/WASM", "Cloudflare Durable Objects", "WebSocket"]
+        }
+      ],
+
+      "crossover": {
+        "type": "convergence",
+        "label": "Full integration",
+        "significance": "Academic rigor meets production engineering",
+        "bridges": [
+          { "year": 2022, "event": "AI API experimentation begins" },
+          { "year": 2024, "event": "Interdisciplinary publication" },
+          { "year": 2025, "event": "Production mobile app" }
+        ]
+      },
+
+      "narrative": "The threads weave tightly. Tenured Associate Professor at Kenai Peninsula College developing online pedagogy. Simultaneously building production software: Android applications, multiplayer games, enterprise systems. Interdisciplinary publication in Journal of Pediatric Physical Therapy (2024). Theoretical CS exploration with MIT-bound student. Thirty years of tech interest meets twenty years of mathematical rigor.",
+
+      "hoverCard": {
+        "snippet": "Tenured professor and production software engineer. The tracks merge."
+      },
+      "navigation": {
+        "target": "#era-alaska",
+        "label": "Current position"
+      }
+    }
+  ],
+
+  "techMilestones": [
+    { "year": 1996, "event": "First computer build", "intensity": 1 },
+    { "year": 1997, "event": "High school BBS co-admin", "intensity": 1 },
+    { "year": 2000, "event": "Linux servers, self-hosting", "intensity": 1 },
+    { "year": 2001, "event": "Video driver installation era", "intensity": 1, "easterEgg": true },
+    { "year": 2022, "event": "AI API access, serious development begins", "intensity": 2 },
+    { "year": 2024, "event": "Production Android development", "intensity": 3 },
+    { "year": 2025, "event": "Full-stack architecture, multiple production apps", "intensity": 3 }
+  ]
+}

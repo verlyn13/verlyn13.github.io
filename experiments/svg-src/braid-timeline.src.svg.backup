@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Braid Timeline - Source SVG
+  Three-strand braid: Analytical (blue), Technical (teal), Experiential (orange)
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1000"
+  height="200"
+  viewBox="0 0 1000 200"
+  role="img"
+  aria-labelledby="braid-title braid-desc"
+  id="braid-timeline-svg"
+>
+  <title id="braid-title">Career Journey: A Braided Path</title>
+  <desc id="braid-desc">A three-strand braid visualization showing the interweaving of analytical, technical, and experiential threads from 1992 to present.</desc>
+
+  <defs>
+    <filter id="shadow-filter" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+
+    <style>
+      .strand {
+        fill: none;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .strand-analytical { stroke: hsl(212, 85%, 45%); }
+      .strand-technical { stroke: hsl(160, 55%, 35%); }
+      .strand-experiential { stroke: hsl(22, 90%, 52%); }
+      .strand-over { filter: url(#shadow-filter); }
+
+      .era-hitarea {
+        fill: transparent;
+        cursor: pointer;
+      }
+      .era-hitarea:hover { fill: hsla(220, 18%, 18%, 0.05); }
+
+      .era-label {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        fill: hsl(220, 18%, 18%);
+        text-anchor: middle;
+      }
+
+      .year-marker {
+        font-family: ui-monospace, monospace;
+        font-size: 9px;
+        fill: hsl(220, 12%, 45%);
+        text-anchor: middle;
+      }
+
+      .convergence-ring {
+        fill: none;
+        stroke: hsl(220, 18%, 18%);
+        stroke-width: 1.5;
+        opacity: 0.3;
+      }
+    </style>
+  </defs>
+
+  <!-- Era hit areas -->
+  <g id="era-hitareas">
+    <rect class="era-hitarea" data-era="wisconsin" x="20" y="30" width="135" height="115" rx="4" id="hitarea-wisconsin"/>
+    <rect class="era-hitarea" data-era="duluth" x="155" y="30" width="115" height="115" rx="4" id="hitarea-duluth"/>
+    <rect class="era-hitarea" data-era="california" x="270" y="30" width="130" height="115" rx="4" id="hitarea-california"/>
+    <rect class="era-hitarea" data-era="peacecorps" x="400" y="30" width="90" height="115" rx="4" id="hitarea-peacecorps"/>
+    <rect class="era-hitarea" data-era="montana" x="490" y="30" width="205" height="115" rx="4" id="hitarea-montana"/>
+    <rect class="era-hitarea" data-era="cairo" x="695" y="30" width="55" height="115" rx="4" id="hitarea-cairo"/>
+    <rect class="era-hitarea" data-era="alaska" x="750" y="30" width="230" height="115" rx="4" id="hitarea-alaska"/>
+  </g>
+
+  <!-- Braid strands -->
+  <g id="braid-strands">
+
+    <!-- EXPERIENTIAL (orange) - starts TOP y=50, ends y=78 -->
+    <g id="strand-experiential-group">
+      <path id="strand-E"
+            class="strand strand-experiential"
+            d="m 23.059597,50 c 15.471581,0 27.697634,5.51106 48.101092,13.164636 m 14.278118,12.918298 c 5.971946,2.240145 20.322803,11.032435 26.219003,11.215049 5.99902,0.185798 16.13316,-4.053 20.41657,-2.41968 21.89762,8.349859 24.95001,2.754752 40.00509,1.081966 22,-2 59.62031,-1.598207 99.62031,8.401793 l 86.48574,25.156688 c 8.40239,0.16675 22.73586,-1.11684 29.50041,-11.84742 m 6.79911,-13.258254 C 402.29385,78.823542 459.25171,65.355921 473.0596,55 c 15,-10 30,-5 50,0 32.49338,5.415563 66.17948,-18.944914 78.38176,-5.43035 m 21.41718,19.037491 c 12.46006,16.353048 33.17856,19.837204 65.26962,21.670974 15.77854,0.315573 50.6537,25.340785 71.69445,20.831825 10.36338,-2.22084 37.1367,-5.06112 52.79886,-9.63533 7.66081,-2.237369 11.86124,-4.677413 16.8609,-15.529898 m 6.11919,-15.977893 c 7.81812,-13.919894 23.82493,-11.983648 28.58003,-11.255951 7.80349,1.194209 34.68638,3.815679 36.68004,4.026393 56.25025,5.945196 34.71598,52.997759 78.11851,52.997759"/>
+    </g>
+
+    <!-- TECHNICAL (teal) - starts MIDDLE y=80, ends y=68 -->
+    <g id="strand-technical-group">
+      <path id="strand-T"
+            class="strand strand-technical"
+            d="M 20,80 C 47.144975,70.951675 74.28995,65.996959 90.322833,70.321496 92.009122,70.776337 93.572488,71.333828 95,72 c 15,6 45,-17 95,-22 m -1.01987,0 c 30,-3 41.94041,-0.439283 46.94041,4.560717 m 10.53861,12.238387 C 266.45915,81.799104 320,90 380,100 c 10,2 40.39731,-0.07946 63.75489,-15.637938 31.31785,-3.880807 55,10 115,10 54.30058,-3.39379 114.75579,26.098828 127.86002,3.651316 m 10.53861,-13.598207 c 20.66169,-15.245831 63.6408,4.616226 79.70294,4.463395 17.38628,-1.738628 48.82709,-10.087954 62.26353,-10.90103 21.41674,-1.295986 33.66089,5.101267 46.27853,6.575218 16.35795,1.91088 25.84183,1.160726 32.41783,-10.148635 m 9.8587,-12.578341 c 20.8803,0.790999 25.57401,17.392743 50.62517,17.392743"/>
+    </g>
+
+    <!-- ANALYTICAL (blue) - starts BOTTOM y=110, ends y=58 -->
+    <g id="strand-analytical-group">
+      <path id="strand-A"
+            class="strand strand-analytical"
+            d="m 20,110 c 25.456409,0 34.732294,-17.864523 68.906959,-9.17922 12.062461,3.06562 22.487121,-6.466546 29.557071,-6.415341 5.62095,0.04071 16.23771,7.868681 24.49307,8.071981 5.86083,0.14433 11.67893,-7.892556 13.48443,-8.018269 m 12.91828,-14.618076 c 9.68912,-7.473016 29.52218,-1.530078 41.55785,-6.755692 C 226.73522,66.217753 230.84607,60.363551 240,60 c 16.9404,0.439283 79.66004,-2.860941 159.66004,-2.860941 20,0 26.94041,-1.019866 37.09933,-9.878566 9.92474,-3.868043 17.37846,-6.788103 27.85688,3.478207 m 10.87857,11.898432 c 3.93949,7.897216 23.60871,14.157231 33.7237,14.360627 15.82345,-0.141299 129.0817,-39.315608 239.0817,-31.315608 7.74735,-0.154947 11.91508,6.48921 34.26962,5.995238 39.12358,-0.86452 51.13196,-1.23356 79.54203,-3.26613 33.06208,-2.365393 48.95027,7.78586 79.89704,7.268345 2.32408,-0.03886 20.88413,0.62062 36.63127,-10.597901"/>
+    </g>
+
+  </g>
+
+  <!-- Convergence indicator -->
+  <g id="convergence-point">
+    <circle class="convergence-ring" cx="980" cy="68" r="8"/>
+    <circle class="convergence-ring" cx="980" cy="68" r="14" opacity="0.12"/>
+  </g>
+
+  <!-- Era labels -->
+  <g id="era-labels">
+    <text class="era-label" data-era="wisconsin" x="87" y="158" id="label-wisconsin">Work ethic</text>
+    <text class="era-label" data-era="duluth" x="212" y="158" id="label-duluth">First proofs</text>
+    <text class="era-label" data-era="california" x="335" y="158" id="label-california">Identity</text>
+    <text class="era-label" data-era="peacecorps" x="445" y="158" id="label-peacecorps">Service</text>
+    <text class="era-label" data-era="montana" x="592" y="158" id="label-montana">Deep theory</text>
+    <text class="era-label" data-era="cairo" x="722" y="158" id="label-cairo">International</text>
+    <text class="era-label" data-era="alaska" x="865" y="158" id="label-alaska">Synthesis</text>
+  </g>
+
+  <!-- Year markers -->
+  <g id="year-markers">
+    <text class="year-marker" x="20" y="178" id="year-1992">1992</text>
+    <text class="year-marker" x="155" y="178" id="year-1998">'98</text>
+    <text class="year-marker" x="270" y="178" id="year-2001">'01</text>
+    <text class="year-marker" x="400" y="178" id="year-2005">'05</text>
+    <text class="year-marker" x="490" y="178" id="year-2008">'08</text>
+    <text class="year-marker" x="695" y="178" id="year-2015">'15</text>
+    <text class="year-marker" x="750" y="178" id="year-2017">'17</text>
+    <text class="year-marker" x="980" y="178" id="year-now">now</text>
+  </g>
+
+</svg>
