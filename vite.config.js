@@ -1,22 +1,59 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  // Base URL for GitHub Pages
+  base: '/',
+
   build: {
+    // Output directory
+    outDir: 'dist',
+
+    // Generate sourcemaps for debugging
+    sourcemap: false,
+
+    // Optimize build
+    minify: 'esbuild',
+    target: 'es2020',
+
+    // Chunk size warnings
+    chunkSizeWarningLimit: 600,
+
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
         cv: resolve(__dirname, 'cv.html'),
         contact: resolve(__dirname, 'contact.html'),
+
+        // Projects
+        'projects-dicee': resolve(__dirname, 'projects/dicee.html'),
+        'projects-maat': resolve(__dirname, 'projects/maat.html'),
+        'projects-scopecam': resolve(__dirname, 'projects/scopecam.html'),
+        'projects-budget-triage': resolve(__dirname, 'projects/budget-triage.html'),
+        experience: resolve(__dirname, 'experience/index.html'),
         research: resolve(__dirname, 'research/index.html'),
-        'research-maat': resolve(__dirname, 'research/maat.html'),
-        'research-scopecam': resolve(__dirname, 'research/scopecam.html'),
-        academic: resolve(__dirname, 'academic/index.html'),
-        'academic-publications': resolve(__dirname, 'academic/publications.html'),
-        // Legacy paths - to be removed after migration
-        maat: resolve(__dirname, 'maat/index.html'),
-        scopecam: resolve(__dirname, 'scopecam/index.html'),
-      }
-    }
-  }
+      },
+      output: {
+        // Manual chunk splitting for better caching
+        manualChunks: undefined,
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
+
+  // Preview server config
+  preview: {
+    port: 4173,
+    strictPort: false,
+    open: true,
+  },
+
+  // Dev server config
+  server: {
+    port: 5173,
+    strictPort: false,
+    open: true,
+  },
 })
