@@ -1,0 +1,47 @@
+---
+description: CSS design system rules for the portfolio stylesheet
+globs: "assets/**/*.css"
+alwaysApply: false
+---
+
+# CSS Rules
+
+All styles live in `assets/jeffrey.css`. Do not create additional CSS files.
+
+## Always use custom properties — never hardcode values
+
+### Colors
+
+- `--ink` — primary text
+- `--paper` — page background
+- `--muted` — secondary/subdued text
+- `--accent` — links and primary emphasis (`hsl(212 85% 45%)`)
+- `--accent-2` — secondary accent (`hsl(160 55% 35%)`)
+- `--border` — border color
+
+### Spacing (rem-based — never use arbitrary px values)
+
+- `--space-1` through `--space-5`
+
+### Layout
+
+- `--measure` — 72ch content max-width
+- Mobile breakpoint: 768px (use `@media (max-width: 768px)`)
+
+### Typography
+
+- `--font` — system sans-serif stack (`ui-sans-serif, system-ui`)
+- `--mono` — monospace stack
+- No web fonts under any circumstances
+
+### Elevation & shape
+
+- `--shadow` — standard box shadow
+- `--shadow-hard` — hard/offset box shadow
+- `--radius` — 14px border radius
+- `--radius-sm` — 10px border radius
+
+## Formatting
+
+Biome enforces: 2-space indent, 100-char line width.
+Run `mise run format` after editing or let the PostToolUse hook handle it.

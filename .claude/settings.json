@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(biome:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(mise:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.envrc.local)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Write(**/.envrc.local)",
+      "Write(**/node_modules/**)",
+      "Write(**/dist/**)",
+      "Edit(**/node_modules/**)",
+      "Edit(**/dist/**)"
+    ]
+  },
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash -c 'input=$(cat); file_path=$(echo \"$input\" | jq -r \".tool_input.file_path\"); case \"$file_path\" in *.js|*.json|*.css) npx biome format --write \"$file_path\" 2>/dev/null; esac; exit 0'",
+          "timeout": 10
+        }
+      ]
+    }
+  ]
+}

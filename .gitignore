@@ -21,7 +21,7 @@ out/
 # IDE & agent config
 .idea/
 .vscode/
-.claude/
+.claude/settings.local.json
 *.swp
 *.swo
 

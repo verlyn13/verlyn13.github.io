@@ -1,0 +1,61 @@
+---
+description: Core project rules for the academic portfolio
+alwaysApply: true
+---
+
+# Portfolio Project Rules
+
+## Stack
+
+- Vanilla HTML/CSS, Vite 5 build, Biome 2.3+ lint/format, Node 24 (via mise)
+- Single CSS file: `assets/jeffrey.css` — ALL styles go here, never create new CSS files
+- Minimal JS: only `assets/menu.js` for mobile nav — ask before adding any script
+
+## Key commands
+
+```bash
+mise run ci        # lint + format-check + build (run before done)
+mise run dev       # dev server at localhost:5173
+mise run build     # production build to dist/
+mise run lint:fix  # lint + auto-fix
+mise run format    # format with Biome
+```
+
+## Hard boundaries
+
+**Never:**
+- Add external font loading, tracking scripts, or heavy dependencies
+- Break existing page URLs (may be bookmarked or externally linked)
+- Disable Biome rules to silence errors
+- Write to `node_modules/`, `dist/`, or `package-lock.json`
+- Add `<style>` blocks or inline styles — everything goes in `assets/jeffrey.css`
+
+**Ask first:**
+- New npm dependencies
+- New HTML entry points (also requires `vite.config.js` entry in rollupOptions.input)
+- Changes to the design system (colors, typography, spacing scale)
+- Changes to `.github/workflows/deploy.yml`
+- Structural changes affecting navigation or the site map
+
+## Design system quick reference
+
+- **Spacing**: `--space-1` through `--space-5` (rem-based — never arbitrary px values)
+- **Colors**: `--ink` (text), `--paper` (bg), `--muted` (secondary), `--accent` (blue links), `--accent-2` (green)
+- **Typography**: `--font` (system sans-serif), `--mono` (monospace) — no web fonts
+- **Layout**: `--measure` (72ch max-width), 768px mobile breakpoint
+- **Shape**: `--radius` (14px), `--radius-sm` (10px), `--border`, `--shadow`, `--shadow-hard`
+
+## Page structure
+
+Every page: `<header>` → `<main>` → `<footer>`
+Heading hierarchy must be continuous — never skip levels.
+
+## Triage map
+
+- Styles → `assets/jeffrey.css`
+- Mobile nav → `assets/menu.js`
+- Build inputs → `vite.config.js` rollupOptions.input
+- CI/CD → `.github/workflows/deploy.yml`
+- Lint/format config → `biome.json`
+- Project pages → `projects/*.html`
+- Safe sandbox (not deployed) → `experiments/`

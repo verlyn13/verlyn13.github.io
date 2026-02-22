@@ -2,27 +2,53 @@
 
 Primary project contract: @AGENTS.md
 
+## Model & CLI context
+
+- **Model**: Claude Opus 4.6 (`claude-opus-4-6`)
+- **Plan mode**: Enter plan mode before non-trivial changes — explore → draft plan with file paths → get approval → implement.
+- **Context**: Reference files with `@path`. Use `/compact` when context is large before continuing.
+- **MCP**: `context7` is available — resolve a library ID, then query docs before writing code against any framework.
+
 ## Workflow
 
-- Explore → plan → implement → verify with `mise run ci`.
-- Reference files with `@path` when discussing specifics.
-- Use skills for repeatable workflows (fix-issue, ship-small, review-diff).
-- Preview visual changes in dev server before marking done.
+1. Read relevant files before proposing changes — never guess at structure.
+2. Non-trivial changes: plan mode → explore → written plan → implement.
+3. Verify with `mise run ci` — single gate: lint + format-check + build.
+4. Visual changes: run `mise run dev`, check both desktop and mobile (768px).
 
-## Verification
+## Skills
 
-- `mise run ci` is the single gate: lint + format-check + build.
-- For visual work: `mise run dev` and check both desktop and mobile widths.
-- No test framework — verification is CI pass + visual inspection.
+| Invoke | When |
+|---|---|
+| `/fix-issue` | Bug: reproduce → isolate → fix → verify |
+| `/ship-small` | Before committing — enforce small, focused diffs |
+| `/review-diff` | Self-review checklist before handing back |
+
+## MCP servers
+
+| Server | Tools | When to use |
+|---|---|---|
+| `context7` | `resolve-library-id` → `query-docs` | Look up current Vite, Biome, or any lib docs before coding |
+
+Always call `resolve-library-id` first to get the correct library ID, then pass it to `query-docs`.
+
+## Subagents
+
+Use the Task tool for:
+- Codebase exploration when a targeted Glob/Grep won't suffice
+- Isolated research that doesn't need to block the main thread
+- Parallel work on independent subtasks
+
+Prefer direct tool calls (Read, Glob, Grep) for targeted, known-path lookups.
 
 ## Permissions & safety
 
-- Safe commands allowlisted in `.claude/settings.json` (npm, biome, git, gh, mise).
-- Secrets (.env, .envrc.local) are denied in settings.
-- Hooks enforce formatting after JS/CSS edits.
+- Allowlisted: `npm`, `npx`, `biome`, `git`, `gh`, `mise`, `ls`, `cat`, `mkdir`
+- Denied: `.env`, `.env.*`, `.envrc.local`
+- PostToolUse hook: auto-formats `.js`, `.json`, `.css` after every write via Biome
 
 ## Project context
 
-Academic research portfolio — prioritize clarity, performance, and credibility.
-Site is intentionally JS-minimal with system fonts and a single CSS file.
-See @AGENTS.md for full boundaries, design system, and triage map.
+Academic research portfolio — clarity, performance, and credibility above all.
+JS-minimal (only `assets/menu.js`), system fonts, single CSS file (`assets/jeffrey.css`).
+See @AGENTS.md for design system, hard boundaries, and triage map.

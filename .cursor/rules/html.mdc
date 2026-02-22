@@ -1,0 +1,41 @@
+---
+description: HTML authoring rules for portfolio pages
+globs: "*.html, projects/*.html, experience/*.html, research/*.html"
+alwaysApply: false
+---
+
+# HTML Rules
+
+## Page structure
+
+Every page must follow this structure:
+
+```html
+<header>...</header>
+<main>...</main>
+<footer>...</footer>
+```
+
+## Semantics
+
+- Use semantic HTML5 elements: `<article>`, `<section>`, `<nav>`, `<aside>`, `<time>`, etc.
+- Heading hierarchy must be continuous — never skip levels (h1 → h2 → h3, not h1 → h3)
+- External links: always add `aria-label` and `rel="noopener noreferrer"`
+- 2-space indent throughout
+
+## Styles & scripts
+
+- Link only to `assets/jeffrey.css` — never add `<style>` blocks or inline `style=""` attributes
+- No `<script>` tags unless absolutely necessary — the site is intentionally JS-minimal
+- No external font imports, CDN links, or tracking pixels
+
+## New page checklist
+
+1. Add entry to `vite.config.js` rollupOptions.input map
+2. Copy nav structure from `index.html` for consistency
+3. Verify rendering at 768px mobile breakpoint in `mise run dev`
+4. Run `mise run ci` before done
+
+## Experiments
+
+Pages under `experiments/` are excluded from CI and deployment — safe to prototype freely there.

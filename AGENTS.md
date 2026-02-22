@@ -52,6 +52,29 @@ mise run clean               # Remove dist/ and node_modules/
 - [ ] Semantic HTML preserved (heading hierarchy, ARIA labels)
 - [ ] Design system followed (CSS custom properties from `jeffrey.css`)
 
+## AI agent tooling
+
+### Available agents & MCPs
+
+| Tool | How to invoke | Use case |
+|---|---|---|
+| **context7** | `mcp__context7__resolve-library-id` → `mcp__context7__query-docs` | Current docs for Vite, Biome, or any library before writing code |
+| **Claude Code skills** | `/fix-issue`, `/ship-small`, `/review-diff` | Structured repeatable workflows (defined in `.claude/skills/`) |
+| **Task subagents** | Task tool (`Explore`, `general-purpose`) | Multi-file research, codebase exploration, parallel independent work |
+
+### Agent interaction model
+
+- **Explore first**: Read relevant files before proposing changes. Never guess at structure.
+- **Plan before non-trivial work**: Use plan mode for tasks touching >2 files or requiring architectural judgment.
+- **Subagents for isolation**: Spawn a subagent when the subtask is cleanly separable and shouldn't pollute main context.
+- **Direct tools for known paths**: Prefer Read/Glob/Grep over subagents for targeted, predictable lookups.
+
+### Context management (Claude Code)
+
+- Reference files with `@path` syntax (e.g., `@assets/jeffrey.css`).
+- Use `/compact` when context is large mid-task before continuing.
+- Cursor IDE reads `.cursor/rules/*.mdc` — project, CSS, and HTML rules auto-attach to relevant files.
+
 ## Workflow rules
 
 - For non-trivial tasks: explore existing pages → write a short plan (with file paths) → implement.
