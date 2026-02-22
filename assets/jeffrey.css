@@ -588,6 +588,18 @@ a:focus-visible {
 .approach-card--hardware {
   border-top: 3px solid var(--warn);
 }
+.approach-card--ml {
+  border-top: 3px solid var(--accent-2);
+}
+
+.approach-card--gateway {
+  border-top: 3px solid var(--accent);
+}
+
+.approach-card--infra {
+  border-top: 3px solid var(--warn);
+}
+
 
 .approach-header {
   display: flex;
