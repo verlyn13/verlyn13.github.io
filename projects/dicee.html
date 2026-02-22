@@ -64,10 +64,10 @@
                     <div class="architecture-section">
                         <h3>Backend Infrastructure</h3>
                         <ul>
-                            <li>Cloudflare Durable Objects for stateful coordination</li>
-                            <li>WebSocket protocol for real-time gameplay</li>
+                            <li>Cloudflare Durable Objects (SQLite-backed) for isolated game state</li>
+                            <li>Hibernatable WebSockets for cost-optimized real-time gameplay</li>
+                            <li>Workers AI binding for audio transcription</li>
                             <li>PostgreSQL (Supabase) for persistence</li>
-                            <li>Serverless deployment model</li>
                         </ul>
                     </div>
 
@@ -75,8 +75,8 @@
                         <h3>Frontend</h3>
                         <ul>
                             <li>SvelteKit (Svelte 5) on Cloudflare Pages</li>
+                            <li><strong>Service Bindings:</strong> Zero-latency internal RPC to the isolated Worker</li>
                             <li>ts-rest for type-safe API contracts</li>
-                            <li>Responsive design, zero-install gameplay</li>
                         </ul>
                     </div>
                 </section>
@@ -89,8 +89,8 @@
                             <p>Live users, real monitoring, operational experience managing production infrastructure.</p>
                         </div>
                         <div class="significance-point">
-                            <h3>Distributed State</h3>
-                            <p>Serverless object coordination without traditional server architecture. Exploring edge computing patterns.</p>
+                            <h3>Advanced Edge Architecture</h3>
+                            <p>Zero-latency Service Bindings between Pages and Workers. Utilizing SQLite-backed Durable Objects for transactional consistency without traditional servers.</p>
                         </div>
                         <div class="significance-point">
                             <h3>Performance Optimization</h3>
