@@ -1,0 +1,1247 @@
+# Project Profile — verlyn13.github.io (Research Portfolio)
+# Produced per Project Profile Discovery Directive v1.2 (2026-05-08)
+# Target audit spec: Agentic Architecture Audit Specification v3.1 (2026-05-08)
+# Snapshot date: 2026-05-21
+# Profile mode: first-profile
+# Replaces a shallow 2026-05-21 snapshot that failed §7 validation on:
+# skill_md_files: [] vs. 3 SKILL.md files actually present (.claude/skills/);
+# .claude/settings.json hooks uninventoried; 5 SKILL/rule prompts not counted;
+# experiments/ directory uninspected; companion_artifacts empty despite audit
+# package being readable; DEV_GUIDE.md vs AGENTS.md design-system
+# contradiction not detected; deploy.yml job structure not extracted.
+
+# ---------- META ----------
+meta:
+  profile_version: "1.2"
+  generated_at: "2026-05-22T01:30:00Z"
+  snapshot_date: "2026-05-21"
+  generated_by: "claude-opus-4-7 via Claude Cowork"
+  directive_version: "project-profile-directive-v1.2"
+  audit_spec_target: "agentic-audit-spec-v3.1"
+  profile_mode: "first-profile"
+  previous_profile:
+    path: "none"
+    snapshot_date: "none"
+  repository_revision:
+    vcs: "git"
+    branch: "main"
+    revision: "2c6924d27fc4128cce44423dd5f2b16539cb6023"
+    working_tree_state: "dirty"
+    working_tree_notes: |
+      Snapshot rev 2c6924d was committed 2026-02-21 (3 months before this
+      profile). Working tree has 24 modified files at profile time: AGENTS.md,
+      DEV_GUIDE.md, README.md, assets/jeffrey.css, contact.html, cv.html,
+      experience/index.html, all 6 projects/*.html (budget-triage, dicee,
+      flux, llm-gateway, maat, scopecam), index.html, research/index.html,
+      vite.config.js, and 6 experiments/svg-src/ + experiments/timeline*
+      files. 2 untracked: CNAME (likely operator-added for GitHub Pages
+      custom domain), profile/ (this directory). Sibling repo new-direction-
+      2026/STATUS.md L23 and L56 reference May 21 work on this repo
+      ("portfolio website built, MAAT integrated, CI verified"); those edits
+      explain the modified set.
+  source_confidence: "high"
+
+# ---------- PROJECT ----------
+project:
+  name: "verlyn13.github.io"
+  kind: "static-site"
+  primary_purpose: |
+    Academic research portfolio and static presentation site for
+    Dr. Jeffrey Johnson, deployed to https://jvjohnson.dev via GitHub Pages
+    on push to main. Multi-page vanilla HTML/CSS site built with Vite 5,
+    linted/formatted with Biome 2.3+, runtime Node 24 pinned via mise.
+    11 deployed pages (index + cv + contact + 6 projects/ + experience +
+    research), 3 non-deployed experiment pages, single shared stylesheet
+    (assets/jeffrey.css), minimal JS (assets/menu.js for mobile nav only).
+    This repo is the PRESENTATION LAYER of the content sourced in the
+    sibling new-direction-2026 repo per its content pipeline at AGENTS.md
+    L133-142. Agent governance: Claude Code (.claude/ with 3 SKILLs + hooks)
+    + Cursor IDE (3 .cursor/rules/*.mdc) + context7 MCP.
+  repository:
+    root: "/Users/verlyn13/Repos/verlyn13/verlyn13.github.io"
+    remote: "git@github.com:verlyn13/verlyn13.github.io.git"
+    default_branch: "main"
+  deployable_units:
+    - name: "portfolio-website"
+      path: "."
+      kind: "static-site"
+      runtime: "Node 24 (build); static HTML output deployed to GitHub Pages"
+      entrypoint: "index.html + 10 additional Vite-registered pages (vite.config.js L23-37)"
+      evidence:
+        - path: "vite.config.js"
+          lines: "22-37"
+          evidence: "rollupOptions.input map declaring 11 entry points (main, cv, contact, 6 projects, experience, research)"
+        - path: ".github/workflows/deploy.yml"
+          lines: "20-83"
+          evidence: "3-job pipeline (quality → build → deploy) on push to main; deploy uses actions/deploy-pages@v4 to GitHub Pages"
+        - path: "package.json"
+          lines: "8"
+          evidence: "build: vite build"
+    - name: "claude-agent-bundle"
+      path: ".claude/"
+      kind: "agent-runtime"
+      runtime: "Claude Code CLI (external; model claude-opus-4-6 per CLAUDE.md L7)"
+      entrypoint: ".claude/settings.json + .claude/skills/ × 3"
+      evidence:
+        - path: ".claude/settings.json"
+          lines: "1-39"
+          evidence: "permissions allow (9 bash patterns) + deny (9 read/write/edit patterns) + PostToolUse hook that auto-formats .js/.json/.css after every Write/Edit via biome"
+        - path: "CLAUDE.md"
+          lines: "7"
+          evidence: "Model: Claude Opus 4.6 (claude-opus-4-6)"
+    - name: "cursor-agent-bundle"
+      path: ".cursor/"
+      kind: "agent-runtime"
+      runtime: "Cursor IDE (external)"
+      entrypoint: ".cursor/rules/{project,css,html}.mdc"
+      evidence:
+        - path: "AGENTS.md"
+          lines: "76"
+          evidence: "Cursor IDE reads .cursor/rules/*.mdc — project, CSS, and HTML rules auto-attach to relevant files"
+
+# ---------- STACK ----------
+stack:
+  languages:
+    - name: "HTML"
+      share: "primary"
+      evidence:
+        - path: "index.html"
+          lines: "1"
+        - path: "vite.config.js"
+          lines: "23-37"
+    - name: "CSS"
+      share: "secondary"
+      evidence:
+        - path: "assets/jeffrey.css"
+          lines: "1"  # presence verified by AGENTS.md L20 reference
+    - name: "JavaScript"
+      share: "supporting"  # AGENTS.md L109: site is intentionally JS-minimal — only assets/menu.js
+      evidence:
+        - path: "assets/menu.js"
+          lines: "1"  # presence verified by AGENTS.md L21
+    - name: "Markdown"
+      share: "supporting"  # governance + DEV_GUIDE + THEMES + README
+      evidence:
+        - path: "AGENTS.md"
+          lines: "1"
+  runtimes:
+    - name: "Node.js"
+      version: "24 (pinned by .mise.toml L2)"
+      applies_to: ["portfolio-website"]
+      evidence:
+        path: ".mise.toml"
+        lines: "1-2"
+  frameworks:
+    - name: "Vite"
+      version: "^5.0.0"
+      role: "build"
+      applies_to: ["portfolio-website"]
+      evidence:
+        path: "package.json"
+        lines: "19"
+    - name: "Biome"
+      version: "^2.3.8 (schema https://biomejs.dev/schemas/2.3.8/schema.json)"
+      role: "lint"
+      applies_to: ["portfolio-website"]
+      evidence:
+        path: "package.json"
+        lines: "18"
+    - name: "Claude Code (external CLI)"
+      version: "claude-opus-4-6 (per CLAUDE.md L7)"
+      role: "agent-framework"
+      applies_to: ["claude-agent-bundle"]
+      evidence:
+        path: "CLAUDE.md"
+        lines: "7"
+    - name: "Cursor IDE (external)"
+      version: "unknown"
+      role: "agent-framework"
+      applies_to: ["cursor-agent-bundle"]
+      evidence:
+        path: ".cursor/rules/project.mdc"
+        lines: "1-4"
+    - name: "context7 MCP (operator-declared)"
+      version: "unknown"
+      role: "mcp-sdk"
+      applies_to: ["claude-agent-bundle"]
+      evidence:
+        path: "CLAUDE.md"
+        lines: "27-33"
+    - name: "GitHub Actions"
+      version: "n/a (uses actions/checkout@v4, setup-node@v4, configure-pages@v4, upload-pages-artifact@v3, deploy-pages@v4)"
+      role: "build"  # CI/CD
+      applies_to: ["portfolio-website"]
+      evidence:
+        path: ".github/workflows/deploy.yml"
+        lines: "20-83"
+    - name: "mise (task runner)"
+      version: "unknown (uses .mise.toml for tasks + node pin)"
+      role: "build"
+      applies_to: ["portfolio-website"]
+      evidence:
+        path: ".mise.toml"
+        lines: "4-42"
+  package_managers: ["npm"]
+  build_tools: ["Vite", "mise"]
+  test_frameworks: []  # no test runner declared; AGENTS.md doesn't mention tests
+  eval_frameworks: []
+
+# ---------- INFRASTRUCTURE ----------
+infrastructure:
+  data_stores:
+    - name: "static HTML pages (11 deployed)"
+      engine_or_type: "Filesystem (HTML files)"
+      role: "authoritative-durable"  # the deployed content IS the artifact
+      connection_config_path: "vite.config.js L23-37 (rollupOptions.input)"
+      access_rules:
+        - "Single CSS file rule: AGENTS.md L94 — keep all styles in assets/jeffrey.css"
+        - "JS-minimal rule: AGENTS.md L109 — never add JS unless absolutely necessary"
+      deletion_or_reset_path: "git revert / manual edit"
+      owner_hint: "jeffrey (verlyn13)"
+      evidence: {path: "vite.config.js", lines: "22-37"}
+    - name: "assets/jeffrey.css (single stylesheet)"
+      engine_or_type: "CSS file (~hundreds of lines; not opened in detail this pass)"
+      role: "authoritative-durable"
+      connection_config_path: "assets/jeffrey.css"
+      access_rules:
+        - "AGENTS.md L94 + .cursor/rules/css.mdc L9: 'All styles live in assets/jeffrey.css. Do not create additional CSS files.'"
+        - "AGENTS.md L94 + .cursor/rules/html.mdc L28: never <style> blocks or inline style attributes"
+      deletion_or_reset_path: "git revert"
+      owner_hint: "jeffrey"
+      evidence: {path: "AGENTS.md", lines: "94"}
+    - name: "vite.config.js (build entry registry)"
+      engine_or_type: "JavaScript module"
+      role: "authoritative-durable"  # the audit's contract for which pages exist
+      connection_config_path: "vite.config.js"
+      access_rules:
+        - "Ask-first to change per AGENTS.md L100"
+      deletion_or_reset_path: "git revert"
+      owner_hint: "jeffrey"
+      evidence: {path: "AGENTS.md", lines: "100"}
+    - name: "experiments/ (non-deployed prototypes)"
+      engine_or_type: "Filesystem (3 HTML + svg-src/ + timeline-* files)"
+      role: "derived-durable"  # exists in repo, excluded from CI + production builds
+      connection_config_path: "experiments/"
+      access_rules:
+        - "biome.json L4: files.includes excludes experiments/"
+        - "vite.config.js L23-37: experiments/ NOT in rollupOptions.input — not built"
+        - ".cursor/rules/html.mdc L40: 'Pages under experiments/ are excluded from CI and deployment — safe to prototype freely there.'"
+      deletion_or_reset_path: "manual rm"
+      owner_hint: "jeffrey"
+      evidence: {path: "biome.json", lines: "4"}
+  caches: []
+  queues: []
+  workflow_engines: []
+  durable_execution: []
+  background_execution: []
+  callback_receivers: []
+  object_stores: []
+  vector_stores: []
+  retrieval_pipelines: []
+  external_services:
+    - name: "GitHub Pages (https://jvjohnson.dev custom domain via CNAME)"
+      role: "deployment-target"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "72-83"}
+    - name: "GitHub Actions (CI/CD platform)"
+      role: "build-and-deploy"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "1-83"}
+    - name: "new-direction-2026 (sibling repo — content source)"
+      role: "content-source"  # this repo presents what new-direction-2026 produces per its AGENTS.md L131-142 content pipeline
+      evidence: {path: "../new-direction-2026/AGENTS.md", lines: "131-142"}  # cross-repo cite
+  model_providers: []
+  secrets_managers: []  # none in-repo; .env files denied at CLAUDE.md L47 and .claude/settings.json L15-20
+  observability_backends: []  # no analytics, no tracking — AGENTS.md L112 forbids tracking scripts
+  policy_engines: []
+  computer_use_harnesses: []
+  browser_use_harnesses: []
+  local_development_infrastructure:
+    - name: "Vite dev server (port 5173)"
+      kind: "dev-server"
+      evidence: {path: "vite.config.js", lines: "55-60"}
+    - name: "Vite preview server (port 4173)"
+      kind: "preview-server"
+      evidence: {path: "vite.config.js", lines: "48-53"}
+    - name: "mise task runner"
+      kind: "task-runner"
+      evidence: {path: ".mise.toml", lines: "4-42"}
+    - name: "GitHub Actions CI (quality + build + deploy jobs)"
+      kind: "ci"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "20-83"}
+
+# ---------- AGENT AND AUTOMATION SURFACE ----------
+agent_surface:
+  model_call_sites: []  # static site; no LLM calls at runtime
+  agent_frameworks:
+    - name: "Claude Code (claude-opus-4-6)"
+      version: "claude-opus-4-6"
+      evidence: {path: "CLAUDE.md", lines: "7"}
+    - name: "Cursor IDE"
+      version: "unknown"
+      evidence: {path: ".cursor/rules/project.mdc", lines: "1-4"}
+  tools:
+    count: 0  # no in-repo Python/JS tools beyond the build pipeline itself
+    locations: []
+    schemas_defined: "absent"
+    schema_tech: "absent"
+    registry_path: "none"
+    search_notes: "No tools/ directory. assets/menu.js is the only non-build runtime JS; not a tool. mise tasks (.mise.toml L4-42) wrap npm scripts; not project-defined tools."
+  protocol_surfaces:
+    mcp:
+      present: true  # context7 declared in CLAUDE.md L27-33 as the project's MCP server
+      role: "client"  # this repo consumes context7; it does not host an MCP server
+      protocol_version: "unknown (not pinned in CLAUDE.md; context7 is operator-installed)"
+      tools: 2  # context7 exposes resolve-library-id + query-docs
+      resources: "unknown"
+      resource_templates: "unknown"
+      prompts: "unknown"
+      roots_exposed: false
+      sampling_supported: "unknown"
+      elicitation_supported: "unknown"
+      completion_supported: "unknown"
+      authorization_metadata: "absent"
+      configured_servers:
+        - id: "context7"
+          package: "operator-installed; not declared in-repo via .mcp.json"
+          version: "unpinned"
+          scope: "documentation lookup for Vite, Biome, or other libs"
+      evidence:
+        - path: "CLAUDE.md"
+          lines: "27-33"
+      search_notes: "No .mcp.json file at repo root (verified). context7 is referenced as available via Claude Code's global MCP config, not project-scoped."
+    a2a:
+      present: false
+      protocol_version: "n/a"
+      agent_cards: []
+      advertised_skills: 0
+      task_state_contracts: "absent"
+      streaming_supported: false
+      push_notifications_supported: false
+      registry_discovery: "absent"
+      authentication_schemes: []
+      search_notes: "Grepped for 'agent-card', 'a2a', '.well-known/agent.json' — zero matches."
+      evidence: []
+    workflow_contracts:
+      api_descriptions: []
+      workflow_descriptions: []
+      overlays: []
+      schema_dialects: []
+      search_notes: "No OpenAPI / Arazzo / JSON Schema in this repo."
+  subagents:
+    count: 0  # no .claude/agents/ directory; AGENTS.md L63 references Claude Code's built-in Task tool agents (Explore, general-purpose), not project-defined subagents
+    locations: []
+    typed_boundaries: "n/a"
+    manifest_path: "none"
+    search_notes: "Verified no .claude/agents/ directory. AGENTS.md L63 'Task subagents' are platform built-ins."
+  resources:
+    count: 0
+    locations: []
+  prompts:
+    count: 9  # 3 .claude/skills + 3 .cursor/rules + AGENTS.md + CLAUDE.md + 1 GitHub Actions inline (deploy.yml not a prompt but a workflow contract — excluded). DEV_GUIDE.md and THEMES.md are documentation, not prompts.
+    locations:
+      - ".claude/skills/fix-issue/SKILL.md"
+      - ".claude/skills/review-diff/SKILL.md"
+      - ".claude/skills/ship-small/SKILL.md"
+      - ".cursor/rules/project.mdc"
+      - ".cursor/rules/css.mdc"
+      - ".cursor/rules/html.mdc"
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "DEV_GUIDE.md"  # close-to-prompt: developer-facing instructions; classified below as documentation-about-prompts
+    surface_types:
+      runtime_production: 0
+      runtime_nonproduction: 3  # 3 Claude SKILL.md files — invoked by Claude Code on /fix-issue, /review-diff, /ship-small
+      authoring_artifact: 0  # no template prompts
+      documentation_about_prompts: 1  # DEV_GUIDE.md describes architecture but contradicts AGENTS.md on spacing scale (routed AAF-VGH-002)
+      skill_or_sop: 5  # AGENTS.md, CLAUDE.md, .cursor/rules × 3
+      server_exposed_prompt: 0
+      unknown: 0
+    templating_tech: "none"
+    search_notes: |
+      Classified per §8.0. The 3 Claude SKILL.md files are runtime-
+      nonproduction (operator invokes /fix-issue etc.). The 3 Cursor rules
+      are skill-or-sop (auto-attached by Cursor IDE per file globs in their
+      frontmatter). AGENTS.md and CLAUDE.md are skill-or-sop per §6.1 #10.
+      DEV_GUIDE.md is documentation-about-prompts because it describes
+      architecture and design system in a way that informs but doesn't
+      direct agent behavior; its contradiction with AGENTS.md spacing scale
+      is itself stale-authoring-artifact behavior. THEMES.md is multi-
+      theme documentation — not classified as a prompt (it's pure docs).
+  context_assembly:
+    retrieval_modules: []
+    memory_assemblers: []
+    tool_description_registries: []
+    skill_loaders:
+      - ".claude/skills/ (auto-loaded by Claude Code)"
+      - ".cursor/rules/ (auto-attached per file globs)"
+  loops_detected: []
+  guardrails_detected:
+    - id: "claude-settings-deny-secrets"
+      description: "Claude Code denies Read+Write on .env / .env.* / .envrc.local; denies Write+Edit on node_modules/ and dist/"
+      path: ".claude/settings.json"
+      lines: "14-25"
+    - id: "claude-posttooluse-biome-format"
+      description: "PostToolUse hook auto-formats .js/.json/.css files after every Write/Edit via npx biome format --write. Runs with 10s timeout."
+      path: ".claude/settings.json"
+      lines: "27-37"
+    - id: "agents-md-never-list"
+      description: "Hard 'Never' rules: commit secrets/keys/tokens; modify node_modules/dist/package-lock.json; add JS unless necessary; disable Biome rules; break existing URLs; add external fonts/tracking/heavy deps"
+      path: "AGENTS.md"
+      lines: "105-112"
+    - id: "agents-md-ask-first-list"
+      description: "Ask-first: new npm deps; new HTML pages; vite.config.js changes; deploy.yml changes; design-system changes; structural/navigation changes"
+      path: "AGENTS.md"
+      lines: "96-103"
+    - id: "cursor-rules-no-style-blocks"
+      description: ".cursor/rules/html.mdc L28 forbids <style> blocks and inline style=\"\" attributes; reinforces single-CSS-file invariant"
+      path: ".cursor/rules/html.mdc"
+      lines: "28"
+  handoffs_detected:
+    - id: "content-pipeline-from-sibling"
+      description: "This repo is the presentation-layer consumer of content produced in sibling new-direction-2026 per its AGENTS.md L131-142 content pipeline (6 source documents → website destinations). Manual handoff via sync-check / sync-portfolio skills in the sibling."
+      path: "../new-direction-2026/AGENTS.md"
+      lines: "131-142"
+  memory_surfaces_detected:
+    - id: "claude-settings-permissions"
+      class: "operator-rules-memory"
+      location: ".claude/settings.json"
+      deletion_or_reset_hint: "git revert / manual edit"
+      ownership: "jeffrey"
+      authority_notes: "Project-scoped permission grants for Claude Code. The allow/deny lists are this repo's only machine-readable authority surface."
+      evidence: {path: ".claude/settings.json", lines: "2-26"}
+    - id: "claude-settings-local-untracked"
+      class: "operator-rules-memory"
+      location: ".claude/settings.local.json"
+      deletion_or_reset_hint: "rm; gitignored so changes do not persist across clones"
+      ownership: "jeffrey (operator-local)"
+      authority_notes: "Untracked (gitignored implicitly via *.local naming). Whether the operator has overrides here is invisible to the audit."
+      evidence: {path: ".claude/settings.local.json", lines: "1"}
+  execution_modes_detected:
+    - id: "vite-build-batch"
+      mode: "batch"
+      lifecycle_hint: "GitHub Actions: quality job → build job → deploy job (deploy gated on PR=false). Each push to main triggers full pipeline."
+      callback_or_resume_hint: "n/a; deploy is final"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "20-83"}
+    - id: "claude-posttooluse-event-triggered"
+      mode: "event-triggered"
+      lifecycle_hint: "After every Write or Edit tool use, hook fires; biome formats .js/.json/.css; 10s timeout"
+      callback_or_resume_hint: "Hook is fire-and-forget; exit 0 always (errors silenced via 2>/dev/null)"
+      evidence: {path: ".claude/settings.json", lines: "27-37"}
+    - id: "vite-dev-streaming"
+      mode: "streaming"
+      lifecycle_hint: "Vite dev server hot-reloads on file change; operator-run via `mise run dev` at port 5173"
+      callback_or_resume_hint: "n/a; operator stops"
+      evidence: {path: "vite.config.js", lines: "55-60"}
+  background_agents: []  # no cron, no webhooks beyond GitHub-triggered CI
+
+automation_surface:
+  scripts_or_workflows:
+    - name: "deploy.yml (Deploy Portfolio)"
+      path: ".github/workflows/deploy.yml"
+      can_modify: "artifacts"  # creates dist/ artifact + pushes to GitHub Pages
+      approval_hint: "auto on push to main; PR runs quality+build only (deploy gated)"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "1-83"}
+    - name: "mise tasks (dev/build/preview/lint/format/clean/deploy/ci)"
+      path: ".mise.toml"
+      can_modify: "artifacts (build creates dist/; deploy runs preview; lint:fix and format auto-fix)"
+      approval_hint: "operator-run; lint:fix and format are auto-write"
+      evidence: {path: ".mise.toml", lines: "4-42"}
+    - name: "fix-issue skill"
+      path: ".claude/skills/fix-issue/SKILL.md"
+      can_modify: "code,artifacts"  # source-edit + commit
+      approval_hint: "operator-invoked; explicit commit step at L6"
+      evidence: {path: ".claude/skills/fix-issue/SKILL.md", lines: "1-6"}
+    - name: "review-diff skill"
+      path: ".claude/skills/review-diff/SKILL.md"
+      can_modify: "none"  # checklist only
+      approval_hint: "operator-invoked"
+      evidence: {path: ".claude/skills/review-diff/SKILL.md", lines: "1-18"}
+    - name: "ship-small skill"
+      path: ".claude/skills/ship-small/SKILL.md"
+      can_modify: "none"  # discipline rule
+      approval_hint: "operator-invoked"
+      evidence: {path: ".claude/skills/ship-small/SKILL.md", lines: "1-11"}
+    - name: "PostToolUse biome auto-format hook"
+      path: ".claude/settings.json L27-37"
+      can_modify: "code (writes formatted version of .js/.json/.css)"
+      approval_hint: "auto on Write/Edit; no operator confirmation"
+      evidence: {path: ".claude/settings.json", lines: "27-37"}
+
+# ---------- CONVENTIONS ----------
+conventions:
+  rules:
+    # Always rules
+    - classification: required
+      text: "Edit only source files + config that match the task"
+      topic: agent-behavior
+      source: {type: file, path: AGENTS.md, lines: "90"}
+    - classification: required
+      text: "Follow the existing design system (CSS custom properties in jeffrey.css)"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "91"}
+    - classification: required
+      text: "Use semantic HTML5 with proper heading hierarchy"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "92"}
+    - classification: required
+      text: "Maintain consistent page structure: header → main → footer"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "93"}
+    - classification: required
+      text: "Keep all styles in assets/jeffrey.css (single CSS file)"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "94"}
+    - classification: required
+      text: "All styles live in assets/jeffrey.css. Do not create additional CSS files."
+      topic: other
+      source: {type: file, path: ".cursor/rules/css.mdc", lines: "9"}
+    # Ask first rules
+    - classification: conditional
+      text: "Ask first before adding new npm dependencies"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "98"}
+    - classification: conditional
+      text: "Ask first before adding new HTML entry points (pages)"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "99"}
+    - classification: conditional
+      text: "Ask first before changing vite.config.js build configuration"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "100"}
+    - classification: conditional
+      text: "Ask first before changing .github/workflows/deploy.yml"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "101"}
+    - classification: conditional
+      text: "Ask first before changing the design system (colors, typography, spacing scale)"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "102"}
+    - classification: conditional
+      text: "Ask first before making structural changes affecting navigation or site map"
+      topic: approval
+      source: {type: file, path: AGENTS.md, lines: "103"}
+    # Never rules
+    - classification: forbidden
+      text: "Never commit secrets, keys, or tokens"
+      topic: secrets
+      source: {type: file, path: AGENTS.md, lines: "107"}
+    - classification: forbidden
+      text: "Never modify node_modules/, dist/, or package-lock.json directly"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "108"}
+    - classification: forbidden
+      text: "Never add JavaScript unless absolutely necessary (site is intentionally JS-minimal)"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "109"}
+    - classification: forbidden
+      text: "Never disable Biome rules to silence errors"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "110"}
+    - classification: forbidden
+      text: "Never break existing page URLs (they may be bookmarked or linked externally)"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "111"}
+    - classification: forbidden
+      text: "Never add external font loading, tracking scripts, or heavy dependencies"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "112"}
+    - classification: forbidden
+      text: "Never add <style> blocks or inline style attributes — everything goes in assets/jeffrey.css"
+      topic: other
+      source: {type: file, path: ".cursor/rules/project.mdc", lines: "31"}
+    - classification: forbidden
+      text: "Read denied: .env, .env.*, .envrc.local (Claude permissions)"
+      topic: secrets
+      source: {type: file, path: ".claude/settings.json", lines: "15-17"}
+    - classification: forbidden
+      text: "Write/Edit denied: node_modules/, dist/ (Claude permissions)"
+      topic: other
+      source: {type: file, path: ".claude/settings.json", lines: "21-24"}
+    # Allow / process rules
+    - classification: required
+      text: "Allowlisted Bash commands: npm, npx, biome, git, gh, mise, ls, cat, mkdir"
+      topic: approval
+      source: {type: file, path: ".claude/settings.json", lines: "3-13"}
+    - classification: process
+      text: "Plan mode: Enter plan mode before non-trivial changes — explore → draft plan with file paths → get approval → implement"
+      topic: branching
+      source: {type: file, path: CLAUDE.md, lines: "8"}
+    - classification: process
+      text: "Workflow: Read relevant files before proposing changes — never guess at structure. Non-trivial: plan mode → explore → written plan → implement. Verify with mise run ci."
+      topic: agent-behavior
+      source: {type: file, path: CLAUDE.md, lines: "14-17"}
+    - classification: process
+      text: "Visual changes: run mise run dev, check both desktop and mobile (768px)"
+      topic: testing
+      source: {type: file, path: CLAUDE.md, lines: "17"}
+    - classification: process
+      text: "context7 MCP: Always call resolve-library-id first to get the correct library ID, then pass it to query-docs"
+      topic: agent-behavior
+      source: {type: file, path: CLAUDE.md, lines: "33"}
+    - classification: process
+      text: "DoD: mise run ci passes (lint + format-check + build); all pages render; new pages added to vite.config.js; responsive layout at 768px; semantic HTML preserved; design system followed"
+      topic: testing
+      source: {type: file, path: AGENTS.md, lines: "48-53"}
+    # Code style rules
+    - classification: required
+      text: "HTML: 2-space indent, semantic elements, ARIA labels on external links"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "125"}
+    - classification: required
+      text: "CSS: Custom properties in :root, logical grouping, responsive must work"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "126"}
+    - classification: required
+      text: "JS (if any): Biome-enforced — single quotes, no semicolons (unless needed), 100-char line width"
+      topic: other
+      source: {type: file, path: AGENTS.md, lines: "127"}
+    - classification: required
+      text: "Commits: Conventional format type(scope): description — signed with GPG"
+      topic: branching
+      source: {type: file, path: AGENTS.md, lines: "128"}
+    - classification: required
+      text: "External links: always add aria-label and rel='noopener noreferrer'"
+      topic: other
+      source: {type: file, path: ".cursor/rules/html.mdc", lines: "23"}
+    # Precedence
+    - classification: precedence
+      text: "Primary project contract: @AGENTS.md (CLAUDE.md is a shim)"
+      topic: companion-docs
+      source: {type: file, path: CLAUDE.md, lines: "3"}
+    - classification: precedence
+      text: "Cursor rules apply per file glob: project.mdc alwaysApply; css.mdc on assets/**/*.css; html.mdc on *.html, projects/*.html, experience/*.html, research/*.html"
+      topic: companion-docs
+      source: {type: file, path: ".cursor/rules/css.mdc", lines: "1-5"}
+  result_or_error_pattern:
+    in_use: false
+    access_field: "n/a"
+    base_type: "n/a"
+    evidence: {path: "assets/menu.js", lines: "1"}  # only runtime JS
+  error_handling_style: "n/a"  # static HTML; vanilla JS with no error patterns to classify
+  git_hooks_policy: "none"
+  type_check_policy: "none"
+  documented_language_style_guide: "biome (biome.json L11-34); ruleset: recommended + complexity.noImportantStyles=warn + style.noDescendingSpecificity=warn; formatter: 2-space, 100-char, single quotes, semicolons asNeeded"
+  audit_attention_search_notes:
+    git_hooks: ".git/hooks/ default samples only (no active hooks). No husky/lefthook/etc."
+    pre_commit: "No .pre-commit-config.yaml."
+
+# ---------- GOVERNANCE ----------
+governance:
+  readme_paths:
+    - "README.md"
+  contributing_paths: []
+  architecture_docs:
+    - "AGENTS.md"
+    - "CLAUDE.md"
+    - "DEV_GUIDE.md"
+    - "THEMES.md"
+    - ".cursor/rules/project.mdc"
+    - ".cursor/rules/css.mdc"
+    - ".cursor/rules/html.mdc"
+  glossary_paths: []
+  security_docs: []  # no SECURITY.md
+  release_docs:
+    - "deploy.yml is the de-facto release record"
+  adr:
+    directories: []  # no ADR catalog
+    count: 0
+    naming_convention: "none"
+    supersession_chain_clean: "n/a"
+    template_includes_does_not_decide: false
+    search_notes: "No docs/decisions/ or docs/adr/. Decisions are implicit in AGENTS.md changes + CLAUDE.md changes + commit messages."
+  agent_instruction_files:
+    - "AGENTS.md"
+    - "CLAUDE.md"
+    - ".claude/settings.json"
+    - ".cursor/rules/project.mdc"
+    - ".cursor/rules/css.mdc"
+    - ".cursor/rules/html.mdc"
+  skill_md_files:
+    - ".claude/skills/fix-issue/SKILL.md"
+    - ".claude/skills/review-diff/SKILL.md"
+    - ".claude/skills/ship-small/SKILL.md"
+  ci_workflows:
+    - ".github/workflows/deploy.yml"
+  existing_fitness_functions:
+    - name: "biome check (lint gate)"
+      enforcement_category: "static-analysis"
+      config: "biome.json [linter] — recommended + complexity.noImportantStyles=warn + style.noDescendingSpecificity=warn"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "36-37"}
+    - name: "biome format check (format gate)"
+      enforcement_category: "static-analysis"
+      config: "biome.json [formatter] — 2-space, 100-char"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "39-40"}
+    - name: "vite build (compile gate)"
+      enforcement_category: "release-gate"
+      config: "vite.config.js + package.json scripts.build"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "59-60"}
+    - name: "GitHub Pages deploy (gated on quality + build success + main-branch)"
+      enforcement_category: "release-gate"
+      config: "deploy.yml needs: quality, then needs: build; deploy job gated on github.event_name != 'pull_request'"
+      evidence: {path: ".github/workflows/deploy.yml", lines: "44-83"}
+    - name: "Claude Code PostToolUse biome auto-format"
+      enforcement_category: "static-analysis"
+      config: ".claude/settings.json L27-37"
+      evidence: {path: ".claude/settings.json", lines: "27-37"}
+    - name: "Claude Code permissions deny (.env, node_modules, dist)"
+      enforcement_category: "authority-manifest"
+      config: ".claude/settings.json L14-25"
+      evidence: {path: ".claude/settings.json", lines: "14-25"}
+  existing_audit_artifacts:
+    - path: "profile/2026-05-21/project_profile.yaml (this file)"
+      role: "input-context"
+    - path: "profile/2026-05-21/profile-discovery.md (companion narrative)"
+      role: "input-context"
+  companion_artifacts:
+    - path: "/Users/verlyn13/Downloads/audit spec v3 2/agentic-architecture-audit-v3.1-package/agentic-audit-spec-v3.md"
+      role: "authority-spec"
+      targets_spec_version: "Agentic Architecture Audit Specification v3.1, 2026-05-08"
+      drift_status: "aligned"
+      treatment: "operational authority for THIS audit cycle"
+    - path: "/Users/verlyn13/Downloads/audit spec v3 2/agentic-architecture-audit-v3.1-package/project-profile-directive.md"
+      role: "profile-directive"
+      targets_spec_version: "Project Profile Discovery Directive v1.2, 2026-05-08"
+      drift_status: "aligned"
+      treatment: "operational authority for THIS profile"
+    - path: "/Users/verlyn13/Downloads/audit spec v3 2/agentic-architecture-audit-v3.1-package/audit-kickoff-prompt.md"
+      role: "kickoff-prompt"
+      targets_spec_version: "Audit Spec v3.1 + Profile Directive v1.2"
+      drift_status: "aligned"
+      treatment: "derived guidance"
+    - path: "/Users/verlyn13/Downloads/audit spec v3 2/agentic-architecture-audit-v3.1-package/audit-spec-friendly-explainer.md"
+      role: "friendly-explainer"
+      targets_spec_version: "Audit Spec v3.1 + Profile Directive v1.2"
+      drift_status: "aligned"
+      treatment: "derived guidance"
+    - path: "/Users/verlyn13/Downloads/audit spec v3 2/agentic-architecture-audit-v3.1-package/audit-directive-set-manifest.md"
+      role: "manifest"
+      targets_spec_version: "package date 2026-05-08"
+      drift_status: "aligned"
+      treatment: "drift-control manifest"
+  cycle_history_path: "none"
+
+# ---------- CLAIMED STRUCTURE ----------
+claimed_bounded_contexts:
+  - name: "portfolio-pages"
+    directory_hints:
+      - "index.html"
+      - "cv.html"
+      - "contact.html"
+      - "projects/"
+      - "experience/"
+      - "research/"
+      - "assets/"
+    owner: "jeffrey"
+    source:
+      type: "operator-interview"
+      path: null
+      lines: null
+    status: "claimed"
+    notes: |
+      Operator confirmed Phase G 2026-05-21. Authority basis: 11 deployed
+      HTML pages + assets/jeffrey.css + assets/menu.js. The page set is
+      defined by vite.config.js L23-37 (rollupOptions.input). Audit
+      Phase 2 should verify all 11 entries actually exist and render.
+  - name: "build-system"
+    directory_hints:
+      - "vite.config.js"
+      - "biome.json"
+      - ".mise.toml"
+      - "package.json"
+      - ".github/workflows/deploy.yml"
+    owner: "jeffrey"
+    source:
+      type: "operator-interview"
+      path: null
+      lines: null
+    status: "claimed"
+    notes: |
+      Operator confirmed Phase G 2026-05-21. Authority basis: build +
+      lint/format + CI/CD configuration. All files Ask-first-protected
+      per AGENTS.md L100-101.
+  - name: "agent-governance"
+    directory_hints:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - ".claude/"
+      - ".cursor/"
+    owner: "jeffrey"
+    source:
+      type: "operator-interview"
+      path: null
+      lines: null
+    status: "claimed"
+    notes: |
+      Operator confirmed Phase G 2026-05-21. New context not in prior
+      shallow profile. Authority basis: agent instruction documents +
+      .claude/settings.json + 3 .claude/skills + 3 .cursor/rules. Audit
+      Phase 2 should verify parity with sibling repos' agent governance
+      since this repo's CLAUDE.md L3 'Primary project contract: @AGENTS.md'
+      mirrors the new-direction-2026 / planning-summer-2026 pattern.
+  - name: "experiments-sandbox"
+    directory_hints:
+      - "experiments/"
+    owner: "jeffrey"
+    source:
+      type: "operator-interview"
+      path: null
+      lines: null
+    status: "claimed"
+    notes: |
+      Operator confirmed Phase G 2026-05-21. New context not in prior
+      shallow profile. Authority basis: experiments/ explicitly excluded
+      from CI (biome.json L4) and deployment (vite.config.js doesn't list
+      experiments/ in rollupOptions.input). Distinct lifecycle: 'safe to
+      prototype freely' per .cursor/rules/html.mdc L40.
+
+claimed_ownership:
+  - unit_or_context: "portfolio-pages"
+    owner: "jeffrey"
+    source: "operator-interview"
+  - unit_or_context: "build-system"
+    owner: "jeffrey"
+    source: "operator-interview"
+  - unit_or_context: "agent-governance"
+    owner: "jeffrey"
+    source: "operator-interview"
+  - unit_or_context: "experiments-sandbox"
+    owner: "jeffrey"
+    source: "operator-interview"
+  - unit_or_context: "portfolio-website"
+    owner: "jeffrey"
+    source: "docs"
+  - unit_or_context: "claude-agent-bundle"
+    owner: "jeffrey"
+    source: "docs"
+  - unit_or_context: "cursor-agent-bundle"
+    owner: "jeffrey"
+    source: "docs"
+
+# ---------- BASELINES ----------
+baselines:
+  evals:
+    suites_directory: "none"
+    suite_count: 0
+    modes_present: []
+    golden_datasets_present: false
+    ci_integrated: false  # no behavior-quality evals; only static checks
+    release_gate: false
+    scoring_methods: []
+    judge_calibration_present: false
+    last_known_pass_rate: "n/a"
+    search_notes: |
+      No test runner declared. No eval suite. Visual rendering is operator-
+      verified per CLAUDE.md L17 (mise run dev + check at 768px). lychee
+      link-check (used in sibling planning-summer-2026) is NOT in this
+      repo's CI. AGENTS.md L48 'DoD' lists 'mise run ci passes' as quality
+      gate but ci = lint + format-check + build, not behavior-quality.
+  observability:
+    tracing: "none"
+    semantic_conventions_used: "none"
+    semantic_convention_version: "n/a"
+    semantic_convention_stability: "n/a"
+    genai_semconv_used: "n/a"
+    agent_or_mcp_semconv_used: "n/a"
+    cost_attribution: "none"
+    latency_attribution: "none"
+    quality_attribution: "none"
+    search_notes: "No analytics, no telemetry — AGENTS.md L112 forbids tracking scripts. Static site by design."
+  authority:
+    approval_gates:
+      - tool_or_action: "Add new npm dependency"
+        policy: "human-in-loop"
+        approval_mode: "ask"
+        precedence_hint: "AGENTS.md L98 Ask-first"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "98"}
+      - tool_or_action: "Add new HTML entry point (page)"
+        policy: "human-in-loop"
+        approval_mode: "ask"
+        precedence_hint: "AGENTS.md L99 + .cursor/rules/html.mdc L34 (requires vite.config.js update too)"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "99"}
+      - tool_or_action: "Change vite.config.js"
+        policy: "human-in-loop"
+        approval_mode: "ask"
+        precedence_hint: "AGENTS.md L100"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "100"}
+      - tool_or_action: "Change .github/workflows/deploy.yml"
+        policy: "human-in-loop"
+        approval_mode: "ask"
+        precedence_hint: "AGENTS.md L101"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "101"}
+      - tool_or_action: "Change design system (colors/typography/spacing)"
+        policy: "human-in-loop"
+        approval_mode: "ask"
+        precedence_hint: "AGENTS.md L102 + .cursor/rules/project.mdc L36"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "102"}
+      - tool_or_action: "Read .env / .env.* / .envrc.local"
+        policy: "blocked"
+        approval_mode: "deny"
+        precedence_hint: ".claude/settings.json L15-17 + CLAUDE.md L47"
+        bypass_modes: []
+        evidence: {path: ".claude/settings.json", lines: "15-17"}
+      - tool_or_action: "Write/Edit node_modules/ or dist/"
+        policy: "blocked"
+        approval_mode: "deny"
+        precedence_hint: ".claude/settings.json L18-24"
+        bypass_modes: []
+        evidence: {path: ".claude/settings.json", lines: "18-24"}
+      - tool_or_action: "Commit secrets/keys/tokens"
+        policy: "blocked"
+        approval_mode: "deny"
+        precedence_hint: "AGENTS.md L107 Never"
+        bypass_modes: []
+        evidence: {path: "AGENTS.md", lines: "107"}
+      - tool_or_action: "Bash: npm/npx/biome/git/gh/mise/ls/cat/mkdir"
+        policy: "auto-approved"
+        approval_mode: "allow"
+        precedence_hint: ".claude/settings.json L3-13 explicit allowlist"
+        bypass_modes: []
+        evidence: {path: ".claude/settings.json", lines: "3-13"}
+      - tool_or_action: "Deploy to GitHub Pages"
+        policy: "auto-approved"
+        approval_mode: "allow"
+        precedence_hint: "deploy.yml gates on PR=false; on main push, auto-deploy after quality+build pass"
+        bypass_modes: []
+        evidence: {path: ".github/workflows/deploy.yml", lines: "72-83"}
+    protected_paths:
+      - ".env"
+      - ".env.*"
+      - ".envrc.local"
+      - "node_modules/**"
+      - "dist/**"
+      - "package-lock.json"  # forbidden to modify per AGENTS.md L108
+      - "vite.config.js (Ask-first)"
+      - ".github/workflows/deploy.yml (Ask-first)"
+    sandbox_roots:
+      - "/Users/verlyn13/Repos/verlyn13/verlyn13.github.io (no MCP filesystem scope declared in-repo)"
+    browser_scope: []
+    filesystem_scope:
+      - "Repo root (operator-controlled via Claude Code's global settings)"
+    callback_authentication: "n/a"
+    secondary_credentials:
+      - "GitHub Actions OIDC token for github-pages deployment (id-token: write per deploy.yml L13)"
+    hosted_or_local_agent_execution: "hybrid"  # Claude Code + Cursor local; GitHub Actions hosted
+    default_agent_authority: "read-write"  # broad write to source files + config (except Ask-first paths); deny on .env + node_modules + dist
+    search_notes: |
+      Authority surface assembled from .claude/settings.json (9 allow + 9
+      deny patterns) + AGENTS.md hard rules (6 Ask-first + 6 Never) +
+      .cursor/rules/project.mdc Never list + deploy.yml permissions
+      (contents:read, pages:write, id-token:write). Notable contrast vs
+      sibling repos: this one has the most aggressive auto-format (PostTool
+      Use hook) and the most explicit deny patterns in settings.json.
+  provenance:
+    runtime_action_emission: "none"  # no runtime LLM actions; build outputs are static HTML
+    content_provenance_position: "absent"  # site does not advertise content credentials; content is operator-authored
+    build_source_provenance_position: "partial"  # GitHub Actions provides build provenance via SLSA-like attestation when configured; deploy.yml uses actions/deploy-pages@v4 which Github Pages signs, but no explicit SLSA artifact is declared
+    format: "none"
+    evidence: {path: ".github/workflows/deploy.yml", lines: "10-13"}
+    search_notes: |
+      Grepped for 'provenance', 'attestation', 'slsa', 'sigstore' in
+      package.json, deploy.yml, vite.config.js — zero matches. The
+      build/source provenance is partial because actions/deploy-pages@v4
+      embeds metadata about the deployment (run ID, commit SHA) in the
+      Pages artifact, but no explicit attestation is declared.
+
+# ---------- VERSIONING ----------
+versioning_conventions:
+  http_apis: "n/a"
+  schemas: "none"
+  workflow_contracts: "n/a"
+  protocol_surfaces: "n/a"  # context7 MCP unpinned
+  semantic_conventions: "n/a"
+  prompts: "none"  # SKILL.md files have no version frontmatter
+  tools: "none"
+  resources: "none"
+  subagents: "none"
+  policies: "none"
+  provenance_records: "n/a"
+  eval_datasets: "n/a"
+  public_sdks: "n/a"
+  evidence: {path: "package.json", lines: "3"}  # version: 1.0.0 — only package-level version
+
+# ---------- SCOPE, STRATEGY, AND DEBT ----------
+scope:
+  include_paths:
+    - "/Users/verlyn13/Repos/verlyn13/verlyn13.github.io/**"
+  exclude_paths:
+    - "node_modules/**"
+    - "dist/**"
+    - "experiments/**"  # explicitly out of CI per biome.json L4 and out of build per vite.config.js
+    - ".env*"
+    - ".claude/settings.local.json"
+  focus_question: |
+    Two operator-stated questions:
+    (1) Does the prominent placement of MAAT Framework across the
+        portfolio (17+ references including site favicon, README
+        lead-paragraph, dedicated /projects/maat.html, navigation
+        card at index.html L117, experience/index.html L326, cv.html L83,
+        research/index.html L141) match the operator's stated minor/
+        experimental positioning, or has the website drifted into
+        treating MAAT as a flagship project?
+    (2) Are the source-of-truth contracts to the sibling new-direction-
+        2026 repo (per its AGENTS.md L131-142) actually consistent —
+        does the website reflect the content the sibling source claims?
+  audit_cadence: "post-refactor"
+
+strategic_themes:
+  - name: "career-transition-readiness"
+    description: |
+      Custom operator-defined theme (matches sibling new-direction-2026).
+      The website IS the presentation layer of the career transition.
+      Findings that block or accelerate transition into Research
+      Engineering roles weighted 1.5× direct relevance. Specifically:
+      narrative consistency (MAAT positioning), source-of-truth fidelity
+      (this site reflects what the source-repo decides), and visual
+      design discipline (a portfolio site's credibility is in details).
+    weighting:
+      dimensions:  # custom mapping; matches sibling new-direction-2026's career-transition-readiness theme
+        - "11.3 Contract discipline"  # cross-repo source→presentation chain
+        - "11.10 Governance and audit trail"  # the DEV_GUIDE vs AGENTS.md contradiction is governance debt
+        - "11.4 Tool surface clarity"
+        - "11.5 State and memory clarity"  # operator-rules-memory in .claude/settings.json
+      multiplier: 1.5
+    source: "operator-interview"
+    evidence: {path: null, lines: null}
+    unchanged_since: "first-snapshot"
+
+known_debt:
+  - area: "maat-framework-narrative-dominance"
+    description: |
+      MAAT Framework is operator-classified as minor/experimental but
+      appears prominently across the portfolio:
+      - Site favicon is `assets/icons/maat_feather_16.svg` linked on
+        EVERY page (10 occurrences across index, cv, contact, all 6
+        projects/*.html, experience/index.html, research/index.html).
+      - README.md L10-11 leads with MAAT as one of "two primary projects".
+      - Dedicated /projects/maat.html (project page).
+      - Navigation card at index.html L117 ("MAAT Framework →").
+      - Body content at index.html L44 (lead paragraph), L76 (CS theory
+        section), L117 (project nav).
+      - experience/index.html L326 ("project__name: MAAT Framework").
+      - cv.html L83 (h3: MAAT Framework - Multi-Agent Orchestration).
+      - research/index.html L141 (formal methods → policy verification).
+      Sibling repos have parallel debt items (new-direction-2026 same
+      flag; planning-summer-2026 does not mention MAAT). The site
+      visually treats MAAT as flagship; operator intent is supporting.
+    raised_at: "2026-05-21"
+    source: "operator-interview"
+    status: "open"
+    resolved_in_cycle: null
+  - area: "dev-guide-vs-agents-md-design-system-contradiction"
+    description: |
+      DEV_GUIDE.md L13-15 declares an 8-point grid:
+      'Spacing variables: --space-xs (4px) through --space-2xl (64px)'.
+      AGENTS.md L116 + .cursor/rules/project.mdc L42 + .cursor/rules/
+      css.mdc L25 declare a rem-based scale:
+      '--space-1 through --space-5'.
+      The two are mutually exclusive scales. DEV_GUIDE.md appears
+      stale relative to the current jeffrey.css implementation.
+      DEV_GUIDE.md L17-20 also references 'Serif (Georgia) for body
+      text' which contradicts AGENTS.md L118's 'System sans-serif
+      (ui-sans-serif, system-ui)'. DEV_GUIDE.md is documentation-
+      about-prompts that drifted from the authoritative AGENTS.md +
+      .cursor/rules trio.
+    raised_at: "2026-05-21"
+    source: "operator-interview"
+    status: "open"
+    resolved_in_cycle: null
+  - area: "biome-warnings-plus-stale-copyright"
+    description: |
+      Two minor governance items bundled:
+      (1) biome.json L15-19 sets `complexity.noImportantStyles: warn`
+          and `style.noDescendingSpecificity: warn` (not 'error').
+          assets/jeffrey.css contains warnings for both. Carried
+          forward from prior profile.
+      (2) README.md L13: 'MIT © 2025 Jeffrey Johnson'. Year is now
+          2026. Copyright should advance.
+      Both are minor but fitness-function candidates: biome warnings →
+      escalate to error; copyright year → CI check.
+    raised_at: "2026-05-21"
+    source: "operator-interview"
+    status: "open"
+    resolved_in_cycle: null
+  - area: "working-tree-drift-vs-snapshot-rev-2c6924d"
+    description: |
+      Snapshot rev 2c6924d was committed 2026-02-21 (3 months before
+      this profile). Working tree has 24 modified files: AGENTS.md,
+      DEV_GUIDE.md, README.md, assets/jeffrey.css, contact.html,
+      cv.html, experience/index.html, all 6 projects/*.html
+      (budget-triage, dicee, flux, llm-gateway, maat, scopecam),
+      index.html, research/index.html, vite.config.js, and 6
+      experiments/svg-src/ + experiments/timeline* files. 2 untracked:
+      CNAME (likely GitHub Pages custom-domain config), profile/ (this
+      directory). Sibling new-direction-2026/STATUS.md L23 and L56
+      reference May 21 work on this repo ('portfolio website built,
+      MAAT integrated, CI verified'); those edits explain the modified
+      set but they were not committed before this profile cycle.
+      Operator stated: 'Make plans to handle all structural drift.'
+    raised_at: "2026-05-21"
+    source: "operator-interview"
+    status: "open"
+    resolved_in_cycle: null
+
+open_questions:
+  - "Should the site favicon (maat_feather_16.svg) be replaced or made generic? The current favicon visually anchors every page to MAAT, regardless of body content. Audit Phase 8 surfaces; operator decides."
+  - "Should DEV_GUIDE.md be superseded (delete or rewrite to match AGENTS.md), or should the design-system documentation consolidate into a single authoritative document? Audit Phase 4 / Phase 10 governance."
+  - "The experiments/ context is excluded from CI and deployment but is git-tracked. Should experiments/ files be excluded from biome lint AND from grep-for-rules audits, or should they be subject to a relaxed lint? Phase 6 boundary clarification."
+  - "GitHub Actions runs on PR but deploy is gated on PR=false. Are PR-time quality+build runs intended to be required checks for merge protection? Audit Phase 0 must record current state (visible from in-repo declaration only; branch protection rules are external)."
+
+audit_attention_flags:
+  - id: "AAF-VGH-001"
+    description: "MAAT Framework appears on 17+ pages including the favicon on every page; operator-stated positioning is minor/experimental. Stale-authoring-artifact pattern across multiple HTML files."
+    evidence:
+      - path: "index.html"
+        lines: "8, 44, 76, 117"
+      - path: "cv.html"
+        lines: "8, 83"
+      - path: "contact.html"
+        lines: "8"
+      - path: "experience/index.html"
+        lines: "10, 326"
+      - path: "research/index.html"
+        lines: "8, 141"
+      - path: "projects/maat.html"
+        lines: "6, 8, 16, 48, 68"
+      - path: "projects/{budget-triage,dicee,flux,llm-gateway,scopecam}.html"
+        lines: "8"
+      - path: "README.md"
+        lines: "10-11"
+    target_audit_phase: 8
+    reason: "Phase 8 (Policy/prompt separation) classifies these as stale-authoring-artifact prompts (the HTML pages ARE the authored artifacts). Phase 10 prioritization should weight per career-transition-readiness theme."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-002"
+    description: "DEV_GUIDE.md declares 8-point grid '--space-xs through --space-2xl' (L13-15) and Serif body text (L17-20). AGENTS.md L116 + .cursor/rules/project.mdc L42 + .cursor/rules/css.mdc L25 declare rem-based '--space-1 through --space-5' and system sans-serif (L118). Mutually exclusive design-system claims."
+    evidence:
+      - path: "DEV_GUIDE.md"
+        lines: "13-20"
+      - path: "AGENTS.md"
+        lines: "116, 118"
+      - path: ".cursor/rules/project.mdc"
+        lines: "42"
+      - path: ".cursor/rules/css.mdc"
+        lines: "25"
+    target_audit_phase: 4
+    reason: "Phase 4 (Contract inventory) — contradictory design-system contracts between governance docs. Phase 10 governance score capped at 2 until resolved. FF candidate: docs-cross-reference-check."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-003"
+    description: "Biome lint warnings (complexity.noImportantStyles + style.noDescendingSpecificity) set to 'warn' not 'error' per biome.json L15-19. assets/jeffrey.css contains warnings for both. CI passes with warnings; warnings don't block."
+    evidence:
+      - path: "biome.json"
+        lines: "15-19"
+    target_audit_phase: 9
+    reason: "Phase 9 (Evals / quality gates) — escalation candidate: warn→error. FF: biome-rule-severity-progression."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-004"
+    description: "README.md L13 declares 'MIT © 2025 Jeffrey Johnson'. Year is 2026."
+    evidence:
+      - path: "README.md"
+        lines: "13"
+    target_audit_phase: 8
+    reason: "Phase 8 — stale-authoring-artifact; small, fitness-function candidate: copyright-year-check in CI."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-005"
+    description: "Snapshot rev 2c6924d is 3 months old (2026-02-21). Working tree has 24 modified + 2 untracked files. Sibling STATUS.md L23/L56 references May 21 work on this repo that was not committed before profiling."
+    evidence:
+      - path: "(git status)"
+        lines: "n/a"
+    target_audit_phase: 0
+    reason: "Phase 0 drift check + Phase 10.5 smoke-test must re-evidence findings against the current branch HEAD, especially for HTML page content."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-006"
+    description: "PostToolUse biome auto-format hook runs after every Write/Edit on .js/.json/.css. Hook silently swallows errors (2>/dev/null) and always exits 0. Format failures are invisible."
+    evidence:
+      - path: ".claude/settings.json"
+        lines: "27-37"
+    target_audit_phase: 7
+    reason: "Phase 7 (Observability) — hook lacks observability surface. Phase 6 (Authority) — hook is a write-capable automation with auto-approved policy and no failure reporting. FF candidate: hook-error-surface."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-007"
+    description: "experiments/ context is git-tracked but excluded from CI (biome.json L4) and excluded from build (not in vite.config.js rollupOptions.input). Operator-stated 'safe to prototype freely there' per .cursor/rules/html.mdc L40, but the 4 experiments/svg-src/ files are showing as modified in the working tree — operator IS using the sandbox actively."
+    evidence:
+      - path: "biome.json"
+        lines: "4"
+      - path: ".cursor/rules/html.mdc"
+        lines: "40"
+    target_audit_phase: 2
+    reason: "Phase 2 (Bounded contexts) — experiments-sandbox as its own context with distinct lifecycle (active prototyping; not deployed; not lint-gated). Phase 10 — operator decision on whether experiments/ should be subject to relaxed lint or remain ungated."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-008"
+    description: "Content pipeline contracts from sibling new-direction-2026/AGENTS.md L131-142 declare 6 source→destination mappings (CV-extract→cv.html, PORTFOLIO-QUICK→index.html, ACTIVE-PROJECTS-PORTFOLIO→projects/*.html, RESEARCH-PUBLICATIONS→research/, timeline-component-spec→experience/, TEACHING-INVENTORY→cv.html teaching). This repo is the consumer end. No automated check verifies the destinations match the source claims."
+    evidence:
+      - path: "../new-direction-2026/AGENTS.md"
+        lines: "131-142"
+    target_audit_phase: 4
+    reason: "Phase 4 (Contract inventory) — cross-repo producer-consumer contract; consumer side. Phase 10 — FF candidate: cross-repo content-sync-check. Coordinated with sibling profile AAF-NDM-012."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-009"
+    description: "context7 MCP referenced in CLAUDE.md L27-33 as the project's MCP server but no .mcp.json file in repo. The MCP is operator-installed at the Claude Code global level; not project-scoped."
+    evidence:
+      - path: "CLAUDE.md"
+        lines: "27-33"
+    target_audit_phase: 4
+    reason: "Phase 4 — mcp-surface-uninventoried; consistent with sibling new-direction-2026 AAF-NDM-008."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-010"
+    description: "deploy.yml uses unpinned action versions (@v4 for setup-node, configure-pages, upload-pages-artifact, deploy-pages, checkout; @v2 not used). Major-version pinning is the minimum; commit-SHA pinning is the supply-chain-secure form. AGENTS.md L107 forbids committing secrets but does not require action-pinning discipline."
+    evidence:
+      - path: ".github/workflows/deploy.yml"
+        lines: "25-69"
+    target_audit_phase: 6
+    reason: "Phase 6 (Authority) — third-party action authority is broad (these run in the GH Actions runner with id-token:write per L13). FF candidate: pin-github-actions-to-sha."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-011"
+    description: "PR-time deploy.yml runs quality + build jobs but does NOT run deploy. Whether these PR-time checks are required for merge is gated by external GitHub branch protection rules not visible from in-repo declarations."
+    evidence:
+      - path: ".github/workflows/deploy.yml"
+        lines: "62-74"
+    target_audit_phase: 0
+    reason: "Phase 0 — declared vs enforced gap; record drift between in-repo CI declaration and external branch protection. Operator confirmation needed."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+  - id: "AAF-VGH-012"
+    description: "THEMES.md declares multi-theme support: 'Switch between them by changing the stylesheet reference in HTML files.' But changing the stylesheet reference would touch all 11 HTML files (a structural change). No tooling automates the theme switch."
+    evidence:
+      - path: "THEMES.md"
+        lines: "1-5"
+    target_audit_phase: 4
+    reason: "Phase 4 — multi-theme is a declared capability with no automated implementation. THEMES.md is documentation that may overstate capability. Decide: build theme-switcher, retire claim, or leave as documented-but-manual."
+    raised_at: "2026-05-21"
+    resolved_in_cycle: null
+
+# ---------- SOURCES ----------
+sources_summary:
+  files_read: 17  # AGENTS.md, CLAUDE.md, README.md, DEV_GUIDE.md (head), THEMES.md (head), .mise.toml, biome.json, package.json, vite.config.js, .github/workflows/deploy.yml, .claude/settings.json, all 3 .claude/skills/*/SKILL.md, all 3 .cursor/rules/*.mdc
+  files_grepped: 3  # MAAT references across all HTML (positive evidence); agent-card|a2a (none); provenance|attestation|slsa in deploy.yml/package.json/vite.config.js (none)
+  commands_run:
+    - "git log -n 1 --format='%H' (rev=2c6924d)"
+    - "git remote -v (origin: github.com:verlyn13/verlyn13.github.io.git)"
+    - "git status --short (24 M + 2 U)"
+    - "find $REPO -maxdepth 2 -name '*.html' (11 deployed + 3 experiments)"
+    - "grep -n -i 'maat' across HTML pages"
+    - "find .claude .cursor .github -type f"
+  operator_questions_asked: 4  # Phase G batched round 2026-05-21
+  operator_questions_answered: 4
+  halt_conditions_triggered: 0
+  limitations:
+    - "Did not read assets/jeffrey.css in detail despite being the single-source stylesheet. Confirmed presence + cited as referenced; content not extracted. Audit Phase 6 (single-file invariant) and Phase 9 (biome warnings location) may need to."
+    - "Did not read assets/menu.js (the only runtime JS). Per AGENTS.md L21 + L133 it is the mobile-nav toggle; classified accordingly without content extraction."
+    - "Did not open the 11 deployed HTML pages in detail (only grep'd for MAAT references and confirmed entry-point list against vite.config.js)."
+    - "DEV_GUIDE.md and THEMES.md read in header only (~30 lines each). The contradiction with AGENTS.md design system was caught at the head; full content not extracted."
+    - "Did not enumerate experiments/ contents in detail (3 deployed-equivalent .html files at the top level; .svg-src/ subdir contains additional working files). Sufficient to classify as bounded-context experiments-sandbox; not sufficient to inventory."
+    - "Did not verify GitHub branch protection rules — they are external to repo state. AAF-VGH-011 captures this gap."
+    - "Did not check whether the operator has commit-signing actually configured (AGENTS.md L128 says GPG-signed) — operator policy, not auditable from repo state."
+    - "Did not read sibling new-direction-2026/career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md to verify the cv.html content matches; AAF-VGH-008 routes this to audit Phase 4 cross-repo contract check."
