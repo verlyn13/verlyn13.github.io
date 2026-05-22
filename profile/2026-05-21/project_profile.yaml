@@ -25,21 +25,44 @@ meta:
   repository_revision:
     vcs: "git"
     branch: "main"
-    revision: "2c6924d27fc4128cce44423dd5f2b16539cb6023"
-    working_tree_state: "dirty"
+    revision: "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+    revision_at_initial_capture: "2c6924d27fc4128cce44423dd5f2b16539cb6023"
+    working_tree_state: "clean"
     working_tree_notes: |
-      Snapshot rev 2c6924d was committed 2026-02-21 (3 months before this
-      profile). Working tree has 24 modified files at profile time: AGENTS.md,
-      DEV_GUIDE.md, README.md, assets/jeffrey.css, contact.html, cv.html,
-      experience/index.html, all 6 projects/*.html (budget-triage, dicee,
-      flux, llm-gateway, maat, scopecam), index.html, research/index.html,
-      vite.config.js, and 6 experiments/svg-src/ + experiments/timeline*
-      files. 2 untracked: CNAME (likely operator-added for GitHub Pages
-      custom domain), profile/ (this directory). Sibling repo new-direction-
-      2026/STATUS.md L23 and L56 reference May 21 work on this repo
-      ("portfolio website built, MAAT integrated, CI verified"); those edits
-      explain the modified set.
+      Initial profile capture at 2c6924d (2026-02-21) had 24 modified + 2
+      untracked files representing the May 21 portfolio integration work.
+      Same-day extension (meta.evidence_extensions[0]) committed all
+      drift in 3 commits, landing at ee6c7e5. Working tree is now clean.
+      AAF-VGH-005 resolved. Note: the MAAT-integration content committed
+      here under 6eaa529 retains the prominence pattern flagged by
+      AAF-VGH-001 — rebalancing is operator-deferred to a remediation PR,
+      not blocked by Phase 0.
   source_confidence: "high"
+  evidence_extensions:
+    - timestamp: "2026-05-22T02:15:00Z"
+      reason: |
+        Operator approved drift triage: commit valuable content as-is and
+        defer MAAT-positioning rebalance to a remediation PR. Per
+        directive §1.2, recorded as same-day evidence extension matching
+        meta-inventory's convention.
+      commits_added:
+        - sha: "daea00d"
+          subject: "chore(deploy): add CNAME for jvjohnson.dev custom domain"
+        - sha: "6eaa529"
+          subject: "feat(portfolio): integrate MAAT framework + refresh all pages (May 21)"
+          notes: |
+            Captures the May 21 work referenced in sibling
+            new-direction-2026/STATUS.md L23/L56. Includes all 6 project
+            pages, governance docs, build config, experiments updates.
+            MAAT prominence preserved as-is per operator direction;
+            rebalancing tracked under AAF-VGH-001 for the remediation PR.
+        - sha: "ee6c7e5"
+          subject: "docs(profile): add 2026-05-21 first-profile snapshot per directive v1.2"
+      resolved_audit_attention_flags: ["AAF-VGH-005"]
+      resolved_known_debt: ["working-tree-drift-vs-snapshot-rev-2c6924d"]
+      added_evidence: []
+      added_flags: []
+      added_debt: []
 
 # ---------- PROJECT ----------
 project:
@@ -1066,23 +1089,15 @@ known_debt:
     resolved_in_cycle: null
   - area: "working-tree-drift-vs-snapshot-rev-2c6924d"
     description: |
-      Snapshot rev 2c6924d was committed 2026-02-21 (3 months before
-      this profile). Working tree has 24 modified files: AGENTS.md,
-      DEV_GUIDE.md, README.md, assets/jeffrey.css, contact.html,
-      cv.html, experience/index.html, all 6 projects/*.html
-      (budget-triage, dicee, flux, llm-gateway, maat, scopecam),
-      index.html, research/index.html, vite.config.js, and 6
-      experiments/svg-src/ + experiments/timeline* files. 2 untracked:
-      CNAME (likely GitHub Pages custom-domain config), profile/ (this
-      directory). Sibling new-direction-2026/STATUS.md L23 and L56
-      reference May 21 work on this repo ('portfolio website built,
-      MAAT integrated, CI verified'); those edits explain the modified
-      set but they were not committed before this profile cycle.
-      Operator stated: 'Make plans to handle all structural drift.'
+      Initial capture: rev 2c6924d (2026-02-21) had 24 modified + 2
+      untracked files representing May 21 portfolio integration work.
+      Operator approved drift triage; commits daea00d (CNAME) +
+      6eaa529 (May 21 integration) + ee6c7e5 (profile) landed.
+      Working tree clean at HEAD ee6c7e5. Resolved within cycle.
     raised_at: "2026-05-21"
     source: "operator-interview"
-    status: "open"
-    resolved_in_cycle: null
+    status: "resolved"
+    resolved_in_cycle: "2026-05-21"
 
 open_questions:
   - "Should the site favicon (maat_feather_16.svg) be replaced or made generic? The current favicon visually anchors every page to MAAT, regardless of body content. Audit Phase 8 surfaces; operator decides."
@@ -1148,14 +1163,14 @@ audit_attention_flags:
     raised_at: "2026-05-21"
     resolved_in_cycle: null
   - id: "AAF-VGH-005"
-    description: "Snapshot rev 2c6924d is 3 months old (2026-02-21). Working tree has 24 modified + 2 untracked files. Sibling STATUS.md L23/L56 references May 21 work on this repo that was not committed before profiling."
+    description: "Initial capture: rev 2c6924d was 3 months old; 24 M + 2 U. Operator approved triage; commits daea00d + 6eaa529 + ee6c7e5 landed. Working tree clean at HEAD ee6c7e5."
     evidence:
-      - path: "(git status)"
+      - path: "(git status at initial capture)"
         lines: "n/a"
     target_audit_phase: 0
-    reason: "Phase 0 drift check + Phase 10.5 smoke-test must re-evidence findings against the current branch HEAD, especially for HTML page content."
+    reason: "Resolved within cycle. Audit Phase 0 verifies clean HEAD; Phase 10.5 smoke-test runs against ee6c7e5 instead of 2c6924d, eliminating snapshot/branch drift risk for the audit."
     raised_at: "2026-05-21"
-    resolved_in_cycle: null
+    resolved_in_cycle: "2026-05-21"
   - id: "AAF-VGH-006"
     description: "PostToolUse biome auto-format hook runs after every Write/Edit on .js/.json/.css. Hook silently swallows errors (2>/dev/null) and always exits 0. Format failures are invisible."
     evidence:
