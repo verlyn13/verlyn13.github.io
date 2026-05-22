@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.8 TelemetrySignal + §9.8 provenance split"
+  },
+  "applicability": {
+    "in_product_llm_runtime": false,
+    "agentic_runtime_in_deployed_artifact": false,
+    "telemetry_target_class": "static-site + CI/CD pipeline only",
+    "observability_scope_summary": "verlyn13.github.io is a static site. No LLM is called at deploy-time, run-time, or by visitors. The only agentic activity is the OPERATOR's Claude Code / Cursor IDE sessions while editing — that LLM activity is hosted out of repo and produces no telemetry observable by this repo's audit. The §7 Phase 7 quartet (cost/latency/quality/provenance) is therefore largely not-applicable; the provenance split (§9.8) IS applicable because (a) the deployed HTML is generated content, (b) the CI/CD pipeline emits build/source provenance signals, (c) the PostToolUse hook (Phase 6 A-04) is an automation principal that emits no provenance."
+  },
+  "telemetry_signals": [],
+  "telemetry_present": {
+    "opentelemetry_sdk": false,
+    "otel_genai_semconv": false,
+    "otel_agent_semconv": false,
+    "otel_mcp_semconv": false,
+    "trace_context_propagation": false,
+    "custom_span_emission": false,
+    "metrics_export": false,
+    "event_bus_or_audit_log_emission": false,
+    "client_side_tracking_scripts": false,
+    "client_side_analytics": false
+  },
+  "telemetry_explicitly_forbidden": {
+    "rule": "AGENTS.md:112 — 'Never... Add external font loading, tracking scripts, or heavy dependencies'",
+    "lines": "AGENTS.md:112",
+    "interpretation": "Client-side observability is forbidden by policy. The site has 0 analytics scripts, 0 tracking pixels, 0 RUM endpoints. This is a deliberate choice (Phase 0 academic-credibility theme + AGENTS.md L121 'Academic credibility over commercial appeal. Clean, fast, respectful of visitor's time')."
+  },
+  "logging_surfaces": [
+    {
+      "id": "L-01",
+      "source": "GitHub Actions runner stdout/stderr (3 jobs: quality, build, deploy)",
+      "kind": "ANSI-terminal text via npm + biome + vite + actions/* stdout",
+      "destination": "ephemeral GitHub Actions logs (accessible via `gh run view` or web UI for the workflow retention window — default 90 days)",
+      "structured": false,
+      "trace_correlation": false,
+      "retention": "GitHub default 90 days",
+      "in_repo_emission_code": "none (third-party action and npm/biome/vite defaults)",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "20-83", "evidence": "3-job pipeline emits per-step stdout to runner logs", "method": "Read"}
+      ]
+    },
+    {
+      "id": "L-02",
+      "source": "GitHub Pages deployment record",
+      "kind": "deployment metadata (commit SHA, run ID, environment name, page_url)",
+      "destination": "GitHub Deployments API + repo Environments UI",
+      "structured": true,
+      "trace_correlation": "deployment ↔ workflow run ↔ commit SHA (3-way)",
+      "retention": "permanent (per GitHub Deployments retention)",
+      "in_repo_emission_code": "deployment is created by actions/deploy-pages@v4 (out-of-repo action emits the record)",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "75-77", "evidence": "environment: github-pages; url: ${{ steps.deployment.outputs.page_url }}", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "82-83", "evidence": "id: deployment; uses actions/deploy-pages@v4", "method": "Read"}
+      ]
+    },
+    {
+      "id": "L-03",
+      "source": "local mise / npm / biome / vite stdout (dev workflow)",
+      "kind": "terminal text",
+      "destination": "operator's terminal (ephemeral)",
+      "structured": false,
+      "trace_correlation": false,
+      "retention": "operator session",
+      "citations": [
+        {"path": ".mise.toml", "lines": "1-42", "evidence": "10 tasks invoke npm/vite/biome", "method": "Read"}
+      ]
+    },
+    {
+      "id": "L-04",
+      "source": "Claude Code session UI (operator's session log)",
+      "kind": "tool invocation history",
+      "destination": "Claude Code's own session storage (out of repo)",
+      "structured": "implementation-dependent",
+      "trace_correlation": "per-session",
+      "retention": "operator-level",
+      "in_repo_emission_code": "none",
+      "notes": "PostToolUse hook (A-04) invocations are NOT recorded here — Claude Code records the Write/Edit tool call but the hook's bash subprocess output is silenced (2>/dev/null + exit 0). This is the single biggest observability gap."
+    },
+    {
+      "id": "L-05",
+      "source": "Cursor IDE session log",
+      "kind": "out of repo",
+      "destination": "Cursor's own backend",
+      "structured": "n/a (out of scope)",
+      "retention": "Cursor user-level",
+      "in_repo_emission_code": "none"
+    }
+  ],
+  "audit_log_surrogates": [
+    {
+      "surface": "git commit history (signed per AGENTS.md:128)",
+      "class": "build-source-provenance proxy",
+      "limitations": ["GPG signing declared in AGENTS.md, not auditable from repo state alone (would require git log --show-signature on each commit)", "no audit log of agent-vs-human authorship"],
+      "phase_4_cite": "C-09 (AGENTS.md governance)"
+    },
+    {
+      "surface": "GitHub Actions run logs (per L-01 above)",
+      "class": "runtime/action-provenance proxy for CI/CD only",
+      "limitations": ["ephemeral 90-day retention", "free-form text; no semantic-convention attribution", "no eval correlation (no evals exist)"]
+    },
+    {
+      "surface": "GitHub deployment record (per L-02 above)",
+      "class": "build-source-provenance — partial",
+      "limitations": ["records commit SHA + run ID; does NOT include SLSA attestation, dependency graph, or signed artifact hash"]
+    }
+  ],
+  "cost_latency_quality_provenance_quartet": {
+    "applicability": "the quartet is REQUIRED only for agentic and model-mediated paths. This repo has none in its deployed artifact.",
+    "in_repo_paths_assessed": "the CI/CD pipeline (3 jobs) + the PostToolUse hook (A-04) are the only automation surfaces; neither is model-mediated.",
+    "cost": {
+      "applicable": false,
+      "rationale": "no LLM call sites in product or pipeline; no token accounting required; the operator's Claude Code session cost is hosted-out-of-repo and unobservable here",
+      "flag": "not-applicable"
+    },
+    "latency": {
+      "applicable": "partial",
+      "rationale": "build latency is implicit in GitHub Actions logs but is not separately attributed per step in any structured form; PostToolUse hook has 10s timeout but no latency telemetry",
+      "flag": "no-cost-attribution"
+    },
+    "quality": {
+      "applicable": false,
+      "rationale": "no evals exist; quality dimension is empty until Phase 9 records eval surfaces",
+      "flag": "not-applicable"
+    },
+    "provenance": {
+      "applicable": "partial",
+      "rationale": "see §3 provenance split below — only build-source partial; runtime-action absent; content absent",
+      "flag": "partial"
+    }
+  },
+  "provenance_class_split_9_8": {
+    "runtime_action": {
+      "position": "none",
+      "rationale": "no agentic runtime in deployed artifact; no in-repo automation emits runtime/action provenance",
+      "subordinate_paths": {
+        "PostToolUse_hook": {
+          "path": ".claude/settings.json:27-37 (Phase 6 A-04, Phase 3 E-12, Phase 4 C-06)",
+          "emits_provenance": false,
+          "evidence_required_if_emitted": ["timestamp", "file_path", "biome_exit_code", "biome_version", "tool_input_origin (which Write/Edit fired)"],
+          "evidence_emitted": [],
+          "cross_phase_finding": "AAF-VGH-006 — silent errors + no log + no event + no trace = no provenance whatsoever for the single write-capable, auto-approved automation principal in the repo",
+          "ff_candidate": "FF-claude-code-hook-observability (also referenced in Phase 6 §2 A-04)"
+        },
+        "CI_jobs": {
+          "paths": ".github/workflows/deploy.yml jobs quality, build, deploy",
+          "emits_provenance": false,
+          "evidence_required_if_emitted": ["job_id", "step_id", "tool_versions (biome, vite, node)", "step_duration", "exit_code"],
+          "evidence_emitted": [],
+          "observation": "GitHub Actions DOES emit per-step telemetry to its own backend (visible via `gh run view --log`) but this is not in-repo runtime-action provenance and is not consumed by any downstream system"
+        }
+      }
+    },
+    "content": {
+      "position": "absent",
+      "rationale": "the site does NOT advertise content credentials, content-authenticity manifests, or any kind of generated-content provenance on the deployed HTML. The site IS generated content (handwritten by operator + agents) but makes no provenance claim.",
+      "applicability_assessment": {
+        "considered_classes": ["content-credentials manifest", "C2PA manifest", "HTML provenance meta tags", "explicit not-applicable position"],
+        "current_position": "no explicit position taken; AGENTS.md does not address content provenance",
+        "is_this_a_gap": "Yes, in the sense that a research-portfolio site COULD reasonably claim content authenticity (e.g., 'this CV is the canonical version, last edited by Jeffrey Johnson at <SHA>') but does not. Severity is low for an academic portfolio without high-stakes claims; severity rises if the site begins to host LLM-generated content where authenticity matters."
+      },
+      "ff_candidate": "FF-content-provenance-position-declared — every static site whose authors edit content via agents must take an explicit position (either: embed source-of-truth SHA in HTML comment, OR declare 'not-applicable' in governance docs)"
+    },
+    "build_source": {
+      "position": "partial",
+      "rationale": "GitHub Pages deployment record (L-02) embeds commit SHA + run ID in the deployment metadata via actions/deploy-pages@v4. This is BUILD-SOURCE PROVENANCE PARTIAL — it ties the deployed site to a commit, but does NOT include: (1) SLSA attestation, (2) dependency graph attestation, (3) signed artifact hash, (4) reproducibility evidence",
+      "evidence_present": [
+        {
+          "what": "deployment.commit_sha — tied to the run that produced the artifact",
+          "where": "GitHub Deployments API / actions/deploy-pages@v4 output",
+          "citation": ".github/workflows/deploy.yml:75-83"
+        },
+        {
+          "what": "workflow run ID — embeds in Pages artifact",
+          "where": "actions/upload-pages-artifact@v3 emits to Actions artifact store",
+          "citation": ".github/workflows/deploy.yml:67-70"
+        },
+        {
+          "what": "GPG-signed commits (operator-declared)",
+          "where": "AGENTS.md:128 declares signing convention",
+          "citation": "AGENTS.md:128",
+          "auditability": "DECLARED but not auditable from repo state alone; would require `git log --show-signature` on each commit OR a CI step that verifies signatures (no such step exists in deploy.yml)"
+        }
+      ],
+      "evidence_absent": [
+        "SLSA provenance attestation (would require an attestation step in CI; not present)",
+        "Signed artifact hash (Pages artifact is not signed)",
+        "Dependency graph attestation",
+        "Branch protection rules visible in-repo (AAF-VGH-011 declared-vs-enforced)",
+        "Reproducibility evidence (npm ci uses package-lock.json; package-lock.json is committed — this IS partial reproducibility evidence but not asserted as attestation)"
+      ],
+      "current_position_classification": "build-source: PARTIAL per §9.8 — commit SHA + run ID tie deployment to source, but no formal attestation; no signature verification; no SLSA",
+      "ff_candidates": [
+        "FF-deploy-attestation — add a build attestation step to deploy.yml that emits SLSA provenance for the Pages artifact (GitHub provides actions/attest-build-provenance)",
+        "FF-gpg-verify-in-ci — add a CI step that verifies operator GPG signatures on commits merging to main (translates AGENTS.md:128 from declared convention to enforced gate)"
+      ]
+    }
+  },
+  "semantic_convention_state": {
+    "claimed": "none",
+    "version": "n/a",
+    "stability": "n/a",
+    "evidence": "no OpenTelemetry imports anywhere; no semconv attributes emitted by any in-repo code; no MCP semconv applies because context7 is operator-installed (Phase 6 A-11) and not project-scoped"
+  },
+  "flags": [
+    {
+      "flag": "no-runtime-action-provenance",
+      "applicable": true,
+      "context": "PostToolUse hook (A-04) is the highlighted case; no automation in repo emits runtime/action provenance",
+      "severity": "moderate (because the hook is write-capable + auto-approved + silent — cross-cite Phase 6 AAF-VGH-006)"
+    },
+    {
+      "flag": "no-content-provenance-position",
+      "applicable": true,
+      "context": "site does not declare content credentials or an explicit 'not-applicable' position on content authenticity",
+      "severity": "low (academic portfolio; no LLM-generated content claims)"
+    },
+    {
+      "flag": "no-build-source-provenance-position",
+      "applicable": false,
+      "context": "this flag would apply if the build emitted NO source linkage. Here, partial linkage exists via Pages deployment record. Flag is downgraded to PARTIAL rather than absent.",
+      "current_state": "partial — commit SHA + run ID present; SLSA/attestation absent",
+      "ff_candidates": ["FF-deploy-attestation", "FF-gpg-verify-in-ci"]
+    },
+    {
+      "flag": "no-token-accounting",
+      "applicable": "not-applicable",
+      "context": "no in-product LLM"
+    },
+    {
+      "flag": "no-cost-attribution",
+      "applicable": "not-applicable",
+      "context": "no LLM costs to attribute"
+    },
+    {
+      "flag": "no-quality-attribution",
+      "applicable": "not-applicable",
+      "context": "no evals to correlate (Phase 9 will record absence as separate finding)"
+    },
+    {
+      "flag": "semantic-stability-unpinned",
+      "applicable": "not-applicable",
+      "context": "no conventions claimed"
+    },
+    {
+      "flag": "trace-break",
+      "applicable": false,
+      "context": "no traces exist; no break possible"
+    },
+    {
+      "flag": "no-eval-correlation",
+      "applicable": "deferred to Phase 9",
+      "context": "Phase 9 will record eval absence; Phase 7 records that even if evals existed, no trace fabric exists for correlation"
+    }
+  ],
+  "cross_phase_ties": {
+    "phase_3_E-12_to_phase_7": "the PostToolUse hook is classified as event-triggered webhook with audit_attention=AAF-VGH-006 in Phase 3 E-12; in Phase 7 it is the single biggest no-runtime-action-provenance instance because it writes files but emits no log, no metric, no event, no exit-code signal",
+    "phase_4_C-06_to_phase_7": "contract C-06 (PostToolUse hook) carries runtime-provenance-missing flag in Phase 4; Phase 7 confirms the flag's empirical content",
+    "phase_6_A-04_to_phase_7": "principal A-04 (PostToolUse hook) carries ambient-authority + write-without-approval-policy + approval-not-enforced in Phase 6; Phase 7 adds the observability dimension — these flags compound to make the hook the single most concerning surface in the repo despite its narrow blast radius (file re-format only)",
+    "phase_6_A-10_to_phase_7": "principal A-10 (deploy job) carries the elevation+OIDC pattern; Phase 7 confirms partial build-source provenance via Pages deployment record but absence of SLSA attestation",
+    "CI_static_analysis_to_dimension_11_7": "the CI pipeline (biome lint + format-check + vite build) is a strong static-analysis enforcement surface (Phase 4 C-02 + Phase 3 E-04, E-06); Phase 7 §11.7 score will be ASYMMETRIC — good static-analysis enforcement, no telemetry surface"
+  },
+  "dimension_11_7_assessment": {
+    "score_band": "1 (structured telemetry exists but naming and units inconsistent — applied charitably; could justify score 0 'logs only' since there is no semantic structure)",
+    "rationale": "Score-1 reading: GitHub Actions logs + deployment record are structured-enough (per-step, per-deploy) and partial build-source provenance exists. Score-0 reading: no telemetry-as-product-of-the-repo exists; all signals are platform-emitted. Both are defensible. The asymmetry note (good static-analysis enforcement at dimension 11.11 fitness-functions vs. weak observability at 11.7) is the operationally important point.",
+    "exception_note": "This score should be read with the applicability caveat: a static-site repo with no LLM runtime has a structurally lower ceiling on 11.7 than a model-mediated system. Phase 10 scoring should record this caveat explicitly rather than penalize the dimension on absolute terms."
+  },
+  "ff_candidates_phase_7": [
+    {
+      "id_proposal": "FF-claude-code-hook-observability",
+      "ties_to": "AAF-VGH-006 (Phase 6 A-04 + Phase 7 §3.1)",
+      "enforcement_category": "telemetry-lint",
+      "rule": "Every PostToolUse hook in .claude/settings.json must (1) tee stderr to .claude/logs/posttooluse.log, (2) propagate the underlying tool's exit code rather than 'exit 0' unconditionally, (3) emit a structured log line per invocation with timestamp + tool + file_path + exit_code"
+    },
+    {
+      "id_proposal": "FF-deploy-attestation",
+      "ties_to": "build-source partial → build-source attested (Phase 7 §3.3)",
+      "enforcement_category": "provenance-attestation",
+      "rule": "deploy.yml must include an attestation step that emits SLSA provenance for the Pages artifact (e.g., actions/attest-build-provenance@v1) before deploy-pages@v4 runs"
+    },
+    {
+      "id_proposal": "FF-gpg-verify-in-ci",
+      "ties_to": "AGENTS.md:128 declared GPG signing → enforced gate",
+      "enforcement_category": "release-gate",
+      "rule": "CI must verify GPG signatures on commits being merged to main; AGENTS.md:128 convention becomes enforced (mismatched commits fail CI)"
+    },
+    {
+      "id_proposal": "FF-content-provenance-position-declared",
+      "ties_to": "Phase 7 §3.2 no-content-provenance-position",
+      "enforcement_category": "companion-doc-drift",
+      "rule": "AGENTS.md must declare an explicit content-provenance position: either embed source-of-truth SHA in HTML comment OR declare 'not-applicable for academic-portfolio static content'"
+    }
+  ],
+  "exit_check": {
+    "naming_inconsistencies_flagged": "n/a (no signals)",
+    "convention_alignment_scored_with_citations": "n/a (no conventions claimed)",
+    "agentic_paths_have_cost_latency_quality_provenance_coverage_or_explicit_gaps": true,
+    "semantic_convention_version_and_stability_recorded_when_claimed": "n/a (none claimed)",
+    "exit_check_notes": "All applicable §7 Phase 7 boundary declarations honored. The quartet IS explicitly scored as not-applicable for cost/quality and partial for latency/provenance, with cited gaps. Provenance split per §9.8 explicitly addressed: runtime-action=none, content=absent, build-source=partial. The PostToolUse hook is treated as the single biggest observability gap and cross-cited to Phase 3 + Phase 4 + Phase 6.",
+    "phase_7_passes": true
+  }
+}

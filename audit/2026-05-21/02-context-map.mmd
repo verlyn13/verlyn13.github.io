@@ -1,0 +1,115 @@
+%% Phase 2 — verlyn13.github.io bounded-context map
+%% Audit spec v3.1 (2026-05-08); audit date 2026-05-22; HEAD ee6c7e5
+%% 4 contexts confirmed (portfolio-pages, build-system, agent-governance, experiments-sandbox)
+
+flowchart TD
+
+    %% =====================================================
+    %% External producers / consumers
+    %% =====================================================
+    subgraph EXT["External actors / cross-repo"]
+        direction TB
+        Browser["Browser at https://jvjohnson.dev<br/>(GitHub Pages serves dist/)"]
+        ClaudeCode["Claude Code CLI<br/>(claude-opus-4-6)"]
+        Cursor["Cursor IDE"]
+        GHActions["GitHub Actions runner<br/>(ubuntu-latest)"]
+        GHPages["GitHub Pages<br/>(actions/deploy-pages@v4)"]
+        Context7["context7 MCP server<br/>(operator-installed; not project-scoped;<br/>AAF-VGH-009)"]
+        NDM["../new-direction-2026<br/>(sibling content-source repo;<br/>6 source documents in its<br/>AGENTS.md L131-142)"]
+    end
+
+    %% =====================================================
+    %% Internal bounded contexts
+    %% =====================================================
+    subgraph REPO["verlyn13.github.io repository"]
+        direction TB
+
+        subgraph PP["portfolio-pages (CONFIRMED)<br/>Authority: authoritative-store + external-authority"]
+            direction TB
+            P_pages["11 deployed HTML pages<br/>(vite.config.js L23-37):<br/>main, cv, contact,<br/>projects-{dicee, maat, scopecam,<br/>budget-triage, flux, llm-gateway},<br/>experience, research"]
+            P_css["assets/jeffrey.css<br/>(single shared stylesheet)"]
+            P_js["assets/menu.js<br/>(mobile-nav toggle)"]
+            P_favicon["assets/icons/<br/>maat_feather_16.svg<br/>(favicon on every page;<br/>Phase 1 Collision 2 / AAF-VGH-001)"]
+        end
+
+        subgraph BS["build-system (CONFIRMED)<br/>Authority: stateless-policy"]
+            direction TB
+            B_vite["vite.config.js<br/>(11-page registry)"]
+            B_biome["biome.json<br/>(2.3.8; 2 rules at 'warn' — AAF-VGH-003)"]
+            B_mise[".mise.toml<br/>(10 tasks; Node 24)"]
+            B_pkg["package.json"]
+            B_deploy[".github/workflows/deploy.yml<br/>3 jobs: Code Quality → Build Site → Deploy<br/>(deploy gated PR=false;<br/>id-token:write + pages:write — AAF-VGH-010/011)"]
+        end
+
+        subgraph AG["agent-governance (CONFIRMED)<br/>Authority: stateless-policy + operator-rules-memory"]
+            direction TB
+            A_agents["AGENTS.md<br/>(canonical contract)"]
+            A_claude["CLAUDE.md<br/>(Claude-Code shim;<br/>declares context7 MCP)"]
+            A_settings[".claude/settings.json<br/>9 allow + 9 deny + PostToolUse hook"]
+            A_skills["3 SKILL.md<br/>(fix-issue, review-diff, ship-small)"]
+            A_cursor["3 .cursor/rules/*.mdc<br/>(project, css, html — auto-attach)"]
+            A_dev["DEV_GUIDE.md<br/>STALE — contradicts AGENTS.md<br/>(Phase 1 Collision 1 / AAF-VGH-002)"]
+            A_themes["THEMES.md<br/>overstated multi-theme capability<br/>(Phase 1 Collision 4 / AAF-VGH-012)"]
+            A_readme["README.md<br/>(license 2025 = stale per AAF-VGH-004)"]
+        end
+
+        subgraph ES["experiments-sandbox (CONFIRMED)<br/>Authority: stateless-policy via explicit exclusion<br/>(not deployed; not lint-gated)"]
+            direction TB
+            E_html["3 HTML prototypes:<br/>timeline-braid, timeline-prototype, page-idea"]
+            E_svg["svg-src/<br/>(build.sh, README, NAVIGATOR-CONCEPTS,<br/>TEMPLATE-STRUCTURE, svgo.config.js,<br/>braid-timeline.src.svg + backups, preview.html)"]
+            E_themes["themes/academic.css<br/>(documented in THEMES.md at wrong path —<br/>Collision 4 / Collision 8)"]
+            E_assets["braid-timeline.svg,<br/>maat_feather_mono.svg, scopecam_mono.svg,<br/>timeline-data.json"]
+        end
+    end
+
+    %% =====================================================
+    %% Edges — labeled by edge IDs from 02-context-map.md §4.1
+    %% =====================================================
+
+    %% E1-E3: agent-governance governs the other three contexts
+    AG -- "E1: design system + boundary rules<br/>(AGENTS.md L86-128)" --> PP
+    AG -- "E2: Ask-first protection<br/>(AGENTS.md L96-103)" --> BS
+    AG -- "E3: lifecycle declaration<br/>(.cursor/rules/html.mdc L39-41)" --> ES
+
+    %% E4-E5: external agent consumption
+    AG -- "E4: hook + permissions<br/>(.claude/settings.json)" --> ClaudeCode
+    AG -- "E5: rule auto-attach<br/>(.cursor/rules/*.mdc globs)" --> Cursor
+    A_claude -. "context7 MCP referenced<br/>but not project-scoped" .-> Context7
+
+    %% E6: PostToolUse hook fires biome format on writes
+    A_settings -- "E6: PostToolUse event-triggered hook<br/>biome format --write on .js/.json/.css<br/>(10s timeout; errors silenced — AAF-VGH-006)" --> PP
+    A_settings -- "E6 cont'd: biome format also affects build-system" --> BS
+
+    %% E7: portfolio-pages feed into build-system
+    PP -- "E7: build input<br/>(11 pages registered)" --> BS
+
+    %% E8: build-system deploys to GitHub Pages
+    BS -- "E8: release via vite build → dist/<br/>actions/deploy-pages@v4" --> GHActions
+    GHActions -- "deploy.yml deploy job<br/>(deploy gated on PR=false)" --> GHPages
+
+    %% E9: external browser reads portfolio-pages
+    GHPages --> Browser
+    Browser -- "E9: runtime read<br/>https://jvjohnson.dev" --> PP
+
+    %% E10: cross-repo content pipeline (inbound)
+    NDM -- "E10: 6 source→destination mappings<br/>(AGENTS.md L131-142 of sibling;<br/>all 6 anchors verified — Phase 1 §6;<br/>AAF-VGH-008 ↔ sibling AAF-NDM-012)" --> PP
+
+    %% E11: manual artifact promotion (experiments → portfolio)
+    ES -- "E11: manual hand-promotion<br/>experiments/braid-timeline.svg →<br/>experience/index.html inline SVG" --> PP
+
+    %% E12: broken THEMES.md reference (overstated capability)
+    A_themes -. "E12: overstated reference<br/>THEMES.md sed-script targets<br/>assets/styles-academic.css (NOT PRESENT);<br/>actual file at experiments/themes/academic.css<br/>(AAF-VGH-012)" .-> E_themes
+
+    %% E13: secondary credential (OIDC)
+    B_deploy -- "E13: id-token: write<br/>(OIDC token exchange — Phase 6)" --> GHPages
+
+    %% =====================================================
+    %% Styling
+    %% =====================================================
+    classDef confirmed fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef external  fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    classDef stale     fill:#ffebee,stroke:#c62828,stroke-width:1px,color:#000
+
+    class PP,BS,AG,ES confirmed
+    class Browser,ClaudeCode,Cursor,GHActions,GHPages,Context7,NDM external
+    class A_dev,A_themes stale

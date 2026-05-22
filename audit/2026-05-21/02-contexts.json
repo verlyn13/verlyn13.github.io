@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.3 BoundedContext"
+  },
+  "counts": {
+    "claimed_contexts_in_profile": 4,
+    "confirmed": 4,
+    "candidate": 0,
+    "claimed_only": 0,
+    "rejected": 0,
+    "merged": 0,
+    "split": 0
+  },
+  "contexts": [
+    {
+      "name": "portfolio-pages",
+      "status": "confirmed",
+      "owner": "jeffrey",
+      "ubiquitous_language": [
+        "portfolio", "page", "entry point", "project page", "experience", "research", "cv", "contact", "home", "hero-home", "Approach", "Background", "era", "braid", "braid-timeline",
+        "MAAT Framework", "ScopeCam", "Dicee", "Budget Triage", "Flux Pro Shop", "LLM Gateway", "HomeNetOps",
+        "single CSS file", "assets/jeffrey.css", "assets/menu.js",
+        "768px breakpoint", "mobile nav", "nav-toggle",
+        "favicon"
+      ],
+      "authority_basis": ["authoritative-store", "external-authority"],
+      "authoritative_stores": [
+        "11 deployed HTML files registered in vite.config.js:23-37",
+        "assets/jeffrey.css (single shared stylesheet)",
+        "assets/menu.js (mobile-nav runtime JS)",
+        "assets/icons/maat_feather_16.svg (site favicon)"
+      ],
+      "inbound_commands": [
+        "mise run dev (vite dev server :5173)",
+        "mise run preview (vite preview :4173)",
+        "operator edits via Claude Code or Cursor IDE (subject to .claude/settings.json deny patterns)"
+      ],
+      "outbound_events": [
+        "file writes to *.html / assets/jeffrey.css / assets/menu.js (consumed by build-system)",
+        "no event bus; no runtime event emission"
+      ],
+      "external_dependencies": [
+        "browser rendering at https://jvjohnson.dev (GitHub Pages serves dist/)",
+        "../new-direction-2026 (sibling repo — cross-repo content source; manual handoff via /sync-check in sibling)"
+      ],
+      "produced_contracts": [
+        "11 deployed page URLs (bookmarkable; AGENTS.md:111 'Never break existing page URLs')"
+      ],
+      "consumed_contracts": [
+        "../new-direction-2026/AGENTS.md:131-142 content pipeline (6 source documents → 6 destinations; 6/6 anchors verified in Phase 1 §6)",
+        "HTML5 living standard",
+        "CSS custom-properties contract from assets/jeffrey.css (--ink, --paper, --muted, --accent, --accent-2, --border, --shadow, --shadow-hard, --radius, --radius-sm, --measure, --font, --mono, --space-1..--space-5)"
+      ],
+      "subagents_consumed": [],
+      "subagents_exposed": [],
+      "citations": [
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "rollupOptions.input with 11 keyed entries: main, cv, contact, projects-dicee, projects-maat, projects-scopecam, projects-budget-triage, projects-flux, projects-llm-gateway, experience, research", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "20,94,109,111,132-138", "evidence": "Single CSS file: assets/jeffrey.css; Never break existing page URLs; triage map", "method": "Read"},
+        {"path": "assets/menu.js", "lines": "1-86", "evidence": "Mobile menu toggle + active-link state — the only runtime JS", "method": "Read"},
+        {"path": "../new-direction-2026/AGENTS.md", "lines": "131-142", "evidence": "Cross-repo content pipeline declaration (consumer side)", "method": "Read"},
+        {"path": "index.html", "lines": "6,40,70,97-205", "evidence": "Title 'Jeffrey Johnson - Portfolio'; h1 'Jeffrey V. Johnson, Ph.D.'; Background h2; Approach section with 6 cards", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "3", "evidence": "globs: *.html, projects/*.html, experience/*.html, research/*.html — defines the page surface", "method": "Read"}
+      ]
+    },
+    {
+      "name": "build-system",
+      "status": "confirmed",
+      "owner": "jeffrey",
+      "ubiquitous_language": [
+        "vite", "rollupOptions.input", "dist/",
+        "biome", "biome check", "biome format",
+        "mise", "mise run <task>",
+        "dev", "build", "preview", "lint", "lint:fix", "format", "format:check", "clean", "deploy", "ci",
+        "Quality / Build Site / Deploy to GitHub Pages (3 GH Actions job names)",
+        "Code Quality job", "PR-time", "main-branch",
+        "Node 24 (mise-pinned)",
+        "id-token: write (OIDC for GitHub Pages)",
+        "actions/{checkout,setup-node,configure-pages,upload-pages-artifact,deploy-pages}@v4"
+      ],
+      "authority_basis": ["stateless-policy"],
+      "authoritative_stores": [
+        "vite.config.js (the 11-page registry)",
+        "biome.json (lint+format ruleset; schema-pinned to 2.3.8)",
+        ".mise.toml (10 task definitions + Node 24 pin)",
+        "package.json (npm scripts + dependency manifest)",
+        ".github/workflows/deploy.yml (3-job CI/CD pipeline)"
+      ],
+      "inbound_commands": [
+        "mise run {dev, build, preview, lint, lint:fix, format, format:check, clean, deploy, ci}",
+        "npm direct invocations (e.g., npm run build)",
+        "git push to main (triggers GH Actions quality → build → deploy)",
+        "git push to a PR branch (triggers quality + build, NOT deploy)",
+        "workflow_dispatch (manual GH Actions trigger per deploy.yml:8)"
+      ],
+      "outbound_events": [
+        "dist/ artifact (Vite build output; consumed by actions/upload-pages-artifact@v3)",
+        "GitHub Pages deployment event (actions/deploy-pages@v4 → https://jvjohnson.dev)",
+        "Biome-format side effects on .js/.json/.css (consumed by .claude/settings.json PostToolUse hook in agent-governance context)"
+      ],
+      "external_dependencies": [
+        "Node 24 (mise-pinned)",
+        "npm (Vite ^5.0.0 + Biome ^2.3.8 per package.json:18-19)",
+        "GitHub Actions runners (ubuntu-latest)",
+        "5 third-party GitHub Actions @v4 (AAF-VGH-010 — unpinned to SHA; supply-chain note for Phase 6)"
+      ],
+      "produced_contracts": [
+        "10 mise task verbs (operator-facing)",
+        "3 GH Actions job names ('Code Quality', 'Build Site', 'Deploy to GitHub Pages') — consumed by GH UI + (external) branch protection rules per AAF-VGH-011"
+      ],
+      "consumed_contracts": [
+        "npm package.json schema",
+        "Biome 2.3.8 JSON schema (https://biomejs.dev/schemas/2.3.8/schema.json — explicitly pinned)",
+        "GitHub Actions workflow YAML schema (implicit)",
+        ".mise.toml TOML schema (implicit)"
+      ],
+      "subagents_consumed": [],
+      "subagents_exposed": [],
+      "citations": [
+        {"path": "vite.config.js", "lines": "1-61", "evidence": "Vite multi-page build configuration", "method": "Read"},
+        {"path": "biome.json", "lines": "1-36", "evidence": "Biome lint + format config; 2 rules at 'warn' (AAF-VGH-003)", "method": "Read"},
+        {"path": ".mise.toml", "lines": "1-42", "evidence": "Node 24 + 10 tasks", "method": "Read"},
+        {"path": "package.json", "lines": "1-30", "evidence": "Vite ^5 + Biome ^2.3.8 deps", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "1-83", "evidence": "3-job pipeline: Code Quality → Build Site → Deploy to GitHub Pages; deploy gated on PR=false; id-token:write + pages:write", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "96-103", "evidence": "Ask-first protection list includes 4 build-system files", "method": "Read"},
+        {"path": ".cursor/rules/project.mdc", "lines": "33-38", "evidence": "Ask-first mirror in Cursor rules", "method": "Read"}
+      ]
+    },
+    {
+      "name": "agent-governance",
+      "status": "confirmed",
+      "owner": "jeffrey",
+      "ubiquitous_language": [
+        "agent", "skill", "SKILL.md", "subagent", "slash command", "Task tool",
+        "plan mode", "Plan before non-trivial work", "Visual check",
+        "MCP", "context7", "resolve-library-id", "query-docs",
+        "Always", "Ask first", "Never", "boundaries", "hard rules",
+        "Definition of done", "DoD", "mise run ci",
+        "triage map", "PostToolUse hook", "allowlisted", "denied",
+        "primary project contract", "canonical",
+        "design system", "--space-1..--space-5", "--ink", "--paper", "--muted", "--accent", "--accent-2",
+        "Conventional Commits", "type(scope): description", "signed with GPG",
+        "Reproduce", "Isolate", "Fix", "Verify", "Document"
+      ],
+      "authority_basis": ["stateless-policy", "operator-rules-memory"],
+      "authoritative_stores": [
+        "AGENTS.md (canonical project contract per CLAUDE.md:3)",
+        "CLAUDE.md (Claude-Code-specific shim — defers to AGENTS.md)",
+        ".claude/settings.json (project-scoped Claude permissions + PostToolUse hook)",
+        ".claude/skills/{fix-issue,review-diff,ship-small}/SKILL.md (3 workflow definitions)",
+        ".cursor/rules/{project,css,html}.mdc (3 auto-attached IDE rules)",
+        "DEV_GUIDE.md (intra-context drift; STALE per Phase 1 Collision 1)",
+        "THEMES.md (overstated capability per Phase 1 Collision 4)",
+        "README.md (license + project summary)"
+      ],
+      "inbound_commands": [
+        "(read by external agents — Claude Code CLI, Cursor IDE — at agent-startup when those tools open this directory)",
+        "operator-invoked slash commands /fix-issue, /ship-small, /review-diff (consumed by Claude Code)",
+        "operator-invoked /compact (Claude Code built-in, referenced in CLAUDE.md:9)"
+      ],
+      "outbound_events": [
+        "PostToolUse hook fires after every Write/Edit by Claude Code → runs 'npx biome format --write' on .js/.json/.css with 10s timeout and silenced errors (.claude/settings.json:27-37; AAF-VGH-006 flags observability gap)"
+      ],
+      "external_dependencies": [
+        "Claude Code CLI (Anthropic; model claude-opus-4-6 per CLAUDE.md:7)",
+        "Cursor IDE",
+        "npx + biome at PostToolUse runtime",
+        "jq (referenced in the PostToolUse hook command at .claude/settings.json:33)",
+        "context7 MCP server (operator-installed at Claude Code global level — NOT project-scoped per AAF-VGH-009; no .mcp.json in repo)"
+      ],
+      "produced_contracts": [
+        "3 SKILL.md system prompts (workflow definitions consumed by Claude Code)",
+        "3 Cursor rule files (auto-attached standing instructions; frontmatter declares globs)",
+        "1 PostToolUse hook command spec",
+        "1 permissions allow/deny matrix (9 allow + 9 deny patterns)",
+        "Always / Ask first / Never 3-tier authority taxonomy (AGENTS.md L86-112)"
+      ],
+      "consumed_contracts": [
+        "Claude Code hooks specification (PreToolUse / PostToolUse — only PostToolUse used here)",
+        "Claude Code permissions JSON schema",
+        "Cursor rule frontmatter schema (description, globs, alwaysApply)",
+        "Claude Code SKILL.md frontmatter schema (name, description)",
+        "MCP protocol (whatever version context7 implements — UNPINNED per AAF-VGH-009)"
+      ],
+      "subagents_consumed": [
+        "Claude Code Task tool — 'Explore' and 'general-purpose' built-in subagents (NOT project-defined; profile subagents.count: 0)"
+      ],
+      "subagents_exposed": [],
+      "citations": [
+        {"path": "CLAUDE.md", "lines": "3", "evidence": "Primary project contract: @AGENTS.md (precedence statement)", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "1-140", "evidence": "Canonical project contract — full file", "method": "Read"},
+        {"path": ".claude/settings.json", "lines": "1-39", "evidence": "Permissions (9 allow + 9 deny) + PostToolUse hook", "method": "Read"},
+        {"path": ".claude/skills/fix-issue/SKILL.md", "lines": "1-12", "evidence": "fix-issue workflow", "method": "Read"},
+        {"path": ".claude/skills/review-diff/SKILL.md", "lines": "1-18", "evidence": "review-diff checklist", "method": "Read"},
+        {"path": ".claude/skills/ship-small/SKILL.md", "lines": "1-13", "evidence": "ship-small discipline rules", "method": "Read"},
+        {"path": ".cursor/rules/project.mdc", "lines": "1-62", "evidence": "Core project rules (alwaysApply: true)", "method": "Read"},
+        {"path": ".cursor/rules/css.mdc", "lines": "1-47", "evidence": "CSS design system rules (glob: assets/**/*.css)", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "1-42", "evidence": "HTML authoring rules (glob: *.html + project/experience/research/*.html)", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "1-137", "evidence": "Stale developer guide (Phase 1 Collision 1 — contradicts AGENTS.md design system on spacing, typography, max-width, file path)", "method": "Read"},
+        {"path": "THEMES.md", "lines": "1-128", "evidence": "Theme-system documentation (Phase 1 Collision 4 — overstated capability)", "method": "Read"},
+        {"path": "README.md", "lines": "1-15", "evidence": "Project summary + license", "method": "Read"}
+      ]
+    },
+    {
+      "name": "experiments-sandbox",
+      "status": "confirmed",
+      "owner": "jeffrey",
+      "ubiquitous_language": [
+        "experiments/", "prototype", "safe to prototype freely",
+        "not deployed", "excluded from CI", "excluded from build",
+        "timeline-braid", "timeline-prototype", "page-idea",
+        "braid-timeline.svg", "braid-timeline.src.svg",
+        "svg-src", "svgo", "build.sh",
+        "themes/", "academic.css", "styles-academic.css (documented but at wrong path)",
+        "maat_feather_mono", "scopecam_mono", "timeline-data.json"
+      ],
+      "authority_basis": ["stateless-policy"],
+      "authoritative_stores": [],
+      "inbound_commands": [
+        "operator edits via Claude Code / Cursor IDE",
+        "experiments/svg-src/build.sh (local script for braid timeline SVG; not invoked from CI)"
+      ],
+      "outbound_events": [
+        "manual hand-promotion of experiments/braid-timeline.svg → experience/index.html (inline SVG embedded at experience/index.html:54)",
+        "(broken) THEMES.md L48 sed-script targets assets/styles-academic.css which doesn't exist; the academic.css that exists is here in experiments/themes/"
+      ],
+      "external_dependencies": [
+        "svgo (referenced in experiments/svg-src/svgo.config.js; not in package.json — requires global install or npx)"
+      ],
+      "produced_contracts": [],
+      "consumed_contracts": [],
+      "subagents_consumed": [],
+      "subagents_exposed": [],
+      "citations": [
+        {"path": "biome.json", "lines": "4", "evidence": "files.includes: ['**', '!experiments'] — explicit exclusion from lint", "method": "Read"},
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "rollupOptions.input does NOT include any experiments/ paths — verified", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "39-41", "evidence": "Pages under experiments/ are excluded from CI and deployment — safe to prototype freely there.", "method": "Read"},
+        {"path": ".cursor/rules/project.mdc", "lines": "61", "evidence": "Safe sandbox (not deployed) → experiments/", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "23,139", "evidence": "experiments/ — Prototypes and unused assets (not deployed)", "method": "Read"},
+        {"path": "experiments/", "lines": "n/a", "evidence": "17 files verified at HEAD: 3 HTML (timeline-braid, timeline-prototype, page-idea), svg-src/ subdir (build.sh, README.md, NAVIGATOR-CONCEPTS.md, TEMPLATE-STRUCTURE.md, svgo.config.js, braid-timeline.src.svg + 2 backups, preview.html), themes/academic.css, 2 mono SVGs (maat_feather_mono, scopecam_mono), timeline-data.json, braid-timeline.svg", "method": "Glob"}
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "from": "agent-governance",
+      "to": "portfolio-pages",
+      "kind": "governance (stateless-policy)",
+      "evidence": [{"path": "AGENTS.md", "lines": "86-128", "evidence": "Design system + boundary rules applied to portfolio-pages", "method": "Read"}]
+    },
+    {
+      "id": "E2",
+      "from": "agent-governance",
+      "to": "build-system",
+      "kind": "governance (Ask-first protection)",
+      "evidence": [
+        {"path": "AGENTS.md", "lines": "96-103", "evidence": "Ask-first list includes vite.config.js + deploy.yml + design-system + structural changes", "method": "Read"},
+        {"path": ".cursor/rules/project.mdc", "lines": "33-38", "evidence": "Cursor rule mirror of Ask-first list", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E3",
+      "from": "agent-governance",
+      "to": "experiments-sandbox",
+      "kind": "governance (lifecycle declaration)",
+      "evidence": [{"path": ".cursor/rules/html.mdc", "lines": "39-41", "evidence": "experiments lifecycle: excluded from CI, safe to prototype", "method": "Read"}]
+    },
+    {
+      "id": "E4",
+      "from": "agent-governance",
+      "to": "external:Claude Code CLI",
+      "kind": "hook + permissions consumption",
+      "evidence": [{"path": ".claude/settings.json", "lines": "1-39", "evidence": "Consumed by Claude Code at agent-startup", "method": "Read"}]
+    },
+    {
+      "id": "E5",
+      "from": "agent-governance",
+      "to": "external:Cursor IDE",
+      "kind": "rule auto-attach",
+      "evidence": [{"path": ".cursor/rules/*.mdc", "lines": "1-5 each", "evidence": "Frontmatter globs trigger auto-attach", "method": "Read"}]
+    },
+    {
+      "id": "E6",
+      "from": "agent-governance (PostToolUse hook)",
+      "to": "portfolio-pages + build-system",
+      "kind": "event-triggered side effect",
+      "evidence": [{"path": ".claude/settings.json", "lines": "27-37", "evidence": "PostToolUse matcher Write|Edit runs biome format --write on .js/.json/.css", "method": "Read"}],
+      "phase_routing": "Phase 6 (write-capable automation) + Phase 7 (observability gap per AAF-VGH-006)"
+    },
+    {
+      "id": "E7",
+      "from": "portfolio-pages",
+      "to": "build-system",
+      "kind": "build input (11 pages registered)",
+      "evidence": [{"path": "vite.config.js", "lines": "22-37", "evidence": "rollupOptions.input maps 11 page files", "method": "Read"}]
+    },
+    {
+      "id": "E8",
+      "from": "build-system",
+      "to": "external:GitHub Pages",
+      "kind": "release (deploy)",
+      "evidence": [{"path": ".github/workflows/deploy.yml", "lines": "72-83", "evidence": "deploy job uses actions/deploy-pages@v4 gated on github.event_name != 'pull_request'", "method": "Read"}]
+    },
+    {
+      "id": "E9",
+      "from": "external:browser",
+      "to": "portfolio-pages",
+      "kind": "runtime read",
+      "evidence": [{"path": "CNAME", "lines": "1", "evidence": "jvjohnson.dev custom domain", "method": "Read (Phase 0 §1)"}]
+    },
+    {
+      "id": "E10",
+      "from": "external:new-direction-2026",
+      "to": "portfolio-pages",
+      "kind": "content-pipeline contract (cross-repo)",
+      "evidence": [{"path": "../new-direction-2026/AGENTS.md", "lines": "131-142", "evidence": "6 source→destination mappings; all 6 anchors verified in Phase 1 §6", "method": "Read"}],
+      "phase_routing": "Phase 4 (contract inventory; AAF-VGH-008 ↔ sibling AAF-NDM-012)"
+    },
+    {
+      "id": "E11",
+      "from": "experiments-sandbox",
+      "to": "portfolio-pages",
+      "kind": "manual artifact promotion",
+      "evidence": [
+        {"path": "experiments/braid-timeline.svg", "lines": "n/a", "evidence": "Compiled from svg-src/; feeds experience/index.html inline SVG", "method": "Glob"},
+        {"path": "experience/index.html", "lines": "54", "evidence": "<svg class=\"braid-svg\" id=\"braid-timeline-svg\"> inline (manually authored)", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "E12",
+      "from": "agent-governance (THEMES.md)",
+      "to": "experiments-sandbox (themes/academic.css)",
+      "kind": "overstated reference (broken)",
+      "evidence": [
+        {"path": "THEMES.md", "lines": "25-41,48,58-61", "evidence": "Documents styles-academic.css at assets/ path; sed-script wouldn't reach experiments/themes/academic.css", "method": "Read"},
+        {"path": "experiments/themes/academic.css", "lines": "n/a", "evidence": "Actual file location (verified via Glob)", "method": "Glob"}
+      ],
+      "phase_routing": "Phase 4 (contract integrity; AAF-VGH-012)"
+    },
+    {
+      "id": "E13",
+      "from": "build-system (deploy job)",
+      "to": "external:GitHub Pages OIDC",
+      "kind": "secondary-credential (id-token exchange)",
+      "evidence": [{"path": ".github/workflows/deploy.yml", "lines": "10-13", "evidence": "permissions: contents:read + pages:write + id-token:write", "method": "Read"}],
+      "phase_routing": "Phase 6 (authority — secondary credentials)"
+    }
+  ],
+  "decisions": {
+    "assets_split": {
+      "question": "Should assets/ split into its own context (design-system-assets)?",
+      "answer": "No — stays in portfolio-pages",
+      "rationale": "Same authority basis (deployed pages as artifact), same owner, same lifecycle. The design-system *vocabulary* drift is a Phase 1 collision, not a Phase 2 split trigger."
+    },
+    "deploy_yml_split": {
+      "question": "Should .github/workflows/deploy.yml be its own context (ci-cd)?",
+      "answer": "No — stays in build-system",
+      "rationale": "Ask-first protection at AGENTS.md:101 treats it as a peer to vite.config.js. The deploy-job elevated permissions (pages:write + id-token:write) are a Phase 6 principal-level boundary inside build-system, not a context split."
+    },
+    "experiments_sandbox_status": {
+      "question": "Is experiments-sandbox a real bounded context, or a §6.3 'non-context working directory'?",
+      "answer": "Confirmed as a real bounded context",
+      "rationale": "Has explicit authority basis (stateless-policy via exclusion rules in biome.json + vite.config.js + cursor rules), distinct lifecycle declaration ('safe to prototype freely'), identifiable consumers (manual artifact promotion to portfolio-pages; cross-reference from THEMES.md in agent-governance), and 5 evidence types cleared. NOT a §6.3 non-context."
+    },
+    "maat_collision_route": {
+      "question": "Does MAAT-related vocabulary show as a collision in Phase 1 (operator-positioning vs site-content)?",
+      "answer": "Yes — Collision 2 in 01-vocabulary.md (and AAF-VGH-001)",
+      "rationale": "12 maat_feather favicon refs + 8 textual MAAT refs verified at HEAD. Phase 1 records the collision; Phase 8 will judge."
+    }
+  },
+  "exit_check": {
+    "every_claimed_context_classified": true,
+    "every_confirmed_context_has_authority_basis": true,
+    "no_edge_lacks_evidence": true,
+    "boundary_no_upgrade_without_three_evidence_types": true,
+    "boundary_no_shared_infra_as_proof": true,
+    "boundary_no_folder_move_recommendations": true,
+    "boundary_no_ownership_invention": true,
+    "phase_2_passes": true
+  }
+}

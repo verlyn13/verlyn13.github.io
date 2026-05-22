@@ -1,0 +1,271 @@
+{
+  "audit_date": "2026-05-22",
+  "profile_date": "2026-05-21",
+  "audit_spec_version": "v3.1",
+  "audit_spec_date": "2026-05-08",
+  "repository_revision": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "anchors": [
+    {
+      "name": "model-context-protocol",
+      "applicability": "operator-declared-not-project-scoped",
+      "presence": "referenced-in-governance-doc-only",
+      "evidence": {
+        "path": "CLAUDE.md",
+        "lines": "27-33",
+        "evidence": "MCP servers table declaring context7 with resolve-library-id and query-docs tools; 'Always call resolve-library-id first to get the correct library ID, then pass it to query-docs.'",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "in_repo_mcp_config_path": "n/a (no .mcp.json at repo root; verified absent)",
+      "pinned_version": "not-pinned",
+      "pinned_status": "operator-installed, not project-scoped, not pinned",
+      "stability": "unknown",
+      "configured_servers_inferred": [
+        {
+          "id": "context7",
+          "tools_inferred": ["resolve-library-id", "query-docs"],
+          "scope": "documentation lookup for libraries (Vite, Biome, etc.) used while authoring",
+          "installation": "operator-installed at Claude Code global MCP config level",
+          "project_scope_declaration": "absent"
+        }
+      ],
+      "search_note": "Profile-confirmed absent: no .mcp.json file at repo root. context7 is referenced as available via Claude Code's global MCP config, not project-scoped. Sibling new-direction-2026 has identical pattern (AAF-NDM-008).",
+      "audit_attention_flag": "AAF-VGH-009",
+      "routed_to_phase": 4
+    },
+    {
+      "name": "a2a-agent-to-agent-protocol",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {
+        "path": "(repo-wide grep)",
+        "lines": "n/a",
+        "evidence": "Profile §agent_surface.protocol_surfaces.a2a recorded: 'Grepped for agent-card, a2a, .well-known/agent.json — zero matches.'",
+        "method": "rg (per profile)",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "n/a",
+      "stability": "n/a",
+      "rationale": "Static-site presentation layer. No agent cards, advertised skills, or task-state contracts."
+    },
+    {
+      "name": "openapi-specification",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {
+        "path": "(repo-wide)",
+        "lines": "n/a",
+        "evidence": "No HTTP API. Static HTML output deployed to GitHub Pages. Profile §agent_surface.protocol_surfaces.workflow_contracts.api_descriptions: [].",
+        "method": "directory survey + profile cross-reference",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "arazzo-workflow-description",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "No workflow descriptions in repo.", "method": "directory survey"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "openapi-overlay-specification",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "No overlays; no OpenAPI surface to augment.", "method": "directory survey"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "json-schema",
+      "applicability": "not-applicable",
+      "presence": "absent-as-runtime-contract",
+      "evidence": {
+        "path": "biome.json",
+        "lines": "1",
+        "evidence": "$schema points to https://biomejs.dev/schemas/2.3.8/schema.json — Biome's tool-config schema, not a project-defined runtime contract.",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "n/a (no project-defined JSON Schema)",
+      "stability": "n/a",
+      "rationale": "Only JSON Schema in repo is Biome's own tool-config schema; not a runtime payload contract."
+    },
+    {
+      "name": "opentelemetry-semantic-conventions",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {
+        "path": "AGENTS.md",
+        "lines": "112",
+        "evidence": "'Never add external font loading, tracking scripts, or heavy dependencies' — no analytics, no telemetry. Profile baselines.observability.tracing: 'none'.",
+        "method": "Read + profile cross-reference",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "opentelemetry-genai-semantic-conventions",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "No runtime LLM calls in product code; agents are external CLI tools (Claude Code, Cursor).", "method": "directory survey + profile cross-reference"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "opentelemetry-mcp-semantic-conventions",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "context7 MCP is operator-installed at global Claude Code level; no in-repo MCP tracing emission.", "method": "directory survey"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "c2pa-content-credentials",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {
+        "path": "(repo-wide grep)",
+        "lines": "n/a",
+        "evidence": "No media generation; content is operator-authored static HTML/CSS. Profile baselines.provenance.content_provenance_position: absent.",
+        "method": "rg + profile cross-reference"
+      },
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "slsa-build-source-provenance",
+      "applicability": "informational-partial",
+      "presence": "partial-implicit",
+      "evidence": {
+        "path": ".github/workflows/deploy.yml",
+        "lines": "10-13",
+        "evidence": "permissions: contents:read, pages:write, id-token:write — id-token enables OIDC for actions/deploy-pages@v4. Profile baselines.provenance.build_source_provenance_position: 'partial'; no explicit SLSA attestation declared.",
+        "method": "Read + profile cross-reference",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "n/a (no explicit SLSA artifact declaration)",
+      "stability": "n/a",
+      "rationale": "actions/deploy-pages@v4 embeds run metadata (run ID, commit SHA) but no explicit SLSA-compliant attestation. Recorded informational; not weighted under operator's career-transition-readiness theme."
+    },
+    {
+      "name": "computer-use-sandboxing",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "No computer-use harness; agents that operate on this repo do so via Claude Code's external sandbox model.", "method": "directory survey"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "browser-use-harnesses",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "No browser-use harness in repo.", "method": "directory survey"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "model-provider-sdk-conventions",
+      "applicability": "not-applicable",
+      "presence": "absent",
+      "evidence": {"path": "package.json", "lines": "16-23", "evidence": "Dependencies: only @biomejs/biome + vite. No Anthropic/OpenAI/Google SDKs.", "method": "Read + profile cross-reference"},
+      "pinned_version": "n/a",
+      "stability": "n/a"
+    },
+    {
+      "name": "html5",
+      "applicability": "informational",
+      "presence": "build-time-anchor",
+      "evidence": {
+        "path": "AGENTS.md",
+        "lines": "92",
+        "evidence": "Required rule: 'Use semantic HTML5 with proper heading hierarchy'. Reinforced by .cursor/rules/html.mdc (auto-attached on *.html).",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "HTML living standard (no semver)",
+      "stability": "stable",
+      "rationale": "HTML5 is the output contract for the static site. Not a protocol surface; recorded informational."
+    },
+    {
+      "name": "vite-build-tool",
+      "applicability": "informational",
+      "presence": "build-time-anchor",
+      "evidence": {
+        "path": "package.json",
+        "lines": "19",
+        "evidence": "\"vite\": \"^5.0.0\"",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "^5.0.0 (caret range)",
+      "stability": "stable",
+      "rationale": "Build-time only; the deployed artifact is plain static HTML. Vite is not a runtime contract."
+    },
+    {
+      "name": "biome-linter-formatter",
+      "applicability": "informational",
+      "presence": "build-time-anchor",
+      "evidence": {
+        "path": "package.json",
+        "lines": "18",
+        "evidence": "\"@biomejs/biome\": \"^2.3.8\"",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "schema_ref": {
+        "path": "biome.json",
+        "lines": "1",
+        "evidence": "$schema: https://biomejs.dev/schemas/2.3.8/schema.json",
+        "method": "Read"
+      },
+      "pinned_version": "^2.3.8 (schema-matched at 2.3.8)",
+      "stability": "stable",
+      "rationale": "Build-time linter/formatter; serves as static-analysis fitness function. Two rules at warn-not-error (AAF-VGH-003) route to Phase 9."
+    },
+    {
+      "name": "github-actions-pages-deployment",
+      "applicability": "informational",
+      "presence": "build-time-anchor",
+      "evidence": {
+        "path": ".github/workflows/deploy.yml",
+        "lines": "20-83",
+        "evidence": "3-job pipeline (quality → build → deploy) uses actions/checkout@v4, setup-node@v4, configure-pages@v4, upload-pages-artifact@v3, deploy-pages@v4. Actions are major-version-pinned (@v4/@v3), not SHA-pinned (AAF-VGH-010).",
+        "method": "Read",
+        "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a"
+      },
+      "pinned_version": "major-version-pinned (@v4, @v3); SHA-pinning recommended in AAF-VGH-010",
+      "stability": "stable",
+      "rationale": "Deployment platform contract. Authority concern (third-party action authority breadth) routes to Phase 6 via AAF-VGH-010."
+    },
+    {
+      "name": "nist-ai-rmf",
+      "applicability": "advisory",
+      "presence": "n/a (no strategic theme triggers)",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "Operator strategic theme is career-transition-readiness, not regulatory-readiness. NIST AI RMF is not weighted.", "method": "operator-interview (profile §strategic_themes)"},
+      "pinned_version": "AI RMF 1.0 (Jan 2023; not verified at run time)",
+      "stability": "stable",
+      "audit_note": "Recorded for completeness; findings will not be scored against NIST AI RMF."
+    },
+    {
+      "name": "owasp-genai-llm-agentic-risk",
+      "applicability": "advisory",
+      "presence": "n/a (no strategic theme triggers)",
+      "evidence": {"path": "n/a", "lines": "n/a", "evidence": "Operator strategic theme is career-transition-readiness, not agent-safety-hardening. OWASP GenAI is not weighted.", "method": "operator-interview (profile §strategic_themes)"},
+      "pinned_version": "unverified at run time (operator did not request scoring)",
+      "stability": "unknown",
+      "audit_note": "Recorded for completeness; findings will not be scored against OWASP GenAI."
+    }
+  ],
+  "summary": {
+    "operator_declared_not_project_scoped": 1,
+    "informational_build_time": 4,
+    "informational_partial": 1,
+    "advisory_unweighted": 2,
+    "not_applicable": 11,
+    "primary_anchor_for_this_audit": "context7 MCP (operator-installed, not project-scoped, not pinned; AAF-VGH-009; routed Phase 4)"
+  }
+}

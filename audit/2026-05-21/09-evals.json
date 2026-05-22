@@ -1,0 +1,241 @@
+{
+  "phase": 9,
+  "audit_date": "2026-05-22",
+  "audit_spec": "agentic-audit-spec-v3.1",
+  "repo_head": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "routed_aafs_resolved": ["AAF-VGH-003"],
+  "summary": {
+    "behavior_quality_eval_suites": 0,
+    "ci_quality_gates": 6,
+    "static_analysis_gates": 3,
+    "release_gates": 4,
+    "operator_hook_gates": 2,
+    "llm_judge_surfaces": 0,
+    "golden_datasets": 0,
+    "regression_fixtures": 0,
+    "calibration_data": 0,
+    "ci_integration_overall": true,
+    "release_gate_integration_overall": true,
+    "external_branch_protection_visibility": "false (per AAF-VGH-011; in-repo audit cannot inspect GitHub branch protection rules)"
+  },
+  "eval_suites": [
+    {
+      "name": "biome-lint",
+      "mode": "n/a",
+      "covers": [".github/workflows/deploy.yml E-06 quality job; biome lint on ** except experiments/**"],
+      "scoring_method": "exact-match",
+      "ci_integrated": true,
+      "release_gate": true,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "golden_dataset_path": null,
+      "dataset_version": null,
+      "current_pass_rate": null,
+      "owner": "jeffrey",
+      "flags": ["regression-silenced"],
+      "note": "regression-silenced flag per AAF-VGH-003: 2 rules (complexity.noImportantStyles, style.noDescendingSpecificity) set to 'warn' not 'error'; CI tolerates the warnings",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "36-37", "method": "Read"},
+        {"path": "biome.json", "lines": "11-21", "method": "Read"}
+      ]
+    },
+    {
+      "name": "biome-format-check",
+      "mode": "n/a",
+      "covers": [".github/workflows/deploy.yml E-06 quality job; biome format consistency"],
+      "scoring_method": "exact-match",
+      "ci_integrated": true,
+      "release_gate": true,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "owner": "jeffrey",
+      "flags": [],
+      "citations": [{"path": ".github/workflows/deploy.yml", "lines": "39-40", "method": "Read"}]
+    },
+    {
+      "name": "vite-build",
+      "mode": "n/a",
+      "covers": [".github/workflows/deploy.yml E-07 build job; vite build verifies 11 entry points"],
+      "scoring_method": "exact-match",
+      "ci_integrated": true,
+      "release_gate": true,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "owner": "jeffrey",
+      "flags": [],
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "59-60", "method": "Read"},
+        {"path": "vite.config.js", "lines": "22-37", "method": "Read"}
+      ]
+    },
+    {
+      "name": "github-pages-deploy",
+      "mode": "n/a",
+      "covers": [".github/workflows/deploy.yml E-08 deploy job; actions/deploy-pages@v4"],
+      "scoring_method": "exact-match",
+      "ci_integrated": true,
+      "release_gate": true,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "owner": "jeffrey",
+      "flags": ["runtime-provenance-missing"],
+      "note": "no SLSA attestation in-repo; action @v4 not SHA-pinned (per AAF-VGH-010, Phase 4 §2.4)",
+      "citations": [{"path": ".github/workflows/deploy.yml", "lines": "72-83", "method": "Read"}]
+    },
+    {
+      "name": "posttooluse-biome-format-hook",
+      "mode": "n/a",
+      "covers": [".claude/settings.json E-12 hook; auto-format on every Write/Edit"],
+      "scoring_method": "exact-match",
+      "ci_integrated": false,
+      "release_gate": false,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "owner": "jeffrey",
+      "flags": ["runtime-provenance-missing"],
+      "note": "per AAF-VGH-006: stderr silenced via 2>/dev/null; exit always 0; failures invisible",
+      "citations": [{"path": ".claude/settings.json", "lines": "27-37", "method": "Read"}]
+    },
+    {
+      "name": "claude-deny-manifest",
+      "mode": "n/a",
+      "covers": [".claude/settings.json permissions.deny; .env/.env.*/node_modules/dist write-deny"],
+      "scoring_method": "exact-match",
+      "ci_integrated": null,
+      "release_gate": null,
+      "drift_tracking": false,
+      "judge_calibrated": null,
+      "owner": "jeffrey",
+      "flags": [],
+      "citations": [{"path": ".claude/settings.json", "lines": "14-25", "method": "Read"}]
+    },
+    {
+      "name": "(absence: behavior-quality evals)",
+      "mode": "n/a",
+      "covers": [],
+      "scoring_method": "unknown",
+      "ci_integrated": false,
+      "release_gate": false,
+      "drift_tracking": false,
+      "judge_calibrated": false,
+      "owner": "n/a",
+      "flags": [
+        "no-golden-data",
+        "no-release-gate",
+        "model-path-uncovered",
+        "write-tool-untested",
+        "prompt-untested",
+        "judge-uncalibrated",
+        "subagent-surface-uncovered",
+        "protocol-surface-uncovered",
+        "approval-path-untested",
+        "memory-lifecycle-untested"
+      ],
+      "note": "no behavior-quality eval suite exists; per audit-spec §7 Phase 9 'absence' is recorded as a §8.10 EvalSuite entry with the missing-dimensions enumerated as flags",
+      "citations": [{"path": "(directory survey)", "lines": "n/a", "evidence": "find /Users/verlyn13/Repos/verlyn13/verlyn13.github.io -name 'test*' -o -name '*test*' -o -name 'eval*' -o -name '*.golden.*' returns zero matches at HEAD ee6c7e5", "method": "Glob"}]
+    }
+  ],
+  "coverage_gaps": {
+    "subagent_surfaces": [
+      {"entrypoint": "E-09 /fix-issue", "tested": false, "flags": ["subagent-surface-uncovered", "prompt-untested"]},
+      {"entrypoint": "E-10 /ship-small", "tested": false, "flags": ["subagent-surface-uncovered", "prompt-untested"]},
+      {"entrypoint": "E-11 /review-diff", "tested": false, "flags": ["subagent-surface-uncovered", "prompt-untested"]}
+    ],
+    "http_route_surfaces": [
+      {"family": "E-HTTP-pages (11 routes)", "tested": false, "flags": ["high-risk-manual-review-no-rubric", "route-without-spec", "missing-lychee-link-check"]},
+      {"family": "E-HTTP-assets", "tested": false, "flags": ["config-without-validation"]}
+    ],
+    "write_capable_paths": [
+      {"path": "E-03 mise run build (local)", "tested": false, "flag": "write-tool-untested"},
+      {"path": "E-04 mise run ci", "tested": false, "flag": "write-tool-untested"},
+      {"path": "E-05 mise run clean", "tested": false, "flag": "write-tool-untested"},
+      {"path": "E-07 CI build", "tested": false, "flag": "write-tool-untested"},
+      {"path": "E-08 CI deploy (elevated)", "tested": false, "flags": ["write-tool-untested", "protocol-surface-uncovered"]},
+      {"path": "E-12 PostToolUse hook", "tested": false, "flags": ["write-tool-untested", "regression-silenced"]},
+      {"path": "E-13 experiments/svg-src/build.sh", "tested": false, "flag": "write-tool-untested"}
+    ],
+    "approval_gates": [
+      {"gate": "PR-time CI (E-06 quality + E-07 build) via external branch protection", "tested": false, "flag": "approval-path-untested", "note": "AAF-VGH-011 declared-vs-enforced gap"},
+      {"gate": "GH environment github-pages (no manual reviewers per operator)", "tested": false, "flag": "approval-path-untested"},
+      {"gate": "Claude Code permissions matrix .claude/settings.json", "tested": false, "flag": "approval-path-untested", "note": "no negative test that asserts deny patterns refuse the protected paths"},
+      {"gate": "AGENTS.md L96-103 Ask-first taxonomy (conventional)", "tested": false, "flag": "approval-path-untested"}
+    ],
+    "protocol_surfaces": [
+      {"surface": "context7 MCP (CLIENT side; operator-installed)", "tested": false, "flag": "protocol-surface-uncovered", "note": "per Phase 4 §2.18 + AAF-VGH-009"}
+    ],
+    "async_lifecycle_paths": "not-applicable (no background/paused/resumable/durable paths per Phase 3 §4)",
+    "memory_lifecycle": [
+      {"surface": "operator-rules-memory (.claude/settings.json)", "tested": false, "flag": "memory-lifecycle-untested", "note": "low risk; no business state"}
+    ],
+    "content_pipeline_cross_repo": {
+      "aaf": "AAF-VGH-008",
+      "tested": false,
+      "flag": "prompt-untested",
+      "note": "the 11 destination HTML pages are classified as authoring-artifact-prompt in Phase 8; the MAAT subset is classified stale-authoring-artifact per AAF-VGH-001; no automated cross-repo freshness check exists on either side"
+    }
+  },
+  "ci_integration_status": {
+    "biome_lint": true,
+    "biome_format_check": true,
+    "vite_build": true,
+    "deploy": true,
+    "behavior_evals": false,
+    "posttooluse_hook": "n/a (operator-local; not CI)",
+    "deny_manifest": "n/a (Claude Code enforcement; not CI)",
+    "external_branch_protection": "unknown per AAF-VGH-011"
+  },
+  "release_gate_status": {
+    "biome_lint": true,
+    "biome_format_check": true,
+    "vite_build": true,
+    "deploy": true,
+    "behavior_evals": false,
+    "posttooluse_hook": false,
+    "deny_manifest": "n/a"
+  },
+  "aaf_vgh_003_resolution": {
+    "aaf": "AAF-VGH-003",
+    "status": "confirmed",
+    "evidence": [
+      {"path": "biome.json", "lines": "15-19", "evidence": "complexity.noImportantStyles: warn AND style.noDescendingSpecificity: warn"}
+    ],
+    "operator_invariant_contradicted": "AGENTS.md:110 'Never disable Biome rules to silence errors' — 'warn' is partial silencing because warn does not fail CI",
+    "ff_candidate": "FF-biome-rule-severity-progression",
+    "phase_10_routed": true
+  },
+  "no_eval_justification": {
+    "operator_stated": true,
+    "operator_evidence": "profile baselines.evals.suites_directory: none; baselines.evals.suite_count: 0",
+    "artifact_implied": "static-site nature means no in-product LLM behavior to evaluate",
+    "audit_verdict": "partially justified",
+    "remaining_unjustifiable_gaps": [
+      "HTML link-checking (lychee or equivalent) — sibling planning-summer-2026 has it; required for AGENTS.md L111 URL stability invariant",
+      "Cross-repo content freshness (AAF-VGH-008) — destination unverified against producer source",
+      "PostToolUse hook error surface (AAF-VGH-006) — silent failures invisible",
+      "Biome rule severity (AAF-VGH-003) — 2 warn rules should escalate to error",
+      "URL stability across pages — no test asserts vite.config.js entry-map keys remain consistent across commits"
+    ]
+  },
+  "candidate_fitness_functions_for_phase_10": [
+    {"id": "FF-biome-rule-severity-progression", "category": "static-analysis", "covers": "AAF-VGH-003"},
+    {"id": "FF-lychee-link-check-ci-job", "category": "release-gate", "covers": "URL stability (AGENTS.md L111) + missing-eval gap vs sibling planning-summer-2026"},
+    {"id": "FF-content-source-revision-provenance", "category": "companion-doc-drift", "covers": "AAF-VGH-008 cross-repo content pipeline freshness"},
+    {"id": "FF-posttooluse-error-surfacing", "category": "telemetry-lint", "covers": "AAF-VGH-006"},
+    {"id": "FF-url-stability-test", "category": "release-gate", "covers": "AGENTS.md L111 URL stability invariant"},
+    {"id": "FF-identity-asset-audit", "category": "prompt-scan", "covers": "AAF-VGH-001 MAAT favicon-on-every-page identity-level signal"},
+    {"id": "FF-docs-cross-reference-check", "category": "companion-doc-drift", "covers": "AAF-VGH-002 DEV_GUIDE.md vs AGENTS.md + .cursor/rules contradiction"},
+    {"id": "FF-copyright-year-check", "category": "static-analysis", "covers": "AAF-VGH-004 README MIT © 2025 staleness"},
+    {"id": "FF-pin-github-actions-to-sha", "category": "authority-manifest", "covers": "AAF-VGH-010 third-party action SHA-pinning"}
+  ],
+  "cross_repo_notes": {
+    "missing_link_checker_vs_sibling": "planning-summer-2026 CI runs lychee link-check; new-direction-2026 has none either; verlyn13.github.io has none. The deployed public-facing repo (this one) has the strongest case for adding it.",
+    "behavior_eval_consistency": "all three repos in the cross-repo set lack behavior-quality eval suites; this is a consistent finding across the operator's portfolio; Phase 11 synthesis records as system-wide gap rather than per-repo finding"
+  },
+  "exit_check": {
+    "every_model_agent_entrypoint_mapped_or_justified": true,
+    "every_write_capable_tool_has_gate_or_flag": true,
+    "every_protocol_async_path_has_coverage_or_flag": true,
+    "ci_and_release_gate_recorded_separately": true,
+    "passes": true
+  }
+}

@@ -1,0 +1,587 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.5 Contract"
+  },
+  "counts": {
+    "contracts_total": 22,
+    "by_context": {
+      "portfolio-pages": 6,
+      "build-system": 6,
+      "agent-governance": 10,
+      "experiments-sandbox": 0
+    },
+    "by_surface": {
+      "config": 7,
+      "policy": 2,
+      "prompt": 8,
+      "http": 3,
+      "workflow": 1,
+      "tool": 1,
+      "file": 2,
+      "provenance-build-source": 1
+    },
+    "flag_distribution": {
+      "config-without-validation": 3,
+      "producer-consumer-drift": 4,
+      "version-drift": 2,
+      "mcp-surface-uninventoried": 1,
+      "tool-without-schema": 1,
+      "subagent-boundary-untyped": 1,
+      "runtime-provenance-missing": 3,
+      "build-provenance-position-missing": 1,
+      "content-provenance-position-missing": 1,
+      "route-without-spec": 2,
+      "policy-coarse": 1
+    },
+    "flag_instances_total": 20
+  },
+  "contracts": [
+    {
+      "id": "C-01",
+      "name": "vite.config.js rollupOptions.input (11-page registry)",
+      "format": "typescript",
+      "surface": "config",
+      "location": "vite.config.js:22-37",
+      "versioning": "none",
+      "schema_dialect": "Vite v5 UserConfig",
+      "protocol_version": "vite ^5.0.0",
+      "advertised_capabilities": ["11 page entries: main, cv, contact, projects-{dicee,maat,scopecam,budget-triage,flux,llm-gateway}, experience, research"],
+      "producers": ["operator (Ask-first protected)"],
+      "consumers": ["CI build job E-07", "local build E-03", "GH Pages serving E-HTTP-pages"],
+      "validation": "implicit (vite resolves paths)",
+      "compatibility_policy": "convention: add new page → add entry",
+      "flags": ["config-without-validation", "version-drift"],
+      "context": "build-system",
+      "citations": [
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "rollupOptions.input with 11 keyed entries", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "99-100", "evidence": "Ask first: new HTML entry points", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "32-34", "evidence": "Add entry to vite.config.js rollupOptions.input map", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-02",
+      "name": "biome.json (lint+format ruleset)",
+      "format": "json-schema",
+      "surface": "config",
+      "location": "biome.json:1-36",
+      "versioning": "schema-version",
+      "schema_dialect": "Biome 2.3.8 JSON Schema",
+      "advertised_capabilities": ["files.includes excludes experiments/", "recommended: true", "2 rules at warn", "2-space indent", "100-char line width", "single-quote", "semicolons-as-needed"],
+      "producers": ["operator"],
+      "consumers": ["CI quality job E-06", "local lint/format", "PostToolUse hook E-12", "Cursor IDE (if plugin)"],
+      "validation": "CI runs the linter; schema referenced for IDE validation",
+      "compatibility_policy": "^2.3.8 in package.json:18",
+      "flags": [],
+      "context": "build-system",
+      "citations": [
+        {"path": "biome.json", "lines": "1-36", "evidence": "Full ruleset; $schema pinned to 2.3.8", "method": "Read"},
+        {"path": "package.json", "lines": "18", "evidence": "@biomejs/biome ^2.3.8", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-03",
+      "name": ".github/workflows/deploy.yml (3-job CI/CD pipeline)",
+      "format": "ad-hoc",
+      "surface": "workflow",
+      "location": ".github/workflows/deploy.yml:1-83",
+      "versioning": "none",
+      "schema_dialect": "GitHub Actions workflow YAML",
+      "advertised_capabilities": ["3 jobs: quality, build (needs:quality), deploy (needs:build)", "triggers: push:main, pull_request:main, workflow_dispatch", "concurrency group:pages cancel-in-progress:true", "environment:github-pages for deploy"],
+      "auth_scheme": "permissions: contents:read + pages:write + id-token:write (workflow root)",
+      "producers": ["operator (Ask-first protected per AGENTS.md:101)"],
+      "consumers": ["GitHub Actions runner", "GitHub Pages CDN"],
+      "validation": "GitHub's YAML validator + Actions runtime",
+      "compatibility_policy": "none declared",
+      "flags": ["runtime-provenance-missing"],
+      "context": "build-system",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "1-83", "evidence": "Full 3-job pipeline", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-04",
+      "name": "GitHub Actions third-party action versions",
+      "format": "ad-hoc",
+      "surface": "provenance-build-source",
+      "location": ".github/workflows/deploy.yml various lines",
+      "versioning": "tag-only (@v4 / @v3)",
+      "schema_dialect": "GH Actions uses: syntax",
+      "advertised_capabilities": ["5 distinct actions across 3 jobs"],
+      "producers": ["actions/ org (external)"],
+      "consumers": ["E-06", "E-07", "E-08 (elevated)"],
+      "validation": "none in-repo",
+      "compatibility_policy": "implicit trust",
+      "flags": ["version-drift", "runtime-provenance-missing"],
+      "context": "build-system",
+      "pinned_actions": [
+        {"action": "actions/checkout", "version": "@v4", "lines": "25, 48", "criticality": "moderate (deploy reads code)"},
+        {"action": "actions/setup-node", "version": "@v4", "lines": "28, 51", "criticality": "moderate"},
+        {"action": "actions/configure-pages", "version": "@v4", "lines": "64", "criticality": "moderate"},
+        {"action": "actions/upload-pages-artifact", "version": "@v3", "lines": "68", "criticality": "moderate"},
+        {"action": "actions/deploy-pages", "version": "@v4", "lines": "83", "criticality": "HIGH (id-token:write + pages:write)"}
+      ],
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "25,28,48,51,64,68,83", "evidence": "5 distinct actions; all @major-tag, none SHA-pinned", "method": "Read"}
+      ],
+      "aaf_resolved": "AAF-VGH-010 confirmed; carry to Phase 6"
+    },
+    {
+      "id": "C-05",
+      "name": ".claude/settings.json permissions matrix",
+      "format": "json-schema",
+      "surface": "policy",
+      "location": ".claude/settings.json:2-26",
+      "versioning": "none",
+      "schema_dialect": "Claude Code permissions schema",
+      "advertised_capabilities": ["9 allow patterns (Bash:npm,npx,biome,git,gh,mise,ls,cat,mkdir)", "9 deny patterns (.env, .env.*, .envrc.local R/W; node_modules/dist W/E)"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code CLI"],
+      "validation": "Claude Code enforces",
+      "flags": ["policy-coarse"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "2-26", "evidence": "9 allow + 9 deny", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-06",
+      "name": ".claude/settings.json PostToolUse hook",
+      "format": "json-schema",
+      "surface": "policy",
+      "location": ".claude/settings.json:27-37",
+      "versioning": "none",
+      "schema_dialect": "Claude Code hook object",
+      "advertised_capabilities": ["matcher Write|Edit", "command runs biome format --write on .js/.json/.css", "timeout 10s", "errors silenced (2>/dev/null; exit 0)"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code at agent-startup"],
+      "validation": "Claude Code parses+executes",
+      "flags": ["runtime-provenance-missing"],
+      "context": "agent-governance",
+      "audit_attention": "AAF-VGH-006 confirmed (silent error handling)",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "27-37", "evidence": "PostToolUse hook with silenced errors", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-07a",
+      "name": ".claude/skills/fix-issue/SKILL.md",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".claude/skills/fix-issue/SKILL.md:1-12",
+      "versioning": "none",
+      "schema_dialect": "Claude Code SKILL.md frontmatter (name, description)",
+      "advertised_capabilities": ["6-step workflow: reproduce → isolate → fix → verify → visual check → document"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code session when /fix-issue invoked"],
+      "validation": "none",
+      "flags": ["subagent-boundary-untyped"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/fix-issue/SKILL.md", "lines": "1-12", "evidence": "fix-issue workflow steps", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-07b",
+      "name": ".claude/skills/review-diff/SKILL.md",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".claude/skills/review-diff/SKILL.md:1-18",
+      "versioning": "none",
+      "advertised_capabilities": ["9-item diff review checklist"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code session when /review-diff invoked"],
+      "validation": "none",
+      "flags": ["subagent-boundary-untyped"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/review-diff/SKILL.md", "lines": "1-18", "evidence": "9-item checklist", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-07c",
+      "name": ".claude/skills/ship-small/SKILL.md",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".claude/skills/ship-small/SKILL.md:1-13",
+      "versioning": "none",
+      "advertised_capabilities": ["6-rule discipline: 1-3 commits, no drive-by refactors, plan if >5 files, URL stability, etc."],
+      "producers": ["operator"],
+      "consumers": ["Claude Code session when /ship-small invoked"],
+      "validation": "none",
+      "flags": ["subagent-boundary-untyped"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/ship-small/SKILL.md", "lines": "1-13", "evidence": "6-rule discipline", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-08a",
+      "name": ".cursor/rules/project.mdc (alwaysApply)",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".cursor/rules/project.mdc:1-62",
+      "versioning": "none",
+      "schema_dialect": "Cursor frontmatter (description, globs, alwaysApply)",
+      "advertised_capabilities": ["alwaysApply: true", "core project rules: stack, commands, hard boundaries (Always/Ask first/Never), design system reference, triage map"],
+      "producers": ["operator"],
+      "consumers": ["Cursor IDE"],
+      "validation": "none",
+      "flags": [],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".cursor/rules/project.mdc", "lines": "1-62", "evidence": "Core project rules", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-08b",
+      "name": ".cursor/rules/css.mdc (glob assets/**/*.css)",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".cursor/rules/css.mdc:1-47",
+      "versioning": "none",
+      "advertised_capabilities": ["globs: assets/**/*.css", "CSS design system rules: 14 custom properties, mobile breakpoint, formatting"],
+      "producers": ["operator"],
+      "consumers": ["Cursor IDE when editing files matching globs"],
+      "validation": "none",
+      "flags": [],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".cursor/rules/css.mdc", "lines": "1-47", "evidence": "CSS design system rules", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-08c",
+      "name": ".cursor/rules/html.mdc (glob *.html, projects/*.html, experience/*.html, research/*.html)",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": ".cursor/rules/html.mdc:1-42",
+      "versioning": "none",
+      "advertised_capabilities": ["globs: HTML files at site root + projects/ + experience/ + research/", "HTML authoring rules: structure, semantics, styles/scripts, new-page checklist, experiments lifecycle"],
+      "producers": ["operator"],
+      "consumers": ["Cursor IDE when editing HTML files matching globs"],
+      "validation": "none",
+      "flags": [],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".cursor/rules/html.mdc", "lines": "1-42", "evidence": "HTML authoring rules + experiments lifecycle", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-09",
+      "name": "AGENTS.md (canonical project contract)",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": "AGENTS.md:1-140",
+      "versioning": "none",
+      "advertised_capabilities": ["project snapshot", "setup/commands", "DoD checklist", "agent tooling table", "workflow rules", "3-tier Always/Ask-first/Never authority taxonomy (L86-112)", "design system (L114-121)", "code style", "triage map"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code (via CLAUDE.md L3)", "Cursor IDE (via project.mdc reference)", "human readers"],
+      "validation": "none",
+      "flags": [],
+      "context": "agent-governance",
+      "citations": [
+        {"path": "AGENTS.md", "lines": "1-140", "evidence": "Full canonical contract", "method": "Read"},
+        {"path": "CLAUDE.md", "lines": "3", "evidence": "Precedence: 'Primary project contract: @AGENTS.md'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-10",
+      "name": "DEV_GUIDE.md vs AGENTS.md parallel governance contracts",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": "DEV_GUIDE.md:1-137 ↔ AGENTS.md:1-140",
+      "versioning": "none for either",
+      "advertised_capabilities": ["TWO contradicting design-system specs in the same governance cluster"],
+      "drift_dimensions": [
+        {"dimension": "spacing scale", "agents_md": "rem-based --space-1..--space-5 (L116)", "dev_guide_md": "8-point grid --space-xs (4px) to --space-2xl (64px) (L15-18)"},
+        {"dimension": "typography", "agents_md": "system sans-serif --font; no web fonts; --mono for code (L118)", "dev_guide_md": "serif Georgia body, sans-serif headings, 14px×1.25 ratio (L20-24)"},
+        {"dimension": "layout max-width", "agents_md": "--measure = 72ch (L119)", "dev_guide_md": "1200px container (L34)"},
+        {"dimension": "stylesheet path", "agents_md": "assets/jeffrey.css (L20,94)", "dev_guide_md": "assets/styles.css (L52,118)"},
+        {"dimension": "colors", "agents_md": "--accent hsl(212 85% 45%) blue; --accent-2 hsl(160 55% 35%) green (L117)", "dev_guide_md": "lapis blue #4C70A0; gold hover #D4AF37 (L26-31)"},
+        {"dimension": "file organization", "agents_md": "flat: index, cv, contact, projects/, experience/, research/ (L12-28)", "dev_guide_md": "tree includes research/maat.html, research/scopecam.html, academic/, legacy maat/, scopecam/ directories that DO NOT exist (L43-58)"}
+      ],
+      "producers": ["operator"],
+      "consumers": ["external agents that read either file"],
+      "validation": "none",
+      "flags": ["producer-consumer-drift"],
+      "context": "agent-governance",
+      "aaf_resolved": "AAF-VGH-002 confirmed",
+      "citations": [
+        {"path": "DEV_GUIDE.md", "lines": "1-137", "evidence": "Stale developer guide", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "12-28,86-128", "evidence": "Current canonical design system + repo shape", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-11",
+      "name": "THEMES.md (multi-theme switching capability — overstated)",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": "THEMES.md:1-128",
+      "versioning": "none",
+      "advertised_capabilities": ["claims 'site supports multiple visual themes'", "2 themes named (jeffrey.css, styles-academic.css)", "sed-script Quick Switch at L48,51"],
+      "reality": "assets/styles-academic.css does NOT exist; actual academic.css is at experiments/themes/academic.css (different bounded context); no HTML file links anything other than jeffrey.css; sed-script would silently no-op",
+      "producers": ["operator"],
+      "consumers": ["operator-facing docs; agent confusion risk"],
+      "validation": "none",
+      "flags": ["producer-consumer-drift", "route-without-spec"],
+      "context": "agent-governance",
+      "aaf_resolved": "AAF-VGH-012 confirmed",
+      "citations": [
+        {"path": "THEMES.md", "lines": "25,48,51,58-62,124-127", "evidence": "Multi-theme capability declared with wrong path", "method": "Read"},
+        {"path": "experiments/themes/academic.css", "lines": "n/a", "evidence": "Actual academic.css location (in different context)", "method": "Glob"},
+        {"path": "assets/", "lines": "n/a", "evidence": "Only jeffrey.css + menu.js + icons/ — no styles-academic.css", "method": "Glob"}
+      ]
+    },
+    {
+      "id": "C-12",
+      "name": "CNAME (custom apex domain contract)",
+      "format": "ad-hoc",
+      "surface": "config",
+      "location": "CNAME:1",
+      "versioning": "none",
+      "advertised_capabilities": ["jvjohnson.dev apex domain"],
+      "producers": ["operator (committed in daea00d per Phase 0 §1)"],
+      "consumers": ["GitHub Pages CDN reads on each deploy"],
+      "validation": "GitHub Pages externally validates DNS; not in-repo",
+      "compatibility_policy": "depends on operator-controlled registrar-level DNS",
+      "flags": ["build-provenance-position-missing"],
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": "CNAME", "lines": "1", "evidence": "jvjohnson.dev (14 bytes with newline)", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-13",
+      "name": "11 deployed page URLs (bookmarkable URL contract)",
+      "format": "ad-hoc",
+      "surface": "http",
+      "location": "https://jvjohnson.dev/* — paths registered at vite.config.js:23-37",
+      "versioning": "none",
+      "advertised_capabilities": ["11 URLs: /, /cv.html, /contact.html, /projects/{dicee,maat,scopecam,budget-triage,flux,llm-gateway}.html, /experience/, /research/"],
+      "producers": ["operator"],
+      "consumers": ["browsers + bookmarks + external links"],
+      "validation": "none (no URL-stability test or redirect manifest)",
+      "compatibility_policy": "'Never break existing page URLs' (AGENTS.md:111; ship-small SKILL L11)",
+      "flags": ["route-without-spec"],
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": "AGENTS.md", "lines": "111", "evidence": "Never break existing page URLs", "method": "Read"},
+        {"path": ".claude/skills/ship-small/SKILL.md", "lines": "11", "evidence": "Keep public URLs stable — never break existing page paths", "method": "Read"},
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "11 inputs map to 11 URLs", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-14",
+      "name": "HTML5 page element contracts (title/meta/link/anchor)",
+      "format": "ad-hoc",
+      "surface": "http",
+      "location": "each of the 11 HTML pages",
+      "versioning": "HTML5 living standard",
+      "advertised_capabilities": ["<title>, <meta viewport/charset/description>, <link rel=stylesheet href=/assets/jeffrey.css>, <link rel=icon href=/assets/icons/maat_feather_16.svg>, internal/external <a> tags"],
+      "producers": ["operator (per-page)"],
+      "consumers": ["browsers, SEO crawlers, accessibility tools, link checkers"],
+      "validation": "none in-repo (no html-validator step in CI)",
+      "flags": ["config-without-validation"],
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": ".cursor/rules/html.mdc", "lines": "21-23", "evidence": "ARIA labels + rel=noopener noreferrer conventions", "method": "Read"},
+        {"path": "01-vocabulary.json", "lines": "§2.1", "evidence": "Per-page title/h1/h2 hierarchy inventory", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-15",
+      "name": "CSS custom-properties contract (design tokens)",
+      "format": "ad-hoc",
+      "surface": "config",
+      "location": "assets/jeffrey.css :root declarations",
+      "versioning": "none",
+      "advertised_capabilities": ["14 custom properties: --ink, --paper, --muted, --accent, --accent-2, --border, --shadow, --shadow-hard, --radius, --radius-sm, --measure, --font, --mono, --space-1..--space-5"],
+      "producers": ["operator"],
+      "consumers": ["every CSS declaration in assets/jeffrey.css"],
+      "validation": "Biome catches some misuse; no test asserts the set vs documented set",
+      "flags": [],
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": ".cursor/rules/css.mdc", "lines": "14-46", "evidence": "14 custom properties documented", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "116-120", "evidence": "Design system custom-property set", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-16",
+      "name": ".mise.toml task contract",
+      "format": "ad-hoc",
+      "surface": "config",
+      "location": ".mise.toml:1-42",
+      "versioning": "none",
+      "schema_dialect": "mise TOML (implicit)",
+      "advertised_capabilities": ["[tools] node='24'", "10 tasks: dev, build, preview, lint, lint:fix, format, format:check, clean, deploy, ci"],
+      "producers": ["operator"],
+      "consumers": ["mise run *", "SKILL.md skills referencing 'mise run ci'"],
+      "validation": "mise parses + executes",
+      "flags": [],
+      "context": "build-system",
+      "citations": [
+        {"path": ".mise.toml", "lines": "1-42", "evidence": "Node 24 + 10 tasks", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-17",
+      "name": "package.json (npm scripts + dependencies)",
+      "format": "json-schema",
+      "surface": "config",
+      "location": "package.json:1-21",
+      "versioning": "semver (version 1.0.0; private:true)",
+      "advertised_capabilities": ["7 scripts (dev/build/preview/lint/lint:fix/format/format:check/clean/deploy)", "2 devDeps: @biomejs/biome ^2.3.8 + vite ^5.0.0"],
+      "producers": ["operator"],
+      "consumers": ["npm CLI", "CI npm ci", "local npm run *"],
+      "validation": "npm enforces schema",
+      "flags": [],
+      "context": "build-system",
+      "citations": [
+        {"path": "package.json", "lines": "1-21", "evidence": "Full manifest", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-18",
+      "name": "context7 MCP server (operator-installed, not project-scoped)",
+      "format": "mcp-manifest",
+      "surface": "tool",
+      "location": "declared in CLAUDE.md:27-33; AGENTS.md:60-61; NO .mcp.json in repo",
+      "versioning": "none",
+      "protocol_version": "unknown (not pinned in-repo)",
+      "advertised_capabilities": ["2 tools: mcp__context7__resolve-library-id, mcp__context7__query-docs"],
+      "auth_scheme": "not declared in-repo",
+      "producers": ["external context7 service"],
+      "consumers": ["Claude Code sessions in this repo when global MCP config includes context7"],
+      "validation": "none in-repo",
+      "flags": ["mcp-surface-uninventoried", "tool-without-schema"],
+      "context": "agent-governance",
+      "aaf_resolved": "AAF-VGH-009 confirmed; pairs with sibling AAF-NDM-008",
+      "citations": [
+        {"path": "CLAUDE.md", "lines": "27-33", "evidence": "MCP table declares context7 as project's MCP server", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "60-61", "evidence": "context7 listed in agents & MCPs table", "method": "Read"},
+        {"path": ".mcp.json", "lines": "n/a", "evidence": "File DOES NOT EXIST in repo (verified Phase 0 §4.2)", "method": "Glob"}
+      ]
+    },
+    {
+      "id": "C-19",
+      "name": "Cross-repo content pipeline (consumer side; producer at sibling AGENTS.md:131-142)",
+      "format": "ad-hoc",
+      "surface": "file",
+      "location": "../new-direction-2026/AGENTS.md:131-142 (producer); 11 HTML pages in this repo (consumer)",
+      "versioning": "none on either side",
+      "advertised_capabilities": ["6 source→destination mappings"],
+      "producers": ["sibling repo new-direction-2026 (same operator, different repo)"],
+      "consumers": ["this repo (the 6 destination surfaces)"],
+      "validation": "none — manual /sync-check skill in sibling; no machine check",
+      "compatibility_policy": "'Verify and finalize source content here before touching the website' (sibling AGENTS.md:142)",
+      "flags": ["producer-consumer-drift", "content-provenance-position-missing"],
+      "context": "portfolio-pages",
+      "aaf_resolved": "AAF-VGH-008 (consumer side) ↔ paired with sibling AAF-NDM-012 (producer side); cross-repo synthesis layer reconciles Phase 10",
+      "mappings": [
+        {"#": 1, "source": "career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md", "destination": "cv.html", "destination_present": true, "freshness_check": "manual; unverified"},
+        {"#": 2, "source": "career-transition-ready/website-content/PORTFOLIO-QUICK.md", "destination": "index.html (hero/intro)", "destination_present": true, "freshness_check": "manual; unverified"},
+        {"#": 3, "source": "career-transition-ready/technical-projects/ACTIVE-PROJECTS-PORTFOLIO.md", "destination": "projects/*.html (6 pages: dicee, maat, scopecam, budget-triage, flux, llm-gateway)", "destination_present": true, "freshness_check": "manual; unverified; note: homeNetOps in vocabulary but no projects/homenetops.html"},
+        {"#": 4, "source": "career-transition-ready/research-publications/RESEARCH-PUBLICATIONS.md", "destination": "research/index.html", "destination_present": true, "freshness_check": "manual; unverified"},
+        {"#": 5, "source": "career-transition-ready/website-content/timeline-component-spec.md", "destination": "experience/index.html", "destination_present": true, "freshness_check": "manual; unverified"},
+        {"#": 6, "source": "career-transition-ready/teaching-portfolio/TEACHING-INVENTORY.md", "destination": "cv.html (teaching section)", "destination_present": true, "freshness_check": "8 'teaching/publications/research' terms found via Grep; section embedded inside cv.html"}
+      ],
+      "cross_repo_hints_for_synthesis": [
+        "6/6 destinations present at HEAD; producer-side audit must verify 6/6 sources at HEAD with correct relative paths",
+        "No freshness mechanism on either side; manual hand-promotion; the sibling /sync-check skill is the only sync surface",
+        "Asymmetry: homeNetOps in vocabulary but no destination page (project named but not deployed)",
+        "MAAT vocabulary collision (AAF-VGH-001) is consumer-side overweighting; check producer-side balance",
+        "AAF-NDM-008 ↔ AAF-VGH-009 are paired (both declare context7 without .mcp.json); consistent finding"
+      ],
+      "citations": [
+        {"path": "../new-direction-2026/AGENTS.md", "lines": "129-142", "evidence": "6 source→destination mappings (producer side)", "method": "Read"},
+        {"path": "cv.html, index.html, projects/*.html, research/index.html, experience/index.html", "lines": "n/a", "evidence": "All 6 destinations verified at HEAD per Phase 0 §4.1", "method": "Glob"}
+      ]
+    },
+    {
+      "id": "C-20",
+      "name": "External-link rel attribute convention",
+      "format": "ad-hoc",
+      "surface": "http",
+      "location": "each of the 11 HTML pages (per-anchor)",
+      "versioning": "HTML5 living standard",
+      "advertised_capabilities": ["External links should carry rel=noopener noreferrer per .cursor/rules/html.mdc:23"],
+      "producers": ["operator (per-page)"],
+      "consumers": ["browsers"],
+      "validation": "none — no link checker in CI",
+      "flags": ["config-without-validation"],
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": ".cursor/rules/html.mdc", "lines": "23", "evidence": "External links: always add aria-label and rel='noopener noreferrer'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-21",
+      "name": "CLAUDE.md → AGENTS.md precedence declaration",
+      "format": "ad-hoc",
+      "surface": "prompt",
+      "location": "CLAUDE.md:3",
+      "versioning": "none",
+      "advertised_capabilities": ["Precedence rule: AGENTS.md is the canonical project contract"],
+      "producers": ["operator"],
+      "consumers": ["Claude Code at session start"],
+      "validation": "honored by convention",
+      "flags": [],
+      "context": "agent-governance",
+      "limitation": "Does NOT name DEV_GUIDE.md as superseded; the DEV_GUIDE.md vs AGENTS.md drift (C-10) is not resolved by this precedence alone",
+      "citations": [
+        {"path": "CLAUDE.md", "lines": "3", "evidence": "'Primary project contract: @AGENTS.md'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "C-22",
+      "name": "README.md (license + 2-project blurb)",
+      "format": "ad-hoc",
+      "surface": "file",
+      "location": "README.md:1-15",
+      "versioning": "none",
+      "producers": ["operator"],
+      "consumers": ["GitHub UI", "humans"],
+      "validation": "none",
+      "flags": ["producer-consumer-drift"],
+      "context": "agent-governance",
+      "aaf_resolved": "AAF-VGH-004 (carried to Phase 8): MIT © 2025 stale at 2026 audit date; mentions 2 projects while 6 are deployed",
+      "citations": [
+        {"path": "README.md", "lines": "9-11", "evidence": "Only MAAT + ScopeCam named; 6 project pages exist", "method": "Read"},
+        {"path": "README.md", "lines": "14", "evidence": "MIT © 2025 stale at 2026 audit", "method": "Read"}
+      ]
+    }
+  ],
+  "aaf_resolutions": {
+    "AAF-VGH-002": "CONFIRMED at C-10 (DEV_GUIDE.md vs AGENTS.md parallel governance contracts; 6 drift dimensions). Remediation candidates listed; Phase 10 decides.",
+    "AAF-VGH-008": "CONFIRMED at C-19 (cross-repo content pipeline consumer side; 6/6 destinations present; manual hand-promotion only; no automated freshness check). Pairs with sibling AAF-NDM-012; cross-repo synthesis layer reconciles Phase 10.",
+    "AAF-VGH-009": "CONFIRMED at C-18 (context7 MCP declared but not project-scoped; no .mcp.json in repo). Pairs with sibling AAF-NDM-008.",
+    "AAF-VGH-010": "CONFIRMED at C-04 (5 GH Actions @v* major-tag-only, none SHA-pinned; deploy-pages@v4 is highest priority because it runs with id-token:write + pages:write). Carried to Phase 6.",
+    "AAF-VGH-012": "CONFIRMED at C-11 (THEMES.md overstated multi-theme capability; assets/styles-academic.css does not exist; actual file at experiments/themes/academic.css). Phase 10 remediation candidates listed.",
+    "AAF-VGH-006": "CONFIRMED at C-06 (PostToolUse hook silenced errors; runtime-provenance-missing flag applied). Phase 3 §7.1 has remediation candidate.",
+    "AAF-VGH-004": "Carried to Phase 8 at C-22 (README.md stale)."
+  },
+  "cross_repo_phase_4_hints": {
+    "pair_summary": "AAF-VGH-008 (this audit, C-19) ↔ AAF-NDM-012 (sibling audit, producer side)",
+    "for_synthesis_layer": [
+      "6/6 destinations present at HEAD on consumer side; producer-side audit must verify 6/6 sources",
+      "No freshness mechanism on either side; manual hand-promotion only",
+      "Asymmetric coverage: homeNetOps project named in vocabulary but no destination page (project named but not deployed)",
+      "MAAT vocabulary collision (AAF-VGH-001) is consumer-side overweighting via favicon; check producer-side narrative balance",
+      "AAF-NDM-008 ↔ AAF-VGH-009 are paired (context7 MCP unpinned on both sides; consistent remediation)",
+      "Phase 10 fitness-function candidate: machine-readable source-revision provenance in HTML destination files (e.g., HTML comment with source-doc SHA)"
+    ]
+  },
+  "exit_check": {
+    "no_unflagged_adhoc_external_contract": true,
+    "every_tool_action_skill_has_schema_or_flag": true,
+    "every_mcp_or_a2a_surface_inventoried_separately_or_flagged": true,
+    "every_public_interface_has_producer_consumer_evidence": true,
+    "every_subagent_boundary_typed_or_flagged": true,
+    "phase_4_passes": true
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "phase": 8,
+  "audit_date": "2026-05-22",
+  "audit_spec": "agentic-audit-spec-v3.1",
+  "repo_head": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "see_also": "08-prompt-surfaces.json (detailed per-surface inventory)",
+  "routed_aafs_resolved": ["AAF-VGH-001", "AAF-VGH-002", "AAF-VGH-004", "AAF-VGH-012"],
+  "policy_separation_summary": {
+    "runtime_production_prompts_count": 0,
+    "runtime_nonproduction_prompts_count": 3,
+    "authoring_artifact_prompts_count": 11,
+    "documentation_about_prompts_count": 2,
+    "skill_or_sop_count": 6,
+    "server_exposed_prompts_count": 0,
+    "embedded_policy_count": 1,
+    "contradictory_guidance_count": 2,
+    "stale_authoring_artifacts_count": 15,
+    "policy_masquerade_count": 0,
+    "retrieval_policy_leaks_count": 0,
+    "tool_description_policy_leaks_count": 0,
+    "server_prompt_policy_leaks_count": 0,
+    "privileged_context_injection_risks_count": 0
+  },
+  "maat_positioning_quantified": {
+    "aaf": "AAF-VGH-001",
+    "favicon_refs": 12,
+    "favicon_paths": [
+      "index.html:8",
+      "cv.html:8",
+      "contact.html:8",
+      "experience/index.html:10",
+      "research/index.html:8",
+      "projects/maat.html:8",
+      "projects/dicee.html:8",
+      "projects/scopecam.html:8",
+      "projects/budget-triage.html:8",
+      "projects/flux.html:8",
+      "projects/llm-gateway.html:8",
+      "experiments/timeline-braid.html (sandbox; included for completeness)"
+    ],
+    "textual_refs": 8,
+    "textual_locations": [
+      "cv.html:83 (h3 heading)",
+      "index.html:44 (lead paragraph)",
+      "index.html:76 (theoretical CS connection)",
+      "index.html:117 (nav card href to /projects/maat.html)",
+      "research/index.html:141 (formal methods reference)",
+      "experience/index.html:326 (project name)",
+      "projects/maat.html:6 (title)",
+      "projects/maat.html:48 (h1)"
+    ],
+    "readme_lead": ["README.md:10-11 (named first of 'two primary projects')"],
+    "dedicated_page": "projects/maat.html (entire page)",
+    "total_surface_instances": 20,
+    "classification": "stale-authoring-artifact",
+    "drift_target": "operator-stated minor/experimental positioning + sibling pinned-facts list at ../new-direction-2026/.cursor/rules/content.mdc:19-24 which omits MAAT",
+    "cross_repo_pair_b_sibling": "new-direction-2026 AAF-NDM-007 (5 refs producer side)",
+    "consumer_vs_producer_ratio": "4x more prominent on consumer side; staleness amplified by favicon identity-level signal"
+  },
+  "dev_guide_contradictions": {
+    "aaf": "AAF-VGH-002",
+    "classification_primary": "contradictory-guidance",
+    "classification_secondary": "stale-authoring-artifact (broken references)",
+    "design_system_axes_count": 6,
+    "design_system_axes": [
+      {"axis": "spacing-scale", "canonical": "--space-1..--space-5 (rem-based) at AGENTS.md:116", "stale": "--space-xs..--space-2xl (8-point 4-64px) at DEV_GUIDE.md:15-18"},
+      {"axis": "typography-body", "canonical": "system sans-serif via --font at AGENTS.md:118", "stale": "Serif (Georgia) at DEV_GUIDE.md:22"},
+      {"axis": "content-max-width", "canonical": "--measure = 72ch at AGENTS.md:119", "stale": "1200px at DEV_GUIDE.md:34"},
+      {"axis": "primary-accent", "canonical": "hsl(212 85% 45%) blue at AGENTS.md:117", "stale": "#4C70A0 lapis at DEV_GUIDE.md:28"},
+      {"axis": "secondary-accent", "canonical": "hsl(160 55% 35%) green at AGENTS.md:117", "stale": "#D4AF37 gold (hover) at DEV_GUIDE.md:29"},
+      {"axis": "css-filename", "canonical": "assets/jeffrey.css at AGENTS.md:20,94", "stale": "assets/styles.css at DEV_GUIDE.md:52,62,118 (THIS FILE DOES NOT EXIST)"}
+    ],
+    "broken_reference_categories_count": 3,
+    "broken_references": [
+      "research/maat.html and research/scopecam.html at DEV_GUIDE.md:46-47 (do not exist; actual paths are projects/maat.html and projects/scopecam.html)",
+      "academic/ directory tree at DEV_GUIDE.md:48-50 (does not exist)",
+      "legacy maat/ and scopecam/ directories at DEV_GUIDE.md:54-55 (do not exist; the redirect annotation is fictional)"
+    ],
+    "additional_themes_md_broken_reference": "assets/styles-academic.css referenced in THEMES.md:25,48,51 does not exist at that path; actual location is experiments/themes/academic.css (per AAF-VGH-012)",
+    "total_sub_citations": 9,
+    "policy_home": "AGENTS.md + .cursor/rules/ trio (canonical per CLAUDE.md:3 precedence statement)",
+    "recommendation_boundary": "delete DEV_GUIDE.md, replace with stub-redirect, supersede with dated note, or merge accurate portions into AGENTS.md — Phase 8 does not decide"
+  },
+  "themes_md_finding": {
+    "aaf": "AAF-VGH-012",
+    "classification": ["stale-authoring-artifact", "contradictory-guidance"],
+    "embedded_values": [
+      {"line": 25, "kind": "tool-constraint", "value": "assets/styles-academic.css (wrong path)"},
+      {"line": 48, "kind": "tool-constraint", "value": "sed-script that would silently no-op"},
+      {"line": 51, "kind": "tool-constraint", "value": "reverse-direction sed-script also broken"}
+    ],
+    "drift_target": "filesystem at HEAD ee6c7e5: assets/jeffrey.css exists; assets/styles-academic.css does NOT exist; experiments/themes/academic.css is the actual location",
+    "capability_claim_overstated": "L1-5 'site supports multiple visual themes' with no automation for the switch"
+  },
+  "readme_finding": {
+    "aaf": "AAF-VGH-004",
+    "classification": "stale-authoring-artifact",
+    "stale_items": [
+      {"line": 13, "kind": "release-criterion", "value": "MIT © 2025 (year is 2026)"},
+      {"lines": "10-11", "kind": "authority", "value": "two primary projects (MAAT, ScopeCam) — but 6 projects deployed per vite.config.js:23-37"}
+    ]
+  },
+  "skill_md_findings": [
+    {
+      "id": "PS-02",
+      "path": ".claude/skills/ship-small/SKILL.md",
+      "classification": "embedded-policy",
+      "embedded_values": [{"value": ">5 files threshold for plan-mode trigger", "kind": "threshold", "line": 10}],
+      "policy_home": "currently in PS-02 only; plausible alternative home is AGENTS.md L96-103",
+      "severity_note": "minor; consistent within this repo; cross-repo asymmetry exists (sibling new-direction-2026 has same >5 in its ship-small but >3 in AGENTS.md/CLAUDE.md — that's the sibling's concern)"
+    }
+  ],
+  "retrieval_surfaces_check": {
+    "present": false,
+    "rationale": "no retrieval pipeline; context7 MCP is operator-installed documentation-lookup, not in-repo retrieval"
+  },
+  "tool_description_policy_check": {
+    "violations": 0,
+    "rationale": "tool descriptions live upstream in Claude Code / context7 MCP; this repo does not author them"
+  },
+  "untrusted_input_boundaries": [
+    {"boundary": "Public HTTP read (E-HTTP-pages × 11)", "risk": "nil", "rationale": "no user input accepted; read-only static delivery"},
+    {"boundary": "External outbound links in HTML pages", "risk": "nil", "rationale": "outbound only; no ingress"},
+    {"boundary": "PostToolUse hook input via jq", "risk": "low", "rationale": "operator-mediated; tool_input is Claude Code's own JSON; biome formats file in-place"},
+    {"boundary": "context7 MCP results", "risk": "low", "rationale": "operator-controlled invocation; operator-installed MCP; not project-scoped"},
+    {"boundary": "Cross-repo Read from sibling new-direction-2026", "risk": "nil", "rationale": "operator is producer"}
+  ],
+  "server_exposed_prompts": [],
+  "phase_8_findings_candidate_for_phase_10": [
+    "AAF-VGH-001 — MAAT positioning 20+ surface instances (rebalance: favicon + nav-card + lead-paragraph + README; FF candidate: identity-asset audit)",
+    "AAF-VGH-002 — DEV_GUIDE.md 6 design-system axes + 3 broken-reference categories (delete/stub/merge; FF candidate: docs-cross-reference-check)",
+    "AAF-VGH-012 — THEMES.md overstated capability + broken file path (retire claim or implement; FF candidate: theme-switcher-or-retire)",
+    "AAF-VGH-004 — README stale year + 2-vs-6 project list (FF candidate: copyright-year-check; consolidate with AAF-VGH-001 for project list)",
+    "PS-02 ship-small threshold (minor; record only)"
+  ],
+  "cross_repo_pair_b_alignment": {
+    "pair": "Pair B (MAAT positioning)",
+    "consumer_side": "this audit AAF-VGH-001 = 20+ surface instances on verlyn13.github.io",
+    "producer_side": "sibling AAF-NDM-007 = 5 refs on new-direction-2026 (AGENTS.md L178 + STATUS.md L13/L43/L56 + .gemini/GEMINI.md L106)",
+    "amplification_ratio": "4x consumer side (driven primarily by favicon × every page)",
+    "classification_aligned": true,
+    "both_classify_as": "stale-authoring-artifact",
+    "current_source_contradicted": "operator-stated minor/experimental positioning + .cursor/rules/content.mdc:19-24 (sibling) pinned-facts list which omits MAAT",
+    "phase_11_synthesis_note": "amplification through content pipeline is itself a finding; rebalancing on consumer side requires producer-side coordination"
+  },
+  "exit_check": {
+    "every_surface_classified": true,
+    "every_embedded_policy_cites_lines_and_home": true,
+    "every_stale_artifact_cites_current_source": true,
+    "server_prompts_and_privileged_context_mapped_or_na": "n/a (none present)",
+    "passes": true
+  }
+}

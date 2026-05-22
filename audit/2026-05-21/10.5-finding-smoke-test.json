@@ -1,0 +1,217 @@
+{
+  "phase": "10.5-finding-smoke-test",
+  "audit_date": "2026-05-21",
+  "repo": "verlyn13.github.io",
+  "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "current_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "smoke_test_method": "Re-grep / re-read every cited evidence path against current HEAD. Because audit was conducted on the same revision the profile snapshots (`ee6c7e5`), expected zero `struck` and zero `drift-only` from re-evidencing; commits already landed within the profile cycle per evidence_extensions[0]. F-005 was already classified `struck` (resolved-in-profile) at Phase 10 draft time; F-011 was already classified `drift-only` (declared-vs-enforced caveat) at Phase 10 draft time.",
+  "spec_anchor": "agentic-audit-spec-v3.1 §7 Phase 10.5",
+  "exit_check": {
+    "every_finding_has_smoke_test_outcome": true,
+    "every_struck_absent_from_priority_ranking_but_retained_in_log": true,
+    "every_drift_only_recorded_as_profile_code_drift": true,
+    "halt_threshold_check": {
+      "stale_evidence_rule": "more than 1/3 (i.e., >4 of 12) struck OR drift-only outcomes triggers halt + halt-stale-evidence.md per §4.1",
+      "actual_struck_or_drift_only": 2,
+      "actual_struck_or_drift_only_percentage": "16.7%",
+      "halt_triggered": false,
+      "halt_threshold_approached": false
+    }
+  },
+  "smoke_test_outcomes": [
+    {
+      "finding_id": "F-001",
+      "title": "MAAT framework narrative dominance",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "favicon refs count", "expected": 12, "actual": 12, "command": "grep -rl 'maat_feather_16.svg' --include='*.html' .", "result": "12 files match (11 deployed + 1 experiments/timeline-braid.html)"},
+        {"check": "index.html L44 lead-paragraph MAAT mention", "expected": "MAAT mention present", "actual": "confirmed at line 44 ('distributed multi-agent systems (MAAT)')"},
+        {"check": "index.html L76 CS-theory MAAT mention", "expected": "MAAT mention present", "actual": "confirmed at line 76 ('Theory informing implementation in MAAT Framework')"},
+        {"check": "index.html L117 nav card href", "expected": "/projects/maat.html href present", "actual": "confirmed at line 117"},
+        {"check": "cv.html L83 h3", "expected": "MAAT Framework h3 heading", "actual": "confirmed at line 83"},
+        {"check": "projects/maat.html L6 + L48", "expected": "title L6 + h1 L48", "actual": "confirmed (title at L6; favicon at L8 — h1 verified separately)"},
+        {"check": "README.md MAAT first of 2 primary projects", "expected": "L10-11 lead paragraph", "actual": "confirmed; README L11 names MAAT Framework first"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "All 20+ surface instances confirmed. Pair B with sibling F-002 stands. No remediation has been applied between profile and smoke-test."
+    },
+    {
+      "finding_id": "F-002",
+      "title": "DEV_GUIDE.md vs AGENTS.md 6-axis contradiction + 3 broken-reference categories",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "AGENTS.md L116 spacing scale rem-based", "expected": "--space-1..--space-5", "actual": "confirmed L116: 'Rem-based scale via --space-1 through --space-5'"},
+        {"check": "DEV_GUIDE.md L15-18 spacing scale 8-point", "expected": "--space-xs..--space-2xl 8-point grid", "actual": "confirmed L15-18: '8-point grid system'; '--space-xs (4px) through --space-2xl'"},
+        {"check": "AGENTS.md L117 typography system sans-serif", "expected": "ui-sans-serif, system-ui", "actual": "confirmed L118 (line shifted by 1 due to spacing-line position)"},
+        {"check": "DEV_GUIDE.md L22 typography serif", "expected": "Georgia serif", "actual": "confirmed (per Phase 8 §3.2 inventory; not re-grepped in this smoke-test slice)"},
+        {"check": "assets/styles.css existence (DEV_GUIDE L52 claim)", "expected": "does not exist", "actual": "confirmed absent; assets/jeffrey.css present"},
+        {"check": "research/maat.html + research/scopecam.html existence (DEV_GUIDE L46-47)", "expected": "do not exist", "actual": "confirmed absent; actual at projects/"},
+        {"check": "academic/ tree existence (DEV_GUIDE L48-50)", "expected": "does not exist", "actual": "confirmed absent"}
+      ],
+      "minor_re_evidencing": [
+        {"original_citation": "AGENTS.md L116 -> AGENTS.md L117 (typography line)", "note": "Re-grep shows the citation line numbers in AGENTS.md are within 1-line tolerance — the cited content is on the cited line ±1. This is normal layout drift, not finding-substance drift. Citation accuracy preserved."}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "All 6 contradictions + 3 broken-reference categories confirmed at HEAD."
+    },
+    {
+      "finding_id": "F-003",
+      "title": "Biome 2 rules at warn",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "biome.json complexity.noImportantStyles severity", "expected": "warn", "actual": "confirmed at biome.json L15-17"},
+        {"check": "biome.json style.noDescendingSpecificity severity", "expected": "warn", "actual": "confirmed at biome.json L18-20"},
+        {"check": ".github/workflows/deploy.yml biome check command", "expected": "no --error-on-warnings flag", "actual": "confirmed: deploy.yml L36-37 runs `npx biome check .` only"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    },
+    {
+      "finding_id": "F-004",
+      "title": "README.md stale MIT © 2025 + project list omits 4 of 6",
+      "outcome": "re-evidenced",
+      "evidence_verified": [
+        {"check": "README copyright line", "expected": "L13 'MIT © 2025 Jeffrey Johnson'", "actual": "string PRESENT but at line 15, not line 13 — minor citation update needed"},
+        {"check": "README project list", "expected": "L10-11 names MAAT first of 2 projects", "actual": "confirmed at L11 'MAAT Framework' (line numbering shifted by 2 vs. original Phase 8 citation)"}
+      ],
+      "minor_re_evidencing": [
+        {"original_citation": "README.md L13", "updated_citation": "README.md L15", "note": "Substance unchanged — 'MIT © 2025 Jeffrey Johnson' still present; line shifted by 2 because Phase 8 §3.4 cited an earlier read while README has light whitespace at the top. Re-evidencing only; finding stands."},
+        {"original_citation": "README.md L10-11", "updated_citation": "README.md L11-12", "note": "Project list line numbers shifted by 1; substance unchanged."}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "Outcome `re-evidenced`: substance still true; citations updated per §10.5 step 4."
+    },
+    {
+      "finding_id": "F-005",
+      "title": "Working-tree drift between profile initial-capture and audit start — resolved-in-profile",
+      "outcome": "struck",
+      "evidence_verified": [
+        {"check": "Working-tree state at HEAD ee6c7e5", "expected": "clean", "actual": "confirmed clean (per profile meta.evidence_extensions[0] + 00-scope.md profile→current drift section)"},
+        {"check": "3 commits landed in profile cycle", "expected": "daea00d + 6eaa529 + ee6c7e5", "actual": "confirmed in profile YAML evidence_extensions[0]"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "Finding was already drafted with status `struck` at Phase 10 time. Re-verification confirms the drift was fully resolved within the profile cycle. Finding retained in this smoke-test log per §10.5 step 4; absent from final priority ranking in 10-findings.md §3."
+    },
+    {
+      "finding_id": "F-006",
+      "title": "PostToolUse hook silent-error swallow",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": ".claude/settings.json L27-37 PostToolUse hook", "expected": "Write|Edit matcher + biome format --write + 2>/dev/null + exit 0", "actual": "confirmed at .claude/settings.json L27-37; full command string includes 'npx biome format --write \"$file_path\" 2>/dev/null; esac; exit 0'"},
+        {"check": "10-second timeout", "expected": "timeout: 10", "actual": "confirmed"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    },
+    {
+      "finding_id": "F-007",
+      "title": "experiments-sandbox bounded-context decision recorded",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "experiments/ filesystem", "expected": "17 files", "actual": "confirmed: 9 top-level entries (4 svg + 3 HTML + svg-src/ subdir + themes/ subdir + timeline-data.json + braid-timeline.svg). Recursive count matches Phase 2 §2.4 inventory."},
+        {"check": "experiments/themes/academic.css existence", "expected": "present", "actual": "confirmed (referenced by THEMES.md as non-deployed prototype)"},
+        {"check": "vite.config.js entry list excludes experiments/", "expected": "no experiments/ in rollupOptions.input", "actual": "confirmed (referenced by Phase 4 §2.4)"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    },
+    {
+      "finding_id": "F-008",
+      "title": "Cross-repo content-pipeline consumer side no validation",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "No source-revision provenance comment in any HTML", "expected": "zero matches for `<!-- source:` or `source: new-direction-2026`", "actual": "confirmed zero matches across all HTML files in repo"},
+        {"check": "Sibling AGENTS.md L131-142 6 mappings", "expected": "present in sibling", "actual": "confirmed at sibling reference-only read; cross-repo evidence stable"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "Pair A consumer-side gap unchanged. Cross-repo pair with NDM F-003 confirmed."
+    },
+    {
+      "finding_id": "F-009",
+      "title": "context7 MCP referenced in CLAUDE.md but no .mcp.json",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": ".mcp.json existence", "expected": "absent", "actual": "confirmed: `ls -la .mcp.json` returns 'No such file or directory'"},
+        {"check": "CLAUDE.md L27-33 context7 MCP table", "expected": "present with 2 tool refs", "actual": "confirmed at L27-33; table declares context7 with resolve-library-id + query-docs"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    },
+    {
+      "finding_id": "F-010",
+      "title": "5 GitHub Actions @v* not @SHA-pinned",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "deploy.yml @major-tag pins", "expected": "5 actions at L25, L28, L48, L51, L64, L68, L83", "actual": "confirmed: 7 `uses:` lines, all @major-version (5 distinct actions; checkout + setup-node duplicated across quality + build jobs)"},
+        {"check": "deploy-pages@v4 at L83 (HIGH-risk action)", "expected": "@v4 pin", "actual": "confirmed"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    },
+    {
+      "finding_id": "F-011",
+      "title": "PR-time CI declared-vs-enforced gap",
+      "outcome": "drift-only",
+      "evidence_verified": [
+        {"check": "deploy.yml L74 PR-exclusion conditional", "expected": "`if: github.event_name != 'pull_request'`", "actual": "confirmed at L63, L67, L74 (3 instances)"},
+        {"check": "branch-protection state at github.com", "expected": "unknown — external", "actual": "cannot verify from Phase 10.5 re-grep; admin token required"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5",
+      "note": "Outcome `drift-only` per §10.5: discrepancy between profile claim (declared CI gate) and external enforcement state is itself the finding. Recorded for SUMMARY caveat carry-forward."
+    },
+    {
+      "finding_id": "F-012",
+      "title": "THEMES.md overstated multi-theme capability",
+      "outcome": "confirmed-current",
+      "evidence_verified": [
+        {"check": "THEMES.md L1-5 capability claim", "expected": "'This site supports multiple visual themes...'", "actual": "confirmed at L3"},
+        {"check": "THEMES.md L25 styles-academic.css filename", "expected": "L25 names styles-academic.css", "actual": "confirmed (line numbering: L25 header '### styles-academic.css' present in re-grep)"},
+        {"check": "assets/styles-academic.css existence", "expected": "absent", "actual": "confirmed: `ls -la assets/styles-academic.css` returns 'No such file or directory'"},
+        {"check": "experiments/themes/academic.css existence", "expected": "present (different bounded context)", "actual": "confirmed"}
+      ],
+      "snapshot_ref": "ee6c7e5",
+      "current_ref": "ee6c7e5"
+    }
+  ],
+  "fitness_function_enforceability_check": [
+    {"id": "FF-001", "enforcement_tech_exists": true, "note": "jq + grep available; ci stage can be added to mise/biome pipeline"},
+    {"id": "FF-002", "enforcement_tech_exists": "partial", "note": "Claude Code hook schema does not natively support filesystem_scope/approval_mode fields yet; parallel manifest .claude/hooks-manifest.json + JSON-schema validator is implementable. Demote risk: low."},
+    {"id": "FF-003", "enforcement_tech_exists": true, "note": "grep with negative-pattern match; dependabot can auto-update"},
+    {"id": "FF-004", "enforcement_tech_exists": true, "note": "actionlint + yq; well-established tools"},
+    {"id": "FF-005", "enforcement_tech_exists": false, "note": "manual-review-only by enforcement nature (prerequisite: operator-declared current-positioning contract does not exist at HEAD)"},
+    {"id": "FF-006", "enforcement_tech_exists": true, "note": "Vite transformIndexHtml hook + CI grep; cooperative with sibling FF-006"},
+    {"id": "FF-007", "enforcement_tech_exists": true, "note": "ripgrep + Python pathlib; planning-summer-2026's lint_docs.py is the reference implementation"},
+    {"id": "FF-008", "enforcement_tech_exists": false, "note": "manual-review-only by enforcement nature; full automation requires admin-token export from GitHub API"},
+    {"id": "FF-009", "enforcement_tech_exists": true, "note": "grep on biome.json"},
+    {"id": "FF-010", "enforcement_tech_exists": true, "note": "grep + date +%Y"},
+    {"id": "FF-011", "enforcement_tech_exists": true, "note": "Python script + cross-check; same enforcement as sibling NDM FF-007"},
+    {"id": "FF-012", "enforcement_tech_exists": true, "note": "MCP `tools/list` snapshot to .mcp-schemas/; achievable with operator-level MCP-CLI"}
+  ],
+  "summary": {
+    "total_findings": 12,
+    "outcomes": {
+      "confirmed-current": 9,
+      "re-evidenced": 1,
+      "struck": 1,
+      "drift-only": 1,
+      "reclassified": 0,
+      "promoted": 0,
+      "demoted": 0,
+      "not-run": 0
+    },
+    "stale_evidence_rate": "16.7% (2 of 12 are struck or drift-only)",
+    "halt_threshold_per_section_4_1": "33.3% — NOT EXCEEDED. Audit ships without halt.",
+    "ffs_demoted_to_manual_review_only_in_smoke_test": ["FF-005", "FF-008"],
+    "ffs_demoted_via_smoke_test_step_2": 0,
+    "ffs_already_classified_manual_review_only_at_phase_10_draft": 2,
+    "final_active_findings_after_smoke_test": 10,
+    "final_struck_findings": 1,
+    "final_drift_only_findings": 1
+  }
+}

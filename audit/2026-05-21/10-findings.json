@@ -1,0 +1,329 @@
+{
+  "phase": "10-findings",
+  "audit_date": "2026-05-21",
+  "repo": "verlyn13.github.io",
+  "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "strategic_themes": [
+    {"name": "career-transition-readiness", "kind": "custom", "multiplier": 1.5, "weighted_dimensions": ["11.3", "11.4", "11.5", "11.10"]}
+  ],
+  "strategic_weight_table": {
+    "direct": 1.5,
+    "indirect": 1.2,
+    "none": 1.0
+  },
+  "priority_formula": "priority = severity × confidence × strategic_weight × reversibility_factor",
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "MAAT framework narrative dominance across 20+ portfolio surfaces despite operator-stated minor/experimental positioning (Pair B consumer side)",
+      "dimension": "11.8 policy-prompt-separation",
+      "severity": 3,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "indirect",
+      "reversibility_factor": 1.2,
+      "priority": 5.4,
+      "finding_bucket": "stale-authoring-artifact-policy",
+      "aaf_origin": "AAF-VGH-001",
+      "cross_repo_pair": "Pair B with new-direction-2026 F-002 (AAF-NDM-007). Consumer side is 4× more prominent than producer side (20+ refs here vs 5 narrative refs sibling). Staleness propagated through content pipeline and amplified by favicon design choice.",
+      "snapshot_evidence": [
+        {"path": "(every deployed page favicon)", "lines": "L8 each on 11 deployed pages + 1 experiments page", "evidence": "12 instances of `assets/icons/maat_feather_16.svg` favicon: index.html L8, cv.html L8, contact.html L8, projects/{maat,dicee,scopecam,budget-triage,flux,llm-gateway}.html L8 each, experience/index.html L10, research/index.html L8, experiments/timeline-braid.html L8.", "method": "grep", "snapshot_ref": "ee6c7e5"},
+        {"path": "index.html", "lines": "44, 76, 117", "evidence": "Lead paragraph MAAT mention (L44); CS theory mention (L76); nav card href (L117).", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "cv.html", "lines": "83", "evidence": "h3 heading MAAT mention.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "research/index.html", "lines": "141", "evidence": "Formal-methods → policy-verification reference to MAAT.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "experience/index.html", "lines": "326", "evidence": "Project-name listing.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "projects/maat.html", "lines": "6, 48", "evidence": "Dedicated page: title L6 + h1 L48. Page existence itself is the strongest flagship signal contradicting operator-stated minor/experimental.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "README.md", "lines": "10-11", "evidence": "Lead-paragraph names MAAT first of 'two primary projects'.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "../new-direction-2026/.cursor/rules/content.mdc", "lines": "19-24", "evidence": "Sibling pinned-facts contract enumerates 6 pinned facts (title, Ph.D., B.A., institution, live project=Dicee, key publication) — MAAT is NOT in this list. Internal contradiction with consumer-side prominence here.", "method": "view (cross-repo reference-only read)", "snapshot_ref": "sibling b4e7513"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "61-99", "evidence": "Phase 8 §3.1 inventory + classification: `stale-authoring-artifact` × 20+ surface instances.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-005"],
+      "recommendation_boundary": "Policy home is the HTML pages themselves (no code extraction possible for a static portfolio). Operator-deferred remediation per stated intent. Candidate edits: (a) change favicon to a neutral identity mark, (b) rebalance lead-paragraph + nav-card prominence, (c) optionally retire projects/maat.html or reframe as 'early work' with date stamp. Phase 10 records the FF candidate (FF-005) as manual-review-only — there is no extracted-policy home to lint against."
+    },
+    {
+      "id": "F-002",
+      "title": "DEV_GUIDE.md contradicts AGENTS.md design system on 6 axes + 3 broken-reference categories",
+      "dimension": "11.3 contract-discipline",
+      "severity": 3,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "direct",
+      "reversibility_factor": 1.2,
+      "priority": 5.4,
+      "finding_bucket": "parallel-contracts-drift",
+      "aaf_origin": "AAF-VGH-002",
+      "snapshot_evidence": [
+        {"path": "DEV_GUIDE.md", "lines": "15-18", "evidence": "Spacing scale: --space-xs (4px) through --space-2xl (64px) 8-point grid.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "AGENTS.md", "lines": "116", "evidence": "Spacing scale: --space-1 through --space-5 rem-based. CONTRADICTS DEV_GUIDE.md.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "DEV_GUIDE.md", "lines": "22, 28, 29, 34, 52", "evidence": "Body typography Georgia serif; accent #4C70A0; hover #D4AF37; max-width 1200px; CSS file assets/styles.css.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "AGENTS.md", "lines": "117-120", "evidence": "Body typography system sans-serif; accent hsl(212 85% 45%); accent-2 hsl(160 55% 35%); --measure 72ch; CSS file assets/jeffrey.css. CONTRADICTS DEV_GUIDE.md on all 5 axes.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "DEV_GUIDE.md", "lines": "46-55, 93-101", "evidence": "References research/maat.html + research/scopecam.html (don't exist; actual pages at projects/), academic/ tree (doesn't exist), legacy maat/+scopecam/ dirs (don't exist), assets/styles.css (doesn't exist), and a navigation HTML snippet linking to /research/ and /academic/ — /academic/ is not in vite.config.js entry list. 3 broken-reference categories.", "method": "view+Glob", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "Phase 4 §2.10", "evidence": "Two contracts with producer-consumer-drift flag.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "102-135", "evidence": "Phase 8 §3.2 classification: `contradictory-guidance` (6 axes) + `stale-authoring-artifact` (3 broken-reference categories). 9 total sub-citations.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-007"],
+      "recommendation_boundary": "AGENTS.md is the operator-declared canonical contract per CLAUDE.md L3. DEV_GUIDE.md options: (a) delete, (b) replace with one-line redirect stub, (c) supersede with dated 'see AGENTS.md' note, (d) merge accurate fragments (e.g., L130-135 deployment section) into AGENTS.md. Phase 10 does not decide; FF-007 (docs-cross-reference-check) prevents recurrence."
+    },
+    {
+      "id": "F-003",
+      "title": "Biome 2 rules at `warn` not `error` severity — CI passes with style violations",
+      "dimension": "11.11 architectural-fitness-functions",
+      "severity": 2,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 2.0,
+      "finding_bucket": "gate-strictness-progression",
+      "aaf_origin": "AAF-VGH-003",
+      "snapshot_evidence": [
+        {"path": "biome.json", "lines": "15-19", "evidence": "rules.complexity.noImportantStyles: \"warn\"; rules.style.noDescendingSpecificity: \"warn\". `npx biome check .` exits 0 with warnings.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": ".github/workflows/deploy.yml", "lines": "36-37", "evidence": "quality job runs `npx biome check .` only; no `--error-on-warnings` flag.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/09-evals.md", "lines": "118-130", "evidence": "Phase 9 §3: CI passes with warnings. Documented progression-to-error remediation candidate.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-009"],
+      "recommendation_boundary": "Two-step: (a) fix underlying CSS issues (operator), (b) escalate `warn` → `error` in biome.json. Single-line edit per rule. FF-009 (biome-rule-severity-progression) prevents new rules being added at warn without an ADR-style justification."
+    },
+    {
+      "id": "F-004",
+      "title": "README.md L13 stale `MIT © 2025` copyright + L10-11 project list omits 4 of 6 deployed projects",
+      "dimension": "11.8 policy-prompt-separation",
+      "severity": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 1.0,
+      "finding_bucket": "stale-authoring-artifact-policy",
+      "aaf_origin": "AAF-VGH-004",
+      "snapshot_evidence": [
+        {"path": "README.md", "lines": "13", "evidence": "`MIT © 2025 Jeffrey Johnson` — current date 2026-05-22.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "README.md", "lines": "10-11", "evidence": "Lists only MAAT + ScopeCam as 'two primary projects'. Deployed projects per vite.config.js L23-37: 6 (maat, dicee, scopecam, budget-triage, flux, llm-gateway).", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "158-180", "evidence": "Phase 8 §3.4 classification: `stale-authoring-artifact` × 2 sub-items. L10-11 reinforces AAF-VGH-001.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-010"],
+      "recommendation_boundary": "L13: trivial single-line edit to current year-range (e.g., 2025-2026). L10-11: consolidated with F-001 (MAAT rebalance) operator decision. FF-010 (copyright-year-check) is a tiny CI grep."
+    },
+    {
+      "id": "F-005",
+      "title": "Working-tree drift between profile initial-capture rev (2c6924d) and audit start — resolved within profile cycle via 3 commits per evidence_extensions[0]",
+      "dimension": "11.10 governance-audit-trail",
+      "severity": 1,
+      "confidence": 1.0,
+      "status": "struck",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 1.0,
+      "finding_bucket": "drift-resolved-in-profile",
+      "aaf_origin": "AAF-VGH-005",
+      "snapshot_evidence": [
+        {"path": "profile/2026-05-21/project_profile.yaml", "lines": "meta.evidence_extensions[0]", "evidence": "3 commits landed (daea00d CNAME + 6eaa529 MAAT integration + ee6c7e5 profile). resolved_audit_attention_flags: [AAF-VGH-005]. Working tree clean at audit start at HEAD ee6c7e5.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/00-scope.md", "lines": "profile→current drift section", "evidence": "Phase 0 confirmed resolution; no commit-level drift.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "struck",
+      "smoke_test_note": "Status is `struck` (not active) per audit spec §10.5 — finding retained in smoke-test log for audit-trail but absent from final priority ranking. The drift it described was fully resolved within the profile cycle by 3 commits; current evidence at HEAD ee6c7e5 confirms working tree is clean.",
+      "related_fitness_functions": [],
+      "recommendation_boundary": "No action required. Resolution captured in profile meta.evidence_extensions[0] per operator-approved same-day triage convention (matches meta-inventory's pattern)."
+    },
+    {
+      "id": "F-006",
+      "title": "PostToolUse hook silent-error swallow — write-capable automation principal with zero observability",
+      "dimension": "11.7 observability-semantics",
+      "severity": 4,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.5,
+      "priority": 6.0,
+      "finding_bucket": "automation-observability-gap",
+      "aaf_origin": "AAF-VGH-006",
+      "snapshot_evidence": [
+        {"path": ".claude/settings.json", "lines": "27-37", "evidence": "PostToolUse hook on Write|Edit calls runs `npx biome format --write ${tool_input.file_path} 2>/dev/null; exit 0`. Silenced stderr + forced exit 0. 10-second timeout. Auto-approved on Write|Edit matcher.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/07-observability.md", "lines": "26, 67-90, 116-122, 222-224", "evidence": "Phase 7 §3.4 — single biggest observability gap in repo. Phase 6 A-04 flags ambient-authority + write-without-approval-policy + approval-not-enforced. Compound: write-capable automation + no provenance + no exit-code signal + no log + no event + no metric.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "84-116, 270-271", "evidence": "Phase 6 A-04 (PostToolUse hook): NO audit log of invocations. Approval gate G-post-tool-hook auto-approved on Write|Edit matcher with no operator confirmation. The only mitigation is git-recoverability of any change made (the hook only re-formats).", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-001", "FF-002"],
+      "recommendation_boundary": "Single-file edit to .claude/settings.json. Replace `2>/dev/null; exit 0` with tee to `.claude/logs/posttooluse.log`, propagate biome's actual exit code, emit a structured event line (timestamp + file_path + biome_exit_code + biome_version). FF-001 (claude-code-hook-observability) + FF-002 (claude-code-hook-scope-declaration) make this enforceable across the family."
+    },
+    {
+      "id": "F-007",
+      "title": "experiments-sandbox bounded-context decision recorded — stateless-policy authority basis with manual cross-context promotion path",
+      "dimension": "11.1 bounded-contexts",
+      "severity": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 1.0,
+      "finding_bucket": "bounded-context-decision-record",
+      "aaf_origin": "AAF-VGH-007",
+      "snapshot_evidence": [
+        {"path": "audit/2026-05-21/02-context-map.md", "lines": "130-158", "evidence": "Phase 2 §2.4: experiments-sandbox CONFIRMED as bounded context with stateless-policy authority basis. 17 files, 5 evidence types: build exclusion (vite.config.js L22-37), lint exclusion (biome.json L4), lifecycle declaration (.cursor/rules/html.mdc L39-41 + project.mdc L61 + AGENTS.md L23,139), filesystem evidence (17 files), active-use evidence (operator IS using sandbox).", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "experiments/svg-src/", "lines": "directory", "evidence": "Hand-authored prototypes + svg build pipeline + 3 governance-style docs. Manual hand-promotion path to portfolio-pages via experiments/braid-timeline.svg → experience/index.html L54.", "method": "ls/find", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": [],
+      "recommendation_boundary": "DECISION RECORD — no remediation required. Open operator decision: should the manual cross-context promotion path (experiments → portfolio-pages via hand-copy of braid-timeline.svg) be formalized as an ADR? Phase 2 confirmed boundary; Phase 10 records the decision; future ADR catalog (see F-010) could capture it."
+    },
+    {
+      "id": "F-008",
+      "title": "Cross-repo content-pipeline 6-row producer-consumer contract — consumer side has zero validation (Pair A consumer side)",
+      "dimension": "11.3 contract-discipline",
+      "severity": 4,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "direct",
+      "reversibility_factor": 1.2,
+      "priority": 7.2,
+      "finding_bucket": "cross-repo-contract-validation",
+      "aaf_origin": "AAF-VGH-008",
+      "cross_repo_pair": "Pair A with new-direction-2026 F-003 (AAF-NDM-012, producer side). Both sides have no automated check.",
+      "snapshot_evidence": [
+        {"path": "../new-direction-2026/AGENTS.md", "lines": "131-142", "evidence": "Sibling repo declares 6 source → destination mappings: CV-COMPREHENSIVE-EXTRACT.md → cv.html, PORTFOLIO-QUICK.md → index.html, ACTIVE-PROJECTS-PORTFOLIO.md → projects/*.html, RESEARCH-PUBLICATIONS.md → research/, timeline-component-spec.md → experience/, TEACHING-INVENTORY.md → cv.html.", "method": "view (cross-repo reference-only read)", "snapshot_ref": "sibling b4e7513"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "370-453", "evidence": "Phase 4 §2.19: 11 deployed HTML pages consume the producer's source documents. NO source-revision provenance comment in destinations. NO build-time check that destinations match sources. Flag: content-provenance-position-missing.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "(all 11 deployed HTML pages)", "lines": "head", "evidence": "Grep for `source:` / `pipeline:` / `new-direction-2026 @` comments in HTML head: NONE present.", "method": "grep", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/09-evals.md", "lines": "216-220", "evidence": "Phase 9 §4.8: no eval surface asserts content freshness, source-revision provenance, or destination-source alignment.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-006"],
+      "recommendation_boundary": "Build-time enhancement: insert `<!-- source: new-direction-2026 @ <sha> -->` comment into each generated HTML head. Producer-side complement at sibling's audit (FF-006 there). Pair A both repos cooperate. FF-006 in this repo (html-source-revision-provenance-comment) is consumer-side enforceable; full pipeline check requires producer-consumer handshake."
+    },
+    {
+      "id": "F-009",
+      "title": "context7 MCP referenced in CLAUDE.md L27-33 but no .mcp.json — operator-installed at Claude Code global level, not project-scoped",
+      "dimension": "11.4 tool-action-surface-clarity",
+      "severity": 2,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "direct",
+      "reversibility_factor": 1.0,
+      "priority": 3.6,
+      "finding_bucket": "mcp-surface-inventory",
+      "aaf_origin": "AAF-VGH-009",
+      "cross_repo_pair": "Family-wide pattern; cross-cites sibling new-direction-2026 F-004 (AAF-NDM-008, 5 MCPs uninventoried). Sibling has 5 operator-installed MCPs uninventoried; vgh has 1 (context7). Same root cause: operator-global MCP installation without per-project manifests.",
+      "snapshot_evidence": [
+        {"path": "CLAUDE.md", "lines": "27-33", "evidence": "Declares context7 MCP server with 2 tools (resolve-library-id, query-docs). 'Always call resolve-library-id first to get the correct library ID, then pass it to query-docs.'", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "AGENTS.md", "lines": "60-61", "evidence": "Cross-reference to context7 MCP.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "(repo-root)", "lines": "n/a", "evidence": "ls -la verified ABSENT: .mcp.json.", "method": "ls/find", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "347-368", "evidence": "Phase 4 §2.18 confirmed: operator-installed, not project-scoped, not pinned. Flags: mcp-surface-uninventoried + tool-without-schema. Cross-repo Pair with sibling AAF-NDM-008.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-011", "FF-012"],
+      "recommendation_boundary": "Three operator options: (a) add `.mcp.json` that pins context7 + protocol version + tool schemas, (b) remove in-repo MCP declaration if purely operator-machine config, (c) demote CLAUDE.md MCP table to 'operator-installed; see <URL>' pointer. Phase 10 does not decide. FF-011 (mcp-project-scoping) + FF-012 (mcp-tool-schema-recorded) cover family-wide enforcement."
+    },
+    {
+      "id": "F-010",
+      "title": "5 GitHub Actions @v* not @SHA-pinned — supply-chain authority surfaces unbounded (deploy-pages@v4 highest priority)",
+      "dimension": "11.6 authority-boundaries",
+      "severity": 3,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.2,
+      "priority": 3.6,
+      "finding_bucket": "supply-chain-pin-discipline",
+      "aaf_origin": "AAF-VGH-010",
+      "snapshot_evidence": [
+        {"path": ".github/workflows/deploy.yml", "lines": "25, 28, 48, 51, 64, 68, 83", "evidence": "5 actions @major-tag-pinned, none @SHA-pinned: actions/checkout@v4 (L25, L48), actions/setup-node@v4 (L28, L51), actions/configure-pages@v4 (L64), actions/upload-pages-artifact@v3 (L68), actions/deploy-pages@v4 (L83).", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "186-218, 251-261", "evidence": "Phase 6 A-10: deploy job permissions pages:write + id-token:write inherited workflow-root from L10-13. deploy-pages@v4 is the SINGLE action combining elevated permissions + OIDC token acquisition + outbound publish authority + major-tag pin. Other 4 actions are moderate-risk.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "94-115", "evidence": "Phase 4 §2.4: flag version-drift + runtime-provenance-missing.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-003", "FF-004"],
+      "recommendation_boundary": "Two-part remediation: (a) SHA-pin all 5 actions (single grep + replace per action); (b) reduce workflow-root permissions to contents:read only and declare pages:write + id-token:write at deploy job level only. FF-003 (pin-github-actions-to-sha) + FF-004 (per-job-actions-permissions). Highest priority is deploy-pages@v4 (PUBLISH action with OIDC). Cross-repo applicable to any sibling repo adding Actions later."
+    },
+    {
+      "id": "F-011",
+      "title": "PR-time CI declared but required-for-merge gate is GitHub branch-protection rules external to repo (declared-vs-enforced caveat)",
+      "dimension": "11.11 architectural-fitness-functions",
+      "severity": 2,
+      "confidence": 0.75,
+      "status": "drift-only",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 1.5,
+      "finding_bucket": "declared-vs-enforced-gap",
+      "aaf_origin": "AAF-VGH-011",
+      "snapshot_evidence": [
+        {"path": ".github/workflows/deploy.yml", "lines": "62-74", "evidence": "PR-time runs quality+build but NOT deploy (`if: github.event_name != 'pull_request'` per L74). Job declarations are complete in-repo.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "270-273 (G-branch-protection-declared-vs-enforced)", "evidence": "GitHub branch-protection-rule visibility is external to repo. In-repo declaration cannot prove gate is required-for-merge.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "drift-only",
+      "smoke_test_note": "Classification per §10.5: discrepancy between profile claim (declared CI gate) and external enforcement state (branch protection rules visible only to repo admin) is itself the finding. The audit cannot observe GitHub-API-level state from a reference-only Phase 10 re-grep. Status: drift-only.",
+      "related_fitness_functions": ["FF-008"],
+      "recommendation_boundary": "Operator decision needed in remediation PR: (a) verify branch-protection rules at github.com require quality + build before merge, (b) document the rule state in AGENTS.md + a future ADR, (c) FF-008 (manual-review-only) names the recurring check. Carried forward to SUMMARY caveat per Phase 0 routing."
+    },
+    {
+      "id": "F-012",
+      "title": "THEMES.md declares multi-theme switching capability with no automated implementation; styles-academic.css does not exist; sed-scripts silently no-op",
+      "dimension": "11.8 policy-prompt-separation",
+      "severity": 2,
+      "confidence": 1.0,
+      "status": "active",
+      "strategic_relevance": "none",
+      "reversibility_factor": 1.0,
+      "priority": 2.0,
+      "finding_bucket": "capability-overstatement-doc",
+      "aaf_origin": "AAF-VGH-012",
+      "snapshot_evidence": [
+        {"path": "THEMES.md", "lines": "1-5, 25-41, 48-51", "evidence": "L1-5: 'This site supports multiple visual themes. Switch between them by changing the stylesheet reference in HTML files.' L25-41: names styles-academic.css as second theme. L48-51: sed-script for switching.", "method": "view", "snapshot_ref": "ee6c7e5"},
+        {"path": "(filesystem)", "lines": "n/a", "evidence": "Glob assets/styles-academic.css: NOT FOUND. The actual file is at experiments/themes/academic.css (different path, different bounded context).", "method": "Glob", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "138-155", "evidence": "Phase 8 §3.3 classification: `stale-authoring-artifact` + `contradictory-guidance`. 4 sub-citations.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "smoke_test": "not-run",
+      "related_fitness_functions": ["FF-007"],
+      "recommendation_boundary": "Three operator options: (a) retire multi-theme claim from THEMES.md (keep as single-theme philosophy doc), (b) move experiments/themes/academic.css → assets/styles-academic.css and add HTML-level switcher, (c) document as-is reality (manual hand-edit; experimental prototype, not deployed). Phase 8 does not decide. FF-007 (docs-cross-reference-check) catches the L25 broken filename reference."
+    }
+  ],
+  "summary_counts": {
+    "total_drafted": 12,
+    "active": 10,
+    "struck": 1,
+    "drift-only": 1,
+    "superseded": 0,
+    "by_severity": {"5": 0, "4": 2, "3": 3, "2": 4, "1": 3},
+    "by_dimension": {"11.1": 1, "11.3": 2, "11.4": 1, "11.6": 1, "11.7": 1, "11.8": 3, "11.10": 1, "11.11": 2},
+    "by_strategic_relevance": {"direct": 3, "indirect": 1, "none": 8},
+    "cross_repo_pairs": ["Pair A: F-008 ↔ NDM F-003 (AAF-NDM-012)", "Pair B: F-001 ↔ NDM F-002 (AAF-NDM-007)", "MCP family: F-009 ↔ NDM F-004 (AAF-NDM-008)"]
+  },
+  "cross_repo_pair_citations": {
+    "Pair A — content-pipeline": {
+      "this_repo_finding": "F-008",
+      "this_repo_aaf": "AAF-VGH-008",
+      "sibling_finding": "new-direction-2026 F-003",
+      "sibling_aaf": "AAF-NDM-012",
+      "synthesis_layer": "Pair A reconciled in cross-repo synthesis at meta-inventory/audit/2026-05-21/cross-repo-synthesis-2026-05-21.md §0.4"
+    },
+    "Pair B — MAAT positioning": {
+      "this_repo_finding": "F-001",
+      "this_repo_aaf": "AAF-VGH-001",
+      "sibling_finding": "new-direction-2026 F-002",
+      "sibling_aaf": "AAF-NDM-007",
+      "synthesis_layer": "Pair B reconciled in cross-repo synthesis at meta-inventory/audit/2026-05-21/cross-repo-synthesis-2026-05-21.md §0.4. Consumer side 4× more prominent than producer side (20+ refs vs 5)."
+    },
+    "MCP family pattern": {
+      "this_repo_finding": "F-009",
+      "this_repo_aaf": "AAF-VGH-009",
+      "sibling_finding": "new-direction-2026 F-004",
+      "sibling_aaf": "AAF-NDM-008",
+      "synthesis_layer": "Same root cause: operator-global MCP install without per-project manifest. Family-wide FF-011 + FF-012 cover both."
+    }
+  },
+  "priority_ranking_top_10_active_only": [
+    {"rank": 1, "id": "F-008", "title": "Cross-repo content-pipeline consumer side no validation (AAF-VGH-008; Pair A)", "priority": 7.2, "dim": "11.3"},
+    {"rank": 2, "id": "F-006", "title": "PostToolUse hook silent-error swallow (AAF-VGH-006)", "priority": 6.0, "dim": "11.7"},
+    {"rank": 3, "id": "F-001", "title": "MAAT 20+ stale-authoring-artifact (AAF-VGH-001; Pair B)", "priority": 5.4, "dim": "11.8"},
+    {"rank": 4, "id": "F-002", "title": "DEV_GUIDE.md vs AGENTS.md 6-axis + 3-broken-ref contradiction (AAF-VGH-002)", "priority": 5.4, "dim": "11.3"},
+    {"rank": 5, "id": "F-009", "title": "context7 MCP uninventoried (AAF-VGH-009)", "priority": 3.6, "dim": "11.4"},
+    {"rank": 6, "id": "F-010", "title": "5 GH Actions @v* not @SHA (AAF-VGH-010)", "priority": 3.6, "dim": "11.6"},
+    {"rank": 7, "id": "F-003", "title": "Biome 2 rules warn-not-error (AAF-VGH-003)", "priority": 2.0, "dim": "11.11"},
+    {"rank": 8, "id": "F-012", "title": "THEMES.md overstated capability (AAF-VGH-012)", "priority": 2.0, "dim": "11.8"},
+    {"rank": 9, "id": "F-011", "title": "PR-time CI declared-vs-enforced gap (AAF-VGH-011)", "priority": 1.5, "dim": "11.11"},
+    {"rank": 10, "id": "F-007", "title": "experiments-sandbox boundary decision recorded (AAF-VGH-007)", "priority": 1.0, "dim": "11.1"}
+  ]
+}

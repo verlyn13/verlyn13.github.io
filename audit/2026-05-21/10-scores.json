@@ -1,0 +1,152 @@
+{
+  "phase": "10-scoring",
+  "audit_date": "2026-05-21",
+  "repo": "verlyn13.github.io",
+  "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "audit_mode": "first-cycle",
+  "rubric_version": "agentic-audit-spec-v3.1 §11",
+  "strategic_themes": [
+    {
+      "name": "career-transition-readiness",
+      "kind": "custom",
+      "multiplier": 1.5,
+      "weighted_dimensions": ["11.3", "11.4", "11.5", "11.10"],
+      "rationale": "Operator-declared during Phase G interview. Cross-repo content pipeline (11.3) + agent surface boundaries (11.4) + state/memory clarity (11.5) + governance/ADR catalog discipline (11.10) directly support the producer→consumer flow new-direction-2026 → verlyn13.github.io for credible career positioning. Note: this is the same theme set as the sibling new-direction-2026 audit; the two repos are the production endpoints of the career pipeline.",
+      "supersedes_default_mapping": "No default mapping exists for custom themes; operator-declared dimensions used as-is."
+    }
+  ],
+  "scoring_method": {
+    "scale": "0-3 per §11",
+    "aggregate": "informational (lowest dims dominate per §11)",
+    "tie_handling": "lower score wins on tie since lowest dims matter most",
+    "weighting": "scores themselves not multiplied; theme multiplier applies to FINDING priority not dimension scores"
+  },
+  "scores": {
+    "11.1": {
+      "title": "Bounded contexts",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/02-context-map.md", "lines": "8-10, 130-158", "evidence": "4 contexts confirmed: portfolio-pages, build-system, agent-governance, experiments-sandbox. AAF-VGH-007 resolved at §2.4: experiments-sandbox is a real bounded context with stateless-policy authority basis (explicit exclusion + relaxed-rules lifecycle). Vocabulary collisions exist (Phase 1) but none cross contexts dispositively.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/02-contexts.json", "lines": "all", "evidence": "Distinct ownership, distinct lifecycle, distinct deployability per context. No machine-verifiable boundary checks yet (no CODEOWNERS, no eslint-plugin-boundaries, no dependency-cruiser config).", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "rationale": "Names + vocab + lifecycle are distinct (above 1). Boundaries are not machine-verifiable nor enforced by fitness functions (below 3). 4 contexts identified with the experiments-sandbox decision recorded.",
+      "weighted_by_theme": false
+    },
+    "11.2": {
+      "title": "Domain/application separation",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/03-runtime.md", "lines": "all", "evidence": "Domain (academic-portfolio content) is in HTML pages; application (vite build, biome lint) is pure infrastructure. No business logic in JS (assets/menu.js is presentational only). No mixed-domain modules.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "473-477", "evidence": "Contract counts by context: 6 build-system, 10 agent-governance, 6 portfolio-pages, 0 experiments-sandbox. No leaks across contexts at the contract layer."}
+      ],
+      "rationale": "Domain purity is high for a static site (the domain IS HTML). No I/O leaks. Score 3 reserved for repos with enforced dependency direction; static site does not have that level of structure.",
+      "weighted_by_theme": false
+    },
+    "11.3": {
+      "title": "Contract discipline",
+      "score": 1,
+      "evidence": [
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "8-10, 23, 370-453", "evidence": "22 contract rows. The HEADLINE gap: cross-repo content-pipeline (§2.19) producer→consumer with 6 source→destination mappings has NO validation on consumer side (Pair A with new-direction-2026 AAF-NDM-012). DEV_GUIDE.md vs AGENTS.md is two contracts in producer-consumer-drift on 6 design-system axes (§2.10 → routed to Phase 8 §3.2). context7 MCP is mcp-surface-uninventoried (§2.18) + tool-without-schema. 5 GH Actions @v* not @SHA (§2.4). THEMES.md route-without-spec (§2.11).", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "450-461", "evidence": "Flag distribution: producer-consumer-drift × multiple, mcp-surface-uninventoried × 1, tool-without-schema × 1, subagent-boundary-untyped × 3, version-drift × 2, runtime-provenance-missing × 3, content-provenance-position-missing × 1, route-without-spec × 2.", "method": "Read"}
+      ],
+      "rationale": "Score 1 (partial schema coverage; producer/consumer or validation unclear). Most external interfaces have partial schemas (HTML5, biome.json schema, package.json, vite.config.js JS), but the cross-repo content pipeline — the highest-stakes contract in the audit — has NO validation. Two contracts (AGENTS.md ↔ DEV_GUIDE.md) actively contradict each other on 6 axes. This is the audit's lowest dimension after 11.7/11.8.",
+      "weighted_by_theme": true,
+      "theme_weight_note": "Career-transition-readiness 1.5×: content-pipeline IS the career pipeline."
+    },
+    "11.4": {
+      "title": "Tool/action surface clarity",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/04-contracts.md", "lines": "347-368", "evidence": "context7 MCP (§2.18): 2 advertised tools (resolve-library-id, query-docs) — operator-installed at Claude Code global level, NOT project-scoped; no .mcp.json; tool schemas not pinned in-repo. Cross-repo parity with sibling AAF-NDM-008.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "27, 84-116, 186-218", "evidence": "11 principals total: 1 human + 1 Claude Code agent + 1 Cursor IDE + 1 PostToolUse hook + 3 SKILLs (fix-issue, ship-small, review-diff — all subagent-boundary-untyped) + 3 GH Actions jobs + 5 third-party actions + 1 MCP. Tool surface is modest (3 SKILLs invoked via slash command; 1 PostToolUse auto-format hook; 5 CI actions; 2 MCP tools)."}
+      ],
+      "rationale": "Score 2 (distinct, mostly schema-defined, overlap limited). Tools are named and named clearly (slash command names align with SKILL.md frontmatter); no semantic overlap detected. context7 tools are unpinned in-repo (mild ambiguity), 3 SKILLs lack typed message contracts. Score 3 reserved for registry with explicit schemas + protocol versions + lifecycle modes.",
+      "weighted_by_theme": true,
+      "theme_weight_note": "Career-transition-readiness 1.5× on findings touching this dim."
+    },
+    "11.5": {
+      "title": "State and memory clarity",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/05-state.md", "lines": "all", "evidence": "Memory surfaces classified: git history (durable, authoritative-store), CI cache (ephemeral), dist/ build artifacts (regenerable), no LLM-context memory in-repo, no retrieval corpus. Owners + retention + delete paths recorded for each store. No machine-readable store registry exists.", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "rationale": "Score 2 — stores classified with retention + owners + delete paths in Phase 5. Score 3 reserved for machine-readable store registry with enforced retention; for a static site this would be excessive.",
+      "weighted_by_theme": true,
+      "theme_weight_note": "Career-transition-readiness 1.5× on findings touching this dim."
+    },
+    "11.6": {
+      "title": "Authority boundaries",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "27-50, 84-116, 186-218, 250-275", "evidence": "11 principals inventoried with per-principal authority. .claude/settings.json L15-17 deny manifest pins .env/.env.*/.envrc.local; L27-37 PostToolUse hook with scope to Write|Edit + auto-approval; CLAUDE.md L46-48 allowlist (npm/npx/biome/git/gh/mise/ls/cat/mkdir); deploy.yml L10-13 workflow-root permissions block (contents:read + pages:write + id-token:write) — escalation flag recorded at A-10. OIDC token exchange for Pages publish at A-10. 8 approval gates inventoried.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/06-authority.md", "lines": "186-218, 251-261", "evidence": "5 GH Actions @v* not @SHA (AAF-VGH-010) — supply-chain authority unbounded. PostToolUse hook (A-04) ambient-authority + write-without-approval-policy + approval-not-enforced — AAF-VGH-006. Workflow-root permissions inherited by all jobs (escalation)."}
+      ],
+      "rationale": "Score 2 — per-principal authority declared, approval gates inventoried, write paths gated for most principals. Specific gaps: PostToolUse hook ambient-authority pattern (AAF-VGH-006); 5 actions @v* not @SHA (AAF-VGH-010); workflow-root permissions escalation; branch-protection rules external to repo (AAF-VGH-011 caveat). Score 3 reserved for capability-scoped enforced authority with per-job permissions + SHA-pinned actions + machine-verified approval matrix.",
+      "weighted_by_theme": false
+    },
+    "11.7": {
+      "title": "Observability semantics",
+      "score": 0,
+      "evidence": [
+        {"path": "audit/2026-05-21/07-observability.md", "lines": "21-27, 67-90, 96-103, 116-122", "evidence": "ZERO in-repo telemetry. PostToolUse hook (A-04) is a write-capable automation principal that emits NO provenance (silenced stderr via 2>/dev/null + forced exit 0). CI step logs exist in GH Actions backend but are not in-repo runtime-action provenance. No cost/latency/quality/provenance quartet present. Build-source provenance: partial (Pages deployment record exists; SLSA absent). Content provenance: absent. Runtime-action provenance: absent.", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/07-observability.md", "lines": "184-191", "evidence": "Flag inventory: no-runtime-action-provenance (yes, moderate); no-content-provenance-position (yes, low); no-build-source-provenance-position (partial, low)."}
+      ],
+      "rationale": "Score 0 — 'Logs only or no meaningful telemetry'. PostToolUse hook silent-error swallow is an active observability gap on a write-capable automation principal. There is no structured telemetry anywhere in-repo. This is one of the audit's lowest dimensions.",
+      "weighted_by_theme": false
+    },
+    "11.8": {
+      "title": "Policy/prompt separation",
+      "score": 1,
+      "evidence": [
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "61-99", "evidence": "AAF-VGH-001 MAAT positioning: 20+ stale-authoring-artifact surface instances (12 favicon every-page + 8 textual MAAT mentions + README L10-11 + dedicated /projects/maat.html). Operator-stated MAAT minor/experimental contradicts site-level prominence. Pair B with sibling new-direction-2026 F-002 (5 producer-side narrative refs).", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "102-135", "evidence": "AAF-VGH-002 DEV_GUIDE.md vs AGENTS.md: 6 design-system contradictions + 3 broken-reference categories (research/maat+scopecam.html; academic/ tree; legacy maat+scopecam dirs). Contradictory-guidance classification.", "method": "Read"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "138-155", "evidence": "AAF-VGH-012 THEMES.md overstated capability: claims multi-theme switching that does not exist as automation; styles-academic.css does not exist; sed-scripts silently no-op."}
+      ],
+      "rationale": "Score 1 — 'Some policy extracted, but prompt-only rules remain'. 20+ stale-authoring-artifact surface instances (MAAT) + 9 contradictory-guidance + stale-reference sub-citations (DEV_GUIDE) + THEMES.md overstated capability. Score 2 reserved for mostly-parameterized + drift checked surfaces; this repo has no drift checks and significant authoring-artifact staleness.",
+      "weighted_by_theme": false
+    },
+    "11.9": {
+      "title": "Evals and quality gates",
+      "score": 1,
+      "evidence": [
+        {"path": "audit/2026-05-21/09-evals.md", "lines": "21-99, 158-164, 256-263", "evidence": "6 CI quality gates exist (biome check, biome format, vite build, deno PostToolUse, deny-manifest, gh PR-time exclusion). ZERO behavior-quality eval suites. Specific gap vs sibling planning-summer-2026: missing lychee link-check (sibling has it; this repo does not, despite serving public URLs that MUST be stable per AGENTS.md L111).", "method": "Read", "snapshot_ref": "ee6c7e5"}
+      ],
+      "rationale": "Score 1 — 'Ad hoc examples or manual review only'. 6 gates are static-analysis only (lint/format/build); no behavior coverage. Phase 9 records 5 FF candidates (lychee, biome-rule-severity-progression, content-source-revision-provenance, posttooluse-error-surfacing, url-stability-test). Score 2 reserved for critical-path evals; static-site behavior is operator-manual-review only.",
+      "weighted_by_theme": false
+    },
+    "11.10": {
+      "title": "Governance and audit trail",
+      "score": 1,
+      "evidence": [
+        {"path": "profile/2026-05-21/project_profile.yaml", "lines": "governance.adr.directories: []", "evidence": "ADR catalog ABSENT — verified by Phase 0 (00-scope.md): docs/decisions/ and docs/adr/ both absent. AGENTS.md is the operator-declared canonical contract per CLAUDE.md L3, but no ADR template, no decision history, no supersession chain.", "method": "ls/find", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/08-policy.md", "lines": "102-135", "evidence": "DEV_GUIDE.md is governance-class documentation, currently STALE on every dimension where it makes a design-system claim. AGENTS.md vs DEV_GUIDE.md drift not detectable by any automated check. Cycle history convention is consumed cross-repo from sibling but no in-repo template."}
+      ],
+      "rationale": "Score 1 — 'Some docs/ADRs exist but precedence and supersession are unclear'. AGENTS.md + CLAUDE.md + 3 Cursor rules form a governance corpus, but no ADR catalog exists. DEV_GUIDE.md stale governance file actively misleads. THEMES.md overstates capability. Score 2 reserved for governance current enough to guide the audit; we had to consume cross-repo profile + the multi-file governance corpus to even reconstruct intent.",
+      "weighted_by_theme": true,
+      "theme_weight_note": "Career-transition-readiness 1.5× on findings touching this dim."
+    },
+    "11.11": {
+      "title": "Architectural fitness functions",
+      "score": 2,
+      "evidence": [
+        {"path": "audit/2026-05-21/09-evals.md", "lines": "21-99", "evidence": "6 CI fitness functions enforced: biome check + biome format (PR-blocking quality job) + vite build (PR-blocking build job) + deploy gate (push:main only) + deny manifest (.claude/settings.json L15-17) + PostToolUse hook. PR-time runs without deploy (deploy.yml L74). Branch protection external (AAF-VGH-011 caveat).", "method": "Read", "snapshot_ref": "ee6c7e5"},
+        {"path": "audit/2026-05-21/09-evals.md", "lines": "118-130", "evidence": "AAF-VGH-003: biome 2 rules at warn not error (complexity.noImportantStyles + style.noDescendingSpecificity). CI passes with warnings — gate is therefore not strict on those 2 rules."}
+      ],
+      "rationale": "Score 2 — 'Some automated checks exist'. 6 CI gates is solid for a static site, but: biome rules at warn-not-error (AAF-VGH-003); no lychee; no SHA-pinned actions check; no content-source-revision check. Score 3 reserved for comprehensive coverage across all dim categories.",
+      "weighted_by_theme": false
+    }
+  },
+  "aggregate": {
+    "raw_sum": 16,
+    "max_possible": 33,
+    "mean": 1.45,
+    "lowest_dimensions": ["11.7 (0)", "11.3 (1)", "11.8 (1)", "11.9 (1)", "11.10 (1)"],
+    "highest_dimensions": ["11.1 (2)", "11.2 (2)", "11.4 (2)", "11.5 (2)", "11.6 (2)", "11.11 (2)"],
+    "theme_weighted_lowest": "11.3 (1) × 1.5 = priority floor for findings touching contract discipline"
+  },
+  "cross_repo_scorecard_note": {
+    "planning-summer-2026_aggregate_mean": "see sibling 10-scores.json",
+    "new-direction-2026_aggregate_mean": "see sibling 10-scores.json",
+    "comparison": "Sibling new-direction-2026 scored 11.6 at 1 (lowest in family — convention-only authority); vgh scores 11.6 at 2 because .claude/settings.json + deny manifest + deploy.yml permissions block + PostToolUse hook scope all exist. vgh's lowest is 11.7 (0) — observability gap unique to it among the three career-pipeline repos."
+  }
+}

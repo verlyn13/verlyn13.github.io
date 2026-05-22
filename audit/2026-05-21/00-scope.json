@@ -1,0 +1,229 @@
+{
+  "audit_spec_version": "v3.1",
+  "audit_spec_date": "2026-05-08",
+  "profile_directive_version": "v1.2",
+  "profile_directive_date": "2026-05-08",
+  "audit_date": "2026-05-22",
+  "audit_mode": "first-cycle",
+  "profile_snapshot": {
+    "date": "2026-05-21",
+    "path": "profile/2026-05-21/",
+    "yaml": "profile/2026-05-21/project_profile.yaml",
+    "discovery_md": "profile/2026-05-21/profile-discovery.md",
+    "evidence_extensions": 1,
+    "supersedes_shallow_capture": true
+  },
+  "repository": {
+    "root": "/Users/verlyn13/Repos/verlyn13/verlyn13.github.io",
+    "remote": "git@github.com:verlyn13/verlyn13.github.io.git",
+    "vcs": "git",
+    "default_branch": "main",
+    "current_branch": "main",
+    "revision_at_audit_start": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "revision_at_profile_snapshot": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "revision_at_initial_profile_capture": "2c6924d27fc4128cce44423dd5f2b16539cb6023",
+    "drift_from_profile": "none-at-commit-level",
+    "drift_resolution": {
+      "method": "operator-approved-triage",
+      "evidence_extension_ref": "meta.evidence_extensions[0] (2026-05-22T02:15:00Z)",
+      "commits_landed": [
+        {"sha": "daea00d", "subject": "chore(deploy): add CNAME for jvjohnson.dev custom domain"},
+        {"sha": "6eaa529", "subject": "feat(portfolio): integrate MAAT framework + refresh all pages (May 21)"},
+        {"sha": "ee6c7e5", "subject": "docs(profile): add 2026-05-21 first-profile snapshot per directive v1.2"}
+      ],
+      "resolved_aaf": "AAF-VGH-005"
+    },
+    "working_tree": "clean-substantive",
+    "working_tree_notes": "Only diff at audit start is M profile/2026-05-21/project_profile.yaml (the file being consumed by this audit). All source/config/governance/agent files clean.",
+    "cname_verification": {
+      "path": "CNAME",
+      "content": "jvjohnson.dev",
+      "matches_profile_claim": true,
+      "committed_in": "daea00d"
+    },
+    "audit_dir_created": "audit/2026-05-21/"
+  },
+  "scope": {
+    "include_paths": ["/Users/verlyn13/Repos/verlyn13/verlyn13.github.io/**"],
+    "exclude_paths": [
+      "node_modules/**",
+      "dist/**",
+      "experiments/** (out-of-CI per biome.json L4; out-of-build per vite.config.js; routed Phase 2 as experiments-sandbox via AAF-VGH-007)",
+      ".env*",
+      ".claude/settings.local.json"
+    ],
+    "reference_only_paths": [
+      "/Users/verlyn13/Repos/local/new-direction-2026/** (sibling content-source repo; read AGENTS.md L131-142 and profile companion_artifacts for cross-repo anchoring; AAF-VGH-008 ↔ sibling AAF-NDM-012)"
+    ],
+    "reference_only_rationale": "Sibling new-direction-2026 is the producer end of the 6-document content pipeline. Audit reads sibling for cross-repo contract anchoring only; no writes; cross-repo findings live in respective audits and pair via AAF IDs."
+  },
+  "deployable_units": [
+    {
+      "id": "portfolio-website",
+      "path": ".",
+      "kind": "static-site",
+      "runtime": "Node 24 (build); static HTML output deployed to GitHub Pages",
+      "entrypoint": "index.html + 10 additional Vite-registered pages (vite.config.js L23-37)",
+      "verified_at_head": true,
+      "verification_method": "ls + Read on each of 11 declared entries"
+    },
+    {
+      "id": "claude-agent-bundle",
+      "path": ".claude/",
+      "kind": "agent-runtime",
+      "runtime": "Claude Code CLI (external; model claude-opus-4-6 per CLAUDE.md L7)",
+      "entrypoint": ".claude/settings.json + .claude/skills/ × 3",
+      "verified_at_head": true
+    },
+    {
+      "id": "cursor-agent-bundle",
+      "path": ".cursor/",
+      "kind": "agent-runtime",
+      "runtime": "Cursor IDE (external; unversioned)",
+      "entrypoint": ".cursor/rules/{project,css,html}.mdc",
+      "verified_at_head": true
+    }
+  ],
+  "deployed_html_pages_verified": [
+    {"entry": "main", "path": "index.html", "exists": true},
+    {"entry": "cv", "path": "cv.html", "exists": true},
+    {"entry": "contact", "path": "contact.html", "exists": true},
+    {"entry": "projects-dicee", "path": "projects/dicee.html", "exists": true},
+    {"entry": "projects-maat", "path": "projects/maat.html", "exists": true},
+    {"entry": "projects-scopecam", "path": "projects/scopecam.html", "exists": true},
+    {"entry": "projects-budget-triage", "path": "projects/budget-triage.html", "exists": true},
+    {"entry": "projects-flux", "path": "projects/flux.html", "exists": true},
+    {"entry": "projects-llm-gateway", "path": "projects/llm-gateway.html", "exists": true},
+    {"entry": "experience", "path": "experience/index.html", "exists": true},
+    {"entry": "research", "path": "research/index.html", "exists": true}
+  ],
+  "profile_cited_paths_sampled": [
+    {"path": "AGENTS.md", "exists": true},
+    {"path": "CLAUDE.md", "exists": true},
+    {"path": "README.md", "exists": true},
+    {"path": "DEV_GUIDE.md", "exists": true, "note": "contradicts AGENTS.md design-system per AAF-VGH-002"},
+    {"path": "THEMES.md", "exists": true, "note": "capability-overstating per AAF-VGH-012"},
+    {"path": ".mise.toml", "exists": true},
+    {"path": "biome.json", "exists": true},
+    {"path": "package.json", "exists": true},
+    {"path": "vite.config.js", "exists": true},
+    {"path": ".github/workflows/deploy.yml", "exists": true},
+    {"path": ".claude/settings.json", "exists": true},
+    {"path": "assets/jeffrey.css", "exists": true, "note": "not opened in detail this pass"},
+    {"path": "assets/menu.js", "exists": true},
+    {"path": "assets/icons/maat_feather_16.svg", "exists": true, "note": "site favicon; AAF-VGH-001"},
+    {"path": "experiments/", "exists": true, "note": "out-of-build sandbox"},
+    {"path": ".mcp.json", "exists": false, "note": "profile-confirmed absent; context7 is operator-installed at global level"},
+    {"path": "docs/decisions/", "exists": false, "note": "profile-confirmed absent; governance.adr.directories: []"}
+  ],
+  "strategic_themes": [
+    {
+      "name": "career-transition-readiness",
+      "type": "operator-defined-custom",
+      "multiplier": 1.5,
+      "weighted_dimensions": [
+        "11.3 Contract discipline",
+        "11.10 Governance and audit trail",
+        "11.4 Tool surface clarity",
+        "11.5 State and memory clarity"
+      ],
+      "source": "operator-interview-phase-G + profile.strategic_themes[0]",
+      "rationale_summary": "Website is presentation layer of career transition. Same theme as sibling new-direction-2026 (intentional). 11.3 = cross-repo source→presentation chain; 11.10 = DEV_GUIDE vs AGENTS.md contradiction; 11.4 = agent governance + context7 MCP; 11.5 = operator-rules-memory in .claude/settings.json."
+    }
+  ],
+  "audit_cadence": "post-refactor",
+  "default_agent_authority": "read-write (broad write to source/config except Ask-first paths; deny on .env, node_modules, dist)",
+  "companion_doc_drift_check": {
+    "result": "no-drift",
+    "files_checked": [
+      "agentic-audit-spec-v3.md",
+      "project-profile-directive.md",
+      "audit-kickoff-prompt.md",
+      "audit-spec-friendly-explainer.md",
+      "audit-directive-set-manifest.md"
+    ],
+    "all_target_same_authority_version": true,
+    "profile_block_reference": "profile.governance.companion_artifacts (5 entries, all drift_status: aligned)"
+  },
+  "cross_repo_dependencies": [
+    {
+      "type": "content-pipeline-consumer",
+      "sibling_repo": "/Users/verlyn13/Repos/local/new-direction-2026",
+      "sibling_path": "AGENTS.md",
+      "sibling_lines": "131-142",
+      "contract": "6 source documents → website destinations",
+      "this_repo_role": "consumer (presentation layer)",
+      "sibling_role": "producer (content source of truth)",
+      "mappings": [
+        {"source": "career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md", "destination": "cv.html"},
+        {"source": "career-transition-ready/website-content/PORTFOLIO-QUICK.md", "destination": "index.html (hero/intro)"},
+        {"source": "career-transition-ready/technical-projects/ACTIVE-PROJECTS-PORTFOLIO.md", "destination": "projects/*.html"},
+        {"source": "career-transition-ready/research-publications/RESEARCH-PUBLICATIONS.md", "destination": "research/ pages"},
+        {"source": "career-transition-ready/website-content/timeline-component-spec.md", "destination": "experience/ pages"},
+        {"source": "career-transition-ready/teaching-portfolio/TEACHING-INVENTORY.md", "destination": "cv.html (teaching section)"}
+      ],
+      "this_repo_aaf": "AAF-VGH-008",
+      "sibling_aaf": "AAF-NDM-012",
+      "audit_treatment": "Phase 4 inventories consumer end (11 deployed pages); producer-side contract check routes to sibling's audit; Phase 10 cross-references both."
+    }
+  ],
+  "routed_audit_attention_flags": {
+    "AAF-VGH-001": {"target_phase": 8, "topic": "MAAT framework narrative dominance across portfolio (17+ refs incl. favicon); stale-authoring-artifact pattern across HTML pages", "cross_repo_pair": "sibling AAF-NDM-007"},
+    "AAF-VGH-002": {"target_phase": 4, "topic": "DEV_GUIDE.md vs AGENTS.md design-system contradiction (8-point grid vs rem-based; Serif vs system sans-serif)"},
+    "AAF-VGH-003": {"target_phase": 9, "topic": "Biome lint rules at warn (not error); CI passes with warnings"},
+    "AAF-VGH-004": {"target_phase": 8, "topic": "README.md L13 stale copyright year 2025"},
+    "AAF-VGH-005": {"target_phase": 0, "topic": "RESOLVED within profile cycle via 3 commits per meta.evidence_extensions[0]", "status": "resolved-in-profile"},
+    "AAF-VGH-006": {"target_phase": 7, "topic": "PostToolUse biome hook silently swallows errors (2>/dev/null + exit 0)"},
+    "AAF-VGH-007": {"target_phase": 2, "topic": "experiments-sandbox as its own bounded context with distinct lifecycle"},
+    "AAF-VGH-008": {"target_phase": 4, "topic": "Cross-repo content-pipeline producer-consumer contract; consumer side", "cross_repo_pair": "sibling AAF-NDM-012"},
+    "AAF-VGH-009": {"target_phase": 4, "topic": "context7 MCP referenced in CLAUDE.md L27-33 but no .mcp.json; operator-installed at Claude Code global level"},
+    "AAF-VGH-010": {"target_phase": 6, "topic": "deploy.yml uses unpinned GitHub Action versions (@v4 not @sha)"},
+    "AAF-VGH-011": {"target_phase": 0, "topic": "PR-time deploy.yml runs quality+build but not deploy; required-for-merge gated by external GitHub branch protection rules", "status": "declared-vs-enforced-gap-carried-as-caveat"},
+    "AAF-VGH-012": {"target_phase": 4, "topic": "THEMES.md declares multi-theme support with no automated implementation"},
+    "total": 12,
+    "by_phase": {
+      "0": ["AAF-VGH-005 (resolved)", "AAF-VGH-011 (caveat)"],
+      "2": ["AAF-VGH-007"],
+      "4": ["AAF-VGH-002", "AAF-VGH-008", "AAF-VGH-009", "AAF-VGH-012"],
+      "6": ["AAF-VGH-010"],
+      "7": ["AAF-VGH-006"],
+      "8": ["AAF-VGH-001", "AAF-VGH-004"],
+      "9": ["AAF-VGH-003"]
+    }
+  },
+  "phase_0_aaf_resolutions": [
+    {
+      "id": "AAF-VGH-005",
+      "resolution": "Resolved within profile cycle. Initial-capture rev 2c6924d (2026-02-21) had 24 M + 2 U representing May 21 portfolio integration. Operator-approved triage landed 3 commits (daea00d CNAME + 6eaa529 MAAT integration + ee6c7e5 profile). HEAD now ee6c7e5; working tree clean substantively. Phase 10.5 smoke-tests against ee6c7e5, eliminating snapshot/branch drift risk."
+    },
+    {
+      "id": "AAF-VGH-011",
+      "resolution": "Declared-vs-enforced gap recorded as carry-forward caveat. In-repo CI declaration is complete (deploy.yml L62-74 runs quality+build on PR; deploy gated on PR=false). Whether PR-time checks are required-for-merge is governed by external GitHub branch protection rules not visible from in-repo state. Operator decision needed in remediation, not blocking the audit. SUMMARY.md will carry this caveat."
+    }
+  ],
+  "cycle_history": {
+    "exists": false,
+    "candidate_conventions_from_profile": [],
+    "will_propose_in_phase_11": "yes (cycle-history-notes.md)"
+  },
+  "halt_conditions_triggered": 0,
+  "exit_check": {
+    "scope_bounded": true,
+    "audit_mode_recorded": "first-cycle",
+    "all_aafs_routed": true,
+    "all_aafs_routed_count": 12,
+    "drift_listed": true,
+    "drift_count_at_commit_level": 0,
+    "drift_count_at_working_tree": 1,
+    "drift_working_tree_note": "Only profile yaml itself is modified (being consumed by this audit); all substantive sources clean",
+    "themes_recorded": true,
+    "themes_count": 1,
+    "anchors_pinned": true,
+    "anchors_operator_installed_not_pinned": ["context7-mcp"],
+    "anchors_informational_only": ["html5", "vite-5", "biome-2.3.8"],
+    "anchors_not_applicable": ["a2a", "openapi", "arazzo", "overlay", "otel-semconv", "json-schema", "c2pa", "slsa", "computer-use", "browser-use", "model-provider-sdk"],
+    "anchors_advisory_unweighted": ["nist-ai-rmf", "owasp-genai"],
+    "cname_verified": true,
+    "passes": true
+  }
+}

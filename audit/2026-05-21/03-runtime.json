@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.4 Entrypoint"
+  },
+  "counts": {
+    "entrypoints_total": 16,
+    "by_kind": {
+      "cli": 6,
+      "webhook": 4,
+      "subagent-call": 3,
+      "http-route": 2,
+      "other": 1
+    },
+    "by_execution_mode": {
+      "sync": 4,
+      "streaming": 5,
+      "batch": 5,
+      "event-triggered": 2
+    },
+    "loops_detected": 0,
+    "loop_diagrams_emitted": 0
+  },
+  "entrypoints": [
+    {
+      "id": "E-01",
+      "kind": "cli",
+      "path": "mise run dev → npm run dev → vite (port 5173)",
+      "sync_model": "streaming",
+      "execution_mode": "streaming",
+      "side_effects": ["local TCP listen :5173", "HMR push on file save"],
+      "touches_loop": false,
+      "termination_condition": "operator Ctrl-C",
+      "context": "build-system",
+      "citations": [
+        {"path": ".mise.toml", "lines": "4-6", "evidence": "[tasks.dev] run = 'npm run dev'", "method": "Read"},
+        {"path": "package.json", "lines": "7", "evidence": "'dev': 'vite'", "method": "Read"},
+        {"path": "vite.config.js", "lines": "56-60", "evidence": "server.port: 5173", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-02",
+      "kind": "cli",
+      "path": "mise run preview → vite preview (port 4173)",
+      "sync_model": "streaming",
+      "execution_mode": "streaming",
+      "side_effects": ["local TCP listen :4173"],
+      "touches_loop": false,
+      "termination_condition": "operator Ctrl-C",
+      "context": "build-system",
+      "citations": [
+        {"path": ".mise.toml", "lines": "12-14", "evidence": "[tasks.preview]", "method": "Read"},
+        {"path": "vite.config.js", "lines": "49-53", "evidence": "preview.port: 4173", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-03",
+      "kind": "cli",
+      "path": "mise run build → vite build",
+      "sync_model": "batch",
+      "execution_mode": "batch",
+      "side_effects": ["filesystem writes dist/index.html, dist/cv.html, ... 11 HTML pages + chunked assets"],
+      "touches_loop": false,
+      "termination_condition": "vite exit code",
+      "context": "build-system",
+      "citations": [
+        {"path": ".mise.toml", "lines": "8-10", "evidence": "[tasks.build]", "method": "Read"},
+        {"path": "package.json", "lines": "8", "evidence": "'build': 'vite build'", "method": "Read"},
+        {"path": "vite.config.js", "lines": "8-46", "evidence": "build.outDir: 'dist'; 11 rollup inputs", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-04",
+      "kind": "cli",
+      "path": "mise run ci → npm run lint && npm run format:check && npm run build",
+      "sync_model": "batch",
+      "execution_mode": "batch",
+      "side_effects": ["biome stdout/exit", "biome stdout/exit", "writes dist/**"],
+      "touches_loop": false,
+      "termination_condition": "first non-zero step exit",
+      "context": "build-system",
+      "citations": [
+        {"path": ".mise.toml", "lines": "40-42", "evidence": "[tasks.ci] run = 'npm run lint && npm run format:check && npm run build'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-05",
+      "kind": "cli",
+      "path": "mise run clean → rm -rf dist node_modules",
+      "sync_model": "sync",
+      "execution_mode": "sync",
+      "side_effects": ["delete dist/", "delete node_modules/"],
+      "touches_loop": false,
+      "termination_condition": "command exit",
+      "context": "build-system",
+      "citations": [
+        {"path": "package.json", "lines": "14", "evidence": "'clean': 'rm -rf dist node_modules'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-06",
+      "kind": "webhook",
+      "path": "GH Actions job 'quality' (Code Quality)",
+      "sync_model": "batch",
+      "execution_mode": "batch",
+      "side_effects": ["runner stdout", "job exit"],
+      "touches_loop": false,
+      "termination_condition": "step exit codes",
+      "approval_gates": ["external GitHub branch-protection rules (AAF-VGH-011 declared-vs-enforced)"],
+      "context": "build-system",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "20-40", "evidence": "quality job: npm ci → npx biome check . → npx biome format .", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-07",
+      "kind": "webhook",
+      "path": "GH Actions job 'build' (Build Site)",
+      "sync_model": "batch",
+      "execution_mode": "batch",
+      "side_effects": ["writes dist/**", "PR-gated: actions/configure-pages@v4 + actions/upload-pages-artifact@v3"],
+      "touches_loop": false,
+      "termination_condition": "step exit codes; needs: quality",
+      "approval_gates": ["needs: quality"],
+      "lifecycle_contract": "PR runs build but skips upload (`if: github.event_name != 'pull_request'`)",
+      "context": "build-system",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "42-70", "evidence": "build job; PR-gated upload-pages-artifact@v3 + configure-pages@v4", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-08",
+      "kind": "webhook",
+      "path": "GH Actions job 'deploy' (Deploy to GitHub Pages)",
+      "sync_model": "event-triggered",
+      "execution_mode": "event-triggered",
+      "side_effects": ["OIDC token exchange (id-token:write)", "actions/deploy-pages@v4 updates jvjohnson.dev"],
+      "touches_loop": false,
+      "termination_condition": "action exit code; needs: build",
+      "approval_gates": [
+        "PR-excluded: `if: github.event_name != 'pull_request'`",
+        "elevated permissions: pages:write + id-token:write at .github/workflows/deploy.yml:10-13",
+        "GH environment 'github-pages' (no in-repo reviewer rules declared)",
+        "concurrency group 'pages' with cancel-in-progress"
+      ],
+      "lifecycle_contract": "concurrency: group=pages, cancel-in-progress=true",
+      "callback_channel": "deployment record + page_url output",
+      "context": "build-system",
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "10-13", "evidence": "permissions: contents:read + pages:write + id-token:write", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "15-17", "evidence": "concurrency: group: 'pages', cancel-in-progress: true", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "72-83", "evidence": "deploy job with actions/deploy-pages@v4 gated on PR=false", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-09",
+      "kind": "subagent-call",
+      "path": "/fix-issue → .claude/skills/fix-issue/SKILL.md",
+      "sync_model": "streaming",
+      "execution_mode": "streaming",
+      "side_effects": ["reads governance docs", "may issue Write/Edit/Bash subject to permissions matrix"],
+      "touches_loop": false,
+      "termination_condition": "operator stop; `mise run ci` pass; session timeout",
+      "approval_gates": ["Claude Code permissions matrix (.claude/settings.json:2-25)", "AGENTS.md Ask-first taxonomy (L96-103) — conventional, not machine-enforced"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/fix-issue/SKILL.md", "lines": "1-12", "evidence": "fix-issue workflow: reproduce → isolate → fix → verify → visual → document", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-10",
+      "kind": "subagent-call",
+      "path": "/ship-small → .claude/skills/ship-small/SKILL.md",
+      "sync_model": "streaming",
+      "execution_mode": "streaming",
+      "side_effects": ["reads task context", "may issue Write/Edit/Bash subject to permissions matrix"],
+      "touches_loop": false,
+      "termination_condition": "operator stop; commit boundary; >5-file plan-mode handoff",
+      "approval_gates": ["Claude Code permissions matrix", "Ask-first taxonomy"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/ship-small/SKILL.md", "lines": "1-13", "evidence": "ship-small rules: 1-3 commits, no drive-by refactors, plan if >5 files, stable URLs", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-11",
+      "kind": "subagent-call",
+      "path": "/review-diff → .claude/skills/review-diff/SKILL.md",
+      "sync_model": "streaming",
+      "execution_mode": "streaming",
+      "side_effects": ["reads diff; runs 9-item checklist; may run `mise run ci`"],
+      "touches_loop": false,
+      "termination_condition": "checklist completion",
+      "approval_gates": ["Claude Code permissions matrix"],
+      "context": "agent-governance",
+      "citations": [
+        {"path": ".claude/skills/review-diff/SKILL.md", "lines": "1-18", "evidence": "9-item diff review checklist", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-12",
+      "kind": "webhook",
+      "path": ".claude/settings.json:27-37 PostToolUse on Write|Edit matcher",
+      "sync_model": "event-triggered",
+      "execution_mode": "event-triggered",
+      "side_effects": [
+        "jq parses tool_input.file_path",
+        "if extension is .js/.json/.css: `npx biome format --write <file>` rewrites file bytes",
+        "stderr silenced (2>/dev/null); exit 0 unconditional"
+      ],
+      "touches_loop": false,
+      "termination_condition": "timeout: 10s; exit 0 unconditional",
+      "lifecycle_contract": "fires after every Write/Edit tool call; 10-second timeout per hook spec",
+      "approval_gates": [],
+      "context": "agent-governance",
+      "audit_attention": "AAF-VGH-006 confirmed — silenced errors mask npx-not-available, biome-missing, biome-syntax-error, timeout, jq-missing failure modes; remediation candidate: tee stderr to .claude/logs/posttooluse.log and surface non-zero from biome itself",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "27-37", "evidence": "PostToolUse hook: matcher Write|Edit; bash -c '... 2>/dev/null; esac; exit 0'; timeout: 10", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-13",
+      "kind": "cli",
+      "path": "experiments/svg-src/build.sh",
+      "sync_model": "batch",
+      "execution_mode": "batch",
+      "side_effects": ["invokes svgo (external dep, not in package.json)", "writes experiments/braid-timeline.svg"],
+      "touches_loop": false,
+      "termination_condition": "script exit",
+      "context": "experiments-sandbox",
+      "citations": [
+        {"path": "experiments/svg-src/build.sh", "lines": "n/a", "evidence": "Local script for braid timeline SVG; not invoked from CI", "method": "Glob"},
+        {"path": "experiments/svg-src/svgo.config.js", "lines": "n/a", "evidence": "svgo config", "method": "Glob"},
+        {"path": "biome.json", "lines": "4", "evidence": "biome includes excludes experiments/", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-HTTP-pages",
+      "kind": "http-route",
+      "path": "11 deployed HTML pages at https://jvjohnson.dev",
+      "sync_model": "sync",
+      "execution_mode": "sync",
+      "side_effects": [],
+      "touches_loop": false,
+      "termination_condition": "per HTTP request",
+      "lifecycle_contract": "read-only static delivery via GitHub Pages CDN; no server logic; no telemetry per AGENTS.md:112",
+      "approval_gates": [],
+      "context": "portfolio-pages",
+      "routes": [
+        "/",
+        "/cv.html",
+        "/contact.html",
+        "/projects/dicee.html",
+        "/projects/maat.html",
+        "/projects/scopecam.html",
+        "/projects/budget-triage.html",
+        "/projects/flux.html",
+        "/projects/llm-gateway.html",
+        "/experience/",
+        "/research/"
+      ],
+      "citations": [
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "11 keyed entrypoints", "method": "Read"},
+        {"path": "CNAME", "lines": "1", "evidence": "jvjohnson.dev custom domain", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-HTTP-assets",
+      "kind": "http-route",
+      "path": "static asset delivery: assets/jeffrey-<hash>.css, assets/menu-<hash>.js, assets/icons/*",
+      "sync_model": "sync",
+      "execution_mode": "sync",
+      "side_effects": [],
+      "touches_loop": false,
+      "termination_condition": "per HTTP request",
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": "vite.config.js", "lines": "38-44", "evidence": "assetFileNames + entryFileNames + chunkFileNames with [hash]", "method": "Read"}
+      ]
+    },
+    {
+      "id": "E-DNS",
+      "kind": "other",
+      "path": "CNAME file at repo root contains jvjohnson.dev",
+      "sync_model": "sync",
+      "execution_mode": "sync",
+      "side_effects": ["GitHub Pages reads on each deploy", "CDN serves jvjohnson.dev apex"],
+      "touches_loop": false,
+      "termination_condition": "n/a (continuous external read)",
+      "context": "portfolio-pages",
+      "citations": [
+        {"path": "CNAME", "lines": "1", "evidence": "Contains 'jvjohnson.dev' (14 bytes incl. newline)", "method": "Read"}
+      ]
+    }
+  ],
+  "approval_gates": [
+    {
+      "id": "G-PR-deploy",
+      "description": "PR flag at deploy.yml:63,67,74 excludes deploy steps during pull_request events",
+      "type": "in-repo-declared",
+      "applies_to": ["E-07 (upload-pages steps)", "E-08 (deploy job)"]
+    },
+    {
+      "id": "G-branch-protection",
+      "description": "External GitHub branch-protection rules (AAF-VGH-011) — declared-vs-enforced gap",
+      "type": "external-undeclared",
+      "applies_to": ["E-06", "E-07 partial"]
+    },
+    {
+      "id": "G-permissions-matrix",
+      "description": "Claude Code project-scoped permissions allow/deny (9 allow + 9 deny) at .claude/settings.json:2-25",
+      "type": "in-repo-declared",
+      "applies_to": ["E-09", "E-10", "E-11", "E-12"]
+    },
+    {
+      "id": "G-ask-first",
+      "description": "AGENTS.md Ask-first taxonomy (L96-103) — conventional, not machine-enforced",
+      "type": "in-repo-declared-conventional",
+      "applies_to": ["E-09", "E-10", "E-11"]
+    },
+    {
+      "id": "G-elevated-deploy",
+      "description": "deploy job runs with pages:write + id-token:write (deploy.yml:10-13)",
+      "type": "in-repo-declared-elevated",
+      "applies_to": ["E-08"],
+      "phase_routing": "Phase 6 authority boundary"
+    }
+  ],
+  "aaf_resolutions": {
+    "AAF-VGH-006": "PostToolUse hook silenced errors CONFIRMED — see entrypoint E-12; remediation candidate detailed in 03-runtime.md §7.1",
+    "AAF-VGH-010": "Carried to Phase 6 + Phase 4 (action-version supply-chain pinning at major-tag only)",
+    "AAF-VGH-011": "Carried to SUMMARY (declared-vs-enforced gap; in-repo CI declaration complete; external branch-protection visibility opaque)"
+  },
+  "exit_check": {
+    "every_entrypoint_has_traced_chain": true,
+    "every_loop_has_termination_or_flag": true,
+    "loops_present": false,
+    "every_write_capable_path_routed_to_phase_6": true,
+    "every_subagent_invocation_has_caller_and_callee_authority": true,
+    "every_event_triggered_path_has_lifecycle": true,
+    "loop_diagrams_required": false,
+    "phase_3_passes": true
+  }
+}

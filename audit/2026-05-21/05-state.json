@@ -1,0 +1,302 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.6 Store"
+  },
+  "counts": {
+    "stores_in_repo": 12,
+    "external_pointers_recorded": 1,
+    "by_classification": {
+      "authoritative-durable": 5,
+      "derived-durable": 1,
+      "operator-rules-memory": 2,
+      "prompt-policy-config": 2,
+      "artifact": 1,
+      "cache": 1
+    },
+    "by_context": {
+      "portfolio-pages": 5,
+      "build-system": 4,
+      "agent-governance": 3,
+      "experiments-sandbox": 1,
+      "(external)": 1
+    }
+  },
+  "stores": [
+    {
+      "id": "S-01",
+      "name": "11 deployed HTML pages (index, cv, contact, projects/{dicee,maat,scopecam,budget-triage,flux,llm-gateway}, experience/index, research/index)",
+      "classification": "authoritative-durable",
+      "owner_context": "portfolio-pages",
+      "retention": "unbounded (git-tracked; URL stability protected per AGENTS.md:111)",
+      "read_authority": ["git history (anyone with repo access)", "public via https://jvjohnson.dev/* after deploy", "Claude Code / Cursor IDE during operator session"],
+      "write_authority": ["operator only (via Claude Code subject to permissions matrix, Cursor IDE, or direct git commit)"],
+      "invalidation_trigger": "none; pages persist; on edit, vite rebuild on next mise run build / CI",
+      "deletion_or_reset_path": "git revert (only legitimate path; URL stability constraint at AGENTS.md:111)",
+      "lifecycle": "persistent; independent per-page commits",
+      "sensitivity": "low (public content)",
+      "citations": [
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "11 pages in rollupOptions.input", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "111", "evidence": "Never break existing page URLs", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-02",
+      "name": "assets/jeffrey.css (single stylesheet — the design-system store)",
+      "classification": "authoritative-durable",
+      "owner_context": "portfolio-pages",
+      "retention": "unbounded (git-tracked)",
+      "read_authority": ["every deployed HTML page via <link rel=stylesheet>", "git readers", "public via https://jvjohnson.dev/assets/jeffrey-<hash>.css"],
+      "write_authority": ["operator only (enforced by AGENTS.md:94 + css.mdc:9 single-source rule)"],
+      "invalidation_trigger": "content-hash filename on build invalidates CDN cache automatically",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent; the CSS file is the design-token store (14 custom properties at :root)",
+      "sensitivity": "low",
+      "citations": [
+        {"path": "AGENTS.md", "lines": "94", "evidence": "Keep all styles in assets/jeffrey.css (single CSS file)", "method": "Read"},
+        {"path": ".cursor/rules/css.mdc", "lines": "9", "evidence": "All styles live in assets/jeffrey.css", "method": "Read"},
+        {"path": "vite.config.js", "lines": "41", "evidence": "assetFileNames: 'assets/[name]-[hash][extname]'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-03",
+      "name": "assets/menu.js (mobile-nav runtime JS — only runtime JS)",
+      "classification": "authoritative-durable",
+      "owner_context": "portfolio-pages",
+      "retention": "unbounded",
+      "read_authority": ["every deployed HTML page via <script src>", "git readers", "public"],
+      "write_authority": ["operator only (Ask-first per project.mdc:12 + AGENTS.md:109)"],
+      "invalidation_trigger": "content-hash filename on build",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent",
+      "sensitivity": "low",
+      "citations": [
+        {"path": "AGENTS.md", "lines": "21,109", "evidence": "Mobile nav toggle + active link state", "method": "Read"},
+        {"path": ".cursor/rules/project.mdc", "lines": "12", "evidence": "Minimal JS: only assets/menu.js for mobile nav — ask before adding any script", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-04",
+      "name": "assets/icons/*.svg (favicon + project icons; 4 files)",
+      "classification": "authoritative-durable",
+      "owner_context": "portfolio-pages",
+      "retention": "unbounded",
+      "read_authority": ["every deployed page (favicon)", "the 2 project pages using each icon", "git readers"],
+      "write_authority": ["operator"],
+      "invalidation_trigger": "content-hash filename on build",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent; maat_feather_16.svg is the all-pages favicon (AAF-VGH-001 vocabulary overweighting)",
+      "sensitivity": "low",
+      "citations": [
+        {"path": "assets/icons/", "lines": "n/a", "evidence": "4 SVG files: maat_feather, maat_feather_16, scopecam_color, scopecam_favicon", "method": "Glob"}
+      ]
+    },
+    {
+      "id": "S-05",
+      "name": "vite.config.js (the 11-page registry)",
+      "classification": "authoritative-durable",
+      "owner_context": "build-system",
+      "retention": "unbounded",
+      "read_authority": ["vite at build time", "CI runner", "operator"],
+      "write_authority": ["operator (Ask-first per AGENTS.md:100)"],
+      "invalidation_trigger": "n/a (consumed only at build)",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent; the 11-entry input map is architectural ground truth for 'what counts as a deployed page'",
+      "sensitivity": "low",
+      "citations": [
+        {"path": "vite.config.js", "lines": "1-61", "evidence": "Vite multi-page configuration", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "100", "evidence": "Ask first: changes to vite.config.js build configuration", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-06",
+      "name": "experiments/ (sandbox content; git-tracked; CI+build-excluded)",
+      "classification": "derived-durable",
+      "owner_context": "experiments-sandbox",
+      "retention": "unbounded (git-tracked)",
+      "read_authority": ["operator", "git readers", "no deployed page links here except via hand-promoted braid SVG"],
+      "write_authority": ["operator ('safe to prototype freely' per html.mdc:39-41)"],
+      "invalidation_trigger": "none",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent but isolated; hand-promotion to portfolio-pages is the only 'publish' mechanism",
+      "sensitivity": "low",
+      "sub_notes": ["experiments/themes/academic.css is the misplaced theme referenced by THEMES.md (AAF-VGH-012); part of S-06 as sandbox artifact"],
+      "citations": [
+        {"path": "biome.json", "lines": "4", "evidence": "files.includes excludes experiments/", "method": "Read"},
+        {"path": "vite.config.js", "lines": "22-37", "evidence": "rollupOptions.input does NOT include experiments/", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "39-41", "evidence": "Pages under experiments/ excluded from CI; safe to prototype freely", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-07",
+      "name": ".claude/settings.json (project-scoped Claude Code permissions + PostToolUse hook)",
+      "classification": "operator-rules-memory",
+      "owner_context": "agent-governance",
+      "retention": "unbounded (git-tracked)",
+      "read_authority": ["Claude Code CLI at session start (project-scoped)"],
+      "write_authority": ["operator"],
+      "invalidation_trigger": "session restart re-reads",
+      "deletion_or_reset_path": "git revert",
+      "lifecycle": "persistent; governance-class authoritative store per Phase 2 §2.3",
+      "sensitivity": "low (declares paths and tool patterns; no secrets)",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "1-39", "evidence": "9 allow + 9 deny + PostToolUse hook", "method": "Read"},
+        {"path": "profile/2026-05-21/project_profile.yaml", "lines": "governance.memory_surfaces_detected[0]", "evidence": "Profile-declared memory surface", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-08",
+      "name": ".claude/settings.local.json (gitignored operator overrides; 125 bytes)",
+      "classification": "operator-rules-memory",
+      "owner_context": "agent-governance",
+      "retention": "unbounded (in operator's working copy; gitignored)",
+      "read_authority": ["Claude Code CLI at session start"],
+      "write_authority": ["operator (locally)"],
+      "invalidation_trigger": "session restart re-reads",
+      "deletion_or_reset_path": "operator deletes locally; AUDITOR HAS NO VISIBILITY (gitignored; out of scope per Phase 0 §3)",
+      "lifecycle": "persistent in operator's copy; never committed",
+      "sensitivity": "possibly higher than S-07 (may contain operator-specific allowlists or local overrides)",
+      "flag": "owner-known-but-content-unknown (gitignored; auditor cannot inspect content)",
+      "citations": [
+        {"path": ".claude/settings.local.json", "lines": "n/a", "evidence": "Phase 0 §4.1 reports file exists with 125 bytes; gitignored", "method": "ls/Glob"}
+      ]
+    },
+    {
+      "id": "S-09",
+      "name": "8 governance markdown files (AGENTS.md, CLAUDE.md, DEV_GUIDE.md, THEMES.md, README.md, 3 SKILL.md, 3 .cursor/rules/*.mdc)",
+      "classification": "prompt-policy-config",
+      "owner_context": "agent-governance",
+      "retention": "unbounded (git-tracked)",
+      "read_authority": ["external agents (Claude Code, Cursor IDE) at session start", "human readers"],
+      "write_authority": ["operator only"],
+      "invalidation_trigger": "session restart re-reads",
+      "deletion_or_reset_path": "git revert (with operator-declared canonical-precedence at CLAUDE.md:3 → AGENTS.md)",
+      "lifecycle": "persistent; AGENTS.md / CLAUDE.md precedence in-repo; DEV_GUIDE.md drift unmanaged",
+      "sensitivity": "low",
+      "constituent_files": [
+        {"file": "AGENTS.md", "role": "canonical project contract", "phase_4_flag": "(clean)"},
+        {"file": "CLAUDE.md", "role": "Claude Code shim with precedence statement", "phase_4_flag": "(clean)"},
+        {"file": "DEV_GUIDE.md", "role": "stale developer guide", "phase_4_flag": "producer-consumer-drift (C-10, AAF-VGH-002)"},
+        {"file": "THEMES.md", "role": "overstated theme-switching capability", "phase_4_flag": "producer-consumer-drift + route-without-spec (C-11, AAF-VGH-012)"},
+        {"file": "README.md", "role": "license + 2-project blurb (advisory)", "phase_4_flag": "producer-consumer-drift (C-22, AAF-VGH-004)"},
+        {"file": ".claude/skills/fix-issue/SKILL.md", "role": "slash command", "phase_4_flag": "subagent-boundary-untyped (C-07a)"},
+        {"file": ".claude/skills/review-diff/SKILL.md", "role": "slash command", "phase_4_flag": "subagent-boundary-untyped (C-07b)"},
+        {"file": ".claude/skills/ship-small/SKILL.md", "role": "slash command", "phase_4_flag": "subagent-boundary-untyped (C-07c)"},
+        {"file": ".cursor/rules/project.mdc", "role": "alwaysApply IDE rules", "phase_4_flag": "(clean)"},
+        {"file": ".cursor/rules/css.mdc", "role": "CSS authoring rules (glob: assets/**/*.css)", "phase_4_flag": "(clean)"},
+        {"file": ".cursor/rules/html.mdc", "role": "HTML authoring rules (glob: *.html, projects/*.html, experience/*.html, research/*.html)", "phase_4_flag": "(clean)"}
+      ],
+      "citations": [
+        {"path": "Phase 4 §2.7-2.11 and 2.21-2.22", "lines": "n/a", "evidence": "Full file contents inventoried as contracts", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-10",
+      "name": "CNAME (custom apex domain pointer)",
+      "classification": "prompt-policy-config",
+      "owner_context": "portfolio-pages / build-system (boundary case)",
+      "retention": "unbounded",
+      "read_authority": ["GitHub Pages CDN on each deploy", "git readers"],
+      "write_authority": ["operator"],
+      "invalidation_trigger": "next deploy re-reads",
+      "deletion_or_reset_path": "git revert (would cause GH Pages to revert to <account>.github.io URL)",
+      "lifecycle": "persistent; coupled to operator-controlled registrar DNS (out-of-repo)",
+      "sensitivity": "low (the domain is public)",
+      "classification_decision": {
+        "considered_classes": ["operator-rules-memory", "authoritative-durable", "prompt-policy-config"],
+        "chosen": "prompt-policy-config",
+        "reasoning": "CNAME is a policy-config file whose content is a directive for an external consumer (GitHub Pages CDN). The §8.6 enum has no 'build-source-provenance' class — that is a Phase 4 contract flag (build-provenance-position-missing), not a Phase 5 store class. Rejected 'operator-rules-memory' (CNAME encodes a binding configuration for an external system, not operator preferences for an agent). Rejected 'authoritative-durable' (CNAME is a pointer, not the artifact). Chose 'prompt-policy-config' to capture 'configuration that drives behavior at a boundary'. The associated authority concern (operator-DNS as undocumented secondary credential) is recorded in Phase 4 §2.12 as a contract flag."
+      },
+      "citations": [
+        {"path": "CNAME", "lines": "1", "evidence": "jvjohnson.dev (14 bytes with newline)", "method": "Read"},
+        {"path": "Phase 4 §2.12", "lines": "n/a", "evidence": "build-provenance-position-missing flag", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-11",
+      "name": "dist/ (vite build artifact)",
+      "classification": "artifact",
+      "owner_context": "build-system",
+      "retention": "per-build (deleted by mise run clean; written fresh by every vite build)",
+      "read_authority": ["local preview (mise run preview)", "CI actions/upload-pages-artifact@v3"],
+      "write_authority": ["vite during mise run build / CI E-07"],
+      "invalidation_trigger": "every build overwrites",
+      "deletion_or_reset_path": "mise run clean (rm -rf dist node_modules); agent writes denied at .claude/settings.json:22,24",
+      "lifecycle": "ephemeral by design; rebuilt each CI run",
+      "sensitivity": "low (same content as deployed site)",
+      "citations": [
+        {"path": "vite.config.js", "lines": "10", "evidence": "outDir: 'dist'", "method": "Read"},
+        {"path": ".claude/settings.json", "lines": "22,24", "evidence": "deny Write/Edit(**/dist/**)", "method": "Read"},
+        {"path": ".gitignore", "lines": "n/a", "evidence": "dist gitignored (per Phase 0)", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-12",
+      "name": "node_modules/ (npm dependency cache)",
+      "classification": "cache",
+      "owner_context": "build-system",
+      "retention": "until mise run clean or npm ci re-installs",
+      "read_authority": ["npm/npx/vite/biome at runtime"],
+      "write_authority": ["npm (npm install, npm ci); agent writes denied at .claude/settings.json:21,23"],
+      "invalidation_trigger": "package.json / package-lock.json change → npm ci rebuilds",
+      "deletion_or_reset_path": "mise run clean (rm -rf dist node_modules)",
+      "lifecycle": "derived from package-lock.json; deterministic for any given lockfile",
+      "sensitivity": "low",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "21,23", "evidence": "deny Write/Edit(**/node_modules/**)", "method": "Read"},
+        {"path": "package.json", "lines": "14", "evidence": "'clean': 'rm -rf dist node_modules'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "S-EXT",
+      "name": "../new-direction-2026/career-transition-ready/ (sibling repo content source; external pointer)",
+      "classification": "n/a-external-pointer",
+      "owner_context": "(external — lives in sibling repo)",
+      "retention": "unbounded in the sibling repo (out-of-repo state)",
+      "read_authority": ["operator; manual hand-promotion via /sync-check in sibling"],
+      "write_authority": ["operator (in the sibling repo, not here)"],
+      "invalidation_trigger": "when sibling source changes, destination in this repo becomes stale until manually re-promoted",
+      "deletion_or_reset_path": "n/a from this repo",
+      "lifecycle": "external; lifecycle managed in sibling repo",
+      "sensitivity": "low",
+      "flag": "content-provenance-position-missing (Phase 4 §2.19); pairs with sibling AAF-NDM-012",
+      "non_classification_reason": "Recorded explicitly to honor 'do not skip retrieval corpora' spec boundary. It is not a retrieval corpus; it is a manual content-source pointer. Cross-repo phase-4 contract row C-19 carries the producer/consumer details.",
+      "citations": [
+        {"path": "../new-direction-2026/AGENTS.md", "lines": "131-142", "evidence": "6 source→destination mappings", "method": "Read"},
+        {"path": "audit/2026-05-21/04-contracts.json#C-19", "lines": "n/a", "evidence": "Cross-repo content pipeline contract (consumer side)", "method": "Read"}
+      ]
+    }
+  ],
+  "explicit_decisions": {
+    "cname_classification": {
+      "considered": ["operator-rules-memory", "authoritative-durable", "prompt-policy-config"],
+      "chosen": "prompt-policy-config",
+      "reasoning_summary": "Pointer for external consumer (GH Pages CDN); not memory of operator preferences and not the artifact itself. §8.6 has no 'build-source-provenance' class — that is a Phase 4 contract flag."
+    },
+    "readme_classification": {
+      "considered": ["prompt-policy-config", "(orphaned legacy artifact)"],
+      "chosen": "prompt-policy-config (under S-09 cluster)",
+      "reasoning_summary": "Public-facing policy-and-summary document with license declaration. Stale-content is a Phase 4 flag, not a Phase 5 classification issue."
+    }
+  },
+  "authority_crossings_recorded_for_phase_6": [
+    {"crossing": "Operator → Claude Code session reads governance + permissions matrix", "stores": ["S-07", "S-09"]},
+    {"crossing": "Claude Code agent → filesystem write subject to permissions matrix", "stores_writable": ["S-01", "S-02", "S-03", "S-04", "S-05"], "stores_conditional": ["S-08"], "stores_denied": ["S-11", "S-12"]},
+    {"crossing": "PostToolUse hook → filesystem write on every Write/Edit (biome --write)", "stores": ["S-01", "S-02", "S-03", "S-04", "S-05 (.js/.json/.css subset)"], "audit_attention": "AAF-VGH-006 silent errors"},
+    {"crossing": "GH Actions deploy job → GH Pages CDN with id-token:write + pages:write", "stores": ["S-11 read; external write"], "audit_attention": "AAF-VGH-010 supply chain"},
+    {"crossing": "Operator → sibling /sync-check manual hand-promotion", "stores": ["S-EXT → S-01"], "audit_attention": "AAF-VGH-008 ↔ AAF-NDM-012"}
+  ],
+  "exit_check": {
+    "every_store_has_owner_or_flag": true,
+    "every_writable_store_has_write_authority_evidence": true,
+    "every_memory_surface_classified_by_purpose_durability_owner_deletion": true,
+    "no_unexplained_multi_classification": true,
+    "no_retention_inferred_from_deployment_defaults": true,
+    "no_merged_buckets": true,
+    "cross_repo_content_pointer_recorded": true,
+    "phase_5_passes": true
+  }
+}

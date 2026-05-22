@@ -1,0 +1,424 @@
+{
+  "phase": 8,
+  "audit_date": "2026-05-22",
+  "audit_spec": "agentic-audit-spec-v3.1",
+  "repo_head": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+  "routed_aafs_resolved": ["AAF-VGH-001", "AAF-VGH-002", "AAF-VGH-004", "AAF-VGH-012"],
+  "prompt_surfaces": [
+    {
+      "id": "PS-01",
+      "path": ".claude/skills/fix-issue/SKILL.md",
+      "surface_type": "runtime-nonproduction-prompt",
+      "classification": "pure-instruction",
+      "embedded_values": [],
+      "policy_home": "AGENTS.md via @AGENTS.md reference at L8 (triage map cite)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".claude/skills/fix-issue/SKILL.md", "lines": "1-12", "evidence": "6-step workflow: reproduce → isolate → fix → verify → visual check → document", "method": "Read"}]
+    },
+    {
+      "id": "PS-02",
+      "path": ".claude/skills/ship-small/SKILL.md",
+      "surface_type": "runtime-nonproduction-prompt",
+      "classification": "embedded-policy",
+      "embedded_values": [{"value": ">5 files (plan-mode trigger)", "kind": "threshold", "line": 10}],
+      "policy_home": "currently in PS-02 only; plausible alternative home is AGENTS.md L96-103 Ask-first taxonomy",
+      "drift_target": "consistent within this repo; cross-repo asymmetry with sibling new-direction-2026 (sibling has >5 in SKILL but >3 in AGENTS.md/CLAUDE.md — sibling's concern, not this repo's)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".claude/skills/ship-small/SKILL.md", "lines": "1-12", "evidence": "If touching >5 files, stop and write a brief plan with file paths first.", "method": "Read"}]
+    },
+    {
+      "id": "PS-03",
+      "path": ".claude/skills/review-diff/SKILL.md",
+      "surface_type": "runtime-nonproduction-prompt",
+      "classification": "pure-instruction",
+      "embedded_values": [],
+      "policy_home": "AGENTS.md (Ask-first boundaries cited at L16)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".claude/skills/review-diff/SKILL.md", "lines": "1-18", "evidence": "9-item checklist; design system, URL stability, Ask-first boundary respect", "method": "Read"}]
+    },
+    {
+      "id": "GA-01",
+      "path": "AGENTS.md",
+      "surface_type": "skill-or-sop",
+      "classification": "pure-instruction",
+      "embedded_values": [
+        {"value": "--space-1..--space-5 (rem-based)", "kind": "tool-constraint", "line": 116},
+        {"value": "hsl(212 85% 45%) / hsl(160 55% 35%) accents", "kind": "tool-constraint", "line": 117},
+        {"value": "system sans-serif (ui-sans-serif, system-ui)", "kind": "tool-constraint", "line": 118},
+        {"value": "72ch max-width", "kind": "tool-constraint", "line": 119},
+        {"value": "Ask-first × 6 items", "kind": "approval", "line": 98},
+        {"value": "Never × 6 items", "kind": "approval", "line": 107},
+        {"value": "Never break existing page URLs", "kind": "release-criterion", "line": 111}
+      ],
+      "policy_home": "this IS the policy home; canonical per CLAUDE.md:3",
+      "drift_target": "DEV_GUIDE.md contradicts on every dimension (see GA-07)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "note": "appropriate location for these policies; no extraction recommendation",
+      "citations": [{"path": "AGENTS.md", "lines": "1-140", "method": "Read"}]
+    },
+    {
+      "id": "GA-02",
+      "path": "CLAUDE.md",
+      "surface_type": "skill-or-sop",
+      "classification": "pure-instruction",
+      "embedded_values": [
+        {"value": "Primary project contract: @AGENTS.md (precedence)", "kind": "authority", "line": 3}
+      ],
+      "policy_home": "shim; AGENTS.md is the home",
+      "privileged_context": false,
+      "server_exposed": false,
+      "note": "shim that defers to AGENTS.md; restates skills + MCP + permissions summary",
+      "citations": [{"path": "CLAUDE.md", "lines": "1-55", "method": "Read"}]
+    },
+    {
+      "id": "GA-03",
+      "path": ".cursor/rules/project.mdc",
+      "surface_type": "skill-or-sop",
+      "classification": "pure-instruction",
+      "embedded_values": [
+        {"value": "--space-1..--space-5 (mirrors AGENTS.md)", "kind": "tool-constraint", "line": 42}
+      ],
+      "policy_home": "AGENTS.md (restatement for Cursor IDE auto-attach with alwaysApply: true)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".cursor/rules/project.mdc", "lines": "1-62", "method": "Read"}]
+    },
+    {
+      "id": "GA-04",
+      "path": ".cursor/rules/css.mdc",
+      "surface_type": "skill-or-sop",
+      "classification": "pure-instruction",
+      "embedded_values": [
+        {"value": "single-CSS-file invariant: assets/jeffrey.css", "kind": "tool-constraint", "line": 9},
+        {"value": "--space-1..--space-5 (mirrors AGENTS.md)", "kind": "tool-constraint", "line": 25}
+      ],
+      "policy_home": "AGENTS.md (restatement for Cursor IDE glob-attached on assets/**/*.css)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".cursor/rules/css.mdc", "lines": "1-47", "method": "Read"}]
+    },
+    {
+      "id": "GA-05",
+      "path": ".cursor/rules/html.mdc",
+      "surface_type": "skill-or-sop",
+      "classification": "pure-instruction",
+      "embedded_values": [
+        {"value": "no <style> blocks or inline style attrs", "kind": "tool-constraint", "line": 28},
+        {"value": "external-link rel='noopener noreferrer'", "kind": "tool-constraint", "line": 23}
+      ],
+      "policy_home": "AGENTS.md L92-94 + L107-112 (restatement for Cursor IDE)",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": ".cursor/rules/html.mdc", "lines": "1-42", "method": "Read"}]
+    },
+    {
+      "id": "GA-06",
+      "path": "README.md",
+      "surface_type": "skill-or-sop",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "MIT © 2025 (year is 2026)", "kind": "release-criterion", "line": 13},
+        {"value": "two primary projects (MAAT, ScopeCam) — 6 deployed", "kind": "authority", "line": 10}
+      ],
+      "policy_home": "the file IS its own license/project-summary home",
+      "drift_target": "current calendar year (2026) + vite.config.js:23-37 (6-project deployment manifest)",
+      "aaf_resolution": "AAF-VGH-004",
+      "note": "L10-11 MAAT-first listing reinforces AAF-VGH-001 MAAT-positioning finding; consolidated under that AAF for the project-list dimension",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "README.md", "lines": "10-11", "evidence": "two primary projects: MAAT Framework, ScopeCam", "method": "Read"},
+        {"path": "README.md", "lines": "13", "evidence": "MIT © 2025 Jeffrey Johnson", "method": "Read"}
+      ]
+    },
+    {
+      "id": "GA-07",
+      "path": "DEV_GUIDE.md",
+      "surface_type": "documentation-about-prompts",
+      "classification": "contradictory-guidance",
+      "secondary_classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "--space-xs through --space-2xl (8-point grid, 4-64px)", "kind": "tool-constraint", "line": 17},
+        {"value": "Serif (Georgia) for body text", "kind": "tool-constraint", "line": 22},
+        {"value": "1200px max-width container", "kind": "tool-constraint", "line": 34},
+        {"value": "Lapis blue (#4C70A0)", "kind": "tool-constraint", "line": 28},
+        {"value": "Gold (#D4AF37) hover", "kind": "tool-constraint", "line": 29},
+        {"value": "assets/styles.css (does NOT exist)", "kind": "tool-constraint", "line": 52},
+        {"value": "research/maat.html + research/scopecam.html (do not exist)", "kind": "tool-constraint", "line": 46},
+        {"value": "academic/ directory tree (does not exist)", "kind": "tool-constraint", "line": 48},
+        {"value": "legacy maat/ + scopecam/ dirs (do not exist)", "kind": "tool-constraint", "line": 54}
+      ],
+      "policy_home": "AGENTS.md + .cursor/rules/ trio (canonical per CLAUDE.md:3)",
+      "drift_target": "AGENTS.md:116-120 (design system) + filesystem at HEAD (file structure)",
+      "aaf_resolution": "AAF-VGH-002",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "DEV_GUIDE.md", "lines": "15-18", "evidence": "8-point grid; --space-xs (4px) through --space-2xl (64px)", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "20-24", "evidence": "Serif (Georgia) for body text", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "26-31", "evidence": "Lapis blue #4C70A0; Gold #D4AF37", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "34", "evidence": "1200px max-width container", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "43-58", "evidence": "File organization listing nonexistent research/maat.html, research/scopecam.html, academic/ tree, legacy maat/ + scopecam/", "method": "Read"},
+        {"path": "DEV_GUIDE.md", "lines": "52,62,118", "evidence": "assets/styles.css references (file does not exist; actual is assets/jeffrey.css)", "method": "Read"}
+      ]
+    },
+    {
+      "id": "GA-08",
+      "path": "THEMES.md",
+      "surface_type": "documentation-about-prompts",
+      "classification": "stale-authoring-artifact",
+      "secondary_classification": "contradictory-guidance",
+      "embedded_values": [
+        {"value": "site supports multiple visual themes (no automation)", "kind": "tool-constraint", "line": 3},
+        {"value": "assets/styles-academic.css (file does NOT exist at this path)", "kind": "tool-constraint", "line": 25},
+        {"value": "sed-script for theme-switching (zero substitutions; broken)", "kind": "tool-constraint", "line": 48}
+      ],
+      "policy_home": "n/a — the file documents a capability that does not exist",
+      "drift_target": "filesystem at HEAD: assets/jeffrey.css exists; assets/styles-academic.css does NOT exist; experiments/themes/academic.css is the actual location",
+      "aaf_resolution": "AAF-VGH-012",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "THEMES.md", "lines": "1-5", "evidence": "This site supports multiple visual themes. Switch between them by changing the stylesheet reference in HTML files.", "method": "Read"},
+        {"path": "THEMES.md", "lines": "25", "evidence": "styles-academic.css", "method": "Read"},
+        {"path": "THEMES.md", "lines": "48,51", "evidence": "sed -i '' 's/styles-academic\\.css/jeffrey.css/g' — would produce zero substitutions", "method": "Read"}
+      ]
+    },
+    {
+      "id": "AA-01",
+      "path": "index.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8},
+        {"value": "MAAT in lead paragraph", "kind": "authority", "line": 44},
+        {"value": "MAAT in CS theory section", "kind": "authority", "line": 76},
+        {"value": "MAAT Framework → nav card", "kind": "authority", "line": 117}
+      ],
+      "policy_home": "n/a — personal portfolio HTML is its own authoring home",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "index.html", "lines": "8", "evidence": "<link rel='icon' href='/assets/icons/maat_feather_16.svg'>", "method": "Grep"},
+        {"path": "index.html", "lines": "44", "evidence": "distributed multi-agent systems (MAAT) in Rust, Python, and TypeScript", "method": "Grep"},
+        {"path": "index.html", "lines": "76", "evidence": "Theory informing implementation in MAAT Framework and distributed systems work", "method": "Grep"},
+        {"path": "index.html", "lines": "117", "evidence": "<a href='/projects/maat.html' class='case-study-link'>MAAT Framework →</a>", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "AA-02",
+      "path": "cv.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8},
+        {"value": "MAAT Framework - Multi-Agent Orchestration (h3 heading)", "kind": "authority", "line": 83}
+      ],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "cv.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"},
+        {"path": "cv.html", "lines": "83", "evidence": "<h3>MAAT Framework - Multi-Agent Orchestration</h3>", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "AA-03",
+      "path": "contact.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "contact.html", "lines": "8", "evidence": "maat_feather favicon (favicon-only; no body-text MAAT)", "method": "Grep"}]
+    },
+    {
+      "id": "AA-04",
+      "path": "experience/index.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "maat_feather favicon", "kind": "tool-constraint", "line": 10},
+        {"value": "MAAT Framework (project__name)", "kind": "authority", "line": 326}
+      ],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "experience/index.html", "lines": "10", "evidence": "maat_feather favicon", "method": "Grep"},
+        {"path": "experience/index.html", "lines": "326", "evidence": "<p class='project__name'>MAAT Framework</p>", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "AA-05",
+      "path": "research/index.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8},
+        {"value": "Formal methods → policy verification (MAAT Framework)", "kind": "authority", "line": 141}
+      ],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "research/index.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"},
+        {"path": "research/index.html", "lines": "141", "evidence": "Formal methods → policy verification (MAAT Framework)", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "AA-06",
+      "path": "projects/maat.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [
+        {"value": "MAAT Framework - Multi-Agent Orchestration | Jeffrey Johnson (title)", "kind": "authority", "line": 6},
+        {"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8},
+        {"value": "MAAT Framework (h1)", "kind": "authority", "line": 48}
+      ],
+      "policy_home": "n/a — the existence of this dedicated page IS the flagship signal",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "the strongest single signal of flagship positioning is the existence of this dedicated page",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [
+        {"path": "projects/maat.html", "lines": "6", "evidence": "title: MAAT Framework - Multi-Agent Orchestration", "method": "Grep"},
+        {"path": "projects/maat.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"},
+        {"path": "projects/maat.html", "lines": "48", "evidence": "<h1>MAAT Framework</h1>", "method": "Grep"}
+      ]
+    },
+    {
+      "id": "AA-07",
+      "path": "projects/dicee.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "favicon-only; no body-text MAAT — the favicon-on-every-page IS the identity-level positioning signal",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "projects/dicee.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"}]
+    },
+    {
+      "id": "AA-08",
+      "path": "projects/scopecam.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "favicon-only",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "projects/scopecam.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"}]
+    },
+    {
+      "id": "AA-09",
+      "path": "projects/budget-triage.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "favicon-only",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "projects/budget-triage.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"}]
+    },
+    {
+      "id": "AA-10",
+      "path": "projects/flux.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "favicon-only",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "projects/flux.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"}]
+    },
+    {
+      "id": "AA-11",
+      "path": "projects/llm-gateway.html",
+      "surface_type": "authoring-artifact-prompt",
+      "classification": "stale-authoring-artifact",
+      "embedded_values": [{"value": "maat_feather favicon", "kind": "tool-constraint", "line": 8}],
+      "policy_home": "n/a",
+      "drift_target": "operator-stated minor/experimental positioning",
+      "aaf_resolution": "AAF-VGH-001",
+      "note": "favicon-only",
+      "privileged_context": false,
+      "server_exposed": false,
+      "citations": [{"path": "projects/llm-gateway.html", "lines": "8", "evidence": "maat_feather favicon", "method": "Grep"}]
+    }
+  ],
+  "classification_counts": {
+    "pure-instruction": 8,
+    "instruction-with-parameters": 0,
+    "embedded-policy": 1,
+    "policy-masquerade": 0,
+    "retrieval-policy-leak": 0,
+    "tool-description-policy-leak": 0,
+    "server-prompt-policy-leak": 0,
+    "privileged-context-injection-risk": 0,
+    "stale-authoring-artifact": 15,
+    "contradictory-guidance": 2,
+    "unclassified": 0
+  },
+  "surface_type_distribution": {
+    "runtime-production-prompt": 0,
+    "runtime-nonproduction-prompt": 3,
+    "authoring-artifact-prompt": 11,
+    "documentation-about-prompts": 2,
+    "skill-or-sop": 6,
+    "server-exposed-prompt": 0,
+    "not-a-prompt": 0
+  },
+  "note_on_dual_classifications": "GA-07 and GA-08 carry both contradictory-guidance and stale-authoring-artifact markers. The classification counts above tally each distinct classification flag, so the sum exceeds the 22 surface count.",
+  "retrieval_surfaces_check": {"present": false, "rationale": "no retrieval pipeline; context7 MCP is operator-installed documentation-lookup, not in-repo retrieval"},
+  "tool_description_policy_check": {"violations": 0, "rationale": "tool descriptions live upstream"},
+  "untrusted_input_boundaries": [
+    {"boundary": "Public HTTP read (E-HTTP-pages × 11)", "risk": "nil", "rationale": "no user input accepted; read-only static delivery"},
+    {"boundary": "External outbound links in HTML pages", "risk": "nil", "rationale": "outbound only; no ingress"},
+    {"boundary": "PostToolUse hook input via jq", "risk": "low", "rationale": "operator-mediated; tool_input is Claude Code's own JSON"},
+    {"boundary": "context7 MCP results", "risk": "low", "rationale": "operator-controlled invocation; not project-scoped"},
+    {"boundary": "Cross-repo Read from sibling new-direction-2026", "risk": "nil", "rationale": "operator is producer"}
+  ],
+  "server_exposed_prompts": [],
+  "phase_8_findings_candidate_for_phase_10": [
+    "AAF-VGH-001 — MAAT positioning 20+ surface instances (rebalance favicon + nav-card + lead + README; FF candidate: identity-asset audit)",
+    "AAF-VGH-002 — DEV_GUIDE.md 6 design-system axes + 3 broken-reference categories (delete/stub/merge; FF candidate: docs-cross-reference-check)",
+    "AAF-VGH-012 — THEMES.md overstated capability + broken file path (retire/implement; FF candidate: theme-switcher-or-retire)",
+    "AAF-VGH-004 — README stale year + 2-vs-6 project list (FF candidate: copyright-year-check)",
+    "PS-02 ship-small threshold (minor; record only)"
+  ],
+  "exit_check": {
+    "every_surface_classified": true,
+    "every_embedded_policy_cites_lines_and_home": true,
+    "every_stale_artifact_cites_current_source": true,
+    "server_prompts_and_privileged_context_mapped_or_na": "n/a (none present)",
+    "passes": true
+  }
+}

@@ -1,0 +1,625 @@
+{
+  "meta": {
+    "audit_spec_version": "v3.1",
+    "audit_date": "2026-05-22",
+    "audit_mode": "first-cycle",
+    "snapshot_ref": "ee6c7e55331faaf55fa6bb4cde49abd9e1c96f9a",
+    "schema": "audit-spec-v3.1 §8.7 Authority + §9.7 completeness table"
+  },
+  "counts": {
+    "principals_total": 11,
+    "by_class": {
+      "human-operator": 1,
+      "claude-code-agent": 1,
+      "cursor-ide": 1,
+      "automation-hook": 1,
+      "skill-subagent-readonly": 2,
+      "skill-subagent-write-capable": 1,
+      "ci-cd-job": 3,
+      "third-party-action": 5,
+      "mcp-server-out-of-repo": 1
+    },
+    "write_capable_paths_covered": 4,
+    "approval_gates_recorded": 5,
+    "flag_distribution": {
+      "ambient-authority": 2,
+      "undeclared-scope": 1,
+      "approval-not-enforced": 1,
+      "approval-precedence-unclear": 0,
+      "bypass-mode-unaccounted": 0,
+      "callback-auth-missing": 0,
+      "remote-agent-token-scope-unknown": 1,
+      "subagent-without-policy": 3,
+      "secret-scope-too-broad": 0,
+      "secondary-credential-too-broad": 0,
+      "escalation": 1,
+      "write-without-approval-policy": 1,
+      "supply-chain-action-unpinned": 5
+    }
+  },
+  "principals": [
+    {
+      "id": "A-01",
+      "principal": "operator (Jeffrey Johnson, human)",
+      "readable_scopes": ["unrestricted local filesystem", "repo at /Users/verlyn13/Repos/verlyn13/verlyn13.github.io"],
+      "writable_scopes": ["unrestricted local filesystem", "remote: git@github.com:verlyn13/verlyn13.github.io.git", "operator-controlled DNS (jvjohnson.dev registrar — out of repo)"],
+      "callable_capabilities": ["all CLI", "mise run *", "gh CLI", "direct git push", "operator-DNS via registrar"],
+      "callable_subagents": [],
+      "callable_externals": ["gh CLI tokens", "registrar DNS for jvjohnson.dev"],
+      "workspace_roots": ["~/Repos/verlyn13/verlyn13.github.io"],
+      "browser_scope": [],
+      "filesystem_scope": ["unrestricted (operator)"],
+      "secrets_access": ["gh CLI tokens", "GPG signing key (AGENTS.md:128)", "operator-DNS for jvjohnson.dev"],
+      "approval_policy": "n/a — operator IS the approver",
+      "approval_mode": "n/a",
+      "approval_precedence": "operator decisions override agent constraints",
+      "bypass_modes": [],
+      "protected_paths": [],
+      "secondary_credentials": ["gh CLI tokens (auth)", "operator-DNS at registrar (undocumented; out of repo)"],
+      "outbound_network_scope": ["unrestricted"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a (operator is root principal)",
+      "sandbox_model": "OS user perms",
+      "flags": [],
+      "notes": "Operator-controlled registrar DNS at jvjohnson.dev is a secondary credential surface that is not auditable from this repo state. CNAME at repo root (S-10) binds the deployed site to a domain whose ownership lives outside the audit scope.",
+      "citations": [
+        {"path": "AGENTS.md", "lines": "128", "evidence": "Commits: Conventional format type(scope): description — signed with GPG", "method": "Read"},
+        {"path": "CNAME", "lines": "1", "evidence": "jvjohnson.dev — depends on operator-DNS at registrar", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-02",
+      "principal": "Claude Code agent (project-scoped via .claude/settings.json)",
+      "readable_scopes": [
+        "filesystem under repo root EXCEPT explicit Read denials for .env, .env.*, .envrc.local"
+      ],
+      "writable_scopes": [
+        "filesystem under repo root EXCEPT explicit Write/Edit denials for .env, .env.*, .envrc.local, node_modules/**, dist/**"
+      ],
+      "callable_capabilities": [
+        "Read", "Write", "Edit", "Grep", "Glob", "Task",
+        "Bash(npm:*)", "Bash(npx:*)", "Bash(biome:*)", "Bash(git:*)", "Bash(gh:*)", "Bash(mise:*)", "Bash(ls:*)", "Bash(cat:*)", "Bash(mkdir:*)",
+        "context7 MCP tools (operator-installed, not project-scoped) — see A-11"
+      ],
+      "callable_subagents": ["/fix-issue (A-05)", "/review-diff (A-06)", "/ship-small (A-07)"],
+      "callable_externals": ["gh CLI subprocess", "npm/npx subprocesses", "git subprocess", "biome subprocess", "mise subprocess"],
+      "workspace_roots": ["/Users/verlyn13/Repos/verlyn13/verlyn13.github.io"],
+      "browser_scope": [],
+      "filesystem_scope": [
+        "allow-by-default within repo root",
+        "deny: **/.env, **/.env.*, **/.envrc.local (Read+Write)",
+        "deny: **/node_modules/**, **/dist/** (Write+Edit only — Read still allowed)"
+      ],
+      "secrets_access": ["none in-repo (deny .env*, .envrc.local)", "indirect via gh CLI tokens"],
+      "approval_policy": "Bash-only allow-list (9 Bash patterns); all non-Bash tools (Read/Write/Edit/Grep/Glob/Task) operate without per-call approval — Claude Code default behavior governs",
+      "approval_mode": "allow (Bash whitelisted patterns) / deny (env+build-artifact paths) / unknown (non-Bash tools)",
+      "approval_precedence": "deny overrides allow (Claude Code's deny-takes-precedence semantics); project rules override user rules; settings.local.json (gitignored, S-08) can extend but auditor has no visibility",
+      "bypass_modes": [
+        ".claude/settings.local.json (gitignored, 125 bytes; content unknown — see S-08); potentially extends allow-list",
+        "AGENTS.md 'Ask first' conventions (L96-103) are conventional, NOT machine-enforced"
+      ],
+      "protected_paths": [".env", ".env.*", ".envrc.local", "node_modules/", "dist/", "package-lock.json (Ask-first per AGENTS.md:108)"],
+      "secondary_credentials": ["gh CLI tokens via operator session"],
+      "outbound_network_scope": ["unrestricted via Bash(npm/npx/gh:*)"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a (operator tokens for gh CLI)",
+      "sandbox_model": "OS perms + Claude Code permissions matrix (Bash-pattern allow + path-glob deny); 'Ask first' boundaries at AGENTS.md L96-103 are policy-by-convention only",
+      "flags": ["ambient-authority", "approval-precedence-unclear"],
+      "ambient_authority_explanation": "Read/Write/Edit/Grep/Glob/Task are not enumerated in the allow list. Claude Code's default permission model (operator prompts per-call) is what governs them, not the project-scoped settings. This is auditable but not bounded by repo-level policy.",
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "2-13", "evidence": "permissions.allow: 9 Bash patterns (npm, npx, biome, git, gh, mise, ls, cat, mkdir)", "method": "Read"},
+        {"path": ".claude/settings.json", "lines": "14-25", "evidence": "permissions.deny: Read+Write on .env*, .envrc.local; Write+Edit on node_modules/, dist/", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "96-103", "evidence": "'Ask first' taxonomy: new deps, new HTML entry points, vite.config.js, deploy.yml, design system, navigation — conventional", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-03",
+      "principal": "Cursor IDE (rule-attached editor agent)",
+      "readable_scopes": ["filesystem under repo root (no Cursor-side deny declared in-repo)"],
+      "writable_scopes": ["filesystem under repo root (no Cursor-side deny declared in-repo)"],
+      "callable_capabilities": ["editor edits", "in-app chat"],
+      "callable_subagents": [],
+      "callable_externals": ["Cursor cloud LLM (out of repo)"],
+      "workspace_roots": ["/Users/verlyn13/Repos/verlyn13/verlyn13.github.io"],
+      "browser_scope": [],
+      "filesystem_scope": ["no in-repo restriction; Cursor's own per-user config (out-of-repo) governs"],
+      "secrets_access": ["unknown (Cursor account auth lives in user config)"],
+      "approval_policy": "Cursor IDE default (per-user, not project-scoped via .cursor/rules)",
+      "approval_mode": "unknown",
+      "approval_precedence": "unknown",
+      "bypass_modes": [],
+      "protected_paths": [],
+      "secondary_credentials": ["Cursor account credentials (user-level)"],
+      "outbound_network_scope": ["Cursor backends (out of repo)"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "hybrid (editor local; model hosted)",
+      "token_delegation": "Cursor account → its model providers",
+      "sandbox_model": "Cursor's own; no project-scoped sandbox",
+      "rule_attachment": {
+        "project.mdc": {"globs": "n/a", "alwaysApply": true, "lines": ".cursor/rules/project.mdc:1-62"},
+        "css.mdc": {"globs": "assets/**/*.css", "alwaysApply": false, "lines": ".cursor/rules/css.mdc:1-47"},
+        "html.mdc": {"globs": "*.html, projects/*.html, experience/*.html, research/*.html", "alwaysApply": false, "lines": ".cursor/rules/html.mdc:1-42"}
+      },
+      "flags": ["ambient-authority"],
+      "ambient_authority_explanation": ".cursor/rules/*.mdc files are RULES, not permissions. They influence model behavior but do not enforce authority. Cursor's actual filesystem authority is determined by per-user Cursor settings the auditor cannot inspect.",
+      "citations": [
+        {"path": ".cursor/rules/project.mdc", "lines": "1-3", "evidence": "alwaysApply: true; core project rules", "method": "Read"},
+        {"path": ".cursor/rules/css.mdc", "lines": "1-4", "evidence": "globs: 'assets/**/*.css'; alwaysApply: false", "method": "Read"},
+        {"path": ".cursor/rules/html.mdc", "lines": "1-4", "evidence": "globs: '*.html, projects/*.html, experience/*.html, research/*.html'", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-04",
+      "principal": "PostToolUse hook (.claude/settings.json:27-37) — automation principal",
+      "readable_scopes": ["stdin (tool_input.file_path); jq parses the JSON"],
+      "writable_scopes": [
+        "any *.js, *.json, *.css path that Claude Code Write/Edit just touched, regardless of repo location",
+        "scope is NOT restricted by the project deny-list (those apply to Claude Code's Write/Edit, not to the bash subprocess the hook spawns)",
+        "in practice: every .js/.json/.css under the repo root + anywhere else the operator's npm/npx PATH resolves a biome binary AND the just-written path can be reached"
+      ],
+      "callable_capabilities": ["bash -c '<inline script>'", "npx biome format --write <path>"],
+      "callable_subagents": [],
+      "callable_externals": ["npx (local node_modules/.bin)", "biome via npx (local resolution)", "jq (system binary)"],
+      "workspace_roots": ["whatever cwd Claude Code is in (typically repo root)"],
+      "browser_scope": [],
+      "filesystem_scope": [
+        "implicit: any .js/.json/.css path that Write|Edit produced",
+        "no explicit allowlist; no path-prefix check"
+      ],
+      "secrets_access": ["none direct; could read .env via biome if biome ever started parsing it (currently does not)"],
+      "approval_policy": "AUTO-APPROVED — fires unconditionally on every Write|Edit matcher hit with no operator prompt; 10-second timeout",
+      "approval_mode": "auto-approved",
+      "approval_precedence": "post-tool — runs AFTER the Write/Edit completes; cannot prevent the write, only re-format the result",
+      "bypass_modes": [
+        "deleting the hook from .claude/settings.json (operator-only)",
+        "in operator's .claude/settings.local.json (gitignored, content unknown — S-08)"
+      ],
+      "protected_paths": [],
+      "secondary_credentials": [],
+      "outbound_network_scope": ["npx may resolve+fetch packages on first run (network); after install, none"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a",
+      "sandbox_model": "operator's shell environment; no isolation",
+      "flags": [
+        "ambient-authority",
+        "write-without-approval-policy",
+        "approval-not-enforced"
+      ],
+      "audit_attention": "AAF-VGH-006 — error suppression makes failures invisible: silenced stderr (2>/dev/null), unconditional exit 0, 10-second timeout. Failure modes: (1) npx not available, (2) biome missing/not installed, (3) biome parse error in file, (4) timeout, (5) jq missing, (6) malformed input JSON, (7) file write race. None are observable from logs, exit code, or surface telemetry — see Phase 7 §3.4 and Phase 7 flag no-runtime-action-provenance for the cross-phase tie.",
+      "aaf_resolution": {
+        "id": "AAF-VGH-006",
+        "verdict": "confirmed — write-capable automation principal with auto-approved policy and no failure reporting surface",
+        "severity_in_phase_10": "moderate — file corruption from a biome parse error is recoverable (git revert); the architectural concern is the precedent of a write-capable, auto-approved, silent automation",
+        "ff_candidates": [
+          "FF-claude-code-hook-observability — every PostToolUse hook must (1) tee stderr to a known log path, (2) propagate biome's exit code, (3) emit a structured event (line per invocation) with timestamp + file_path + biome_exit_code",
+          "FF-claude-code-hook-scope-declaration — every hook must declare its filesystem-scope as part of the hook object (path-prefix allowlist enforced at hook-invocation time, not in the inline bash)"
+        ]
+      },
+      "citations": [
+        {"path": ".claude/settings.json", "lines": "27-37", "evidence": "PostToolUse matcher Write|Edit; command runs biome format --write with 2>/dev/null and exit 0 unconditional; timeout 10s", "method": "Read"},
+        {"path": "audit/2026-05-21/03-runtime.json#E-12", "lines": "n/a", "evidence": "E-12 entrypoint classifies the hook as event-triggered webhook with audit_attention=AAF-VGH-006", "method": "Read"},
+        {"path": "audit/2026-05-21/04-contracts.json#C-06", "lines": "n/a", "evidence": "Contract C-06 carries the runtime-provenance-missing flag", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-05",
+      "principal": "SKILL /fix-issue (.claude/skills/fix-issue/SKILL.md)",
+      "readable_scopes": ["inherits from A-02 (Claude Code session)"],
+      "writable_scopes": ["inherits from A-02 — fix-issue can edit code + configs subject to permissions matrix"],
+      "callable_capabilities": ["instructs Claude Code to: reproduce → isolate (using AGENTS.md triage map) → fix (smallest change) → verify (mise run ci) → visual check → document"],
+      "callable_subagents": [],
+      "callable_externals": ["mise run ci (via A-02 Bash)"],
+      "workspace_roots": ["A-02's workspace roots"],
+      "filesystem_scope": ["inherits"],
+      "secrets_access": ["inherits"],
+      "approval_policy": "inherits from A-02; SKILL has no enforcement of its own",
+      "approval_mode": "inherited",
+      "approval_precedence": "inherited",
+      "bypass_modes": [],
+      "protected_paths": ["inherited"],
+      "secondary_credentials": [],
+      "outbound_network_scope": ["inherited"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a",
+      "sandbox_model": "A-02's sandbox",
+      "flags": ["subagent-without-policy"],
+      "rationale": "SKILL.md frontmatter declares name+description only; no input-schema, no output-schema, no authority manifest. Phase 4 C-07a flagged subagent-boundary-untyped; Phase 6 records the corresponding authority-side gap.",
+      "citations": [
+        {"path": ".claude/skills/fix-issue/SKILL.md", "lines": "1-12", "evidence": "6-step workflow; no schema or authority declaration", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-06",
+      "principal": "SKILL /review-diff (.claude/skills/review-diff/SKILL.md)",
+      "readable_scopes": ["inherits from A-02"],
+      "writable_scopes": [],
+      "callable_capabilities": ["9-item checklist; may invoke `mise run ci` via Bash"],
+      "callable_subagents": [],
+      "callable_externals": ["mise run ci"],
+      "workspace_roots": ["A-02's"],
+      "filesystem_scope": ["inherits"],
+      "secrets_access": ["inherits"],
+      "approval_policy": "read-only checklist; no enforcement",
+      "approval_mode": "inherited",
+      "approval_precedence": "inherited",
+      "bypass_modes": [],
+      "protected_paths": [],
+      "secondary_credentials": [],
+      "outbound_network_scope": ["inherited"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a",
+      "sandbox_model": "A-02's",
+      "flags": ["subagent-without-policy"],
+      "rationale": "Read-only checklist — does not perform writes. Subagent-without-policy flag applies because no machine-readable manifest names the read-only intent (Phase 4 C-07b).",
+      "citations": [
+        {"path": ".claude/skills/review-diff/SKILL.md", "lines": "1-18", "evidence": "9-item checklist; read-only by content", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-07",
+      "principal": "SKILL /ship-small (.claude/skills/ship-small/SKILL.md)",
+      "readable_scopes": ["inherits from A-02"],
+      "writable_scopes": [],
+      "callable_capabilities": ["6-rule discipline checklist: 1-3 commits, no drive-by refactors, plan if >5 files, URL stability"],
+      "callable_subagents": [],
+      "callable_externals": [],
+      "workspace_roots": ["A-02's"],
+      "filesystem_scope": ["inherits"],
+      "secrets_access": ["inherits"],
+      "approval_policy": "advisory checklist; no enforcement",
+      "approval_mode": "inherited",
+      "approval_precedence": "inherited",
+      "bypass_modes": [],
+      "protected_paths": [],
+      "secondary_credentials": [],
+      "outbound_network_scope": ["inherited"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "local",
+      "token_delegation": "n/a",
+      "sandbox_model": "A-02's",
+      "flags": ["subagent-without-policy"],
+      "rationale": "Advisory rule-set. Subagent-without-policy flag applies because the URL-stability rule (L11) is a structural-finding-class invariant expressed only in prompt prose — no fitness function enforces it (carried to Phase 10 as candidate FF-url-stability-test).",
+      "citations": [
+        {"path": ".claude/skills/ship-small/SKILL.md", "lines": "1-13", "evidence": "6-rule discipline; advisory", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-08",
+      "principal": "GitHub Actions job `quality` (CI runner)",
+      "readable_scopes": ["repo contents at the checkout SHA"],
+      "writable_scopes": ["runner-local filesystem (ephemeral); no persistent write authority"],
+      "callable_capabilities": ["actions/checkout@v4", "actions/setup-node@v4", "npm ci", "npx biome check", "npx biome format"],
+      "callable_subagents": [],
+      "callable_externals": ["npm registry", "GitHub API (via runner-default GITHUB_TOKEN at contents:read)"],
+      "workspace_roots": ["$GITHUB_WORKSPACE on runner"],
+      "browser_scope": [],
+      "filesystem_scope": ["runner-local only; ephemeral"],
+      "secrets_access": ["GITHUB_TOKEN scoped to permissions block (contents:read for this job inherits workflow-level)"],
+      "approval_policy": "automatic on push:main, pull_request:main, workflow_dispatch; no required reviewer in-repo",
+      "approval_mode": "auto-approved (CI trigger)",
+      "approval_precedence": "GitHub branch-protection rules (if configured at the org level) would override — declared-vs-enforced gap per AAF-VGH-011",
+      "bypass_modes": ["workflow_dispatch (manual run)", "force-push to main (if branch protection absent)"],
+      "protected_paths": ["none in-job"],
+      "secondary_credentials": ["GITHUB_TOKEN (workflow-managed; contents:read only)"],
+      "outbound_network_scope": ["npm registry (npm ci)", "GitHub Actions infrastructure"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "hosted (GitHub-hosted runner)",
+      "token_delegation": "GitHub-issued GITHUB_TOKEN; scope: contents:read (workflow root)",
+      "sandbox_model": "GitHub-hosted ubuntu-latest runner; ephemeral",
+      "flags": [],
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "10-11", "evidence": "permissions: contents: read (workflow root applies to quality)", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "20-40", "evidence": "quality job: checkout → setup-node → npm ci → biome check → biome format", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-09",
+      "principal": "GitHub Actions job `build` (CI runner; needs: quality)",
+      "readable_scopes": ["repo contents at the checkout SHA"],
+      "writable_scopes": [
+        "runner-local filesystem (dist/ build output)",
+        "Pages artifact (if !pull_request): actions/upload-pages-artifact@v3 publishes to the workflow's artifact store"
+      ],
+      "callable_capabilities": ["actions/checkout@v4", "actions/setup-node@v4", "npm ci", "npm run build (vite build)", "actions/configure-pages@v4 (PR-excluded)", "actions/upload-pages-artifact@v3 (PR-excluded)"],
+      "callable_subagents": [],
+      "callable_externals": ["npm registry", "Pages-artifact store", "GitHub API"],
+      "workspace_roots": ["$GITHUB_WORKSPACE"],
+      "browser_scope": [],
+      "filesystem_scope": ["runner-local; dist/ produced"],
+      "secrets_access": ["GITHUB_TOKEN scoped to permissions block; needs upload-pages-artifact requires pages-related scope but the upload itself uses Actions-internal artifact storage, not pages:write"],
+      "approval_policy": "automatic; needs: quality must succeed; PR-gated for the upload steps",
+      "approval_mode": "auto-approved (CI trigger) for build steps; PR-excluded for upload steps",
+      "approval_precedence": "PR-exclusion via `if: github.event_name != 'pull_request'` at L63 + L67",
+      "bypass_modes": ["workflow_dispatch (manual run on main bypasses PR exclusion); force-push to main"],
+      "protected_paths": ["none in-job"],
+      "secondary_credentials": ["GITHUB_TOKEN"],
+      "outbound_network_scope": ["npm registry", "GitHub Actions/Pages artifact store"],
+      "callback_auth": "n/a",
+      "hosted_or_local": "hosted",
+      "token_delegation": "GITHUB_TOKEN at workflow-scoped permissions",
+      "sandbox_model": "GitHub-hosted ubuntu-latest; ephemeral",
+      "flags": [],
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "42-70", "evidence": "build job; PR-gated configure-pages + upload-pages-artifact", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "63,67", "evidence": "if: github.event_name != 'pull_request' on the upload steps", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-10",
+      "principal": "GitHub Actions job `deploy` — HIGH-AUTHORITY PRINCIPAL",
+      "readable_scopes": ["the Pages artifact produced by A-09"],
+      "writable_scopes": [
+        "https://jvjohnson.dev (the deployed site) — full content replacement on each deploy",
+        "GitHub Pages deployment record (deployment metadata + page_url output)"
+      ],
+      "callable_capabilities": ["actions/deploy-pages@v4 (out-of-repo action @major-tag, NOT SHA-pinned — AAF-VGH-010)"],
+      "callable_subagents": [],
+      "callable_externals": ["GitHub Pages publishing service (via OIDC token exchange)"],
+      "workspace_roots": ["$GITHUB_WORKSPACE (minimal — no checkout needed)"],
+      "browser_scope": [],
+      "filesystem_scope": ["runner-local only (the deploy action reads the artifact, not the repo)"],
+      "secrets_access": [
+        "GITHUB_TOKEN scoped to workflow-root permissions (contents:read + pages:write + id-token:write)",
+        "OIDC token minted via id-token:write — exchanged with Pages for deploy"
+      ],
+      "approval_policy": [
+        "PR-excluded: `if: github.event_name != 'pull_request'` (deploy.yml:74)",
+        "environment: github-pages — could carry required reviewer rules but NONE DECLARED IN REPO (GitHub-org-level only)",
+        "concurrency group 'pages' with cancel-in-progress prevents parallel deploys",
+        "needs: build must succeed"
+      ],
+      "approval_mode": "auto-approved (CI trigger) at workflow level; subject to GitHub-environment reviewer rules if configured at org level (out of repo)",
+      "approval_precedence": "PR-exclusion + needs:build + concurrency:pages; org-level environment rules would override but are not declared in-repo (AAF-VGH-011 declared-vs-enforced gap on branch-protection translates to this principal too)",
+      "bypass_modes": [
+        "workflow_dispatch on main — runs deploy directly, no PR review",
+        "force-push to main with no branch protection",
+        "operator with admin rights at GitHub org level can also relax environment rules"
+      ],
+      "protected_paths": ["Pages artifact is auto-built by the upstream job; deploy doesn't checkout source"],
+      "secondary_credentials": [
+        "OIDC token (id-token:write) — short-lived JWT minted by GitHub's identity provider, exchanged for Pages publish credentials. This is the cornerstone authority for deploying to https://jvjohnson.dev.",
+        "Operator-controlled DNS at jvjohnson.dev registrar (out of repo) is the secondary credential that BINDS the deployed Pages site to the public domain"
+      ],
+      "outbound_network_scope": [
+        "GitHub Pages publish endpoint",
+        "(transitively, but not authored by this principal) the deployed HTML is then served by GitHub's CDN — no in-repo outbound from this principal beyond the deploy call"
+      ],
+      "callback_auth": "GitHub deployment status callback (deploys emit deployment_status events back to the repo — receivable but not custom-handled in this repo)",
+      "hosted_or_local": "hosted (GitHub-hosted runner + GitHub Pages publish service)",
+      "token_delegation": [
+        "Token-exchange model: id-token:write mints OIDC JWT → deploy-pages@v4 trades JWT for Pages publish authorization",
+        "Token scope: site at jvjohnson.dev only (Pages domain bound by configure-pages + CNAME)",
+        "Token lifetime: short (per OIDC); per-workflow-run"
+      ],
+      "sandbox_model": "GitHub-hosted ubuntu-latest runner; OIDC restricts the token's audience to GitHub Pages",
+      "flags": ["escalation"],
+      "escalation_explanation": "Workflow-root permissions block grants pages:write + id-token:write to EVERY job in the file (deploy.yml:10-13). Jobs `quality` and `build` do not need these elevated permissions — they inherit them. While the deploy action is the only consumer, the elevation is workflow-wide. Per-job permissions override (a `permissions:` block on each job) would scope this tighter. The current configuration is the GitHub-recommended Pages template; recording the escalation explicitly because §9.7 requires it.",
+      "aaf_resolution": {
+        "id": "AAF-VGH-010",
+        "verdict": "confirmed — deploy-pages@v4 is @major-tag-pinned, not @SHA-pinned; the single point of supply-chain risk for the elevated principal",
+        "severity_in_phase_10": "moderate — actions/deploy-pages is org-controlled by actions/ (high trust by Pages users); but a compromise or breaking change in @v4's HEAD propagates to this deploy on the next run. Symmetrical concern for the other 4 actions, but deploy-pages has the elevated authority.",
+        "ff_candidates": [
+          "FF-pin-github-actions-to-sha — every action reference in .github/workflows/*.yml must use @<40-hex-sha>; comment with version tag for humans (renovate/dependabot can update + re-pin)",
+          "FF-per-job-actions-permissions — quality + build jobs should declare permissions: contents:read only; deploy job declares pages:write + id-token:write at job-level, not workflow-level"
+        ]
+      },
+      "citations": [
+        {"path": ".github/workflows/deploy.yml", "lines": "10-13", "evidence": "permissions: contents:read + pages:write + id-token:write (workflow root — all 3 jobs inherit)", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "15-17", "evidence": "concurrency: group: pages; cancel-in-progress: true", "method": "Read"},
+        {"path": ".github/workflows/deploy.yml", "lines": "72-83", "evidence": "deploy job: if !pull_request; environment github-pages; needs:build; uses actions/deploy-pages@v4", "method": "Read"},
+        {"path": "audit/2026-05-21/04-contracts.json#C-04", "lines": "n/a", "evidence": "C-04 records all 5 actions @v* (NOT SHA-pinned)", "method": "Read"}
+      ]
+    },
+    {
+      "id": "A-11",
+      "principal": "context7 MCP server (operator-installed; declared, not configured in-repo)",
+      "readable_scopes": ["unknown — not declared in-repo"],
+      "writable_scopes": ["unknown (read-only by intent per CLAUDE.md L27 'Look up current docs')"],
+      "callable_capabilities": ["mcp__context7__resolve-library-id", "mcp__context7__query-docs"],
+      "callable_subagents": [],
+      "callable_externals": ["upstream context7 service (out of repo)"],
+      "workspace_roots": ["n/a — operator-installed at user level"],
+      "browser_scope": [],
+      "filesystem_scope": ["unknown — not project-scoped"],
+      "secrets_access": ["unknown — auth scheme not declared in-repo"],
+      "approval_policy": "unknown — no .mcp.json in repo to declare scope or auth",
+      "approval_mode": "unknown",
+      "approval_precedence": "unknown",
+      "bypass_modes": [],
+      "protected_paths": [],
+      "secondary_credentials": ["unknown — context7 account/API key managed at operator user level"],
+      "outbound_network_scope": ["context7 backend (out of repo)"],
+      "callback_auth": "unknown",
+      "hosted_or_local": "hybrid (MCP client local; service hosted)",
+      "token_delegation": "unknown — operator credentials at user level; not project-scoped",
+      "sandbox_model": "MCP transport (stdio or HTTP) determined by operator config",
+      "flags": ["remote-agent-token-scope-unknown", "undeclared-scope", "ambient-authority"],
+      "aaf_resolution": {
+        "id": "AAF-VGH-009",
+        "verdict": "confirmed — context7 MCP is declared in governance docs (CLAUDE.md:27-33, AGENTS.md:60-61) but NOT project-scoped via .mcp.json. The audit cannot inspect its actual authority. Paired with sibling AAF-NDM-008 (new-direction-2026 has same pattern across 5 MCPs).",
+        "severity_in_phase_10": "low-to-moderate — context7 is read-only docs lookup by design; the authority gap is documentation-vs-enforcement, not active risk",
+        "ff_candidates": [
+          "FF-mcp-project-scoping — every MCP server named in CLAUDE.md or AGENTS.md must have a corresponding entry in .mcp.json (or explicit declaration that it is intentionally user-scoped); CI lints",
+          "FF-mcp-tool-schema-recorded — every callable MCP tool must have an in-repo schema reference (even if pulled from upstream registry) so Phase 4 contract inventory can verify the surface"
+        ]
+      },
+      "citations": [
+        {"path": "CLAUDE.md", "lines": "27-33", "evidence": "context7 declared as project's MCP server; resolve-library-id → query-docs", "method": "Read"},
+        {"path": "AGENTS.md", "lines": "60-61", "evidence": "context7 listed in agents & MCPs table", "method": "Read"},
+        {"path": ".mcp.json", "lines": "n/a", "evidence": "File DOES NOT EXIST in repo (Phase 0 verified)", "method": "Glob"},
+        {"path": "audit/2026-05-21/04-contracts.json#C-18", "lines": "n/a", "evidence": "C-18 records mcp-surface-uninventoried + tool-without-schema", "method": "Read"}
+      ]
+    }
+  ],
+  "third_party_action_authority_inventory": [
+    {
+      "action": "actions/checkout@v4",
+      "used_in_jobs": ["quality", "build"],
+      "lines": [25, 48],
+      "permissions_required": "contents:read",
+      "authority_class": "code-checkout (read-only on repo source)",
+      "supply_chain_risk": "moderate — official actions/ org; pinned to @v4 not @SHA",
+      "flag": "supply-chain-action-unpinned"
+    },
+    {
+      "action": "actions/setup-node@v4",
+      "used_in_jobs": ["quality", "build"],
+      "lines": [28, 51],
+      "permissions_required": "(none repo-scoped); writes to runner-local node toolchain + cache",
+      "authority_class": "build-toolchain-install (runner-local)",
+      "supply_chain_risk": "moderate — official actions/ org; pinned to @v4 not @SHA",
+      "flag": "supply-chain-action-unpinned"
+    },
+    {
+      "action": "actions/configure-pages@v4",
+      "used_in_jobs": ["build"],
+      "lines": [64],
+      "permissions_required": "pages:write (workflow-root)",
+      "authority_class": "pages-configuration (org-side)",
+      "supply_chain_risk": "moderate — official actions/ org; pinned to @v4 not @SHA",
+      "flag": "supply-chain-action-unpinned"
+    },
+    {
+      "action": "actions/upload-pages-artifact@v3",
+      "used_in_jobs": ["build"],
+      "lines": [68],
+      "permissions_required": "(uses Actions artifact API; not pages:write per se)",
+      "authority_class": "artifact-upload",
+      "supply_chain_risk": "moderate — official actions/ org; pinned to @v3 not @SHA",
+      "flag": "supply-chain-action-unpinned"
+    },
+    {
+      "action": "actions/deploy-pages@v4",
+      "used_in_jobs": ["deploy"],
+      "lines": [83],
+      "permissions_required": "pages:write + id-token:write",
+      "authority_class": "PUBLISH (highest authority — replaces public-site content at jvjohnson.dev via OIDC-mediated Pages publish)",
+      "supply_chain_risk": "HIGH — this action receives the OIDC token. Compromise or breaking change in @v4's HEAD directly affects deploys. Pinned to @v4 not @SHA.",
+      "flag": "supply-chain-action-unpinned",
+      "secondary_credential_path": "OIDC token → Pages publish",
+      "outbound_network": "GitHub Pages publish endpoint"
+    }
+  ],
+  "approval_gate_matrix": [
+    {
+      "gate": "G-permissions-matrix",
+      "principal_governed": "A-02 (Claude Code agent)",
+      "approval_mode": "allow (9 Bash patterns) / deny (paths) / unknown (non-Bash tools)",
+      "precedence": "deny overrides allow; project rules override user rules",
+      "bypass_modes": [".claude/settings.local.json (gitignored, S-08)", "AGENTS.md 'Ask first' conventions"],
+      "enforcement_evidence": ".claude/settings.json:2-26; Claude Code enforces; no in-repo audit log of enforcement decisions"
+    },
+    {
+      "gate": "G-post-tool-hook",
+      "principal_governed": "A-04 (PostToolUse hook)",
+      "approval_mode": "auto-approved (fires on every Write|Edit)",
+      "precedence": "post-tool (cannot block, only re-format)",
+      "bypass_modes": ["delete hook from settings.json"],
+      "enforcement_evidence": ".claude/settings.json:27-37; Claude Code invokes; no audit log of invocations",
+      "audit_attention": "AAF-VGH-006 silent errors (cross-cite Phase 7 §3.4)"
+    },
+    {
+      "gate": "G-PR-deploy-exclude",
+      "principal_governed": "A-09 build upload steps + A-10 deploy job",
+      "approval_mode": "auto-deny on pull_request events; auto-approved on push:main",
+      "precedence": "PR-exclusion via `if: github.event_name != 'pull_request'`",
+      "bypass_modes": ["workflow_dispatch on main", "force-push to main if branch protection absent"],
+      "enforcement_evidence": ".github/workflows/deploy.yml:63,67,74"
+    },
+    {
+      "gate": "G-elevated-deploy",
+      "principal_governed": "A-10 (deploy job — HIGH-AUTHORITY)",
+      "approval_mode": "elevated permissions: pages:write + id-token:write",
+      "precedence": "workflow-root permissions inherited by all jobs (escalation noted)",
+      "bypass_modes": ["per-job permissions block not used; admin-level relaxation of GitHub-environment rules"],
+      "enforcement_evidence": ".github/workflows/deploy.yml:10-13",
+      "audit_attention": "Per §9.7 — secondary credentials (OIDC) + outbound network (Pages publish) + token delegation (OIDC) + escalation (workflow-wide elevation)"
+    },
+    {
+      "gate": "G-branch-protection-declared-vs-enforced",
+      "principal_governed": "A-08, A-09, A-10",
+      "approval_mode": "unknown — no in-repo declaration of GitHub branch-protection rules",
+      "precedence": "GitHub branch-protection (if configured at org level) would gate merges to main and trigger workflow runs",
+      "bypass_modes": ["admin override at GitHub org level"],
+      "enforcement_evidence": "AAF-VGH-011 — declared in audit, not visible to repo-state auditor",
+      "audit_attention": "carried to SUMMARY"
+    }
+  ],
+  "aaf_resolutions": {
+    "AAF-VGH-006": {
+      "verdict": "RESOLVED at A-04 — PostToolUse hook is a write-capable automation principal with auto-approved approval policy, no enforced filesystem scope, and silenced error reporting (2>/dev/null + unconditional exit 0). The flag combination ambient-authority + write-without-approval-policy + approval-not-enforced is intentional: this represents the cross-phase pattern that recurs in Phase 7 (no-runtime-action-provenance) and feeds Phase 10 findings.",
+      "ff_candidates": [
+        "FF-claude-code-hook-observability — every PostToolUse hook tees stderr to .claude/logs/posttooluse.log and surfaces non-zero exit",
+        "FF-claude-code-hook-scope-declaration — every hook declares explicit filesystem-scope; out-of-scope writes refuse rather than silently no-op"
+      ]
+    },
+    "AAF-VGH-009": {
+      "verdict": "RESOLVED at A-11 — context7 MCP declared in CLAUDE.md:27-33 + AGENTS.md:60-61 without .mcp.json in repo. Authority is undeclared-scope + remote-agent-token-scope-unknown. Paired with sibling AAF-NDM-008.",
+      "ff_candidates": [
+        "FF-mcp-project-scoping — every MCP server named in CLAUDE.md/AGENTS.md must have a corresponding .mcp.json entry or explicit user-scoped declaration; CI lints",
+        "FF-mcp-tool-schema-recorded — every callable MCP tool referenced has an in-repo schema citation"
+      ]
+    },
+    "AAF-VGH-010": {
+      "verdict": "RESOLVED at A-10 + third_party_action_authority_inventory — 5 actions @major-tag-only (not @SHA). The single high-authority surface is actions/deploy-pages@v4 because it receives the OIDC token and publishes to https://jvjohnson.dev. The other 4 actions are moderate-risk supply chain surfaces with same pin pattern.",
+      "ff_candidates": [
+        "FF-pin-github-actions-to-sha — every uses: in .github/workflows/*.yml must be @<40-hex-sha>; comment with @vN for humans; renovate/dependabot can update + re-pin",
+        "FF-per-job-actions-permissions — workflow-root permissions block tightens to contents:read; deploy job declares pages:write + id-token:write at job-level only"
+      ]
+    }
+  },
+  "cross_repo_authority_comparison": {
+    "summary": "Three repos diverge sharply on Claude Code authority declaration:",
+    "rows": [
+      {
+        "repo": "planning-summer-2026",
+        "settings_json_present": true,
+        "permissions_model": "broad allow (Read/Edit/Write + uv/ruff/pytest/mypy/mise/git-subcommands/gh-pr-list etc.) + explicit ask (git push, gh pr create, gh repo *) + explicit deny (rm -rf, git push --force, git reset --hard)",
+        "ambient_authority": "low — non-Bash tools (Read/Edit/Write) are EXPLICITLY in allow",
+        "approval_precedence_clarity": "high — ask/allow/deny lists are exhaustive",
+        "lines": ".claude/settings.json:2-36"
+      },
+      {
+        "repo": "verlyn13.github.io",
+        "settings_json_present": true,
+        "permissions_model": "narrow allow (9 Bash patterns only) + deny (env paths + build artifacts)",
+        "ambient_authority": "moderate — Read/Write/Edit/Grep/Glob/Task NOT in allow; rely on Claude Code default per-call prompting",
+        "approval_precedence_clarity": "moderate — deny is explicit; allow is Bash-only; non-Bash defaults are tool-side, not project-scoped",
+        "lines": ".claude/settings.json:2-25"
+      },
+      {
+        "repo": "new-direction-2026",
+        "settings_json_present": false,
+        "permissions_model": "n/a — NO .claude/settings.json exists; only .claude/settings.local.json (gitignored, content unknown)",
+        "ambient_authority": "high — entire authority surface is operator-local and invisible to audit",
+        "approval_precedence_clarity": "low — no project-scoped declaration whatsoever",
+        "lines": "(no file)"
+      }
+    ],
+    "common_ff_candidate": {
+      "name": "FF-claude-code-settings-canonicalization-across-repos",
+      "rationale": "Three operator-owned repos exhibit three different Claude Code authority models: (1) explicit ask/allow/deny matrix (planning-summer-2026), (2) Bash-only allow + path deny (verlyn13.github.io), (3) no project-scoped settings at all (new-direction-2026). Common operator + common agent surface + 3 inconsistent authority declarations = drift surface. A canonical .claude/settings.json template (or shared base profile) committed to each repo would (a) close the ambient-authority gap in this repo, (b) eliminate the no-settings gap in new-direction-2026, (c) align the three models so cross-repo workflows have predictable authority.",
+      "enforcement_category": "authority-manifest",
+      "scope": "all operator-owned repos with .claude/ presence",
+      "failure_condition": "missing .claude/settings.json; OR settings.json that doesn't declare Read/Write/Edit/Task in allow OR ask; OR settings.json with deny list smaller than the canonical-minimum (env paths + build artifacts + force-write git)",
+      "implementation_notes": "Could live as a shared .claude/settings.shared.json + a copy script, or as a meta-inventory FF that scans every repo on disk for the canonical pattern (meta-inventory already has scan_local_repos.py). Cross-cite Phase 10 FF candidate for sibling repos."
+    }
+  },
+  "exit_check": {
+    "every_write_capable_path_has_approval_policy_value": true,
+    "every_authority_escalation_explained_or_flagged": true,
+    "every_principal_has_readable_and_writable_scopes_recorded": true,
+    "every_browser_computer_filesystem_use_agent_has_declared_scope": true,
+    "every_callback_hosted_tool_remote_agent_has_authentication_evidence_or_missing_authority_flag": true,
+    "principals_total": 11,
+    "principals_with_no_approval_policy": 0,
+    "principals_with_approval_value_none_required_explicit": 1,
+    "phase_6_passes": true,
+    "exit_check_notes": "All 4 write-capable paths from Phase 3 (operator, Claude Code, PostToolUse hook, deploy job) carry recorded authority. The PostToolUse hook is flagged write-without-approval-policy as an explicit value (it has auto-approved policy but no enforced scope), not an absence. The deploy job is flagged escalation because workflow-root permissions are inherited by all jobs rather than scoped per-job; the elevation itself is intentional per GitHub Pages pattern. All 3 SKILLs flagged subagent-without-policy with rationale recorded. context7 MCP flagged on 3 facets (remote-agent-token-scope-unknown + undeclared-scope + ambient-authority). 5 third-party actions inventoried separately as supply-chain authority surfaces with @v*-not-@SHA flag."
+  }
+}
