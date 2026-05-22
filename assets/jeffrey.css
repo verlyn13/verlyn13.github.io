@@ -600,7 +600,6 @@ a:focus-visible {
   border-top: 3px solid var(--warn);
 }
 
-
 .approach-header {
   display: flex;
   align-items: center;

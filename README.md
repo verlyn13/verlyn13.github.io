@@ -7,8 +7,8 @@ Autonomous Systems and AI Tool Integration
 
 This portfolio presents research in autonomous systems architecture and intelligent tool integration, with focus on two primary projects:
 
-- **MAAT Framework** - Mathematical Agent Architecture for Tabular operations
-- **ScopeCam** - Intelligent screen capture with hardware-inspired efficiency
+- **MAAT Framework** - Multi-Agent Adaptive Technology
+- **ScopeCam** - Industrial USB Camera Android Application
 
 ## License
 

@@ -4,7 +4,7 @@
 
 - **Purpose**: Academic research portfolio for Dr. Jeffrey Johnson — autonomous systems and AI tool integration
 - **Stack**: Vanilla HTML/CSS, Vite 5 (build), Biome 2.3+ (lint/format), Node 24 (via mise)
-- **Production URL**: https://verlyn13.github.io
+- **Production URL**: https://jvjohnson.dev
 - **Deployment**: GitHub Pages via Actions (auto-deploy on push to `main`)
 
 ## Repo shape

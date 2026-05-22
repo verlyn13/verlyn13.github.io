@@ -30,6 +30,8 @@ export default defineConfig({
         'projects-maat': resolve(__dirname, 'projects/maat.html'),
         'projects-scopecam': resolve(__dirname, 'projects/scopecam.html'),
         'projects-budget-triage': resolve(__dirname, 'projects/budget-triage.html'),
+        'projects-flux': resolve(__dirname, 'projects/flux.html'),
+        'projects-llm-gateway': resolve(__dirname, 'projects/llm-gateway.html'),
         experience: resolve(__dirname, 'experience/index.html'),
         research: resolve(__dirname, 'research/index.html'),
       },

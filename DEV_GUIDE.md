@@ -132,6 +132,6 @@ Push to main branch triggers GitHub Actions:
 1. Installs dependencies
 2. Runs `npm run build`
 3. Deploys `dist/` to GitHub Pages
-4. Available at verlyn13.github.io
+4. Available at jvjohnson.dev
 
 The entire philosophy: academic credibility through simplicity, not complexity.
