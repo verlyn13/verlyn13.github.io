@@ -12,4 +12,4 @@ This portfolio presents research in autonomous systems architecture and intellig
 
 ## License
 
-MIT © 2025 Jeffrey Johnson
+MIT © 2025–2026 Jeffrey Johnson
