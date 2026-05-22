@@ -119,6 +119,8 @@ mise run clean               # Remove dist/ and node_modules/
 - **Layout**: `72ch` max-width (`--measure`), 768px mobile breakpoint.
 - **Borders/Shadows**: `--border`, `--shadow`, `--shadow-hard`, `--radius` (14px), `--radius-sm` (10px).
 - **Philosophy**: Academic credibility over commercial appeal. Clean, fast, respectful of visitor's time.
+- **Design philosophy**: jeffrey.css is "rigorous, practical, systems-minded, warm-but-not-squishy" — clear constraints over clever hacks. Other themes
+  (e.g., experiments/themes/academic.css) are sandbox-only and not deployed.
 
 ## Code style
 
