@@ -13,10 +13,10 @@
     "rules": {
       "recommended": true,
       "complexity": {
-        "noImportantStyles": "warn"
+        "noImportantStyles": "error"
       },
       "style": {
-        "noDescendingSpecificity": "warn"
+        "noDescendingSpecificity": "error"
       }
     }
   },

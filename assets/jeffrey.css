@@ -87,6 +87,30 @@ section {
 }
 
 /* ------------------------------------------------------------
+   Links: direct, minimal fuss
+   ------------------------------------------------------------ */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
+  transition: border-color 0.2s ease;
+}
+
+a:hover {
+  border-bottom-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 3px solid hsl(212 85% 45% / 0.35);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+li {
+  margin: 0.25rem 0;
+}
+
+/* ------------------------------------------------------------
    Navigation
    ------------------------------------------------------------ */
 .site-nav {
@@ -278,26 +302,6 @@ strong {
 
 em {
   font-style: italic;
-}
-
-/* ------------------------------------------------------------
-   Links: direct, minimal fuss
-   ------------------------------------------------------------ */
-a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
-  transition: border-color 0.2s ease;
-}
-
-a:hover {
-  border-bottom-color: currentColor;
-}
-
-a:focus-visible {
-  outline: 3px solid hsl(212 85% 45% / 0.35);
-  outline-offset: 2px;
-  border-radius: 10px;
 }
 
 /* ------------------------------------------------------------
@@ -1158,10 +1162,6 @@ ol {
   padding: 0;
 }
 
-li {
-  margin: 0.25rem 0;
-}
-
 .achievement-list,
 .service-list,
 .depth-list,
@@ -1207,6 +1207,12 @@ li {
   border: var(--border);
 }
 
+.arrow {
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .translation-row {
     grid-template-columns: 1fr;
@@ -1244,12 +1250,6 @@ li {
   font-size: 0.85rem;
   color: var(--muted);
   line-height: 1.5;
-}
-
-.arrow {
-  font-size: 1.5rem;
-  color: var(--accent);
-  font-weight: 600;
 }
 
 /* ------------------------------------------------------------
@@ -2018,28 +2018,27 @@ th {
    Reduced Motion Support
    ------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
   html {
     scroll-behavior: auto;
   }
 
+  a:any-link,
+  .nav-toggle__bar,
   .hero-link,
+  .card,
+  .project-card,
+  .position-card,
+  .publication,
+  .tech-project-card,
+  .service-card,
+  .approach-card,
+  .bento-card,
+  .back-to-top,
   .section-link,
   .section-link-btn,
   .button,
-  .project-card,
-  .position-card,
   .contact-block,
-  .bento-card,
-  .nav-links a,
+  .footer-links a,
   .primary-link {
     transition: none;
   }
@@ -2065,7 +2064,7 @@ th {
     background: white;
   }
 
-  a {
+  a:any-link {
     color: #000;
     text-decoration: underline;
   }
