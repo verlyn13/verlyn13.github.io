@@ -28,6 +28,12 @@ export default defineConfig({
         // Projects
         'projects-dicee': resolve(__dirname, 'projects/dicee.html'),
         'projects-maat': resolve(__dirname, 'projects/maat.html'),
+        'projects-the-nash-group': resolve(__dirname, 'projects/the-nash-group.html'),
+        'projects-host-capability-substrate': resolve(
+          __dirname,
+          'projects/host-capability-substrate.html',
+        ),
+        'projects-symmetry-groups': resolve(__dirname, 'projects/symmetry-groups.html'),
         'projects-scopecam': resolve(__dirname, 'projects/scopecam.html'),
         'projects-budget-triage': resolve(__dirname, 'projects/budget-triage.html'),
         'projects-flux': resolve(__dirname, 'projects/flux.html'),
