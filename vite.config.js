@@ -2,6 +2,8 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  appType: 'mpa',
+
   // Base URL for GitHub Pages
   base: '/',
 
@@ -37,7 +39,6 @@ export default defineConfig({
         'projects-scopecam': resolve(__dirname, 'projects/scopecam.html'),
         'projects-budget-triage': resolve(__dirname, 'projects/budget-triage.html'),
         'projects-flux': resolve(__dirname, 'projects/flux.html'),
-        'projects-llm-gateway': resolve(__dirname, 'projects/llm-gateway.html'),
         experience: resolve(__dirname, 'experience/index.html'),
         research: resolve(__dirname, 'research/index.html'),
       },
