@@ -52,3 +52,20 @@ Prefer direct tool calls (Read, Glob, Grep) for targeted, known-path lookups.
 Academic research portfolio — clarity, performance, and credibility above all.
 JS-minimal (only `assets/menu.js`), system fonts, single CSS file (`assets/jeffrey.css`).
 See @AGENTS.md for design system, hard boundaries, and triage map.
+
+## Automated hygiene — do NOT hand-maintain
+
+Line endings, trailing whitespace, file encoding, and YAML/JSON/TOML validity
+are enforced automatically. Never fix these by hand, and never add a manual
+"clean up line endings / whitespace" step to any doc, task, or checklist:
+
+- `.gitattributes` stores all text as LF and checks it out as LF on every OS —
+  CRLF↔LF churn is structurally impossible. A diff that is purely line-ending
+  or whitespace is a mistake: discard it (`git restore <path>`), do not commit it.
+- `.editorconfig` keeps editors consistent (passive; no setup required).
+- `.pre-commit-config.yaml` defines the hygiene hooks; the `Hygiene` GitHub
+  Action (`.github/workflows/hygiene.yml`) runs `pre-commit run --all-files` on
+  every push, so enforcement holds whether or not anyone ran `pre-commit install`.
+
+Canonical standard + rationale + how-to-apply-to-a-new-repo:
+`meta-inventory/docs/standards/repo-hygiene.md`.
