@@ -113,9 +113,12 @@ mise run clean               # Remove dist/ and node_modules/
 
 ## Design system (non-obvious rules)
 
-> **Canonical spec:** `docs/design-system.md` — full token reference, component catalog, the §5
-> patterns (claim-leads hero, one primary CTA, flagship emphasis, color taxonomy, "Now" line), and the
-> accessibility contract. The notes below are the quick rules; that doc is authoritative.
+> **Canonical specs:** `design/DESIGN_SPEC.md` (machine-readable: tiers, token vocabulary, component
+> map, hard rules) + `docs/design-system.md` (human: rationale, component catalog, the §5 patterns,
+> accessibility contract). The notes below are quick rules; those docs are authoritative.
+>
+> **Tokens are code:** authored in `tokens/*.tokens.json` (DTCG 2025.10) → `assets/tokens.generated.css`
+> (Style Dictionary, `npm run tokens`), `@import`ed by `jeffrey.css`. See the invariants below.
 
 - **Spacing**: Rem-based scale via `--space-1` through `--space-5`. Never use arbitrary pixel values.
 - **Colors**: Blue accent `hsl(212 85% 45%)` (`--accent`), green secondary `hsl(160 55% 35%)` (`--accent-2`). Use semantic variables: `--ink` (text), `--paper` (bg), `--muted` (secondary text), `--accent` (links/emphasis).
@@ -126,10 +129,18 @@ mise run clean               # Remove dist/ and node_modules/
 - **Design philosophy**: jeffrey.css is "rigorous, practical, systems-minded, warm-but-not-squishy" — clear constraints over clever hacks. Other themes
   (e.g., experiments/themes/academic.css) are sandbox-only and not deployed.
 
+### Token-pipeline invariants
+
+- Never write a raw color (`hsl`/`rgb`/`#hex`) in `assets/jeffrey.css` — reference a semantic token (`var(--token)`). Enforced by `npm run conformance`.
+- Components use **semantic** tokens (`tokens/semantic.tokens.json`); primitives (`tokens/primitive.tokens.json`) are internal and never referenced directly.
+- Edit `tokens/*.tokens.json` then `npm run tokens`; **never** hand-edit `assets/tokens.generated.css`. Enforced by `npm run tokens:check`.
+- Vite bundles the generated tokens + `jeffrey.css` into one deployed stylesheet — the single-file rule still holds.
+- Reserve `--accent` for the primary action and the flagship. Token / palette / scale / pattern changes are ask-first.
+
 ## Code style
 
 - HTML: 2-space indent, semantic elements, ARIA labels on external links.
-- CSS: Custom properties in `:root`, logical grouping, mobile-first not required but responsive must work.
+- CSS: design tokens live in `tokens/*.tokens.json` (compiled to `assets/tokens.generated.css`); component rules in `assets/jeffrey.css` use `var(--token)` only — no raw colors. Logical grouping; responsive must work.
 - JS (if any): Biome-enforced — single quotes, no semicolons (unless needed), 100-char line width.
 - Commits: Conventional format `type(scope): description` — signed with GPG.
 

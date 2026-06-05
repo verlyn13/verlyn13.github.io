@@ -1,0 +1,29 @@
+{
+  "$comment": "Conceptual layer model for a single-file vanilla-CSS site. A file-boundary import check (workflow §7.2) has no target here — there is one stylesheet, not a component import graph — so it is documented, not enforced (docs/adr/0006-css-adaptations.md). The enforced equivalents are the no-raw-values gate (§7.1) and Style Dictionary's semantic-only emit (primitives never reach the component layer).",
+  "tokens": {
+    "rank": 0,
+    "source": "tokens/*.tokens.json",
+    "emitted": "assets/tokens.generated.css",
+    "rule": "primitive + semantic tiers; only semantic is emitted to CSS"
+  },
+  "base": {
+    "rank": 1,
+    "where": "assets/jeffrey.css",
+    "rule": "element/base rules (html, body, a, h1-h6, p, lists, tables, code) — reference semantic tokens"
+  },
+  "components": {
+    "rank": 2,
+    "where": "assets/jeffrey.css",
+    "rule": "component classes (.hero-*, .approach-*, .card, .button, .badge, .callout, ...) — reference base + tokens"
+  },
+  "patterns": {
+    "rank": 3,
+    "where": "assets/jeffrey.css",
+    "rule": "section/layout rules (.hero-home, .approach-section, .technical-foundation, grids) — compose components + tokens"
+  },
+  "pages": {
+    "rank": 4,
+    "where": "*.html, projects/, experience/, research/",
+    "rule": "HTML wiring real content with pattern/component classes — no inline styles"
+  }
+}

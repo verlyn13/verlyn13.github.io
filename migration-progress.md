@@ -28,8 +28,8 @@ Top clusters → new semantic tokens: `45 25% 96%`×10 (inset-warm) · `212 85% 
 | 2 | Style Dictionary build + wire (`@import`, drop `:root`) | ✅ done (commit 2e272fa) |
 | 3 | Replace 64 raw `hsl()` + 2 print `#000` in `jeffrey.css` with tokens | ✅ done — 0 raw colors remain |
 | 4 | Conformance gates live (no-raw-values, tokens-fresh) | ✅ done — wired to ci + pre-commit + deploy; bite-tested |
-| 5 | `DESIGN_SPEC.md` + `layers.json` + AGENTS invariants | ⏳ in progress |
-| 6 | ADRs + Agent Skills + finalize | ⬜ |
+| 5 | `DESIGN_SPEC.md` + `layers.json` + AGENTS invariants | ✅ done |
+| 6 | ADRs (0001–0006) + 3 Agent Skills + finalize | ✅ done — **migration complete** |
 
 ## Verification contract
 - Zero visual diff: generated `:root` byte-identical to old block; preview at desktop/768/360 matches.

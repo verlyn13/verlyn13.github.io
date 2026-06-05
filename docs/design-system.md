@@ -3,7 +3,7 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 1.0.0
+version: 2.0.0
 last_updated: 2026-06-05
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
@@ -11,14 +11,17 @@ priority: high
 
 # Design System — jvjohnson.dev
 
-The canonical specification for the site's design layer. `assets/jeffrey.css` is the
-**implementation**; this document is the **contract**. When they disagree, treat it as a bug and
-reconcile (usually the doc describes intent and the CSS should follow).
+The human reference for the site's design layer (rationale, component catalog, accessibility). The
+**machine-readable** companion is `design/DESIGN_SPEC.md`; **`assets/jeffrey.css` is the
+implementation**. When docs and CSS disagree, treat it as a bug and reconcile.
 
-- **Single source of truth.** `AGENTS.md` and `.cursor/rules/css.mdc` defer here for the full system.
-- **Implementation:** all styles live in the single stylesheet `assets/jeffrey.css`.
-- **Change control:** edits to tokens, the color palette, the type scale, the spacing scale, or a
-  named pattern are **ask-first** (operator-approved). Bump `version` + `last_updated` here when they change.
+- **Tokens are code (v2.0).** Authored in `tokens/*.tokens.json` (DTCG 2025.10) → compiled by Style
+  Dictionary (`npm run tokens`) to `assets/tokens.generated.css`, which `jeffrey.css` `@import`s.
+  Never hand-edit the generated file; never add raw colors — the `no-raw-values` and `tokens-fresh`
+  gates enforce both (in `mise run ci`, pre-commit, and the deploy quality job).
+- **Where things defer.** `AGENTS.md` and `.cursor/rules/css.mdc` point here and to `design/DESIGN_SPEC.md`.
+- **Change control:** edits to tokens, palette, type scale, spacing scale, or a named pattern are
+  **ask-first**. Edit the `.tokens.json` sources (not the generated CSS); bump `version` here.
 
 ---
 
@@ -256,25 +259,22 @@ specific — **not** an "open to work" badge. Easy to update quarterly (`Now · 
 - New pages/entry points, nav/site-map structure, build or deploy config.
 
 **Tooling:** Biome 2.3+ (2-space, 100-col); a PostToolUse hook auto-formats `.css`. Gate every change
-with `mise run ci` (lint + format-check + build).
+with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
 
 ---
 
-## 9. Drift watch (tracked, not yet applied — ask-first to tokenize)
+## 9. Drift watch
 
-Honest gaps between "use tokens, never hardcode" and the current CSS. These are **candidates** for a
-future tokenization pass, not changed here:
-
-- **Un-tokenized raw colors** in wide use — candidates for new tokens:
-  - surface whites `hsl(0 0% 100% / 0.65–0.75)` (cards, pills) → `--surface` / `--surface-strong`
-  - neutral chip bg `hsl(220 25% 96%)` and warm inset bg `hsl(45 25% 96%)` → `--inset` / `--inset-warm`
-  - the focus/border accent ring `hsl(212 85% 45% / 0.35)`, repeated widely → `--ring`
-  - inverted label `hsl(0 0% 100%)` → `--on-accent`
-  - heading inks `hsl(220 18% 26%)` / `hsl(220 18% 30%)` (could derive from `--ink`)
-- **`.approach-grid` overflow < ~410px:** `minmax(320px, 1fr)` forces 320px cards, so on phones
-  narrower than ~410px the grid overflows its container horizontally. Pre-existing (predates the
-  refresh). Suggested fix: `minmax(min(320px, 100%), 1fr)`.
-- **Hero `h1` split** (§5.1) is intentional and documented; noted here so it isn't "fixed" by mistake.
+- **✅ Raw colors fully tokenized (v2.0).** The 64 `hsl()` + 2 print `#000` that lived in component
+  rules are now semantic tokens (`surface*`, `ring`, `inset-warm`/`-cool`, `heading*`, `shadow-*`,
+  status colors, `ink-print`). The `no-raw-values` gate keeps it that way.
+- **Open — `.approach-grid` overflow < ~410px:** `minmax(320px, 1fr)` forces 320px cards, so on phones
+  narrower than ~410px the grid overflows horizontally. Pre-existing (predates the token work).
+  Suggested fix: `minmax(min(320px, 100%), 1fr)`.
+- **Note — token values are CSS `hsl()` strings,** not DTCG color objects/hex. Chosen for byte-exact
+  zero-diff; Claude Design reads them from the repo directly. A hex/`color()` transform for strict
+  DTCG importers is a documented future option (`docs/adr/0001-dtcg-tokens.md`).
+- **Intentional — hero `h1` split** (§5.1): the name is a styled-down kicker; noted so it isn't "fixed".
 
 ---
 
@@ -290,7 +290,8 @@ future tokenization pass, not changed here:
 
 ## 11. References
 
-- Implementation: `assets/jeffrey.css` (the `:root` block is the token source).
+- Machine-readable spec: `design/DESIGN_SPEC.md`. Token sources: `tokens/*.tokens.json` → `assets/tokens.generated.css`.
+- Implementation: `assets/jeffrey.css` (component rules; `@import`s the generated tokens).
 - Mobile nav behavior: `assets/menu.js`.
 - Project contract & boundaries: `AGENTS.md`, `CLAUDE.md`.
 - Editor rules: `.cursor/rules/css.mdc`, `.cursor/rules/html.mdc`, `.cursor/rules/project.mdc`.
