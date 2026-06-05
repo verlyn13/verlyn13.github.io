@@ -20,6 +20,7 @@
   --surface-pill: hsl(0 0% 100% / 0.65); /** outline pill surface */
   --surface-hover: hsl(0 0% 100% / 0.9); /** pill/card hover surface */
   --on-accent: hsl(0 0% 100%); /** text/icon on an accent fill */
+  --ink-print: #000; /** pure black for @media print */
   --inset-warm: hsl(45 25% 96%); /** warm inset/section background */
   --inset-cool: hsl(220 25% 96%); /** cool neutral chip background */
   --code-bg: hsl(220 25% 98%);

@@ -33,6 +33,11 @@
     "$value": "{palette.white}",
     "$description": "text/icon on an accent fill"
   },
+  "ink-print": {
+    "$type": "color",
+    "$value": "{palette.black}",
+    "$description": "pure black for @media print"
+  },
 
   "inset-warm": {
     "$type": "color",

@@ -24,10 +24,10 @@ Top clusters → new semantic tokens: `45 25% 96%`×10 (inset-warm) · `212 85% 
 | Phase | What | Status |
 |---|---|---|
 | 0 | Harness + inventory | ✅ done |
-| 1 | Author `tokens/{primitive,semantic}.tokens.json` | ⏳ in progress |
-| 2 | Style Dictionary build + wire (`@import`, drop `:root`) | ⬜ |
-| 3 | Replace 65 raw `hsl()` in `jeffrey.css` with tokens | ⬜ |
-| 4 | Conformance gates live (no-raw-values, tokens-fresh) | ⬜ |
+| 1 | Author `tokens/{primitive,semantic}.tokens.json` | ✅ done |
+| 2 | Style Dictionary build + wire (`@import`, drop `:root`) | ✅ done (commit 2e272fa) |
+| 3 | Replace 64 raw `hsl()` + 2 print `#000` in `jeffrey.css` with tokens | ✅ done — 0 raw colors remain |
+| 4 | Conformance gates live (no-raw-values, tokens-fresh) | ⏳ in progress |
 | 5 | `DESIGN_SPEC.md` + `layers.json` + AGENTS invariants | ⬜ |
 | 6 | ADRs + Agent Skills + finalize | ⬜ |
 

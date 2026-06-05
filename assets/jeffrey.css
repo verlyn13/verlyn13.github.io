@@ -24,7 +24,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: linear-gradient(180deg, var(--paper), hsl(45 25% 95%));
+  background: linear-gradient(180deg, var(--paper), var(--paper-deep));
   font-family: var(--font);
   line-height: var(--lh);
   letter-spacing: 0.01em;
@@ -60,7 +60,7 @@ section {
 a {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
+  border-bottom: 1px solid var(--ring);
   transition: border-color 0.2s ease;
 }
 
@@ -69,7 +69,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 3px solid hsl(212 85% 45% / 0.35);
+  outline: 3px solid var(--ring);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -84,7 +84,7 @@ li {
 .site-nav {
   position: sticky;
   top: 0;
-  background: linear-gradient(180deg, var(--paper), hsl(45 25% 96%));
+  background: linear-gradient(180deg, var(--paper), var(--inset-warm));
   border-bottom: var(--border);
   z-index: 100;
 }
@@ -138,7 +138,7 @@ li {
     gap: 0;
     background: var(--paper);
     border-bottom: var(--border);
-    box-shadow: 0 4px 12px hsl(220 25% 15% / 0.08);
+    box-shadow: var(--shadow-soft);
     padding: var(--space-2) 0;
   }
 
@@ -147,7 +147,7 @@ li {
   }
 
   .nav-links li {
-    border-bottom: 1px solid hsl(220 18% 18% / 0.06);
+    border-bottom: 1px solid var(--border-faint);
   }
 
   .nav-links li:last-child {
@@ -240,12 +240,12 @@ h2 {
 
 h3 {
   font-size: 1.15rem;
-  color: hsl(220 18% 26%);
+  color: var(--heading);
 }
 
 h4 {
   font-size: 1.05rem;
-  color: hsl(220 18% 30%);
+  color: var(--heading-2);
 }
 
 /* ------------------------------------------------------------
@@ -324,8 +324,8 @@ em {
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / 0.35);
-  background: hsl(0 0% 100% / 0.65);
+  border: 1px solid var(--ring);
+  background: var(--surface-pill);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
   transition:
@@ -336,9 +336,9 @@ em {
 }
 
 .hero-link:hover {
-  background: hsl(0 0% 100% / 0.9);
+  background: var(--surface-hover);
   box-shadow: var(--shadow);
-  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
+  border-bottom: 1px solid var(--ring);
 }
 
 .hero-link:active {
@@ -349,7 +349,7 @@ em {
 .hero-link--primary {
   background: var(--accent);
   border: 1px solid var(--accent);
-  color: hsl(0 0% 100%);
+  color: var(--on-accent);
 }
 
 .hero-link--primary:hover {
@@ -424,7 +424,7 @@ em {
 .publication,
 .tech-project-card,
 .service-card {
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow), var(--shadow-hard);
@@ -438,9 +438,7 @@ em {
 .card:hover,
 .project-card:hover,
 .position-card:hover {
-  box-shadow:
-    0 15px 40px hsl(220 25% 15% / 0.15),
-    var(--shadow-hard);
+  box-shadow: var(--shadow-lift), var(--shadow-hard);
 }
 
 .project-header {
@@ -467,7 +465,7 @@ em {
 }
 
 .project-status.live {
-  background: hsl(140 55% 90%);
+  background: var(--ok-bg);
   color: var(--ok);
 }
 
@@ -477,12 +475,12 @@ em {
 }
 
 .project-status.mvp {
-  background: hsl(45 90% 88%);
-  color: hsl(22 90% 35%);
+  background: var(--amber-bg);
+  color: var(--amber-ink);
 }
 
 .project-status.production {
-  background: hsl(160 55% 88%);
+  background: var(--green-bg);
   color: var(--accent-2);
 }
 
@@ -504,7 +502,7 @@ em {
   padding: 4px 10px;
   font-family: var(--mono);
   font-size: 0.8rem;
-  background: hsl(220 25% 96%);
+  background: var(--inset-cool);
   border: var(--border);
   border-radius: var(--radius-sm);
   color: var(--muted);
@@ -531,7 +529,7 @@ em {
    ------------------------------------------------------------ */
 .technical-foundation {
   padding: var(--space-5) 0;
-  background: linear-gradient(180deg, hsl(45 25% 96%), hsl(45 25% 94%));
+  background: linear-gradient(180deg, var(--inset-warm), var(--paper-deeper));
   border-top: var(--border);
   border-radius: var(--radius);
 }
@@ -576,7 +574,7 @@ em {
 }
 
 .approach-card {
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
   border: var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
@@ -587,9 +585,7 @@ em {
 }
 
 .approach-card:hover {
-  box-shadow:
-    0 15px 40px hsl(220 25% 15% / 0.15),
-    var(--shadow-hard);
+  box-shadow: var(--shadow-lift), var(--shadow-hard);
 }
 
 /* Flagship: the single card that reads as lead work. Reserve --accent for it alone. */
@@ -606,7 +602,7 @@ em {
   padding: 4px 10px;
   border-radius: 999px;
   background: var(--accent);
-  color: hsl(0 0% 100%);
+  color: var(--on-accent);
   font-weight: 600;
 }
 
@@ -629,7 +625,7 @@ em {
   letter-spacing: 0.5px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: hsl(220 25% 96%);
+  background: var(--inset-cool);
   color: var(--muted);
   font-weight: 600;
 }
@@ -649,7 +645,7 @@ em {
 .aspect-tag {
   font-family: var(--mono);
   font-size: 0.75rem;
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border: var(--border);
   border-radius: var(--radius-sm);
   padding: 4px 10px;
@@ -753,7 +749,7 @@ em {
 
 .era-section {
   padding: var(--section-gap) 0;
-  border-top: 1px solid hsl(220 18% 18% / 0.08);
+  border-top: 1px solid var(--border-soft);
 }
 
 .era-section:first-of-type {
@@ -817,8 +813,8 @@ em {
 }
 
 .bento-card {
-  background: hsl(0 0% 100% / 0.75);
-  border: 1px solid hsl(220 18% 18% / 0.08);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   padding: var(--space-4);
   transition: box-shadow 0.2s ease;
@@ -874,7 +870,7 @@ em {
   align-items: flex-start;
   gap: var(--space-2);
   padding: var(--space-2) 0;
-  border-bottom: 1px solid hsl(220 18% 18% / 0.06);
+  border-bottom: 1px solid var(--border-faint);
 }
 
 .experience-page .project:last-child {
@@ -964,8 +960,8 @@ em {
   position: fixed;
   bottom: var(--space-4);
   right: var(--space-4);
-  background: hsl(0 0% 100% / 0.9);
-  border: 1px solid hsl(220 18% 18% / 0.1);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-hairline);
   border-radius: 999px;
   padding: var(--space-2) var(--space-3);
   font-size: 0.8rem;
@@ -978,7 +974,7 @@ em {
     opacity 0.2s ease,
     visibility 0.2s ease,
     color 0.2s ease;
-  box-shadow: 0 4px 12px hsl(220 25% 15% / 0.1);
+  box-shadow: var(--shadow-float);
   z-index: 100;
 }
 
@@ -1116,7 +1112,7 @@ em {
 
 .course-cat {
   padding: var(--space-3);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
@@ -1137,19 +1133,19 @@ em {
   border-radius: var(--radius);
   padding: var(--space-3) var(--space-4);
   border-left: 5px solid var(--accent);
-  background: hsl(212 85% 45% / 0.06);
+  background: var(--accent-tint);
   margin-bottom: var(--space-3);
   box-shadow: none;
 }
 
 .callout.ok {
   border-left-color: var(--ok);
-  background: hsl(140 55% 35% / 0.08);
+  background: var(--ok-tint);
 }
 
 .callout.warn {
   border-left-color: var(--warn);
-  background: hsl(22 90% 52% / 0.1);
+  background: var(--warn-tint);
 }
 
 .service-card h3 {
@@ -1193,7 +1189,7 @@ ol {
 .skills-translation-section {
   margin-bottom: var(--space-5);
   padding: var(--space-4);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-radius: var(--radius);
 }
 
@@ -1208,7 +1204,7 @@ ol {
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-3);
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
   border-radius: var(--radius-sm);
   border: var(--border);
 }
@@ -1242,7 +1238,7 @@ ol {
 }
 
 .from-skill {
-  background: hsl(220 25% 96%);
+  background: var(--inset-cool);
   border-radius: var(--radius-sm);
 }
 
@@ -1275,7 +1271,7 @@ ol {
   padding: var(--space-3);
   border: var(--border);
   border-radius: var(--radius-sm);
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
 }
 
 .dev-item h4 {
@@ -1328,7 +1324,7 @@ ol {
 .publication-details {
   margin: var(--space-2) 0;
   padding: var(--space-3);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-sm);
 }
@@ -1372,7 +1368,7 @@ ol {
 .theoretical-foundation {
   margin-bottom: var(--space-5);
   padding: var(--space-4);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-radius: var(--radius);
 }
 
@@ -1385,7 +1381,7 @@ ol {
 .topic-area {
   margin-bottom: var(--space-3);
   padding: var(--space-3);
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
   border-radius: var(--radius-sm);
   border: var(--border);
 }
@@ -1505,7 +1501,7 @@ ol {
   padding: var(--space-3);
   border: var(--border);
   border-radius: var(--radius-sm);
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
 }
 
 .significance-point h3 {
@@ -1530,7 +1526,7 @@ ol {
 
 .theory-area {
   padding: var(--space-3);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-radius: var(--radius-sm);
 }
 
@@ -1561,7 +1557,7 @@ ol {
   gap: var(--space-2);
   font-size: 1rem;
   font-weight: 600;
-  color: hsl(0 0% 100%);
+  color: var(--on-accent);
   background: var(--accent);
   text-decoration: none;
   border: none;
@@ -1602,8 +1598,8 @@ ol {
   font-size: 0.9rem;
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / 0.35);
-  background: hsl(0 0% 100% / 0.65);
+  border: 1px solid var(--ring);
+  background: var(--surface-pill);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
   transition:
@@ -1615,9 +1611,9 @@ ol {
 
 .section-link:hover,
 .section-link-btn:hover {
-  background: hsl(0 0% 100% / 0.9);
+  background: var(--surface-hover);
   box-shadow: var(--shadow);
-  border-bottom: 1px solid hsl(212 85% 45% / 0.35);
+  border-bottom: 1px solid var(--ring);
 }
 
 .section-link:active,
@@ -1639,7 +1635,7 @@ pre {
   padding: var(--space-3);
   border-radius: var(--radius-sm);
   border: var(--border);
-  background: hsl(220 25% 98%);
+  background: var(--code-bg);
   overflow: auto;
 }
 
@@ -1662,8 +1658,8 @@ td {
 
 th {
   text-align: left;
-  color: hsl(220 18% 26%);
-  background: hsl(45 25% 96%);
+  color: var(--heading);
+  background: var(--inset-warm);
 }
 
 /* ------------------------------------------------------------
@@ -1675,8 +1671,8 @@ th {
   gap: 0.55rem;
   padding: 0.6rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid hsl(212 85% 45% / 0.35);
-  background: hsl(0 0% 100% / 0.65);
+  border: 1px solid var(--ring);
+  background: var(--surface-pill);
   color: var(--ink);
   box-shadow: var(--shadow-hard);
   cursor: pointer;
@@ -1687,7 +1683,7 @@ th {
 }
 
 .button:hover {
-  background: hsl(0 0% 100% / 0.9);
+  background: var(--surface-hover);
   box-shadow: var(--shadow);
 }
 
@@ -1726,12 +1722,12 @@ th {
 }
 
 .status-badge {
-  background: hsl(140 55% 90%);
+  background: var(--ok-bg);
   color: var(--ok);
 }
 
 .tech-badge {
-  background: hsl(220 25% 96%);
+  background: var(--inset-cool);
   color: var(--muted);
   border: var(--border);
 }
@@ -1793,7 +1789,7 @@ th {
 
 .contact-block {
   padding: var(--space-4);
-  background: hsl(0 0% 100% / 0.75);
+  background: var(--surface);
   border: var(--border);
   border-radius: var(--radius);
   transition: box-shadow 0.2s ease;
@@ -1855,7 +1851,7 @@ th {
 
 .cv-download {
   padding: var(--space-3);
-  background: hsl(45 25% 96%);
+  background: var(--inset-warm);
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-5);
   font-size: 0.9rem;
@@ -1961,7 +1957,7 @@ th {
    Focus: accessibility as a quiet default
    ------------------------------------------------------------ */
 :focus-visible {
-  outline: 3px solid hsl(212 85% 45% / 0.35);
+  outline: 3px solid var(--ring);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -1978,8 +1974,8 @@ th {
   background: linear-gradient(
     180deg,
     transparent 55%,
-    hsl(212 85% 45% / 0.15) 55%,
-    hsl(212 85% 45% / 0.15) 95%,
+    var(--rule-highlight) 55%,
+    var(--rule-highlight) 95%,
     transparent 95%
   );
   padding: 0 0.12em;
@@ -2051,14 +2047,14 @@ th {
   }
 
   a:any-link {
-    color: #000;
+    color: var(--ink-print);
     text-decoration: underline;
   }
 
   .project-card,
   .position-card,
   .publication {
-    border: 1px solid #000;
+    border: 1px solid var(--ink-print);
     page-break-inside: avoid;
     box-shadow: none;
   }
