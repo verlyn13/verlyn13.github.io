@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScopeCam - Industrial Camera Application | Jeffrey Johnson</title>
-    <meta name="description" content="Android application for USB OTG industrial cameras, built for commercial deployment">
+    <title>ScopeCam — USB Microscope Camera App | Jeffrey Johnson</title>
+    <meta name="description" content="Alpha-stage Android app for USB (UVC) microscope cameras: a six-module architecture, a vendored native stack, and scientific-metadata capture.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -47,16 +47,16 @@
                         <a href="/#approach">Approach</a> · Safety-Critical Systems
                     </p>
                     <h1>ScopeCam</h1>
-                    <p class="project-subtitle">Industrial Camera Application</p>
+                    <p class="project-subtitle">USB Microscope Camera App</p>
                     <div class="project-meta">
-                        <span class="project-status mvp">Near MVP</span>
+                        <span class="project-status development">Alpha · v0.1</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
                     <h2>Overview</h2>
-                    <p>Android application enabling USB OTG industrial cameras (UVC standard) to work with mobile devices. Built for production and industrial environments requiring specialized camera hardware.</p>
-                    <p>Being developed for commercial deployment in a friend's business that requires reliable industrial camera integration on mobile platforms.</p>
+                    <p>Alpha-stage Android app and multi-module runtime for USB microscope cameras (UVC standard) — built for serious microscopy workflows, not generic phone-camera use. Solo-built; currently a personal-profile v0.1-alpha.</p>
+                    <p>The work lives in the boundary between Android, USB camera behavior, and native libraries: a vendored stack (libusb, libuvc, libjpeg-turbo) behind a descriptor-first capability layer, with session-based capture that records scientific metadata (sample IDs, magnification, calibration, operator identity).</p>
                 </section>
 
                 <section class="project-technical-details">
@@ -65,10 +65,10 @@
                     <div class="architecture-section">
                         <h3>Platform & Stack</h3>
                         <ul>
-                            <li>Android (Kotlin)</li>
-                            <li>libuvc integration via JNI/NDK (native C library)</li>
-                            <li>Performance: 25-30 FPS with &lt;5% frame drop</li>
-                            <li>Refactored from AUSBC project with production-ready Frame API</li>
+                            <li>Android (Kotlin), Jetpack Compose UI, foreground camera service</li>
+                            <li>Vendored native stack (libusb, libuvc, libjpeg-turbo) via JNI/NDK</li>
+                            <li>Six Gradle modules plus an ArchUnit architecture-test module</li>
+                            <li>Room + MediaStore persistence; descriptor-first UVC handling</li>
                         </ul>
                     </div>
 
@@ -88,8 +88,8 @@
                     <h2>Why This Matters</h2>
                     <div class="significance-grid">
                         <div class="significance-point">
-                            <h3>Commercial Development</h3>
-                            <p>Built for real business requirements with deployment constraints and reliability expectations.</p>
+                            <h3>Architecture Discipline</h3>
+                            <p>Six Gradle modules with ArchUnit guardrails enforcing boundaries between app, domain, native, and platform code.</p>
                         </div>
                         <div class="significance-point">
                             <h3>Hardware Integration</h3>
@@ -100,16 +100,16 @@
                             <p>Real-time frame processing with memory management constraints on mobile hardware.</p>
                         </div>
                         <div class="significance-point">
-                            <h3>Production Requirements</h3>
-                            <p>Meeting commercial reliability and performance standards for industrial use cases.</p>
+                            <h3>Test Coverage</h3>
+                            <p>1,790 tests passing on the verified baseline, with Crashlytics and OpenTelemetry instrumentation.</p>
                         </div>
                     </div>
                 </section>
 
                 <section class="project-context">
                     <h2>Development Context</h2>
-                    <p>This project emerged from a practical need—enabling industrial-grade cameras to work reliably on Android devices for production environments. The constraints are real: commercial deployment timelines, hardware compatibility requirements, performance expectations.</p>
-                    <p>Working at the intersection of hardware protocols, native libraries, and Android development. Demonstrates ability to integrate low-level systems with mobile platforms.</p>
+                    <p>This project emerged from a practical need: getting USB microscope cameras to work reliably on Android for real microscopy workflows. The hard parts are real — UVC descriptor handling, the Kotlin-to-native boundary, memory churn during real-time capture, and physical-device testing.</p>
+                    <p>It sits at the intersection of hardware protocols, native libraries, and Android development, and is governed like a serious system: ADRs (a kotlin-Result migration, a design-system ontology), an SDK-extraction plan, and a documentation-governance plan. Apache 2.0.</p>
                 </section>
 
                 <section class="project-technical-depth">
