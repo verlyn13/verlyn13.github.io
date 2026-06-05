@@ -1953,6 +1953,26 @@ th {
   color: var(--accent);
 }
 
+/* Footer nav (subpages: "← Back to Portfolio" / additional resources). */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.footer-links a:hover {
+  border-bottom-color: var(--accent);
+}
+
 /* ------------------------------------------------------------
    Focus: accessibility as a quiet default
    ------------------------------------------------------------ */
@@ -2021,6 +2041,7 @@ th {
   .section-link-btn,
   .button,
   .contact-block,
+  .footer-links a,
   .primary-link {
     transition: none;
   }
