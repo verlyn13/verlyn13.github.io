@@ -186,7 +186,7 @@ No agent-mediated loops are present. Per audit-spec §7 Phase 3 step 5: loops wh
 1. `npx` not available (e.g., `node_modules` missing or new shell PATH variant).
 2. `biome` package not installed (e.g., post-`mise run clean` without `npm install`).
 3. `biome format --write` syntax error on the target file.
-4. The 10-second `timeout` expiring (large file or `npx` cold start). 
+4. The 10-second `timeout` expiring (large file or `npx` cold start).
 5. The `jq` binary missing.
 
 **Classification:** `event-triggered runtime entrypoint with silenced errors` — audit-attention because (a) the hook writes to source files and (b) failures are invisible. Phase 7 (observability) inherits this AAF; remediation candidate: tee stderr to `.claude/logs/posttooluse.log` and emit a non-zero exit when biome itself errors (while continuing to exit 0 when the case-match misses, which is the intended no-op branch).
