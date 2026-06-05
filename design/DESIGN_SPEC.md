@@ -45,6 +45,8 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
 - **callouts** (`.callout[.ok/.warn]`) → `accent-tint`, `ok-tint`, `warn-tint`, `accent`, `ok`, `warn`
 - **nav / footer** (`.site-footer` → `.footer-cta` email line + `.footer-links` back-nav + colophon) →
   `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `ink`, `shadow-soft`
+- **project conversion footer** (`.project-links-footer` + `.project-cta-actions`: one filled
+  `.primary-link` "Email me about this" + secondary `.section-link`s) → `accent`, `on-accent`, `ink`, `muted`, `border`
 
 ## Hard rules
 - Components reference **semantic** tokens only — never primitives, never raw color literals.

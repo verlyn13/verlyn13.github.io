@@ -218,6 +218,14 @@ One short, current, work-focused sentence near the hero (Sivers `/now` style): a
 (`--accent` border + `--accent-subtle`) with an uppercase `--accent-dark` label. Confident and
 specific — **not** an "open to work" badge. Easy to update quarterly (`Now · Q2 2026`).
 
+### 5.6 Conversion footer
+Every page ends on a clear next action, never a dead-end. Two surfaces carry it: the global
+`.site-footer` leads with `.footer-cta` (email) on all pages (§4.8), and every project detail page
+adds a "what next?" band — `.project-links-footer` holding one filled `.primary-link` (**Email me
+about this**, per-project `?subject=`) plus secondary `.section-link` pills (`← Back to Approach`, and
+a live-site link where one exists). One filled action per band (§5.2); reuses the existing pill
+components — no new tokens.
+
 ---
 
 ## 6. Responsive system

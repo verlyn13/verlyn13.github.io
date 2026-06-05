@@ -1551,6 +1551,28 @@ ol {
   text-align: center;
 }
 
+/* "What next?" conversion band (project detail pages): one filled Email CTA + secondary pills. */
+.project-links-footer h2 {
+  border: none;
+  padding: 0;
+  font-size: 1.15rem;
+  margin-bottom: var(--space-2);
+}
+
+.project-links-footer p {
+  max-width: 60ch;
+  margin: 0 auto var(--space-4);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 .primary-link {
   display: inline-flex;
   align-items: center;
@@ -2065,6 +2087,7 @@ th {
   .site-footer,
   .hero-links,
   .project-links,
+  .project-links-footer,
   .section-links,
   .skip-link {
     display: none;
