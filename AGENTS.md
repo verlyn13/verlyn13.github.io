@@ -79,6 +79,7 @@ mise run clean               # Remove dist/ and node_modules/
 
 - For non-trivial tasks: explore existing pages → write a short plan (with file paths) → implement.
 - Keep diffs small and reversible. Prefer 1–3 focused commits.
+- Commits are GPG/SSH-signed; **the operator approves pushes** — never push to `main` unprompted (a push auto-deploys to production via GitHub Actions).
 - If requirements are ambiguous, stop and ask before coding.
 - Run `mise run ci` before considering any change complete.
 - Preview changes visually — this is a portfolio site, appearance matters.
