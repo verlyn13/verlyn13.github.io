@@ -54,6 +54,16 @@ section {
   padding: 0 var(--space-4);
 }
 
+/* Home <main> may widen to the gallery measure (ADR-0007); each section still self-caps via its
+   own .container, so prose sections (hero, background, foundation) stay centered at --measure. */
+.home {
+  max-width: var(--measure-wide);
+}
+
+.container--wide {
+  max-width: var(--measure-wide);
+}
+
 /* ------------------------------------------------------------
    Links: direct, minimal fuss
    ------------------------------------------------------------ */
@@ -568,9 +578,20 @@ em {
 
 .approach-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-4);
   margin-bottom: var(--space-4);
+}
+
+/* Desktop gallery: peers go 2-up; the flagship spans both columns as a full-width banner. */
+@media (min-width: 769px) {
+  .approach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .approach-card--flagship {
+    grid-column: 1 / -1;
+  }
 }
 
 .approach-card {
@@ -636,6 +657,13 @@ em {
   color: var(--ink);
 }
 
+/* Flagship spans both columns on desktop; keep its thesis at a readable line length. */
+@media (min-width: 769px) {
+  .approach-card--flagship .approach-thesis {
+    max-width: 60ch;
+  }
+}
+
 .approach-aspects {
   display: flex;
   gap: var(--space-2);
@@ -658,6 +686,7 @@ em {
   border-top: var(--border);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-2);
 }
 
@@ -1724,6 +1753,11 @@ th {
   font-size: 0.95rem;
   color: var(--muted);
   margin-bottom: var(--space-4);
+}
+
+/* Prose intro stays at the reading measure even inside the wide Approach gallery (ADR-0007). */
+.container--wide .section-intro {
+  max-width: var(--measure);
 }
 
 .tech-project-card h3 {

@@ -3,7 +3,7 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 2.1.0
+version: 2.2.0
 last_updated: 2026-06-05
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
@@ -84,6 +84,7 @@ stacks only.
 | Token | Value |
 |---|---|
 | `--measure` | `72ch` — max-width of `main` and `.container` |
+| `--measure-wide` | `1080px` — wide gallery container for the Approach 2-up grid (home `<main class="home">` + `.container--wide`); see `docs/adr/0007-measure-wide-gallery.md` |
 
 Mobile breakpoint: **768px** (`@media (max-width: 768px)`); full nav at `≥769px`. The Experience page
 adds a `640px` breakpoint for its braid/bento.
@@ -152,8 +153,9 @@ Rule: **exactly one primary (filled) action per view**; everything else is a sec
 - **Shared base** (`.card, .project-card, .position-card, .publication, .tech-project-card,
   .service-card`) — translucent white surface, `--border`, `--radius`, `--shadow` + `--shadow-hard`,
   `--space-4` padding; lifts on hover.
-- **Approach grid** — `.approach-grid` (`repeat(auto-fit, minmax(320px, 1fr))`) holding
-  `.approach-card`s. Inner anatomy: `.approach-header` (`h3` + `.approach-tag`), `.approach-thesis`,
+- **Approach grid** — `.approach-grid` is single-column on mobile and **2-up at ≥769px** inside a wider
+  `.container--wide` (`--measure-wide`), with the flagship spanning both columns as a full-width banner
+  (ADR-0007). Inner anatomy: `.approach-header` (`h3` + `.approach-tag`), `.approach-thesis`,
   `.approach-aspects` (`.aspect-tag` chips), `.approach-case-study` (`.case-study-label` +
   `.case-study-link`).
 - **Flagship** — `.approach-card--flagship`: `--accent` border (3px top), `--accent-subtle` tint, and
@@ -230,10 +232,12 @@ components — no new tokens.
 
 ## 6. Responsive system
 
-- `main` and `.container` cap at `--measure` (72ch ≈ ~726px) and center, so the home content column is
-  ~726px wide **even on large desktops**.
-- Because of that cap, the `.approach-grid` (`minmax(320px, 1fr)`) renders as a **single column** at all
-  realistic widths — there is no multi-column reflow to orphan a trailing card.
+- `main` and `.container` cap at `--measure` (72ch ≈ ~726px) and center, so prose columns are ~726px
+  wide **even on large desktops**. The home `<main class="home">` is the one exception: it may widen to
+  `--measure-wide`, but each section still self-caps at `--measure` via `.container` — only the Approach
+  gallery opts into the wider measure (ADR-0007).
+- The `.approach-grid` is single-column on mobile and **2-up at ≥769px** (flagship full-width). The
+  earlier `minmax(320px, 1fr)` single-column behavior — and its `<410px` overflow — is retired.
 - `≤768px`: nav collapses to the hamburger.
 - Always verify changes at **desktop**, **768px**, and **360px** (`mise run dev`).
 
@@ -280,9 +284,8 @@ with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
 - **✅ Raw colors fully tokenized (v2.0).** The 64 `hsl()` + 2 print `#000` that lived in component
   rules are now semantic tokens (`surface*`, `ring`, `inset-warm`/`-cool`, `heading*`, `shadow-*`,
   status colors, `ink-print`). The `no-raw-values` gate keeps it that way.
-- **Open — `.approach-grid` overflow < ~410px:** `minmax(320px, 1fr)` forces 320px cards, so on phones
-  narrower than ~410px the grid overflows horizontally. Pre-existing (predates the token work).
-  Suggested fix: `minmax(min(320px, 100%), 1fr)`.
+- **✅ Resolved — `.approach-grid` overflow < ~410px:** the grid is now `1fr` (mobile) /
+  `repeat(2, 1fr)` (≥769px), so it no longer forces 320px cards (ADR-0007).
 - **Note — token values are CSS `hsl()` strings,** not DTCG color objects/hex. Chosen for byte-exact
   zero-diff; Claude Design reads them from the repo directly. A hex/`color()` transform for strict
   DTCG importers is a documented future option (`docs/adr/0001-dtcg-tokens.md`).

@@ -29,7 +29,7 @@ internal — the practical enforcement of "components never touch primitives").
 `border-faint` `border-soft` `border-hairline` `ok-bg` `ok-tint` `green-bg` `amber-bg` `amber-ink`
 `warn-tint` `ink-print`
 Shape/space/type: `border` `shadow` `shadow-hard` `shadow-lift` `shadow-soft` `shadow-float`
-`radius` `radius-sm` `space-1..5` `measure` `font` `mono` `lh`
+`radius` `radius-sm` `space-1..5` `measure` `measure-wide` `font` `mono` `lh`
 
 ## Voice / visual principles
 Rigorous, practical, systems-minded, warm-but-not-squishy. Academic credibility over commercial
@@ -38,7 +38,8 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
 ## Components (layer 2) — name → tokens consumed
 - **hero** (`.hero-title` claim, `.hero-home h1` kicker, `.hero-link[--primary]`, `.hero-now`) →
   `accent`, `accent-dark`, `accent-subtle`, `ink`, `muted`, `on-accent`, `surface-pill`, `surface-hover`, `ring`
-- **approach card** (`.approach-card[--flagship]`, `.approach-flagship-tag`, `.aspect-tag`) →
+- **approach card** (`.approach-card[--flagship]`, `.approach-flagship-tag`, `.aspect-tag`; 2-up in a
+  `.container--wide` gallery at ≥769px, flagship full-width — ADR-0007) →
   `surface`, `border`, `accent`, `accent-subtle`, `on-accent`, `inset-warm`, `inset-cool`, `shadow-lift`
 - **cards** (`.card`, `.project-card`, `.bento-card`) → `surface`, `border`, `shadow`, `shadow-hard`, `shadow-lift`
 - **status/badges** (`.project-status.*`, `.badge--*`, `.tech-tag`) → `ok-bg`, `green-bg`, `amber-bg`, `amber-ink`, `inset-cool`, `accent`, `on-accent`

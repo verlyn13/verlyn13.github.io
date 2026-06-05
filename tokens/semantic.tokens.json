@@ -115,5 +115,6 @@
   "space-3": { "$value": "{scale.space.3}" },
   "space-4": { "$value": "{scale.space.4}" },
   "space-5": { "$value": "{scale.space.5}" },
-  "measure": { "$value": "72ch" }
+  "measure": { "$value": "72ch" },
+  "measure-wide": { "$value": "1080px" }
 }
