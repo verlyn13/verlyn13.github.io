@@ -26,16 +26,21 @@ jobs:
       - name: lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411  # v2
         with:
-          # Scan both governance markdown and the deployed HTML pages
-          # so docs-cross-reference + content-pipeline reference drift
-          # both surface in CI (resolves AAF-VGH-002 broken-ref debt
-          # going forward; implements proposed FF docs-cross-reference-check).
+          # Internal cross-reference drift across governance markdown + deployed HTML
+          # (resolves AAF-VGH-002 broken-ref debt). Offline: validates local file/anchor
+          # links, resolving site-absolute "/..." paths via --root-dir. External URLs are
+          # skipped — they were flaky (e.g. claude.ai 403s bots) and aren't this check's
+          # purpose. Archival/sandbox dirs are excluded, matching biome.json.
+          # (lychee >=0.23 removed --exclude-mail; mail is excluded by default.)
           args: >-
             --no-progress
-            --exclude-loopback
-            --exclude-mail
+            --offline
+            --root-dir ${{ github.workspace }}
             --exclude-path node_modules
             --exclude-path dist
+            --exclude-path experiments
+            --exclude-path audit
+            --exclude-path profile
             './**/*.md'
             './**/*.html'
           fail: true
