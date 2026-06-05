@@ -4,41 +4,9 @@
    warm-but-not-squishy, and always aiming for "make it solid."
    ============================================================ */
 
-:root {
-  /* Calm, high-contrast, readable. */
-  --ink: hsl(220 18% 18%); /* precise, not harsh */
-  --paper: hsl(45 25% 97%); /* warm-white, "real notebook" */
-  --muted: hsl(220 12% 45%); /* explanatory, not shouty */
-  --accent: hsl(212 85% 45%); /* clear "this matters" */
-  --accent-light: hsl(212 85% 90%); /* light variant for backgrounds */
-  --accent-subtle: hsl(212 85% 96%); /* subtle variant for hover states */
-  --accent-dark: hsl(212 85% 35%); /* dark variant for emphasis */
-  --accent-2: hsl(160 55% 35%); /* grounded "ship it" */
-  --warn: hsl(22 90% 52%); /* practical caution */
-  --ok: hsl(140 55% 35%);
-
-  /* Structure + breathing room. */
-  --radius: 14px; /* friendly, not fluffy */
-  --radius-sm: 10px;
-  --shadow: 0 10px 30px hsl(220 25% 15% / 0.1);
-  --shadow-hard: 0 1px 0 hsl(220 25% 15% / 0.15);
-  --border: 1px solid hsl(220 18% 88%);
-
-  /* "Teach it so it sticks." */
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --lh: 1.55;
-
-  /* Deliberate pace. */
-  --space-1: 0.35rem;
-  --space-2: 0.6rem;
-  --space-3: 0.95rem;
-  --space-4: 1.4rem;
-  --space-5: 2rem;
-
-  /* Constraint: useful, not maximal. */
-  --measure: 72ch;
-}
+/* Design tokens — generated from tokens/*.tokens.json (DTCG) by Style Dictionary.
+   Edit the .tokens.json sources + run `npm run tokens`; never hand-edit the generated file. */
+@import "./tokens.generated.css";
 
 /* ------------------------------------------------------------
    Base: clarity first

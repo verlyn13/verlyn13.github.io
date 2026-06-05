@@ -1,0 +1,57 @@
+/**
+ * DO NOT EDIT — generated from tokens/*.tokens.json by build-tokens.mjs (Style Dictionary).
+ * Run `npm run tokens` to regenerate. Edit the .tokens.json sources instead.
+ */
+
+:root {
+  --ink: hsl(220 18% 18%);
+  --paper: hsl(45 25% 97%);
+  --muted: hsl(220 12% 45%);
+  --accent: hsl(212 85% 45%);
+  --accent-light: hsl(212 85% 90%);
+  --accent-subtle: hsl(212 85% 96%);
+  --accent-dark: hsl(212 85% 35%);
+  --accent-2: hsl(160 55% 35%);
+  --warn: hsl(22 90% 52%);
+  --ok: hsl(140 55% 35%);
+  --heading: hsl(220 18% 26%); /** h3 ink */
+  --heading-2: hsl(220 18% 30%); /** h4 ink */
+  --surface: hsl(0 0% 100% / 0.75); /** raised card surface */
+  --surface-pill: hsl(0 0% 100% / 0.65); /** outline pill surface */
+  --surface-hover: hsl(0 0% 100% / 0.9); /** pill/card hover surface */
+  --on-accent: hsl(0 0% 100%); /** text/icon on an accent fill */
+  --inset-warm: hsl(45 25% 96%); /** warm inset/section background */
+  --inset-cool: hsl(220 25% 96%); /** cool neutral chip background */
+  --code-bg: hsl(220 25% 98%);
+  --paper-deep: hsl(45 25% 95%); /** body-gradient end */
+  --paper-deeper: hsl(45 25% 94%);
+  --ring: hsl(212 85% 45% / 0.35); /** focus ring + accent border */
+  --accent-tint: hsl(212 85% 45% / 0.06); /** callout tint */
+  --rule-highlight: hsl(212 85% 45% / 0.15); /** rule-of-thumb highlight */
+  --border-faint: hsl(220 18% 18% / 0.06);
+  --border-soft: hsl(220 18% 18% / 0.08);
+  --border-hairline: hsl(220 18% 18% / 0.1);
+  --ok-bg: hsl(140 55% 90%);
+  --ok-tint: hsl(140 55% 35% / 0.08);
+  --green-bg: hsl(160 55% 88%);
+  --amber-bg: hsl(45 90% 88%);
+  --amber-ink: hsl(22 90% 35%);
+  --warn-tint: hsl(22 90% 52% / 0.1);
+  --border: 1px solid hsl(220 18% 88%);
+  --shadow: 0 10px 30px hsl(220 25% 15% / 0.1);
+  --shadow-hard: 0 1px 0 hsl(220 25% 15% / 0.15);
+  --shadow-lift: 0 15px 40px hsl(220 25% 15% / 0.15); /** card/approach hover lift */
+  --shadow-soft: 0 4px 12px hsl(220 25% 15% / 0.08); /** mobile-nav dropdown */
+  --shadow-float: 0 4px 12px hsl(220 25% 15% / 0.1); /** back-to-top button */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --lh: 1.55;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --space-1: 0.35rem;
+  --space-2: 0.6rem;
+  --space-3: 0.95rem;
+  --space-4: 1.4rem;
+  --space-5: 2rem;
+  --measure: 72ch;
+}

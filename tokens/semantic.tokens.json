@@ -1,0 +1,114 @@
+{
+  "ink": { "$type": "color", "$value": "{palette.ink.900}" },
+  "paper": { "$type": "color", "$value": "{palette.paper.97}" },
+  "muted": { "$type": "color", "$value": "{palette.ink.muted}" },
+  "accent": { "$type": "color", "$value": "{palette.blue.base}" },
+  "accent-light": { "$type": "color", "$value": "{palette.blue.light}" },
+  "accent-subtle": { "$type": "color", "$value": "{palette.blue.subtle}" },
+  "accent-dark": { "$type": "color", "$value": "{palette.blue.strong}" },
+  "accent-2": { "$type": "color", "$value": "{palette.green.base}" },
+  "warn": { "$type": "color", "$value": "{palette.orange.base}" },
+  "ok": { "$type": "color", "$value": "{palette.ok.base}" },
+
+  "heading": { "$type": "color", "$value": "{palette.ink.800}", "$description": "h3 ink" },
+  "heading-2": { "$type": "color", "$value": "{palette.ink.750}", "$description": "h4 ink" },
+
+  "surface": {
+    "$type": "color",
+    "$value": "hsl(0 0% 100% / 0.75)",
+    "$description": "raised card surface"
+  },
+  "surface-pill": {
+    "$type": "color",
+    "$value": "hsl(0 0% 100% / 0.65)",
+    "$description": "outline pill surface"
+  },
+  "surface-hover": {
+    "$type": "color",
+    "$value": "hsl(0 0% 100% / 0.9)",
+    "$description": "pill/card hover surface"
+  },
+  "on-accent": {
+    "$type": "color",
+    "$value": "{palette.white}",
+    "$description": "text/icon on an accent fill"
+  },
+
+  "inset-warm": {
+    "$type": "color",
+    "$value": "{palette.paper.96}",
+    "$description": "warm inset/section background"
+  },
+  "inset-cool": {
+    "$type": "color",
+    "$value": "{palette.slate.bg}",
+    "$description": "cool neutral chip background"
+  },
+  "code-bg": { "$type": "color", "$value": "{palette.slate.code}" },
+  "paper-deep": {
+    "$type": "color",
+    "$value": "{palette.paper.95}",
+    "$description": "body-gradient end"
+  },
+  "paper-deeper": { "$type": "color", "$value": "{palette.paper.94}" },
+
+  "ring": {
+    "$type": "color",
+    "$value": "hsl(212 85% 45% / 0.35)",
+    "$description": "focus ring + accent border"
+  },
+  "accent-tint": {
+    "$type": "color",
+    "$value": "hsl(212 85% 45% / 0.06)",
+    "$description": "callout tint"
+  },
+  "rule-highlight": {
+    "$type": "color",
+    "$value": "hsl(212 85% 45% / 0.15)",
+    "$description": "rule-of-thumb highlight"
+  },
+
+  "border-faint": { "$type": "color", "$value": "hsl(220 18% 18% / 0.06)" },
+  "border-soft": { "$type": "color", "$value": "hsl(220 18% 18% / 0.08)" },
+  "border-hairline": { "$type": "color", "$value": "hsl(220 18% 18% / 0.1)" },
+
+  "ok-bg": { "$type": "color", "$value": "{palette.ok.bg}" },
+  "ok-tint": { "$type": "color", "$value": "hsl(140 55% 35% / 0.08)" },
+  "green-bg": { "$type": "color", "$value": "{palette.green.bg}" },
+  "amber-bg": { "$type": "color", "$value": "{palette.paper.amber}" },
+  "amber-ink": { "$type": "color", "$value": "{palette.orange.dark}" },
+  "warn-tint": { "$type": "color", "$value": "hsl(22 90% 52% / 0.1)" },
+
+  "border": { "$value": "1px solid {palette.ink.line}" },
+  "shadow": { "$value": "0 10px 30px hsl(220 25% 15% / 0.1)" },
+  "shadow-hard": { "$value": "0 1px 0 hsl(220 25% 15% / 0.15)" },
+  "shadow-lift": {
+    "$value": "0 15px 40px hsl(220 25% 15% / 0.15)",
+    "$description": "card/approach hover lift"
+  },
+  "shadow-soft": {
+    "$value": "0 4px 12px hsl(220 25% 15% / 0.08)",
+    "$description": "mobile-nav dropdown"
+  },
+  "shadow-float": {
+    "$value": "0 4px 12px hsl(220 25% 15% / 0.1)",
+    "$description": "back-to-top button"
+  },
+
+  "font": {
+    "$value": "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+  },
+  "mono": {
+    "$value": "ui-monospace, SFMono-Regular, Menlo, Consolas, \"Liberation Mono\", monospace"
+  },
+  "lh": { "$value": "1.55" },
+
+  "radius": { "$value": "{scale.radius.md}" },
+  "radius-sm": { "$value": "{scale.radius.sm}" },
+  "space-1": { "$value": "{scale.space.1}" },
+  "space-2": { "$value": "{scale.space.2}" },
+  "space-3": { "$value": "{scale.space.3}" },
+  "space-4": { "$value": "{scale.space.4}" },
+  "space-5": { "$value": "{scale.space.5}" },
+  "measure": { "$value": "72ch" }
+}

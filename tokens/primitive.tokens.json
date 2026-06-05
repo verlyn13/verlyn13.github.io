@@ -1,0 +1,57 @@
+{
+  "palette": {
+    "$type": "color",
+    "blue": {
+      "strong": { "$value": "hsl(212 85% 35%)" },
+      "base": { "$value": "hsl(212 85% 45%)" },
+      "light": { "$value": "hsl(212 85% 90%)" },
+      "subtle": { "$value": "hsl(212 85% 96%)" }
+    },
+    "ink": {
+      "900": { "$value": "hsl(220 18% 18%)" },
+      "800": { "$value": "hsl(220 18% 26%)" },
+      "750": { "$value": "hsl(220 18% 30%)" },
+      "muted": { "$value": "hsl(220 12% 45%)" },
+      "line": { "$value": "hsl(220 18% 88%)" }
+    },
+    "slate": {
+      "bg": { "$value": "hsl(220 25% 96%)" },
+      "code": { "$value": "hsl(220 25% 98%)" },
+      "shadow": { "$value": "hsl(220 25% 15%)" }
+    },
+    "paper": {
+      "97": { "$value": "hsl(45 25% 97%)" },
+      "96": { "$value": "hsl(45 25% 96%)" },
+      "95": { "$value": "hsl(45 25% 95%)" },
+      "94": { "$value": "hsl(45 25% 94%)" },
+      "amber": { "$value": "hsl(45 90% 88%)" }
+    },
+    "green": {
+      "base": { "$value": "hsl(160 55% 35%)" },
+      "bg": { "$value": "hsl(160 55% 88%)" }
+    },
+    "ok": {
+      "base": { "$value": "hsl(140 55% 35%)" },
+      "bg": { "$value": "hsl(140 55% 90%)" }
+    },
+    "orange": {
+      "base": { "$value": "hsl(22 90% 52%)" },
+      "dark": { "$value": "hsl(22 90% 35%)" }
+    },
+    "white": { "$value": "hsl(0 0% 100%)" },
+    "black": { "$value": "#000" }
+  },
+  "scale": {
+    "space": {
+      "1": { "$value": "0.35rem" },
+      "2": { "$value": "0.6rem" },
+      "3": { "$value": "0.95rem" },
+      "4": { "$value": "1.4rem" },
+      "5": { "$value": "2rem" }
+    },
+    "radius": {
+      "sm": { "$value": "10px" },
+      "md": { "$value": "14px" }
+    }
+  }
+}
