@@ -49,19 +49,23 @@ mise run build         # production build to dist/
 mise run preview       # preview build at http://localhost:4173
 mise run lint          # Biome lint
 mise run format:check  # Biome format check
-mise run ci            # full CI: lint + format-check + build
+mise run ci            # full CI: lint + format-check + conformance + tokens-fresh + build
 mise run deploy        # local deploy verification
 ```
 
 Deployment is GitHub Pages via Actions; auto-deploys on push to `main`.
 
-## Design system
+Tokens are code: authored in `tokens/*.tokens.json` (DTCG 2025.10) and
+compiled by Style Dictionary (`npm run tokens`) to
+`assets/tokens.generated.css`, which the single shared stylesheet
+`assets/jeffrey.css` `@import`s — component CSS references `var(--token)`
+only, never raw colors (enforced by the `no-raw-values` CI gate). System
+fonts (`ui-sans-serif`, `system-ui`), `72ch` max-width, 768px mobile
+breakpoint. No web fonts, no tracking, no external scripts. JS is
+intentionally minimal — only `assets/menu.js`.
 
-Single shared stylesheet at `assets/jeffrey.css` — CSS custom properties
-in `:root`, system fonts (`ui-sans-serif`, `system-ui`), `72ch`
-max-width, 768px mobile breakpoint. No web fonts, no tracking, no
-external scripts. JS is intentionally minimal — only `assets/menu.js`
-(mobile nav toggle + active link state).
+Specs: `design/DESIGN_SPEC.md` (machine-readable) and
+`docs/design-system.md` (human reference); decisions in `docs/adr/`.
 
 Philosophy: academic credibility over commercial appeal. Clean, fast,
 respectful of the visitor's time.

@@ -180,8 +180,9 @@ this idiom (left `--accent` border + `--accent-subtle`).
 `border-top: var(--border)` for rhythm.
 
 ### 4.8 Footer — `.site-footer`
-Centered, muted, single line with the email CTA. (The unused `.footer-links` rules were removed in the
-2026-06 refresh — do not reintroduce dead selectors.)
+Centered, muted. The home footer is a single line with the email CTA; subpages use `.footer-links`
+for the footer nav ("← Back to Portfolio" / additional resources). `.footer-links` is tokenized and
+in use on all 12 subpages — keep it.
 
 ### 4.9 Accessibility primitives
 `.skip-link`, `.sr-only`, the global `:focus-visible` ring, the `prefers-reduced-motion` block, and the

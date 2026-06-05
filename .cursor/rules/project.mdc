@@ -8,7 +8,7 @@ alwaysApply: true
 ## Stack
 
 - Vanilla HTML/CSS, Vite 5 build, Biome 2.3+ lint/format, Node 24 (via mise)
-- Single CSS file: `assets/jeffrey.css` — ALL styles go here, never create new CSS files
+- Single CSS file: `assets/jeffrey.css` (component styles) — never hand-create CSS files. Design tokens live in `tokens/*.tokens.json` → generated `assets/tokens.generated.css` (`npm run tokens`); see `design/DESIGN_SPEC.md`
 - Minimal JS: only `assets/menu.js` for mobile nav — ask before adding any script
 
 ## Key commands
