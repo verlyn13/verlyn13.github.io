@@ -131,8 +131,10 @@ secondary "← back" bar on subpages.
 ### 4.2 Hero (home) — `.hero-home`
 - `.hero-home h1` — name, styled as a kicker (small, `--muted`).
 - `.hero-title` — the **positioning claim**, the visual lead (large, bold, `--ink`).
-- `.hero-bio` (+ `.location`) — supporting prose, `68ch` max.
-- `.hero-links` — the CTA pill row (see §4.3).
+- `.hero-bio` (+ `.location`) — one condensed positioning line, `68ch` max.
+- `.hero-selected` (+ `.hero-selected__label`) — the "Selected work" rail (flagship + 2 key project
+  links) that surfaces proof above the fold.
+- `.hero-links` — the CTA pill row (see §4.3); on mobile the primary Email pill is ordered first.
 - `.hero-now` + `.hero-now__label` — the measured "Now" band (see §5.5).
 
 ### 4.3 Buttons, links & pills

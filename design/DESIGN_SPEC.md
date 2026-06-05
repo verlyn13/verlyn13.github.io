@@ -36,7 +36,7 @@ Rigorous, practical, systems-minded, warm-but-not-squishy. Academic credibility 
 appeal. One accent (`--accent`), **reserved for the primary action and the flagship**.
 
 ## Components (layer 2) — name → tokens consumed
-- **hero** (`.hero-title` claim, `.hero-home h1` kicker, `.hero-link[--primary]`, `.hero-now`) →
+- **hero** (`.hero-title` claim, `.hero-home h1` kicker, `.hero-selected` work rail, `.hero-link[--primary]`, `.hero-now`) →
   `accent`, `accent-dark`, `accent-subtle`, `ink`, `muted`, `on-accent`, `surface-pill`, `surface-hover`, `ring`
 - **approach card** (`.approach-card[--flagship]`, `.approach-flagship-tag`, `.aspect-tag`; 2-up in a
   `.container--wide` gallery at ≥769px, flagship full-width — ADR-0007) →
