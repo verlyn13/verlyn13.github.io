@@ -43,7 +43,8 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
 - **cards** (`.card`, `.project-card`, `.bento-card`) → `surface`, `border`, `shadow`, `shadow-hard`, `shadow-lift`
 - **status/badges** (`.project-status.*`, `.badge--*`, `.tech-tag`) → `ok-bg`, `green-bg`, `amber-bg`, `amber-ink`, `inset-cool`, `accent`, `on-accent`
 - **callouts** (`.callout[.ok/.warn]`) → `accent-tint`, `ok-tint`, `warn-tint`, `accent`, `ok`, `warn`
-- **nav / footer** → `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `shadow-soft`
+- **nav / footer** (`.site-footer` → `.footer-cta` email line + `.footer-links` back-nav + colophon) →
+  `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `ink`, `shadow-soft`
 
 ## Hard rules
 - Components reference **semantic** tokens only — never primitives, never raw color literals.

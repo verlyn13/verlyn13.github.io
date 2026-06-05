@@ -3,7 +3,7 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 2.0.0
+version: 2.1.0
 last_updated: 2026-06-05
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
@@ -180,9 +180,12 @@ this idiom (left `--accent` border + `--accent-subtle`).
 `border-top: var(--border)` for rhythm.
 
 ### 4.8 Footer — `.site-footer`
-Centered, muted. The home footer is a single line with the email CTA; subpages use `.footer-links`
-for the footer nav ("← Back to Portfolio" / additional resources). `.footer-links` is tokenized and
-in use on all 12 subpages — keep it.
+Centered and muted, with one consistent structure on every page: `.footer-cta` (the email conversion
+line — `--ink`, the only prominent element) → `.footer-links` (footer nav: `← Back to portfolio` + a
+sibling link on every non-home page; the home footer omits the back-nav since it *is* the portfolio) →
+a muted colophon `<p>` (`© <year> Jeffrey Johnson · Homer, Alaska`). The email inside `.footer-cta`
+stays a plain `--accent` text link — never a filled button — so each page keeps exactly one filled
+primary action (§5.2). `.footer-links` is tokenized and in use on every subpage — keep it.
 
 ### 4.9 Accessibility primitives
 `.skip-link`, `.sr-only`, the global `:focus-visible` ring, the `prefers-reduced-motion` block, and the

@@ -1953,6 +1953,15 @@ th {
   color: var(--accent);
 }
 
+/* Email CTA line — the footer's primary conversion element (more prominent than the muted colophon).
+   Scoped under .site-footer to outrank the `.site-footer p` defaults (color/size/margin). */
+.site-footer .footer-cta {
+  max-width: 60ch;
+  margin: 0 auto var(--space-3);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
 /* Footer nav (subpages: "← Back to Portfolio" / additional resources). */
 .footer-links {
   display: flex;
