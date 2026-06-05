@@ -6,6 +6,8 @@ alwaysApply: false
 
 # CSS Rules
 
+Canonical design spec: `docs/design-system.md` (full tokens, component catalog, patterns, a11y contract). This file is the quick reference.
+
 All styles live in `assets/jeffrey.css`. Do not create additional CSS files.
 
 ## Always use custom properties — never hardcode values

@@ -113,6 +113,10 @@ mise run clean               # Remove dist/ and node_modules/
 
 ## Design system (non-obvious rules)
 
+> **Canonical spec:** `docs/design-system.md` — full token reference, component catalog, the §5
+> patterns (claim-leads hero, one primary CTA, flagship emphasis, color taxonomy, "Now" line), and the
+> accessibility contract. The notes below are the quick rules; that doc is authoritative.
+
 - **Spacing**: Rem-based scale via `--space-1` through `--space-5`. Never use arbitrary pixel values.
 - **Colors**: Blue accent `hsl(212 85% 45%)` (`--accent`), green secondary `hsl(160 55% 35%)` (`--accent-2`). Use semantic variables: `--ink` (text), `--paper` (bg), `--muted` (secondary text), `--accent` (links/emphasis).
 - **Typography**: System sans-serif (`ui-sans-serif, system-ui`) via `--font`. Monospace via `--mono`. No web fonts.

@@ -1,0 +1,298 @@
+---
+title: jvjohnson.dev Design System
+category: design
+component: design-layer
+status: active
+version: 1.0.0
+last_updated: 2026-06-05
+tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
+priority: high
+---
+
+# Design System — jvjohnson.dev
+
+The canonical specification for the site's design layer. `assets/jeffrey.css` is the
+**implementation**; this document is the **contract**. When they disagree, treat it as a bug and
+reconcile (usually the doc describes intent and the CSS should follow).
+
+- **Single source of truth.** `AGENTS.md` and `.cursor/rules/css.mdc` defer here for the full system.
+- **Implementation:** all styles live in the single stylesheet `assets/jeffrey.css`.
+- **Change control:** edits to tokens, the color palette, the type scale, the spacing scale, or a
+  named pattern are **ask-first** (operator-approved). Bump `version` + `last_updated` here when they change.
+
+---
+
+## 1. Philosophy
+
+> "Rigorous, practical, systems-minded, warm-but-not-squishy — always aiming for *make it solid*."
+> Clear constraints beat clever hacks.
+
+Academic credibility over commercial appeal. Clean, fast, and respectful of the visitor's time.
+The visual system exists to make the *work* legible and the *next action* obvious — never to decorate.
+
+---
+
+## 2. Design tokens
+
+All tokens are CSS custom properties declared in `:root` in `assets/jeffrey.css`. **Use tokens; never
+hardcode** (spacing especially — no arbitrary px). Colors are authored in modern space-separated
+`hsl()`.
+
+### 2.1 Color
+
+| Token | Value | Role |
+|---|---|---|
+| `--ink` | `hsl(220 18% 18%)` | Primary text |
+| `--paper` | `hsl(45 25% 97%)` | Page background (warm white); `body` is a gradient `--paper → hsl(45 25% 95%)` |
+| `--muted` | `hsl(220 12% 45%)` | Secondary/subdued text, hero kicker, meta, captions |
+| `--accent` | `hsl(212 85% 45%)` | **Primary blue** — links, emphasis, the one primary CTA, the flagship. **Reserved** (see §5). |
+| `--accent-light` | `hsl(212 85% 90%)` | Light accent background (e.g., `status.development`) |
+| `--accent-subtle` | `hsl(212 85% 96%)` | Subtle accent tint — flagship card bg, "Now" band, soft hover |
+| `--accent-dark` | `hsl(212 85% 35%)` | Accent emphasis/hover — primary-CTA hover, "Now" label |
+| `--accent-2` | `hsl(160 55% 35%)` | Secondary green — "ship it" / production accents |
+| `--warn` | `hsl(22 90% 52%)` | Practical caution (orange) |
+| `--ok` | `hsl(140 55% 35%)` | Success (green) |
+
+White on `--accent` is the standard inverted pairing (≈5.1:1, AA-pass). See §7.
+
+### 2.2 Spacing (rem scale — never arbitrary px)
+
+| Token | Value |
+|---|---|
+| `--space-1` | `0.35rem` |
+| `--space-2` | `0.6rem` |
+| `--space-3` | `0.95rem` |
+| `--space-4` | `1.4rem` |
+| `--space-5` | `2rem` |
+
+### 2.3 Typography
+
+| Token | Value |
+|---|---|
+| `--font` | `ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif` |
+| `--mono` | `ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace` |
+| `--lh` | `1.55` (base line-height) |
+
+Base: `html { font-size: 16px }`; `body` letter-spacing `0.01em`. **No web fonts, ever** — system
+stacks only.
+
+### 2.4 Layout
+
+| Token | Value |
+|---|---|
+| `--measure` | `72ch` — max-width of `main` and `.container` |
+
+Mobile breakpoint: **768px** (`@media (max-width: 768px)`); full nav at `≥769px`. The Experience page
+adds a `640px` breakpoint for its braid/bento.
+
+### 2.5 Elevation & shape
+
+| Token | Value |
+|---|---|
+| `--radius` | `14px` |
+| `--radius-sm` | `10px` |
+| `--border` | `1px solid hsl(220 18% 88%)` |
+| `--shadow` | `0 10px 30px hsl(220 25% 15% / 0.1)` |
+| `--shadow-hard` | `0 1px 0 hsl(220 25% 15% / 0.15)` |
+
+---
+
+## 3. Type scale
+
+| Element / class | Size | Weight | Notes |
+|---|---|---|---|
+| `h1` | `clamp(1.8rem, 2.2vw + 1rem, 2.6rem)` | 600 | letter-spacing `-0.02em`, line-height 1.15 |
+| `h2` | `clamp(1.35rem, 1.3vw + 1rem, 1.9rem)` | 600 | `border-bottom: var(--border)` — section divider |
+| `h3` | `1.15rem` | 600 | color `hsl(220 18% 26%)` |
+| `h4` | `1.05rem` | 600 | color `hsl(220 18% 30%)` |
+| `.hero-title` (the **claim**) | `clamp(1.5rem, 1.5vw + 1rem, 1.75rem)` | 700 | color `--ink` — the hero's visual lead |
+| `.hero-home h1` (the **name/kicker**) | `1rem` | 600 | color `--muted`, letter-spacing `0.02em` |
+
+**Heading semantics:** every page has exactly one `<h1>`; hierarchy is continuous (never skip levels).
+On the home hero the `<h1>` (the name) is *styled down* to a kicker while the positioning claim (a
+`<p class="hero-title">`) carries the visual weight — a deliberate visual/semantic split, not a
+hierarchy violation (see §5.1).
+
+---
+
+## 4. Component catalog
+
+Each entry lists the classes and the intent. Properties live in `assets/jeffrey.css`.
+
+### 4.1 Navigation — `.site-nav`
+Sticky top bar; `.nav-left` brand, `.nav-links` list. Collapses to a hamburger (`.nav-toggle`,
+`.nav-toggle__bar`, `.nav-links--open`) at `≤768px` (toggled by `assets/menu.js`). `.back-nav` is the
+secondary "← back" bar on subpages.
+
+### 4.2 Hero (home) — `.hero-home`
+- `.hero-home h1` — name, styled as a kicker (small, `--muted`).
+- `.hero-title` — the **positioning claim**, the visual lead (large, bold, `--ink`).
+- `.hero-bio` (+ `.location`) — supporting prose, `68ch` max.
+- `.hero-links` — the CTA pill row (see §4.3).
+- `.hero-now` + `.hero-now__label` — the measured "Now" band (see §5.5).
+
+### 4.3 Buttons, links & pills
+| Class | Role |
+|---|---|
+| Base `a` | `--accent` text, subtle underline that strengthens on hover; `:focus-visible` ring |
+| `.hero-link` | Secondary pill — outline on translucent white, `min-height: 44px` |
+| `.hero-link--primary` | **Primary CTA** — filled `--accent`, white label, `--accent-dark` on hover |
+| `.primary-link` | Filled `--accent` CTA used on project-detail footers (same inverted pairing) |
+| `.button` | Generic pill button |
+| `.section-link`, `.section-link-btn` | Pill nav between sections/pages |
+| `.background-link`, `.case-study-link`, `.project-link` | Inline `--accent` text links with `→` |
+
+Rule: **exactly one primary (filled) action per view**; everything else is a secondary outline pill
+(see §5.2).
+
+### 4.4 Cards
+- **Shared base** (`.card, .project-card, .position-card, .publication, .tech-project-card,
+  .service-card`) — translucent white surface, `--border`, `--radius`, `--shadow` + `--shadow-hard`,
+  `--space-4` padding; lifts on hover.
+- **Approach grid** — `.approach-grid` (`repeat(auto-fit, minmax(320px, 1fr))`) holding
+  `.approach-card`s. Inner anatomy: `.approach-header` (`h3` + `.approach-tag`), `.approach-thesis`,
+  `.approach-aspects` (`.aspect-tag` chips), `.approach-case-study` (`.case-study-label` +
+  `.case-study-link`).
+- **Flagship** — `.approach-card--flagship`: `--accent` border (3px top), `--accent-subtle` tint, and
+  a filled `.approach-flagship-tag` ("Flagship"). Exactly one per grid (see §5.3).
+- **Bento** (`.bento-grid`, `.bento-card`) — Experience-page layout.
+
+### 4.5 Tags & badges
+| Class | Use |
+|---|---|
+| `.approach-tag` | Muted descriptor chip in an approach card header |
+| `.approach-flagship-tag` | Filled `--accent` "Flagship" marker |
+| `.aspect-tag` | Mono inset chip (sub-capabilities) |
+| `.tech-tag`, `.tech-badge`, `.status-badge` | Mono/neutral tech & status chips |
+| `.project-status` (`.live` / `.development` / `.mvp` / `.production`) | Status pills (green/blue/amber/green-2) |
+| `.badge--*` (`production` / `live` / `development` / `tenured`) | Solid status badges (Experience) |
+
+### 4.6 Callouts — `.callout` (+ `.ok`, `.warn`)
+Left-accent panel with tinted background. `.service-card` shares the treatment. The "Now" band reuses
+this idiom (left `--accent` border + `--accent-subtle`).
+
+### 4.7 Sections
+`.background-teaser` (+ `.background-summary`, `.background-links`), `.approach-section`,
+`.technical-foundation` (+ `.foundation-grid`, `.foundation-area`). Each non-hero section opens with a
+`border-top: var(--border)` for rhythm.
+
+### 4.8 Footer — `.site-footer`
+Centered, muted, single line with the email CTA. (The unused `.footer-links` rules were removed in the
+2026-06 refresh — do not reintroduce dead selectors.)
+
+### 4.9 Accessibility primitives
+`.skip-link`, `.sr-only`, the global `:focus-visible` ring, the `prefers-reduced-motion` block, and the
+`@media print` block. See §7.
+
+---
+
+## 5. Patterns (established by the 2026-06 landing refresh)
+
+### 5.1 The claim leads
+The hero's most important sentence is its largest, highest-contrast element. The name is a kicker; the
+positioning claim is the lead. At a 2-second glance, the *claim* — not the name — should register.
+
+### 5.2 One primary action
+Per view, exactly one filled `--accent` CTA (`.hero-link--primary` / `.primary-link`). All sibling
+actions stay secondary outline pills. Avoid three identical pills competing for the same click.
+
+### 5.3 Flagship emphasis
+When a set of peers has a lead item, elevate exactly one with the flagship treatment (accent border +
+`--accent-subtle` tint + a filled "Flagship" tag) and let the rest read as supporting. Place it first.
+
+### 5.4 Color taxonomy
+`--accent` is **reserved** for the primary action and the flagship. Do **not** give peer cards
+decorative top-border colors that collide in meaning (the pre-refresh grid had two greens and two
+oranges by accident). If a real dimension needs encoding, map colors to that dimension deliberately;
+otherwise use none.
+
+### 5.5 The "Now" line
+One short, current, work-focused sentence near the hero (Sivers `/now` style): a left-accent band
+(`--accent` border + `--accent-subtle`) with an uppercase `--accent-dark` label. Confident and
+specific — **not** an "open to work" badge. Easy to update quarterly (`Now · Q2 2026`).
+
+---
+
+## 6. Responsive system
+
+- `main` and `.container` cap at `--measure` (72ch ≈ ~726px) and center, so the home content column is
+  ~726px wide **even on large desktops**.
+- Because of that cap, the `.approach-grid` (`minmax(320px, 1fr)`) renders as a **single column** at all
+  realistic widths — there is no multi-column reflow to orphan a trailing card.
+- `≤768px`: nav collapses to the hamburger.
+- Always verify changes at **desktop**, **768px**, and **360px** (`mise run dev`).
+
+---
+
+## 7. Accessibility contract (WCAG 2.1 AA)
+
+- **Contrast:** text ≥ 4.5:1 (≥ 3:1 for large text ≥ 24px / ≥ 18.66px bold). Measured pairings after
+  the refresh: claim **14.18**, kicker **5.12**, primary-CTA white-on-`--accent` **5.1**, flagship tag
+  **5.1**, "Now" label **6.69**, "Now" line **12.78**.
+- **Targets:** interactive controls ≥ **44px** (`min-height: 44px` on pills/buttons).
+- **Keyboard/SR:** `.skip-link` first in `<body>`; visible `:focus-visible` ring (3px `--accent` @ 0.35);
+  `aria-label` on icon/external links; continuous heading hierarchy.
+- **Motion:** `@media (prefers-reduced-motion: reduce)` disables transitions/smooth-scroll.
+- **Print:** `@media print` hides nav/CTAs/links and flattens to ink-on-white.
+
+---
+
+## 8. Boundaries & drift control
+
+**Always**
+- One stylesheet (`assets/jeffrey.css`); use tokens; semantic HTML5; `<header>→<main>→<footer>`.
+- Reserve `--accent` for the primary action and flagship.
+
+**Never**
+- New CSS files, `<style>` blocks, or inline `style=""`.
+- Web fonts, tracking, CDN links, or heavy deps.
+- `!important` (Biome `noImportantStyles`) or descending-specificity selectors (Biome
+  `noDescendingSpecificity`); never disable a Biome rule to silence it.
+- Arbitrary px for spacing; raw colors for new work (use tokens).
+- Add JS beyond `assets/menu.js` without asking.
+
+**Ask first**
+- Any change to tokens, palette, type scale, spacing scale, or a named pattern (§5).
+- New pages/entry points, nav/site-map structure, build or deploy config.
+
+**Tooling:** Biome 2.3+ (2-space, 100-col); a PostToolUse hook auto-formats `.css`. Gate every change
+with `mise run ci` (lint + format-check + build).
+
+---
+
+## 9. Drift watch (tracked, not yet applied — ask-first to tokenize)
+
+Honest gaps between "use tokens, never hardcode" and the current CSS. These are **candidates** for a
+future tokenization pass, not changed here:
+
+- **Un-tokenized raw colors** in wide use — candidates for new tokens:
+  - surface whites `hsl(0 0% 100% / 0.65–0.75)` (cards, pills) → `--surface` / `--surface-strong`
+  - neutral chip bg `hsl(220 25% 96%)` and warm inset bg `hsl(45 25% 96%)` → `--inset` / `--inset-warm`
+  - the focus/border accent ring `hsl(212 85% 45% / 0.35)`, repeated widely → `--ring`
+  - inverted label `hsl(0 0% 100%)` → `--on-accent`
+  - heading inks `hsl(220 18% 26%)` / `hsl(220 18% 30%)` (could derive from `--ink`)
+- **`.approach-grid` overflow < ~410px:** `minmax(320px, 1fr)` forces 320px cards, so on phones
+  narrower than ~410px the grid overflows its container horizontally. Pre-existing (predates the
+  refresh). Suggested fix: `minmax(min(320px, 100%), 1fr)`.
+- **Hero `h1` split** (§5.1) is intentional and documented; noted here so it isn't "fixed" by mistake.
+
+---
+
+## 10. Change checklist (DoD for any design change)
+
+- [ ] Uses existing tokens; no new raw values.
+- [ ] AA contrast verified on every changed text/control (§7).
+- [ ] Verified at desktop, 768px, and 360px.
+- [ ] `mise run ci` clean; no `!important`, no rule-disabling.
+- [ ] If a token/scale/pattern changed: updated this doc and bumped `version` + `last_updated`.
+
+---
+
+## 11. References
+
+- Implementation: `assets/jeffrey.css` (the `:root` block is the token source).
+- Mobile nav behavior: `assets/menu.js`.
+- Project contract & boundaries: `AGENTS.md`, `CLAUDE.md`.
+- Editor rules: `.cursor/rules/css.mdc`, `.cursor/rules/html.mdc`, `.cursor/rules/project.mdc`.
+- Origin of the §5 patterns: `docs/landing-refresh-directive-2026-06-05.md`.
+- Sandbox-only theme (not deployed): `experiments/themes/academic.css`.
