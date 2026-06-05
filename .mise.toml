@@ -37,6 +37,14 @@ description = "Clean build artifacts and dependencies"
 run = "npm run deploy"
 description = "Lint, build, and preview (for local deploy verification)"
 
+[tasks.tokens]
+run = "npm run tokens"
+description = "Compile DTCG design tokens to assets/tokens.generated.css (Style Dictionary)"
+
+[tasks.conformance]
+run = "npm run conformance && npm run tokens:check"
+description = "Design-system conformance: no raw colors + generated tokens fresh"
+
 [tasks.ci]
-run = "npm run lint && npm run format:check && npm run build"
-description = "Run CI checks (lint, format, build)"
+run = "npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm run build"
+description = "Run CI checks (lint, format, conformance, tokens-fresh, build)"

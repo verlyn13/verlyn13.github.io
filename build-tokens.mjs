@@ -31,7 +31,7 @@ const sd = new StyleDictionary({
       // Name transform ONLY — no value/color transforms, so values pass through verbatim
       // (guarantees zero visual diff vs. the hand-authored :root block).
       transforms: ['name/leaf'],
-      buildPath: 'assets/',
+      buildPath: process.env.TOKENS_OUTDIR || 'assets/',
       files: [
         {
           destination: 'tokens.generated.css',
