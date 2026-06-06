@@ -2,15 +2,22 @@
 title: Design Critique & Refinement Brief — jvjohnson.dev
 category: design
 component: design-layer
-status: active
-version: 1.0.0
-last_updated: 2026-06-05
+status: addressed
+version: 1.1.0
+last_updated: 2026-06-06
 tags: [design-critique, user-journeys, wireframes, attention, handoff-brief]
 priority: high
 audience: design agent (refinement pass)
 ---
 
 # Design Critique & Refinement Brief — jvjohnson.dev
+
+> **Status — addressed (2026-06-06).** Every P0/P1 task below shipped and deployed: footer
+> unification, project conversion footers, the 2-up Approach gallery (`docs/adr/0007-measure-wide-gallery.md`),
+> and the above-the-fold hero — plus the ScopeCam alpha reframing and the researcher-builder identity
+> alignment (D-001). Retained as historical analysis. One residual is minor and separate (per-page
+> `source:` provenance hashes). The companion starter directive has been retired; its operating norm
+> now lives in `AGENTS.md`.
 
 Deep critique of the live site through three lenses — **user journeys, attention & focus, wireframe
 structure** — written as a brief for a design agent. Reviewed: all 13 pages (homepage, Contact, CV,
