@@ -1,0 +1,594 @@
+{
+  "banners": [],
+  "generatedAt": "2026-06-11T23:12:51Z",
+  "projects": [
+    {
+      "asOf": "unknown",
+      "deploymentUrls": [],
+      "displayName": "Assistant Professor of Mathematics — American University in Cairo",
+      "domains": [
+        "mathematics",
+        "education-design",
+        "course-operations"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "academic-career-auc",
+      "posture": {
+        "allowsLive": false,
+        "badge": "taught",
+        "evidenceClass": "course-taught"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "academic-career-auc",
+      "statusLine": "Faculty appointment, completed",
+      "tech": [],
+      "thesis": "A three-year international tenure-track mathematics appointment that pairs undergraduate teaching with original research, anchoring a career built across continents.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "unknown",
+        "status": "unknown"
+      },
+      "title": "Assistant Professor of Mathematics — American University in Cairo"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [],
+      "displayName": "Agentic Architecture Audit — versioned profile + audit directive package",
+      "domains": [
+        "agents",
+        "llm-orchestration",
+        "llm-evaluation",
+        "documentation",
+        "compliance",
+        "security"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "agentic-architecture-audit",
+      "posture": {
+        "allowsLive": false,
+        "badge": "published-package",
+        "evidenceClass": "public-package"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "agentic-architecture-audit",
+      "statusLine": "Released, Apache-2.0 (v1.4.0)",
+      "tech": [
+        "Python"
+      ],
+      "thesis": "A self-developed, released methodology that audits agent-built systems in eleven evidence-first phases — every finding cites the exact path, line range, and command that produced it.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "public",
+        "status": "active"
+      },
+      "title": "Agentic Architecture Audit — versioned profile + audit directive package"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [],
+      "displayName": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)",
+      "domains": [
+        "finance",
+        "web",
+        "vision",
+        "databases",
+        "devops",
+        "infrastructure-as-code"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "budget-triage-fintech",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "budget-triage-fintech",
+      "statusLine": "Working prototype, private pre-public-flip",
+      "tech": [
+        "TypeScript"
+      ],
+      "thesis": "A self-hosted personal-finance system that treats correctness as policy you can prove, using cross-surface governance gates and a synthetic-data extraction harness rather than promises.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [
+        "https://dicee.games"
+      ],
+      "displayName": "Dicee / Game Lobby — solo-built multiplayer dice game with Rust/WASM engine",
+      "domains": [
+        "web",
+        "infrastructure-as-code",
+        "databases",
+        "gaming"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "dicee",
+      "posture": {
+        "allowsLive": true,
+        "badge": "deployed",
+        "evidenceClass": "deployed-system"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "dicee",
+      "statusLine": "Deployed and live",
+      "tech": [
+        "TypeScript"
+      ],
+      "thesis": "A solo-built, install-free multiplayer dice game taken from architecture through deployment — a deterministic Rust/WASM engine paired with real-time edge infrastructure for live play.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "public",
+        "status": "active"
+      },
+      "title": "Dicee / Game Lobby — solo-built multiplayer dice game with Rust/WASM engine"
+    },
+    {
+      "asOf": "unknown",
+      "deploymentUrls": [],
+      "displayName": "Peripherally-Multiplicative Spectral Preservers Between Function Algebras (Ph.D. dissertation, 2013)",
+      "domains": [
+        "mathematics"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "dissertation-2013",
+      "posture": {
+        "allowsLive": false,
+        "badge": "published",
+        "evidenceClass": "published-artifact"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "dissertation-2013",
+      "statusLine": "Published 2013",
+      "tech": [],
+      "thesis": "Doctoral research in functional analysis and operator theory that extended composition-operator theory under spectral conditions — the formal foundation of a mathematician's career.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "unknown",
+        "status": "unknown"
+      },
+      "title": "Peripherally-Multiplicative Spectral Preservers Between Function Algebras (Ph.D. dissertation, 2013)"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [],
+      "displayName": "Flux — multi-provider image-generation control plane (successor authority)",
+      "domains": [
+        "generative-ai",
+        "ml",
+        "web",
+        "databases",
+        "cli",
+        "mcp"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "flux",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "flux",
+      "statusLine": "Working prototype, pre-cutover",
+      "tech": [
+        "Python"
+      ],
+      "thesis": "A control plane for AI image generation that compiles a single intent across a registry of providers, streams results, and captures full artifact and curation lineage in content-addressed storage.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "Flux — multi-provider image-generation control plane (successor authority)"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [],
+      "displayName": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation",
+      "domains": [
+        "agents",
+        "infrastructure-as-code",
+        "security",
+        "identity",
+        "cli",
+        "documentation"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "host-capability-substrate",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "host-capability-substrate",
+      "statusLine": "Working prototype, Ring-0 ontology complete",
+      "tech": [
+        "TypeScript"
+      ],
+      "thesis": "An operations kernel that gives every agent on a workstation a shared substrate for ground-truth, capability exposure, policy, approval, and audited execution — designed ring-by-ring with imports enforced in CI from the first commit.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "public",
+        "status": "active"
+      },
+      "title": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation"
+    },
+    {
+      "asOf": "2026-06-11 17:39:29",
+      "deploymentUrls": [],
+      "displayName": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs",
+      "domains": [
+        "gaming",
+        "web",
+        "ml"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "hubofwyn-games",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "hubofwyn-games",
+      "statusLine": "Working prototype; suite actively developed",
+      "tech": [
+        "JavaScript"
+      ],
+      "thesis": "A family-facing game suite built as agentic-framework output — proof that an AI-assisted development practice can produce coherent, tested software, from a 2D platformer to a Phaser monorepo side-scroller and an AI asset pipeline.",
+      "tier": {
+        "portfolioVisibility": "public-available",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs"
+    },
+    {
+      "asOf": "2025-10-27 20:37:52",
+      "deploymentUrls": [],
+      "displayName": "KPC/UAA mathematics & statistics course series (2017 → 2025)",
+      "domains": [
+        "mathematics",
+        "statistics",
+        "education-design",
+        "course-operations",
+        "instructional-design"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "math-course-series-kpc-2017-2025",
+      "posture": {
+        "allowsLive": false,
+        "badge": "taught",
+        "evidenceClass": "course-taught"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "math-course-series-kpc-2017-2025",
+      "statusLine": "Taught 2017–2025",
+      "tech": [],
+      "thesis": "Eight years of sustained undergraduate instruction across calculus, statistics, differential equations, and modern algebra — 13+ courses and 50+ sections with documented pedagogy and versioned materials.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "public",
+        "status": "active"
+      },
+      "title": "KPC/UAA mathematics & statistics course series (2017 → 2025)"
+    },
+    {
+      "asOf": "unknown",
+      "deploymentUrls": [],
+      "displayName": "Peace Corps Education Volunteer — rural South Africa",
+      "domains": [
+        "education-design",
+        "instructional-design",
+        "course-operations"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "peace-corps-south-africa",
+      "posture": {
+        "allowsLive": false,
+        "badge": "taught",
+        "evidenceClass": "course-taught"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "peace-corps-south-africa",
+      "statusLine": "Completed (two-year service)",
+      "tech": [],
+      "thesis": "Two years of education service in rural South Africa combining classroom teaching, school administration, and cross-cultural work — the early-career foundation of an international teaching path.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "unknown",
+        "status": "unknown"
+      },
+      "title": "Peace Corps Education Volunteer — rural South Africa"
+    },
+    {
+      "asOf": "unknown",
+      "deploymentUrls": [],
+      "displayName": "Pediatric walking-speed reference norms — Pediatric Physical Therapy, 2023",
+      "domains": [
+        "statistics",
+        "data-analysis",
+        "health-sciences"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "pediatric-walking-speed-study-2023",
+      "posture": {
+        "allowsLive": false,
+        "badge": "published",
+        "evidenceClass": "published-artifact"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "pediatric-walking-speed-study-2023",
+      "statusLine": "Published 2023 (peer-reviewed)",
+      "tech": [],
+      "thesis": "A peer-reviewed clinical study (n=1,593) establishing pediatric gait reference norms, contributing the statistical methodology and factorial analysis behind published reference data.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "unknown",
+        "status": "unknown"
+      },
+      "title": "Pediatric walking-speed reference norms — Pediatric Physical Therapy, 2023"
+    },
+    {
+      "asOf": "2026-06-11",
+      "deploymentUrls": [],
+      "displayName": "ScopeCam — Android + native multi-module app for UVC USB microscope cameras",
+      "domains": [
+        "mobile",
+        "android",
+        "vision"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "scopecam",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "scopecam",
+      "statusLine": "Alpha (working prototype)",
+      "tech": [
+        "Kotlin"
+      ],
+      "thesis": "A solo-built Android app for serious USB-microscopy workflows — a multi-module architecture over a vendored native imaging stack with session-based scientific capture and ArchUnit-enforced boundaries.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "ScopeCam — Android + native multi-module app for UVC USB microscope cameras"
+    },
+    {
+      "asOf": "2026-06-11 17:39:29",
+      "deploymentUrls": [],
+      "displayName": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners",
+      "domains": [
+        "education-design",
+        "cli"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "shelltutor",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "shelltutor",
+      "statusLine": "Working prototype, pre-release (public repo)",
+      "tech": [
+        "Shell"
+      ],
+      "thesis": "A dependency-free, single-file shell tutor that teaches absolute beginners the prerequisites for vimtutor through five mastery-gated stages, portable across Linux and macOS.",
+      "tier": {
+        "portfolioVisibility": "public-available",
+        "primaryAudience": "public",
+        "status": "active"
+      },
+      "title": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners"
+    },
+    {
+      "asOf": "2026-06-11 17:39:29",
+      "deploymentUrls": [],
+      "displayName": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")",
+      "domains": [
+        "mathematics",
+        "education-design",
+        "gaming",
+        "web"
+      ],
+      "freshness": {
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "source": "last_commit_date",
+        "stale": false
+      },
+      "id": "symmetry-groups",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-06-11T23:12:51Z",
+        "kbDirty": false,
+        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "source": "meta-inventory feed v0"
+      },
+      "schemaVersion": "0",
+      "slug": "symmetry-groups",
+      "statusLine": "Working prototype, playable locally",
+      "tech": [
+        "TypeScript"
+      ],
+      "thesis": "An educational game that teaches finite group theory through interactive symmetry and Cayley-table discovery, built on a genuine, axiom-tested group-theory domain.",
+      "tier": {
+        "portfolioVisibility": "public-promoted",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")"
+    }
+  ],
+  "provenance": {
+    "degradedNoManifests": false,
+    "freshnessSource": "last_commit_date",
+    "kbDirty": false,
+    "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+    "maxUpdatedAt": "2026-06-11T23:12:51Z",
+    "stale": false
+  },
+  "schemaVersion": "0"
+}
