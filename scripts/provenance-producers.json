@@ -1,0 +1,37 @@
+[
+  {
+    "name": "new-direction-2026",
+    "kind": "sibling-markdown",
+    "sourcePrefix": "../new-direction-2026/",
+    "siblingEnv": "SIBLING_REPO",
+    "sources": {
+      "cv": "career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md",
+      "portfolio": "career-transition-ready/website-content/PORTFOLIO-QUICK.md",
+      "projects": "career-transition-ready/technical-projects/ACTIVE-PROJECTS-PORTFOLIO.md",
+      "research": "career-transition-ready/research-publications/RESEARCH-PUBLICATIONS.md",
+      "timeline": "career-transition-ready/website-content/timeline-component-spec.md",
+      "teaching": "career-transition-ready/teaching-portfolio/TEACHING-INVENTORY.md"
+    },
+    "expected": {
+      "index.html": ["portfolio"],
+      "contact.html": ["portfolio"],
+      "cv.html": ["cv", "teaching"],
+      "experience/index.html": ["timeline"],
+      "research/index.html": ["research"]
+    },
+    "expectProjectsGlob": "projects",
+    "projectsSource": "projects"
+  },
+  {
+    "name": "meta-inventory-feed",
+    "kind": "feed",
+    "feedPath": "data/projects.json",
+    "requireFeedFile": true,
+    "surfaceGlobs": ["projects", "."],
+    "leakChecks": {
+      "forbidStrings": ["The-Nash-Group", "Nash"],
+      "requireAsOfMatchesFeed": true,
+      "failIfDirtyTrue": true
+    }
+  }
+]
