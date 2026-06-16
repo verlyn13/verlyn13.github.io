@@ -6,7 +6,7 @@ build: build-tokens.mjs # `npm run tokens`
 layers: [tokens, base, components, patterns, pages] # see layers.json
 themes: [light] # light-only today (docs/adr/0004-theming.md)
 human_reference: docs/design-system.md
-last_updated: 2026-06-05
+last_updated: 2026-06-16
 ---
 
 # DESIGN_SPEC — jvjohnson.dev
@@ -48,6 +48,15 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
   `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `ink`, `shadow-soft`
 - **project conversion footer** (`.project-links-footer` + `.project-cta-actions`: one filled
   `.primary-link` "Email me about this" + secondary `.section-link`s) → `accent`, `on-accent`, `ink`, `muted`, `border`
+- **publishing pipeline** (`.pipeline` → `.pipeline-lane` / `.pipeline-lane__label` / `.pipeline-track` /
+  `.pipeline-step[--gate|--live]`; the colophon's 3-lane swimlane, human-merge step in `--accent`, live
+  endpoint in `--accent-2`/`--green-bg` with `--ink` text) →
+  `surface`, `border`, `border-faint`, `muted`, `accent`, `accent-subtle`, `accent-dark`, `accent-2`, `green-bg`, `ink`
+- **evidence blocks** (`.evidence-grid` + `.evidence-card` `__label`/`__value`/`__note`; `.guarantee-list`
+  checklist) → `surface`, `border`, `shadow-hard`, `muted`, `ink`, `ok`
+
+Page: `colophon.html` ("how this portfolio is published") is the publishing-system surface — descriptive,
+links the live `/data/projects.json` (ADR-0008).
 
 ## Hard rules
 - Components reference **semantic** tokens only — never primitives, never raw color literals.

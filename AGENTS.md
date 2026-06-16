@@ -13,6 +13,7 @@
 index.html              # Portfolio home
 cv.html                 # Curriculum vitae
 contact.html            # Contact page
+colophon.html           # How this portfolio is published (publishing-system page)
 projects/               # Project detail pages (dicee, maat, scopecam, budget-triage)
 experience/             # Experience section (braid timeline + era narratives)
 research/               # Research & publications

@@ -3,8 +3,8 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 2.2.0
-last_updated: 2026-06-05
+version: 2.3.0
+last_updated: 2026-06-16
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
 ---
@@ -187,13 +187,28 @@ this idiom (left `--accent` border + `--accent-subtle`).
 Centered and muted, with one consistent structure on every page: `.footer-cta` (the email conversion
 line — `--ink`, the only prominent element) → `.footer-links` (footer nav: `← Back to portfolio` + a
 sibling link on every non-home page; the home footer omits the back-nav since it *is* the portfolio) →
-a muted colophon `<p>` (`© <year> Jeffrey Johnson · Homer, Alaska`). The email inside `.footer-cta`
+a muted colophon `<p>` (`© <year> Jeffrey Johnson · Homer, Alaska · Colophon`, the last word linking to
+the publishing-system page `colophon.html` — present site-wide, omitted only on `colophon.html` itself).
+The email inside `.footer-cta`
 stays a plain `--accent` text link — never a filled button — so each page keeps exactly one filled
 primary action (§5.2). `.footer-links` is tokenized and in use on every subpage — keep it.
 
 ### 4.9 Accessibility primitives
 `.skip-link`, `.sr-only`, the global `:focus-visible` ring, the `prefers-reduced-motion` block, and the
 `@media print` block. See §7.
+
+### 4.10 Publishing pipeline & evidence (colophon) — `.pipeline`, `.evidence-grid`
+The `colophon.html` page ("how this portfolio is published") adds two token-only components:
+- **`.pipeline`** — a three-lane swimlane (`.pipeline-lane` + `.pipeline-lane__label` +
+  `.pipeline-track` of `.pipeline-step`s): source of truth → automation → public site. Steps connect
+  with a CSS `::before` arrow; lanes stack and steps wrap on mobile. The single **`.pipeline-step--gate`**
+  (human merge) is the page's one `--accent` use — the governance pivot; **`.pipeline-step--live`** marks
+  the live endpoint with an `--accent-2` border + `--green-bg` tint and `--ink` text (AA, see §9).
+- **`.evidence-grid`** / **`.evidence-card`** (`__label` / `__value` / `__note`) — compact factual cards
+  about the feed (2-up ≥600px, 1-up below). **`.guarantee-list`** is a checklist variant (✓ in `--ok`).
+
+The page is descriptive, not feed-coupled: it links the live `/data/projects.json` rather than mirroring
+volatile values (counts, SHAs, `asOf` dates). See `docs/adr/0008-colophon-publishing-system.md`.
 
 ---
 
@@ -292,6 +307,9 @@ with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
   zero-diff; Claude Design reads them from the repo directly. A hex/`color()` transform for strict
   DTCG importers is a documented future option (`docs/adr/0001-dtcg-tokens.md`).
 - **Intentional — hero `h1` split** (§5.1): the name is a styled-down kicker; noted so it isn't "fixed".
+- **Intentional — `.pipeline-step--live` ≠ `.project-status.production`:** both use the `--green-bg` tint,
+  but the live pipeline chip uses `--ink` text (≈11:1, AA) rather than `--accent-2` text (≈3.5:1), because
+  the chip carries body-size text. Noted so the divergence isn't "reconciled" away.
 
 ---
 
