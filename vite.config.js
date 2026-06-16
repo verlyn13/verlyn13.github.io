@@ -26,6 +26,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         cv: resolve(__dirname, 'cv.html'),
         contact: resolve(__dirname, 'contact.html'),
+        colophon: resolve(__dirname, 'colophon.html'),
 
         // Projects
         'projects-dicee': resolve(__dirname, 'projects/dicee.html'),
