@@ -7,7 +7,7 @@
       "!audit",
       "!profile",
       "!assets/tokens.generated.css",
-      "!data/projects.json"
+      "!public/data/projects.json"
     ]
   },
   "vcs": {
