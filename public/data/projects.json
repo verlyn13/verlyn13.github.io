@@ -1,6 +1,6 @@
 {
   "banners": [],
-  "generatedAt": "2026-06-11T23:12:51Z",
+  "generatedAt": "2026-06-15T20:09:48Z",
   "projects": [
     {
       "asOf": "unknown",
@@ -12,8 +12,8 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -24,7 +24,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -54,8 +54,8 @@
         "security"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -66,7 +66,7 @@
         "evidenceClass": "public-package"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -80,8 +80,8 @@
       "thesis": "A self-developed, released methodology that audits agent-built systems in eleven evidence-first phases — every finding cites the exact path, line range, and command that produced it.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "public",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Agentic Architecture Audit — versioned profile + audit directive package"
     },
@@ -98,8 +98,8 @@
         "infrastructure-as-code"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -110,7 +110,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -124,8 +124,8 @@
       "thesis": "A self-hosted personal-finance system that treats correctness as policy you can prove, using cross-surface governance gates and a synthetic-data extraction harness rather than promises.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "personal",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)"
     },
@@ -142,8 +142,8 @@
         "gaming"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -154,7 +154,7 @@
         "evidenceClass": "deployed-system"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -168,8 +168,8 @@
       "thesis": "A solo-built, install-free multiplayer dice game taken from architecture through deployment — a deterministic Rust/WASM engine paired with real-time edge infrastructure for live play.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "public",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Dicee / Game Lobby — solo-built multiplayer dice game with Rust/WASM engine"
     },
@@ -181,8 +181,8 @@
         "mathematics"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -193,7 +193,7 @@
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -223,8 +223,8 @@
         "mcp"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -235,7 +235,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -249,8 +249,8 @@
       "thesis": "A control plane for AI image generation that compiles a single intent across a registry of providers, streams results, and captures full artifact and curation lineage in content-addressed storage.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "personal",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Flux — multi-provider image-generation control plane (successor authority)"
     },
@@ -267,8 +267,8 @@
         "documentation"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -279,7 +279,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -293,13 +293,13 @@
       "thesis": "An operations kernel that gives every agent on a workstation a shared substrate for ground-truth, capability exposure, policy, approval, and audited execution — designed ring-by-ring with imports enforced in CI from the first commit.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "public",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation"
     },
     {
-      "asOf": "2026-06-11 17:39:29",
+      "asOf": "2026-06-16 14:39:03",
       "deploymentUrls": [],
       "displayName": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs",
       "domains": [
@@ -308,8 +308,8 @@
         "ml"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -320,7 +320,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -334,13 +334,13 @@
       "thesis": "A family-facing game suite built as agentic-framework output — proof that an AI-assisted development practice can produce coherent, tested software, from a 2D platformer to a Phaser monorepo side-scroller and an AI asset pipeline.",
       "tier": {
         "portfolioVisibility": "public-available",
-        "primaryAudience": "personal",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs"
     },
     {
-      "asOf": "2025-10-27 20:37:52",
+      "asOf": "2026-06-16 14:39:03",
       "deploymentUrls": [],
       "displayName": "KPC/UAA mathematics & statistics course series (2017 → 2025)",
       "domains": [
@@ -351,8 +351,8 @@
         "instructional-design"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -363,7 +363,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -375,8 +375,8 @@
       "thesis": "Eight years of sustained undergraduate instruction across calculus, statistics, differential equations, and modern algebra — 13+ courses and 50+ sections with documented pedagogy and versioned materials.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "public",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "KPC/UAA mathematics & statistics course series (2017 → 2025)"
     },
@@ -390,8 +390,8 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -402,7 +402,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -429,8 +429,8 @@
         "health-sciences"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -441,7 +441,7 @@
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -468,8 +468,8 @@
         "vision"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -480,7 +480,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -494,13 +494,13 @@
       "thesis": "A solo-built Android app for serious USB-microscopy workflows — a multi-module architecture over a vendored native imaging stack with session-based scientific capture and ArchUnit-enforced boundaries.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "personal",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "ScopeCam — Android + native multi-module app for UVC USB microscope cameras"
     },
     {
-      "asOf": "2026-06-11 17:39:29",
+      "asOf": "2026-06-16 14:39:03",
       "deploymentUrls": [],
       "displayName": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners",
       "domains": [
@@ -508,8 +508,8 @@
         "cli"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -520,7 +520,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -534,13 +534,13 @@
       "thesis": "A dependency-free, single-file shell tutor that teaches absolute beginners the prerequisites for vimtutor through five mastery-gated stages, portable across Linux and macOS.",
       "tier": {
         "portfolioVisibility": "public-available",
-        "primaryAudience": "public",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners"
     },
     {
-      "asOf": "2026-06-11 17:39:29",
+      "asOf": "2026-06-16 14:39:03",
       "deploymentUrls": [],
       "displayName": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")",
       "domains": [
@@ -550,8 +550,8 @@
         "web"
       ],
       "freshness": {
-        "ageDays": 4,
-        "maxUpdatedAt": "2026-06-11T23:12:51Z",
+        "ageDays": 0,
+        "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -562,7 +562,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-11T23:12:51Z",
+        "generatedAt": "2026-06-15T20:09:48Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -576,8 +576,8 @@
       "thesis": "An educational game that teaches finite group theory through interactive symmetry and Cayley-table discovery, built on a genuine, axiom-tested group-theory domain.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "personal",
-        "status": "active"
+        "primaryAudience": "unknown",
+        "status": "untriaged"
       },
       "title": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")"
     }
@@ -587,7 +587,7 @@
     "freshnessSource": "last_commit_date",
     "kbDirty": false,
     "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
-    "maxUpdatedAt": "2026-06-11T23:12:51Z",
+    "maxUpdatedAt": "2026-06-15T20:09:48Z",
     "stale": false
   },
   "schemaVersion": "0"
