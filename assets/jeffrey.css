@@ -2365,6 +2365,147 @@ th {
 }
 
 /* ------------------------------------------------------------
+   Project-intelligence — per-project design structure (S3)
+   Folded from the design handback; token-only. Scope reuses .evidence-grid (colophon).
+   Wired in now but absent-tolerant: renders only when the feed carries scope/decisions/
+   activity (v1). The activity rail buckets magnitude into height-level classes (no inline styles).
+   ------------------------------------------------------------ */
+.project-design-structure {
+  margin-bottom: var(--space-5);
+}
+
+/* Key decisions — the differentiator. Hairline rule, NOT accent (accent stays reserved). */
+.decision-list {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.decision {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--border-hairline);
+}
+
+.decision__title {
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 var(--space-1);
+}
+
+.decision__summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+.decision__source {
+  display: inline-block;
+  margin-top: var(--space-1);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Activity rail — the experience braid idiom at single-project scale; build-time, zero JS. */
+.activity-rail {
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.activity-rail__plot {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 2px;
+  height: 64px;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+/* Commit magnitude as a soft tint; bucketed into 5 height levels (no inline styles). */
+.activity-bar {
+  background: var(--accent-light);
+  border-radius: 2px 2px 0 0;
+  min-height: 3px;
+}
+
+.activity-bar--l1 {
+  height: 20%;
+}
+
+.activity-bar--l2 {
+  height: 40%;
+}
+
+.activity-bar--l3 {
+  height: 60%;
+}
+
+.activity-bar--l4 {
+  height: 80%;
+}
+
+.activity-bar--l5 {
+  height: 100%;
+}
+
+/* Release month — the green "ship it" signal (a real dimension, deliberately encoded). */
+.activity-bar--release {
+  background: var(--accent-2);
+}
+
+.activity-rail__axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.activity-rail__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-2);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.activity-rail__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.activity-rail__swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex: none;
+}
+
+.activity-rail__swatch--commit {
+  background: var(--accent-light);
+}
+
+.activity-rail__swatch--release {
+  background: var(--accent-2);
+}
+
+/* Quiet provenance line linking the colophon. */
+.project-provenance {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: var(--space-3);
+}
+
+/* ------------------------------------------------------------
    Footer
    ------------------------------------------------------------ */
 .site-footer {

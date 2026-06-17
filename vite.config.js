@@ -1,8 +1,26 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
+import { renderDesignStructure } from './scripts/design-structure.mjs'
+import { buildViewModel } from './scripts/feed-model.mjs'
+
+// Splice the per-project "Design structure" panel (S3) at `<!-- @design-structure: <id> -->`
+// markers in detail pages — build-time + dev, no client JS, no source mutation. Absent-tolerant:
+// renders nothing until the feed carries scope/decisions/activity (v1).
+function designStructure() {
+  const byId = new Map(buildViewModel().projects.map((e) => [e.id, e]))
+  return {
+    name: 'design-structure',
+    transformIndexHtml(html) {
+      return html.replace(/<!--\s*@design-structure:\s*([a-z0-9-]+)\s*-->/g, (_, id) =>
+        renderDesignStructure(byId.get(id)),
+      )
+    },
+  }
+}
 
 export default defineConfig({
   appType: 'mpa',
+  plugins: [designStructure()],
 
   // Base URL for GitHub Pages
   base: '/',
