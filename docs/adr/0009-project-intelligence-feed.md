@@ -1,6 +1,6 @@
-# ADR-0009: Project-Intelligence feed — presentation, cadence, and the auto-publish gate
+# ADR-0009: Project-Intelligence feed — presentation, cadence, and the delivery gate
 
-- Status: Accepted · Date: 2026-06-16
+- Status: Accepted · Date: 2026-06-16 · Clarified: 2026-06-17
 
 ## Context
 The project feed (`public/data/projects.json`; its pipeline is described by ADR-0008 / `colophon.html`)
@@ -16,10 +16,12 @@ projects credibly, how the data flows and refreshes, and how that squares with t
    feed the site without leaking.
 2. **Two clocks.** Event-driven basket updates (a project PR fires `repository_dispatch` → re-extract)
    and a **scheduled daily 08:00 ET** feed refresh.
-3. **Auto-publish, policy-gated (refines ADR-0008).** A **feed-only** diff that passes every gate
-   (no-op-suppressed · provenance · leak · clean-source `kbDirty:false`) **auto-merges and deploys** — the
-   gate becomes policy, not a manual click. **All other changes stay human-gated.** The colophon copy is
-   updated to state this truthfully.
+3. **Delivery gate, current vs target (refines ADR-0008).** Current behavior is **PR-delivered and
+   operator-merged**: a feed-only diff that passes every gate (no-op-suppressed · provenance · leak ·
+   clean-source `kbDirty:false`) is delivered to the website by PR, draft by default, and merge deploys.
+   A future **policy-auto-publish** path is allowed only after explicit operator approval and website-side
+   policy gate wiring. **All other changes stay human-gated.** The colophon copy states the current
+   contract truthfully and changes only when the policy changes.
 4. **Presentation: a dense, build-time-grouped index — not a card grid — with no interactive filter at
    this scale.** Research (DeepMind / Karpathy / Gwern / al-folio exemplars; Baymard + NN/g on filtering)
    shows faceted filtering is clutter below exploratory (hundreds-plus) scale: facets are printed inline
@@ -35,11 +37,11 @@ projects credibly, how the data flows and refreshes, and how that squares with t
    the coding agent implements (ADR-0005).
 
 ## Consequences
-- The daily feed refresh becomes hands-off (operator pushes to meta-inventory; the site self-updates at
-  08:00 ET) while risk stays gated — a stronger governance story (policy-as-gate). But the colophon must
-  be re-worded from "nothing deploys without human review" to "feed-only, gate-passing diffs auto-publish;
-  everything else is reviewed." (Accurate today; the wording changes when auto-publish ships — design
-  brief S5.)
+- The daily feed refresh can run hands-off inside `meta-inventory`, but the current website delivery
+  posture is still PR-delivered and operator-merged. The stronger policy-as-gate auto-publish story is a
+  target evolution, not a claim about today's deploy behavior.
+- The colophon remains accurate by naming the current gate. It should not say feed-only diffs
+  auto-publish until that policy is explicitly approved and wired.
 - GitHub Actions cron is UTC and ignores DST, so 08:00 ET = run at **12:00 and 13:00 UTC**, the job
   no-op'ing the wrong one.
 - A new build input (the feed templater) enters the repo; the single-stylesheet + no-JS rules still hold.
@@ -48,5 +50,6 @@ projects credibly, how the data flows and refreshes, and how that squares with t
   proposes are ask-first.
 
 ## References
-- Spec: `docs/project-intelligence.md` · Design brief: `docs/project-intelligence-design-brief-2026-06-16.md`
+- Spec: `docs/project-intelligence.md` · Contract: `docs/meta-inventory-website-contract.md` · Design brief:
+  `docs/project-intelligence-design-brief-2026-06-16.md`
 - Builds on: ADR-0008 (colophon/pipeline), ADR-0007 (measure-wide gallery), ADR-0005 (design tools non-authoritative)

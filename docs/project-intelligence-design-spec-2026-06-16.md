@@ -3,7 +3,7 @@ title: Project-Intelligence presentation — design spec (S1–S5)
 for: the code agent in verlyn13.github.io
 from: Claude Design (non-authoritative proposal — ADR-0005)
 date: 2026-06-16
-implements: docs/project-intelligence-design-brief-2026-06-16.md (v1.1.0)
+implements: docs/project-intelligence-design-brief-2026-06-16.md (v1.1.1)
 status: proposal
 ---
 
@@ -266,19 +266,19 @@ over all projects' `activity[]`. Out of scope now; the single-strand rail is the
 
 ### 4.5 Provenance line — `.project-provenance`
 
-One quiet `--muted` line: "Scope and activity are feed-derived and auto-updated daily. How this
+One quiet `--muted` line: "Scope and activity are feed-derived and cadence-refreshed. How this
 portfolio is published →", the last clause a base `a` link to `colophon.html`. Ties depth to the
-publishing system and sets honest expectations about freshness.
+publishing system and sets honest expectations about freshness without claiming auto-deploy behavior.
 
 ---
 
 ## 5. S5 — Colophon copy alignment (no redesign)
 
-Keep `colophon.html` and its `.pipeline` / `.evidence-grid`; only reconcile copy to the **auto-publish**
-cadence (§6 of the system spec): *feed-only, gate-passing diffs auto-publish daily; everything else
-stays human-gated.* The `.pipeline-step--gate` (human merge, the one `--accent`) should read as the
-**policy gate for non-feed changes**, and a `.guarantee-list` item should state the daily feed
-auto-publish plainly. No structural or token change.
+Keep `colophon.html` and its `.pipeline` / `.evidence-grid`; only reconcile copy to the current
+delivery contract (§6 of the system spec): *feed-only, gate-passing diffs are PR-delivered from
+`meta-inventory` and operator-merged on the website; everything else stays human-gated.* If a
+feed-only policy-auto-publish path is later approved and wired, update the copy then. No structural or
+token change.
 
 ---
 

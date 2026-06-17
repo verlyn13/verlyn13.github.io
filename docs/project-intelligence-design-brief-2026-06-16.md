@@ -3,8 +3,8 @@ title: Design Brief — Project-Intelligence presentation (body-of-work + per-pr
 category: design
 component: project-intelligence-feed
 status: handoff
-version: 1.1.0
-last_updated: 2026-06-16
+version: 1.1.1
+last_updated: 2026-06-17
 tags: [design-brief, handoff, project-intelligence, breadth, body-of-work, activity-timeline]
 priority: high
 audience: Claude Design agent
@@ -16,8 +16,9 @@ audience: Claude Design agent
 **From:** the code agent in `verlyn13.github.io`.
 **Date:** 2026-06-16.
 **Origin:** the project-intelligence reframe — *the feed is the instrument; the projects are the exhibit.*
-**Read with:** `docs/project-intelligence.md` (system spec + data contract), `design/DESIGN_SPEC.md`
-(tokens + component map), `docs/design-system.md` (patterns + AA contract), and the **live site**
+**Read with:** `docs/project-intelligence.md` (system spec + data contract),
+`docs/meta-inventory-website-contract.md` (repo-owner boundary), `design/DESIGN_SPEC.md` (tokens +
+component map), `docs/design-system.md` (patterns + AA contract), and the **live site**
 (https://jvjohnson.dev) + screenshots. Our system is vanilla HTML/CSS + DTCG tokens — there is **no
 synced component kit** (`/design-sync` targets React libraries); design against these references, with
 `assets/jeffrey.css` as the implementation truth.
@@ -97,8 +98,10 @@ al-folio academic theme; filtering evidence: Baymard, NN/g). Design **within** i
   portfolio scale. Lower priority — design only if it's cheap to include.
 
 ### S5 — Colophon alignment (minor, no redesign)
-- The existing `colophon.html` (kept, **demoted**) must reflect the **auto-publish** cadence: feed-only,
-  gate-passing diffs auto-publish daily; everything else stays human-gated. Light copy/visual touch.
+- The existing `colophon.html` (kept, **demoted**) must reflect the current delivery contract:
+  feed-only, gate-passing diffs are PR-delivered from `meta-inventory` and operator-merged on the
+  website; everything else stays human-gated. If a feed-only policy-auto-publish path is later approved
+  and wired, update the copy then. Light copy/visual touch only.
 
 ## Data contract (design against real data)
 Fields available **now** (`public/data/projects.json`, schema v0): `title`, `thesis`, `domains[]`,
@@ -140,6 +143,7 @@ enough for the code agent to implement.
 
 ## References
 - System spec + schema + cadence: `docs/project-intelligence.md`
+- Repo boundary contract: `docs/meta-inventory-website-contract.md`
 - Decision record: `docs/adr/0009-project-intelligence-feed.md`
 - Tokens + component map: `design/DESIGN_SPEC.md` · patterns + AA contract: `docs/design-system.md`
 - Layout precedent: `docs/adr/0007-measure-wide-gallery.md` · non-authoritative design output:

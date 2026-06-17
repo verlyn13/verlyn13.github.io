@@ -3,8 +3,8 @@ title: Project Intelligence — the feed-driven project presentation system
 category: architecture
 component: project-intelligence-feed
 status: draft
-version: 0.1.0
-last_updated: 2026-06-16
+version: 0.1.1
+last_updated: 2026-06-17
 tags: [project-intelligence, feed, meta-inventory, provenance, presentation, breadth]
 priority: high
 audience: coding agent + design agent
@@ -12,9 +12,10 @@ audience: coding agent + design agent
 
 # Project Intelligence — feed-driven project presentation
 
-> **Status — draft (2026-06-16).** Formalizes the system. The public feed already ships
+> **Status — draft (updated 2026-06-17).** Formalizes the system. The public feed already ships
 > (`public/data/projects.json`); this spec defines what it grows into and how the site renders it.
 > The presentation P0 is pending the design handback (`docs/project-intelligence-design-brief-2026-06-16.md`).
+> The cross-repo owner boundary is now explicit in `docs/meta-inventory-website-contract.md`.
 
 ## 1. Premise
 The feed is the **instrument, not the exhibit**. Its job is to keep each project's depth, scope, key
@@ -35,7 +36,18 @@ feed the site without leaking.
 **Two clocks**
 - **Event-driven** — a project PR/merge fires `repository_dispatch` → meta-inventory re-extracts that
   project's basket and recomputes the cross-project meta-analysis.
-- **Scheduled** — daily 08:00 ET → regenerate the feed → no-op gate → auto-publish (see §6).
+- **Scheduled** — daily 08:00 ET → regenerate the feed → no-op gate → delivery/policy gate (see §6).
+
+**Repository ownership**
+- Project repos own their manifests and status-of-record files.
+- `meta-inventory` owns baskets, validation, feed generation, freshness measurement, and delivery
+  proposal.
+- This website owns the consumed public feed copy, build-time rendering, fallback behavior,
+  provenance/leak CI, and deployment.
+- The operator owns target confirmation, token provisioning, surface flips, merges, and pushes to
+  deployment branches.
+
+The detailed contract is `docs/meta-inventory-website-contract.md`.
 
 ## 3. Architecture
 ```
@@ -46,12 +58,12 @@ project repos ──PR/merge (repository_dispatch)──▶ meta-inventory
                           daily 08:00 ET ─────────────────┤ publish-safe projection
                                                           ▼
                                               public feed (projects.json, v1)
-                                                          │ no-op gate → policy gate → auto-publish (§6)
+                                                          │ no-op gate → delivery/policy gate (§6)
                                                           ▼
                                        site renders at BUILD TIME (no client JS)
 ```
 The bottom half is the pipeline ADR-0008 already describes. This spec adds the **event-driven
-extraction** (top) and the **daily auto-publish cadence** (middle).
+extraction** (top) and the **daily freshness cadence** (middle).
 
 ## 4. The knowledge basket (employer / observer lens)
 Each field answers *"is this designed, deep work — or an afternoon's agentic output?"*
@@ -91,12 +103,17 @@ leak gate's `forbidStrings`. The basket keeps the rest privately.
 ## 6. Cadence & governance
 - **Daily 08:00 ET.** GitHub Actions cron is UTC and ignores DST → schedule **12:00 and 13:00 UTC** and
   let the job no-op the wrong one (so 08:00 ET holds across daylight saving).
-- **Auto-publish, policy-gated (refines ADR-0008).** A **feed-only** diff that passes every gate
-  (no-op-suppressed · provenance · leak · clean-source `kbDirty:false`) **auto-merges and deploys** — the
-  gate is **policy, not a person clicking merge**. **Everything else** — code, structure, new claims —
-  stays **human-gated** (operator merge).
-- **Honesty consequence:** the colophon copy must say this truthfully (feed-only auto-publish; all else
-  reviewed). Tracked as S5 in the design brief.
+- **Current delivery contract.** A **feed-only** diff that passes the meta-inventory generation gates and
+  website provenance/leak gates is delivered by PR. The helper opens a draft PR by default once the
+  website target, feed destination, and `WEBSITE_PR_TOKEN` are configured. The operator reviews and
+  merges; on this repo, merge or push to `main` deploys.
+- **Target evolution, not current behavior.** A feed-only, gate-passing diff may later become
+  policy-auto-published. That requires an explicit operator decision and website-side policy gate wiring.
+  **Everything else** — code, structure, new claims, design-system changes, workflow edits — stays
+  **human-gated**.
+- **Honesty consequence:** public copy must state the current contract truthfully. Today that means
+  PR-delivered, operator-merged feed updates; future auto-publish wording only lands when that policy is
+  actually approved and wired.
 
 ## 7. Presentation (site)
 Direction is research-settled (full rationale + sources in the design brief). The serious-not-showy
@@ -117,7 +134,8 @@ stylesheet, all current gates apply.
 - **P1:** `scope{}` metrics (git-derived).
 - **P2:** `activity[]` → per-project + portfolio timelines.
 - **P3:** `decisions[]` (ADR/spec extraction) — highest signal.
-- **P4:** `repository_dispatch` trigger + 08:00 ET cadence wired in CI.
+- **P4:** `repository_dispatch` trigger + 08:00 ET cadence wired in CI; optional feed-only
+  policy-auto-publish only after explicit approval.
 
 ## 9. Agent roles
 - **Coding agent (Claude Code)** — this spec, the build tooling, the implementation. **Authoritative** —
@@ -128,6 +146,7 @@ stylesheet, all current gates apply.
 ## 10. References
 - Design handoff: `docs/project-intelligence-design-brief-2026-06-16.md`
 - Decision record: `docs/adr/0009-project-intelligence-feed.md`
+- Repo boundary contract: `docs/meta-inventory-website-contract.md`
 - Pipeline + colophon: `docs/adr/0008-colophon-publishing-system.md`, `colophon.html`
 - Tokens + component map: `design/DESIGN_SPEC.md` · patterns + AA contract: `docs/design-system.md`
 - The live feed: `public/data/projects.json` · provenance/leak gate: `scripts/check-source-provenance.mjs`

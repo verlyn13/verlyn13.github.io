@@ -33,12 +33,22 @@ a presentation refresh.
 
 ## Content source of truth
 
-This repo is the *presentation layer*. Source content lives in
-`../new-direction-2026/career-transition-ready/`, with per-page
-provenance comments at the top of each HTML file recording which
-source document and which git SHA was used to produce the current
-page. Use `/sync-check` (from the new-direction-2026 repo's
-`.claude/skills/`) to surface drift between the two sides.
+This repo is the *presentation layer*, not the upstream project-state store.
+There are two upstream lanes:
+
+- Narrative source documents live in
+  `../new-direction-2026/career-transition-ready/`, with per-page provenance
+  comments at the top of each HTML file recording which source document and
+  which git SHA produced the current page. Use `/sync-check` from that repo to
+  surface drift.
+- Project-intelligence state lives in `../meta-inventory`. It generates
+  `exports/projects.json`; this site consumes the approved copy at
+  `public/data/projects.json`, which deploys as `/data/projects.json`.
+
+The owner boundary for the feed lane is documented in
+`docs/meta-inventory-website-contract.md`. In short, `meta-inventory` owns the
+private baskets, schema, generation, freshness, and delivery proposal; this site
+owns public rendering, fallback behavior, provenance/leak CI, and deployment.
 
 ## Local development
 
