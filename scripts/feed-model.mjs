@@ -26,9 +26,10 @@ const UNKNOWN_KIND = { key: 'other', label: 'Other', order: KINDS.length }
 // Feed slug -> detail-page basename, where they differ (most match 1:1).
 const PAGE_ALIASES = { 'budget-triage-fintech': 'budget-triage' }
 
-// Editorial: ids of the curated front tier. Empty until the operator/design picks them;
-// `promoted` (tier.portfolioVisibility) is exposed separately as a feed fact, not curation.
-const FEATURED_IDS = []
+// Editorial: the curated front tier (design spec §3.4 seed) — flagship first, then supporting.
+// `promoted` (tier.portfolioVisibility) stays a separate feed fact, not curation.
+const FLAGSHIP_ID = 'budget-triage-fintech'
+const FEATURED_IDS = ['budget-triage-fintech', 'dicee', 'host-capability-substrate']
 
 export function readFeed(feedPath = FEED_PATH) {
   return JSON.parse(readFileSync(path.join(root, feedPath), 'utf8'))
@@ -74,6 +75,7 @@ export function toEntry(project) {
     year: yearOf(lastActive),
     visibility: project.tier?.portfolioVisibility ?? null,
     promoted: project.tier?.portfolioVisibility === 'public-promoted',
+    flagship: project.id === FLAGSHIP_ID,
     scope: project.scope ?? null,
     decisions: project.decisions ?? null,
     activity: project.activity ?? null,

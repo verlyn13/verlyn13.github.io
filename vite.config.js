@@ -29,6 +29,7 @@ export default defineConfig({
         colophon: resolve(__dirname, 'colophon.html'),
 
         // Projects
+        'projects-index': resolve(__dirname, 'projects/index.html'),
         'projects-dicee': resolve(__dirname, 'projects/dicee.html'),
         'projects-maat': resolve(__dirname, 'projects/maat.html'),
         'projects-the-nash-group': resolve(__dirname, 'projects/the-nash-group.html'),

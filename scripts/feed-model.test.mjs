@@ -69,3 +69,10 @@ test('computePortfolio is pure over its entries', () => {
   const b = computePortfolio(model.projects)
   assert.deepEqual(a, b)
 })
+
+test('curated front tier: flagship first, then supporting', () => {
+  const ids = model.featured.map((p) => p.id)
+  assert.deepEqual(ids, ['budget-triage-fintech', 'dicee', 'host-capability-substrate'])
+  assert.equal(model.featured[0].flagship, true)
+  assert.equal(model.featured[1].flagship, false)
+})
