@@ -3,7 +3,7 @@ title: Design Brief — Project-Intelligence presentation (body-of-work + per-pr
 category: design
 component: project-intelligence-feed
 status: handoff
-version: 1.0.0
+version: 1.1.0
 last_updated: 2026-06-16
 tags: [design-brief, handoff, project-intelligence, breadth, body-of-work, activity-timeline]
 priority: high
@@ -12,12 +12,15 @@ audience: Claude Design agent
 
 # Design Brief — Project-Intelligence presentation
 
-**For:** the Claude Design agent (specialized design pass; works in the design tool / UI kit).
+**For:** the Claude Design agent — a separate, specialized design pass.
 **From:** the code agent in `verlyn13.github.io`.
 **Date:** 2026-06-16.
 **Origin:** the project-intelligence reframe — *the feed is the instrument; the projects are the exhibit.*
 **Read with:** `docs/project-intelligence.md` (system spec + data contract), `design/DESIGN_SPEC.md`
-(tokens + component map), `docs/design-system.md` (patterns + AA contract).
+(tokens + component map), `docs/design-system.md` (patterns + AA contract), and the **live site**
+(https://jvjohnson.dev) + screenshots. Our system is vanilla HTML/CSS + DTCG tokens — there is **no
+synced component kit** (`/design-sync` targets React libraries); design against these references, with
+`assets/jeffrey.css` as the implementation truth.
 **Authority:** code is the source of truth (ADR-0005). Your output is a **design proposal** the code
 agent translates to semantic tokens + vanilla HTML/CSS — not production code, and not authoritative.
 
@@ -132,8 +135,8 @@ For each surface (S1–S3 at minimum):
    AA-checked values, so the code agent + operator can approve before they enter the system.
 5. **Rationale** tied to the settled direction (so we can confirm it stayed serious-not-showy).
 
-Hand back as a markdown spec (or UI-kit reference). **No production HTML/CSS needed** — tokens +
-structure + states is enough for the code agent to implement.
+Hand back as a **markdown spec**. **No production HTML/CSS needed** — tokens + structure + states is
+enough for the code agent to implement.
 
 ## References
 - System spec + schema + cadence: `docs/project-intelligence.md`
