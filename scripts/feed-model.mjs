@@ -83,34 +83,50 @@ export function toEntry(project) {
   }
 }
 
-function countBy(entries, key) {
-  const counts = new Map()
-  for (const entry of entries) {
-    for (const value of entry[key] ?? []) counts.set(value, (counts.get(value) ?? 0) + 1)
-  }
-  return [...counts.entries()]
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
-}
+const distinctSorted = (entries, key) =>
+  [...new Set(entries.flatMap((e) => e[key] ?? []))].sort((a, b) => a.localeCompare(b))
 
-export function computePortfolio(entries) {
-  const years = entries.map((e) => e.year).filter((y) => typeof y === 'number')
+// Honest "deployed" count: a deployed-system kind with a live URL (relay 2026-06-17 §2).
+const localDeployed = (entries) =>
+  entries.filter((e) => e.kind.key === 'deployed-system' && e.live).length
+
+// Portfolio rollup: adopt the feed's authoritative top-level `portfolio{}` when present,
+// else derive from projects[] (contract / relay 2026-06-17 §2 — "stop deriving facts the
+// feed can source"). Absent-tolerant: a per-surface adoption, not a flip. `kinds` stays
+// local — the feed has no grouping equivalent.
+export function computePortfolio(entries, feed) {
   const kinds = KINDS.map(({ key, label }) => ({
     key,
     label,
     count: entries.filter((e) => e.kind.key === key).length,
   })).filter((k) => k.count > 0)
+
+  const fp = feed?.portfolio
+  if (fp) {
+    return {
+      source: 'feed',
+      projectCount: fp.projectCount ?? entries.length,
+      domains: fp.domains ?? distinctSorted(entries, 'domains'),
+      languages: fp.languages ?? distinctSorted(entries, 'tech'),
+      deployedCount: fp.deployedCount ?? localDeployed(entries),
+      firstActive: fp.firstActive ?? null,
+      lastActive: fp.lastActive ?? null,
+      recurringMethods: fp.recurringMethods ?? [],
+      kinds,
+    }
+  }
   return {
+    source: 'local',
     projectCount: entries.length,
-    domains: countBy(entries, 'domains'),
-    languages: countBy(entries, 'tech'),
-    liveCount: entries.filter((e) => e.live).length,
+    domains: distinctSorted(entries, 'domains'),
+    languages: distinctSorted(entries, 'tech'),
+    deployedCount: localDeployed(entries),
+    // asOf-only dates are too narrow for an honest span; left null until the feed sources
+    // firstActive/lastActive from KB timeframe (relay §2 — the real span starts 2009).
+    firstActive: null,
+    lastActive: null,
+    recurringMethods: [],
     kinds,
-    // Span is bounded by available `asOf` dates (many academic entries are unknown);
-    // the v1 feed's scope.activeSpan will widen this. Honest to v0 today.
-    firstActive: years.length ? Math.min(...years) : null,
-    lastActive: years.length ? Math.max(...years) : null,
-    recurringMethods: [], // filled when the feed carries method{} (P3)
   }
 }
 
@@ -144,7 +160,7 @@ export function buildViewModel(feed = readFeed()) {
       stale: feed.provenance?.stale ?? null,
       maxUpdatedAt: feed.provenance?.maxUpdatedAt ?? null,
     },
-    portfolio: computePortfolio(entries),
+    portfolio: computePortfolio(entries, feed),
     groups: groupByKind(entries),
     featured: FEATURED_IDS.map((id) => byId.get(id)).filter(Boolean),
     projects: entries,
@@ -163,9 +179,9 @@ function main() {
   const { portfolio, groups } = model
   console.log(`project-intelligence view model — ${portfolio.projectCount} projects`)
   console.log(
-    `  span ${portfolio.firstActive ?? '?'}–${portfolio.lastActive ?? '?'} · ` +
-      `${portfolio.domains.length} domains · ${portfolio.languages.length} languages · ` +
-      `${portfolio.liveCount} live`,
+    `  ${portfolio.source} rollup · ${portfolio.domains.length} domains · ` +
+      `${portfolio.languages.length} languages · ${portfolio.deployedCount} deployed` +
+      `${portfolio.firstActive ? ` · since ${portfolio.firstActive}` : ''}`,
   )
   for (const group of groups) {
     console.log(`\n  ${group.label} (${group.projects.length})`)

@@ -85,21 +85,31 @@ ${rows}
       </section>`
 }
 
+// Feed recurringMethods are slug labels (e.g. "governance-driven-development"); humanize for display.
+const humanize = (s) => s.replace(/-/g, ' ')
+
 function overviewBand(portfolio) {
   const dCount = portfolio.domains.length
   const domains = dCount >= 20 ? `${Math.floor(dCount / 10) * 10}+ domains` : `${dCount} domains`
-  const live =
-    portfolio.liveCount === 1
-      ? ' — one of them deployed and live'
-      : portfolio.liveCount > 1
-        ? ` — ${portfolio.liveCount} of them deployed and live`
-        : ''
+  const tail = []
+  if (portfolio.firstActive) {
+    tail.push(`built continuously since ${String(portfolio.firstActive).slice(0, 4)}`)
+  }
+  if (portfolio.deployedCount === 1) tail.push('one of them deployed and live')
+  else if (portfolio.deployedCount > 1) {
+    tail.push(`${portfolio.deployedCount} of them deployed and live`)
+  }
+  const clause = tail.length ? ` — ${tail.join(', ')}` : ''
+  // Methods line lights up only when the feed provides portfolio.recurringMethods (v1).
+  const methods = portfolio.recurringMethods.length
+    ? `\n        <p class="portfolio-overview__methods"><span class="portfolio-overview__methods-label">Recurring methods</span>${esc(portfolio.recurringMethods.map(humanize).join(' · '))}</p>`
+    : ''
   return `      <div class="portfolio-overview">
         <p class="portfolio-overview__lead">
           <span class="portfolio-overview__metric">${portfolio.projectCount} projects</span> across
           <span class="portfolio-overview__metric">${domains}</span> in
-          <span class="portfolio-overview__metric">${portfolio.languages.length} languages</span>${live}.
-        </p>
+          <span class="portfolio-overview__metric">${portfolio.languages.length} languages</span>${clause}.
+        </p>${methods}
       </div>`
 }
 

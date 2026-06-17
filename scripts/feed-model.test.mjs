@@ -40,11 +40,33 @@ test('detail href resolves to existing pages only (incl. the alias)', () => {
   assert.equal(byId.get('academic-career-auc').href, null)
 })
 
-test('portfolio metrics are populated', () => {
+test('portfolio rollup (local fallback) is populated and honest', () => {
+  assert.equal(model.portfolio.source, 'local')
   assert.ok(model.portfolio.domains.length > 0)
   assert.ok(model.portfolio.languages.length > 0)
-  assert.ok(model.portfolio.liveCount >= 1) // dicee is live
-  assert.ok(model.portfolio.firstActive && model.portfolio.lastActive)
+  assert.equal(model.portfolio.deployedCount, 1) // dicee: deployed-system + live
+  assert.equal(model.portfolio.firstActive, null) // asOf-only span left null until the feed sources it
+})
+
+test('portfolio rollup adopts feed.portfolio when present', () => {
+  const withPortfolio = {
+    ...feed,
+    portfolio: {
+      projectCount: 14,
+      domains: ['agents', 'web'],
+      languages: ['Python', 'TypeScript'],
+      deployedCount: 1,
+      firstActive: '2009-09',
+      lastActive: '2026-06-11T23:12:51Z',
+      recurringMethods: ['governance-driven-development', 'agentic-dev-evolution'],
+    },
+  }
+  const p = buildViewModel(withPortfolio).portfolio
+  assert.equal(p.source, 'feed')
+  assert.equal(p.firstActive, '2009-09')
+  assert.deepEqual(p.recurringMethods, ['governance-driven-development', 'agentic-dev-evolution'])
+  assert.equal(p.deployedCount, 1)
+  assert.ok(p.kinds.length > 0) // kinds stay locally derived
 })
 
 test("'unknown' asOf yields a null year, not a crash", () => {

@@ -2206,6 +2206,23 @@ th {
   white-space: nowrap;
 }
 
+/* Recurring-methods line (lights up when the feed provides portfolio.recurringMethods). */
+.portfolio-overview__methods {
+  margin: var(--space-2) 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.portfolio-overview__methods-label {
+  margin-right: var(--space-2);
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
 /* S2 — Body-of-work index + the design-structure row. Grouping proves breadth;
    the uniform row skeleton across many entries is the proof of method. */
 .dswork {
