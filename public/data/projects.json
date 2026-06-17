@@ -12,7 +12,7 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -54,7 +54,7 @@
         "security"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -98,7 +98,7 @@
         "infrastructure-as-code"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -142,7 +142,7 @@
         "gaming"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -181,7 +181,7 @@
         "mathematics"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -223,7 +223,7 @@
         "mcp"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -267,7 +267,7 @@
         "documentation"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -308,7 +308,7 @@
         "ml"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -351,7 +351,7 @@
         "instructional-design"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -390,7 +390,7 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -429,7 +429,7 @@
         "health-sciences"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -468,7 +468,7 @@
         "vision"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -508,7 +508,7 @@
         "cli"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
@@ -550,7 +550,7 @@
         "web"
       ],
       "freshness": {
-        "ageDays": 0,
+        "ageDays": 1,
         "maxUpdatedAt": "2026-06-15T20:09:48Z",
         "source": "last_commit_date",
         "stale": false
