@@ -13,6 +13,7 @@
 index.html              # Portfolio home
 cv.html                 # Curriculum vitae
 contact.html            # Contact page
+colophon.html           # How this portfolio is published (publishing-system page)
 projects/               # Project detail pages (dicee, maat, scopecam, budget-triage)
 experience/             # Experience section (braid timeline + era narratives)
 research/               # Research & publications
@@ -154,4 +155,8 @@ mise run clean               # Remove dist/ and node_modules/
 - **CI/CD**: `.github/workflows/deploy.yml`
 - **Lint/format rules**: `biome.json`
 - **Project pages**: `projects/*.html`
+- **Project-intelligence feed**: `docs/project-intelligence.md` (system) · `docs/meta-inventory-website-contract.md`
+  (cross-repo owner boundary) · `docs/adr/0008-*` (colophon) + `docs/adr/0009-*` (feed) · design brief/spec
+  `docs/project-intelligence-design-*-2026-06-16.md` · code `scripts/feed-model.mjs`, `build-feed.mjs`,
+  `scripts/design-structure.mjs`; `projects/index.html` is a gitignored build artifact
 - **Experiments**: `experiments/` (not deployed, safe to iterate)

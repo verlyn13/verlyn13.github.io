@@ -5,8 +5,10 @@
   "description": "Research portfolio - Dr. Jeffrey Johnson",
   "scripts": {
     "dev": "vite",
+    "predev": "npm run tokens && npm run feed",
     "tokens": "node build-tokens.mjs",
-    "prebuild": "npm run tokens",
+    "feed": "node build-feed.mjs",
+    "prebuild": "npm run tokens && npm run feed",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "biome check .",
@@ -15,6 +17,7 @@
     "format:check": "biome format .",
     "conformance": "node scripts/check-no-raw-values.mjs",
     "tokens:check": "node scripts/check-tokens-fresh.mjs",
+    "test": "node --test scripts/feed-model.test.mjs",
     "clean": "rm -rf dist node_modules",
     "deploy": "npm run lint && npm run build && npm run preview"
   },

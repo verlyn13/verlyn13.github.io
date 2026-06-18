@@ -9,6 +9,9 @@ build/
 .next/
 out/
 
+# Generated at build time from the feed (npm run feed) — see build-feed.mjs
+projects/index.html
+
 # Environment (secrets)
 .env
 .env.*

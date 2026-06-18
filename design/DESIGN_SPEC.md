@@ -6,7 +6,7 @@ build: build-tokens.mjs # `npm run tokens`
 layers: [tokens, base, components, patterns, pages] # see layers.json
 themes: [light] # light-only today (docs/adr/0004-theming.md)
 human_reference: docs/design-system.md
-last_updated: 2026-06-05
+last_updated: 2026-06-17
 ---
 
 # DESIGN_SPEC — jvjohnson.dev
@@ -48,6 +48,26 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
   `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `ink`, `shadow-soft`
 - **project conversion footer** (`.project-links-footer` + `.project-cta-actions`: one filled
   `.primary-link` "Email me about this" + secondary `.section-link`s) → `accent`, `on-accent`, `ink`, `muted`, `border`
+- **publishing pipeline** (`.pipeline` → `.pipeline-lane` / `.pipeline-lane__label` / `.pipeline-track` /
+  `.pipeline-step[--gate|--live]`; the colophon's 3-lane swimlane, human-merge step in `--accent`, live
+  endpoint in `--accent-2`/`--green-bg` with `--ink` text) →
+  `surface`, `border`, `border-faint`, `muted`, `accent`, `accent-subtle`, `accent-dark`, `accent-2`, `green-bg`, `ink`
+- **evidence blocks** (`.evidence-grid` + `.evidence-card` `__label`/`__value`/`__note`; `.guarantee-list`
+  checklist) → `surface`, `border`, `shadow-hard`, `muted`, `ink`, `ok`
+- **portfolio overview** (S1: `.portfolio-overview` `__lead`/`__metric`/`__methods`/`__methods-label`; the
+  body-of-work band — a definitional sentence, not a stats hero) → `ink`, `muted`, `border`
+- **body-of-work index** (S2: `.dswork` `__group`/`__group-title`/`__count`, `.ds-list`, and the reusable
+  `.ds-row` `__head`/`__title`[`--static`]/`__thesis`/`__live`/`__meta`/`__facet`[`--tech`]; one
+  `.ds-row--flagship` + `.ds-row__flagship-tag`) →
+  `accent`, `accent-subtle`, `on-accent`, `ink`, `muted`, `surface`, `border`, `border-faint`, `radius-sm`, `mono`
+- **per-project design structure** (S3: `.project-design-structure`; `.decision-list`/`.decision`
+  `__title`/`__summary`/`__source`; `.activity-rail` `__plot`/`__axis`/`__legend`/`__swatch` with
+  `.activity-bar`[`--l1..l5`|`--release`]; `.project-provenance`; reuses `.evidence-grid`) →
+  `ink`, `muted`, `border-hairline`, `accent-light`, `accent-2`, `mono`
+
+Pages: `colophon.html` (publishing-system) and the feed-driven **body of work** at `/projects/`
+(`projects/index.html`, a build artifact) are the project-intelligence surfaces; the S3 panel is spliced
+into `projects/*.html` at build time (ADR-0008, ADR-0009, `docs/project-intelligence.md`).
 
 ## Hard rules
 - Components reference **semantic** tokens only — never primitives, never raw color literals.

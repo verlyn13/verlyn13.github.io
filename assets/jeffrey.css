@@ -2015,6 +2015,497 @@ th {
 }
 
 /* ------------------------------------------------------------
+   Colophon — the publishing-system page (pipeline + evidence + guarantees)
+   ------------------------------------------------------------ */
+.colophon-page {
+  padding: var(--space-4) 0 var(--space-5);
+}
+
+.colophon-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 68ch;
+  margin-bottom: var(--space-5);
+}
+
+.colophon-block {
+  margin-block: var(--space-5);
+}
+
+/* Publishing pipeline: a 3-lane swimlane (source of truth → automation → public site),
+   stacked vertically so each lane reads left-to-right within the prose measure. */
+.pipeline {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.pipeline-lane {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3) 0;
+}
+
+.pipeline-lane + .pipeline-lane {
+  border-top: 1px solid var(--border-faint);
+}
+
+.pipeline-lane__label {
+  flex: 0 0 9rem;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.pipeline-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pipeline-step {
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.85rem;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
+
+.pipeline-step + .pipeline-step::before {
+  content: "→";
+  margin-right: var(--space-2);
+  color: var(--muted);
+}
+
+/* The single human decision point — the governance pivot. Reserve --accent for it. */
+.pipeline-step--gate {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+/* The live, public endpoint — green "ship it" signal via border + tint; ink text keeps AA contrast. */
+.pipeline-step--live {
+  border-color: var(--accent-2);
+  background: var(--green-bg);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Evidence blocks: compact, factual cards describing the live feed. */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .evidence-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.evidence-card {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+}
+
+.evidence-card__label {
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: var(--space-1);
+}
+
+.evidence-card__value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-1);
+}
+
+.evidence-card__note {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Guarantees: a verified-checklist variant. */
+.guarantee-list {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.guarantee-list li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.7rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.guarantee-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   Project-intelligence — body-of-work index (S1 overview + S2 index)
+   Folded from the design handback (docs/project-intelligence-design-spec-2026-06-16.md);
+   token-only, --accent reserved for the single flagship row. S3 (per-project design
+   structure) lands with feed v1.
+   ------------------------------------------------------------ */
+
+/* S1 — Portfolio overview band: a definitional line, not a stats hero. */
+.portfolio-overview {
+  max-width: var(--measure);
+  margin: var(--space-4) auto var(--space-5);
+  padding: var(--space-4) 0;
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+
+.portfolio-overview__lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Counts read as data, not decoration: same ink, heavier weight, tabular figures. */
+.portfolio-overview__metric {
+  font-weight: 650;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Recurring-methods line (lights up when the feed provides portfolio.recurringMethods). */
+.portfolio-overview__methods {
+  margin: var(--space-2) 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.portfolio-overview__methods-label {
+  margin-right: var(--space-2);
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+/* S2 — Body-of-work index + the design-structure row. Grouping proves breadth;
+   the uniform row skeleton across many entries is the proof of method. */
+.dswork {
+  max-width: var(--measure);
+}
+
+.dswork__group {
+  margin-block: var(--space-5);
+}
+
+.dswork__group-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.dswork__count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* The reusable design-structure row. One project = one entry. */
+.ds-row {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.ds-row:last-child {
+  border-bottom: none;
+}
+
+.ds-row__head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+}
+
+/* Title links to the detail page; padded for a tall hit target. Reuses base `a`. */
+.ds-row__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: var(--space-1) 0;
+}
+
+/* Entries without a detail page render an ink, non-link title (no false affordance). */
+.ds-row__title--static {
+  color: var(--ink);
+}
+
+.ds-row__thesis {
+  flex: 1 1 32ch;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.ds-row__live {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: var(--space-1) 0;
+}
+
+.ds-row__live::after {
+  content: " ↗";
+}
+
+/* Inline metadata: domain(s) · tech · status · year. Printed labels, not controls. */
+.ds-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  margin-top: var(--space-1);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.ds-row__facet + .ds-row__facet::before {
+  content: "·";
+  margin-right: var(--space-2);
+  color: var(--muted);
+}
+
+.ds-row__facet--tech {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+/* Curated front tier; the single flagship — and only it — carries the reserved accent. */
+.dswork__primary .ds-row--flagship {
+  border-bottom: none;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.ds-row__flagship-tag {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .portfolio-overview {
+    margin-top: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .ds-row__head {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ds-row__live {
+    order: 3;
+  }
+}
+
+/* ------------------------------------------------------------
+   Project-intelligence — per-project design structure (S3)
+   Folded from the design handback; token-only. Scope reuses .evidence-grid (colophon).
+   Wired in now but absent-tolerant: renders only when the feed carries scope/decisions/
+   activity (v1). The activity rail buckets magnitude into height-level classes (no inline styles).
+   ------------------------------------------------------------ */
+.project-design-structure {
+  margin-bottom: var(--space-5);
+}
+
+/* Key decisions — the differentiator. Hairline rule, NOT accent (accent stays reserved). */
+.decision-list {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.decision {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--border-hairline);
+}
+
+.decision__title {
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 var(--space-1);
+}
+
+.decision__summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+.decision__source {
+  display: inline-block;
+  margin-top: var(--space-1);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Activity rail — the experience braid idiom at single-project scale; build-time, zero JS. */
+.activity-rail {
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.activity-rail__plot {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 2px;
+  height: 64px;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+/* Commit magnitude as a soft tint; bucketed into 5 height levels (no inline styles). */
+.activity-bar {
+  background: var(--accent-light);
+  border-radius: 2px 2px 0 0;
+  min-height: 3px;
+}
+
+.activity-bar--l1 {
+  height: 20%;
+}
+
+.activity-bar--l2 {
+  height: 40%;
+}
+
+.activity-bar--l3 {
+  height: 60%;
+}
+
+.activity-bar--l4 {
+  height: 80%;
+}
+
+.activity-bar--l5 {
+  height: 100%;
+}
+
+/* Release month — the green "ship it" signal (a real dimension, deliberately encoded). */
+.activity-bar--release {
+  background: var(--accent-2);
+}
+
+.activity-rail__axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.activity-rail__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-2);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.activity-rail__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.activity-rail__swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex: none;
+}
+
+.activity-rail__swatch--commit {
+  background: var(--accent-light);
+}
+
+.activity-rail__swatch--release {
+  background: var(--accent-2);
+}
+
+/* Quiet provenance line linking the colophon. */
+.project-provenance {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: var(--space-3);
+}
+
+/* ------------------------------------------------------------
    Footer
    ------------------------------------------------------------ */
 .site-footer {

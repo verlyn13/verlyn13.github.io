@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colophon - Jeffrey Johnson</title>
+    <meta name="description" content="How this portfolio is published: the project feed is generated from a controlled source, validated for provenance and leaks, and deployed only after human review.">
+    <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/jeffrey.css">
+    <script type="module" src="/assets/menu.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="nav-left">Jeffrey Johnson</a>
+            <ul class="nav-links">
+                <li><a href="/#approach">Approach</a></li>
+                <li><a href="/projects/">Work</a></li>
+                <li><a href="/experience/">Experience</a></li>
+                <li><a href="/research/">Research</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="back-nav">
+            <a href="/">← Back to Portfolio</a>
+        </div>
+
+        <article class="colophon-page">
+            <div class="container">
+                <header class="page-header">
+                    <h1>Colophon</h1>
+                    <p class="page-subtitle">How this portfolio is published</p>
+                </header>
+
+                <p class="colophon-lead">The portfolio's project feed is machine-generated, provenance-checked, and approval-gated. What was once a hand-maintained surface is now a governed feed: source data is validated, transformed into a public JSON feed, checked for provenance and accidental disclosure, delivered only when its content changes, and published to this site only after human review.</p>
+
+                <section class="colophon-block">
+                    <h2>The publishing pipeline</h2>
+                    <p>A scheduled job turns a controlled inventory into the feed and proposes the update. The automation prepares the change; the operator decides what deploys.</p>
+
+                    <figure class="pipeline">
+                        <figcaption class="sr-only">The publishing pipeline runs in three stages. Source of truth: a controlled inventory is validated. Automation: a feed is generated, an unchanged feed is suppressed by a no-op diff gate, and a draft change is opened carrying provenance and leak checks. Public site: the operator merges the change, which deploys to the live site.</figcaption>
+                        <div class="pipeline-lane">
+                            <span class="pipeline-lane__label">Source of truth</span>
+                            <ol class="pipeline-track">
+                                <li class="pipeline-step">meta-inventory</li>
+                                <li class="pipeline-step">validate</li>
+                            </ol>
+                        </div>
+                        <div class="pipeline-lane">
+                            <span class="pipeline-lane__label">Automation</span>
+                            <ol class="pipeline-track">
+                                <li class="pipeline-step">generate feed</li>
+                                <li class="pipeline-step">no-op diff gate</li>
+                                <li class="pipeline-step">draft change + checks</li>
+                            </ol>
+                        </div>
+                        <div class="pipeline-lane">
+                            <span class="pipeline-lane__label">Public site</span>
+                            <ol class="pipeline-track">
+                                <li class="pipeline-step pipeline-step--gate">human merge</li>
+                                <li class="pipeline-step pipeline-step--live">jvjohnson.dev</li>
+                            </ol>
+                        </div>
+                    </figure>
+
+                    <p>Each run regenerates the feed from a pinned source revision, compares it against what is already published, and opens a draft change only when the content actually differs. That draft carries a provenance and leak check; merging it is a deliberate, manual step.</p>
+                </section>
+
+                <section class="colophon-block">
+                    <h2>What the feed carries</h2>
+                    <p>The feed is a public artifact with a stable shape. Each record states what it is, how current it is, and where it came from.</p>
+
+                    <ul class="evidence-grid">
+                        <li class="evidence-card">
+                            <p class="evidence-card__label">Current live feed</p>
+                            <p class="evidence-card__value">Public JSON feed</p>
+                            <p class="evidence-card__note">Published at <a href="/data/projects.json"><code>/data/projects.json</code></a> with a versioned schema.</p>
+                        </li>
+                        <li class="evidence-card">
+                            <p class="evidence-card__label">Freshness</p>
+                            <p class="evidence-card__value">Scheduled cadence</p>
+                            <p class="evidence-card__note">Refreshed on a schedule with content-change detection; every record carries an <code>asOf</code> date.</p>
+                        </li>
+                        <li class="evidence-card">
+                            <p class="evidence-card__label">Deployment gate</p>
+                            <p class="evidence-card__value">Merge to deploy</p>
+                            <p class="evidence-card__note">Automation opens a draft change; merging it to the live site is a manual step.</p>
+                        </li>
+                        <li class="evidence-card">
+                            <p class="evidence-card__label">No-op behavior</p>
+                            <p class="evidence-card__value">Suppressed when unchanged</p>
+                            <p class="evidence-card__note">A refresh whose content is identical opens no change at all.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="colophon-block">
+                    <h2>Guarantees</h2>
+                    <ul class="guarantee-list">
+                        <li>The feed records whether its source was clean (<code>kbDirty: false</code>); a build from an unclean source is blocked.</li>
+                        <li>Every record is provenance-stamped with the exact source revision and the time it was generated.</li>
+                        <li>A provenance and leak check runs on every change before it can merge.</li>
+                        <li>Nothing reaches the live site without human review — the merge is the gate.</li>
+                    </ul>
+                </section>
+
+                <section class="colophon-block">
+                    <h2>The feed is public</h2>
+                    <p>Freshness here is a scheduled cadence with content-change detection — not a real-time stream. Because the feed is public, the claims above are checkable: read the raw JSON at <a href="/data/projects.json"><code>/data/projects.json</code></a>.</p>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="footer-cta">Open to research collaboration and roles where mathematical depth meets agentic-systems engineering. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="/">← Back to portfolio</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+            <p>&copy; 2026 Jeffrey Johnson &middot; Homer, Alaska</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Patterns (one per line) lychee excludes from the offline link check (.github/workflows/markdown.yml).
+#
+# Vite copies public/ to the deploy root, so public/data/projects.json is served at the
+# deployed URL /data/projects.json (linked from colophon.html). That URL is valid in
+# production, but lychee runs offline with --root-dir at the repo root, where the file is
+# under public/ — so it cannot resolve it. Exclude that one public-served path.
+data/projects\.json
