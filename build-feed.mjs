@@ -133,7 +133,7 @@ function page(model) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Body of work - Jeffrey Johnson</title>
+    <title>Body of work | Jeffrey Johnson</title>
     <meta name="description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
