@@ -17,6 +17,7 @@
     "format:check": "biome format .",
     "conformance": "node scripts/check-no-raw-values.mjs",
     "tokens:check": "node scripts/check-tokens-fresh.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
     "test": "node --test scripts/feed-model.test.mjs",
     "clean": "rm -rf dist node_modules",
     "deploy": "npm run lint && npm run build && npm run preview"
