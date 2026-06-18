@@ -501,12 +501,12 @@ em {
 
 .project-status.live {
   background: var(--ok-bg);
-  color: var(--ok);
+  color: var(--ok-ink);
 }
 
 .project-status.development {
   background: var(--accent-light);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .project-status.mvp {
@@ -516,7 +516,7 @@ em {
 
 .project-status.production {
   background: var(--green-bg);
-  color: var(--accent-2);
+  color: var(--green-ink);
 }
 
 .project-description {

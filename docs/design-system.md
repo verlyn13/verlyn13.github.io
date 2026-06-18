@@ -3,7 +3,7 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 2.4.0
+version: 2.5.0
 last_updated: 2026-06-17
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
@@ -300,6 +300,13 @@ entries proves method; the per-project page (and the S3 panel) carries depth on 
   spec §7.1): `.ds-row__title` `--accent`-on-`--paper` **≈4.8**, flagship title on `--accent-subtle`
   **≈4.6**, decision/scope `--ink`/`--muted` **14.2 / 5.1**; the `.activity-bar` tint is decorative — the
   facts live in the `--mono` axis + the figure's `aria-label`.
+- **Status pills (`.project-status`, ~12px/600 → normal-text AA 4.5:1, not the 3:1 large-text
+  floor):** the three previously-failing pills were repointed off shared semantic tokens onto
+  pill-scoped ink tokens — lightness-only darkenings of each status hue, so `--accent` / `--ok` /
+  `--accent-2` keep their site-wide roles. Measured: live `--ok-ink` on `--ok-bg` **4.76**,
+  development `--accent-ink` on `--accent-light` **4.71**, production `--green-ink` on `--green-bg`
+  **4.79**, mvp `--amber-ink` on `--amber-bg` **5.16** (already passing). Guarded by
+  `npm run check:contrast`.
 - **Targets:** interactive controls ≥ **44px** (`min-height: 44px` on pills/buttons).
 - **Keyboard/SR:** `.skip-link` first in `<body>`; visible `:focus-visible` ring (3px `--accent` @ 0.35);
   `aria-label` on icon/external links; continuous heading hierarchy.
@@ -336,6 +343,13 @@ with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
 - **✅ Raw colors fully tokenized (v2.0).** The 64 `hsl()` + 2 print `#000` that lived in component
   rules are now semantic tokens (`surface*`, `ring`, `inset-warm`/`-cool`, `heading*`, `shadow-*`,
   status colors, `ink-print`). The `no-raw-values` gate keeps it that way.
+- **✅ Status-pill ink tokens (AA contract).** All four `.project-status` pills must stay
+  **≥ 4.5:1** — at ~12px/600 they sit below the large-text threshold, so the normal-text minimum
+  applies. The live / development / production pills now use pill-scoped `--ok-ink` /
+  `--accent-ink` / `--green-ink` instead of the shared `--ok` / `--accent` / `--accent-2` semantic
+  tokens (those kept their site-wide link/action/accent roles); `--amber-ink` already passed.
+  `npm run check:contrast` resolves whatever tokens the `.project-status` rules point at and is the
+  regression guard (wired into `npm run conformance`).
 - **✅ Resolved — `.approach-grid` overflow < ~410px:** the grid is now `1fr` (mobile) /
   `repeat(2, 1fr)` (≥769px), so it no longer forces 320px cards (ADR-0007).
 - **Note — token values are CSS `hsl()` strings,** not DTCG color objects/hex. Chosen for byte-exact
@@ -343,8 +357,9 @@ with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
   DTCG importers is a documented future option (`docs/adr/0001-dtcg-tokens.md`).
 - **Intentional — hero `h1` split** (§5.1): the name is a styled-down kicker; noted so it isn't "fixed".
 - **Intentional — `.pipeline-step--live` ≠ `.project-status.production`:** both use the `--green-bg` tint,
-  but the live pipeline chip uses `--ink` text (≈11:1, AA) rather than `--accent-2` text (≈3.5:1), because
-  the chip carries body-size text. Noted so the divergence isn't "reconciled" away.
+  but the live pipeline chip uses `--ink` text (≈11:1) because it carries body-size text, while the
+  production pill uses pill-scoped `--green-ink` (4.79:1) for its ~12px text. Both AA; noted so the
+  divergence isn't "reconciled" away.
 - **Intentional — `.activity-bar` height via `--l1..l5` classes, not inline styles.** Bar height is
   data-driven; bucketing magnitude into five percentage classes keeps the no-inline-`style` rule intact
   (the one place graphical px appear — chart geometry — is flagged in the design spec §4.4).

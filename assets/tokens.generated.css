@@ -37,6 +37,9 @@
   --green-bg: hsl(160 55% 88%);
   --amber-bg: hsl(45 90% 88%);
   --amber-ink: hsl(22 90% 35%);
+  --ok-ink: hsl(140 55% 30%); /** live-pill text on --ok-bg (AA 4.76:1) */
+  --accent-ink: hsl(212 85% 40%); /** development-pill text on --accent-light (AA 4.71:1) */
+  --green-ink: hsl(160 55% 29%); /** production-pill text on --green-bg (AA 4.79:1) */
   --warn-tint: hsl(22 90% 52% / 0.1);
   --border: 1px solid hsl(220 18% 88%);
   --shadow: 0 10px 30px hsl(220 25% 15% / 0.1);

@@ -82,6 +82,21 @@
   "green-bg": { "$type": "color", "$value": "{palette.green.bg}" },
   "amber-bg": { "$type": "color", "$value": "{palette.paper.amber}" },
   "amber-ink": { "$type": "color", "$value": "{palette.orange.dark}" },
+  "ok-ink": {
+    "$type": "color",
+    "$value": "{palette.ok.ink}",
+    "$description": "live-pill text on --ok-bg (AA 4.76:1)"
+  },
+  "accent-ink": {
+    "$type": "color",
+    "$value": "{palette.blue.ink}",
+    "$description": "development-pill text on --accent-light (AA 4.71:1)"
+  },
+  "green-ink": {
+    "$type": "color",
+    "$value": "{palette.green.ink}",
+    "$description": "production-pill text on --green-bg (AA 4.79:1)"
+  },
   "warn-tint": { "$type": "color", "$value": "hsl(22 90% 52% / 0.1)" },
 
   "border": { "$value": "1px solid {palette.ink.line}" },
