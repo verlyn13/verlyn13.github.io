@@ -83,9 +83,16 @@ is below.
   (`npm run conformance` enforces).
 - Reserve `--accent` for the primary action / flagship — do not repurpose it here.
 
+## Verify loop
+
+Run **`npm run check:contrast`** (`scripts/check-contrast.mjs`) — it resolves whatever tokens the
+`.project-status` rules point at and prints each pill's ratio, exiting non-zero until all four clear
+4.5:1. It currently reports the three failures above; it will pass once the new ink tokens land. Use
+it as the tight feedback loop while iterating.
+
 ## Acceptance criteria
 
-- [ ] All four `.project-status` pills measure **≥ 4.5:1** (re-run the audit's contrast script).
+- [ ] `npm run check:contrast` reports all four `.project-status` pills **≥ 4.5:1** (exit 0).
 - [ ] `--accent`, `--ok`, `--accent-2` and all link/callout surfaces are visually unchanged.
 - [ ] New tokens authored in `tokens/semantic.tokens.json`; `assets/jeffrey.css` references them via
       `var(--token)` only.
