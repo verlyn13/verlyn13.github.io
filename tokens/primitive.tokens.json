@@ -4,6 +4,7 @@
     "blue": {
       "strong": { "$value": "hsl(212 85% 35%)" },
       "base": { "$value": "hsl(212 85% 45%)" },
+      "ink": { "$value": "hsl(212 85% 40%)" },
       "light": { "$value": "hsl(212 85% 90%)" },
       "subtle": { "$value": "hsl(212 85% 96%)" }
     },
@@ -28,10 +29,12 @@
     },
     "green": {
       "base": { "$value": "hsl(160 55% 35%)" },
+      "ink": { "$value": "hsl(160 55% 29%)" },
       "bg": { "$value": "hsl(160 55% 88%)" }
     },
     "ok": {
       "base": { "$value": "hsl(140 55% 35%)" },
+      "ink": { "$value": "hsl(140 55% 30%)" },
       "bg": { "$value": "hsl(140 55% 90%)" }
     },
     "orange": {
