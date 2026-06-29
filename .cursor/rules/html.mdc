@@ -8,10 +8,10 @@ alwaysApply: false
 
 ## Page structure
 
-Every page must follow this structure:
+Every page must follow the established site structure:
 
 ```html
-<header>...</header>
+<nav class="site-nav">...</nav>
 <main>...</main>
 <footer>...</footer>
 ```
@@ -20,7 +20,8 @@ Every page must follow this structure:
 
 - Use semantic HTML5 elements: `<article>`, `<section>`, `<nav>`, `<aside>`, `<time>`, etc.
 - Heading hierarchy must be continuous — never skip levels (h1 → h2 → h3, not h1 → h3)
-- External links: always add `aria-label` and `rel="noopener noreferrer"`
+- External links that open a new tab: add `rel="noopener noreferrer"`; add `aria-label` when visible
+  link text is not self-describing
 - 2-space indent throughout
 
 ## Styles & scripts

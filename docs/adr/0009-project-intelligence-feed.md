@@ -1,14 +1,14 @@
 # ADR-0009: Project-Intelligence feed — presentation, cadence, and the delivery gate
 
-- Status: Accepted · Date: 2026-06-16 · Clarified: 2026-06-17
+- Status: Accepted · Date: 2026-06-16 · Clarified: 2026-06-17 · Currentness pass: 2026-06-29
 
 ## Context
 The project feed (`public/data/projects.json`; its pipeline is described by ADR-0008 / `colophon.html`)
-is currently a thesis-level snapshot rendered nowhere. The goal is to make it the instrument that
-surfaces the **breadth + depth + method** of a large body of agentic-development projects — evidence they
-are designed, spec-driven work, not two-day shells. Three questions needed deciding: how to present many
-projects credibly, how the data flows and refreshes, and how that squares with the human-merge gate
-(ADR-0008). The presentation question was settled by a focused research pass (2026-06-16).
+is the instrument that surfaces the **breadth + depth + method** of a large body of agentic-development
+projects — evidence they are designed, spec-driven work, not two-day shells. As of 2026-06-29, the P0
+website rendering is live in code: `build-feed.mjs` generates `/projects/` at build time from v0 feed
+fields. The remaining questions are upstream richness and freshness, not whether the website should
+render the feed.
 
 ## Decision
 1. **Two layers.** meta-inventory holds a rich, private **knowledge basket** per project; the public feed
@@ -31,7 +31,8 @@ projects credibly, how the data flows and refreshes, and how that squares with t
 5. **Render at build time.** A feed→HTML prebuild (like `build-tokens.mjs`) emits the index + per-project
    panels. **No client JS**; single stylesheet; all current gates apply.
 6. **Feed v1** extends v0 with per-project `scope` / `decisions` / `activity` / `method` and a top-level
-   `portfolio` meta-analysis. Enrichments are phased (P0 renders v0 fields now).
+   `portfolio` meta-analysis. Enrichments remain phased: P0 renders v0 fields now; v1 fields light up
+   without client JS as the upstream feed carries them.
 7. **Agent split.** Claude Code builds (authoritative); Claude Design designs the surfaces from
    `docs/project-intelligence-design-brief-2026-06-16.md` and hands back a **non-authoritative** spec
    the coding agent implements (ADR-0005).

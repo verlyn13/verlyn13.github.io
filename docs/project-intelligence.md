@@ -2,9 +2,9 @@
 title: Project Intelligence — the feed-driven project presentation system
 category: architecture
 component: project-intelligence-feed
-status: draft
-version: 0.1.1
-last_updated: 2026-06-17
+status: active
+version: 0.2.0
+last_updated: 2026-06-29
 tags: [project-intelligence, feed, meta-inventory, provenance, presentation, breadth]
 priority: high
 audience: coding agent + design agent
@@ -12,10 +12,11 @@ audience: coding agent + design agent
 
 # Project Intelligence — feed-driven project presentation
 
-> **Status — draft (updated 2026-06-17).** Formalizes the system. The public feed already ships
-> (`public/data/projects.json`); this spec defines what it grows into and how the site renders it.
-> The presentation P0 is pending the design handback (`docs/project-intelligence-design-brief-2026-06-16.md`).
-> The cross-repo owner boundary is now explicit in `docs/meta-inventory-website-contract.md`.
+> **Status — active (updated 2026-06-29).** The public feed ships at
+> `public/data/projects.json`, and the website P0 presentation is implemented: `build-feed.mjs`
+> generates `/projects/` at build time from v0 feed fields, while `scripts/design-structure.mjs` is wired
+> for per-project v1 fields and currently renders nothing when those fields are absent. The cross-repo
+> owner boundary is `docs/meta-inventory-website-contract.md`.
 
 ## 1. Premise
 The feed is the **instrument, not the exhibit**. Its job is to keep each project's depth, scope, key
@@ -33,10 +34,13 @@ the work (many projects, many domains, one method) with **depth on demand** (dri
 The basket may know everything; the feed carries only what's public. This is what lets private repos
 feed the site without leaking.
 
-**Two clocks**
+**Two clocks (target upstream cadence)**
 - **Event-driven** — a project PR/merge fires `repository_dispatch` → meta-inventory re-extracts that
   project's basket and recomputes the cross-project meta-analysis.
 - **Scheduled** — daily 08:00 ET → regenerate the feed → no-op gate → delivery/policy gate (see §6).
+
+The website's current truth is simpler: it consumes the approved copy at `public/data/projects.json`
+and renders that feed at build time. It does not own upstream refresh automation.
 
 **Repository ownership**
 - Project repos own their manifests and status-of-record files.
@@ -57,7 +61,7 @@ project repos ──PR/merge (repository_dispatch)──▶ meta-inventory
                                                           │
                           daily 08:00 ET ─────────────────┤ publish-safe projection
                                                           ▼
-                                              public feed (projects.json, v1)
+                                              public feed (projects.json; v0 now, v1 target)
                                                           │ no-op gate → delivery/policy gate (§6)
                                                           ▼
                                        site renders at BUILD TIME (no client JS)
@@ -120,30 +124,34 @@ Direction is research-settled (full rationale + sources in the design brief). Th
 pattern is a **dense, grouped, build-time index — not a card grid** — with **no interactive filter at
 this scale** (15–30 items); facets are printed inline labels, grouping proves breadth, drill-down is the
 per-project page. Surfaces:
-1. **Portfolio overview** — breadth at a glance (`portfolio{}` meta-analysis).
-2. **Body-of-work index** — grouped, dense, inline metadata; a curated front tier leads.
-3. **Per-project design structure** — scope + key decisions + activity, on each detail page.
+1. **Portfolio overview** — breadth at a glance. Current P0 derives an honest local fallback from v0;
+   v1 should supply authoritative `portfolio{}`.
+2. **Body-of-work index** — implemented as grouped, dense, inline metadata; a curated front tier leads.
+3. **Per-project design structure** — wired on detail pages and absent-tolerant until v1 `scope`,
+   `decisions`, and `activity` fields arrive.
 4. **Portfolio activity timeline** — later/optional.
 
 **Rendering:** a feed→HTML **prebuild** (same spirit as `build-tokens.mjs`), **zero client JS**, single
 stylesheet, all current gates apply.
 
 ## 8. Phasing
-- **P0** (no upstream dep): lock the v1 schema; build the templater + portfolio overview + grouped index
-  from *today's* fields (`evidenceClass`, `domains`, `tech`, `statusLine`, `asOf`, `deploymentUrls`).
-- **P1:** `scope{}` metrics (git-derived).
-- **P2:** `activity[]` → per-project + portfolio timelines.
-- **P3:** `decisions[]` (ADR/spec extraction) — highest signal.
-- **P4:** `repository_dispatch` trigger + 08:00 ET cadence wired in CI; optional feed-only
+- **P0 — done on the website:** build-time templater, portfolio overview fallback, grouped index,
+  curated front tier, and feed-model tests from current v0 fields (`evidenceClass`, `domains`, `tech`,
+  `statusLine`, `asOf`, `deploymentUrls`).
+- **P1 — upstream feed richness:** authoritative top-level `portfolio{}` and per-project `scope{}`.
+- **P2 — upstream activity:** `activity[]` → per-project + portfolio timelines.
+- **P3 — upstream decisions:** `decisions[]` (ADR/spec extraction) — highest signal.
+- **P4 — upstream freshness automation:** `repository_dispatch` trigger + 08:00 ET cadence wired in CI; optional feed-only
   policy-auto-publish only after explicit approval.
 
 ## 9. Agent roles
-- **Coding agent (Claude Code)** — this spec, the build tooling, the implementation. **Authoritative** —
-  code is the source of truth.
+- **Coding agent (Codex / Claude Code)** — this spec, the build tooling, the implementation.
+  **Authoritative** — code is the source of truth.
 - **Design agent (Claude Design)** — designs the surfaces from the design brief; hands back a spec the
   coding agent implements. **Non-authoritative** (ADR-0005): a proposal translated to tokens + code.
 
 ## 10. References
+- Current-truth map: `docs/index.md`
 - Design handoff: `docs/project-intelligence-design-brief-2026-06-16.md`
 - Decision record: `docs/adr/0009-project-intelligence-feed.md`
 - Repo boundary contract: `docs/meta-inventory-website-contract.md`

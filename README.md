@@ -1,10 +1,11 @@
 # jvjohnson.dev — Research portfolio
 
-**Jeffrey V. Johnson, Ph.D.** — Researcher + builder. Tenured Associate
-Professor of Mathematics (KPC/UAA) building agentic systems as a research
-practice. Ph.D. Mathematics, University of Montana 2013 (commutative
-Banach algebras); clinical-research publication in *Pediatric Physical
-Therapy* 2023;35(3):326-331.
+**Jeffrey V. Johnson, Ph.D.** — Independent researcher and systems builder.
+Tenured Associate Professor of Mathematics (KPC/UAA) building agentic systems
+as a research practice and targeting research-engineering roles. Ph.D.
+Mathematics, University of Montana 2013 (commutative Banach algebras);
+clinical-research publication in *Pediatric Physical Therapy*
+2023;35(3):326-331.
 
 Live site: <https://jvjohnson.dev>
 
@@ -28,8 +29,7 @@ and on the research-foundation side
 A three-tier framing — flagship agentic substrate / production-grade
 personal-use engineering / creative-and-framework outputs — landed
 2026-05-22 as the D-001 rebalance (commit `88e15ca` and surrounding).
-MAAT was moved from flagship to tertiary "creative early work" pending
-a presentation refresh.
+MAAT remains tertiary "creative early work" rather than flagship evidence.
 
 ## Content source of truth
 
@@ -59,7 +59,8 @@ mise run build         # production build to dist/
 mise run preview       # preview build at http://localhost:4173
 mise run lint          # Biome lint
 mise run format:check  # Biome format check
-mise run ci            # full CI: lint + format-check + conformance + tokens-fresh + build
+mise run ci            # full CI: provenance + lint + format-check + conformance + build
+npm test               # feed-model tests
 mise run deploy        # local deploy verification
 ```
 
@@ -84,6 +85,7 @@ respectful of the visitor's time.
 
 - AGENTS.md is the canonical project contract for agent tooling.
 - CLAUDE.md is the Claude Code shim.
+- docs/index.md is the current-truth map for docs, plans, status, and historical handoffs.
 - Decisions are tracked in commit messages (D-NNN, AAF-VGH-NNN,
   H-NN identifiers) referencing
   `../meta-inventory/audit/2026-05-21/remediation-roadmap-2026-05-21.md`

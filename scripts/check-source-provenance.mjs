@@ -14,6 +14,18 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const errors = []
 
+function isGitIgnored(relativePath) {
+  try {
+    execFileSync('git', ['-C', root, 'check-ignore', '-q', '--', relativePath], {
+      stdio: 'ignore',
+    })
+    return true
+  } catch (err) {
+    if (err?.status === 1) return false
+    return false
+  }
+}
+
 // Dispatch runs in main() at the BOTTOM of the file so every module-level const
 // (e.g. FEED_COMMENT_PATTERN) is initialized before any producer handler runs
 // (avoids a temporal-dead-zone ReferenceError when a const is used in a function
@@ -38,9 +50,9 @@ function checkSiblingMarkdown(producer) {
     if (existsSync(dir)) {
       for (const fileName of readdirSync(dir).sort()) {
         if (fileName.endsWith('.html')) {
-          expected.set(`${producer.expectProjectsGlob}/${fileName}`, [
-            sources[producer.projectsSource],
-          ])
+          const relativePath = `${producer.expectProjectsGlob}/${fileName}`
+          if (isGitIgnored(relativePath)) continue
+          expected.set(relativePath, [sources[producer.projectsSource]])
         }
       }
     }
@@ -240,6 +252,7 @@ function discoverFeedSurfaces(globs) {
     for (const ent of entries.sort((a, b) => a.name.localeCompare(b.name))) {
       if (!ent.isFile() || !ent.name.endsWith('.html')) continue
       const rel = glob === '.' ? ent.name : `${glob}/${ent.name}`
+      if (isGitIgnored(rel)) continue
       const html = readFileSync(path.join(root, rel), 'utf8')
       if (/<!--\s*feed:/.test(html)) found.add(rel)
     }

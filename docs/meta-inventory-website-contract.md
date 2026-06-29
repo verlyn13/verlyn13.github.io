@@ -3,8 +3,8 @@ title: Meta-inventory / website project-intelligence contract
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.1.0
-last_updated: 2026-06-17
+version: 0.1.1
+last_updated: 2026-06-29
 tags: [project-intelligence, meta-inventory, website, feed, provenance, responsibility]
 priority: high
 audience: coding agent + design agent + operator
@@ -104,7 +104,7 @@ The website needs the feed to become richer without becoming less safe. The targ
 - Data-backed `link_policy` and `public_alias` enforcement so excluded/anonymized projects do not depend
   on ad hoc website text.
 
-Until those fields are present and gated, the website can render P0 views from v0 fields, but long-form
+Until those fields are present and gated, the website renders P0 views from v0 fields, but long-form
 detail-page prose remains hand-authored.
 
 ## Source-of-truth rules
