@@ -2,7 +2,7 @@
 
 ## Project snapshot
 
-- **Purpose**: Academic research portfolio for Dr. Jeffrey Johnson — autonomous systems and AI tool integration
+- **Purpose**: Academic research portfolio for Dr. Jeffrey Johnson — independent researcher and systems builder, targeting research-engineering roles
 - **Stack**: Vanilla HTML/CSS, Vite 5 (build), Biome 2.3+ (lint/format), Node 24 (via mise)
 - **Production URL**: https://jvjohnson.dev
 - **Deployment**: GitHub Pages via Actions (auto-deploy on push to `main`)
@@ -17,6 +17,12 @@ colophon.html           # How this portfolio is published (publishing-system pag
 projects/               # Project detail pages (dicee, maat, scopecam, budget-triage)
 experience/             # Experience section (braid timeline + era narratives)
 research/               # Research & publications
+docs/
+  index.md              # Documentation index + current-truth map for agents
+  adr/                  # Architecture decision records
+design/
+  DESIGN_SPEC.md        # Machine-readable design-system orientation
+tokens/                 # DTCG token sources; generated CSS is derived
 assets/
   jeffrey.css           # Single shared stylesheet (all CSS here)
   menu.js               # Mobile nav toggle + active link state
@@ -39,14 +45,16 @@ mise run lint                # Lint with Biome
 mise run lint:fix            # Lint + auto-fix
 mise run format              # Format with Biome
 mise run format:check        # Check formatting (no write)
-mise run ci                  # Full CI: lint + format-check + build
+mise run ci                  # Full CI: provenance + lint + format-check + conformance + build
+npm test                     # Feed-model unit tests (run for feed/template/model changes)
 mise run deploy              # Local deploy verification: lint + build + preview
 mise run clean               # Remove dist/ and node_modules/
 ```
 
 ## Definition of done (DoD)
 
-- [ ] `mise run ci` passes (lint + format-check + build)
+- [ ] `mise run ci` passes (provenance + lint + format-check + conformance + build)
+- [ ] `npm test` passes for feed model, feed template, or project-intelligence changes
 - [ ] All HTML pages render correctly in dev server
 - [ ] New/changed pages added to `vite.config.js` input map
 - [ ] Responsive layout verified at desktop and mobile (768px breakpoint)
@@ -69,6 +77,7 @@ mise run clean               # Remove dist/ and node_modules/
 - **Plan before non-trivial work**: Use plan mode for tasks touching >2 files or requiring architectural judgment.
 - **Subagents for isolation**: Spawn a subagent when the subtask is cleanly separable and shouldn't pollute main context.
 - **Direct tools for known paths**: Prefer Read/Glob/Grep over subagents for targeted, predictable lookups.
+- **Current-truth map**: read `docs/index.md` before broad docs/status/plan work.
 
 ### Context management (Claude Code)
 
@@ -92,8 +101,10 @@ mise run clean               # Remove dist/ and node_modules/
 - Edit only source files + config that match the task.
 - Follow the existing design system (CSS custom properties in `jeffrey.css`).
 - Use semantic HTML5 with proper heading hierarchy.
-- Maintain consistent page structure: header → main → footer.
+- Maintain consistent page structure: site nav → main → footer; page-specific headers/heroes live inside
+  `main` or the page-specific layout where already established.
 - Keep all styles in `assets/jeffrey.css` (single CSS file).
+- Update templates/scripts instead of generated output (`projects/index.html`, `dist/`).
 
 ### Ask first
 
@@ -159,4 +170,6 @@ mise run clean               # Remove dist/ and node_modules/
   (cross-repo owner boundary) · `docs/adr/0008-*` (colophon) + `docs/adr/0009-*` (feed) · design brief/spec
   `docs/project-intelligence-design-*-2026-06-16.md` · code `scripts/feed-model.mjs`, `build-feed.mjs`,
   `scripts/design-structure.mjs`; `projects/index.html` is a gitignored build artifact
+- **Docs/status currentness**: `docs/index.md` distinguishes current operating docs from historical
+  handoffs and dated baselines
 - **Experiments**: `experiments/` (not deployed, safe to iterate)

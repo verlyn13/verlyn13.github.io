@@ -14,7 +14,8 @@ alwaysApply: true
 ## Key commands
 
 ```bash
-mise run ci        # lint + format-check + build (run before done)
+mise run ci        # provenance + lint + format-check + conformance + build
+npm test           # feed-model tests
 mise run dev       # dev server at localhost:5173
 mise run build     # production build to dist/
 mise run lint:fix  # lint + auto-fix
@@ -47,7 +48,8 @@ mise run format    # format with Biome
 
 ## Page structure
 
-Every page: `<header>` → `<main>` → `<footer>`
+Every page: site navigation → `<main>` → `<footer>`; page-specific headers/heroes live inside `main` or
+the established page-specific layout.
 Heading hierarchy must be continuous — never skip levels.
 
 ## Triage map

@@ -2,9 +2,9 @@
 
 Primary project contract: @AGENTS.md
 
-## Model & CLI context
+## CLI context
 
-- **Model**: Claude Opus 4.6 (`claude-opus-4-6`)
+- **Model**: session-dependent; do not treat this file as model truth.
 - **Plan mode**: Enter plan mode before non-trivial changes — explore → draft plan with file paths → get approval → implement.
 - **Context**: Reference files with `@path`. Use `/compact` when context is large before continuing.
 - **MCP**: `context7` is available — resolve a library ID, then query docs before writing code against any framework.
@@ -12,9 +12,10 @@ Primary project contract: @AGENTS.md
 ## Workflow
 
 1. Read relevant files before proposing changes — never guess at structure.
-2. Non-trivial changes: plan mode → explore → written plan → implement.
-3. Verify with `mise run ci` — single gate: lint + format-check + build.
-4. Visual changes: run `mise run dev`, check both desktop and mobile (768px).
+2. Broad docs/status/plan work starts with @docs/index.md.
+3. Non-trivial changes: plan mode → explore → written plan → implement.
+4. Verify with `mise run ci`; run `npm test` for feed/template/model changes.
+5. Visual changes: run `mise run dev`, check both desktop and mobile (768px).
 
 ## Skills
 

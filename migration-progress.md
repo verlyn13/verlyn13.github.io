@@ -1,9 +1,9 @@
 # Migration progress — design-system-in-code
 
-Long-running harness state for the DTCG + Style Dictionary migration
+Completed harness state for the DTCG + Style Dictionary migration
 (`~/Downloads/agentic-design-system-workflow.md`, adapted to this single-file vanilla-CSS site).
-A fresh/compacted agent resumes by reading this file + `git log`. One commit per phase (local,
-1Password-signed, **no push**).
+For ordinary site work, start with `AGENTS.md` and `docs/index.md`; read this file only when changing or
+auditing the completed token-migration record.
 
 ## Decisions (locked)
 - Pipeline: **DTCG 2025.10 `.tokens.json` + Style Dictionary v5** → committed `assets/tokens.generated.css`,

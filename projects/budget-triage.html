@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Triage - Enterprise Architecture | Jeffrey Johnson</title>
-    <meta name="description" content="Learning platform exploring ADR governance, observability patterns, and modern enterprise architecture">
+    <title>Budget Triage | Jeffrey Johnson</title>
+    <meta name="description" content="A full-stack financial system where agentic governance is enforced through architecture decision records, not prompts.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Jeffrey V. Johnson, Ph.D. — Mathematical researcher &amp; systems builder">
-    <meta property="og:description" content="Building production-grade agentic systems and ML control planes grounded in mathematical foundations.">
+    <meta property="og:title" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:description" content="Independent researcher and systems builder pursuing research-engineering work in agentic systems, infrastructure, and applied AI.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/budget-triage.html">
     <!-- Using a generic placeholder image if none exists, but ideally user uploads one to /assets/ -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jeffrey V. Johnson, Ph.D. — Mathematical researcher &amp; systems builder">
-    <meta name="twitter:description" content="Building production-grade agentic systems and ML control planes grounded in mathematical foundations.">
+    <meta name="twitter:title" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:description" content="Independent researcher and systems builder pursuing research-engineering work in agentic systems, infrastructure, and applied AI.">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -45,10 +45,10 @@
             <div class="container">
                 <header class="project-header-detail">
                     <p class="case-study-context">
-                        <a href="/#approach">Approach</a> · The Governance Laboratory
+                        <a href="/#approach">Approach</a> · Learning by doing
                     </p>
                     <h1>Budget Triage</h1>
-                    <p class="project-subtitle">Enterprise Architecture Exploration</p>
+                    <p class="project-subtitle">Agentic governance, enforced in the architecture</p>
                     <div class="project-meta">
                         <span class="project-status development">Active Development</span>
                     </div>
@@ -56,8 +56,8 @@
 
                 <section class="project-overview">
                     <h2>Overview</h2>
-<p>Personal finance management system built with enterprise-grade architecture patterns. Intentionally over-engineered to explore modern governance frameworks, observability patterns, and deterministic ML extraction pipelines.</p>
-<p>Achieved F1=1.000 extraction quality on ground-truth datasets through agent-assisted annotation and deterministic synthetic document generation.</p>
+<p>A full-stack personal finance system, and the most worked-out case in my learning programme for agentic governance. The point is not the app. It is enforcing the rules an agent has to follow in the architecture itself, through architecture decision records, rather than hoping a prompt holds.</p>
+<p>One validator checks runtime, scripts, and documents together, so the parts cannot drift out of agreement. The document-extraction pipeline is deterministic and checked against a synthetic, PII-free ground-truth corpus I generate for the test.</p>
 </section>
 
                 <!-- @design-structure: budget-triage-fintech -->
@@ -87,7 +87,7 @@
                     <div class="architecture-section">
                         <h3>Governance Framework</h3>
                         <ul>
-                            <li>ADR-020 (Architecture Decision Records)</li>
+                            <li>Architecture decision records as enforced governance</li>
                             <li>Runtime/config/toolchain compliance verification</li>
                             <li>Script governance rules</li>
                             <li>Cross-surface validation</li>
@@ -100,13 +100,13 @@
                     <h2>Key Patterns Explored</h2>
 
 <div class="pattern-section">
-    <h3>Architecture Decision Records (ADR-020)</h3>
-    <p>Formal governance framework ensuring runtime, configuration, and toolchain compliance. 18/19 CI Quality Gates passing.</p>
+    <h3>Governance enforced through architecture decision records</h3>
+    <p>Runtime, configuration, and toolchain compliance are checked against declared decisions rather than left to convention, with CI gates enforcing them on every change.</p>
 </div>
 
 <div class="pattern-section">
-    <h3>Intelligent Document Processing</h3>
-    <p>Architecting resilient VLM/OCR pipelines with strict quality baselines (F1=1.000), agent-assisted annotation, and synthetic ground truth.</p>
+    <h3>Deterministic document extraction</h3>
+    <p>A VLM and OCR pipeline checked against a synthetic, PII-free corpus I generate for the test. It reaches an F1 of 1.000 on that corpus, which measures determinism rather than luck. The discipline is the point, not the number.</p>
 </div>
 
 <div class="pattern-section">
@@ -120,38 +120,36 @@
 
                     <div class="significance-grid">
                         <div class="significance-point">
-                            <h3>Governance at Scale</h3>
-                            <p>ADR frameworks and policy-based development are crucial for large teams. Learning the patterns in a controlled environment.</p>
+                            <h3>Governance you can verify</h3>
+                            <p>Agentic systems fail on authority and drift, not syntax. Putting the rules in the architecture keeps an agent inside known bounds.</p>
                         </div>
                         <div class="significance-point">
-                            <h3>Security Best Practices</h3>
-                            <p>Secrets management, machine identity, audit logging—production security patterns in practice.</p>
+                            <h3>Determinism under test</h3>
+                            <p>Extraction is checked against ground truth, so behavior is reproducible rather than approximately right.</p>
                         </div>
                         <div class="significance-point">
-                            <h3>Modern TypeScript Ecosystem</h3>
-                            <p>Bun, modern frameworks, type-safe patterns. Staying current with evolving JavaScript/TypeScript landscape.</p>
+                            <h3>Type-safe across boundaries</h3>
+                            <p>Typed contracts and generated database types make the parts checkable end to end, from runtime to documents.</p>
                         </div>
                         <div class="significance-point">
-                            <h3>Observability Mindset</h3>
-                            <p>Building systems that are observable from day one. OpenTelemetry, structured logging, traces.</p>
+                            <h3>Observable from the start</h3>
+                            <p>OpenTelemetry and structured logging throughout, so the system's decisions are inspectable.</p>
                         </div>
                     </div>
                 </section>
 
                 <section class="project-context">
-                    <h2>Development Philosophy</h2>
-                    <p>This project is intentionally over-engineered for its scope. The goal isn't to ship the perfect budgeting app—it's to deeply understand enterprise patterns that become essential at scale.</p>
+                    <h2>Why build it this way</h2>
+                    <p>This is a learning vehicle by design. I take a real problem and hold it to a standard that forces the hard lessons: how to make an agent-built system verifiable, observable, and safe to change.</p>
 
-                    <p>Would you use ADR governance for a personal project in production? Probably not. But understanding ADR frameworks by implementing them teaches patterns applicable to large codebases, distributed teams, and regulated environments.</p>
-
-                    <p>Projects as learning experiences—using practical applications to explore theoretical and architectural concepts.</p>
+                    <p>The governance here is heavier than a budgeting app needs on its own. That is deliberate. The system is small enough to hold in my head and real enough to break, which makes it the right place to work out methods that matter at a much larger scale.</p>
                 </section>
 
                 <section class="project-technical-depth">
                     <h2>Technical Depth</h2>
-                    <p>This project demonstrates understanding of:</p>
+                    <p>What it works through:</p>
                     <ul class="depth-list">
-                        <li>Enterprise governance frameworks (ADR)</li>
+                        <li>Governance enforced through decision records</li>
                         <li>Secrets management and security patterns</li>
                         <li>Type-safe architecture across boundaries</li>
                         <li>Observability instrumentation (OpenTelemetry)</li>
@@ -175,7 +173,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research collaboration and roles where mathematical depth meets agentic-systems engineering. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+            <p class="footer-cta">Open to research-engineering roles and research collaboration where mathematical depth meets agentic-systems engineering. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <nav class="footer-links" aria-label="Footer">
                 <a href="/">← Back to portfolio</a>
                 <a href="/contact.html">Contact</a>
