@@ -24,16 +24,18 @@
       "Edit(**/dist/**)"
     ]
   },
-  "PostToolUse": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "bash -c 'input=$(cat); file_path=$(echo \"$input\" | jq -r \".tool_input.file_path\" 2>&1); if [ -z \"$file_path\" ] || [ \"$file_path\" = \"null\" ]; then echo \"[posttooluse-hook] no file_path in tool_input; skipping\" >&2; exit 0; fi; case \"$file_path\" in *.js|*.json|*.css) if ! npx biome format --write \"$file_path\" >&2; then echo \"[posttooluse-hook] biome format failed on $file_path (exit $?)\" >&2; fi;; esac; exit 0'",
-          "timeout": 10
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'input=$(cat); file_path=$(echo \"$input\" | jq -r \".tool_input.file_path\" 2>&1); if [ -z \"$file_path\" ] || [ \"$file_path\" = \"null\" ]; then echo \"[posttooluse-hook] no file_path in tool_input; skipping\" >&2; exit 0; fi; case \"$file_path\" in *.js|*.json|*.css) if ! npx biome format --write \"$file_path\" >&2; then echo \"[posttooluse-hook] biome format failed on $file_path\" >&2; fi;; esac; exit 0'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }
