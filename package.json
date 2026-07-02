@@ -21,7 +21,7 @@
     "check:contrast": "node scripts/check-contrast.mjs",
     "test": "node --test scripts/feed-model.test.mjs",
     "clean": "rm -rf dist node_modules",
-    "ci": "npm run provenance && npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm run build",
+    "ci": "npm run provenance && npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm test && npm run build",
     "deploy": "npm run ci && npm run preview"
   },
   "devDependencies": {

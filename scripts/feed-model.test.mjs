@@ -41,11 +41,13 @@ test('detail href resolves to existing pages only (incl. the alias)', () => {
 })
 
 test('portfolio rollup (local fallback) is populated and honest', () => {
-  assert.equal(model.portfolio.source, 'local')
-  assert.ok(model.portfolio.domains.length > 0)
-  assert.ok(model.portfolio.languages.length > 0)
-  assert.equal(model.portfolio.deployedCount, 1) // dicee: deployed-system + live
-  assert.equal(model.portfolio.firstActive, null) // asOf-only span left null until the feed sources it
+  const { portfolio: _portfolio, ...feedWithoutPortfolio } = feed
+  const fallback = buildViewModel(feedWithoutPortfolio).portfolio
+  assert.equal(fallback.source, 'local')
+  assert.ok(fallback.domains.length > 0)
+  assert.ok(fallback.languages.length > 0)
+  assert.equal(fallback.deployedCount, 1) // dicee: deployed-system + live
+  assert.equal(fallback.firstActive, null) // asOf-only span left null until the feed sources it
 })
 
 test('portfolio rollup adopts feed.portfolio when present', () => {
