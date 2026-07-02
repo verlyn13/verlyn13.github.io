@@ -22,14 +22,15 @@ state and Actions history — a handback is a claim, not proof.
 
 | Repo | Handoff (in target repo) | Scope | Handback expected at | Status |
 |---|---|---|---|---|
-| new-direction-2026 | `docs/handoffs/2026-07-02-fleet-tier0-handoff.md` | Tier 0: content commits (research-statement rewrite, CLAUDE.md), hygiene fabric, renormalize commit repairing 9 corrupt PDF blobs, cleanup, STATUS.md, push 3 stranded commits | `docs/handoffs/2026-07-02-fleet-tier0-handback.md` | ⏳ awaiting handback |
-| planning-summer-2026 | `docs/reference/fleet-coordination-handoff-2026-07-02.md` | Tier 0+1: voip-note frontmatter (lint green), hygiene fabric, departure-day record commits, markdown.yml lychee fix, push | `docs/reference/fleet-coordination-handback-2026-07-02.md` | ⏳ awaiting handback |
-| meta-inventory | `docs/handoff/2026-07-02-fleet-tier1-handoff.md` | Tier 1: ensure_schema() 6-column fix, schema-parity fitness function, cadence failure alerting, merge PR #11, dispatch cadence green, fresh draft feed PR to this repo | `docs/handoff/2026-07-02-fleet-tier1-handback.md` | ⏳ awaiting handback |
+| new-direction-2026 | `docs/handoffs/2026-07-02-fleet-tier0-handoff.md` | Tier 0: content commits (research-statement rewrite, CLAUDE.md), hygiene fabric, renormalize commit repairing 9 corrupt PDF blobs, cleanup, STATUS.md, push 3 stranded commits | `docs/handoffs/2026-07-02-fleet-tier0-handback.md` | ✅ handback received; coordinator verification pending |
+| planning-summer-2026 | `docs/reference/fleet-coordination-handoff-2026-07-02.md` | Tier 0+1: voip-note frontmatter (lint green), hygiene fabric, departure-day record commits, markdown.yml lychee fix, push | `docs/reference/fleet-coordination-handback-2026-07-02.md` | ✅ handback received; coordinator verification pending |
+| meta-inventory | `docs/handoff/2026-07-02-fleet-tier1-handoff.md` | Tier 1: ensure_schema() 6-column fix, schema-parity fitness function, cadence failure alerting, merge PR #11, dispatch cadence green, fresh draft feed PR to this repo | `docs/handoff/2026-07-02-fleet-tier1-handback.md` | ⚠️ handback received with pending gates |
 
 Safety note propagated with the new-direction-2026 handoff: **no `git restore` /
 `checkout --` / `stash` / `clean` in that repo** until its commit sequence lands — the
-9 modified Roscoe PDFs are corrupt in git, original on disk, and the dirty tree holds the
-only copy of the research-statement rewrite.
+9 modified Roscoe PDFs were corrupt in git, original on disk, and the dirty tree held the
+only copy of the research-statement rewrite. A handback now claims the repair sequence
+landed; verify origin state and the PDF checksum table before treating that hazard as closed.
 
 ## Website-local Tier 1 items (this repo, done by coordinator 2026-07-02)
 
@@ -44,19 +45,24 @@ only copy of the research-statement rewrite.
 
 ## Operator actions (only you can do these)
 
-1. **Machine backup** — `tmutil destinationinfo` shows no Time Machine destination and no
-   backup agent exists; until the sibling pushes land, career-critical work has a single
-   physical copy. Pick a mechanism (Time Machine target, or scheduled restic/rclone over
-   `~/Repos` + `~/voip`); the decision gets recorded in meta-inventory
-   `docs/standards/` (queued in its handoff backlog).
-2. **Merge the fresh feed PR** when meta-inventory's cadence delivers it (draft PR
-   carrying `portfolio{}`, `generatedAt` ≥ 2026-07-02), then close stale draft feed PRs
-   **#10, #11, #12** on this repo (all `asOf 2026-06-15`). Coordinator will verify
-   rendering after merge.
-3. **meta-inventory PR #11 merge** is pre-authorized in its handoff *conditional on green
-   checks*; the repo agent will stop and report instead if it finds problems.
-4. **Push/PR of this repo's changes** — per AGENTS.md the operator approves pushes;
-   the website changes above are committed on a branch awaiting your review.
+1. **Machine backup** — configured 2026-07-02 as an iCloud Drive critical-work mirror
+   because Time Machine has no destination and the configured `gdrive:` rclone remote has
+   an expired OAuth token. LaunchAgent:
+   `~/Library/LaunchAgents/dev.verlyn13.career-critical-backup.plist`; script:
+   `~/.local/bin/career-critical-backup.zsh`; cadence: every 7200 seconds; last launchd
+   run exited 0. The backup covers the three sibling repos, this repo, and `~/voip` under
+   `~/Library/Mobile Documents/com~apple~CloudDocs/Machine Backups/career-critical/`.
+2. **Fresh feed PR** — PR #15 was merged to `main` at
+   `cc3523055ceccb3614c7d1144bb3735a53bb6078`; stale draft feed PRs **#10, #11, #12**
+   were closed and their remote branches deleted. PR #15 carries top-level `portfolio{}`
+   but still reports `generatedAt=2026-06-29T13:49:03Z` from the upstream facts layer.
+3. **meta-inventory PR #11** — merged by the repo agent at
+   `cade604f79ff9e682fbe1168ed404b0e08c6e6d2`; dispatch cadence was green, but the
+   handback remains blocked until the next scheduled cadence proof and/or a facts-layer
+   refresh that can produce a July 2 `generatedAt`.
+4. **Push/PR of this repo's changes** — PR #14 is open:
+   `https://github.com/verlyn13/verlyn13.github.io/pull/14`; checks are green and merge
+   state is clean. Merging it deploys the CI/coordination changes.
 
 ## Verification protocol (coordinator)
 
@@ -86,3 +92,6 @@ recurring methods" line populates from `portfolio{}`).
 
 - **2026-07-02** — Ledger opened; three handoffs placed; website-local Tier 1 items
   applied and verified (`mise run ci` + `npm test` green).
+- **2026-07-02** — Website PR #14 opened for the Tier 1 CI/coordination branch; PR #15
+  feed refresh merged; stale draft feed PRs #10-12 closed; iCloud Drive critical-work
+  backup configured and verified through launchd.
