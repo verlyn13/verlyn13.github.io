@@ -1,6 +1,56 @@
 {
   "banners": [],
-  "generatedAt": "2026-06-15T20:09:48Z",
+  "generatedAt": "2026-06-29T13:49:03Z",
+  "portfolio": {
+    "deployedCount": 1,
+    "domains": [
+      "agents",
+      "android",
+      "cli",
+      "compliance",
+      "course-operations",
+      "data-analysis",
+      "databases",
+      "devops",
+      "documentation",
+      "education-design",
+      "finance",
+      "gaming",
+      "generative-ai",
+      "health-sciences",
+      "identity",
+      "infrastructure-as-code",
+      "instructional-design",
+      "llm-evaluation",
+      "llm-orchestration",
+      "mathematics",
+      "mcp",
+      "ml",
+      "mobile",
+      "security",
+      "statistics",
+      "vision",
+      "web"
+    ],
+    "firstActive": "2009-09",
+    "languages": [
+      "JavaScript",
+      "Kotlin",
+      "Python",
+      "Shell",
+      "TypeScript"
+    ],
+    "lastActive": "2026-06-29T13:49:03Z",
+    "projectCount": 14,
+    "recurringMethods": [
+      "agentic-dev-evolution",
+      "education-as-research",
+      "governance-driven-development",
+      "infrastructure-discipline",
+      "international-academic-career",
+      "post-academic-transition"
+    ]
+  },
   "projects": [
     {
       "asOf": "unknown",
@@ -12,8 +62,8 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -24,7 +74,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -54,8 +104,8 @@
         "security"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -66,7 +116,7 @@
         "evidenceClass": "public-package"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -86,7 +136,7 @@
       "title": "Agentic Architecture Audit — versioned profile + audit directive package"
     },
     {
-      "asOf": "2026-06-11",
+      "asOf": "2026-06-28",
       "deploymentUrls": [],
       "displayName": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)",
       "domains": [
@@ -98,8 +148,8 @@
         "infrastructure-as-code"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -110,7 +160,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -142,8 +192,8 @@
         "gaming"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -154,7 +204,7 @@
         "evidenceClass": "deployed-system"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -181,8 +231,8 @@
         "mathematics"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -193,7 +243,7 @@
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -211,7 +261,7 @@
       "title": "Peripherally-Multiplicative Spectral Preservers Between Function Algebras (Ph.D. dissertation, 2013)"
     },
     {
-      "asOf": "2026-06-11",
+      "asOf": "2026-06-28",
       "deploymentUrls": [],
       "displayName": "Flux — multi-provider image-generation control plane (successor authority)",
       "domains": [
@@ -223,8 +273,8 @@
         "mcp"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -235,7 +285,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -255,7 +305,7 @@
       "title": "Flux — multi-provider image-generation control plane (successor authority)"
     },
     {
-      "asOf": "2026-06-11",
+      "asOf": "2026-06-28",
       "deploymentUrls": [],
       "displayName": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation",
       "domains": [
@@ -267,8 +317,8 @@
         "documentation"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -279,7 +329,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -308,8 +358,8 @@
         "ml"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -320,7 +370,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -351,8 +401,8 @@
         "instructional-design"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -363,7 +413,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -390,8 +440,8 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -402,7 +452,7 @@
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -429,8 +479,8 @@
         "health-sciences"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -441,7 +491,7 @@
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -468,8 +518,8 @@
         "vision"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -480,7 +530,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -508,8 +558,8 @@
         "cli"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -520,7 +570,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -540,7 +590,7 @@
       "title": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners"
     },
     {
-      "asOf": "2026-06-15T09:04:29Z",
+      "asOf": "2026-06-29T13:49:03Z",
       "deploymentUrls": [],
       "displayName": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")",
       "domains": [
@@ -550,8 +600,8 @@
         "web"
       ],
       "freshness": {
-        "ageDays": 0,
-        "maxUpdatedAt": "2026-06-15T20:09:48Z",
+        "ageDays": 2,
+        "maxUpdatedAt": "2026-06-29T13:49:03Z",
         "source": "last_commit_date",
         "stale": false
       },
@@ -562,7 +612,7 @@
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-15T20:09:48Z",
+        "generatedAt": "2026-06-29T13:49:03Z",
         "kbDirty": false,
         "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
         "source": "meta-inventory feed v0"
@@ -587,7 +637,12 @@
     "freshnessSource": "last_commit_date",
     "kbDirty": false,
     "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
-    "maxUpdatedAt": "2026-06-15T20:09:48Z",
+    "manifestHealth": {
+      "checked": 22,
+      "errorCount": 0,
+      "status": "pass"
+    },
+    "maxUpdatedAt": "2026-06-29T13:49:03Z",
     "stale": false
   },
   "schemaVersion": "0"
