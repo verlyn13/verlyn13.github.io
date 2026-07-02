@@ -4,7 +4,7 @@ category: operations
 component: docs-index
 status: active
 version: 0.1.0
-last_updated: 2026-06-29
+last_updated: 2026-07-02
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -41,6 +41,13 @@ authority, which are historical handoffs, and where plans live.
 7. `docs/adr/*.md` — durable rationale. Read the relevant ADR before changing the corresponding system.
 
 ## Active plans
+
+### Fleet coordination (2026-07 audit remediation)
+
+- `docs/fleet-coordination-2026-07-02.md` is the live ledger for the four-repo Tier 0/1
+  remediation: handoffs placed in new-direction-2026, planning-summer-2026, and
+  meta-inventory, each owing a handback; operator actions (backup, feed-PR merge) tracked
+  there. Read it before doing cross-repo work.
 
 ### Project-intelligence feed
 
