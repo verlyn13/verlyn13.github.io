@@ -19,6 +19,11 @@ repos:
       - id: check-case-conflict
       - id: check-added-large-files
         args: [--maxkb=10240]
+  # GitHub Actions static analysis — no insecure workflow reaches the public deploy path (D15).
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.26.1
+    hooks:
+      - id: zizmor
   # Design-system: forbid raw color literals above the token layer (pure Node, no node_modules).
   - repo: local
     hooks:
