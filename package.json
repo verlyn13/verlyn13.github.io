@@ -19,13 +19,18 @@
     "conformance": "node scripts/check-no-raw-values.mjs && node scripts/check-contrast.mjs",
     "tokens:check": "node scripts/check-tokens-fresh.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "test": "node --test scripts/feed-model.test.mjs",
+    "content:pull": "node scripts/sync-content.mjs pull",
+    "content:push": "node scripts/sync-content.mjs push",
+    "content:diff": "node scripts/sync-content.mjs diff",
+    "content:check": "node scripts/sync-content.mjs check",
+    "test": "node --test scripts/feed-model.test.mjs scripts/sync-content.test.mjs",
     "clean": "rm -rf dist node_modules",
     "ci": "npm run provenance && npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm test && npm run build",
     "deploy": "npm run ci && npm run preview"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.2",
+    "parse5": "8.0.1",
     "style-dictionary": "^5.5.0",
     "vite": "^8.0.0"
   }

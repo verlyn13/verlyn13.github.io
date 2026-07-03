@@ -168,7 +168,16 @@ and resolved by an intentional `pull`/`push`. `check` enters `mise run ci` only 
 - (PR-3) round-trip idempotency per `two_way` region;
 - (PR-3) push refuses on missing marker, illegal vocabulary, and stale `html_hash`.
 
-## Open items (tracked, not blocking PR-0)
+## Known v1 simplifications (`normalizer_version: 1`)
+
+- The whole `<main>` is flattened, so **in-`main` back-nav and CTA links** (e.g. "← Back to work",
+  "Visit live site ↗") appear in the `pull_only` body. Site-level nav/footer/skip-link are excluded
+  by scoping to `<main>`. Class-based content filtering of in-`main` chrome is deferred to a later
+  `normalizer_version` (candidate for PR-2) so v1 stays deterministic and rule-simple.
+- Structural wrappers (`div`/`section`/`article`/`header`) are unwrapped; their classes do not appear
+  in the mirror. This is expected — the mirror is a content projection, not a layout copy.
+
+## Open items (tracked, not blocking)
 
 - Which specific prose regions get promoted to `two_way` first (candidate: `dicee.overview`).
 - Whether `title`/`description` from `<head>` are whitelisted into frontmatter or left out of scope.

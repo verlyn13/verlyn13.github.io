@@ -1,0 +1,25 @@
+# docs/content/registry.yaml — sync map for the Markdown mirror.
+# See docs/markdown-mirror.md. Maintained by scripts/sync-content.mjs;
+# hand-edit only `mode` and `two_way_regions`.
+pages:
+  - id: page_dicee
+    file: pages/projects/dicee.md
+    source_file: projects/dicee.html
+    source_selector: main
+    route: /projects/dicee.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_home
+    file: pages/home.md
+    source_file: index.html
+    source_selector: main
+    route: /
+    mode: pull_only
+    two_way_regions: []
+  - id: page_research
+    file: pages/research.md
+    source_file: research/index.html
+    source_selector: main
+    route: /research/
+    mode: pull_only
+    two_way_regions: []
