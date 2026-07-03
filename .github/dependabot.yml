@@ -1,21 +1,38 @@
+# Hardened per fleet-modernization handback v0.3 §2.2 (resolves Q6).
+# - cooldown: don't adopt a release until it has aged (defeats "bot pulls a malicious
+#   release minutes after publish"). Applies to VERSION updates only — genuine CVE security
+#   PRs still arrive immediately via Dependabot security alerts (enabled at the repo level).
+# - groups: fewer PRs to review (solo-maintainer cognitive load).
+# - NO auto-merge anywhere — deliberate; a human reviews every dependency change.
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 5
-    groups:
-      dev-dependencies:
-        patterns:
-          - "*"
-    commit-message:
-      prefix: chore(deps)
-
   - package-ecosystem: github-actions
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
     commit-message:
       prefix: chore(ci)
+    cooldown:
+      default-days: 7        # release must be >=7 days old (IaC scanners flag <7)
+      semver-major-days: 14  # extra caution on majors
+    groups:
+      actions-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      actions-major:
+        patterns: ["*"]
+        update-types: ["major"]
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore(deps)
+    cooldown:
+      default-days: 7
+    groups:
+      npm-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
