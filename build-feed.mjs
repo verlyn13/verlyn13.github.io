@@ -154,6 +154,7 @@ function page(model) {
     <meta name="twitter:title" content="Body of work — Jeffrey V. Johnson, Ph.D.">
     <meta name="twitter:description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
