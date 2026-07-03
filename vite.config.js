@@ -33,7 +33,7 @@ export default defineConfig({
     sourcemap: false,
 
     // Optimize build
-    minify: 'esbuild',
+    minify: 'oxc',
     target: 'es2020',
 
     // Chunk size warnings
@@ -41,27 +41,27 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        cv: resolve(__dirname, 'cv.html'),
-        contact: resolve(__dirname, 'contact.html'),
-        colophon: resolve(__dirname, 'colophon.html'),
-        404: resolve(__dirname, '404.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        cv: resolve(import.meta.dirname, 'cv.html'),
+        contact: resolve(import.meta.dirname, 'contact.html'),
+        colophon: resolve(import.meta.dirname, 'colophon.html'),
+        404: resolve(import.meta.dirname, '404.html'),
 
         // Projects
-        'projects-index': resolve(__dirname, 'projects/index.html'),
-        'projects-dicee': resolve(__dirname, 'projects/dicee.html'),
-        'projects-maat': resolve(__dirname, 'projects/maat.html'),
-        'projects-the-nash-group': resolve(__dirname, 'projects/the-nash-group.html'),
+        'projects-index': resolve(import.meta.dirname, 'projects/index.html'),
+        'projects-dicee': resolve(import.meta.dirname, 'projects/dicee.html'),
+        'projects-maat': resolve(import.meta.dirname, 'projects/maat.html'),
+        'projects-the-nash-group': resolve(import.meta.dirname, 'projects/the-nash-group.html'),
         'projects-host-capability-substrate': resolve(
-          __dirname,
+          import.meta.dirname,
           'projects/host-capability-substrate.html',
         ),
-        'projects-symmetry-groups': resolve(__dirname, 'projects/symmetry-groups.html'),
-        'projects-scopecam': resolve(__dirname, 'projects/scopecam.html'),
-        'projects-budget-triage': resolve(__dirname, 'projects/budget-triage.html'),
-        'projects-flux': resolve(__dirname, 'projects/flux.html'),
-        experience: resolve(__dirname, 'experience/index.html'),
-        research: resolve(__dirname, 'research/index.html'),
+        'projects-symmetry-groups': resolve(import.meta.dirname, 'projects/symmetry-groups.html'),
+        'projects-scopecam': resolve(import.meta.dirname, 'projects/scopecam.html'),
+        'projects-budget-triage': resolve(import.meta.dirname, 'projects/budget-triage.html'),
+        'projects-flux': resolve(import.meta.dirname, 'projects/flux.html'),
+        experience: resolve(import.meta.dirname, 'experience/index.html'),
+        research: resolve(import.meta.dirname, 'research/index.html'),
       },
       output: {
         // Manual chunk splitting for better caching
