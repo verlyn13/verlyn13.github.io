@@ -135,9 +135,25 @@ function page(model) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Body of work | Jeffrey Johnson</title>
     <meta name="description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
+    <link rel="canonical" href="https://jvjohnson.dev/projects/">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
+
+    <!-- Open Graph / LinkedIn Preview Tags -->
+    <meta property="og:title" content="Body of work — Jeffrey V. Johnson, Ph.D.">
+    <meta property="og:description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jvjohnson.dev/projects/">
+    <meta property="og:site_name" content="jvjohnson.dev">
+    <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Body of work — Jeffrey V. Johnson, Ph.D.">
+    <meta name="twitter:description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
+    <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
