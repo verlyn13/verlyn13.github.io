@@ -96,15 +96,18 @@ adversarially verified (3 verifiers, PASS_WITH_NITS, no blockers):
    `cade604f79ff9e682fbe1168ed404b0e08c6e6d2`; dispatch cadence was green, but the
    handback remains blocked until the next scheduled cadence proof and/or a facts-layer
    refresh that can produce a July 2 `generatedAt`.
-4. **Merge the launch-packaging branch** — `feat/launch-packaging` (off current `main`)
-   carries the Tier 2 launch work + the cherry-picked Tier 0/1 closure ledger; `mise run ci`
-   green. Merging it auto-deploys the launch packaging to production. (PR #14, the Tier 1 CI
-   branch, is already merged; the stale `docs/fleet-ledger-verification` branch is superseded
-   by this branch and was deleted.)
-5. **Post-deploy checks** (need the live URL): run the LinkedIn Post Inspector on
-   `https://jvjohnson.dev/` and a couple of project URLs to prime the share cards, and the
-   Google Rich Results Test on `/` and `/cv.html` to confirm the JSON-LD parses. Do a human
-   visual pass at desktop + mobile (768px).
+4. ~~Merge the launch-packaging branch~~ — **DONE 2026-07-03** by coordinator: PR #16
+   merged (merge commit `2a861f9`), branch deleted, `docs/fleet-ledger-verification`
+   deleted. Deploy required a manual re-trigger: the merge's deploy run (`28673890942`)
+   had its Deploy job **cancelled** by the `pages` concurrency group (`cancel-in-progress:
+   true`) after Build succeeded; a fresh `workflow_dispatch` run (`28674093337`) deployed
+   cleanly. Live-verified on `https://jvjohnson.dev/`: og-default.png (200, image/png,
+   125713 B), robots.txt + sitemap.xml served, homepage canonical + og:image present,
+   `/does-not-exist` → HTTP 404 with the custom page, contact page has zero `tel:` links.
+5. **Post-deploy checks still worth a human pass** (external tools): LinkedIn Post
+   Inspector on `https://jvjohnson.dev/` + a couple of project URLs to prime the share
+   cards, Google Rich Results Test on `/` and `/cv.html`, and an eyes-on pass at desktop +
+   mobile (768px).
 6. **Phone/VoIP swap follow-up** — the contact page no longer shows a phone number. When the
    VoIP job line (715-388-8457) clears its caller-reputation gate (tracked in `~/voip` +
    planning's voip note), decide whether to add it back to the contact page.
@@ -131,6 +134,13 @@ recurring methods" line populates from `portfolio{}`).
   generate_feed.py tests, machine-testable feed schema), agent-contract consistency
   (AGENTS.md in meta-inventory, model-pin drift in new-direction-2026, fleet settings
   pattern), deploy concurrency split + branch ruleset here.
+  - ⚠️ **Deploy concurrency is now a confirmed production issue, not just a risk.** On
+    2026-07-03 the merge-triggered deploy's Deploy job was cancelled mid-flight by
+    `deploy.yml`'s `concurrency: { group: "pages", cancel-in-progress: true }`, leaving the
+    site un-updated until a manual re-dispatch. Recommended fix (GitHub's own Pages
+    template): set `cancel-in-progress: false` so production deployments run to completion.
+    One-line change to `.github/workflows/deploy.yml` — **ask-first** (deploy config), so
+    flagged here rather than applied.
 
 ## History
 
@@ -153,3 +163,11 @@ recurring methods" line populates from `portfolio{}`).
   description copy-paste fix; `mise run ci` green (12/12) and adversarially verified
   (PASS_WITH_NITS, no blockers). **Plan-02 rewrite handed off** to planning-summer-2026.
   Vite 5→8 deferred to post-launch.
+- **2026-07-03** — Coordinator took over git/GitHub with operator authorization. **Website
+  PR #16 merged and deployed** (`2a861f9`); deploy needed a manual re-dispatch after the
+  `pages` concurrency group cancelled the merge's Deploy job (see Tier 3 note); live-verified
+  on jvjohnson.dev. **Sibling pushes:** meta-inventory `main` pushed (`5b11900` — the loose
+  Tier 1 handback committed, plus a pre-existing local entity-lane commit `16aaa39` that had
+  been sitting unpushed; repo is private, diff carries only `.pub` key refs); planning-summer
+  `main` pushed (`0d2649a` — plan-02 handoff committed). Plan-02 handback now awaited from
+  planning.
