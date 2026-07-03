@@ -129,18 +129,40 @@ recurring methods" line populates from `portfolio{}`).
   advisories).
 - ~~**Tier 2 — planning**~~ — **HANDED OFF 2026-07-03** (rewrite plan 02 + restart cadence):
   `planning-summer-2026/docs/reference/plan-02-rewrite-handoff-2026-07-03.md`.
-- **Tier 3 — fabric:** fleet map (home: meta-inventory), Actions major bumps fleet-wide
-  with SHA+comment pin policy, meta-inventory engineering floor (mise pin, ruff/mypy,
-  generate_feed.py tests, machine-testable feed schema), agent-contract consistency
-  (AGENTS.md in meta-inventory, model-pin drift in new-direction-2026, fleet settings
-  pattern), deploy concurrency split + branch ruleset here.
-  - ⚠️ **Deploy concurrency is now a confirmed production issue, not just a risk.** On
-    2026-07-03 the merge-triggered deploy's Deploy job was cancelled mid-flight by
-    `deploy.yml`'s `concurrency: { group: "pages", cancel-in-progress: true }`, leaving the
-    site un-updated until a manual re-dispatch. Recommended fix (GitHub's own Pages
-    template): set `cancel-in-progress: false` so production deployments run to completion.
-    One-line change to `.github/workflows/deploy.yml` — **ask-first** (deploy config), so
-    flagged here rather than applied.
+- ~~**Tier 3 — fabric**~~ — **DONE 2026-07-03** (coordinator, full git/GitHub authority):
+  - **Fleet map** authored: `meta-inventory/docs/standards/fleet-map.md` (5 repos, roles,
+    feed/hygiene/audit/provenance contracts). **AGENTS.md** added to meta-inventory (entry-
+    point parity across the fleet); linked from CLAUDE.md.
+  - **Actions bumped fleet-wide** to current SHA-pinned majors (checkout v7, setup-node v6,
+    setup-python v6, configure-pages v6, upload-pages-artifact v5, deploy-pages v5, setup-uv
+    v8, upload-artifact v7, pre-commit/action SHA) + **pre-commit-hooks v5→v6 in all four
+    repos** — Node 20 deprecation warnings cleared everywhere.
+  - **new-direction-2026:** stale model pins (Opus 4.6 / gemini-3.1-pro-preview) →
+    session-dependent; unconfigured `github` MCP row removed.
+  - **planning:** `uv sync --frozen` fallback removed (lockfile drift now fails CI).
+  - **Deploy concurrency FIXED** (`cancel-in-progress: false` + `actions: read`, PR #24) —
+    the 2026-07-03 production cancellation cannot recur.
+  - **Vite 5→8** shipped (PR #25): npm audit **0 vulnerabilities**. **twitter:image:alt**
+    added to every page.
+
+### Deliberately NOT done — documented reasons / operator-gated
+
+- **meta ruff/mypy gate + `.mise.toml`:** meta's buildplan **D-OP-1/AC16** explicitly forbids
+  `.mise.toml`/`.python-version`/`pyproject.toml`, and a ruff gate would reformat 18 core
+  scripts against that documented minimalism. Left as an **operator decision** (relax D-OP-1
+  first). CI already pins Python 3.13; FF-001..005 + feed-check already guard the producer.
+- **meta facts-layer refresh** (fresh feed `generatedAt`): requires
+  `run_freshness_cadence.sh --mode collect` (multi-account `gh` re-query) + `WEBSITE_PR_TOKEN`
+  — **operator-credentialed**. Forcing a timestamp would violate the generator's determinism
+  contract (I2). The current feed (2026-06-29) is correct and deterministic; run when facts
+  actually change.
+- **planning `source-register` `last_checked`:** intentionally **not backfilled** — writing a
+  verification date I did not perform would fabricate data; needs real per-source checks.
+- **plan-02 rewrite:** handed off; awaits the operator / a planning session (career-strategy
+  specifics are the operator's to set).
+- **meta `generate_feed.py` tests:** delegated (stdlib `unittest`, respecting no-pytest/no-
+  pyproject); pending review before commit.
+- **branch rulesets:** GitHub repo-settings policy — operator call.
 
 ## History
 
@@ -171,3 +193,11 @@ recurring methods" line populates from `portfolio{}`).
   been sitting unpushed; repo is private, diff carries only `.pub` key refs); planning-summer
   `main` pushed (`0d2649a` — plan-02 handoff committed). Plan-02 handback now awaited from
   planning.
+- **2026-07-03** — **Tier 3 fabric hardening complete** across all four repos (full git/GitHub
+  authority). Website: deploy concurrency fixed + Actions currency (PR #24), **Vite 5→8** with
+  0 audit vulnerabilities (PR #25), twitter:image:alt, pre-commit v6 (`119fa18`). meta: fleet
+  map + AGENTS.md + Actions + pre-commit v6 (`d3cf780`). new-direction: model-pin + github-MCP
+  cleanup + Actions + pre-commit v6 (`b1dd23d`). planning: Actions + setup-uv v8 + `--frozen`
+  enforcement + pre-commit v6 (`e722bdd`). All sibling CI green. Six items deliberately left
+  for operator decision / credentials / honesty (see "Deliberately NOT done" above);
+  `generate_feed.py` tests delegated and pending review.
