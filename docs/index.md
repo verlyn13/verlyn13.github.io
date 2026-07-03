@@ -19,8 +19,10 @@ authority, which are historical handoffs, and where plans live.
 
 - **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as an independent researcher and
   systems builder. The target role language is research engineer / research-engineering roles.
-- **Deployment:** push or merge to `main` deploys through GitHub Pages Actions. Do not push without
-  explicit operator approval.
+- **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
+  repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
+  with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
+  history (squash/rebase merge). Do not merge to `main` without explicit operator approval.
 - **Local gate:** `mise run ci` is the normal completion gate. It runs provenance/leak checks, Biome
   lint, format check, design-system conformance, token freshness, and the Vite build.
 - **Generated files:** `projects/index.html` and `dist/` are generated/ignored. Change
