@@ -4,7 +4,7 @@ category: operations
 component: docs-index
 status: active
 version: 0.1.0
-last_updated: 2026-07-02
+last_updated: 2026-07-03
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -61,6 +61,18 @@ authority, which are historical handoffs, and where plans live.
   repos.
 - **Policy boundary:** event-driven refresh and any feed-only auto-publish path remain future-state until
   explicit operator approval and website-side gate wiring.
+
+### Content mirror (Markdown sidecar)
+
+- **Proposed (PR-0 docs landed):** a committed Markdown mirror under `docs/content/` that complements
+  the authoritative HTML — for portability, search, and downstream tooling. Contract in
+  `docs/markdown-mirror.md`; rationale in `docs/adr/0010-structured-markdown-mirror.md`.
+- **Model:** HTML is provenance. Sync is intentional and directional (`content:pull` / `push` /
+  `diff` / `check`) — never automatic. Two-way `push` is opt-in **per prose region**, fail-closed,
+  and rewrites only marked inner content; layout/data-shaped regions stay `pull_only`; generated
+  `projects/index.html` is excluded.
+- **Rollout:** PR-1 pull MVP (`parse5`, 2–3 pages) → PR-2 expand + wire integrity `check` into CI →
+  PR-3 two-way push on opt-in regions. No code or dependency lands until PR-1.
 
 ### Design system
 
