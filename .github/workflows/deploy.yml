@@ -7,11 +7,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Least privilege: default all jobs to read-only; the Pages write scopes are granted only to
+# the jobs that use them (build/deploy), not workflow-wide (zizmor excessive-permissions).
 permissions:
   contents: read
-  pages: write
-  id-token: write
-  actions: read
 
 concurrency:
   # Do NOT cancel in-progress production deployments — let them run to completion
@@ -23,9 +22,13 @@ jobs:
   quality:
     name: Code Quality
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7
+        with:
+          persist-credentials: false
 
       - name: Setup Node 24
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6
@@ -58,9 +61,15 @@ jobs:
     name: Build Site
     runs-on: ubuntu-latest
     needs: quality
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7
+        with:
+          persist-credentials: false
 
       - name: Setup Node 24
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6
@@ -92,6 +101,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      actions: read
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
