@@ -45,6 +45,7 @@ export default defineConfig({
         cv: resolve(__dirname, 'cv.html'),
         contact: resolve(__dirname, 'contact.html'),
         colophon: resolve(__dirname, 'colophon.html'),
+        404: resolve(__dirname, '404.html'),
 
         // Projects
         'projects-index': resolve(__dirname, 'projects/index.html'),
