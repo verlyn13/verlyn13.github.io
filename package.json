@@ -25,8 +25,8 @@
     "deploy": "npm run ci && npm run preview"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.8",
-    "style-dictionary": "^5.4.3",
+    "@biomejs/biome": "^2.5.2",
+    "style-dictionary": "^5.5.0",
     "vite": "^8.0.0"
   }
 }
