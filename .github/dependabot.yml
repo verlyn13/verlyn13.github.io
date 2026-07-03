@@ -14,8 +14,9 @@ updates:
     commit-message:
       prefix: chore(ci)
     cooldown:
+      # GitHub Actions does not support semver-specific cooldown keys; default-days
+      # applies to all version updates for this ecosystem.
       default-days: 7        # release must be >=7 days old (IaC scanners flag <7)
-      semver-major-days: 14  # extra caution on majors
     groups:
       actions-minor-patch:
         patterns: ["*"]
