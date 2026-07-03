@@ -144,6 +144,11 @@ recurring methods" line populates from `portfolio{}`).
     the 2026-07-03 production cancellation cannot recur.
   - **Vite 5→8** shipped (PR #25): npm audit **0 vulnerabilities**. **twitter:image:alt**
     added to every page.
+  - **meta `generate_feed.py` tests** (`771e04a`): the producer's first automated tests —
+    stdlib `unittest` (no pytest/pyproject, per D-OP-1), 8 hermetic contract tests
+    (determinism I2, epoch forcing, schema, per-project key allowlist/leak guard,
+    `--gate-report` read-only, `--check` drift → exit 3) via a committed golden projection
+    fixture; wired as a files-scoped pre-commit hook, **green in Hygiene CI**.
 
 ### Deliberately NOT done — documented reasons / operator-gated
 
@@ -160,8 +165,6 @@ recurring methods" line populates from `portfolio{}`).
   verification date I did not perform would fabricate data; needs real per-source checks.
 - **plan-02 rewrite:** handed off; awaits the operator / a planning session (career-strategy
   specifics are the operator's to set).
-- **meta `generate_feed.py` tests:** delegated (stdlib `unittest`, respecting no-pytest/no-
-  pyproject); pending review before commit.
 - **branch rulesets:** GitHub repo-settings policy — operator call.
 
 ## History
@@ -199,5 +202,8 @@ recurring methods" line populates from `portfolio{}`).
   map + AGENTS.md + Actions + pre-commit v6 (`d3cf780`). new-direction: model-pin + github-MCP
   cleanup + Actions + pre-commit v6 (`b1dd23d`). planning: Actions + setup-uv v8 + `--frozen`
   enforcement + pre-commit v6 (`e722bdd`). All sibling CI green. Six items deliberately left
-  for operator decision / credentials / honesty (see "Deliberately NOT done" above);
-  `generate_feed.py` tests delegated and pending review.
+  for operator decision / credentials / honesty (see "Deliberately NOT done" above).
+- **2026-07-03** — meta `generate_feed.py` producer tests landed (`771e04a`), green in
+  Hygiene CI; a first delegated attempt died on an API error leaving the repo clean, so the
+  suite was authored directly. **Fleet audit fully worked through** — every actionable Tier
+  0/1/2/3 item done; the only open items are the six operator-gated / honesty-bound ones.
