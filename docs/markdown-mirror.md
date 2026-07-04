@@ -2,9 +2,9 @@
 title: Structured Markdown mirror — contract and normalization spec
 category: operations
 component: content-sync
-status: proposed
-version: 0.1.0
-last_updated: 2026-07-03
+status: active
+version: 0.2.0
+last_updated: 2026-07-04
 tags: [content, markdown, sync, mirror, provenance]
 priority: high
 audience: coding agent + operator
@@ -148,14 +148,16 @@ HTML region and the Markdown. This is enforced by a per-region test (PR-3).
 - a stored `content_hash` that disagrees with the committed Markdown body.
 
 It does **not** require HTML and Markdown to be mutually current — drift is surfaced by `content:diff`
-and resolved by an intentional `pull`/`push`. `check` enters `mise run ci` only at PR-2.
+and resolved by an intentional `pull`/`push`. As of PR-2, `check` runs inside `mise run ci`
+(integrity only), so a stale or orphaned mirror file fails CI while HTML edits do not.
 
 ## Rollout
 
-- **PR-0 (this):** ADR-0010 + this spec + `docs/content/README.md`. No code, no deps.
-- **PR-1:** `scripts/sync-content.mjs` (`pull`/`diff`/`check`), `parse5`, `registry.yaml`, 2–3 pages
-  (one project detail + one narrative), `scripts/sync-content.test.mjs`. `check` not yet in CI.
-- **PR-2:** expand pull to all authored pages; wire integrity `check` into `mise run ci`.
+- **PR-0 (done):** ADR-0010 + this spec + `docs/content/README.md`. No code, no deps.
+- **PR-1 (done):** `scripts/sync-content.mjs` (`pull`/`diff`/`check`), `parse5`, `registry.yaml`,
+  3 pages, `scripts/sync-content.test.mjs`. `check` not yet in CI.
+- **PR-2 (done):** all authored pages mirrored (15; `projects/index.html` excluded as generated);
+  integrity `check` wired into `mise run ci`.
 - **PR-3:** markers on a few prose regions + fail-closed `push` + per-region round-trip tests.
 
 ## Tests

@@ -25,7 +25,7 @@
     "content:check": "node scripts/sync-content.mjs check",
     "test": "node --test scripts/feed-model.test.mjs scripts/sync-content.test.mjs",
     "clean": "rm -rf dist node_modules",
-    "ci": "npm run provenance && npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm test && npm run build",
+    "ci": "npm run provenance && npm run lint && npm run format:check && npm run conformance && npm run tokens:check && npm run content:check && npm test && npm run build",
     "deploy": "npm run ci && npm run preview"
   },
   "devDependencies": {
