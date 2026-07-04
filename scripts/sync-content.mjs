@@ -2,14 +2,15 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parse, serialize } from 'parse5'
+import { parse, parseFragment, serialize } from 'parse5'
 
-// Structured Markdown mirror — HTML -> Markdown extractor and sync tool.
+// Structured Markdown mirror — HTML <-> Markdown sync tool.
 // Contract: docs/markdown-mirror.md · Rationale: docs/adr/0010-structured-markdown-mirror.md
 //
-// PR-1 scope is pull-only: `pull` (HTML -> MD), `diff` (dry run), `check` (integrity gate).
-// `push` (MD -> HTML) is fail-closed and stays disabled until PR-3 wires markers + the
-// constrained renderer. HTML is authoritative; this tree is a committed sidecar mirror.
+// Commands: `pull` (HTML -> MD), `diff` (dry run), `check` (integrity gate), and `push`
+// (MD -> HTML for opt-in two_way regions). Push is fail-closed: it only rewrites content
+// between content-sync markers, only accepts a constrained vocabulary, and refuses on a
+// stale html_hash. HTML is authoritative; this tree is a committed sidecar mirror.
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const contentDir = path.join(root, 'docs', 'content')
@@ -316,6 +317,135 @@ export function emitRegistry(registry) {
   return `${lines.join('\n')}\n`
 }
 
+// --- two-way regions (opt-in prose, fail-closed push) ---------------------------
+// A region is delimited in the HTML by paired content-sync comments and mirrored to
+// docs/content/regions/<id>.md. Only this constrained vocabulary round-trips: paragraphs,
+// h2-h4, ul/ol, blockquote, and inline strong/em/code/a. Push touches only the inner
+// content between markers — never the wrapper element or its attributes.
+function regionPattern(id) {
+  const e = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(
+    `([ \\t]*)<!--\\s*content-sync:start ${e}\\s*-->\\n([\\s\\S]*?)\\n[ \\t]*<!--\\s*content-sync:end ${e}\\s*-->`,
+  )
+}
+
+export function extractRegion(html, id) {
+  const match = html.match(regionPattern(id))
+  if (!match) return null
+  return { indent: match[1], inner: match[2] }
+}
+
+export function replaceRegion(html, id, inner) {
+  return html.replace(
+    regionPattern(id),
+    (_full, indent) =>
+      `${indent}<!-- content-sync:start ${id} -->\n${inner}\n${indent}<!-- content-sync:end ${id} -->`,
+  )
+}
+
+function regionHtmlHash(inner) {
+  return sha256(
+    inner
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  )
+}
+
+export function regionToMarkdown(inner) {
+  return `${collectBlocks(parseFragment(inner))
+    .join('\n\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()}\n`
+}
+
+// MD -> HTML for push. Fail-closed: throws on any construct outside the vocabulary.
+export function parseMarkdownBlocks(md) {
+  const blocks = []
+  for (const chunk of md.replace(/\n+$/, '').split(/\n{2,}/)) {
+    if (!chunk.trim()) continue
+    const lines = chunk.split('\n')
+    if (lines.every((l) => /^- /.test(l))) {
+      blocks.push({ type: 'ul', items: lines.map((l) => l.slice(2)) })
+    } else if (lines.every((l) => /^\d+\. /.test(l))) {
+      blocks.push({ type: 'ol', items: lines.map((l) => l.replace(/^\d+\.\s/, '')) })
+    } else if (lines.every((l) => /^> /.test(l))) {
+      blocks.push({ type: 'blockquote', text: lines.map((l) => l.slice(2)).join(' ') })
+    } else if (lines.length === 1 && /^#{2,4} /.test(lines[0])) {
+      const level = lines[0].match(/^#+/)[0].length
+      blocks.push({ type: 'h', level, text: lines[0].replace(/^#+\s/, '') })
+    } else {
+      for (const l of lines) {
+        if (/^\s*(#|>|-\s|\d+\.\s|```|\||!\[)/.test(l) || /<[a-z/!]/i.test(l)) {
+          throw new Error(`unsupported construct: ${l.trim()}`)
+        }
+      }
+      blocks.push({ type: 'p', text: collapse(lines.join(' ')) })
+    }
+  }
+  return blocks
+}
+
+export function renderInlineHtml(text) {
+  let out = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  out = out.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_m, t, u) => `<a href="${u.replace(/&/g, '&amp;')}">${t}</a>`,
+  )
+  out = out.replace(/`([^`]+)`/g, '<code>$1</code>')
+  out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+  out = out.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>')
+  return out
+}
+
+export function renderRegionHtml(md, indent = '') {
+  const lines = []
+  for (const block of parseMarkdownBlocks(md)) {
+    if (block.type === 'p') {
+      lines.push(`${indent}<p>${renderInlineHtml(block.text)}</p>`)
+    } else if (block.type === 'h') {
+      lines.push(`${indent}<h${block.level}>${renderInlineHtml(block.text)}</h${block.level}>`)
+    } else if (block.type === 'ul' || block.type === 'ol') {
+      lines.push(`${indent}<${block.type}>`)
+      for (const item of block.items) lines.push(`${indent}    <li>${renderInlineHtml(item)}</li>`)
+      lines.push(`${indent}</${block.type}>`)
+    } else if (block.type === 'blockquote') {
+      lines.push(`${indent}<blockquote>`)
+      lines.push(`${indent}    <p>${renderInlineHtml(block.text)}</p>`)
+      lines.push(`${indent}</blockquote>`)
+    }
+  }
+  return lines.join('\n')
+}
+
+function buildRegionFrontmatter(id, entry, contentHash, htmlHash) {
+  return [
+    '---',
+    `id: ${id}`,
+    'type: region',
+    `source_file: ${entry.source_file}`,
+    `marker: ${id}`,
+    `page: ${entry.id}`,
+    `content_hash: ${contentHash}`,
+    `html_hash: ${htmlHash}`,
+    `normalizer_version: ${NORMALIZER_VERSION}`,
+    'sync_direction: two_way',
+    'protected_fields: [id, type, source_file, marker, page, normalizer_version]',
+    '---',
+    '',
+  ].join('\n')
+}
+
+export function buildRegion(entry, html, id) {
+  const region = extractRegion(html, id)
+  if (!region) return null
+  const body = regionToMarkdown(region.inner)
+  const contentHash = sha256(body)
+  const htmlHash = regionHtmlHash(region.inner)
+  const text = `${buildRegionFrontmatter(id, entry, contentHash, htmlHash)}\n${body}`
+  return { id, file: `regions/${id}.md`, text, body, contentHash, htmlHash, indent: region.indent }
+}
+
 // --- commands -------------------------------------------------------------------
 function loadRegistry() {
   if (!existsSync(registryPath)) {
@@ -332,20 +462,54 @@ function readSource(entry) {
   return readFileSync(abs, 'utf8')
 }
 
+function writeIfChanged(file, text) {
+  const abs = path.join(contentDir, file)
+  const existing = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+  if (existing === text) {
+    console.log(`  unchanged  ${file}`)
+    return 0
+  }
+  mkdirSync(path.dirname(abs), { recursive: true })
+  writeFileSync(abs, text)
+  console.log(`  ${existing ? 'updated' : 'created'}    ${file}`)
+  return 1
+}
+
+function diffFile(file, text) {
+  const abs = path.join(contentDir, file)
+  const existing = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+  if (existing == null) {
+    console.log(`  new        ${file} (pull would create)`)
+    return 1
+  }
+  if (existing !== text) {
+    console.log(`  drifted    ${file} (pull would update)`)
+    return 1
+  }
+  console.log(`  in sync    ${file}`)
+  return 0
+}
+
+function forEachRegion(entry, html, fn) {
+  for (const id of entry.two_way_regions ?? []) {
+    const region = buildRegion(entry, html, id)
+    if (!region) {
+      console.log(`  MISSING    markers for region ${id} in ${entry.source_file}`)
+      fn(null)
+      continue
+    }
+    fn(region)
+  }
+}
+
 function runPull(registry) {
   let written = 0
   for (const entry of [...registry.pages].sort((a, b) => a.id.localeCompare(b.id))) {
-    const mirror = buildMirror(entry, readSource(entry))
-    const abs = path.join(contentDir, mirror.file)
-    const existing = existsSync(abs) ? readFileSync(abs, 'utf8') : null
-    if (existing === mirror.text) {
-      console.log(`  unchanged  ${mirror.file}`)
-      continue
-    }
-    mkdirSync(path.dirname(abs), { recursive: true })
-    writeFileSync(abs, mirror.text)
-    console.log(`  ${existing ? 'updated' : 'created'}    ${mirror.file}`)
-    written += 1
+    const html = readSource(entry)
+    written += writeIfChanged(entry.file, buildMirror(entry, html).text)
+    forEachRegion(entry, html, (region) => {
+      if (region) written += writeIfChanged(region.file, region.text)
+    })
   }
   const normalized = emitRegistry(registry)
   if (readFileSync(registryPath, 'utf8') !== normalized) {
@@ -359,20 +523,14 @@ function runPull(registry) {
 function runDiff(registry) {
   let drift = 0
   for (const entry of [...registry.pages].sort((a, b) => a.id.localeCompare(b.id))) {
-    const mirror = buildMirror(entry, readSource(entry))
-    const abs = path.join(contentDir, mirror.file)
-    const existing = existsSync(abs) ? readFileSync(abs, 'utf8') : null
-    if (existing == null) {
-      console.log(`  new        ${mirror.file} (pull would create)`)
-      drift += 1
-    } else if (existing !== mirror.text) {
-      console.log(`  drifted    ${mirror.file} (pull would update)`)
-      drift += 1
-    } else {
-      console.log(`  in sync    ${mirror.file}`)
-    }
+    const html = readSource(entry)
+    drift += diffFile(entry.file, buildMirror(entry, html).text)
+    forEachRegion(entry, html, (region) => {
+      if (region) drift += diffFile(region.file, region.text)
+      else drift += 1
+    })
   }
-  console.log(drift ? `diff: ${drift} region(s) would change on pull` : 'diff: no drift')
+  console.log(drift ? `diff: ${drift} file(s) would change on pull` : 'diff: no drift')
 }
 
 function runCheck(registry) {
@@ -403,9 +561,36 @@ function runCheck(registry) {
     if (frontmatterField(frontmatter, 'id') !== entry.id) {
       errors.push(`${entry.file}: frontmatter id disagrees with registry id "${entry.id}"`)
     }
-    // two_way regions require markers in the HTML; none exist until PR-3.
-    if (entry.two_way_regions?.length) {
-      errors.push(`${entry.file}: two_way_regions set but push is not enabled until PR-3`)
+    // two_way regions: markers must exist, the region file must be present + fresh,
+    // and its body must use only the constrained vocabulary.
+    for (const id of entry.two_way_regions ?? []) {
+      let html
+      try {
+        html = readSource(entry)
+      } catch (err) {
+        errors.push(`${id}: ${err.message}`)
+        continue
+      }
+      if (!extractRegion(html, id)) {
+        errors.push(`${entry.source_file}: two_way region "${id}" has no content-sync markers`)
+        continue
+      }
+      const regionAbs = path.join(contentDir, 'regions', `${id}.md`)
+      if (!existsSync(regionAbs)) {
+        errors.push(
+          `regions/${id}.md: referenced by two_way_regions but missing (run content:pull)`,
+        )
+        continue
+      }
+      const region = splitFrontmatter(readFileSync(regionAbs, 'utf8'))
+      if (frontmatterField(region.frontmatter, 'content_hash') !== sha256(region.body)) {
+        errors.push(`regions/${id}.md: content_hash does not match body (stale region file)`)
+      }
+      try {
+        parseMarkdownBlocks(region.body)
+      } catch (err) {
+        errors.push(`regions/${id}.md: illegal vocabulary — ${err.message}`)
+      }
     }
   }
   if (registry.pages.length !== referenced.size && ids.size === registry.pages.length) {
@@ -422,22 +607,81 @@ function runCheck(registry) {
   console.log(`content:check ok (${registry.pages.length} page(s))`)
 }
 
-function runPush() {
-  console.error(
-    'content:push is disabled until PR-3. Push is fail-closed: it requires content-sync\n' +
-      'markers in the HTML and the constrained renderer (see docs/markdown-mirror.md).',
-  )
-  process.exitCode = 1
+// Push Markdown back into the marked HTML regions. Fail-closed at every step.
+function runPush(registry) {
+  const errors = []
+  let pushed = 0
+  let inSync = 0
+  for (const entry of registry.pages) {
+    for (const id of entry.two_way_regions ?? []) {
+      const regionAbs = path.join(contentDir, 'regions', `${id}.md`)
+      if (!existsSync(regionAbs)) {
+        errors.push(`${id}: regions/${id}.md missing (run content:pull first)`)
+        continue
+      }
+      const { frontmatter, body } = splitFrontmatter(readFileSync(regionAbs, 'utf8'))
+      const srcAbs = path.join(root, entry.source_file)
+      const html = readFileSync(srcAbs, 'utf8')
+      const region = extractRegion(html, id)
+      if (!region) {
+        errors.push(`${id}: no content-sync markers in ${entry.source_file} (refused)`)
+        continue
+      }
+      let rendered
+      try {
+        rendered = renderRegionHtml(body, region.indent)
+      } catch (err) {
+        errors.push(`${id}: illegal Markdown vocabulary — ${err.message} (refused)`)
+        continue
+      }
+      if (rendered === region.inner) {
+        console.log(`  in sync    ${id}`)
+        inSync += 1
+        continue
+      }
+      // The rendered HTML differs. Only proceed if the HTML region is unchanged since
+      // the last pull; otherwise this would clobber an out-of-band HTML edit.
+      const storedHtmlHash = frontmatterField(frontmatter, 'html_hash')
+      if (storedHtmlHash && regionHtmlHash(region.inner) !== storedHtmlHash) {
+        errors.push(
+          `${id}: HTML changed since last pull (html_hash conflict) — run content:pull and reconcile (refused)`,
+        )
+        continue
+      }
+      writeFileSync(srcAbs, replaceRegion(html, id, rendered))
+      const refreshed = readFileSync(regionAbs, 'utf8').replace(
+        /^html_hash:.*$/m,
+        `html_hash: ${regionHtmlHash(rendered)}`,
+      )
+      writeFileSync(regionAbs, refreshed)
+      console.log(`  pushed     ${id} -> ${entry.source_file}`)
+      pushed += 1
+    }
+  }
+  if (errors.length > 0) {
+    console.error('content:push refused:')
+    for (const error of errors) console.error(`- ${error}`)
+    process.exitCode = 1
+    return
+  }
+  if (pushed > 0) {
+    console.log(`push: ${pushed} region(s) written, ${inSync} in sync`)
+    console.log('note: run `npm run content:pull` to refresh the page-level projections.')
+  } else {
+    console.log(
+      inSync > 0 ? `push: ${inSync} region(s) already in sync` : 'push: no two_way regions',
+    )
+  }
 }
 
 function main() {
   const cmd = process.argv[2]
-  if (cmd === 'push') return runPush()
   const registry = loadRegistry()
   if (!registry) return undefined
   if (cmd === 'pull') return runPull(registry)
   if (cmd === 'diff') return runDiff(registry)
   if (cmd === 'check') return runCheck(registry)
+  if (cmd === 'push') return runPush(registry)
   console.error('usage: node scripts/sync-content.mjs <pull|push|diff|check>')
   process.exitCode = 1
   return undefined

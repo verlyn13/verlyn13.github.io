@@ -75,8 +75,11 @@ authority, which are historical handoffs, and where plans live.
   files.
 - **CI:** `content:check` (integrity only — registry/files/hashes, not HTML↔MD currency) runs in
   `mise run ci`. Drift between HTML and the mirror is surfaced by `content:diff`, resolved on purpose.
-- **Remaining:** PR-3 adds two-way `push` (content-sync markers + constrained renderer +
-  round-trip tests) on opt-in prose regions. `push` is disabled until then.
+- **Two-way (opt-in):** `content:push` is enabled. `dicee.overview` is the first `two_way` region
+  (content-sync markers in `projects/dicee.html`, editable at `docs/content/regions/dicee.overview.md`).
+  Push is fail-closed: marked inner content only, constrained vocabulary, refuses on `html_hash`
+  conflict. Promote more regions by adding markers + a `two_way_regions` entry after the round-trip
+  test passes.
 
 ### Design system
 
