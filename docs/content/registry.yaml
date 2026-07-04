@@ -43,7 +43,7 @@ pages:
     source_selector: main
     route: /projects/dicee.html
     mode: pull_only
-    two_way_regions: []
+    two_way_regions: [dicee.overview]
   - id: page_experience
     file: pages/experience.md
     source_file: experience/index.html

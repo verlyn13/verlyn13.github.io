@@ -3,7 +3,7 @@ title: Structured Markdown mirror — contract and normalization spec
 category: operations
 component: content-sync
 status: active
-version: 0.2.0
+version: 0.3.0
 last_updated: 2026-07-04
 tags: [content, markdown, sync, mirror, provenance]
 priority: high
@@ -36,7 +36,8 @@ docs/content/
   registry.yaml     # id ↔ file ↔ source map; the sync map (script never invents structure)
   changes.yaml      # human-curated tombstone / decision log (no auto-timestamps)
   README.md         # what the sidecar is + how to use the commands
-  pages/            # mirrored Markdown, mirroring route structure
+  pages/            # whole-<main> pull_only projection, mirroring route structure
+  regions/          # <id>.md — the editable, push-able two_way units
     home.md
     cv.md
     projects/
@@ -132,10 +133,17 @@ element or its attributes — and refuses when:
 
 Push emits at the marker block's indentation so the diff stays minimal.
 
+Each `two_way` region is mirrored to its own file `docs/content/regions/<id>.md` (frontmatter
+`type: region`, `page`, `marker`, `content_hash`, `html_hash`). That region file — **not** the
+whole-page `pages/*.md` projection — is the push source: edit it, then `content:push`. After a push,
+run `content:pull` to refresh the page-level projection, which the push intentionally leaves stale
+(surfaced by `content:diff`).
+
 ## Round-trip promotion gate
 
 A region is promoted to `two_way` only when `pull → push → pull` is byte-identical for **both** the
-HTML region and the Markdown. This is enforced by a per-region test (PR-3).
+HTML region and the Markdown. This is enforced by the `region round-trip` tests in
+`scripts/sync-content.test.mjs`.
 
 ## `content:check` semantics (integrity, not currency)
 
@@ -158,7 +166,8 @@ and resolved by an intentional `pull`/`push`. As of PR-2, `check` runs inside `m
   3 pages, `scripts/sync-content.test.mjs`. `check` not yet in CI.
 - **PR-2 (done):** all authored pages mirrored (15; `projects/index.html` excluded as generated);
   integrity `check` wired into `mise run ci`.
-- **PR-3:** markers on a few prose regions + fail-closed `push` + per-region round-trip tests.
+- **PR-3 (done):** first `two_way` region (`dicee.overview`) with content-sync markers, fail-closed
+  `push` (constrained MD→HTML renderer), and round-trip idempotency tests.
 
 ## Tests
 

@@ -6,8 +6,14 @@ import { fileURLToPath } from 'node:url'
 import {
   buildMirror,
   emitRegistry,
+  extractRegion,
   htmlToMarkdown,
+  parseMarkdownBlocks,
   parseRegistry,
+  regionToMarkdown,
+  renderInlineHtml,
+  renderRegionHtml,
+  replaceRegion,
   sha256,
   splitFrontmatter,
 } from './sync-content.mjs'
@@ -134,4 +140,76 @@ test('the committed registry parses and references unique ids and files', () => 
     assert.ok(page.file.startsWith('pages/'))
     assert.equal(page.mode, 'pull_only')
   }
+})
+
+// --- two-way regions (PR-3) -----------------------------------------------------
+
+const REGION_MD = `Hello **world** and [link](/x).
+
+- one
+- two
+
+## Sub
+
+> a quote
+`
+
+const MARKED_HTML = `<section>
+    <!-- content-sync:start demo.region -->
+    <p>alpha</p>
+    <p>beta</p>
+    <!-- content-sync:end demo.region -->
+</section>`
+
+test('region round-trip: md -> html -> md is byte-stable', () => {
+  const html = renderRegionHtml(REGION_MD, '  ')
+  assert.equal(regionToMarkdown(html), REGION_MD)
+  assert.equal(renderRegionHtml(regionToMarkdown(html), '  '), html)
+})
+
+test('dicee.overview round-trips byte-identically at its 20-space indent', () => {
+  const indent = ' '.repeat(20)
+  const inner = [
+    `${indent}<p>Family-friendly multiplayer dice game demonstrating serverless real-time coordination at scale. Built to explore Cloudflare's edge computing model and WebAssembly optimization.</p>`,
+    `${indent}<p>Solo development from architecture through deployment. Live users, real monitoring, production infrastructure.</p>`,
+  ].join('\n')
+  assert.equal(renderRegionHtml(regionToMarkdown(inner), indent), inner)
+})
+
+test('extractRegion reads the marker indent and inner content', () => {
+  const region = extractRegion(MARKED_HTML, 'demo.region')
+  assert.equal(region.indent, '    ')
+  assert.ok(region.inner.includes('<p>alpha</p>'))
+})
+
+test('extractRegion + replaceRegion is an identity when inner is unchanged', () => {
+  const region = extractRegion(MARKED_HTML, 'demo.region')
+  assert.equal(replaceRegion(MARKED_HTML, 'demo.region', region.inner), MARKED_HTML)
+})
+
+test('extractRegion returns null when markers are absent', () => {
+  assert.equal(extractRegion('<p>no markers here</p>', 'demo.region'), null)
+})
+
+test('push refuses illegal vocabulary (parseMarkdownBlocks throws)', () => {
+  for (const bad of [
+    '![img](/a.png)',
+    '| a | b |',
+    '```\ncode\n```',
+    '##### h5',
+    '<div>raw</div>',
+  ]) {
+    assert.throws(() => parseMarkdownBlocks(bad), `should reject: ${bad}`)
+  }
+})
+
+test('parseMarkdownBlocks accepts the allowed vocabulary', () => {
+  const types = parseMarkdownBlocks('## H\n\npara\n\n- a\n- b\n\n> q').map((b) => b.type)
+  assert.deepEqual(types, ['h', 'p', 'ul', 'blockquote'])
+})
+
+test('renderInlineHtml escapes structural chars and preserves apostrophes', () => {
+  assert.equal(renderInlineHtml('a & b < c'), 'a &amp; b &lt; c')
+  assert.equal(renderInlineHtml('**x** and `y`'), '<strong>x</strong> and <code>y</code>')
+  assert.equal(renderInlineHtml("Cloudflare's edge"), "Cloudflare's edge")
 })
