@@ -2,11 +2,60 @@
 # See docs/markdown-mirror.md. Maintained by scripts/sync-content.mjs;
 # hand-edit only `mode` and `two_way_regions`.
 pages:
+  - id: page_404
+    file: pages/404.md
+    source_file: 404.html
+    source_selector: main
+    route: /404.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_budget-triage
+    file: pages/projects/budget-triage.md
+    source_file: projects/budget-triage.html
+    source_selector: main
+    route: /projects/budget-triage.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_colophon
+    file: pages/colophon.md
+    source_file: colophon.html
+    source_selector: main
+    route: /colophon.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_contact
+    file: pages/contact.md
+    source_file: contact.html
+    source_selector: main
+    route: /contact.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_cv
+    file: pages/cv.md
+    source_file: cv.html
+    source_selector: main
+    route: /cv.html
+    mode: pull_only
+    two_way_regions: []
   - id: page_dicee
     file: pages/projects/dicee.md
     source_file: projects/dicee.html
     source_selector: main
     route: /projects/dicee.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_experience
+    file: pages/experience.md
+    source_file: experience/index.html
+    source_selector: main
+    route: /experience/
+    mode: pull_only
+    two_way_regions: []
+  - id: page_flux
+    file: pages/projects/flux.md
+    source_file: projects/flux.html
+    source_selector: main
+    route: /projects/flux.html
     mode: pull_only
     two_way_regions: []
   - id: page_home
@@ -16,10 +65,45 @@ pages:
     route: /
     mode: pull_only
     two_way_regions: []
+  - id: page_host-capability-substrate
+    file: pages/projects/host-capability-substrate.md
+    source_file: projects/host-capability-substrate.html
+    source_selector: main
+    route: /projects/host-capability-substrate.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_maat
+    file: pages/projects/maat.md
+    source_file: projects/maat.html
+    source_selector: main
+    route: /projects/maat.html
+    mode: pull_only
+    two_way_regions: []
   - id: page_research
     file: pages/research.md
     source_file: research/index.html
     source_selector: main
     route: /research/
+    mode: pull_only
+    two_way_regions: []
+  - id: page_scopecam
+    file: pages/projects/scopecam.md
+    source_file: projects/scopecam.html
+    source_selector: main
+    route: /projects/scopecam.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_symmetry-groups
+    file: pages/projects/symmetry-groups.md
+    source_file: projects/symmetry-groups.html
+    source_selector: main
+    route: /projects/symmetry-groups.html
+    mode: pull_only
+    two_way_regions: []
+  - id: page_the-nash-group
+    file: pages/projects/the-nash-group.md
+    source_file: projects/the-nash-group.html
+    source_selector: main
+    route: /projects/the-nash-group.html
     mode: pull_only
     two_way_regions: []
