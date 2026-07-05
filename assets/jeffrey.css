@@ -568,6 +568,103 @@ em {
 }
 
 /* ------------------------------------------------------------
+   Credentials bar — copy-ready résumé / research statement / summary
+   ------------------------------------------------------------ */
+.credentials {
+  padding: var(--space-5) 0;
+  border-top: var(--border);
+}
+
+.cred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.cred-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: space-between;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.cred-card__title {
+  margin-bottom: var(--space-1);
+  font-size: 1.05rem;
+}
+
+.cred-card__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.cred-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cred-copy {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.cred-copy:hover {
+  background: var(--accent-subtle);
+}
+
+.cred-copy.is-copied {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.cred-card__download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cred-card__download:hover {
+  color: var(--accent);
+}
+
+.cred-cv {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.cred-cv a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
    Approach Section
    ------------------------------------------------------------ */
 .approach-section {
@@ -2567,6 +2664,7 @@ th {
   .service-card,
   .approach-card,
   .bento-card,
+  .cred-copy,
   .back-to-top,
   .section-link,
   .section-link-btn,
