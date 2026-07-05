@@ -560,32 +560,6 @@ em {
 }
 
 /* ------------------------------------------------------------
-   Technical Foundation
-   ------------------------------------------------------------ */
-.technical-foundation {
-  padding: var(--space-5) 0;
-  background: linear-gradient(180deg, var(--inset-warm), var(--paper-deeper));
-  border-top: var(--border);
-  border-radius: var(--radius);
-}
-
-.foundation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-4);
-}
-
-.foundation-area h3 {
-  font-size: 1rem;
-  margin-bottom: var(--space-2);
-}
-
-.foundation-area p {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* ------------------------------------------------------------
    Projects Section (legacy)
    ------------------------------------------------------------ */
 .projects-section {
@@ -665,17 +639,6 @@ em {
   font-size: 1.15rem;
 }
 
-.approach-tag {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--inset-cool);
-  color: var(--muted);
-  font-weight: 600;
-}
-
 .approach-thesis {
   font-size: 1rem;
   line-height: 1.6;
@@ -689,22 +652,6 @@ em {
   }
 }
 
-.approach-aspects {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.aspect-tag {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  background: var(--inset-warm);
-  border: var(--border);
-  border-radius: var(--radius-sm);
-  padding: 4px 10px;
-  color: var(--muted);
-}
-
 .approach-case-study {
   margin-top: auto;
   padding-top: var(--space-3);
@@ -715,18 +662,21 @@ em {
   gap: var(--space-2);
 }
 
-.case-study-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
 .case-study-link {
   font-weight: 600;
   color: var(--accent);
   font-size: 0.95rem;
+}
+
+/* Quiet wayfinding to the full body of work below the trimmed gallery. */
+.approach-more {
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+}
+
+.approach-more a {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* Case study context labels on project detail pages */
