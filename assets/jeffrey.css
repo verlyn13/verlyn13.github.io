@@ -303,7 +303,15 @@ em {
   color: var(--ink);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.hero-pitch {
+  max-width: 64ch;
+  font-size: 1.08rem;
+  font-weight: 650;
+  color: var(--heading);
+  margin-bottom: var(--space-3);
 }
 
 .hero-bio {
@@ -560,37 +568,191 @@ em {
 }
 
 /* ------------------------------------------------------------
-   Technical Foundation
-   ------------------------------------------------------------ */
-.technical-foundation {
-  padding: var(--space-5) 0;
-  background: linear-gradient(180deg, var(--inset-warm), var(--paper-deeper));
-  border-top: var(--border);
-  border-radius: var(--radius);
-}
-
-.foundation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-4);
-}
-
-.foundation-area h3 {
-  font-size: 1rem;
-  margin-bottom: var(--space-2);
-}
-
-.foundation-area p {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* ------------------------------------------------------------
    Projects Section (legacy)
    ------------------------------------------------------------ */
 .projects-section {
   padding: var(--space-5) 0;
   border-top: var(--border);
+}
+
+/* ------------------------------------------------------------
+   Credentials bar — copy-ready résumé / research statement / summary
+   ------------------------------------------------------------ */
+.credentials {
+  padding: var(--space-5) 0;
+  border-top: var(--border);
+}
+
+.cred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.cred-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: space-between;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.cred-card__title {
+  margin-bottom: var(--space-1);
+  font-size: 1.05rem;
+}
+
+.cred-card__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.cred-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cred-copy {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.cred-copy:hover {
+  background: var(--accent-subtle);
+}
+
+.cred-copy.is-copied {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.cred-card__download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cred-card__download:hover {
+  color: var(--accent);
+}
+
+.cred-cv {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.cred-cv a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.resume-subheading {
+  margin-top: var(--space-5);
+}
+
+/* ------------------------------------------------------------
+   Resume skills — compact scan surface for current targeting
+   ------------------------------------------------------------ */
+.evidence-section {
+  padding: var(--space-5) 0;
+  border-top: var(--border);
+}
+
+.skill-band-list,
+.pillar-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 769px) {
+  .skill-band-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-band-list .skill-band:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.skill-band,
+.pillar-card {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-hard);
+}
+
+.skill-band h3,
+.pillar-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.skill-band p,
+.pillar-card p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.pillar-grid {
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 769px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-card {
+  border-top: 3px solid var(--accent);
+  background: var(--accent-subtle);
+}
+
+.pillar-card__label {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.primary-evidence-list .approach-card:nth-child(4) {
+  border-top: 3px solid var(--accent-2);
 }
 
 /* ------------------------------------------------------------
@@ -665,17 +827,6 @@ em {
   font-size: 1.15rem;
 }
 
-.approach-tag {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--inset-cool);
-  color: var(--muted);
-  font-weight: 600;
-}
-
 .approach-thesis {
   font-size: 1rem;
   line-height: 1.6;
@@ -689,22 +840,6 @@ em {
   }
 }
 
-.approach-aspects {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.aspect-tag {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  background: var(--inset-warm);
-  border: var(--border);
-  border-radius: var(--radius-sm);
-  padding: 4px 10px;
-  color: var(--muted);
-}
-
 .approach-case-study {
   margin-top: auto;
   padding-top: var(--space-3);
@@ -715,18 +850,21 @@ em {
   gap: var(--space-2);
 }
 
-.case-study-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
 .case-study-link {
   font-weight: 600;
   color: var(--accent);
   font-size: 0.95rem;
+}
+
+/* Quiet wayfinding to the full body of work below the trimmed gallery. */
+.approach-more {
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+}
+
+.approach-more a {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* Case study context labels on project detail pages */
@@ -2617,6 +2755,7 @@ th {
   .service-card,
   .approach-card,
   .bento-card,
+  .cred-copy,
   .back-to-top,
   .section-link,
   .section-link-btn,

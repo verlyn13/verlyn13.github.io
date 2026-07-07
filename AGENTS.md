@@ -26,6 +26,8 @@ tokens/                 # DTCG token sources; generated CSS is derived
 assets/
   jeffrey.css           # Single shared stylesheet (all CSS here)
   menu.js               # Mobile nav toggle + active link state
+  copy-md.js            # Home-page copy-as-Markdown for the credentials bar
+public/content/         # Copy-ready Markdown served at /content/*.md (résumé, research statement, summary)
   icons/                # Favicon and project icons (SVG)
 experiments/            # Prototypes and unused assets (not deployed)
 .github/workflows/      # CI/CD (deploy.yml)
@@ -119,7 +121,9 @@ mise run clean               # Remove dist/ and node_modules/
 
 - Commit secrets, keys, or tokens
 - Modify `node_modules/`, `dist/`, or `package-lock.json` directly
-- Add JavaScript unless absolutely necessary (site is intentionally JS-minimal)
+- Add JavaScript unless absolutely necessary (site is intentionally JS-minimal). Sanctioned
+  scripts: `assets/menu.js` (mobile nav) and `assets/copy-md.js` (home-page copy-as-Markdown,
+  loaded only by `index.html`). Adding a third is ask-first.
 - Disable Biome rules to silence errors
 - Break existing page URLs (they may be bookmarked or linked externally)
 - Add external font loading, tracking scripts, or heavy dependencies

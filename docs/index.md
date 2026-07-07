@@ -17,8 +17,10 @@ authority, which are historical handoffs, and where plans live.
 
 ## Current operating truth
 
-- **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as an independent researcher and
-  systems builder. The target role language is research engineer / research-engineering roles.
+- **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as an evaluations and
+  agent-governance engineer pairing probabilistic AI tooling with deterministic,
+  machine-checkable verification. The broader mathematical researcher and systems-builder identity is
+  supporting context, not the landing-page headline.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
@@ -43,6 +45,19 @@ authority, which are historical handoffs, and where plans live.
 7. `docs/adr/*.md` — durable rationale. Read the relevant ADR before changing the corresponding system.
 
 ## Active plans
+
+### Resume and skills landing refresh
+
+- `docs/resume-skills-landing-handoff-2026-07-07.md` is the active handoff for
+  adapting the landing page to the current `new-direction-2026` application
+  strategy. The target is a resume/skills-first homepage with two evidence
+  pillars: Agentic-Coding Evaluation Lab for eval methodology, and an anonymized
+  governance/security case study for agent security, safeguards, control, and
+  policy-as-code work.
+- This handoff supersedes older homepage emphasis where the first screen leads
+  with "Independent researcher and systems builder," Budget Triage, Flux, Dicee,
+  or broad project-gallery framing. Those materials can remain as supporting
+  pages, but they should not be the homepage lead.
 
 ### Fleet coordination (2026-07 audit remediation)
 
@@ -90,8 +105,10 @@ authority, which are historical handoffs, and where plans live.
 
 ### Content and IA
 
-- **Done:** homepage position refreshed to independent researcher and systems builder; footer CTA now
-  names research-engineering roles; Experience social metadata no longer carries the older positioning.
+- **Current:** homepage direction now routes through
+  `docs/resume-skills-landing-handoff-2026-07-07.md`: resume/skills first, two evidence pillars,
+  and primary evidence ordered as Agentic-Coding Evaluation Lab, audit-spec, Host Capability
+  Substrate, anonymized governance/security case study, and ScopeCam.
 - **Watch:** historical audit/directive docs may quote older titles because they preserve past baselines.
   Do not rewrite those quotes unless the task is specifically to revise the historical record.
 

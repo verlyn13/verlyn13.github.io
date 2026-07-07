@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 5f00ed7cf32d8447c34c8c9f4907f564995fc6a387b0c1d6ace031b7b7711bc2
-html_hash: cece5ab9adcf4299814c8478b62906bb81dd06620402e54712a5d891326ece72
+content_hash: 0ffdb0698f28636edab6ad022aaeaa24790585ab697d0edc8c73dea88771f77b
+html_hash: bcc332f5756a71a9d6e4346996c641d57c025ce54cb9e8d843edcc04075989c5
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,13 +13,19 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Independent researcher and systems builder
+Evaluations and agent-governance engineer
 
-I am a tenured associate professor of mathematics, trained in functional analysis, working now as an independent researcher and systems builder. The role I am aiming at is research engineer: turning research questions into working systems. My recent focus is agentic systems: how to bound what an automated agent is allowed to do, and verify it.
+I pair probabilistic AI tooling with deterministic, machine-checkable verification.
+
+Ph.D. mathematician and backend-oriented systems builder focused on agentic AI evaluation, governance, and systems engineering. My current portfolio has two pillars: an Agentic-Coding Evaluation Lab for empirical model and harness evaluation, and an anonymized governance/security case study for agent authority, policy-as-code, safeguards, and evidence-first audit.
 
 Homer, Alaska
 
-Selected work [Budget Triage](/projects/budget-triage.html) [Flux](/projects/flux.html) [Dicee](/projects/dicee.html)
+Evidence pillars [Evaluation methodology](#evidence) [Governance and agent security](#evidence)
+
+Résumé ↓
+
+CV →
 
 GitHub →
 
@@ -27,154 +33,65 @@ LinkedIn →
 
 Email →
 
-Now · Q2 2026 Working out a governance substrate for multi-agent systems: who sets policy, who executes it, who audits the result, kept legible to the agents inside it.
+## Resume and skills
 
-## Approach
+Copy-ready Markdown for application packets and compact skill bands for evaluation, safeguards, and governance-infrastructure roles.
 
-These are the threads I work across, and the projects where I work them out. They are structured like products because that is the clearest way to describe them. It is not how I think of them. They are a learning programme: real systems built to find out what holds up.
+- Résumé Default evaluations and agent-governance version. Copy Markdown [Download↓](/content/resume.md)
+- Research statement Research frame for evals, control, and agent boundaries. Copy Markdown [Download↓](/content/research-statement.md)
+- Summary Short public bio and contact anchors. Copy Markdown [Download↓](/content/summary.md)
 
-### Agentic governance
+Prefer the full academic record? [View the complete CV →](/cv.html)
 
-Flagship
+### Skills
 
-Splitting authority between the agents that set policy, the agents that execute it, and the agents that audit the result, so an agent stays inside known bounds. The pattern I work out across the projects below.
+- Evaluations and agentic AI Model and harness evaluation, statistical promotion gates, coding-agent workflows, OpenAI-compatible LLM gateways, trace, provenance, and evidence pipelines.
+- Governance and policy-as-code OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.
+- Infrastructure and platform Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.
+- Systems, data, and native Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.
+- Mathematics and statistics Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.
 
-Policy as code
+## Primary evidence
 
-Audit trail
+Two portfolio pillars lead the page: empirical evaluation methodology, and governance/security for agent authority, safeguards, and policy-as-code.
 
-Role separation
+- Pillar 1 Evaluation methodology Agentic-Coding Evaluation Lab: empirical model and harness evaluation, separated control/editing/measurement/evidence services, statistical promotion gates, and an evidence-based no-go decision.
+- Pillar 2 Governance and agent security An anonymized governance/security case study: agent authority boundaries, policy-as-code, safeguards, evidence-first audit, and explicit enforcing/advisory/planned status labels.
 
-Case Study
+### Agentic-Coding Evaluation Lab
 
-Budget Triage →
+Pillar 1
 
-### AI image-generation control plane
+Empirical coding-agent evaluation with separate control, editing, measurement, and evidence services. Uses Wilson intervals, seeded bootstrap confidence intervals, and paired sign tests behind a promotion gate, plus provenance verification, allowlisting, isolated workspaces, egress boundaries, and a no-commit fitness gate.
 
-Performance
+### audit-spec
 
-Flux compiles one intent across local and remote image-generation providers, streams results, and tracks artifact lineage. A private research vehicle, currently paused.
+Evidence-first audit methodology for AI-agent-operated codebases: discovery before judgment, an 11-dimension rubric, JSON schemas, severity/confidence/weight prioritization, deterministic drift linting, and negative self-tests.
 
-Provider abstraction
+### Host Capability Substrate
 
-Artifact lineage
+Typed governance layer for host-level AI agents: Zod and JSON Schema models for capabilities, policy decisions, provenance-typed evidence, audit chains, and scoped authorization grants.
 
-Reproducible runs
+Host Capability Substrate →
 
-Case Study
+### Governance-first infrastructure
 
-Flux →
+Anonymized private multi-repo governance estate: OpenTofu plan-to-JSON gates, OPA/conftest deny rules, GitHub branch protection as code, drift detection, and Cloudflare Zero Trust contract tests.
 
-### Deterministic game engine
+### ScopeCam
 
-Depth
-
-A deterministic Rust and WASM core handles the math, with lightweight personality profiles for human-like variance and no model latency. Dicee is live family software, and the one project I have deployed.
-
-Rust + WASM
-
-Deterministic core
-
-Live
-
-Case Study
-
-Dicee →
-
-### Android camera systems
-
-Rigor
-
-ScopeCam is an Android app for USB microscope and UVC cameras that Google's HAL does not support, on a vendored native stack. I started it before the current AI tools, and it is still alpha. Hardware-adjacent work, where lifecycle mistakes show up immediately on real devices.
-
-UVC
-
-Native stack
-
-On-device testing
-
-Case Study
+Native USB-microscopy systems proof point: Android/Kotlin over C/C++/JNI, libusb/libuvc/libjpeg-turbo, zero-copy ring-buffer work, and native teardown debugging. Commercial licensing and SDK discussion is in progress; this is not a shipped product.
 
 ScopeCam →
 
-### Self-hosted infrastructure
+[Older and supporting work remains in the full project archive →](/projects/)
 
-Architecture
+## Academic and publication context
 
-A multi-node home network with no WAN exposure, on OPNsense, a Tailscale mesh, and self-hosted secrets. Where I learn where credentials live, how traffic is routed, and how operational state drifts.
-
-OPNsense
-
-Tailscale mesh
-
-Machine identity
-
-Case Study
-
-HomeNetOps →
-
-### Research foundations
-
-Foundations
-
-Smaller projects, each probing one question: agent coordination, what defines an organization, what a host can safely let an agent do, or the group theory behind symmetry.
-
-Coordination
-
-Capability boundaries
-
-Group theory
-
-Foundations
-
-MAAT →
-
-The Nash Group →
-
-HCS →
-
-Symmetry Groups →
-
-### Teaching tools
-
-In Production
-
-A custom iframe framework for Blackboard Ultra, a LaTeX to Blackboard converter for hundreds of pages, and automated task schedulers. Practical tools built against real teaching constraints.
-
-LMS Integration
-
-LaTeX Processing
-
-Automation
-
-Details
-
-Teaching & tooling →
-
-## Background
-
-A pure-mathematics foundation applied to systems work: a dissertation on spectral preservers between function algebras (with Dr. Thomas Tonev), a recent clinical-research publication in *Pediatric Physical Therapy* (2023), self-hosted infrastructure across Hetzner and Cloudflare, and ongoing theoretical-CS exploration. The full record — teaching, publications, and the complete CV — is below.
+Tenured associate professor of mathematics with 17+ years teaching mathematics and statistics. Ph.D. in Mathematics from the University of Montana, 2013; 2023 *Pediatric Physical Therapy* publication with statistical-analysis role; 2012 pure-math publication. This supports the evaluation and governance work without replacing it as the main pitch.
 
 Teaching & Leadership →
 
 Publications & Research →
 
 Complete CV →
-
-## Technical Foundation
-
-### Systems
-
-Rust, TypeScript/Bun, Kotlin, Python
-
-### Architecture
-
-gRPC microservices, WebAssembly, serverless patterns
-
-### Infrastructure
-
-Self-hosted services, Cloudflare, Docker
-
-### Theory
-
-Distributed algorithms, type systems, formal methods
