@@ -97,8 +97,12 @@
                 </p>
 
                 <div class="hero-links">
-                    <a href="/content/resume.md" class="hero-link hero-link--primary" download aria-label="Download résumé as Markdown">
-                        <span class="link-label">Résumé</span>
+                    <a href="/content/resume.md" class="hero-link hero-link--primary" download aria-label="Download current résumé as Markdown">
+                        <span class="link-label">Current résumé</span>
+                        <span class="link-arrow">↓</span>
+                    </a>
+                    <a href="/content/resume-ai-scanner.md" class="hero-link" download aria-label="Download AI and ATS scanner résumé as Markdown">
+                        <span class="link-label">AI/ATS version</span>
                         <span class="link-arrow">↓</span>
                     </a>
                     <a href="/cv.html" class="hero-link" aria-label="Complete CV">
@@ -124,22 +128,33 @@
         <section class="credentials" aria-labelledby="credentials-heading">
             <div class="container">
                 <h2 id="credentials-heading">Resume and skills</h2>
-                <p class="section-intro">Copy-ready Markdown for application packets and compact skill bands for evaluation, safeguards, and governance-infrastructure roles.</p>
+                <p class="section-intro">Current evaluations and agent-governance résumé, plus scanner-ready Markdown for application systems and compact skill bands for humans.</p>
 
-                <ul class="cred-list">
-                    <li class="cred-card">
-                        <div class="cred-card__text">
-                            <h3 class="cred-card__title">Résumé</h3>
-                            <p class="cred-card__desc">Default evaluations and agent-governance version.</p>
-                        </div>
-                        <div class="cred-card__actions">
-                            <button type="button" class="cred-copy" data-copy-src="/content/resume.md" aria-label="Copy résumé as Markdown">
-                                <span class="cred-copy__label" aria-live="polite">Copy Markdown</span>
-                            </button>
-                            <a class="cred-card__download" href="/content/resume.md" download>Download<span aria-hidden="true">↓</span></a>
-                        </div>
-                    </li>
+                <article class="resume-feature" aria-labelledby="resume-feature-heading">
+                    <div class="resume-feature__body">
+                        <h3 id="resume-feature-heading">Current résumé</h3>
+                        <p>Default evaluations and agent-governance version for evals, safeguards, control, agent-security, and governance-infrastructure roles.</p>
+                        <ul class="resume-focus" aria-label="Résumé focus">
+                            <li>Evaluations and agentic AI</li>
+                            <li>Agent governance and safeguards</li>
+                            <li>Policy-as-code and evidence-first audit</li>
+                            <li>LLM gateways, provenance, sandboxing, and CI fitness gates</li>
+                            <li>Python, TypeScript, Kotlin, C/C++, SQL, and Bash</li>
+                        </ul>
+                    </div>
+                    <div class="resume-feature__actions">
+                        <button type="button" class="cred-copy" data-copy-src="/content/resume.md" aria-label="Copy current résumé as Markdown">
+                            <span class="cred-copy__label" aria-live="polite">Copy résumé</span>
+                        </button>
+                        <a class="cred-card__download" href="/content/resume.md" download>Download résumé<span aria-hidden="true">↓</span></a>
+                        <button type="button" class="cred-copy" data-copy-src="/content/resume-ai-scanner.md" aria-label="Copy AI and ATS scanner résumé as Markdown">
+                            <span class="cred-copy__label" aria-live="polite">Copy AI/ATS</span>
+                        </button>
+                        <a class="cred-card__download" href="/content/resume-ai-scanner.md" download>Download AI/ATS<span aria-hidden="true">↓</span></a>
+                    </div>
+                </article>
 
+                <ul class="cred-list cred-list--secondary">
                     <li class="cred-card">
                         <div class="cred-card__text">
                             <h3 class="cred-card__title">Research statement</h3>

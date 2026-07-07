@@ -6,5 +6,6 @@
 # under public/ — so it cannot resolve it. Exclude narrow public-served paths.
 data/projects\.json
 content/resume\.md
+content/resume-ai-scanner\.md
 content/research-statement\.md
 content/summary\.md

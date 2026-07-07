@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 88278533e864b503bbf7ebb42fd787d303804e7c5810f5211b562c690bba1842
-html_hash: 21c90c3571d68569128f66a28193d45aa9ffa1666d1b2f7f1d81380b104a283e
+content_hash: 7eacc8ff9788b35138e15e08416df6f9b0f09e23a147fd843ef7d7ea3e0e5f3a
+html_hash: 0a9fbde750275d563dd96a2bc2c6461ed19dfb5177d2b3fd9676f7316e761fc2
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -23,7 +23,9 @@ Homer, Alaska
 
 Evidence pillars [Evaluation methodology](#evidence) [Governance and agent security](#evidence)
 
-Résumé ↓
+Current résumé ↓
+
+AI/ATS version ↓
 
 CV →
 
@@ -35,9 +37,26 @@ Email →
 
 ## Resume and skills
 
-Copy-ready Markdown for application packets and compact skill bands for evaluation, safeguards, and governance-infrastructure roles.
+Current evaluations and agent-governance résumé, plus scanner-ready Markdown for application systems and compact skill bands for humans.
 
-- Résumé Default evaluations and agent-governance version. Copy Markdown [Download↓](/content/resume.md)
+### Current résumé
+
+Default evaluations and agent-governance version for evals, safeguards, control, agent-security, and governance-infrastructure roles.
+
+- Evaluations and agentic AI
+- Agent governance and safeguards
+- Policy-as-code and evidence-first audit
+- LLM gateways, provenance, sandboxing, and CI fitness gates
+- Python, TypeScript, Kotlin, C/C++, SQL, and Bash
+
+Copy résumé
+
+Download résumé↓
+
+Copy AI/ATS
+
+Download AI/ATS↓
+
 - Research statement Research frame for evals, control, and agent boundaries. Copy Markdown [Download↓](/content/research-statement.md)
 - Summary Short public bio and contact anchors. Copy Markdown [Download↓](/content/summary.md)
 
