@@ -144,86 +144,74 @@
         <section class="credentials" aria-labelledby="credentials-heading">
             <div class="container">
                 <h2 id="credentials-heading">Resume and skills</h2>
-                <p class="section-intro">Current evaluations and agent-governance résumé, plus scanner-ready Markdown for application systems and compact skill bands for humans.</p>
+                <p class="section-intro">Current resume formats and target skill signals for evals, agent governance, safeguards, and control roles.</p>
 
-                <article class="resume-feature" aria-labelledby="resume-feature-heading">
-                    <div class="resume-feature__body">
-                        <h3 id="resume-feature-heading">Current résumé</h3>
-                        <p>Default evaluations and agent-governance version for evals, safeguards, control, agent-security, and governance-infrastructure roles.</p>
-                        <ul class="resume-focus" aria-label="Résumé focus">
-                            <li>Evaluations and agentic AI</li>
-                            <li>Agent governance and safeguards</li>
-                            <li>Policy-as-code and evidence-first audit</li>
-                            <li>LLM gateways, provenance, sandboxing, and CI fitness gates</li>
-                            <li>Python, TypeScript, Kotlin, C/C++, SQL, and Bash</li>
+                <div class="resume-skill-module">
+                    <section class="resume-format-group" aria-labelledby="resume-formats-heading">
+                        <h3 id="resume-formats-heading">Resume formats</h3>
+                        <ul class="resume-format-list">
+                            <li class="resume-format-item">
+                                <div class="resume-format-copy">
+                                    <h4>Rendered resume</h4>
+                                    <p>Full human-readable page with evidence links and print styling.</p>
+                                </div>
+                                <div class="resume-format-actions">
+                                    <a class="button" href="/cv.html">Open resume<span aria-hidden="true">→</span></a>
+                                </div>
+                            </li>
+                            <li class="resume-format-item">
+                                <div class="resume-format-copy">
+                                    <h4>Markdown resume</h4>
+                                    <p>Current evals/governance version for application packets and direct review.</p>
+                                </div>
+                                <div class="resume-format-actions">
+                                    <button type="button" class="cred-copy" data-copy-src="/content/resume.md" aria-label="Copy current resume as Markdown">
+                                        <span class="cred-copy__label" aria-live="polite">Copy</span>
+                                    </button>
+                                    <a class="cred-card__download" href="/content/resume.md" download>Download<span aria-hidden="true">↓</span></a>
+                                </div>
+                            </li>
+                            <li class="resume-format-item">
+                                <div class="resume-format-copy">
+                                    <h4>AI/ATS Markdown</h4>
+                                    <p>Scanner-ready plain Markdown for portals and automated screeners.</p>
+                                </div>
+                                <div class="resume-format-actions">
+                                    <button type="button" class="cred-copy" data-copy-src="/content/resume-ai-scanner.md" aria-label="Copy AI and ATS scanner resume as Markdown">
+                                        <span class="cred-copy__label" aria-live="polite">Copy</span>
+                                    </button>
+                                    <a class="cred-card__download" href="/content/resume-ai-scanner.md" download>Download<span aria-hidden="true">↓</span></a>
+                                </div>
+                            </li>
                         </ul>
-                    </div>
-                    <div class="resume-feature__actions">
-                        <button type="button" class="cred-copy" data-copy-src="/content/resume.md" aria-label="Copy current résumé as Markdown">
-                            <span class="cred-copy__label" aria-live="polite">Copy résumé</span>
-                        </button>
-                        <a class="cred-card__download" href="/content/resume.md" download>Download résumé<span aria-hidden="true">↓</span></a>
-                        <button type="button" class="cred-copy" data-copy-src="/content/resume-ai-scanner.md" aria-label="Copy AI and ATS scanner résumé as Markdown">
-                            <span class="cred-copy__label" aria-live="polite">Copy AI/ATS</span>
-                        </button>
-                        <a class="cred-card__download" href="/content/resume-ai-scanner.md" download>Download AI/ATS<span aria-hidden="true">↓</span></a>
-                    </div>
-                </article>
+                    </section>
 
-                <ul class="cred-list cred-list--secondary">
-                    <li class="cred-card">
-                        <div class="cred-card__text">
-                            <h3 class="cred-card__title">Research statement</h3>
-                            <p class="cred-card__desc">Research frame for evals, control, and agent boundaries.</p>
-                        </div>
-                        <div class="cred-card__actions">
-                            <button type="button" class="cred-copy" data-copy-src="/content/research-statement.md" aria-label="Copy research statement as Markdown">
-                                <span class="cred-copy__label" aria-live="polite">Copy Markdown</span>
-                            </button>
-                            <a class="cred-card__download" href="/content/research-statement.md" download>Download<span aria-hidden="true">↓</span></a>
-                        </div>
-                    </li>
-
-                    <li class="cred-card">
-                        <div class="cred-card__text">
-                            <h3 class="cred-card__title">Summary</h3>
-                            <p class="cred-card__desc">Short public bio and contact anchors.</p>
-                        </div>
-                        <div class="cred-card__actions">
-                            <button type="button" class="cred-copy" data-copy-src="/content/summary.md" aria-label="Copy summary as Markdown">
-                                <span class="cred-copy__label" aria-live="polite">Copy Markdown</span>
-                            </button>
-                            <a class="cred-card__download" href="/content/summary.md" download>Download<span aria-hidden="true">↓</span></a>
-                        </div>
-                    </li>
-                </ul>
-
-                <p class="cred-cv">Prefer the rendered page? <a href="/cv.html">View the full resume →</a></p>
-
-                <h3 id="skills-heading" class="resume-subheading">Skills</h3>
-
-                <ul class="skill-band-list">
-                    <li class="skill-band">
-                        <h3>Evaluations and agentic AI</h3>
-                        <p>Model and harness evaluation, statistical promotion gates, coding-agent workflows, OpenAI-compatible LLM gateways, trace, provenance, and evidence pipelines.</p>
-                    </li>
-                    <li class="skill-band">
-                        <h3>Governance and policy-as-code</h3>
-                        <p>OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.</p>
-                    </li>
-                    <li class="skill-band">
-                        <h3>Infrastructure and platform</h3>
-                        <p>Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.</p>
-                    </li>
-                    <li class="skill-band">
-                        <h3>Systems, data, and native</h3>
-                        <p>Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.</p>
-                    </li>
-                    <li class="skill-band">
-                        <h3>Mathematics and statistics</h3>
-                        <p>Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.</p>
-                    </li>
-                </ul>
+                    <section class="skills-snapshot" aria-labelledby="skills-heading">
+                        <h3 id="skills-heading">Skills snapshot</h3>
+                        <ul class="skill-snapshot-list">
+                            <li>
+                                <strong>Evaluations and agentic AI</strong>
+                                <span>Model and harness evaluation, statistical promotion gates, coding-agent workflows, LLM gateways, trace, provenance, and evidence pipelines.</span>
+                            </li>
+                            <li>
+                                <strong>Governance and policy-as-code</strong>
+                                <span>OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.</span>
+                            </li>
+                            <li>
+                                <strong>Infrastructure and platform</strong>
+                                <span>Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.</span>
+                            </li>
+                            <li>
+                                <strong>Systems, data, and native</strong>
+                                <span>Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.</span>
+                            </li>
+                            <li>
+                                <strong>Mathematics and statistics</strong>
+                                <span>Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.</span>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
             </div>
         </section>
 
