@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 16f1edcafe221d085fab5378e73e7feccfdf6ff139acab99559630cc48239cd6
-html_hash: 59fc64907b8e5c8634c703e100efd8796a32eca7cbe3cb421dd650a7327a6a19
+content_hash: 5c72ccd6c79c21b17f63030a2633a33774df3c231f813d98f78ce691c3a73d4b
+html_hash: 7e018cca10ceb2bdb74b921899b627c87916c6018218ba465a2d845d1fef510a
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -37,38 +37,21 @@ Email →
 
 ## Resume and skills
 
-Current evaluations and agent-governance résumé, plus scanner-ready Markdown for application systems and compact skill bands for humans.
+Current resume formats and target skill signals for evals, agent governance, safeguards, and control roles.
 
-### Current résumé
+### Resume formats
 
-Default evaluations and agent-governance version for evals, safeguards, control, agent-security, and governance-infrastructure roles.
+- Rendered resume Full human-readable page with evidence links and print styling. [Open resume→](/cv.html)
+- Markdown resume Current evals/governance version for application packets and direct review. Copy [Download↓](/content/resume.md)
+- AI/ATS Markdown Scanner-ready plain Markdown for portals and automated screeners. Copy [Download↓](/content/resume-ai-scanner.md)
 
-- Evaluations and agentic AI
-- Agent governance and safeguards
-- Policy-as-code and evidence-first audit
-- LLM gateways, provenance, sandboxing, and CI fitness gates
-- Python, TypeScript, Kotlin, C/C++, SQL, and Bash
+### Skills snapshot
 
-Copy résumé
-
-Download résumé↓
-
-Copy AI/ATS
-
-Download AI/ATS↓
-
-- Research statement Research frame for evals, control, and agent boundaries. Copy Markdown [Download↓](/content/research-statement.md)
-- Summary Short public bio and contact anchors. Copy Markdown [Download↓](/content/summary.md)
-
-Prefer the rendered page? [View the full resume →](/cv.html)
-
-### Skills
-
-- Evaluations and agentic AI Model and harness evaluation, statistical promotion gates, coding-agent workflows, OpenAI-compatible LLM gateways, trace, provenance, and evidence pipelines.
-- Governance and policy-as-code OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.
-- Infrastructure and platform Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.
-- Systems, data, and native Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.
-- Mathematics and statistics Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.
+- **Evaluations and agentic AI** Model and harness evaluation, statistical promotion gates, coding-agent workflows, LLM gateways, trace, provenance, and evidence pipelines.
+- **Governance and policy-as-code** OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.
+- **Infrastructure and platform** Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.
+- **Systems, data, and native** Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.
+- **Mathematics and statistics** Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.
 
 ## Primary evidence
 
