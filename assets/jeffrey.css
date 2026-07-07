@@ -303,7 +303,15 @@ em {
   color: var(--ink);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.hero-pitch {
+  max-width: 64ch;
+  font-size: 1.08rem;
+  font-weight: 650;
+  color: var(--heading);
+  margin-bottom: var(--space-3);
 }
 
 .hero-bio {
@@ -643,6 +651,7 @@ em {
 .cred-card__download {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-1);
   min-height: 44px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -662,6 +671,88 @@ em {
 .cred-cv a {
   color: var(--accent);
   font-weight: 600;
+}
+
+.resume-subheading {
+  margin-top: var(--space-5);
+}
+
+/* ------------------------------------------------------------
+   Resume skills — compact scan surface for current targeting
+   ------------------------------------------------------------ */
+.evidence-section {
+  padding: var(--space-5) 0;
+  border-top: var(--border);
+}
+
+.skill-band-list,
+.pillar-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 769px) {
+  .skill-band-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-band-list .skill-band:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.skill-band,
+.pillar-card {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-hard);
+}
+
+.skill-band h3,
+.pillar-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.skill-band p,
+.pillar-card p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.pillar-grid {
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 769px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-card {
+  border-top: 3px solid var(--accent);
+  background: var(--accent-subtle);
+}
+
+.pillar-card__label {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.primary-evidence-list .approach-card:nth-child(4) {
+  border-top: 3px solid var(--accent-2);
 }
 
 /* ------------------------------------------------------------

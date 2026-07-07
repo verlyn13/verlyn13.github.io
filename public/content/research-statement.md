@@ -2,49 +2,39 @@
 
 Jeffrey V. Johnson, Ph.D. · jeffrey@jvjohnson.dev · Homer, Alaska
 
-## From function algebras to agent boundaries
+## From structure preservation to agent boundaries
 
-My research began in pure mathematics. My dissertation established general sufficient
-conditions for maps between function algebras to be composition or weighted composition
-operators, characterizing weakly and almost peripherally-multiplicative maps and extending
-the theory to algebras without unit on locally compact Hausdorff spaces. The habit that
-work instilled — finding the minimal conditions under which a structure is preserved — is
-the same habit I now bring to software systems.
+My research began in pure mathematics. My dissertation studied spectral
+preservers between function algebras: the minimal conditions under which maps
+preserve enough structure to be forced into a recognizable form. That habit of
+thinking — state the invariant, identify the boundary, and prove what cannot
+change — is the habit I now bring to agentic software systems.
 
-The question I work on today is a systems analogue of that same instinct: **what is the
-minimal, verifiable boundary within which an automated agent can be allowed to act?**
+The current systems question is direct: **how can probabilistic AI tooling be
+paired with deterministic, machine-checkable verification?**
 
-## Current agenda: governance for multi-agent systems
+## Current agenda: evaluation plus governance
 
-As automated agents take on real work, the hard problem is no longer capability but
-*containment*: who sets policy, who executes it, who audits the result, and how any of it
-is kept legible to the agents inside the system. My current research works out a governance
-substrate that separates these roles — policy, execution, and audit — so that an agent
-provably stays inside known bounds, with policy expressed as code and every action carrying
-an audit trail.
+I organize the work around two pillars.
 
-I treat this as an engineering-of-guarantees problem rather than a modeling problem. The
-through-line from my mathematical training is direct: formal methods and a preserver's eye
-for invariants become policy verification — statements about what the system will *never*
-do, checked rather than hoped for.
+The first is evaluation methodology. An Agentic-Coding Evaluation Lab treats
+coding-agent performance as an empirical question rather than an impression:
+separate control, editing, measurement, and evidence services; model and harness
+promotion gates; Wilson intervals, seeded bootstrap confidence intervals, and
+paired sign tests; provenance verification; command allowlisting; isolated
+workspaces; egress boundaries; and no-commit fitness gates.
 
-## How I work it out
+The second is governance and agent security. An anonymized governance/security
+case study works through agent authority boundaries, policy-as-code,
+evidence-first audit, OpenTofu plan gates, OPA/Rego checks, typed capability and
+authorization models, and explicit status labels for what is enforcing,
+advisory, implemented-but-inactive, or planned.
 
-I build real systems as research vehicles, because agentic-lifecycle mistakes only show up
-under real load:
+## Why this matters
 
-- **Budget Triage** exercises the governance substrate end to end — policy-as-code, audit
-  trails, and role separation on automated financial workflows.
-- **MAAT** is an early distributed multi-agent orchestration experiment: tension-based
-  mediation, policy enforcement, and observability across gRPC services and MCP servers.
-- **The host-capability substrate** defines what a workstation can safely expose to an
-  agent, so local state is reasoned about rather than treated as an unstructured tool pile.
-- **The Nash Group** treats organizational structure — repository boundaries, account
-  structures, agent instructions — as durable system components.
-
-## Direction
-
-I am looking for research-engineering work where mathematical rigor meets agentic-systems
-engineering: making the behavior of automated systems bounded, auditable, and legible. The
-long-term goal is a principled account of agent governance that is precise enough to verify
-and practical enough to deploy.
+The hard problem in agentic systems is no longer just capability. It is deciding
+what an agent may do, measuring whether a change is better, and keeping the
+authority trail legible enough that the system can be audited. My goal is a
+practical engineering discipline for that boundary: precise enough to verify,
+honest about what is and is not enforced, and concrete enough to run inside real
+developer and infrastructure workflows.

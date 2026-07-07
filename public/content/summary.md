@@ -1,11 +1,20 @@
 # Jeffrey V. Johnson, Ph.D.
 
-Independent researcher and systems builder — targeting research-engineering roles.
+Evaluations and agent-governance engineer — agentic AI, evaluation, alignment,
+and machine-checkable verification.
 
-I am a tenured associate professor of mathematics, trained in functional analysis,
-working now as an independent researcher and systems builder. My focus is agentic
-systems: bounding what an automated agent is allowed to do, and verifying it. I turn
-research questions into working systems — backend, infrastructure, and applied AI.
+I am a Ph.D. mathematician and backend-oriented systems builder focused on
+agentic AI evaluation, governance, and systems engineering. My work pairs
+probabilistic AI tooling with deterministic, machine-checkable verification:
+evaluation harnesses, statistical promotion gates, policy-as-code, evidence-first
+audit, and explicit authority boundaries for AI agents.
+
+Current portfolio pillars:
+
+- **Evaluation methodology:** Agentic-Coding Evaluation Lab for empirical model
+  and harness evaluation.
+- **Governance and agent security:** anonymized governance/security case study
+  for agent authority, policy-as-code, safeguards, and evidence-first audit.
 
 - **Location:** Homer, Alaska
 - **Email:** jeffrey@jvjohnson.dev
