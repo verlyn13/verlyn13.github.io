@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: df7d2f24272e5b047301a4508582e68f2168247ef5aa552e390d472324eae925
-html_hash: 0b9f90c0e0c23461b4e210adb7058e0968ad1496a24b0784ad95857b20b0e3f8
+content_hash: 28b69e7824630b512aa8a34c9014ea58d9c182675c0e709f83d01a506e6ddddf
+html_hash: 3a81fd4ba33d5f7b755cdec7798fde33e45469e5e3adb91c56372e85f4f4b37e
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · Research Foundations
+[Evidence](/#evidence) · Research Foundations
 
 # Host Capability Substrate
 
@@ -57,4 +57,4 @@ Happy to talk about this project or the research practice behind it.
 
 Email me about this →
 
-← Back to Approach
+← Back to Evidence

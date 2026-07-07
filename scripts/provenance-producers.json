@@ -6,6 +6,7 @@
     "siblingEnv": "SIBLING_REPO",
     "sources": {
       "cv": "career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md",
+      "evals_governance_resume": "career-transition-ready/cv-current/evals-governance-resume.md",
       "portfolio": "career-transition-ready/website-content/PORTFOLIO-QUICK.md",
       "projects": "career-transition-ready/technical-projects/ACTIVE-PROJECTS-PORTFOLIO.md",
       "research": "career-transition-ready/research-publications/RESEARCH-PUBLICATIONS.md",
@@ -15,7 +16,7 @@
     "expected": {
       "index.html": ["portfolio"],
       "contact.html": ["portfolio"],
-      "cv.html": ["cv", "teaching"],
+      "cv.html": ["evals_governance_resume"],
       "experience/index.html": ["timeline"],
       "research/index.html": ["research"]
     },

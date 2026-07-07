@@ -1,0 +1,16 @@
+# jvjohnson.dev resume resources
+
+Primary resume page:
+https://jvjohnson.dev/cv.html
+
+Human-readable Markdown resume:
+https://jvjohnson.dev/content/resume.md
+
+AI and ATS scanner Markdown resume:
+https://jvjohnson.dev/content/resume-ai-scanner.md
+
+Homepage:
+https://jvjohnson.dev/
+
+Notes:
+Jeffrey V. Johnson, Ph.D. is presented as an evaluations and agent-governance engineer. The public portfolio emphasizes agentic AI evaluation, agent governance, safeguards, policy-as-code, evidence-first audit, infrastructure, systems engineering, and applied statistics. Private governance-estate details are intentionally anonymized.

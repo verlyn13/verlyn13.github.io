@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 7eacc8ff9788b35138e15e08416df6f9b0f09e23a147fd843ef7d7ea3e0e5f3a
-html_hash: 0a9fbde750275d563dd96a2bc2c6461ed19dfb5177d2b3fd9676f7316e761fc2
+content_hash: 16f1edcafe221d085fab5378e73e7feccfdf6ff139acab99559630cc48239cd6
+html_hash: 59fc64907b8e5c8634c703e100efd8796a32eca7cbe3cb421dd650a7327a6a19
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -27,7 +27,7 @@ Current résumé ↓
 
 AI/ATS version ↓
 
-CV →
+Full resume →
 
 GitHub →
 
@@ -60,7 +60,7 @@ Download AI/ATS↓
 - Research statement Research frame for evals, control, and agent boundaries. Copy Markdown [Download↓](/content/research-statement.md)
 - Summary Short public bio and contact anchors. Copy Markdown [Download↓](/content/summary.md)
 
-Prefer the full academic record? [View the complete CV →](/cv.html)
+Prefer the rendered page? [View the full resume →](/cv.html)
 
 ### Skills
 
@@ -113,4 +113,4 @@ Teaching & Leadership →
 
 Publications & Research →
 
-Complete CV →
+Full resume →

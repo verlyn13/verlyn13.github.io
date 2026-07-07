@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: ac963c55a9562d6071e83cd4ae6864403585bee80587e3d518c21b51e952e49e
-html_hash: 9ceddaf4f2acb10c1d3778b7184f842453da5961fd2bc946f006cccd6acceb00
+content_hash: 92fa00ac51c9dc52b437d258f2c248299fdeca9e3d7e8e94ed2ebf5c47ef0c6c
+html_hash: 670d5ccc8cc6a9b3d5b4e63e10b229fe70032f896cf37a1dbec09d95c704a9ce
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -137,4 +137,4 @@ Humboldt State University, 2002–2004
 
 Teaching & Leadership →
 
-Complete CV →
+Full resume →

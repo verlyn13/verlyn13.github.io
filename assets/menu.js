@@ -76,8 +76,8 @@
         link.classList.add('active')
       }
 
-      // Special case: Approach anchor on homepage
-      if (href === '/#approach' && path === '/' && window.location.hash === '#approach') {
+      // Special case: Evidence anchor on homepage
+      if (href === '/#evidence' && path === '/' && window.location.hash === '#evidence') {
         link.classList.add('active')
       }
     })

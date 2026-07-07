@@ -4,8 +4,8 @@ type: page
 source_file: projects/dicee.html
 source_selector: main
 route: /projects/dicee.html
-content_hash: d931dc450dd329ea6c9ab112e10c76995a91fb06b6a54b302b3103abf409e074
-html_hash: c7e45cbeccbda9781bef7192a7898d6b5d86fdae26f49a9f32ac5d22bcec80c3
+content_hash: 83096808fc65fff28478e6e77ad0d73850b6f7af9299a67d8df51f4037e9c919
+html_hash: 5b5f7abf07074d10656b9bb6ad6087a77467db6820e08a9336b183a1527e09cf
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · Hybrid Intelligence
+[Evidence](/#evidence) · Hybrid Intelligence
 
 # Dicee
 
@@ -91,4 +91,4 @@ Email me about this →
 
 Visit live site ↗
 
-← Back to Approach
+← Back to Evidence

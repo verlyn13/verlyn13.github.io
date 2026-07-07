@@ -4,8 +4,8 @@ type: page
 source_file: projects/flux.html
 source_selector: main
 route: /projects/flux.html
-content_hash: 3c9acc120bf3630cc9c85374d2bb4957fe7e93e211b296efac45ab2e08c16830
-html_hash: 5806ffd00962f10ae2ecfa63d22882226fde29ed63f407efdff3f03dcb8db73e
+content_hash: 051fd2ee1ce3e774f55cdf1a0d4244fcde219b6921c97aa62e79c32b8e49aab3
+html_hash: a5530a095bd52adfc624756d1ccb644f94f1a141d07158330ac73b1fcb076af7
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · ML Control Planes
+[Evidence](/#evidence) · ML Control Planes
 
 # Flux Pro Shop
 
@@ -80,4 +80,4 @@ Happy to talk about this project or the research practice behind it.
 
 Email me about this →
 
-← Back to Approach
+← Back to Evidence

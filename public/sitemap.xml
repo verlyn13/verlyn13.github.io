@@ -22,8 +22,18 @@
   </url>
   <url>
     <loc>https://jvjohnson.dev/cv.html</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jvjohnson.dev/content/resume.md</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jvjohnson.dev/content/resume-ai-scanner.md</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/contact.html</loc>
