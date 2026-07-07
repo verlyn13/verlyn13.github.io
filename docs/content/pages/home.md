@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 0ffdb0698f28636edab6ad022aaeaa24790585ab697d0edc8c73dea88771f77b
-html_hash: bcc332f5756a71a9d6e4346996c641d57c025ce54cb9e8d843edcc04075989c5
+content_hash: 88278533e864b503bbf7ebb42fd787d303804e7c5810f5211b562c690bba1842
+html_hash: 21c90c3571d68569128f66a28193d45aa9ffa1666d1b2f7f1d81380b104a283e
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -15,7 +15,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 Evaluations and agent-governance engineer
 
-I pair probabilistic AI tooling with deterministic, machine-checkable verification.
+Probabilistic AI tooling with deterministic, machine-checkable verification.
 
 Ph.D. mathematician and backend-oriented systems builder focused on agentic AI evaluation, governance, and systems engineering. My current portfolio has two pillars: an Agentic-Coding Evaluation Lab for empirical model and harness evaluation, and an anonymized governance/security case study for agent authority, policy-as-code, safeguards, and evidence-first audit.
 
