@@ -42,6 +42,7 @@ main {
   padding: var(--space-5) var(--space-4);
   flex: 1;
   width: 100%;
+  min-width: 0;
 }
 
 section {
@@ -52,6 +53,8 @@ section {
   max-width: var(--measure);
   margin: 0 auto;
   padding: 0 var(--space-4);
+  width: 100%;
+  min-width: 0;
 }
 
 /* Home <main> may widen to the gallery measure (ADR-0007); each section still self-caps via its
@@ -304,6 +307,7 @@ em {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-2);
+  overflow-wrap: anywhere;
 }
 
 .hero-pitch {
@@ -312,6 +316,7 @@ em {
   font-weight: 650;
   color: var(--heading);
   margin-bottom: var(--space-3);
+  overflow-wrap: anywhere;
 }
 
 .hero-bio {
@@ -358,6 +363,7 @@ em {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  max-width: 100%;
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
   border: 1px solid var(--ring);
@@ -369,6 +375,12 @@ em {
     box-shadow 0.12s ease,
     background 0.12s ease;
   min-height: 44px;
+  min-width: 0;
+}
+
+.hero-link .link-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .hero-link:hover {
@@ -596,6 +608,7 @@ em {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  min-width: 0;
   margin-bottom: var(--space-4);
   padding: var(--space-4);
   background: var(--surface);
@@ -686,6 +699,7 @@ em {
 .cred-copy {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   min-height: 44px;
   padding: 10px 16px;
   font: inherit;
@@ -714,6 +728,7 @@ em {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
+  max-width: 100%;
   min-height: 44px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -769,6 +784,7 @@ em {
 
 .skill-band,
 .pillar-card {
+  min-width: 0;
   background: var(--surface);
   border: var(--border);
   border-radius: var(--radius);
@@ -1945,6 +1961,7 @@ th {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  max-width: 100%;
   padding: 0.6rem 0.9rem;
   border-radius: 999px;
   border: 1px solid var(--ring);
@@ -2212,6 +2229,139 @@ th {
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: var(--space-2);
+}
+
+/* ------------------------------------------------------------
+   Resume destination — full résumé at /cv.html
+   ------------------------------------------------------------ */
+.resume-header {
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border);
+  margin-bottom: var(--space-4);
+}
+
+.resume-header h1 {
+  margin-bottom: var(--space-1);
+}
+
+.resume-identity {
+  font-size: 1.1rem;
+  color: var(--heading);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-contact li {
+  min-width: 0;
+}
+
+.resume-contact a {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.resume-contact a:hover {
+  color: var(--accent-dark);
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  margin-bottom: var(--space-5);
+  padding: 0;
+  border: 0;
+}
+
+.resume-actions .button,
+.resume-actions .cred-copy {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .resume-actions .button,
+  .resume-actions .cred-copy,
+  .resume-actions .cred-card__download {
+    white-space: normal;
+  }
+}
+
+.resume-entry {
+  margin-bottom: var(--space-4);
+}
+
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-1);
+  overflow-wrap: anywhere;
+}
+
+.resume-entry h3 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.resume-entry h3 a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.resume-entry__role {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.resume-entry__stack {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 var(--space-2);
+  overflow-wrap: anywhere;
+}
+
+.resume-entry ul {
+  margin: 0 0 0 var(--space-4);
+  padding: 0;
+}
+
+.resume-entry li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-1);
+}
+
+.resume-entry li:last-child {
+  margin-bottom: 0;
+}
+
+.resume-note {
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background: var(--surface);
+}
+
+.resume-note p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ------------------------------------------------------------
@@ -2833,6 +2983,11 @@ th {
    Print Styles
    ------------------------------------------------------------ */
 @media print {
+  @page {
+    size: letter;
+    margin: 0.65in 0.7in;
+  }
+
   .site-nav,
   .back-nav,
   .site-footer,
@@ -2840,14 +2995,15 @@ th {
   .project-links,
   .project-links-footer,
   .section-links,
+  .resume-actions,
   .skip-link {
     display: none;
   }
 
   body {
-    font-size: 12pt;
-    line-height: 1.5;
-    background: white;
+    font-size: 11pt;
+    line-height: 1.45;
+    background: var(--paper);
   }
 
   a:any-link {
@@ -2860,6 +3016,45 @@ th {
   .publication {
     border: 1px solid var(--ink-print);
     page-break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .cv-section {
+    padding: 0;
+  }
+
+  .resume-header {
+    border-bottom: 1px solid var(--ink-print);
+  }
+
+  .resume-entry h3 a {
+    color: var(--ink-print);
+    text-decoration: none;
+  }
+
+  .resume-contact,
+  .resume-entry__stack,
+  .resume-entry__role,
+  .cv-details,
+  .cv-institution {
+    color: var(--ink-print);
+  }
+
+  .resume-entry,
+  .cv-entry,
+  .resume-note {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .cv-block h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .resume-note {
+    border: 1px solid var(--ink-print);
+    background: var(--paper);
     box-shadow: none;
   }
 }

@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: fbe2e3ccadded161f1f5bd5216752f9146b47a9eecb68f789678fa34dbc67bc5
-html_hash: 808f47c4becc23cd1fdb9f0936fb7354290d424cd35d0447dc5ceb87797b032f
+content_hash: 75247bc57facb683136992a8053b9898070aca28c74444d0d0c904b0978decb5
+html_hash: a0d174b97013b394cb7f672982ebc7c57ab724bca170dd59393a311a7058e5f8
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · Safety-Critical Systems
+[Evidence](/#evidence) · Safety-Critical Systems
 
 # ScopeCam
 
@@ -85,4 +85,4 @@ Happy to talk about this project or the research practice behind it.
 
 Email me about this →
 
-← Back to Approach
+← Back to Evidence

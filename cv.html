@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ../new-direction-2026/career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md @ b688384; refreshed: 2026-05-25 -->
-<!-- source: ../new-direction-2026/career-transition-ready/teaching-portfolio/TEACHING-INVENTORY.md @ f309f04; refreshed: 2026-05-25 -->
+<!-- source: ../new-direction-2026/career-transition-ready/cv-current/evals-governance-resume.md @ 5bd4d1c; refreshed: 2026-07-07 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae | Jeffrey Johnson</title>
-    <meta name="description" content="Academic curriculum vitae for Jeffrey Johnson, PhD - independent researcher, systems builder, and mathematics professor">
+    <title>Resume | Jeffrey V. Johnson, Ph.D.</title>
+    <meta name="description" content="Resume for Jeffrey V. Johnson, Ph.D. — evaluations and agent-governance engineer.">
     <link rel="canonical" href="https://jvjohnson.dev/cv.html">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
+    <link rel="alternate" type="text/markdown" href="/content/resume.md" title="Resume in Markdown">
+    <link rel="alternate" type="text/markdown" href="/content/resume-ai-scanner.md" title="AI and ATS scanner resume in Markdown">
     <script type="module" src="/assets/menu.js"></script>
+    <script type="module" src="/assets/copy-md.js"></script>
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Curriculum Vitae — Jeffrey V. Johnson, Ph.D.">
-    <meta property="og:description" content="Curriculum vitae: education, academic and research positions, publications, and systems-engineering projects.">
+    <meta property="og:title" content="Resume — Jeffrey V. Johnson, Ph.D.">
+    <meta property="og:description" content="Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://jvjohnson.dev/cv.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Curriculum Vitae — Jeffrey V. Johnson, Ph.D.">
-    <meta name="twitter:description" content="Curriculum vitae: education, academic and research positions, publications, and systems-engineering projects.">
+    <meta name="twitter:title" content="Resume — Jeffrey V. Johnson, Ph.D.">
+    <meta name="twitter:description" content="Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
       "url": "https://jvjohnson.dev/cv.html",
-      "name": "Curriculum Vitae — Jeffrey V. Johnson, Ph.D.",
+      "name": "Resume — Jeffrey V. Johnson, Ph.D.",
       "inLanguage": "en",
       "mainEntity": {
         "@type": "Person",
         "@id": "https://jvjohnson.dev/#person",
         "name": "Jeffrey V. Johnson",
         "honorificSuffix": "Ph.D.",
-        "jobTitle": "Independent researcher and systems builder",
+        "jobTitle": "Evaluations and agent-governance engineer",
         "url": "https://jvjohnson.dev/",
+        "email": "mailto:jeffrey@jvjohnson.dev",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Homer",
+          "addressRegion": "AK",
+          "addressCountry": "US"
+        },
         "sameAs": [
           "https://github.com/verlyn13",
           "https://linkedin.com/in/drjeffreyjohnson"
+        ],
+        "knowsAbout": [
+          "AI model and harness evaluation",
+          "Statistical promotion gates",
+          "Agent governance and authority boundaries",
+          "Policy-as-code",
+          "OPA/Rego",
+          "OpenTofu",
+          "Evidence-first audit methodology",
+          "Safeguards and AI control infrastructure",
+          "Cloudflare Zero Trust",
+          "Applied statistics",
+          "Functional analysis"
+        ],
+        "subjectOf": [
+          {
+            "@type": "CreativeWork",
+            "name": "Resume in Markdown",
+            "encodingFormat": "text/markdown",
+            "url": "https://jvjohnson.dev/content/resume.md"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "AI and ATS scanner resume",
+            "encodingFormat": "text/markdown",
+            "url": "https://jvjohnson.dev/content/resume-ai-scanner.md"
+          }
         ]
       }
     }
@@ -56,11 +92,11 @@
         <div class="container">
             <a href="/" class="nav-left">Jeffrey Johnson</a>
             <ul class="nav-links">
-                <li><a href="/#approach">Approach</a></li>
+                <li><a href="/#evidence">Evidence</a></li>
                 <li><a href="/projects/">Work</a></li>
                 <li><a href="/experience/">Experience</a></li>
                 <li><a href="/research/">Research</a></li>
-                <li><a href="/cv.html" class="active">CV</a></li>
+                <li><a href="/cv.html" class="active">Resume</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
         </div>
@@ -69,142 +105,158 @@
     <main id="main-content">
         <section class="cv-section">
             <div class="container">
-                <h1>Jeffrey V. Johnson, Ph.D.</h1>
-                <p class="cv-subtitle">Associate Professor of Mathematics</p>
+                <header class="resume-header">
+                    <h1>Jeffrey V. Johnson, Ph.D.</h1>
+                    <p class="resume-identity">Evaluations and agent-governance engineer</p>
+                    <ul class="resume-contact">
+                        <li>Homer, Alaska</li>
+                        <li><a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a></li>
+                        <li><a href="https://github.com/verlyn13">github.com/verlyn13</a></li>
+                        <li><a href="https://linkedin.com/in/drjeffreyjohnson">linkedin.com/in/drjeffreyjohnson</a></li>
+                    </ul>
+                </header>
 
-                <div class="cv-download">
-                    <p><em>PDF version in development</em></p>
-                    <p>For complete CV, see sections below or contact <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a></p>
-                </div>
+                <fieldset class="resume-actions">
+                    <legend class="sr-only">Resume actions</legend>
+                    <button type="button" class="button" onclick="window.print()">Print / save PDF</button>
+                    <button type="button" class="cred-copy" data-copy-src="/content/resume-ai-scanner.md" aria-label="Copy AI and ATS scanner resume as plain Markdown">
+                        <span class="cred-copy__label" aria-live="polite">Copy for agents</span>
+                    </button>
+                    <a class="cred-card__download" href="/content/resume.md" download>Markdown<span aria-hidden="true">↓</span></a>
+                    <a class="cred-card__download" href="/content/resume-ai-scanner.md" download>AI/ATS<span aria-hidden="true">↓</span></a>
+                </fieldset>
 
                 <div class="cv-content">
                     <section class="cv-block">
-                        <h2>Education</h2>
-                        <div class="cv-entry">
-                            <h3>Ph.D. Mathematical Sciences</h3>
-                            <p class="cv-institution">University of Montana, Missoula, MT, 2008-2013</p>
-                            <p class="cv-details">Advisor: Dr. Thomas Tonev</p>
-                            <p class="cv-details">Dissertation: Peripherally Multiplicative Spectral Preservers between Function Algebras</p>
+                        <h2>Summary</h2>
+                        <p>Ph.D. mathematician and backend-oriented systems builder focused on agentic AI evaluation, governance, and systems engineering. My strongest fit is evaluations and agent-governance engineering: pairing probabilistic AI tooling with deterministic, machine-checkable verification. My portfolio has two pillars: an Agentic-Coding Evaluation Lab for empirical model and harness evaluation, and an anonymized governance/security case study for agent authority, policy-as-code, evidence-first audit, and safeguards infrastructure.</p>
+                    </section>
+
+                    <section class="cv-block">
+                        <h2>Selected evidence</h2>
+
+                        <div class="resume-entry">
+                            <h3>Agentic-Coding Evaluation Lab <span class="resume-entry__role">— empirical evaluation of coding agents</span></h3>
+                            <p class="resume-entry__stack">Python · Redis · Ollama · TypeScript sibling services</p>
+                            <ul>
+                                <li>Built a four-service local stack to make coding-agent deployment decisions empirical, separating control and transport through an OpenAI-compatible LLM gateway, editing, measurement, and Redis-backed evidence persistence.</li>
+                                <li>Implemented reliability, capability, and promotion evaluations with Wilson intervals, seeded bootstrap confidence intervals, and paired sign tests behind a promotion gate.</li>
+                                <li>Produced an evidence-based no-go decision that refused to promote a 32B candidate model over the incumbent after it failed significance, latency, and must-not-break criteria.</li>
+                                <li>Added alignment-relevant governance: fail-closed model-provenance hash verification, default-deny command allowlisting, isolated per-evaluation workspaces, explicit egress boundaries, and a no-commit fitness gate.</li>
+                            </ul>
                         </div>
-                        <div class="cv-entry">
-                            <h3>Environmental Systems – Mathematical Modeling, M.S. Program</h3>
-                            <p class="cv-institution">Humboldt State University, Arcata, CA, 2004-2005</p>
-                            <p class="cv-details">Completed one year of coursework</p>
+
+                        <div class="resume-entry">
+                            <h3>audit-spec <span class="resume-entry__role">— evidence-first audit methodology for AI-agent-operated codebases</span></h3>
+                            <p class="resume-entry__stack">Specification · Python tooling</p>
+                            <ul>
+                                <li>Authored a two-stage, evidence-first audit specification of more than 2,000 lines that separates discovery from judgment to counter LLM confirmation bias.</li>
+                                <li>Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x confidence x weight priority model.</li>
+                                <li>Built a stdlib-only Python drift linter with 10 deterministic checks, including content-hash binding of derived documents to specification bytes.</li>
+                                <li>Wired a 27-case negative self-test into pre-commit and CI; ran three self-audit cycles and applied the methodology to an external project that adopted seven of its fitness functions.</li>
+                            </ul>
                         </div>
-                        <div class="cv-entry">
-                            <h3>B.A. Mathematics</h3>
-                            <p class="cv-institution">Humboldt State University, Arcata, CA, 2002-2004</p>
+
+                        <div class="resume-entry">
+                            <h3><a href="/projects/host-capability-substrate.html">Host Capability Substrate</a> <span class="resume-entry__role">— typed governance layer for host-level AI agents</span></h3>
+                            <p class="resume-entry__stack">TypeScript · Zod · JSON Schema</p>
+                            <ul>
+                                <li>Designed a domain ontology of 46 Zod entity schemas compiled to 67 generated JSON Schemas, with 497 tests.</li>
+                                <li>Modeled capabilities, policy and gateway decisions, provenance-typed evidence with an authority hierarchy, tamper-evident audit chains, and scoped, expiring authorization grants.</li>
+                                <li>Authored a 19-invariant governance charter and four-ring layered architecture with strict import-boundary discipline.</li>
+                                <li>Enforced merge-time discipline with a single CI gate composing 12 static policy, boundary, secret, and schema-drift scanners on GitHub Actions.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <h3>Governance-First Infrastructure <span class="resume-entry__role">— anonymized policy-as-code case study</span></h3>
+                            <p class="resume-entry__stack">OpenTofu · OPA/Rego · Cloudflare · Hetzner · Proxmox · Pulumi/TypeScript</p>
+                            <ul>
+                                <li>An anonymized private governance/security case study; the private organization is not named publicly.</li>
+                                <li>Built a blocking policy-as-code gate that converts every OpenTofu plan touched by a PR to JSON and evaluates it in CI with OPA/conftest against 26 least-privilege and Cloudflare-baseline deny rules.</li>
+                                <li>Backed the gate with GitHub production-environment approval, nightly drift detection on a self-hosted runner, and GitHub branch-protection rulesets codified in OpenTofu.</li>
+                                <li>Built a separate Pulumi/TypeScript control plane for a home Cloudflare Zero Trust DNS-filtering setup, validated by 168 passing contract tests in CI.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <h3><a href="/projects/scopecam.html">ScopeCam</a> <span class="resume-entry__role">— native systems proof point (not a shipped product)</span></h3>
+                            <p class="resume-entry__stack">Happy Patterns LLC · Android · Kotlin · C/C++/JNI</p>
+                            <ul>
+                                <li>Built a multi-module native Android/UVC imaging engine to master native concurrency, JNI/NDK, and USB device handling.</li>
+                                <li>Compiled libusb, libuvc, and libjpeg-turbo behind a zero-copy ring-buffer pipeline.</li>
+                                <li>Root-caused and fixed a JVM-monitor deadlock in native USB-replug teardown; instrumented runtime telemetry over REST and WebSocket.</li>
+                                <li>Commercial licensing and SDK discussion is in progress; not presented as a shipped product.</li>
+                            </ul>
                         </div>
                     </section>
 
                     <section class="cv-block">
-                        <h2>Technical Projects</h2>
-                        <div class="cv-entry">
-                            <h3>Flux Pro Shop - Image Generation Control Plane</h3>
-                            <p class="cv-details">Private multi-provider research vehicle for reproducible AI workflow control across local and remote providers. Unified workflow representation, artifact lineage, and provider abstraction. 4,600+ tests.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Budget Triage - Self-hosted Personal Finance System</h3>
-                            <p class="cv-details">Self-hosted personal and small-business finance workflow for spreadsheet refugees who need structure, auditability, and control. TypeScript/Bun, PostgreSQL, statement processing, VLM/OCR extraction, and governance validation. 7,700+ tests.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Dicee - Multiplayer Dice Game</h3>
-                            <p class="cv-details">Live family multiplayer application and agentic-framework demonstration output. Rust WebAssembly game engine, Cloudflare Durable Objects with WebSocket hibernation, SvelteKit, Supabase, and 1800+ automated tests.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>ScopeCam - USB Microscope Camera Android App</h3>
-                            <p class="cv-details">Alpha-stage (v0.1) Android app for USB (UVC) microscope cameras. Kotlin/Jetpack Compose, a vendored native stack (libusb/libuvc/libjpeg-turbo) via JNI/NDK, six Gradle modules with ArchUnit guardrails, session-based capture with scientific metadata, and 1,790 tests. Apache 2.0.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>MAAT Framework - Multi-Agent Adaptive Technology</h3>
-                            <p class="cv-details">Creative early distributed multi-agent orchestration experiment based on Ma'at principles. Rust gRPC microservices, Python MCP servers, PostgreSQL/TimescaleDB, tension-based mediation, policy enforcement, and custom observability concepts.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>The Nash Group Organizational Framework</h3>
-                            <p class="cv-details">Organizational layer for agentic work across repositories, accounts, and operational domains. Policies, repo boundaries, account structures, and agent instructions treated as durable system components rather than informal notes.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Host-capability-substrate</h3>
-                            <p class="cv-details">Local-machine capability model for agentic workflows. Defines what the workstation can safely do, how capabilities are exposed, and how agents reason about local state without treating the host as an unstructured tool pile.</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Symmetry Groups</h3>
-                            <p class="cv-details">Interactive educational tool for mathematical symmetry and group concepts. Methodological note: built with claude.ai/design as the primary tool, distinct from the full substrate-driven workflow used elsewhere.</p>
-                        </div>
-                        <p class="cv-more"><a href="/#approach">View All Projects →</a></p>
-                    </section>
-
-<section class="cv-block">
-                        <h2>Technical Skills</h2>
+                        <h2>Technical skills</h2>
                         <ul class="cv-list">
-                            <li><strong>Systems Programming:</strong> Rust, Kotlin, TypeScript/JavaScript, Python</li>
-                            <li><strong>Mathematics Software:</strong> R, SPSS, Matlab, Mathematica, Maple</li>
-                            <li><strong>Infrastructure:</strong> Docker, Cloudflare (Workers/Durable Objects/Pages), PostgreSQL, TimescaleDB</li>
-                            <li><strong>Frameworks:</strong> SvelteKit, gRPC, WebAssembly, Android SDK</li>
+                            <li><strong>Evaluations and agentic AI:</strong> model and harness evaluation, reliability and capability evals, statistical promotion gates, coding-agent workflows, OpenAI-compatible LLM gateways, capability aliasing, provider resolution, per-client policy, budget controls, Ollama, trace, provenance, and evidence pipelines.</li>
+                            <li><strong>Safety and governance controls:</strong> sandboxing, egress policy, provenance verification, default-deny command allowlisting, no-commit gates, typed authorization grants, audit chains, and evidence-first audit methodology.</li>
+                            <li><strong>Policy-as-code and contracts:</strong> OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, ADRs, decision ledgers, fitness gates, and conformance gates.</li>
+                            <li><strong>Infrastructure and platform:</strong> Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Cloudflare Pages/DNS, Hetzner, Proxmox VE, Docker, Docker Compose, Traefik, GitHub Actions CI/CD, self-hosted runners, OpenTelemetry, Infisical, and 1Password custody.</li>
+                            <li><strong>Data and native systems:</strong> PostgreSQL, Supabase, TimescaleDB, Redis Stack, RedisJSON, RediSearch, pgvector, Android, Kotlin, USB/UVC, libuvc, JNI/NDK, C/C++, and CMake.</li>
+                            <li><strong>Languages and statistics:</strong> Python, TypeScript, Kotlin, C/C++, Ruby, SQL, Bash, Wilson intervals, bootstrap confidence intervals, paired sign tests, applied statistics, and statistical inference.</li>
                         </ul>
                     </section>
 
-<section class="cv-block">
-                        <h2>Academic Positions</h2>
+                    <section class="cv-block">
+                        <h2>Professional experience</h2>
+
                         <div class="cv-entry">
-                            <h3>Associate Professor of Mathematics</h3>
-                            <p class="cv-institution">Kenai Peninsula College / University of Alaska Anchorage, 2017-Present</p>
-                            <p class="cv-details">Homer, Alaska</p>
+                            <h3>Associate Professor of Mathematics (tenured)</h3>
+                            <p class="cv-institution">Kenai Peninsula College, University of Alaska Anchorage · Homer, Alaska · August 2017-present</p>
+                            <p class="cv-details">Previously American University in Cairo, 2014-2017; University of Montana, 2008-2014.</p>
+                            <ul class="cv-list">
+                                <li>Teach undergraduate mathematics and statistics, including calculus and applied statistics; full teaching-and-service appointment; awarded tenure in 2023.</li>
+                                <li>Consult for local non-profit organizations on statistical interpretation and study design.</li>
+                                <li>Communicate technical and mathematical ideas to audiences with widely varying backgrounds.</li>
+                            </ul>
+                        </div>
+
+                        <div class="cv-entry">
+                            <h3>Independent systems engineer and applied-AI researcher (self-directed)</h3>
+                            <p class="cv-institution">Self-directed; Happy Patterns LLC product entity · Homer, Alaska · 2023-present</p>
+                            <ul class="cv-list">
+                                <li>Pursue a self-directed research program across 150+ repositories in agentic AI, evaluation and alignment, systems engineering, and machine-checkable governance.</li>
+                                <li>Use AI agents to learn and stress-test software-engineering paradigms end to end, with repo contracts, status records, decision logs, and verification gates as the control surface.</li>
+                                <li>Operate a private, single-operator governance-first infrastructure estate: policy-as-code, IaC, Zero Trust networking, local and remote servers, and secrets custody.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="cv-block">
+                        <h2>Education</h2>
+                        <div class="cv-entry">
+                            <h3>Ph.D., Mathematics</h3>
+                            <p class="cv-institution">University of Montana, Missoula, MT · 2013</p>
+                            <p class="cv-details">Dissertation: <em>Peripherally-Multiplicative Spectral Preservers Between Function Algebras</em>.</p>
                         </div>
                         <div class="cv-entry">
-                            <h3>Assistant Professor of Mathematics</h3>
-                            <p class="cv-institution">American University in Cairo, Egypt, 2014-2017</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Post-doctoral Lecturer</h3>
-                            <p class="cv-institution">University of Montana, Missoula, MT, 2012-2014</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Course Coordinator</h3>
-                            <p class="cv-institution">University of Montana, 2013</p>
-                            <p class="cv-details">Coordinated two large lectures of Introduction to Statistics (480 students total)</p>
-                        </div>
-                        <div class="cv-entry">
-                            <h3>Instructor</h3>
-                            <p class="cv-institution">University of Montana, 2008-2012</p>
+                            <h3>B.A., Mathematics</h3>
+                            <p class="cv-institution">Humboldt State University · 2004</p>
                         </div>
                     </section>
 
                     <section class="cv-block">
                         <h2>Publications</h2>
                         <div class="cv-entry">
-                            <p class="cv-publication">Cadieux JM, Pyhala SL, Johnson JV. "Pediatric Walking Speed Normal Reference Values in a Local Population." <em>Pediatric Physical Therapy</em>. 2023;35(3):326-331. doi:10.1097/PEP.0000000000001015</p>
+                            <p class="cv-publication">Cadieux, J. M., Pyhala, S. L., &amp; Johnson, J. V. (2023). Pediatric Walking Speed Normal Reference Values in a Local Population. <em>Pediatric Physical Therapy</em>, 35(3), 326-331. Led the statistical analysis.</p>
                         </div>
                         <div class="cv-entry">
-                            <p class="cv-publication">Johnson J, Tonev T. "Spectral Conditions for Composition Operators on Algebras of Functions." <em>Communications in Mathematics and Applications</em>. 2012;3(1).</p>
+                            <p class="cv-publication">Johnson, J. V., &amp; Tonev, T. (2012). Spectral Conditions for Composition Operators on Algebras of Functions. <em>Communications in Mathematics and Applications</em>, 3(1).</p>
                         </div>
-                        <div class="cv-entry">
-                            <p class="cv-publication">Johnson J. "Peripherally-Multiplicative Spectral Preservers Between Function Algebras." Ph.D. Dissertation, University of Montana, 2013.</p>
-                        </div>
-                        <p class="cv-more"><a href="/research/">View Research Details →</a></p>
                     </section>
 
                     <section class="cv-block">
-                        <h2>Teaching Experience</h2>
-                        <p class="cv-more"><a href="/experience/">View Complete Teaching Experience →</a></p>
-                        <p>17+ different courses, developmental mathematics through graduate-level independent study. Largest teaching range at institution.</p>
+                        <h2>Candid fit note</h2>
+                        <aside class="resume-note">
+                            <p>My path has been academic and self-directed rather than corporate. I have not worked inside a large company's engineering processes, and my systems have not yet been tested at production scale. The tradeoff is that I arrive with a habit of building complete systems end to end, reading unfamiliar stacks quickly, and making authority, evidence, and failure modes explicit before action.</p>
+                        </aside>
                     </section>
-
-
-
-                    <section class="cv-block">
-                        <h2>Service & Leadership</h2>
-                        <ul class="cv-list">
-                            <li>MathCounts Coach (2017-Present)</li>
-                            <li>UAA Program Review Committee (2019)</li>
-                            <li>KPC Accessibility Committee (2017-2020)</li>
-                            <li>Student Evaluation Committee Chair, University of Montana (2012)</li>
-                            <li>U.S. Peace Corps, Republic of South Africa (2005-2007)</li>
-                        </ul>
-                        <p class="cv-more"><a href="/experience/">View Complete Experience →</a></p>
-                    </section>
-
-
                 </div>
             </div>
         </section>
@@ -212,7 +264,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research-engineering roles and research collaboration where mathematical depth meets agentic-systems engineering. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+            <p class="footer-cta">Open to evaluations, agent-governance, safeguards, and research-engineering roles where probabilistic AI tooling needs deterministic verification. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <nav class="footer-links" aria-label="Footer">
                 <a href="/">← Back to portfolio</a>
                 <a href="/contact.html">Contact</a>

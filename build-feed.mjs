@@ -114,7 +114,7 @@ function overviewBand(portfolio) {
 }
 
 const NAV = [
-  ['/#approach', 'Approach', false],
+  ['/#evidence', 'Evidence', false],
   ['/projects/', 'Work', true],
   ['/experience/', 'Experience', false],
   ['/research/', 'Research', false],

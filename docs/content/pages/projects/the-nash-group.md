@@ -4,8 +4,8 @@ type: page
 source_file: projects/the-nash-group.html
 source_selector: main
 route: /projects/the-nash-group.html
-content_hash: 7bde5b117902824c25bc25407e43523414c79ffa4bcaa4fd3d524c6c570d7135
-html_hash: e8d0ef6119912a1f5b24ef29fa94427a6fe034d4974e7ab1aab6809c6190626c
+content_hash: f338a516bbb51ab13a1cc067360703078deb204ffac809947eb025ed7decd603
+html_hash: bf91853487b4e675f9c1078ecb3279f0677cbcc596192ecbe29131e3f3a6efbc
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · Research Foundations
+[Evidence](/#evidence) · Research Foundations
 
 # The Nash Group
 
@@ -60,4 +60,4 @@ Happy to talk about this project or the research practice behind it.
 
 Email me about this →
 
-← Back to Approach
+← Back to Evidence

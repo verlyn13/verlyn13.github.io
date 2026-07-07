@@ -4,8 +4,8 @@ type: page
 source_file: projects/maat.html
 source_selector: main
 route: /projects/maat.html
-content_hash: 75cd2fc04c8e413256384e64b3abac21079ac1809a3589c9d291a6e23d4ea7bd
-html_hash: 6a33d06acb153875590f4fb62024b31a3fc01220d8572410df3e9d3a6cd98a70
+content_hash: 2c0a60f2ca3e583c3a3fac35b86b1bf01d240eeb0546233fe87fbb84f5169895
+html_hash: ac31b8922c260513daea4b69dc1cb7bc84498847246d404cd3b2935c5613d283
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Approach](/#approach) · Research Foundations
+[Evidence](/#evidence) · Research Foundations
 
 # MAAT Framework
 
@@ -96,4 +96,4 @@ Happy to talk about this project or the research practice behind it.
 
 Email me about this →
 
-← Back to Approach
+← Back to Evidence
