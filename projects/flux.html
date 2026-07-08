@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flux Pro Shop - Image Generation Control Plane | Jeffrey Johnson</title>
-    <meta name="description" content="A production-grade image-generation control plane on HuggingFace Diffusers — a unified compile/execute IR, local GPU and remote runners, full artifact lineage.">
+    <meta name="description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -14,7 +14,7 @@
 
     <!-- Open Graph / LinkedIn Preview Tags -->
     <meta property="og:title" content="Flux Pro Shop — Image Generation Control Plane">
-    <meta property="og:description" content="A production-grade image-generation control plane on HuggingFace Diffusers — a unified compile/execute IR, local GPU and remote runners, full artifact lineage.">
+    <meta property="og:description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/flux.html">
     <meta property="og:site_name" content="jvjohnson.dev">
@@ -24,7 +24,7 @@
     <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Flux Pro Shop — Image Generation Control Plane">
-    <meta name="twitter:description" content="A production-grade image-generation control plane on HuggingFace Diffusers — a unified compile/execute IR, local GPU and remote runners, full artifact lineage.">
+    <meta name="twitter:description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
     <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
 </head>
@@ -58,14 +58,14 @@
                     <h1>Flux Pro Shop</h1>
                     <p class="project-subtitle">Image Generation Control Plane</p>
                     <div class="project-meta">
-                        <span class="project-status live">Production Infrastructure</span>
+                        <span class="project-status development">Working prototype · Pre-cutover</span>
 
                     </div>
                 </header>
 
                 <section class="project-overview">
                     <h2>Overview</h2>
-<p>Production-grade image generation control plane built on HuggingFace Diffusers, optimized for Apple Silicon (MPS). It manages local GPU generation, remote API runners, and complex artifact lineage for full reproducibility.</p>
+<p>An image-generation control plane built on HuggingFace Diffusers, optimized for Apple Silicon (MPS). It compiles a single generation intent across a registry of providers, manages local GPU and remote API runners, and captures artifact lineage in content-addressed storage. This is a self-directed working prototype, pre-cutover, not a shipped product.</p>
 <p>By designing a unified Compile/Execute Intermediate Representation (IR), this architecture abstracts the generation paths for complex ML models (Flux, SDXL/Pony, and GGUF).</p>
 </section>
 
@@ -93,40 +93,39 @@
 <h2>Why This Matters</h2>
 <div class="significance-grid">
     <div class="significance-point">
-        <h3>Artifact Immutability</h3>
-        <p>Mathematical guarantee of 100% artifact reproducibility through rigorous lineage tracking.</p>
+        <h3>Artifact lineage</h3>
+        <p>Content-addressed storage and lineage tracking make generation results traceable and reproducible.</p>
     </div>
     <div class="significance-point">
-        <h3>Performance Engineering</h3>
-        <p>Backed by an incredibly fast test suite (4,600+ tests executing in under 20 seconds).</p>
+        <h3>Deterministic execution</h3>
+        <p>A unified compile/execute IR (WorkflowSpec → Compiler → ExecutionPlan → Runner) gives repeatable generation across backends.</p>
     </div>
     <div class="significance-point">
-        <h3>Hardware Abstraction</h3>
-        <p>Dynamic routing capability between MPS (Metal Performance Shaders) and remote API execution environments.</p>
+        <h3>Hardware abstraction</h3>
+        <p>Dynamic routing between Apple Silicon (MPS) and remote API execution environments.</p>
     </div>
     <div class="significance-point">
-        <h3>Production Quality</h3>
-        <p>Enterprise-grade structural resilience, bringing software engineering rigor to experimental ML pipelines.</p>
+        <h3>Engineering discipline</h3>
+        <p>A typed Python core, backend abstraction, and content-addressed artifacts bring software-engineering rigor to an experimental ML pipeline.</p>
     </div>
 </div>
 </section>
 
                 <section class="project-technical-depth">
                     <h2>Technical Depth</h2>
-                    <p>This project demonstrates understanding of:</p>
+                    <p>This project demonstrates:</p>
                     <ul class="depth-list">
-                        <li>Distributed state management and coordination</li>
-                        <li>WebSocket protocols and real-time systems</li>
-                        <li>Serverless architecture patterns and edge computing</li>
-                        <li>WebAssembly compilation and optimization</li>
-                        <li>Production deployment and operational monitoring</li>
-                        <li>Type-safe system design across language boundaries</li>
+                        <li>Compile/execute IR design (WorkflowSpec → Compiler → ExecutionPlan → Runner)</li>
+                        <li>Backend abstraction across Diffusers, SDXL/Pony, ComfyUI, and API runners</li>
+                        <li>Content-addressed storage and automated artifact lineage</li>
+                        <li>Local GPU (Apple Silicon / MPS) and remote API execution routing</li>
+                        <li>A type-safe Python 3.12+ core</li>
                     </ul>
                 </section>
 
                 <section class="project-context">
                     <h2>Development Context</h2>
-                    <p>Built as a learning platform to explore modern web infrastructure while creating something family members could actually use. The constraints—real users, need for reliability, performance requirements—drove architectural decisions and forced engagement with production concerns beyond local development.</p>
+                    <p>A self-directed working prototype, pre-cutover: the successor control plane for image generation, consolidating multiple providers behind one compile/execute IR with reproducible, content-addressed artifacts. Not presented as a shipped product.</p>
                 </section>
 
                 <section class="project-links-footer" aria-label="What next">
