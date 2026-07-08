@@ -19,10 +19,11 @@ I organize the work around two pillars.
 
 The first is evaluation methodology. An Agentic-Coding Evaluation Lab treats
 coding-agent performance as an empirical question rather than an impression:
-separate control, editing, measurement, and evidence services; model and harness
-promotion gates; Wilson intervals, seeded bootstrap confidence intervals, and
-paired sign tests; provenance verification; command allowlisting; isolated
-workspaces; egress boundaries; and no-commit fitness gates.
+the evaluation and evidence layer of a local stack that separates transport,
+editing, measurement, and evidence; model and harness promotion gates; Wilson
+intervals, seeded bootstrap confidence intervals, and paired sign tests;
+provenance verification; command allowlisting; isolated workspaces; egress
+boundaries; and no-commit fitness gates.
 
 The second is governance and agent security. An anonymized governance/security
 case study works through agent authority boundaries, policy-as-code,
