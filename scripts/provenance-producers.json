@@ -1,17 +1,15 @@
 [
   {
-    "name": "new-direction-2026",
+    "name": "sibling-content",
     "kind": "sibling-markdown",
-    "sourcePrefix": "../new-direction-2026/",
-    "siblingEnv": "SIBLING_REPO",
     "sources": {
-      "cv": "career-transition-ready/cv-materials/CV-COMPREHENSIVE-EXTRACT.md",
-      "evals_governance_resume": "career-transition-ready/cv-current/evals-governance-resume.md",
-      "portfolio": "career-transition-ready/website-content/PORTFOLIO-QUICK.md",
-      "projects": "career-transition-ready/technical-projects/ACTIVE-PROJECTS-PORTFOLIO.md",
-      "research": "career-transition-ready/research-publications/RESEARCH-PUBLICATIONS.md",
-      "timeline": "career-transition-ready/website-content/timeline-component-spec.md",
-      "teaching": "career-transition-ready/teaching-portfolio/TEACHING-INVENTORY.md"
+      "cv": "CV-COMPREHENSIVE-EXTRACT.md",
+      "evals_governance_resume": "evals-governance-resume.md",
+      "portfolio": "PORTFOLIO-QUICK.md",
+      "projects": "ACTIVE-PROJECTS-PORTFOLIO.md",
+      "research": "RESEARCH-PUBLICATIONS.md",
+      "timeline": "timeline-component-spec.md",
+      "teaching": "TEACHING-INVENTORY.md"
     },
     "expected": {
       "index.html": ["portfolio"],

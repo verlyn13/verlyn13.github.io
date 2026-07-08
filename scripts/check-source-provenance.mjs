@@ -5,11 +5,10 @@ import { fileURLToPath } from 'node:url'
 
 // Generalized, multi-producer source/feed provenance + leak-pattern checker.
 // Producers are configured in scripts/provenance-producers.json. Two kinds:
-//   - "sibling-markdown": the content pipeline (../new-direction-2026/ markdown).
+//   - "sibling-markdown": the content pipeline. Comments carry only the source
+//     document basename + refresh date (no private path prefix, no commit SHA).
 //   - "feed": the meta-inventory project-intelligence feed (data/projects.json).
-// Authored in meta-inventory/docs/delivery/provenance-checker-generalization.md;
-// delivered into this repo by the operator-approved feed PR. Backward-compatible:
-// with only the markdown producer configured, behavior matches the prior script.
+// Provenance/leak CI is owned by this repo (docs/meta-inventory-website-contract.md).
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const errors = []
@@ -31,13 +30,15 @@ function isGitIgnored(relativePath) {
 // (avoids a temporal-dead-zone ReferenceError when a const is used in a function
 // that the producer loop calls during evaluation).
 
-// --- sibling-markdown producer (the existing content-pipeline contract) ---------
+// --- sibling-markdown producer (the content-pipeline provenance contract) -------
+// Deployed comment format (privacy-sanitized): the comment carries only the
+// source document basename + refresh date. A path prefix or commit SHA must not
+// reappear: the pattern forbids '/', '@', and whitespace in the source token, so
+// the public site never exposes the content repo's internal path tree or history.
 function checkSiblingMarkdown(producer) {
-  const siblingRepo = process.env[producer.siblingEnv ?? 'SIBLING_REPO']
-  const sourcePrefix = producer.sourcePrefix
   const sources = producer.sources ?? {}
 
-  // expected: logical source names -> resolved paths, per the config map.
+  // expected: logical source names -> source basenames, per the config map.
   const expected = new Map(
     Object.entries(producer.expected ?? {}).map(([file, names]) => [
       file,
@@ -58,12 +59,9 @@ function checkSiblingMarkdown(producer) {
     }
   }
 
-  const prefixForRegex = sourcePrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const sourceCommentPattern = /<!--\s*source:[\s\S]*?-->/g
-  const provenancePattern = new RegExp(
-    `<!--\\s*source:\\s*(${prefixForRegex}[^\\s@]+)\\s*@\\s*([0-9a-f]{7,40});\\s*refreshed:\\s*(\\d{4}-\\d{2}-\\d{2})\\s*-->`,
-    'g',
-  )
+  const provenancePattern =
+    /<!--\s*source:\s*([^\s;/@]+);\s*refreshed:\s*(\d{4}-\d{2}-\d{2})\s*-->/g
 
   const references = new Map()
 
@@ -88,13 +86,15 @@ function checkSiblingMarkdown(producer) {
 
     const actualSources = new Set()
     for (const match of parsed) {
-      const [, sourceRef, sha, refreshed] = match
-      const sourcePath = sourceRef.slice(sourcePrefix.length)
-      actualSources.add(sourcePath)
-      const key = `${sourcePath}@${sha}`
-      const record = references.get(key) ?? { sourcePath, sha, refreshed, destinations: [] }
+      const [, sourceRef, refreshed] = match
+      actualSources.add(sourceRef)
+      const record = references.get(sourceRef) ?? {
+        sourcePath: sourceRef,
+        refreshed,
+        destinations: [],
+      }
       record.destinations.push(relativePath)
-      references.set(key, record)
+      references.set(sourceRef, record)
     }
     for (const sourcePath of expectedSources) {
       if (!actualSources.has(sourcePath)) {
@@ -104,36 +104,9 @@ function checkSiblingMarkdown(producer) {
   }
 
   for (const record of references.values()) {
-    console.log(`${record.sourcePath} @ ${record.sha} -> ${record.destinations.join(', ')}`)
-  }
-
-  if (siblingRepo) {
-    console.log(`SIBLING_REPO=${siblingRepo}`)
-    for (const record of references.values()) {
-      validateSiblingRef(record, siblingRepo)
-    }
-  } else {
-    console.log('SIBLING_REPO not set; skipping sibling git validation')
-  }
-}
-
-function validateSiblingRef({ sourcePath, sha }, siblingRepo) {
-  try {
-    execFileSync('git', ['-C', siblingRepo, 'rev-parse', '--verify', `${sha}^{commit}`], {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'pipe'],
-    })
-  } catch {
-    errors.push(`${sourcePath}: embedded SHA ${sha} does not exist in sibling history`)
-    return
-  }
-  const latest = execFileSync(
-    'git',
-    ['-C', siblingRepo, 'log', '-n', '1', '--abbrev=7', '--format=%h', '--', sourcePath],
-    { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
-  ).trim()
-  if (latest && latest !== sha) {
-    console.warn(`${sourcePath}: sibling HEAD latest is ${latest}; embedded SHA is ${sha}`)
+    console.log(
+      `${record.sourcePath} (refreshed ${record.refreshed}) -> ${record.destinations.join(', ')}`,
+    )
   }
 }
 
