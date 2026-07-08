@@ -77,7 +77,7 @@ organization publicly.
   detection on a self-hosted runner, and GitHub branch-protection rulesets
   codified in OpenTofu.
 - Built a separate Pulumi/TypeScript control plane for a home Cloudflare Zero
-  Trust DNS-filtering setup, validated by 168 passing contract tests in CI.
+  Trust DNS-filtering setup, validated by 141 passing contract tests in CI.
 
 ### ScopeCam - native systems proof point
 
