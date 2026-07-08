@@ -21,15 +21,16 @@ evidence-first audit, and safeguards infrastructure.
 
 **Python, Redis, Ollama, TypeScript sibling services**
 
-- Built a four-service local stack to make coding-agent deployment decisions
-  empirical, separating control and transport through an OpenAI-compatible LLM
-  gateway, editing, measurement, and Redis-backed evidence persistence.
+- Built the evaluation and evidence layer of a local stack that separates
+  transport (an OpenAI-compatible LLM gateway), editing, measurement, and
+  Redis-backed evidence, to make coding-agent deployment decisions empirical.
 - Implemented reliability, capability, and promotion evaluations with Wilson
   intervals, seeded bootstrap confidence intervals, and paired sign tests behind
   a promotion gate.
-- Produced an evidence-based no-go decision that refused to promote a 32B
-  candidate model over the incumbent after it failed significance, latency, and
-  must-not-break criteria.
+- Produced an evidence-based no-go: the promotion gate withheld a 32B candidate
+  that scored higher than the incumbent on raw capability, because the seeded
+  bootstrap confidence interval lower bound was zero and the gain was not
+  statistically significant.
 - Added alignment-relevant governance: fail-closed model-provenance hash
   verification, default-deny command allowlisting, isolated per-evaluation
   workspaces, explicit egress boundaries, and a no-commit fitness gate.
@@ -53,7 +54,7 @@ evidence-first audit, and safeguards infrastructure.
 **TypeScript, Zod, JSON Schema**
 
 - Designed a domain ontology of 46 Zod entity schemas compiled to 67 generated
-  JSON Schemas, with 497 tests.
+  JSON Schemas, with 498 tests.
 - Modeled capabilities, policy and gateway decisions, provenance-typed evidence
   with an authority hierarchy, tamper-evident audit chains, and scoped, expiring
   authorization grants.

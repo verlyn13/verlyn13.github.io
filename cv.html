@@ -139,9 +139,9 @@
                             <h3>Agentic-Coding Evaluation Lab <span class="resume-entry__role">— empirical evaluation of coding agents</span></h3>
                             <p class="resume-entry__stack">Python · Redis · Ollama · TypeScript sibling services</p>
                             <ul>
-                                <li>Built a four-service local stack to make coding-agent deployment decisions empirical, separating control and transport through an OpenAI-compatible LLM gateway, editing, measurement, and Redis-backed evidence persistence.</li>
+                                <li>Built the evaluation and evidence layer of a local stack that separates transport (an OpenAI-compatible LLM gateway), editing, measurement, and Redis-backed evidence, to make coding-agent deployment decisions empirical.</li>
                                 <li>Implemented reliability, capability, and promotion evaluations with Wilson intervals, seeded bootstrap confidence intervals, and paired sign tests behind a promotion gate.</li>
-                                <li>Produced an evidence-based no-go decision that refused to promote a 32B candidate model over the incumbent after it failed significance, latency, and must-not-break criteria.</li>
+                                <li>Produced an evidence-based no-go: the promotion gate withheld a 32B candidate that scored higher than the incumbent on raw capability, because the seeded bootstrap confidence interval lower bound was zero and the gain was not statistically significant.</li>
                                 <li>Added alignment-relevant governance: fail-closed model-provenance hash verification, default-deny command allowlisting, isolated per-evaluation workspaces, explicit egress boundaries, and a no-commit fitness gate.</li>
                             </ul>
                         </div>
@@ -161,7 +161,7 @@
                             <h3><a href="/projects/host-capability-substrate.html">Host Capability Substrate</a> <span class="resume-entry__role">— typed governance layer for host-level AI agents</span></h3>
                             <p class="resume-entry__stack">TypeScript · Zod · JSON Schema</p>
                             <ul>
-                                <li>Designed a domain ontology of 46 Zod entity schemas compiled to 67 generated JSON Schemas, with 497 tests.</li>
+                                <li>Designed a domain ontology of 46 Zod entity schemas compiled to 67 generated JSON Schemas, with 498 tests.</li>
                                 <li>Modeled capabilities, policy and gateway decisions, provenance-typed evidence with an authority hierarchy, tamper-evident audit chains, and scoped, expiring authorization grants.</li>
                                 <li>Authored a 19-invariant governance charter and four-ring layered architecture with strict import-boundary discipline.</li>
                                 <li>Enforced merge-time discipline with a single CI gate composing 12 static policy, boundary, secret, and schema-drift scanners on GitHub Actions.</li>
