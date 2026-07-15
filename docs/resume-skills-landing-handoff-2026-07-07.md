@@ -2,9 +2,9 @@
 title: Resume and skills landing-page handoff
 category: implementation-handoff
 component: landing-page
-status: active
-version: 1.0.0
-last_updated: 2026-07-07
+status: implemented
+version: 1.0.1
+last_updated: 2026-07-15
 tags: [landing-page, resume, portfolio, direction, handoff]
 priority: high
 audience: website implementation agent
@@ -21,8 +21,11 @@ must not distract from the landing page's current job: making Jeffrey Johnson's
 fit legible for evals, agent-security, safeguards, control, and governance
 engineering roles.
 
-This is an implementation handoff for this website repo. It records direction
-only. Do the actual website edits in a later implementation pass.
+> **Implementation status (2026-07-15):** The baseline landed on July 7. This document now preserves
+> the implemented direction; the "Current mismatch" section below is the pre-implementation snapshot,
+> not current site state. Current refinements route through `docs/index.md`.
+
+This is the implemented-direction record for this website repo.
 
 ## Source authority
 

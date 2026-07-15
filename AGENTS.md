@@ -2,8 +2,8 @@
 
 ## Project snapshot
 
-- **Purpose**: Academic research portfolio for Dr. Jeffrey Johnson — independent researcher and systems builder, targeting research-engineering roles
-- **Stack**: Vanilla HTML/CSS, Vite 5 (build), Biome 2.3+ (lint/format), Node 24 (via mise)
+- **Purpose**: Academic and research-engineering portfolio for Dr. Jeffrey Johnson — evaluations and agent-governance engineer, targeting research-engineering roles
+- **Stack**: Vanilla HTML/CSS, Vite 8 (build), Biome 2.5+ (lint/format), Node 24 (via mise)
 - **Production URL**: https://jvjohnson.dev
 - **Deployment**: GitHub Pages via Actions (auto-deploy on push to `main`)
 

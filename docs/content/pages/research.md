@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: 92fa00ac51c9dc52b437d258f2c248299fdeca9e3d7e8e94ed2ebf5c47ef0c6c
-html_hash: 670d5ccc8cc6a9b3d5b4e63e10b229fe70032f896cf37a1dbec09d95c704a9ce
+content_hash: 6964c0c8dc4ce1f09b3a23d414373996035ef5e64888d01b09c8784bf871a23e
+html_hash: 703519fbfac5bea6047d45ed05e9fce337e022307708ea5270d927fb76d90693
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -15,7 +15,15 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Research & Publications
 
-Mathematical Foundations and Theoretical Work
+Evaluation methodology, applied statistics, and mathematical foundations
+
+## Agentic AI Evaluation and Governance
+
+Current independent research focuses on making agentic systems measurable, governable, and auditable.
+
+- Evaluation contracts, independent evidence recomputation, and fail-closed refusal when scientific prerequisites do not support a decision.
+- Evidence-first audit methods that separate discovery from judgment and bind conclusions to reproducible artifacts.
+- Agent authority boundaries, policy-as-code, provenance, safe escalation, and explicit tested, advisory, and operating status.
 
 ## Clinical Research
 
@@ -57,21 +65,15 @@ Advisor: Dr. Thomas Tonev
 
 Field: Commutative Banach Algebras, Functional Analysis
 
-Modern web version coming soon — mobile-friendly with beautifully rendered mathematics.
-
 Established general sufficient conditions for maps between function algebras to be composition or weighted composition operators. Defined and characterized weakly peripherally-multiplicative and almost peripherally-multiplicative maps. Extended theory to function algebras without unit on locally compact Hausdorff spaces.
 
 ## Theoretical Computer Science Exploration
 
-Active learning through collaborative study, 2023–Present
+Collaborative study begun in 2023
 
-### Student Collaboration
+### Collaborative Study
 
-**Lukas Renner** (MIT early admission candidate)
-
-Format: Collaborative exploration, 2-3 meetings/week, 1+ year
-
-*"Much of the time, we were learning together"*
+Recurring theoretical-computer-science study sessions with a student collaborator over more than one year.
 
 ### Topics Explored
 
@@ -91,7 +93,7 @@ Format: Collaborative exploration, 2-3 meetings/week, 1+ year
 
 - Elliptic curve cryptography
 - Mathematical representations in finite fields
-- Implementation considerations (student's Rust work)
+- Rust implementation considerations
 
 #### Computational Mathematics
 

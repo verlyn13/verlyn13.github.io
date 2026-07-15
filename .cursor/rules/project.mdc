@@ -7,15 +7,15 @@ alwaysApply: true
 
 ## Stack
 
-- Vanilla HTML/CSS, Vite 5 build, Biome 2.3+ lint/format, Node 24 (via mise)
+- Vanilla HTML/CSS, Vite 8 build, Biome 2.5+ lint/format, Node 24 (via mise)
 - Single CSS file: `assets/jeffrey.css` (component styles) — never hand-create CSS files. Design tokens live in `tokens/*.tokens.json` → generated `assets/tokens.generated.css` (`npm run tokens`); see `design/DESIGN_SPEC.md`
-- Minimal JS: only `assets/menu.js` for mobile nav — ask before adding any script
+- Minimal JS: `assets/menu.js` for mobile navigation and `assets/copy-md.js` for homepage/resume copy actions — ask before adding any other script
 
 ## Key commands
 
 ```bash
 mise run ci        # provenance + lint + format-check + conformance + build
-npm test           # feed-model tests
+npm test           # feed-model and content-sync tests
 mise run dev       # dev server at localhost:5173
 mise run build     # production build to dist/
 mise run lint:fix  # lint + auto-fix
