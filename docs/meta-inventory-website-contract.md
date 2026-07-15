@@ -3,8 +3,8 @@ title: Meta-inventory / website project-intelligence contract
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.1.1
-last_updated: 2026-06-29
+version: 0.2.0
+last_updated: 2026-07-15
 tags: [project-intelligence, meta-inventory, website, feed, provenance, responsibility]
 priority: high
 audience: coding agent + design agent + operator
@@ -32,9 +32,18 @@ Current contract:
 - `meta-inventory` generates `exports/projects.json`.
 - The website consumes that artifact at `public/data/projects.json`; Vite publishes it as
   `/data/projects.json`.
+- Producer delivery stages only the feed artifact. The website's model, checker, and checker
+  configuration are consumer-owned; the producer's retired `--include-checker` option is not an intake
+  path.
 - Delivery is PR-only. The `meta-inventory` helper opens a draft PR by default when the target repo,
   destination path, and `WEBSITE_PR_TOKEN` gate are configured.
 - The operator reviews and merges the website PR. On this repo, merge or push to `main` deploys.
+- Website compatibility code and feed delivery use separate PRs. A compatibility PR starts from clean
+  remote website `main`; a later feed-only PR starts only after every producer gate passes.
+
+Current intake verdict (2026-07-15): **HOLD**. The producer candidate is clean and current, but it is
+not admissible because the selected ScopeCam record has no accepted default-branch manifest. Do not copy
+that candidate into this repository or use an active dirty website checkout as a delivery target.
 
 Target evolution:
 
@@ -69,19 +78,23 @@ upstream feed requirement, not a website-local derivation.
 
 ### Provenance and leak checks
 
-- Feed-driven surfaces carry `<!-- feed: ... -->` comments when they render feed facts.
 - `scripts/provenance-producers.json` configures the `meta-inventory-feed` producer.
-- `scripts/check-source-provenance.mjs` validates feed comments against `public/data/projects.json`,
-  blocks dirty-feed deployment, checks `asOf` alignment, and applies configured leak strings.
+- `scripts/check-source-provenance.mjs` validates the entire feed before it discovers rendered
+  `<!-- feed: ... -->` comments. Zero comments do not disable admission.
+- Whole-feed admission rejects unsupported schema, dirty/stale/degraded provenance, non-passing or
+  nonzero-error manifest health, nonzero selected-manifest missing/disagreement counts, duplicate IDs,
+  and a `portfolio.projectCount` / `projects.length` mismatch.
+- Feed comments remain supplemental record-level provenance: the checker compares their feed path,
+  `kbSha`, `asOf`, dirty state, and project ID with the admitted feed.
+- Configured forbidden strings are checked in both the feed data and each rendered feed surface.
 
 ### Freshness and delivery gates
 
 `meta-inventory` must pass, at minimum:
 
 - `python3 scripts/validate_knowledge_base.py --emit-projection`
-- `python3 scripts/generate_feed.py`
 - `python3 scripts/generate_feed.py --check`
-- `python3 scripts/generate_feed.py --gate-report`
+- `python3 scripts/generate_feed.py --gate-report --require-gate-pass`
 
 The website must pass, at minimum:
 
@@ -89,22 +102,29 @@ The website must pass, at minimum:
 - the provenance/leak check configured in the deploy workflow
 - visual review when a surface flip changes public presentation
 
-## Website requirements for feed v1
+## Adopted and pending feed fields
 
-The website needs the feed to become richer without becoming less safe. The target v1 additions are:
+Already adopted in the accepted feed:
 
 - Top-level `portfolio{}`: project count, domains, languages, first/last active dates, deployed count,
-  recurring methods.
+  and recurring methods. The website uses this block when present and retains a compatibility fallback
+  only for older schema-0 feeds that omit it.
+- Verified `deploymentUrls[]` for public-linkable deployed systems.
+
+Consumer support implemented for the held candidate (not yet present in the accepted website copy):
+
+- Per-project `operationalState` and `publicLinkable`. Runtime state does not imply a public URL;
+  `publicLinkable=false` suppresses every deployment link regardless of other link fields.
+
+Pending per-project richness:
+
 - Per-project `scope{}`: active span, languages, modules, releases, tests/CI, license.
 - Per-project `decisions[]`: two to five publish-safe decision labels/summaries, with no private URLs.
 - Per-project `activity[]`: dated commit buckets, releases, milestones, and phase transitions.
 - Per-project `method{}`: governance gates, enforced boundaries, spec-driven markers, agentic workflow
   markers.
-- Verified `deploymentUrls[]` for deployed systems.
-- Data-backed `link_policy` and `public_alias` enforcement so excluded/anonymized projects do not depend
-  on ad hoc website text.
 
-Until those fields are present and gated, the website renders P0 views from v0 fields, but long-form
+Until the pending fields are present and gated, their presentation remains absent-tolerant and long-form
 detail-page prose remains hand-authored.
 
 ## Source-of-truth rules
@@ -113,8 +133,9 @@ detail-page prose remains hand-authored.
   not a complete export.
 - `unknown` is honest data. It may render quietly, but it blocks a surface flip when it would replace
   richer hand-authored public copy.
-- `kbDirty: true`, stale feed state, forbidden strings, schema/allowlist failures, or a mismatched
-  `asOf` comment stop publication.
+- `kbDirty: true`, stale or degraded feed state, manifest-health/coverage failures, duplicate IDs,
+  unsupported schema, aggregate-count mismatch, forbidden strings, or a mismatched `asOf` comment stop
+  publication.
 - The website owns fallback behavior. When a project fails the feed-as-source-of-truth gate, the site
   keeps its hand-authored copy for that surface.
 - The feed is an input to presentation, not the exhibit. Public pages should make projects, scope, and
@@ -124,6 +145,8 @@ detail-page prose remains hand-authored.
 
 - Upstream schema changes start in `meta-inventory` and must be reflected here before website rendering
   depends on them.
+- Feed delivery may update only `public/data/projects.json`; checker/model changes originate in this
+  repository and land independently.
 - Website presentation changes can request new feed fields, but should name them as feed requirements
   rather than deriving them locally.
 - Auto-publish is an explicit future policy change, not an implication of the feed existing.

@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { feedEnvelopeErrors } from './feed-model.mjs'
 
 // Generalized, multi-producer source/feed provenance + leak-pattern checker.
 // Producers are configured in scripts/provenance-producers.json. Two kinds:
@@ -124,8 +125,10 @@ function checkFeed(producer) {
   }
 
   let feed
+  let feedText
   try {
-    feed = JSON.parse(readFileSync(feedAbs, 'utf8'))
+    feedText = readFileSync(feedAbs, 'utf8')
+    feed = JSON.parse(feedText)
   } catch (err) {
     errors.push(
       `feed producer "${producer.name}": ${producer.feedPath} is not valid JSON (${err.message})`,
@@ -133,10 +136,23 @@ function checkFeed(producer) {
     return
   }
 
-  const byId = new Map((feed.projects ?? []).map((p) => [p.id, p]))
+  // Admission is unconditional: zero checked-in `feed:` comments must not
+  // bypass whole-envelope validation or feed-level leak checks.
+  for (const error of feedEnvelopeErrors(feed)) {
+    errors.push(`${producer.feedPath}: ${error}`)
+  }
+
+  const projects = Array.isArray(feed.projects) ? feed.projects : []
+  const byId = new Map(projects.map((p) => [p.id, p]))
   const feedDirty = Boolean(feed?.provenance?.kbDirty)
   const leak = producer.leakChecks ?? {}
   const forbidStrings = leak.forbidStrings ?? []
+
+  for (const needle of forbidStrings) {
+    if (needle && feedText.includes(needle)) {
+      errors.push(`${producer.feedPath}: forbidden string "${needle}" present in feed data (leak)`)
+    }
+  }
 
   // Discover feed surfaces: files under surfaceGlobs that carry a feed comment.
   const surfaces = discoverFeedSurfaces(producer.surfaceGlobs ?? ['.'])

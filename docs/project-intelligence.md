@@ -3,8 +3,8 @@ title: Project Intelligence — the feed-driven project presentation system
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.2.0
-last_updated: 2026-06-29
+version: 0.3.0
+last_updated: 2026-07-15
 tags: [project-intelligence, feed, meta-inventory, provenance, presentation, breadth]
 priority: high
 audience: coding agent + design agent
@@ -12,11 +12,13 @@ audience: coding agent + design agent
 
 # Project Intelligence — feed-driven project presentation
 
-> **Status — active (updated 2026-06-29).** The public feed ships at
+> **Status — active (updated 2026-07-14).** The accepted public feed ships at
 > `public/data/projects.json`, and the website P0 presentation is implemented: `build-feed.mjs`
-> generates `/projects/` at build time from v0 feed fields, while `scripts/design-structure.mjs` is wired
-> for per-project v1 fields and currently renders nothing when those fields are absent. The cross-repo
-> owner boundary is `docs/meta-inventory-website-contract.md`.
+> generates `/projects/` at build time, including the feed-owned top-level `portfolio{}` aggregate.
+> `scripts/design-structure.mjs` is wired for pending per-project richness and renders nothing when those
+> fields are absent. The July 15 producer candidate is clean/current but remains on intake HOLD because
+> ScopeCam lacks an accepted default-branch manifest; the cross-repo owner boundary and exact admission
+> rules are in `docs/meta-inventory-website-contract.md`.
 
 ## 1. Premise
 The feed is the **instrument, not the exhibit**. Its job is to keep each project's depth, scope, key
@@ -61,7 +63,7 @@ project repos ──PR/merge (repository_dispatch)──▶ meta-inventory
                                                           │
                           daily 08:00 ET ─────────────────┤ publish-safe projection
                                                           ▼
-                                              public feed (projects.json; v0 now, v1 target)
+                                  public feed (projects.json; schema 0 + adopted portfolio aggregate)
                                                           │ no-op gate → delivery/policy gate (§6)
                                                           ▼
                                        site renders at BUILD TIME (no client JS)
@@ -86,23 +88,30 @@ Design intentionality is the differentiator — and much of it already lives in 
 
 ## 5. Feed schema
 ### 5.1 v0 (current, shipping)
-- Top-level: `schemaVersion`, `generatedAt`, `banners`, `projects[]`, `provenance{kbSha,kbDirty,stale,…}`.
+- Top-level: `schemaVersion`, `generatedAt`, `banners`, `portfolio{projectCount,domains,languages,
+  firstActive,lastActive,deployedCount,recurringMethods}`, `projects[]`, and
+  `provenance{kbSha,kbDirty,stale,degradedNoManifests,manifestHealth,…}`.
 - Per project: `id`, `slug`, `title`, `displayName`, `thesis`, `domains[]`, `tech[]`, `statusLine`,
-  `posture{badge,evidenceClass,allowsLive}`, `deploymentUrls[]`, `asOf`, `freshness{maxUpdatedAt,ageDays,stale,source}`,
-  `tier{portfolioVisibility,primaryAudience,status}`, `provenance{kbSha,kbDirty,generatedAt,source}`.
+  `posture{badge,evidenceClass,allowsLive}`, `deploymentUrls[]`, `asOf`,
+  `freshness{maxUpdatedAt,ageDays,stale,source}`,
+  `tier{portfolioVisibility,primaryAudience,status}`, and
+  `provenance{kbSha,kbDirty,generatedAt,source}`.
+- Consumer support is implemented for additive `operationalState` and `publicLinkable` fields. They are
+  present in the held producer candidate but not yet in the accepted website feed copy.
 
-### 5.2 v1 (target additions) — the contract the site consumes
+### 5.2 Pending per-project additions
 - **Per project:**
   - `scope{}` — `activeSpan` (first→last), `languages:[{name,share}]`, `modules?`, `releases:[{tag,date}]`, `hasTests`, `hasCI`, `license`.
   - `decisions:[{title, summary?, kind?(architecture|governance|research), sourceLabel?}]` — 2–5, publish-safe labels (never private URLs).
   - `activity:[{date, type(commit-bucket|release|milestone|phase), label?, magnitude?}]` — the timeline series.
   - `method{}` — `governanceGates?`, `enforcedBoundaries?`, `specDriven?`, `agenticMarkers?` (AGENTS.md/skills/MCP present).
-- **Top-level:** `portfolio{projectCount, domains[], languages[], firstActive, lastActive, deployedCount, recurringMethods[]}` — drives the overview band.
 
 ### 5.3 Publish-safety (projection rules)
-A field is emitted to the feed only if publish-safe for that project: gated by `tier.portfolioVisibility`
-and `posture.allowsLive`; **no private repo URLs, SHAs, secrets, or internal branch names**; held to the
-leak gate's `forbidStrings`. The basket keeps the rest privately.
+A field is emitted only if publish-safe for that project: selected by `tier.portfolioVisibility`, with
+**no private repo URLs, SHAs, secrets, or internal branch names**, and held to the leak gate's
+`forbidStrings`. `posture.allowsLive` describes evidence posture; `operationalState` describes current
+operation; `publicLinkable` independently controls deployment-link exposure. A production-live no-link
+system may be presented as operating without exposing a URL. The basket keeps private detail upstream.
 
 ## 6. Cadence & governance
 - **Daily 08:00 ET.** GitHub Actions cron is UTC and ignores DST → schedule **12:00 and 13:00 UTC** and
@@ -111,6 +120,9 @@ leak gate's `forbidStrings`. The basket keeps the rest privately.
   website provenance/leak gates is delivered by PR. The helper opens a draft PR by default once the
   website target, feed destination, and `WEBSITE_PR_TOKEN` are configured. The operator reviews and
   merges; on this repo, merge or push to `main` deploys.
+- **Consumer admission.** The website validates the complete feed envelope before inspecting optional
+  rendered provenance comments. Dirty, stale, degraded, manifest-invalid/incomplete, duplicate-ID,
+  unsupported-schema, and portfolio-count-mismatch inputs fail closed.
 - **Target evolution, not current behavior.** A feed-only, gate-passing diff may later become
   policy-auto-published. That requires an explicit operator decision and website-side policy gate wiring.
   **Everything else** — code, structure, new claims, design-system changes, workflow edits — stays
@@ -124,10 +136,11 @@ Direction is research-settled (full rationale + sources in the design brief). Th
 pattern is a **dense, grouped, build-time index — not a card grid** — with **no interactive filter at
 this scale** (15–30 items); facets are printed inline labels, grouping proves breadth, drill-down is the
 per-project page. Surfaces:
-1. **Portfolio overview** — breadth at a glance. Current P0 derives an honest local fallback from v0;
-   v1 should supply authoritative `portfolio{}`.
+1. **Portfolio overview** — breadth at a glance. The accepted feed's `portfolio{}` block is
+   authoritative when present; a local derivation remains only as compatibility behavior for older
+   schema-0 feeds that omit the block.
 2. **Body-of-work index** — implemented as grouped, dense, inline metadata; a curated front tier leads.
-3. **Per-project design structure** — wired on detail pages and absent-tolerant until v1 `scope`,
+3. **Per-project design structure** — wired on detail pages and absent-tolerant until pending `scope`,
    `decisions`, and `activity` fields arrive.
 4. **Portfolio activity timeline** — later/optional.
 
@@ -135,10 +148,10 @@ per-project page. Surfaces:
 stylesheet, all current gates apply.
 
 ## 8. Phasing
-- **P0 — done on the website:** build-time templater, portfolio overview fallback, grouped index,
-  curated front tier, and feed-model tests from current v0 fields (`evidenceClass`, `domains`, `tech`,
-  `statusLine`, `asOf`, `deploymentUrls`).
-- **P1 — upstream feed richness:** authoritative top-level `portfolio{}` and per-project `scope{}`.
+- **P0 — done on the website:** build-time templater, adopted feed-owned `portfolio{}` overview with a
+  legacy fallback, grouped index, curated front tier, whole-envelope admission, link-policy enforcement,
+  and feed-model tests from current fields.
+- **P1 — upstream feed richness:** per-project `scope{}`.
 - **P2 — upstream activity:** `activity[]` → per-project + portfolio timelines.
 - **P3 — upstream decisions:** `decisions[]` (ADR/spec extraction) — highest signal.
 - **P4 — upstream freshness automation:** `repository_dispatch` trigger + 08:00 ET cadence wired in CI; optional feed-only
