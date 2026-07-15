@@ -3,8 +3,8 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.0
-last_updated: 2026-07-04
+version: 0.1.1
+last_updated: 2026-07-15
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -29,8 +29,12 @@ authority, which are historical handoffs, and where plans live.
   lint, format check, design-system conformance, token freshness, and the Vite build.
 - **Generated files:** `projects/index.html` and `dist/` are generated/ignored. Change
   `build-feed.mjs`, `scripts/feed-model.mjs`, or source HTML instead of hand-editing generated output.
-- **Feed delivery:** the website consumes `public/data/projects.json`. Feed updates are PR-delivered
-  and operator-merged. Policy auto-publish is future-state only.
+- **Feed delivery:** the website consumes `public/data/projects.json`. The complete envelope is validated
+  even when no rendered `feed:` comments exist. Feed updates are PR-delivered and operator-merged;
+  checker/model changes are website-owned and land separately. Policy auto-publish is future-state only.
+- **Feed intake HOLD (2026-07-15):** do not copy the current meta-inventory candidate. The feed is clean
+  and current, but ScopeCam lacks an accepted default-branch manifest, so producer gate (c) remains red.
+  A feed-only delivery PR must wait for all producer gates to pass.
 - **Visual system:** tokens are authored in `tokens/*.tokens.json`; component CSS uses semantic tokens in
   `assets/jeffrey.css`. Do not hand-edit `assets/tokens.generated.css`.
 
@@ -68,12 +72,11 @@ authority, which are historical handoffs, and where plans live.
 
 ### Project-intelligence feed
 
-- **Done on the website:** P0 build-time body-of-work index from v0 feed fields; curated front tier;
-  local model/tests; generated `/projects/`; S3 per-project design-structure hook is wired and
-  absent-tolerant.
-- **Awaiting upstream feed richness:** top-level `portfolio{}` adoption, per-project `scope{}`,
-  `decisions[]`, `activity[]`, and `method{}`. The website must not derive those from private sibling
-  repos.
+- **Done on the website:** P0 build-time body-of-work index; adopted top-level `portfolio{}` aggregate;
+  curated front tier; full-envelope admission; `client-deliverable` grouping; no-link deployment URL
+  suppression; generated `/projects/`; S3 per-project design-structure hook wired and absent-tolerant.
+- **Awaiting upstream feed richness:** per-project `scope{}`, `decisions[]`, `activity[]`, and `method{}`.
+  The website must not derive those from private sibling repos.
 - **Policy boundary:** event-driven refresh and any feed-only auto-publish path remain future-state until
   explicit operator approval and website-side gate wiring.
 

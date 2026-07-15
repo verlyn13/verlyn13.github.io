@@ -10,11 +10,24 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const FEED_PATH = 'public/data/projects.json'
 const PROJECT_PAGE_DIR = 'projects'
+const SUPPORTED_SCHEMA_VERSIONS = new Set(['0'])
+
+// These manifest-health fields are optional in older schema-0 feeds, but any
+// present nonzero value contradicts a passing health summary.
+const MANIFEST_ERROR_COUNT_FIELDS = [
+  'duplicateConflictCount',
+  'remoteAmbiguityCount',
+  'validationErrorCount',
+  'missingIdCount',
+  'unjoinedCount',
+  'graphErrorCount',
+]
 
 // evidenceClass -> display label + sort order (the §S2 grouping). Editorial defaults:
 // the design pass may revise labels/order; membership is the feed's, not ours.
 const KINDS = [
   { key: 'deployed-system', label: 'Shipped systems' },
+  { key: 'client-deliverable', label: 'Client deliverables' },
   { key: 'working-prototype', label: 'Working prototypes' },
   { key: 'public-package', label: 'Released packages' },
   { key: 'published-artifact', label: 'Published research' },
@@ -35,6 +48,115 @@ export function readFeed(feedPath = FEED_PATH) {
   return JSON.parse(readFileSync(path.join(root, feedPath), 'utf8'))
 }
 
+const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value)
+
+function checkZeroCount(errors, owner, field, required = false) {
+  const value = owner?.[field]
+  if (value === undefined && !required) return
+  if (!Number.isInteger(value) || value < 0) {
+    errors.push(`${field} must be a non-negative integer`)
+  } else if (value !== 0) {
+    errors.push(`${field} must be 0 (received ${value})`)
+  }
+}
+
+// Whole-feed admission is independent of rendered `feed:` comments. Keep this
+// pure so the model, build, provenance checker, and tests share one contract.
+export function feedEnvelopeErrors(feed) {
+  const errors = []
+  if (!isRecord(feed)) return ['feed must be a JSON object']
+
+  if (!SUPPORTED_SCHEMA_VERSIONS.has(feed.schemaVersion)) {
+    errors.push(
+      `schemaVersion must be one of ${[...SUPPORTED_SCHEMA_VERSIONS].join(', ')} ` +
+        `(received ${JSON.stringify(feed.schemaVersion)})`,
+    )
+  }
+
+  const projects = feed.projects
+  if (!Array.isArray(projects)) {
+    errors.push('projects must be an array')
+  } else {
+    const seenIds = new Set()
+    for (const [index, project] of projects.entries()) {
+      const id = project?.id
+      if (typeof id !== 'string' || id.length === 0) {
+        errors.push(`projects[${index}].id must be a non-empty string`)
+      } else if (seenIds.has(id)) {
+        errors.push(`projects[${index}].id duplicates project id "${id}"`)
+      } else {
+        seenIds.add(id)
+      }
+
+      if (project?.schemaVersion !== undefined && project.schemaVersion !== feed.schemaVersion) {
+        errors.push(
+          `projects[${index}].schemaVersion must match feed schemaVersion ` +
+            `${JSON.stringify(feed.schemaVersion)}`,
+        )
+      }
+
+      if (project?.publicLinkable !== undefined && typeof project.publicLinkable !== 'boolean') {
+        errors.push(`projects[${index}].publicLinkable must be a boolean when present`)
+      }
+    }
+  }
+
+  const provenance = feed.provenance
+  if (!isRecord(provenance)) {
+    errors.push('provenance must be an object')
+  } else {
+    for (const field of ['kbDirty', 'stale', 'degradedNoManifests']) {
+      if (provenance[field] !== false) errors.push(`provenance.${field} must be false`)
+    }
+
+    const health = provenance.manifestHealth
+    if (!isRecord(health)) {
+      errors.push('provenance.manifestHealth must be an object')
+    } else {
+      if (health.status !== 'pass') {
+        errors.push('provenance.manifestHealth.status must be "pass"')
+      }
+      const healthErrors = []
+      checkZeroCount(healthErrors, health, 'errorCount', true)
+      for (const field of MANIFEST_ERROR_COUNT_FIELDS) {
+        checkZeroCount(healthErrors, health, field)
+      }
+      errors.push(...healthErrors.map((error) => `provenance.manifestHealth.${error}`))
+    }
+
+    // The accepted legacy schema-0 feed predates these fields. During the
+    // compatibility-first cutover, absence is allowed; any present value must
+    // be an integer zero. A later schema discriminator can require presence.
+    const selectedErrors = []
+    checkZeroCount(selectedErrors, provenance, 'selectedManifestMissingCount')
+    checkZeroCount(selectedErrors, provenance, 'selectedManifestDisagreementCount')
+    errors.push(...selectedErrors.map((error) => `provenance.${error}`))
+  }
+
+  if (feed.portfolio !== undefined) {
+    if (!isRecord(feed.portfolio)) {
+      errors.push('portfolio must be an object when present')
+    } else if (!Number.isInteger(feed.portfolio.projectCount)) {
+      errors.push('portfolio.projectCount must be an integer')
+    } else if (Array.isArray(projects) && feed.portfolio.projectCount !== projects.length) {
+      errors.push(
+        `portfolio.projectCount must equal projects.length ` +
+          `(${feed.portfolio.projectCount} !== ${projects.length})`,
+      )
+    }
+  }
+
+  return errors
+}
+
+export function assertFeedEnvelope(feed) {
+  const errors = feedEnvelopeErrors(feed)
+  if (errors.length > 0) {
+    throw new Error(`Project feed rejected:\n- ${errors.join('\n- ')}`)
+  }
+  return feed
+}
+
 function resolveDetailHref(slug) {
   const base = PAGE_ALIASES[slug] ?? slug
   const rel = `${PROJECT_PAGE_DIR}/${base}.html`
@@ -53,7 +175,9 @@ function kindOf(evidenceClass) {
 // activity/method) surface when the feed carries them, null otherwise (P1-P3).
 export function toEntry(project) {
   const kind = kindOf(project.posture?.evidenceClass)
-  const liveUrl = project.deploymentUrls?.[0] ?? null
+  const publicLinkable =
+    project.publicLinkable === undefined ? true : project.publicLinkable === true
+  const liveUrl = publicLinkable ? (project.deploymentUrls?.[0] ?? null) : null
   // Per-project recency is `asOf`; freshness.maxUpdatedAt is feed-wide (identical across
   // projects), so it lives in top-level provenance, not here.
   const lastActive = project.asOf && project.asOf !== 'unknown' ? project.asOf : null
@@ -66,6 +190,8 @@ export function toEntry(project) {
     href: resolveDetailHref(project.slug),
     kind: { key: kind.key, label: kind.label },
     badge: project.posture?.badge ?? null,
+    operationalState: project.operationalState ?? null,
+    publicLinkable,
     status: project.statusLine ?? null,
     domains: project.domains ?? [],
     tech: project.tech ?? [],
@@ -150,6 +276,7 @@ export function groupByKind(entries) {
 }
 
 export function buildViewModel(feed = readFeed()) {
+  assertFeedEnvelope(feed)
   const entries = (feed.projects ?? []).map(toEntry)
   const byId = new Map(entries.map((e) => [e.id, e]))
   return {
