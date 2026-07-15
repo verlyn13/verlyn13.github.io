@@ -3,7 +3,7 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.4
+version: 0.1.5
 last_updated: 2026-07-15
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
@@ -34,11 +34,11 @@ authority, which are historical handoffs, and where plans live.
 - **Feed delivery:** the website consumes `public/data/projects.json`. The complete envelope is validated
   even when no rendered `feed:` comments exist. Feed updates are PR-delivered and operator-merged;
   checker/model changes are website-owned and land separately. Policy auto-publish is future-state only.
-- **Feed intake HOLD (2026-07-15):** ScopeCam default-main manifest coverage is complete, and the
-  refreshed producer candidate in draft PR #14 is gate-green. It remains pending acceptance on
-  `meta-inventory` `origin/main`, so do not copy it in a narrative branch. A feed-only delivery PR starts
-  only from the accepted producer default branch after the enforced generation and gate-report checks
-  pass there.
+- **Feed producer accepted; delivery pending (2026-07-15):** ScopeCam default-main manifest coverage and
+  the refreshed 15-project feed were accepted on `meta-inventory` `origin/main` through PR #14 at
+  `447ac1c37c77b4b03c42f95fcfee0625e5cf1ea8`. The accepted tree passes deterministic generation and
+  enforced gates (a)–(e). Keep this narrative PR feed-free; deliver the accepted artifact only through a
+  separate feed-only PR that changes `public/data/projects.json` and still requires operator approval.
 - **Visual system:** tokens are authored in `tokens/*.tokens.json`; component CSS uses semantic tokens in
   `assets/jeffrey.css`. Do not hand-edit `assets/tokens.generated.css`.
 
