@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: 5544b19c9b3ad2303f5f1a7a08c7c1c75476afb1b591253c3411c0321c58e415
-html_hash: 5d7842aa017e581546acdd900d9610ba56d4bfac73610145802f1c333b6f4117
+content_hash: d39d21a94c994a5353f9c60026d05c9bcc55dd7dd6549fe934fdeab82b132031
+html_hash: 6b7696cadb5ce5a9f511c892d62dcb94b158fcbad58e079a6973223337beed8a
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -45,6 +45,8 @@ Agentic tools are most useful when they can act and most risky when their author
 - Merge-time gate A dozen static scanners Policy, boundary, secret, and schema-drift checks run together.
 
 [Inspect the public repository](https://github.com/jefahnierocks/host-capability-substrate)
+
+Host Capability Substrate is maintained in [Jefahnierocks](https://github.com/jefahnierocks), a public home for independently governed engineering and learning projects. Governance is currently repository-local; organization-wide controls remain conditional rather than active enforcement.
 
 ### What this does not demonstrate
 
