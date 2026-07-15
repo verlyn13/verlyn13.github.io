@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: 28b69e7824630b512aa8a34c9014ea58d9c182675c0e709f83d01a506e6ddddf
-html_hash: 3a81fd4ba33d5f7b755cdec7798fde33e45469e5e3adb91c56372e85f4f4b37e
+content_hash: 5544b19c9b3ad2303f5f1a7a08c7c1c75476afb1b591253c3411c0321c58e415
+html_hash: 5d7842aa017e581546acdd900d9610ba56d4bfac73610145802f1c333b6f4117
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,48 +13,72 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Research Foundations
+[Evidence](/#evidence) · Public implementation
 
 # Host Capability Substrate
 
-Capability-Boundary Research Substrate
+Typed governance for host-level AI agents
 
-Research Foundation · Active
+Public repository · Verified implementation
 
-## Overview
+## What is this?
 
-host-capability-substrate is the workstation-level counterpart to the organizational framework. Where the Nash Group framework asks what the organization permits and owns, host-capability-substrate asks what the local machine can safely do, how capabilities are exposed, and how agents can reason about local state without treating the workstation as an unstructured pile of tools.
+Host Capability Substrate models what a local machine can safely expose to an AI agent. It treats host capabilities, policy decisions, evidence, and authorization grants as typed objects instead of implicit shell access.
 
-## Current Status
+## What is it for?
 
-- **Status:** Active substrate design
-- **Type:** Workstation-level capability kernel
-- **Positioning:** Local machine capability model for agentic workflows
+It gives an agent and its operator a machine-checkable description of what can be inspected, what can be modified, what evidence is required, and what still needs explicit approval.
 
-## Architecture
+## How is it used?
 
-### Capability Model
+Host facts and capability declarations are represented with Zod types and generated JSON Schemas. Policy and evidence objects describe the authority behind an action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.
 
-- Four-ring capability architecture for separating foundational machine facts from higher-level workflows.
-- Ring 0 schema landing work for base host facts and capability declarations.
-- Capability inventory approach for shells, package managers, repo locations, secrets boundaries, and local services.
-- Designed to support agent-safe automation without making every local tool globally available.
+## Why does it matter?
 
-## Skills Demonstrated
+Agentic tools are most useful when they can act and most risky when their authority is implicit. Typed capability and authorization boundaries make local automation inspectable, testable, and easier to refuse safely.
 
-- Systems modeling for local development environments.
-- Schema-first design for machine capabilities.
-- Security-conscious automation boundaries.
-- Agent runtime planning across shells, repos, and local services.
+## Evidence and status
 
-## Why This Matters
+- Typed ontology 46 Zod entity schemas Compiled into 67 generated JSON Schemas.
+- Verification About 500 tests Exercises schemas, policy decisions, evidence, audit records, and grants.
+- Governance 19 invariants · four rings Import boundaries preserve the direction of authority.
+- Merge-time gate A dozen static scanners Policy, boundary, secret, and schema-drift checks run together.
 
-Agentic tools are most useful when they can act, but most risky when their authority is implicit. host-capability-substrate is a way to describe local capabilities before they are used: what can be inspected, what can be modified, what requires operator approval, and what should remain outside the agent's reach. It is a practical bridge between "AI assistant has shell access" and a governable local automation environment.
+[Inspect the public repository](https://github.com/jefahnierocks/host-capability-substrate)
+
+### What this does not demonstrate
+
+The public implementation and CI evidence show a typed governance model and enforced source boundaries. They do not prove that every modeled capability is deployed as universal host-level runtime enforcement.
+
+## Technical shape
+
+### Capability and evidence model
+
+- TypeScript and Zod define host facts, capabilities, evidence, policy decisions, and authorization grants.
+- Generated JSON Schemas make the contracts portable and inspectable outside the TypeScript runtime.
+- Provenance-typed evidence, an authority hierarchy, and tamper-evident audit chains keep decisions attached to their basis.
+- Scoped, expiring grants express bounded authorization instead of permanent ambient access.
+
+### Governance as CI discipline
+
+- A 19-invariant implementation charter defines non-negotiable boundaries.
+- A four-ring architecture prevents higher-level workflows from becoming foundational authority.
+- The composed verification gate checks policy, imports, secrets, schemas, generated artifacts, and agent-contract identity.
+
+## What the work demonstrates
+
+- Type-driven systems design.
+- Host-level security and capability modeling.
+- Agent authority and evidence boundaries.
+- JSON Schema and Zod contract design.
+- Governance implemented as executable CI discipline.
 
 ## Interested in this work?
 
-Happy to talk about this project or the research practice behind it.
+Explore the public implementation or get in touch to discuss host-level agent authority and typed governance.
 
 Email me about this →
+
+Public repository ↗
 
 ← Back to Evidence

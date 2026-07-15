@@ -4,8 +4,8 @@ type: page
 source_file: projects/dicee.html
 source_selector: main
 route: /projects/dicee.html
-content_hash: 83096808fc65fff28478e6e77ad0d73850b6f7af9299a67d8df51f4037e9c919
-html_hash: 5b5f7abf07074d10656b9bb6ad6087a77467db6820e08a9336b183a1527e09cf
+content_hash: 2263fdd57e793d6ef8148d84a21559366ec75ef2d2a130889042f5e464c16443
+html_hash: d7a4204f141d8b1a651c525730fac4000a76229cf44d521b1efd84c73cc16eca
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,75 +13,55 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Hybrid Intelligence
+[Supporting work](/projects/) · Deployed web application
 
 # Dicee
 
-Multiplayer Game Engine
+Family-friendly multiplayer game for mobile browsers
 
-Live Production
+Live public deployment
 
 dicee.games →
 
-## Overview
+## What is this?
 
-Family-friendly multiplayer dice game demonstrating serverless real-time coordination at scale. Built to explore Cloudflare's edge computing model and WebAssembly optimization.
+Dicee is a family-friendly multiplayer dice game that runs in a mobile browser without an app install. Its game engine is written in Rust and compiled to WebAssembly.
 
-Solo development from architecture through deployment. Live users, real monitoring, production infrastructure.
+The deployed system combines a SvelteKit interface with Cloudflare Durable Objects and WebSockets for real-time room state.
 
-## Technical Architecture
+## What is it for?
 
-### Game Engine
+It provides a usable game while serving as delivery evidence for cross-language browser software, real-time coordination, and serverless state management.
 
-- Rust compiled to WebAssembly (45KB optimized bundle)
-- Deterministic game logic, zero external dependencies
-- 1800+ automated tests ensuring correctness
+## How is it used?
 
-### Backend Infrastructure
+Players open [dicee.games](https://dicee.games/) in a browser, create or join a game, and exchange state through WebSockets backed by Cloudflare Durable Objects. Supabase provides persistent data services.
 
-- Cloudflare Durable Objects (SQLite-backed) for isolated game state
-- Hibernatable WebSockets for cost-optimized real-time gameplay
-- Workers AI binding for audio transcription
-- PostgreSQL (Supabase) for persistence
+## Why does it matter?
 
-### Frontend
+Dicee demonstrates end-to-end delivery across a Rust/WebAssembly engine, a SvelteKit client, real-time edge coordination, persistence, and a public deployment.
 
-- SvelteKit (Svelte 5) on Cloudflare Pages
-- **Service Bindings:** Zero-latency internal RPC to the isolated Worker
-- ts-rest for type-safe API contracts
+## Evidence and status
 
-## Why This Matters
+- The canonical public deployment at [dicee.games](https://dicee.games/) returned HTTP 200 during the accepted source review on 2026-07-14.
+- Tracked source supports the Rust/WebAssembly engine, SvelteKit client, Cloudflare Durable Objects, WebSockets, and Supabase architecture.
 
-### Production Deployment
+### What this does not demonstrate
 
-Live users, real monitoring, operational experience managing production infrastructure.
+No exact binary-size, test-count, user, traffic, latency, or general performance claim is made. Those figures require a fresh source-local build or operational review before outward use.
 
-### Advanced Edge Architecture
+## Technical shape
 
-Zero-latency Service Bindings between Pages and Workers. Utilizing SQLite-backed Durable Objects for transactional consistency without traditional servers.
+### Game engine
 
-### Performance Optimization
+- Rust game logic compiled to WebAssembly.
+- Browser delivery without a native app install.
 
-45KB WASM bundle demonstrates understanding of compilation targets and performance constraints.
+### Real-time application
 
-### Type Safety
-
-End-to-end type contracts from Rust through TypeScript. Type-driven development.
-
-## Technical Depth
-
-This project demonstrates understanding of:
-
-- Distributed state management and coordination
-- WebSocket protocols and real-time systems
-- Serverless architecture patterns and edge computing
-- WebAssembly compilation and optimization
-- Production deployment and operational monitoring
-- Type-safe system design across language boundaries
-
-## Development Context
-
-Built as a learning platform to explore modern web infrastructure while creating something family members could actually use. The constraints—real users, need for reliability, performance requirements—drove architectural decisions and forced engagement with production concerns beyond local development.
+- SvelteKit frontend.
+- Cloudflare Durable Objects and WebSockets for multiplayer coordination.
+- Supabase for persistent data services.
 
 ## Interested in this work?
 

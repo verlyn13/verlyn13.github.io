@@ -4,13 +4,13 @@ type: region
 source_file: projects/dicee.html
 marker: dicee.overview
 page: page_dicee
-content_hash: 9a16e453ea794feeac14c8ace5208c0d6165ec9059f3212a7199081ba930271a
-html_hash: 60819e205478baeaed85b137d7079361fba623263daabe6c2eac652d97f3cbfb
+content_hash: 4e42ab7ef78a8df0c864138a75d4feaf42a3b39f980e2034efd16e1673c6b59d
+html_hash: 57c907366bd78d4ab48fec6ead420eeddc45e17cb4df1f98b86e265470685baf
 normalizer_version: 1
 sync_direction: two_way
 protected_fields: [id, type, source_file, marker, page, normalizer_version]
 ---
 
-Family-friendly multiplayer dice game demonstrating serverless real-time coordination at scale. Built to explore Cloudflare's edge computing model and WebAssembly optimization.
+Dicee is a family-friendly multiplayer dice game that runs in a mobile browser without an app install. Its game engine is written in Rust and compiled to WebAssembly.
 
-Solo development from architecture through deployment. Live users, real monitoring, production infrastructure.
+The deployed system combines a SvelteKit interface with Cloudflare Durable Objects and WebSockets for real-time room state.

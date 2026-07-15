@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-05-25 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dicee - Multiplayer Game Engine | Jeffrey Johnson</title>
-    <meta name="description" content="Live production multiplayer dice game built with Rust WebAssembly and Cloudflare Durable Objects">
+    <title>Dicee — Live Multiplayer Dice Game | Jeffrey Johnson</title>
+    <meta name="description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -13,20 +13,20 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/dicee.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Dicee — Multiplayer Game Engine">
-    <meta property="og:description" content="Live production multiplayer dice game built with Rust WebAssembly and Cloudflare Durable Objects.">
+    <meta property="og:title" content="Dicee — Live Multiplayer Dice Game">
+    <meta property="og:description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/dicee.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dicee — Multiplayer Game Engine">
-    <meta name="twitter:description" content="Live production multiplayer dice game built with Rust WebAssembly and Cloudflare Durable Objects.">
+    <meta name="twitter:title" content="Dicee — Live Multiplayer Dice Game">
+    <meta name="twitter:description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -53,96 +53,72 @@
             <div class="container">
                 <header class="project-header-detail">
                     <p class="case-study-context">
-                        <a href="/#evidence">Evidence</a> · Hybrid Intelligence
+                        <a href="/projects/">Supporting work</a> · Deployed web application
                     </p>
                     <h1>Dicee</h1>
-                    <p class="project-subtitle">Multiplayer Game Engine</p>
+                    <p class="project-subtitle">Family-friendly multiplayer game for mobile browsers</p>
                     <div class="project-meta">
-                        <span class="project-status live">Live Production</span>
-                        <a href="https://dicee.games" class="external-link" target="_blank" rel="noopener">dicee.games →</a>
+                        <span class="project-status live">Live public deployment</span>
+                        <a href="https://dicee.games/" class="external-link" target="_blank" rel="noopener">dicee.games →</a>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>Overview</h2>
+                    <h2>What is this?</h2>
                     <!-- content-sync:start dicee.overview -->
-                    <p>Family-friendly multiplayer dice game demonstrating serverless real-time coordination at scale. Built to explore Cloudflare's edge computing model and WebAssembly optimization.</p>
-                    <p>Solo development from architecture through deployment. Live users, real monitoring, production infrastructure.</p>
+                    <p>Dicee is a family-friendly multiplayer dice game that runs in a mobile browser without an app install. Its game engine is written in Rust and compiled to WebAssembly.</p>
+                    <p>The deployed system combines a SvelteKit interface with Cloudflare Durable Objects and WebSockets for real-time room state.</p>
                     <!-- content-sync:end dicee.overview -->
+                </section>
+
+                <section class="project-context">
+                    <h2>What is it for?</h2>
+                    <p>It provides a usable game while serving as delivery evidence for cross-language browser software, real-time coordination, and serverless state management.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>How is it used?</h2>
+                    <p>Players open <a href="https://dicee.games/" target="_blank" rel="noopener">dicee.games</a> in a browser, create or join a game, and exchange state through WebSockets backed by Cloudflare Durable Objects. Supabase provides persistent data services.</p>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why does it matter?</h2>
+                    <p>Dicee demonstrates end-to-end delivery across a Rust/WebAssembly engine, a SvelteKit client, real-time edge coordination, persistence, and a public deployment.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>Evidence and status</h2>
+                    <ul class="depth-list">
+                        <li>The canonical public deployment at <a href="https://dicee.games/" target="_blank" rel="noopener">dicee.games</a> returned HTTP 200 during the accepted source review on 2026-07-14.</li>
+                        <li>Tracked source supports the Rust/WebAssembly engine, SvelteKit client, Cloudflare Durable Objects, WebSockets, and Supabase architecture.</li>
+                    </ul>
+                    <div class="callout warn">
+                        <h3>What this does not demonstrate</h3>
+                        <p>No exact binary-size, test-count, user, traffic, latency, or general performance claim is made. Those figures require a fresh source-local build or operational review before outward use.</p>
+                    </div>
                 </section>
 
                 <!-- @design-structure: dicee -->
 
                 <section class="project-architecture">
-                    <h2>Technical Architecture</h2>
+                    <h2>Technical shape</h2>
 
                     <div class="architecture-section">
-                        <h3>Game Engine</h3>
+                        <h3>Game engine</h3>
                         <ul>
-                            <li>Rust compiled to WebAssembly (45KB optimized bundle)</li>
-                            <li>Deterministic game logic, zero external dependencies</li>
-                            <li>1800+ automated tests ensuring correctness</li>
+                            <li>Rust game logic compiled to WebAssembly.</li>
+                            <li>Browser delivery without a native app install.</li>
                         </ul>
                     </div>
 
                     <div class="architecture-section">
-                        <h3>Backend Infrastructure</h3>
+                        <h3>Real-time application</h3>
                         <ul>
-                            <li>Cloudflare Durable Objects (SQLite-backed) for isolated game state</li>
-                            <li>Hibernatable WebSockets for cost-optimized real-time gameplay</li>
-                            <li>Workers AI binding for audio transcription</li>
-                            <li>PostgreSQL (Supabase) for persistence</li>
+                            <li>SvelteKit frontend.</li>
+                            <li>Cloudflare Durable Objects and WebSockets for multiplayer coordination.</li>
+                            <li>Supabase for persistent data services.</li>
                         </ul>
                     </div>
-
-                    <div class="architecture-section">
-                        <h3>Frontend</h3>
-                        <ul>
-                            <li>SvelteKit (Svelte 5) on Cloudflare Pages</li>
-                            <li><strong>Service Bindings:</strong> Zero-latency internal RPC to the isolated Worker</li>
-                            <li>ts-rest for type-safe API contracts</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="project-significance">
-                    <h2>Why This Matters</h2>
-                    <div class="significance-grid">
-                        <div class="significance-point">
-                            <h3>Production Deployment</h3>
-                            <p>Live users, real monitoring, operational experience managing production infrastructure.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Advanced Edge Architecture</h3>
-                            <p>Zero-latency Service Bindings between Pages and Workers. Utilizing SQLite-backed Durable Objects for transactional consistency without traditional servers.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Performance Optimization</h3>
-                            <p>45KB WASM bundle demonstrates understanding of compilation targets and performance constraints.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Type Safety</h3>
-                            <p>End-to-end type contracts from Rust through TypeScript. Type-driven development.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="project-technical-depth">
-                    <h2>Technical Depth</h2>
-                    <p>This project demonstrates understanding of:</p>
-                    <ul class="depth-list">
-                        <li>Distributed state management and coordination</li>
-                        <li>WebSocket protocols and real-time systems</li>
-                        <li>Serverless architecture patterns and edge computing</li>
-                        <li>WebAssembly compilation and optimization</li>
-                        <li>Production deployment and operational monitoring</li>
-                        <li>Type-safe system design across language boundaries</li>
-                    </ul>
-                </section>
-
-                <section class="project-context">
-                    <h2>Development Context</h2>
-                    <p>Built as a learning platform to explore modern web infrastructure while creating something family members could actually use. The constraints—real users, need for reliability, performance requirements—drove architectural decisions and forced engagement with production concerns beyond local development.</p>
                 </section>
 
                 <section class="project-links-footer" aria-label="What next">
@@ -150,7 +126,7 @@
                     <p>Happy to talk about this project or the research practice behind it.</p>
                     <div class="project-cta-actions">
                         <a href="mailto:jeffrey@jvjohnson.dev?subject=Dicee" class="primary-link">Email me about this →</a>
-                        <a href="https://dicee.games" class="section-link" target="_blank" rel="noopener">Visit live site ↗</a>
+                        <a href="https://dicee.games/" class="section-link" target="_blank" rel="noopener">Visit live site ↗</a>
                         <a href="/#evidence" class="section-link">← Back to Evidence</a>
                     </div>
                 </section>

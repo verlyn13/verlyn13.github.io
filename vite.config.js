@@ -51,6 +51,10 @@ export default defineConfig({
         'projects-index': resolve(import.meta.dirname, 'projects/index.html'),
         'projects-dicee': resolve(import.meta.dirname, 'projects/dicee.html'),
         'projects-maat': resolve(import.meta.dirname, 'projects/maat.html'),
+        'projects-governance-agent-control': resolve(
+          import.meta.dirname,
+          'projects/governance-agent-control.html',
+        ),
         'projects-the-nash-group': resolve(import.meta.dirname, 'projects/the-nash-group.html'),
         'projects-host-capability-substrate': resolve(
           import.meta.dirname,

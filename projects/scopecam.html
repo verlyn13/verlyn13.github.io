@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-05-25 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScopeCam — USB Microscope Camera App | Jeffrey Johnson</title>
-    <meta name="description" content="Alpha-stage Android app for USB (UVC) microscope cameras: a six-module architecture, a vendored native stack, and scientific-metadata capture.">
+    <title>ScopeCam — Private Android UVC Microscope Application | Jeffrey Johnson</title>
+    <meta name="description" content="A private proprietary Android/Kotlin/C++ application for UVC microscope workflows, with a signed client alpha and explicit compatibility and recovery boundaries.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -13,20 +13,20 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/scopecam.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="ScopeCam — USB Microscope Camera App">
-    <meta property="og:description" content="Alpha-stage Android app for USB (UVC) microscope cameras: a six-module architecture, a vendored native stack, and scientific-metadata capture.">
+    <meta property="og:title" content="ScopeCam — Private Android UVC Microscope Application">
+    <meta property="og:description" content="A private proprietary Android/Kotlin/C++ application for UVC microscope workflows, with a signed client alpha and explicit compatibility and recovery boundaries.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/scopecam.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ScopeCam — USB Microscope Camera App">
-    <meta name="twitter:description" content="Alpha-stage Android app for USB (UVC) microscope cameras: a six-module architecture, a vendored native stack, and scientific-metadata capture.">
+    <meta name="twitter:title" content="ScopeCam — Private Android UVC Microscope Application">
+    <meta name="twitter:description" content="A private proprietary Android/Kotlin/C++ application for UVC microscope workflows, with a signed client alpha and explicit compatibility and recovery boundaries.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -53,92 +53,90 @@
             <div class="container">
                 <header class="project-header-detail">
                     <p class="case-study-context">
-                        <a href="/#evidence">Evidence</a> · Safety-Critical Systems
+                        <a href="/#evidence">Evidence</a> · Native Android and physical-device engineering
                     </p>
                     <h1>ScopeCam</h1>
-                    <p class="project-subtitle">USB Microscope Camera App</p>
+                    <p class="project-subtitle">Private Android UVC microscope application</p>
                     <div class="project-meta">
-                        <span class="project-status development">Alpha · v0.1</span>
+                        <span class="project-status development">Client-delivered alpha · Current app 0.1.1-alpha</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>Overview</h2>
-                    <p>Alpha-stage Android app and multi-module runtime for USB microscope cameras (UVC standard) — built for serious microscopy workflows, not generic phone-camera use. Solo-built; currently a personal-profile v0.1-alpha.</p>
-                    <p>The work lives in the boundary between Android, USB camera behavior, and native libraries: a vendored stack (libusb, libuvc, libjpeg-turbo) behind a descriptor-first capability layer, with session-based capture that records scientific metadata (sample IDs, magnification, calibration, operator identity).</p>
+                    <h2>What is this?</h2>
+                    <p>ScopeCam is a private proprietary Android application and multi-module camera runtime for UVC USB microscope cameras. It combines a Jetpack Compose interface, Kotlin orchestration, and a C++/JNI camera engine.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>What is it for?</h2>
+                    <p>It supports mobile microscopy workflows that standard phone-camera APIs do not address: discovering and connecting a specialized USB camera, reaching live preview, capturing photos or video, preserving session and scientific metadata, and reviewing committed media.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>How is it used?</h2>
+                    <p>An Android device acts as the USB host. The operator connects a supported microscope camera, grants permission, previews the stream, captures or records, and reviews the result. Debug and QA builds add local REST/WebSocket telemetry and diagnostics; release builds bind a no-op implementation instead of starting that service.</p>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why does it matter?</h2>
+                    <p>The project crosses Android UI, Kotlin orchestration, native C++, USB lifecycle, render synchronization, persistence, observability, and physical-device testing. Its strongest case study traced a camera-replug ANR across the JVM/native boundary and implemented a bounded, device-verified recovery while documenting the remaining leak tradeoff.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>Evidence and status</h2>
+                    <ul class="depth-list">
+                        <li>A signed <code>0.1-alpha</code> client build was delivered on 2026-06-09; the current application is <code>0.1.1-alpha</code>.</li>
+                        <li>Fresh <code>just verify</code> and native-inclusive QA APK builds passed on 2026-07-14, packaging the native engine for both supported ABIs.</li>
+                        <li>Device verification recovered streaming after the replug deadlock without a new ANR. A timed-out recovery can still leave the stuck camera and threads until process restart.</li>
+                        <li>The source is private and intentionally unlinked; the application is not broadly released.</li>
+                        <li>Broader hardware and release acceptance remain open.</li>
+                    </ul>
+                    <div class="callout warn">
+                        <h3>What this does not demonstrate</h3>
+                        <p>No arbitrary UVC compatibility, general performance guarantee, end-to-end zero-copy pipeline, seamless or leak-free hot-plug recovery, shipped SDK, or production readiness is claimed.</p>
+                    </div>
                 </section>
 
                 <!-- @design-structure: scopecam -->
 
-                <section class="project-technical-details">
-                    <h2>Technical Details</h2>
+                <section class="project-architecture">
+                    <h2>Technical shape</h2>
 
                     <div class="architecture-section">
-                        <h3>Platform & Stack</h3>
+                        <h3>Android and native camera stack</h3>
                         <ul>
-                            <li>Android (Kotlin), Jetpack Compose UI, foreground camera service</li>
-                            <li>Vendored native stack (libusb, libuvc, libjpeg-turbo) via JNI/NDK</li>
-                            <li>Six Gradle modules plus an ArchUnit architecture-test module</li>
-                            <li>Room + MediaStore persistence; descriptor-first UVC handling</li>
+                            <li>Android, Kotlin, Jetpack Compose, and a foreground camera service.</li>
+                            <li>C++20 JNI/NDK engine built with CMake for ARM64 and ARMv7.</li>
+                            <li>Vendored <code>libusb</code>, <code>libuvc</code>, and <code>libjpeg-turbo</code> linked into the native engine.</li>
+                            <li>Room and MediaStore persistence with descriptor-first UVC handling.</li>
                         </ul>
                     </div>
 
                     <div class="architecture-section">
-                        <h3>Technical Challenges</h3>
-                        <ul>
-                            <li>USB OTG communication protocols</li>
-                            <li>Native library integration (C → Kotlin via JNI)</li>
-                            <li>Memory pooling for efficient frame processing</li>
-                            <li>Camera initialization and configuration management</li>
-                            <li>Real-time frame delivery pipeline</li>
-                        </ul>
+                        <h3>Scoped render-path optimization</h3>
+                        <p>An <code>AHardwareBuffer</code>-backed triple-buffer path uses EGLImage texture binding and fence synchronization to avoid an additional CPU copy between the native frame buffer and GPU texture. This is a boundary-specific optimization, not an end-to-end zero-copy claim.</p>
                     </div>
-                </section>
 
-                <section class="project-significance">
-                    <h2>Why This Matters</h2>
-                    <div class="significance-grid">
-                        <div class="significance-point">
-                            <h3>Architecture Discipline</h3>
-                            <p>Six Gradle modules with ArchUnit guardrails enforcing boundaries between app, domain, native, and platform code.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Hardware Integration</h3>
-                            <p>Working with USB protocols and native hardware interfaces, not just high-level APIs.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Performance Optimization</h3>
-                            <p>Real-time frame processing with memory management constraints on mobile hardware.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Test Coverage</h3>
-                            <p>1,790 tests passing on the verified baseline, with Crashlytics and OpenTelemetry instrumentation.</p>
-                        </div>
+                    <div class="architecture-section">
+                        <h3>Evidence-oriented diagnostics</h3>
+                        <p>Debug and QA builds expose local telemetry, snapshots, and protected diagnostic actions. Release builds use a no-op implementation, so this is not a production REST-service claim.</p>
                     </div>
-                </section>
-
-                <section class="project-context">
-                    <h2>Development Context</h2>
-                    <p>This project emerged from a practical need: getting USB microscope cameras to work reliably on Android for real microscopy workflows. The hard parts are real — UVC descriptor handling, the Kotlin-to-native boundary, memory churn during real-time capture, and physical-device testing.</p>
-                    <p>It sits at the intersection of hardware protocols, native libraries, and Android development, and is governed like a serious system: ADRs (a kotlin-Result migration, a design-system ontology), an SDK-extraction plan, and a documentation-governance plan. Apache 2.0.</p>
                 </section>
 
                 <section class="project-technical-depth">
-                    <h2>Technical Depth</h2>
-                    <p>This project demonstrates understanding of:</p>
+                    <h2>What the work demonstrates</h2>
                     <ul class="depth-list">
-                        <li>Android platform development and architecture</li>
-                        <li>USB OTG protocols and device communication</li>
-                        <li>JNI/NDK for native library integration</li>
-                        <li>Memory management in performance-critical contexts</li>
-                        <li>Real-time data processing pipelines</li>
-                        <li>Hardware compatibility and driver-level work</li>
+                        <li>Native Android, Kotlin, C++, JNI, and NDK systems engineering.</li>
+                        <li>USB lifecycle and physical-device integration.</li>
+                        <li>Cross-boundary concurrency and teardown debugging.</li>
+                        <li>Evidence-oriented diagnostics and device verification.</li>
+                        <li>Client delivery with explicit compatibility and maturity boundaries.</li>
                     </ul>
                 </section>
 
                 <section class="project-links-footer" aria-label="What next">
                     <h2>Interested in this work?</h2>
-                    <p>Happy to talk about this project or the research practice behind it.</p>
+                    <p>Happy to discuss the public-safe engineering case study, verification approach, and documented limits.</p>
                     <div class="project-cta-actions">
                         <a href="mailto:jeffrey@jvjohnson.dev?subject=ScopeCam" class="primary-link">Email me about this →</a>
                         <a href="/#evidence" class="section-link">← Back to Evidence</a>

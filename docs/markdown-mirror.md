@@ -3,8 +3,8 @@ title: Structured Markdown mirror — contract and normalization spec
 category: operations
 component: content-sync
 status: active
-version: 0.3.0
-last_updated: 2026-07-04
+version: 0.3.1
+last_updated: 2026-07-15
 tags: [content, markdown, sync, mirror, provenance]
 priority: high
 audience: coding agent + operator
@@ -164,7 +164,8 @@ and resolved by an intentional `pull`/`push`. As of PR-2, `check` runs inside `m
 - **PR-0 (done):** ADR-0010 + this spec + `docs/content/README.md`. No code, no deps.
 - **PR-1 (done):** `scripts/sync-content.mjs` (`pull`/`diff`/`check`), `parse5`, `registry.yaml`,
   3 pages, `scripts/sync-content.test.mjs`. `check` not yet in CI.
-- **PR-2 (done):** all authored pages mirrored (15; `projects/index.html` excluded as generated);
+- **PR-2 (done):** the initial 15 authored pages mirrored (`projects/index.html` excluded as
+  generated); the registry now contains 16 after the anonymized governance route was added.
   integrity `check` wired into `mise run ci`.
 - **PR-3 (done):** first `two_way` region (`dicee.overview`) with content-sync markers, fail-closed
   `push` (constrained MD→HTML renderer), and round-trip idempotency tests.

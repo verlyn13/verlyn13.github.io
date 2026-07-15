@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-05-25 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Triage | Jeffrey Johnson</title>
-    <meta name="description" content="A full-stack financial system where agentic governance is enforced through architecture decision records, not prompts.">
+    <title>Budget Triage — Financial Evidence Workbench | Jeffrey Johnson</title>
+    <meta name="description" content="A private financial evidence workbench for turning documents and connected-account data into traceable transactions with deterministic-first extraction and fail-closed human review.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -13,20 +13,20 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/budget-triage.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Budget Triage — Agentic Governance via ADRs">
-    <meta property="og:description" content="A full-stack financial system where agentic governance is enforced through architecture decision records, not prompts.">
+    <meta property="og:title" content="Budget Triage — Financial Evidence Workbench">
+    <meta property="og:description" content="A private financial evidence workbench for turning documents and connected-account data into traceable transactions with deterministic-first extraction and fail-closed human review.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/budget-triage.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Budget Triage — Agentic Governance via ADRs">
-    <meta name="twitter:description" content="A full-stack financial system where agentic governance is enforced through architecture decision records, not prompts.">
+    <meta name="twitter:title" content="Budget Triage — Financial Evidence Workbench">
+    <meta name="twitter:description" content="A private financial evidence workbench for turning documents and connected-account data into traceable transactions with deterministic-first extraction and fail-closed human review.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -53,123 +53,97 @@
             <div class="container">
                 <header class="project-header-detail">
                     <p class="case-study-context">
-                        <a href="/#evidence">Evidence</a> · Learning by doing
+                        <a href="/#evidence">Evidence</a> · Applied evidence engineering
                     </p>
-                    <h1>Budget Triage</h1>
-                    <p class="project-subtitle">Agentic governance, enforced in the architecture</p>
+                    <h1>Budget Triage — financial evidence workbench</h1>
+                    <p class="project-subtitle">Traceable financial records with uncertainty routed to human review</p>
                     <div class="project-meta">
-                        <span class="project-status development">Active Development</span>
+                        <span class="project-status development">Private working prototype · No public source link</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>Overview</h2>
-<p>A full-stack personal finance system, and the most worked-out case in my learning programme for agentic governance. The point is not the app. It is enforcing the rules an agent has to follow in the architecture itself, through architecture decision records, rather than hoping a prompt holds.</p>
-<p>One validator checks runtime, scripts, and documents together, so the parts cannot drift out of agreement. The document-extraction pipeline is deterministic and checked against a synthetic, PII-free ground-truth corpus I generate for the test.</p>
-</section>
-
-                <!-- @design-structure: budget-triage-fintech -->
-<section class="project-architecture">
-<h2>Technical Stack</h2>
-
-                    <div class="architecture-section">
-                        <h3>Runtime & Core</h3>
-                        <ul>
-                            <li>Bun (modern TypeScript runtime)</li>
-                            <li>Express + Hono (dual API framework exploration)</li>
-                            <li>PostgreSQL with type-safe schema generation (Kanel)</li>
-                            <li>ts-rest for end-to-end type contracts</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-section">
-                        <h3>Infrastructure & Security</h3>
-                        <ul>
-                            <li>Infisical (self-hosted secrets management)</li>
-                            <li>Machine identity patterns for automated access</li>
-                            <li>Docker containerization</li>
-                            <li>OpenTelemetry instrumentation throughout</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-section">
-                        <h3>Governance Framework</h3>
-                        <ul>
-                            <li>Architecture decision records as enforced governance</li>
-                            <li>Runtime/config/toolchain compliance verification</li>
-                            <li>Script governance rules</li>
-                            <li>Cross-surface validation</li>
-                            <li>Evidence-based logging</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="project-patterns">
-                    <h2>Key Patterns Explored</h2>
-
-<div class="pattern-section">
-    <h3>Governance enforced through architecture decision records</h3>
-    <p>Runtime, configuration, and toolchain compliance are checked against declared decisions rather than left to convention, with CI gates enforcing them on every change.</p>
-</div>
-
-<div class="pattern-section">
-    <h3>Deterministic document extraction</h3>
-    <p>A VLM and OCR pipeline checked against a synthetic, PII-free corpus I generate for the test. It reaches an F1 of 1.000 on that corpus, which measures determinism rather than luck. The discipline is the point, not the number.</p>
-</div>
-
-<div class="pattern-section">
-    <h3>High-Volume Test Engineering</h3>
-    <p>Over 8,400 tests (7,082 backend, 703 frontend, 664 integration) ensuring deterministic performance across complex extraction operations.</p>
-</div>
-</section>
-
-                <section class="project-significance">
-                    <h2>Why This Matters</h2>
-
-                    <div class="significance-grid">
-                        <div class="significance-point">
-                            <h3>Governance you can verify</h3>
-                            <p>Agentic systems fail on authority and drift, not syntax. Putting the rules in the architecture keeps an agent inside known bounds.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Determinism under test</h3>
-                            <p>Extraction is checked against ground truth, so behavior is reproducible rather than approximately right.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Type-safe across boundaries</h3>
-                            <p>Typed contracts and generated database types make the parts checkable end to end, from runtime to documents.</p>
-                        </div>
-                        <div class="significance-point">
-                            <h3>Observable from the start</h3>
-                            <p>OpenTelemetry and structured logging throughout, so the system's decisions are inspectable.</p>
-                        </div>
-                    </div>
+                    <h2>What is this?</h2>
+                    <p>Budget Triage is a private full-stack workbench for turning statements, receipts, and feature-gated connected-account data into structured, traceable transactions.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>Why build it this way</h2>
-                    <p>This is a learning vehicle by design. I take a real problem and hold it to a standard that forces the hard lessons: how to make an agent-built system verifiable, observable, and safe to change.</p>
+                    <h2>What is it for?</h2>
+                    <p>It helps an owner-operator compare evidence sources, resolve uncertain information, reconcile records, and prepare dependable financial views without allowing uncertain extraction to silently become financial truth.</p>
+                </section>
 
-                    <p>The governance here is heavier than a budgeting app needs on its own. That is deliberate. The system is small enough to hold in my head and real enough to break, which makes it the right place to work out methods that matter at a much larger scale.</p>
+                <section class="project-context">
+                    <h2>How is it used?</h2>
+                    <p>Implemented workflows resolve the tenant, hash and deduplicate an uploaded document or connected-account input, classify and extract financial facts, validate the result, and persist evidence and transactions atomically. Deterministic extraction runs first; optional model-assisted paths can audit or compare results, while low-confidence, invalid, or missing-confidence output is routed to human review.</p>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why does it matter?</h2>
+                    <p>Financial automation needs provenance, exact arithmetic, tenant isolation, human confirmation, and explicit uncertainty. Budget Triage demonstrates those controls in an integrated system rather than treating document extraction as an isolated model call.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>Evidence and status</h2>
+                    <ul class="depth-list">
+                        <li>Accepted remote <code>main</code> at <code>c4b399db</code> passed its complete validation suite in run <code>29431070131</code>.</li>
+                        <li>The merged synthetic known-answer and service-observation harness reports 6 pass and 9 pending; it is explicitly incomplete and uncertified.</li>
+                        <li>The repository is private and intentionally unlinked.</li>
+                    </ul>
+                    <div class="callout warn">
+                        <h3>What this does not demonstrate</h3>
+                        <p>No production deployment, public application, real-user adoption, financial outcome, live-provider performance, tax-filing readiness, HTTP/browser observation, or completed source-through-tax certification is claimed.</p>
+                    </div>
+                </section>
+
+                <!-- @design-structure: budget-triage-fintech -->
+
+                <section class="project-architecture">
+                    <h2>Technical shape</h2>
+
+                    <div class="architecture-section">
+                        <h3>Current application stack</h3>
+                        <ul>
+                            <li>Bun 1.3.10 with strict TypeScript and pure Hono RPC.</li>
+                            <li>React, Vite, and Tailwind on the client.</li>
+                            <li>PostgreSQL repositories and migrations, Zod validation, and Decimal.js for exact monetary arithmetic.</li>
+                            <li>Vitest and Biome in the verification toolchain.</li>
+                        </ul>
+                    </div>
+
+                    <div class="architecture-section">
+                        <h3>Evidence-aware processing</h3>
+                        <ul>
+                            <li>Tenant-scoped upload, hashing, deduplication, storage, classification, and deterministic-first extraction.</li>
+                            <li>Optional model-assisted audit and comparison paths without a model-accuracy claim.</li>
+                            <li>Atomic evidence and transaction persistence with append-only decision provenance.</li>
+                            <li>Fail-closed review routing when confidence or validation is insufficient.</li>
+                        </ul>
+                    </div>
+
+                    <div class="architecture-section">
+                        <h3>Security and governance</h3>
+                        <ul>
+                            <li>Session and API-key authentication, Argon2id, hashed tokens, tenant guards, and secret scanning.</li>
+                            <li>Machine-checked governance specifications and validation scripts.</li>
+                            <li>Connected-account, secrets, and observability integration surfaces exist, but live provider operation was not independently verified.</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section class="project-technical-depth">
-                    <h2>Technical Depth</h2>
-                    <p>What it works through:</p>
+                    <h2>What the work demonstrates</h2>
                     <ul class="depth-list">
-                        <li>Governance enforced through decision records</li>
-                        <li>Secrets management and security patterns</li>
-                        <li>Type-safe architecture across boundaries</li>
-                        <li>Observability instrumentation (OpenTelemetry)</li>
-                        <li>Modern TypeScript ecosystem and tooling</li>
-                        <li>Policy-based development and compliance verification</li>
-                        <li>Infrastructure as code and containerization</li>
+                        <li>Evidence-aware automation with explicit human review.</li>
+                        <li>Backend and PostgreSQL engineering with tenant-scoped persistence.</li>
+                        <li>Exact monetary arithmetic and traceable decision provenance.</li>
+                        <li>Security and governance controls integrated into application architecture.</li>
+                        <li>Claim discipline that separates implemented workflows from certified outcomes.</li>
                     </ul>
                 </section>
 
                 <section class="project-links-footer" aria-label="What next">
                     <h2>Interested in this work?</h2>
-                    <p>Happy to talk about this project or the research practice behind it.</p>
+                    <p>Happy to discuss the public-safe architecture, evidence workflow, and verification boundaries behind this private prototype.</p>
                     <div class="project-cta-actions">
                         <a href="mailto:jeffrey@jvjohnson.dev?subject=Budget%20Triage" class="primary-link">Email me about this →</a>
                         <a href="/#evidence" class="section-link">← Back to Evidence</a>
