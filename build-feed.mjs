@@ -41,38 +41,25 @@ function metaFacets(entry) {
     .join('\n            ')
 }
 
-// The row shows the lead segment of the feed title (before the " — " tagline) for a one-line
-// entry; the full title rides along as a tooltip. A short feed displayName is a v1 nicety.
-function row(entry, inPrimary = false) {
-  const flagship = inPrimary && entry.flagship
+// The row shows the lead segment of the accepted feed title (before the " — " tagline) for a
+// concise index label. Longer feed descriptors remain feed data rather than a competing reader layer.
+function row(entry) {
   const name = entry.title.split(' — ')[0]
   const title = entry.href
-    ? `<a href="${esc(entry.href)}" class="ds-row__title" title="${esc(entry.title)}">${esc(name)}</a>`
-    : `<span class="ds-row__title ds-row__title--static" title="${esc(entry.title)}">${esc(name)}</span>`
-  const tag = flagship ? '\n            <span class="ds-row__flagship-tag">Flagship</span>' : ''
+    ? `<a href="${esc(entry.href)}" class="ds-row__title">${esc(name)}</a>`
+    : `<span class="ds-row__title ds-row__title--static">${esc(name)}</span>`
   const live = entry.live
     ? `\n            <a href="${esc(entry.live.url)}" class="ds-row__live" target="_blank" rel="noopener">${esc(hostOf(entry.live.url))}</a>`
     : ''
-  return `        <li class="ds-row${flagship ? ' ds-row--flagship' : ''}">
+  return `        <li class="ds-row">
           <div class="ds-row__head">
-            ${title}${tag}
+            ${title}
             <span class="ds-row__thesis">${esc(entry.thesis)}</span>${live}
           </div>
           <div class="ds-row__meta">
             ${metaFacets(entry)}
           </div>
         </li>`
-}
-
-function primarySection(featured) {
-  if (!featured.length) return ''
-  const rows = featured.map((e) => row(e, true)).join('\n')
-  return `      <section class="dswork dswork__primary" aria-labelledby="primary-h">
-        <h2 id="primary-h">Primary projects</h2>
-        <ul class="ds-list">
-${rows}
-        </ul>
-      </section>`
 }
 
 function groupSection(group) {
@@ -118,7 +105,7 @@ const NAV = [
   ['/projects/', 'Work', true],
   ['/experience/', 'Experience', false],
   ['/research/', 'Research', false],
-  ['/cv.html', 'CV', false],
+  ['/cv.html', 'Resume', false],
   ['/contact.html', 'Contact', false],
 ]
 
@@ -149,12 +136,12 @@ function page(model) {
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Body of work — Jeffrey V. Johnson, Ph.D.">
     <meta name="twitter:description" content="The full body of Dr. Jeffrey Johnson's projects — shipped systems, prototypes, released packages, research, and teaching — grouped by kind.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -174,15 +161,13 @@ ${nav}
 
 ${overviewBand(model.portfolio)}
 
-${primarySection(model.featured)}
-
 ${groups}
       </div>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <p class="footer-cta">Open to research-engineering roles and research collaboration where mathematical depth meets agentic-systems engineering. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+        <p class="footer-cta">Open to evaluations, agent-governance, and research-engineering roles. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
         <nav class="footer-links" aria-label="Footer">
           <a href="/">← Back to portfolio</a>
           <a href="/contact.html">Contact</a>

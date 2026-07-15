@@ -3,8 +3,8 @@ title: jvjohnson.dev Design System
 category: design
 component: design-layer
 status: active
-version: 2.5.0
-last_updated: 2026-06-17
+version: 2.5.1
+last_updated: 2026-07-15
 tags: [design-system, css, design-tokens, components, accessibility, jeffrey-css]
 priority: high
 ---
@@ -160,15 +160,15 @@ Rule: **exactly one primary (filled) action per view**; everything else is a sec
   (ADR-0007). Inner anatomy: `.approach-header` (`h3` + `.approach-tag`), `.approach-thesis`,
   `.approach-aspects` (`.aspect-tag` chips), `.approach-case-study` (`.case-study-label` +
   `.case-study-link`).
-- **Flagship** — `.approach-card--flagship`: `--accent` border (3px top), `--accent-subtle` tint, and
-  a filled `.approach-flagship-tag` ("Flagship"). Exactly one per grid (see §5.3).
+- **Editorial lead** — `.approach-card--flagship`: `--accent` border (3px top) and
+  `--accent-subtle` tint. Exactly one per grid; the emphasis is visual and does not expose the internal
+  hierarchy as a reader-facing label (see §5.3).
 - **Bento** (`.bento-grid`, `.bento-card`) — Experience-page layout.
 
 ### 4.5 Tags & badges
 | Class | Use |
 |---|---|
 | `.approach-tag` | Muted descriptor chip in an approach card header |
-| `.approach-flagship-tag` | Filled `--accent` "Flagship" marker |
 | `.aspect-tag` | Mono inset chip (sub-capabilities) |
 | `.tech-tag`, `.tech-badge`, `.status-badge` | Mono/neutral tech & status chips |
 | `.project-status` (`.live` / `.development` / `.mvp` / `.production`) | Status pills (green/blue/amber/green-2) |
@@ -221,9 +221,9 @@ via `build-feed.mjs`) plus a per-project panel. Token-only; the design proposal 
 - **S2 — the body-of-work index** (`.dswork` / `.dswork__group` / `.ds-list` + the reusable **`.ds-row`**):
   one project = one entry. `.ds-row__title` is the `--accent` link to the detail page (`--static` → `--ink`
   when no page exists); `.ds-row__thesis` (`--ink`); `.ds-row__meta` of `.ds-row__facet` chips
-  (`domain · tech · status · year`, `--muted`; `--tech` in `--mono`). Grouped by kind, reverse-chron, a
-  curated front tier above; the single `.ds-row--flagship` carries the reserved accent (left band +
-  `--accent-subtle` + filled `.ds-row__flagship-tag`), per §5.3. No card grid, no filter UI (§5.7).
+  (`domain · tech · status · year`, `--muted`; `--tech` in `--mono`). Entries are grouped by kind and
+  reverse-chronological inside each group. The index is a neutral breadth layer; the homepage owns the
+  editorial hierarchy. No card grid and no filter UI (§5.7).
 - **S3 — `.project-design-structure`** (spliced into `projects/*.html` at a `<!-- @design-structure -->`
   marker by a Vite `transformIndexHtml` plugin; absent-tolerant): a **scope strip** (reuses
   `.evidence-grid`), a **`.decision-list`** (`.decision` `__title`/`__summary`/`__source` — a hairline
@@ -244,8 +244,9 @@ Per view, exactly one filled `--accent` CTA (`.hero-link--primary` / `.primary-l
 actions stay secondary outline pills. Avoid three identical pills competing for the same click.
 
 ### 5.3 Flagship emphasis
-When a set of peers has a lead item, elevate exactly one with the flagship treatment (accent border +
-`--accent-subtle` tint + a filled "Flagship" tag) and let the rest read as supporting. Place it first.
+When a set of peers has a lead item, elevate exactly one with the editorial-lead treatment (accent
+border + `--accent-subtle` tint) and let the rest read as supporting. Place it first, but do not require
+the reader to learn an internal hierarchy label.
 
 ### 5.4 Color taxonomy
 `--accent` is **reserved** for the primary action and the flagship. Do **not** give peer cards
@@ -295,10 +296,10 @@ entries proves method; the per-project page (and the S3 panel) carries depth on 
 ## 7. Accessibility contract (WCAG 2.1 AA)
 
 - **Contrast:** text ≥ 4.5:1 (≥ 3:1 for large text ≥ 24px / ≥ 18.66px bold). Measured pairings after
-  the refresh: claim **14.18**, kicker **5.12**, primary-CTA white-on-`--accent` **5.1**, flagship tag
-  **5.1**, "Now" label **6.69**, "Now" line **12.78**. Project-intelligence (full table in the design
-  spec §7.1): `.ds-row__title` `--accent`-on-`--paper` **≈4.8**, flagship title on `--accent-subtle`
-  **≈4.6**, decision/scope `--ink`/`--muted` **14.2 / 5.1**; the `.activity-bar` tint is decorative — the
+  the refresh: claim **14.18**, kicker **5.12**, primary-CTA white-on-`--accent` **5.1**, "Now" label
+  **6.69**, "Now" line **12.78**. Project-intelligence (full table in the design
+  spec §7.1): `.ds-row__title` `--accent`-on-`--paper` **≈4.8**, decision/scope
+  `--ink`/`--muted` **14.2 / 5.1**; the `.activity-bar` tint is decorative — the
   facts live in the `--mono` axis + the figure's `aria-label`.
 - **Status pills (`.project-status`, ~12px/600 → normal-text AA 4.5:1, not the 3:1 large-text
   floor):** the three previously-failing pills were repointed off shared semantic tokens onto
@@ -333,7 +334,7 @@ entries proves method; the per-project page (and the S3 panel) carries depth on 
 - Any change to tokens, palette, type scale, spacing scale, or a named pattern (§5).
 - New pages/entry points, nav/site-map structure, build or deploy config.
 
-**Tooling:** Biome 2.3+ (2-space, 100-col); a PostToolUse hook auto-formats `.css`. Gate every change
+**Tooling:** Biome 2.5+ (2-space, 100-col); a PostToolUse hook auto-formats `.css`. Gate every change
 with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
 
 ---

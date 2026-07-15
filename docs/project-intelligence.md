@@ -3,7 +3,7 @@ title: Project Intelligence — the feed-driven project presentation system
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.3.0
+version: 0.3.1
 last_updated: 2026-07-15
 tags: [project-intelligence, feed, meta-inventory, provenance, presentation, breadth]
 priority: high
@@ -12,7 +12,7 @@ audience: coding agent + design agent
 
 # Project Intelligence — feed-driven project presentation
 
-> **Status — active (updated 2026-07-14).** The accepted public feed ships at
+> **Status — active (updated 2026-07-15).** The accepted public feed ships at
 > `public/data/projects.json`, and the website P0 presentation is implemented: `build-feed.mjs`
 > generates `/projects/` at build time, including the feed-owned top-level `portfolio{}` aggregate.
 > `scripts/design-structure.mjs` is wired for pending per-project richness and renders nothing when those
@@ -139,7 +139,8 @@ per-project page. Surfaces:
 1. **Portfolio overview** — breadth at a glance. The accepted feed's `portfolio{}` block is
    authoritative when present; a local derivation remains only as compatibility behavior for older
    schema-0 feeds that omit the block.
-2. **Body-of-work index** — implemented as grouped, dense, inline metadata; a curated front tier leads.
+2. **Body-of-work index** — implemented as grouped, dense, inline metadata without local flagship
+   curation. The homepage owns primary-evidence selection and ordering.
 3. **Per-project design structure** — wired on detail pages and absent-tolerant until pending `scope`,
    `decisions`, and `activity` fields arrive.
 4. **Portfolio activity timeline** — later/optional.
@@ -149,8 +150,8 @@ stylesheet, all current gates apply.
 
 ## 8. Phasing
 - **P0 — done on the website:** build-time templater, adopted feed-owned `portfolio{}` overview with a
-  legacy fallback, grouped index, curated front tier, whole-envelope admission, link-policy enforcement,
-  and feed-model tests from current fields.
+  legacy fallback, grouped archive index without parallel flagship curation, whole-envelope admission,
+  link-policy enforcement, and feed-model tests from current fields.
 - **P1 — upstream feed richness:** per-project `scope{}`.
 - **P2 — upstream activity:** `activity[]` → per-project + portfolio timelines.
 - **P3 — upstream decisions:** `decisions[]` (ADR/spec extraction) — highest signal.

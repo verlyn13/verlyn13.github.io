@@ -279,11 +279,9 @@ test('computePortfolio is pure over its entries', () => {
   assert.deepEqual(a, b)
 })
 
-test('curated front tier: flagship first, then supporting', () => {
-  const ids = model.featured.map((p) => p.id)
-  assert.deepEqual(ids, ['budget-triage-fintech', 'dicee', 'host-capability-substrate'])
-  assert.equal(model.featured[0].flagship, true)
-  assert.equal(model.featured[1].flagship, false)
+test('body-of-work model leaves primary-evidence curation to the homepage', () => {
+  assert.equal('featured' in model, false)
+  for (const project of model.projects) assert.equal('flagship' in project, false)
 })
 
 test('client-deliverable receives its own presentation group', () => {

@@ -6,7 +6,7 @@ build: build-tokens.mjs # `npm run tokens`
 layers: [tokens, base, components, patterns, pages] # see layers.json
 themes: [light] # light-only today (docs/adr/0004-theming.md)
 human_reference: docs/design-system.md
-last_updated: 2026-06-17
+last_updated: 2026-07-15
 ---
 
 # DESIGN_SPEC — jvjohnson.dev
@@ -38,9 +38,9 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
 ## Components (layer 2) — name → tokens consumed
 - **hero** (`.hero-title` claim, `.hero-home h1` kicker, `.hero-selected` work rail, `.hero-link[--primary]`, `.hero-now`) →
   `accent`, `accent-dark`, `accent-subtle`, `ink`, `muted`, `on-accent`, `surface-pill`, `surface-hover`, `ring`
-- **approach card** (`.approach-card[--flagship]`, `.approach-flagship-tag`, `.aspect-tag`; 2-up in a
-  `.container--wide` gallery at ≥769px, flagship full-width — ADR-0007) →
-  `surface`, `border`, `accent`, `accent-subtle`, `on-accent`, `inset-warm`, `inset-cool`, `shadow-lift`
+- **approach card** (`.approach-card[--flagship]`, `.aspect-tag`; 2-up in a `.container--wide`
+  gallery at ≥769px, editorial lead full-width without a visible taxonomy label — ADR-0007) →
+  `surface`, `border`, `accent`, `accent-subtle`, `inset-warm`, `inset-cool`, `shadow-lift`
 - **cards** (`.card`, `.project-card`, `.bento-card`) → `surface`, `border`, `shadow`, `shadow-hard`, `shadow-lift`
 - **status/badges** (`.project-status.*`, `.badge--*`, `.tech-tag`) → `ok-bg`, `green-bg`, `amber-bg`, `amber-ink`, `inset-cool`, `accent`, `on-accent`
 - **callouts** (`.callout[.ok/.warn]`) → `accent-tint`, `ok-tint`, `warn-tint`, `accent`, `ok`, `warn`
@@ -58,8 +58,8 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
   body-of-work band — a definitional sentence, not a stats hero) → `ink`, `muted`, `border`
 - **body-of-work index** (S2: `.dswork` `__group`/`__group-title`/`__count`, `.ds-list`, and the reusable
   `.ds-row` `__head`/`__title`[`--static`]/`__thesis`/`__live`/`__meta`/`__facet`[`--tech`]; one
-  `.ds-row--flagship` + `.ds-row__flagship-tag`) →
-  `accent`, `accent-subtle`, `on-accent`, `ink`, `muted`, `surface`, `border`, `border-faint`, `radius-sm`, `mono`
+  neutral row per accepted feed record) →
+  `accent`, `ink`, `muted`, `surface`, `border`, `border-faint`, `radius-sm`, `mono`
 - **per-project design structure** (S3: `.project-design-structure`; `.decision-list`/`.decision`
   `__title`/`__summary`/`__source`; `.activity-rail` `__plot`/`__axis`/`__legend`/`__swatch` with
   `.activity-bar`[`--l1..l5`|`--release`]; `.project-provenance`; reuses `.evidence-grid`) →
