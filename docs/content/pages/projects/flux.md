@@ -4,8 +4,8 @@ type: page
 source_file: projects/flux.html
 source_selector: main
 route: /projects/flux.html
-content_hash: 051fd2ee1ce3e774f55cdf1a0d4244fcde219b6921c97aa62e79c32b8e49aab3
-html_hash: a5530a095bd52adfc624756d1ccb644f94f1a141d07158330ac73b1fcb076af7
+content_hash: 02cb0d3d8530c4f8f05cc06960019b35387180d1a2f13ba8ce93a9ec8adee92a
+html_hash: 63fb12e649bd2e34136491d9d50f143bcefae5e10ca980b3515690187976d441
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -15,64 +15,52 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 [Evidence](/#evidence) · ML Control Planes
 
-# Flux Pro Shop
+# Flux
 
 Image Generation Control Plane
 
-Production Infrastructure
+Production-live · Private and intentionally unlinked
 
-## Overview
+## What is this?
 
-Production-grade image generation control plane built on HuggingFace Diffusers, optimized for Apple Silicon (MPS). It manages local GPU generation, remote API runners, and complex artifact lineage for full reproducibility.
+Flux is a private creation-and-curation control plane for image generation. It validates a request into a typed generation intent, selects an eligible provider account, streams provider events, and finalizes completed outputs into manifest-backed storage and run projections.
 
-By designing a unified Compile/Execute Intermediate Representation (IR), this architecture abstracts the generation paths for complex ML models (Flux, SDXL/Pony, and GGUF).
+## What is it for?
 
-## Technical Architecture
+It gives local and remote image-generation providers one governed dispatch surface while preserving privacy checks, provider constraints, artifact hashes, sidecars, and a manifest digest.
 
-### Core Engine & IR
+## How is it used?
 
-- Python 3.12+ type-safe core
-- Unified IR: WorkflowSpec → Compiler → ExecutionPlan → Runner → Result
-- Backend abstraction (DiffusersBackend, SDXLBackend, ComfyUIBackend, ApiBackend)
+A validated intent moves through provider and account resolution, support and privacy guards, a common `execute(intent)` event stream, and manifest-backed finalization. Current adapters cover Fal, Replicate, local `mflux` on Apple Silicon, and readiness-gated RunPod-BYO.
 
-### Data & Lineage
+## Why does it matter?
 
-- Content-addressed storage for immutable generation results
-- Automated lineage tracking (source_run, derivation)
-- JSON-based metadata-driven reproducibility
+Provider abstraction is useful only when execution and evidence stay inspectable. Flux keeps provider-specific wire shapes behind a typed boundary and records finalized outputs with SHA-256 evidence rather than presenting a successful API call as sufficient provenance.
 
-## Why This Matters
+## Evidence and status
 
-### Artifact Immutability
+- The successor control plane is production-live and documented through 20 accepted architecture decision records.
+- Finalized artifacts record hashes, sizes, sidecars, and a manifest digest; output object keys remain run-scoped rather than content-addressed.
+- The repository is private and intentionally unlinked.
+- Some RunPod-BYO production wiring remains incomplete.
 
-Mathematical guarantee of 100% artifact reproducibility through rigorous lineage tracking.
+### What this does not demonstrate
 
-### Performance Engineering
+Flux does not implement the previously described compiler/IR. Its MCP surface validates providers and replays fixtures rather than submitting live generation. No additional runtime, traffic, adoption, or performance claim is made.
 
-Backed by an incredibly fast test suite (4,600+ tests executing in under 20 seconds).
+## Technical shape
 
-### Hardware Abstraction
+### Generation pipeline
 
-Dynamic routing capability between MPS (Metal Performance Shaders) and remote API execution environments.
+- Type-safe Python core.
+- `GenerateRequest → GenerationIntent → provider resolution → event stream → finalization`.
+- Common provider contract with concrete Fal, Replicate, local `mflux`, and readiness-gated RunPod-BYO adapters.
 
-### Production Quality
+### Artifact evidence
 
-Enterprise-grade structural resilience, bringing software engineering rigor to experimental ML pipelines.
-
-## Technical Depth
-
-This project demonstrates understanding of:
-
-- Distributed state management and coordination
-- WebSocket protocols and real-time systems
-- Serverless architecture patterns and edge computing
-- WebAssembly compilation and optimization
-- Production deployment and operational monitoring
-- Type-safe system design across language boundaries
-
-## Development Context
-
-Built as a learning platform to explore modern web infrastructure while creating something family members could actually use. The constraints—real users, need for reliability, performance requirements—drove architectural decisions and forced engagement with production concerns beyond local development.
+- Manifest-backed storage with SHA-256 hashes, sizes, sidecars, and a manifest digest.
+- Run-scoped output object keys and an input by-hash helper.
+- Manifest-driven, inspectable run projections.
 
 ## Interested in this work?
 

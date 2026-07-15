@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-05-25 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flux Pro Shop - Image Generation Control Plane | Jeffrey Johnson</title>
-    <meta name="description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
+    <title>Flux — Image Generation Control Plane | Jeffrey Johnson</title>
+    <meta name="description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -13,20 +13,20 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/flux.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Flux Pro Shop — Image Generation Control Plane">
-    <meta property="og:description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
+    <meta property="og:title" content="Flux — Image Generation Control Plane">
+    <meta property="og:description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/flux.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Flux Pro Shop — Image Generation Control Plane">
-    <meta name="twitter:description" content="An image-generation control plane on HuggingFace Diffusers: a unified compile/execute IR, local GPU and remote runners, and content-addressed artifact lineage. Working prototype.">
+    <meta name="twitter:title" content="Flux — Image Generation Control Plane">
+    <meta name="twitter:description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Independent researcher and systems builder">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -55,77 +55,66 @@
                     <p class="case-study-context">
                         <a href="/#evidence">Evidence</a> · ML Control Planes
                     </p>
-                    <h1>Flux Pro Shop</h1>
+                    <h1>Flux</h1>
                     <p class="project-subtitle">Image Generation Control Plane</p>
                     <div class="project-meta">
-                        <span class="project-status development">Working prototype · Pre-cutover</span>
-
+                        <span class="project-status live">Production-live · Private and intentionally unlinked</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>Overview</h2>
-<p>An image-generation control plane built on HuggingFace Diffusers, optimized for Apple Silicon (MPS). It compiles a single generation intent across a registry of providers, manages local GPU and remote API runners, and captures artifact lineage in content-addressed storage. This is a self-directed working prototype, pre-cutover, not a shipped product.</p>
-<p>By designing a unified Compile/Execute Intermediate Representation (IR), this architecture abstracts the generation paths for complex ML models (Flux, SDXL/Pony, and GGUF).</p>
-</section>
-
-                <!-- @design-structure: flux -->
-<section class="project-architecture">
-<h2>Technical Architecture</h2>
-<div class="architecture-section">
-    <h3>Core Engine & IR</h3>
-    <ul>
-        <li>Python 3.12+ type-safe core</li>
-        <li>Unified IR: WorkflowSpec → Compiler → ExecutionPlan → Runner → Result</li>
-        <li>Backend abstraction (DiffusersBackend, SDXLBackend, ComfyUIBackend, ApiBackend)</li>
-    </ul>
-</div>
-<div class="architecture-section">
-    <h3>Data & Lineage</h3>
-    <ul>
-        <li>Content-addressed storage for immutable generation results</li>
-        <li>Automated lineage tracking (source_run, derivation)</li>
-        <li>JSON-based metadata-driven reproducibility</li>
-    </ul>
-</div>
-</section>
-<section class="project-significance">
-<h2>Why This Matters</h2>
-<div class="significance-grid">
-    <div class="significance-point">
-        <h3>Artifact lineage</h3>
-        <p>Content-addressed storage and lineage tracking make generation results traceable and reproducible.</p>
-    </div>
-    <div class="significance-point">
-        <h3>Deterministic execution</h3>
-        <p>A unified compile/execute IR (WorkflowSpec → Compiler → ExecutionPlan → Runner) gives repeatable generation across backends.</p>
-    </div>
-    <div class="significance-point">
-        <h3>Hardware abstraction</h3>
-        <p>Dynamic routing between Apple Silicon (MPS) and remote API execution environments.</p>
-    </div>
-    <div class="significance-point">
-        <h3>Engineering discipline</h3>
-        <p>A typed Python core, backend abstraction, and content-addressed artifacts bring software-engineering rigor to an experimental ML pipeline.</p>
-    </div>
-</div>
-</section>
-
-                <section class="project-technical-depth">
-                    <h2>Technical Depth</h2>
-                    <p>This project demonstrates:</p>
-                    <ul class="depth-list">
-                        <li>Compile/execute IR design (WorkflowSpec → Compiler → ExecutionPlan → Runner)</li>
-                        <li>Backend abstraction across Diffusers, SDXL/Pony, ComfyUI, and API runners</li>
-                        <li>Content-addressed storage and automated artifact lineage</li>
-                        <li>Local GPU (Apple Silicon / MPS) and remote API execution routing</li>
-                        <li>A type-safe Python 3.12+ core</li>
-                    </ul>
+                    <h2>What is this?</h2>
+                    <p>Flux is a private creation-and-curation control plane for image generation. It validates a request into a typed generation intent, selects an eligible provider account, streams provider events, and finalizes completed outputs into manifest-backed storage and run projections.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>Development Context</h2>
-                    <p>A self-directed working prototype, pre-cutover: the successor control plane for image generation, consolidating multiple providers behind one compile/execute IR with reproducible, content-addressed artifacts. Not presented as a shipped product.</p>
+                    <h2>What is it for?</h2>
+                    <p>It gives local and remote image-generation providers one governed dispatch surface while preserving privacy checks, provider constraints, artifact hashes, sidecars, and a manifest digest.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>How is it used?</h2>
+                    <p>A validated intent moves through provider and account resolution, support and privacy guards, a common <code>execute(intent)</code> event stream, and manifest-backed finalization. Current adapters cover Fal, Replicate, local <code>mflux</code> on Apple Silicon, and readiness-gated RunPod-BYO.</p>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Why does it matter?</h2>
+                    <p>Provider abstraction is useful only when execution and evidence stay inspectable. Flux keeps provider-specific wire shapes behind a typed boundary and records finalized outputs with SHA-256 evidence rather than presenting a successful API call as sufficient provenance.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>Evidence and status</h2>
+                    <ul class="depth-list">
+                        <li>The successor control plane is production-live and documented through 20 accepted architecture decision records.</li>
+                        <li>Finalized artifacts record hashes, sizes, sidecars, and a manifest digest; output object keys remain run-scoped rather than content-addressed.</li>
+                        <li>The repository is private and intentionally unlinked.</li>
+                        <li>Some RunPod-BYO production wiring remains incomplete.</li>
+                    </ul>
+                    <div class="callout warn">
+                        <h3>What this does not demonstrate</h3>
+                        <p>Flux does not implement the previously described compiler/IR. Its MCP surface validates providers and replays fixtures rather than submitting live generation. No additional runtime, traffic, adoption, or performance claim is made.</p>
+                    </div>
+                </section>
+
+                <!-- @design-structure: flux -->
+                <section class="project-architecture">
+                    <h2>Technical shape</h2>
+                    <div class="architecture-section">
+                        <h3>Generation pipeline</h3>
+                        <ul>
+                            <li>Type-safe Python core.</li>
+                            <li><code>GenerateRequest → GenerationIntent → provider resolution → event stream → finalization</code>.</li>
+                            <li>Common provider contract with concrete Fal, Replicate, local <code>mflux</code>, and readiness-gated RunPod-BYO adapters.</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-section">
+                        <h3>Artifact evidence</h3>
+                        <ul>
+                            <li>Manifest-backed storage with SHA-256 hashes, sizes, sidecars, and a manifest digest.</li>
+                            <li>Run-scoped output object keys and an input by-hash helper.</li>
+                            <li>Manifest-driven, inspectable run projections.</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section class="project-links-footer" aria-label="What next">

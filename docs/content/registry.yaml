@@ -58,6 +58,13 @@ pages:
     route: /projects/flux.html
     mode: pull_only
     two_way_regions: []
+  - id: page_governance-agent-control
+    file: pages/projects/governance-agent-control.md
+    source_file: projects/governance-agent-control.html
+    source_selector: main
+    route: /projects/governance-agent-control.html
+    mode: pull_only
+    two_way_regions: []
   - id: page_home
     file: pages/home.md
     source_file: index.html

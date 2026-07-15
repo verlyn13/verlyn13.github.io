@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: 8d899916034396e9f2493bfc0506b91bd09d25e832228a07a7229e160192d266
-html_hash: 50cefc2ec7db24508b58208108688c81b0bac7b52e5668b4ce1598d10e7b9ea0
+content_hash: e8b391b3313dd1ea357a622d3e8ac4d7804820f433249a345d9968db299bbd16
+html_hash: ccdfc753ab9dab03e9405b7cdb2416b900143789b590996fab677eed9f0f097d
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -19,11 +19,11 @@ Homer, Alaska
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
-The threads converge. Tenured mathematics professor developing online pedagogy while simultaneously building production software. The logic of the PhD, the grit of early labor, and the architecture of code are now inseparable.
+The threads converge. A tenured mathematics professor developing online pedagogy while building evaluation, governance, and systems-engineering tools. The logic of the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
 
 ### Roles
 
@@ -33,29 +33,29 @@ Kenai Peninsula College · University of Alaska
 
 Calculus I, Applied Calculus, Applied Statistics. Online course development and pedagogical technology.
 
-Software Engineer
+Independent Systems Builder
 
-Happy Patterns LLC
+Self-directed research · Happy Patterns LLC product work
 
-Full-stack development, AI integration, mobile applications. Production systems for industrial clients.
+Agentic evaluation, governance, infrastructure, and mobile/native systems work, with maturity stated per project.
 
-### Current Projects
+### Current Evidence
 
-Dicee
+Agentic-Coding Evaluation Lab
 
-Live family multiplayer application. Rust/WASM engine, Cloudflare Durable Objects, SvelteKit, WebSocket.
+Fail-closed evaluation contracts with independent recomputation and a synthetic `NOT_EVALUABLE` refusal when evidence is incomplete.
 
-Production
+Evaluation
+
+Governance and agent-control architecture
+
+Bounded authority, evidence-preserving delegation, policy-as-code, safe refusal, and tested admission prototypes in an anonymized private case study.
+
+Governance
 
 ScopeCam
 
-Alpha-stage (v0.1) Android app for USB microscope cameras. Vendored native stack via JNI/NDK, six Gradle modules with ArchUnit, 1,790 tests.
-
-Development
-
-Research Foundations
-
-Research-foundation projects exploring agent coordination, distributed architecture, and host capability boundaries. Concurrent with teaching.
+Private Android/Kotlin/C++ UVC microscopy application; a signed client alpha was delivered in June 2026, with broader release acceptance still open.
 
 Development
 
@@ -91,7 +91,7 @@ OpenTelemetry
 
 ### The Convergence
 
-2024 marked an interdisciplinary publication in the Journal of Pediatric Physical Therapy-collaboration with nursing researchers applying statistical methods to clinical outcomes. The same year, an Android app for USB microscope cameras took shape, requiring native-code architecture and USB-protocol expertise across the Kotlin-to-native boundary.
+Current work brings mathematical reasoning into agentic AI evaluation and governance: evaluation contracts, independent recomputation, evidence-first audit, typed authority boundaries, and policy-as-code. Applied-statistics publication work and native Android/USB systems engineering remain supporting evidence for that practice.
 
 This is what thirty years of continuous work produces: the ability to move between domains, to see systems clearly, to build things that work.
 
@@ -103,7 +103,7 @@ Cairo, Egypt
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
@@ -119,7 +119,7 @@ Missoula, Montana
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
@@ -137,7 +137,7 @@ South Africa
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
@@ -153,7 +153,7 @@ Eureka, California
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
@@ -171,7 +171,7 @@ Duluth, Minnesota
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
@@ -189,7 +189,7 @@ Grantsburg, Wisconsin
 
 This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
 
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into building production-grade autonomous systems.
+Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
 
 *The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 

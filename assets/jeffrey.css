@@ -700,8 +700,7 @@ em {
   color: var(--accent);
 }
 
-.skill-snapshot-list,
-.pillar-grid {
+.skill-snapshot-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -742,60 +741,11 @@ em {
 }
 
 /* ------------------------------------------------------------
-   Evidence pillars — current public proof structure
+   Evidence — current public proof structure
    ------------------------------------------------------------ */
 .evidence-section {
   padding: var(--space-5) 0;
   border-top: var(--border);
-}
-
-.pillar-card {
-  min-width: 0;
-  background: var(--surface);
-  border: var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-4);
-  box-shadow: var(--shadow-hard);
-}
-
-.pillar-card h3 {
-  margin-bottom: var(--space-2);
-}
-
-.pillar-card p {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--ink);
-  overflow-wrap: break-word;
-}
-
-.pillar-grid {
-  margin-bottom: var(--space-4);
-}
-
-@media (min-width: 769px) {
-  .pillar-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.pillar-card {
-  border-top: 3px solid var(--accent);
-  background: var(--accent-subtle);
-}
-
-.pillar-card__label {
-  display: inline-block;
-  margin-bottom: var(--space-2);
-  font-size: 0.72rem;
-  font-weight: 650;
-  color: var(--accent-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.primary-evidence-list .approach-card:nth-child(4) {
-  border-top: 3px solid var(--accent-2);
 }
 
 /* ------------------------------------------------------------
@@ -844,17 +794,6 @@ em {
   border: 1px solid var(--accent);
   border-top-width: 3px;
   background: var(--accent-subtle);
-}
-
-.approach-flagship-tag {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 600;
 }
 
 .approach-header {
@@ -2493,8 +2432,8 @@ th {
 /* ------------------------------------------------------------
    Project-intelligence — body-of-work index (S1 overview + S2 index)
    Folded from the design handback (docs/project-intelligence-design-spec-2026-06-16.md);
-   token-only, --accent reserved for the single flagship row. S3 (per-project design
-   structure) lands with feed v1.
+   token-only, grouped without local flagship curation. S3 (per-project design structure)
+   lands with feed v1.
    ------------------------------------------------------------ */
 
 /* S1 — Portfolio overview band: a definitional line, not a stats hero. */
@@ -2638,28 +2577,6 @@ th {
 .ds-row__facet--tech {
   font-family: var(--mono);
   font-size: 0.75rem;
-}
-
-/* Curated front tier; the single flagship — and only it — carries the reserved accent. */
-.dswork__primary .ds-row--flagship {
-  border-bottom: none;
-  border-left: 3px solid var(--accent);
-  background: var(--accent-subtle);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: var(--space-3);
-  margin-bottom: var(--space-2);
-}
-
-.ds-row__flagship-tag {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--on-accent);
-  align-self: center;
 }
 
 @media (max-width: 768px) {

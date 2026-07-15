@@ -4,8 +4,8 @@ type: page
 source_file: projects/budget-triage.html
 source_selector: main
 route: /projects/budget-triage.html
-content_hash: 6f308ad15d1c582422f33e5c82a59edd2a1ba3ed8307598fd6bf3161313a8675
-html_hash: 967ce7b684085c125324558893fc516d345a9647a9e861b20809800f68699c45
+content_hash: 3595bbf30a4603eb7275742b7e1e1b1a4ddc95e2331d29b6c05c7b691019e68f
+html_hash: 291bfc836186c4995ab915fb69f15bd1f97771cae7543479058012bd377c3a28
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,97 +13,73 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Learning by doing
+[Evidence](/#evidence) · Applied evidence engineering
 
-# Budget Triage
+# Budget Triage — financial evidence workbench
 
-Agentic governance, enforced in the architecture
+Traceable financial records with uncertainty routed to human review
 
-Active Development
+Private working prototype · No public source link
 
-## Overview
+## What is this?
 
-A full-stack personal finance system, and the most worked-out case in my learning programme for agentic governance. The point is not the app. It is enforcing the rules an agent has to follow in the architecture itself, through architecture decision records, rather than hoping a prompt holds.
+Budget Triage is a private full-stack workbench for turning statements, receipts, and feature-gated connected-account data into structured, traceable transactions.
 
-One validator checks runtime, scripts, and documents together, so the parts cannot drift out of agreement. The document-extraction pipeline is deterministic and checked against a synthetic, PII-free ground-truth corpus I generate for the test.
+## What is it for?
 
-## Technical Stack
+It helps an owner-operator compare evidence sources, resolve uncertain information, reconcile records, and prepare dependable financial views without allowing uncertain extraction to silently become financial truth.
 
-### Runtime & Core
+## How is it used?
 
-- Bun (modern TypeScript runtime)
-- Express + Hono (dual API framework exploration)
-- PostgreSQL with type-safe schema generation (Kanel)
-- ts-rest for end-to-end type contracts
+Implemented workflows resolve the tenant, hash and deduplicate an uploaded document or connected-account input, classify and extract financial facts, validate the result, and persist evidence and transactions atomically. Deterministic extraction runs first; optional model-assisted paths can audit or compare results, while low-confidence, invalid, or missing-confidence output is routed to human review.
 
-### Infrastructure & Security
+## Why does it matter?
 
-- Infisical (self-hosted secrets management)
-- Machine identity patterns for automated access
-- Docker containerization
-- OpenTelemetry instrumentation throughout
+Financial automation needs provenance, exact arithmetic, tenant isolation, human confirmation, and explicit uncertainty. Budget Triage demonstrates those controls in an integrated system rather than treating document extraction as an isolated model call.
 
-### Governance Framework
+## Evidence and status
 
-- Architecture decision records as enforced governance
-- Runtime/config/toolchain compliance verification
-- Script governance rules
-- Cross-surface validation
-- Evidence-based logging
+- Accepted remote `main` at `c4b399db` passed its complete validation suite in run `29431070131`.
+- The merged synthetic known-answer and service-observation harness reports 6 pass and 9 pending; it is explicitly incomplete and uncertified.
+- The repository is private and intentionally unlinked.
 
-## Key Patterns Explored
+### What this does not demonstrate
 
-### Governance enforced through architecture decision records
+No production deployment, public application, real-user adoption, financial outcome, live-provider performance, tax-filing readiness, HTTP/browser observation, or completed source-through-tax certification is claimed.
 
-Runtime, configuration, and toolchain compliance are checked against declared decisions rather than left to convention, with CI gates enforcing them on every change.
+## Technical shape
 
-### Deterministic document extraction
+### Current application stack
 
-A VLM and OCR pipeline checked against a synthetic, PII-free corpus I generate for the test. It reaches an F1 of 1.000 on that corpus, which measures determinism rather than luck. The discipline is the point, not the number.
+- Bun 1.3.10 with strict TypeScript and pure Hono RPC.
+- React, Vite, and Tailwind on the client.
+- PostgreSQL repositories and migrations, Zod validation, and Decimal.js for exact monetary arithmetic.
+- Vitest and Biome in the verification toolchain.
 
-### High-Volume Test Engineering
+### Evidence-aware processing
 
-Over 7,700+ tests (7,082 backend, 703 frontend, 664 integration) ensuring deterministic performance across complex extraction operations.
+- Tenant-scoped upload, hashing, deduplication, storage, classification, and deterministic-first extraction.
+- Optional model-assisted audit and comparison paths without a model-accuracy claim.
+- Atomic evidence and transaction persistence with append-only decision provenance.
+- Fail-closed review routing when confidence or validation is insufficient.
 
-## Why This Matters
+### Security and governance
 
-### Governance you can verify
+- Session and API-key authentication, Argon2id, hashed tokens, tenant guards, and secret scanning.
+- Machine-checked governance specifications and validation scripts.
+- Connected-account, secrets, and observability integration surfaces exist, but live provider operation was not independently verified.
 
-Agentic systems fail on authority and drift, not syntax. Putting the rules in the architecture keeps an agent inside known bounds.
+## What the work demonstrates
 
-### Determinism under test
-
-Extraction is checked against ground truth, so behavior is reproducible rather than approximately right.
-
-### Type-safe across boundaries
-
-Typed contracts and generated database types make the parts checkable end to end, from runtime to documents.
-
-### Observable from the start
-
-OpenTelemetry and structured logging throughout, so the system's decisions are inspectable.
-
-## Why build it this way
-
-This is a learning vehicle by design. I take a real problem and hold it to a standard that forces the hard lessons: how to make an agent-built system verifiable, observable, and safe to change.
-
-The governance here is heavier than a budgeting app needs on its own. That is deliberate. The system is small enough to hold in my head and real enough to break, which makes it the right place to work out methods that matter at a much larger scale.
-
-## Technical Depth
-
-What it works through:
-
-- Governance enforced through decision records
-- Secrets management and security patterns
-- Type-safe architecture across boundaries
-- Observability instrumentation (OpenTelemetry)
-- Modern TypeScript ecosystem and tooling
-- Policy-based development and compliance verification
-- Infrastructure as code and containerization
+- Evidence-aware automation with explicit human review.
+- Backend and PostgreSQL engineering with tenant-scoped persistence.
+- Exact monetary arithmetic and traceable decision provenance.
+- Security and governance controls integrated into application architecture.
+- Claim discipline that separates implemented workflows from certified outcomes.
 
 ## Interested in this work?
 
-Happy to talk about this project or the research practice behind it.
+Happy to discuss the public-safe architecture, evidence workflow, and verification boundaries behind this private prototype.
 
 Email me about this →
 

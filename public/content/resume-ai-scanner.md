@@ -16,21 +16,18 @@ infrastructure engineer; research engineer; policy-as-code engineer.
 
 ## Summary
 
-Ph.D. mathematician and backend-oriented systems builder focused on agentic AI
-evaluation, governance, and systems engineering. Strongest fit: evaluations and
-agent-governance engineering, pairing probabilistic AI tooling with
-deterministic, machine-checkable verification.
-
-Primary portfolio pillars:
-
-- Agentic-Coding Evaluation Lab for empirical model and harness evaluation.
-- Anonymized governance/security case study for agent authority, policy-as-code,
-  evidence-first audit, safeguards infrastructure, and agent-security controls.
+Ph.D. mathematician and self-directed systems researcher with a backend
+orientation. Strongest fit: evaluations and agent-governance engineering,
+pairing probabilistic AI tooling with deterministic, machine-checkable
+verification. Builds systems that make AI-assisted work measurable, governable,
+and auditable: deciding whether model evidence supports a change, defining what
+agents may do, and preserving evidence and human review in consequential
+workflows.
 
 ## Core skills
 
-Evaluations and agentic AI: model evaluation, harness evaluation, reliability
-evals, capability evals, statistical promotion gates, coding-agent workflows,
+Evaluations and agentic AI: model evaluation, harness evaluation, evidence
+contracts, recompute-or-refuse verification, coding-agent workflows,
 OpenAI-compatible LLM gateways, capability aliasing, provider resolution,
 per-client policy, budget controls, Ollama, trace pipelines, provenance
 pipelines, evidence pipelines.
@@ -50,38 +47,88 @@ Cloudflare DNS, Hetzner, Proxmox VE, Docker, Docker Compose, Traefik, GitHub
 Actions, self-hosted runners, OpenTelemetry, Infisical, 1Password custody.
 
 Data and native systems: PostgreSQL, Supabase, TimescaleDB, Redis Stack,
-RedisJSON, RediSearch, pgvector, Android, Kotlin, USB, UVC, libusb, libuvc,
-JNI, NDK, C, C++, CMake.
+RedisJSON, RediSearch, pgvector, Android, Kotlin, Jetpack Compose, USB, UVC,
+libusb, libuvc, JNI, NDK, C, C++, CMake.
 
 Languages and statistics: Python, TypeScript, Kotlin, C, C++, Ruby, SQL, Bash,
 Wilson intervals, bootstrap confidence intervals, paired sign tests, applied
 statistics, statistical inference.
 
-## Selected evidence
+## Selected systems and research evidence
 
 ### Agentic-Coding Evaluation Lab
 
-Role and domain: empirical evaluation of coding agents; model evaluation;
-agentic AI; evaluation harnesses.
+Role and domain: fail-closed model-evaluation evidence and reporting; evidence
+contracts; independent verification; agentic AI.
 
-Technology: Python, Redis, Ollama, TypeScript sibling services,
-OpenAI-compatible LLM gateway.
+Technology: Python, Quarto, JSON contracts; private gateway, harness, and trace
+integrations.
 
 Evidence:
 
-- Built the evaluation and evidence layer of a local stack that separates
-  transport, editing, measurement, and Redis-backed evidence, to make
-  coding-agent deployment decisions empirical.
-- Implemented reliability, capability, and promotion evaluations with Wilson
-  intervals, seeded bootstrap confidence intervals, and paired sign tests behind
-  a promotion gate.
-- Produced an evidence-based no-go: the promotion gate withheld a 32B candidate
-  that scored higher than the incumbent on raw capability, because the seeded
-  bootstrap confidence interval lower bound was zero and the gain was not
-  statistically significant.
-- Added fail-closed model-provenance hash verification, default-deny command
-  allowlisting, isolated per-evaluation workspaces, explicit egress boundaries,
-  and a no-commit fitness gate.
+- Built and published a model-evaluation methodology and verification prototype
+  that preserves evidence and withholds a recommendation when scientific
+  prerequisites are incomplete.
+- Built a draft evidence contract and a separate verifier that independently
+  recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing,
+  inconsistent, or altered evidence.
+- Connected private evaluation components with byte-for-byte contract checks and
+  controls that keep scored runs disabled until prerequisites are met; kept
+  operational trace data separate from the authoritative study record.
+- Current proof is tested framework behavior and synthetic conformance, with no
+  powered real-model result or promotion claim.
+
+Public methodology: https://jvjohnson.dev/eval-lab-methodology/
+
+### Governance and agent-control architecture
+
+Role and domain: anonymized private case study; federated authority for
+AI-assisted work; agent governance; safeguards; policy-as-code.
+
+Technology: OpenTofu, OPA, Rego, TypeScript, Cloudflare, Hetzner, Proxmox,
+GitHub governance-as-code.
+
+Evidence:
+
+- Designed a multi-repository architecture that separates human policy and
+  decision rights, agent mandates, identity and authorization, infrastructure
+  enforcement, runtime admission, and repository-local authority.
+- Modeled effective agent authority as the intersection of mandate, available
+  capability, and credential reach, with value-blind handbacks when human
+  judgment or privileged action is required.
+- Connected the design to 26 OPA/conftest plan rules, branch and repository
+  governance as code, same-run saved-plan promotion, Zero Trust infrastructure,
+  and scheduled drift checks across four workspaces.
+- Selected controls operate today; runtime admission remains source-tested rather
+  than a live request-path gate. Single-operator case study; no enterprise-
+  adoption claim. Private organization name intentionally omitted.
+
+Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
+
+### Budget Triage
+
+Role and domain: private financial evidence workbench; backend and data
+integrity; model-risk controls; human review.
+
+Technology: Bun, TypeScript, Hono, PostgreSQL, Zod, Decimal.js, Plaid,
+Infisical, OpenTelemetry.
+
+Evidence:
+
+- Built a deterministic-first financial-document workflow that preserves
+  provenance for optional model-assisted comparison and routes uncertain or
+  invalid output to human review before acceptance.
+- Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
+  append-only decisions, authentication, connected-account, secret-custody, and
+  observability surfaces.
+- Current remote-main CI is green across more than 11,000 named-suite test cases.
+- A merged synthetic known-answer certification slice reports 6 passing and 9
+  pending assertions; it remains incomplete and uncertified.
+- Private/no-link working prototype. No production, real-user,
+  financial-outcome, live-provider-performance, or completed source-through-tax
+  claim.
+
+Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
 
 ### audit-spec
 
@@ -93,15 +140,15 @@ CI.
 
 Evidence:
 
-- Authored a two-stage, evidence-first audit specification of more than 2,000
-  lines that separates discovery from judgment to counter LLM confirmation bias.
+- Authored a two-stage, evidence-first audit specification of 2,075 lines that
+  separates discovery from judgment to counter LLM confirmation bias.
 - Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
   confidence x weight priority model.
 - Built a stdlib-only Python drift linter with 10 deterministic checks,
   including content-hash binding of derived documents to specification bytes.
 - Wired a 27-case negative self-test into pre-commit and CI.
-- Applied the methodology to an external project that adopted seven of its
-  fitness functions.
+
+Public proof: https://github.com/verlyn13/agentic-architecture-audit
 
 ### Host Capability Substrate
 
@@ -112,54 +159,35 @@ Technology: TypeScript, Zod, JSON Schema, GitHub Actions.
 
 Evidence:
 
-- Designed a domain ontology of 46 Zod entity schemas compiled to 67 generated
-  JSON Schemas, with 498 tests.
-- Modeled capabilities, policy and gateway decisions, provenance-typed evidence
-  with an authority hierarchy, tamper-evident audit chains, and scoped, expiring
-  authorization grants.
-- Authored a 19-invariant governance charter and four-ring layered architecture
-  with strict import-boundary discipline.
-- Enforced merge-time discipline with a single CI gate composing 12 static
-  policy, boundary, secret, and schema-drift scanners on GitHub Actions.
+- Designed 46 Zod entity schemas compiled to 67 generated JSON Schemas, with
+  about 500 tests.
+- Modeled capabilities, policy and gateway decisions, provenance-typed evidence,
+  tamper-evident audit chains, and scoped, expiring authorization grants.
+- Authored a 19-invariant governance charter and four-ring layered architecture.
+- Enforced merge-time discipline with a composed CI policy gate.
 
-### Governance-First Infrastructure
-
-Role and domain: anonymized policy-as-code case study; private multi-repo
-governance estate; agent authority; infrastructure governance; Zero Trust.
-
-Technology: OpenTofu, OPA, Rego, conftest, Cloudflare, Hetzner, Proxmox,
-Pulumi, TypeScript, GitHub branch protection.
-
-Evidence:
-
-- Built a blocking policy-as-code gate that converts every OpenTofu plan touched
-  by a PR to JSON and evaluates it in CI with OPA/conftest against 26
-  least-privilege and Cloudflare-baseline deny rules.
-- Backed the gate with GitHub production-environment approval, nightly drift
-  detection on a self-hosted runner, and GitHub branch-protection rulesets
-  codified in OpenTofu.
-- Built a separate Pulumi/TypeScript control plane for a home Cloudflare Zero
-  Trust DNS-filtering setup, validated by 141 passing contract tests in CI.
-- Private organization name intentionally omitted.
+Public proof: https://github.com/jefahnierocks/host-capability-substrate
 
 ### ScopeCam
 
-Role and domain: native systems proof point; Android USB microscopy; systems
-engineering.
+Role and domain: private Android UVC camera application; physical-device systems
+engineering; signed client alpha delivery.
 
-Technology: Android, Kotlin, C, C++, JNI, NDK, USB, UVC, libusb, libuvc,
-libjpeg-turbo, REST, WebSocket.
+Technology: Android, Kotlin, Jetpack Compose, C, C++, JNI, NDK, USB, UVC,
+libusb, libuvc, libjpeg-turbo, hardware buffers, EGL, REST, WebSocket.
 
 Evidence:
 
-- Built a multi-module native Android/UVC imaging engine to master native
-  concurrency, JNI/NDK, and USB device handling.
-- Compiled libusb, libuvc, and libjpeg-turbo behind a zero-copy ring-buffer
-  pipeline.
-- Root-caused and fixed a JVM-monitor deadlock in native USB-replug teardown.
-- Instrumented runtime telemetry over REST and WebSocket.
-- Commercial licensing and SDK discussion is in progress; this is not presented
-  as a shipped product.
+- Built a multi-module Android application with a C++/JNI UVC engine, vendored
+  USB/image libraries, synchronized hardware-buffer rendering, persistence, and
+  debug/QA telemetry.
+- Traced a replug ANR across the JVM/native teardown boundary and implemented a
+  bounded, device-verified recovery with its remaining leak tradeoff documented.
+- Delivered a signed client `0.1-alpha` build in June 2026. Current application
+  is `0.1.1-alpha`; private/no-link, not broadly released, with broader
+  device/release acceptance still open.
+
+Public-safe case study: https://jvjohnson.dev/projects/scopecam.html
 
 ## Professional experience
 
@@ -189,15 +217,16 @@ Self-directed; Happy Patterns LLC product entity
 Homer, Alaska
 2023-present
 
-- Pursue a self-directed research program across 150+ repositories in agentic
-  AI, evaluation and alignment, systems engineering, and machine-checkable
+- Pursue a multi-repository self-directed research program in agentic AI,
+  evaluation and alignment, systems engineering, and machine-checkable
   governance.
-- Use AI agents to learn and stress-test software-engineering paradigms end to
-  end, with repo contracts, status records, decision logs, and verification gates
-  as the control surface.
-- Operate a private, single-operator governance-first infrastructure estate:
-  policy-as-code, infrastructure as code, Zero Trust networking, local and remote
-  servers, and secrets custody.
+- Use AI agents to build and stress-test software-engineering systems end to end,
+  with repository contracts, status records, decision logs, and verification
+  gates as the control surface.
+- Designed and operate selected controls from an anonymized, single-operator
+  governance and agent-control architecture spanning policy-as-code,
+  infrastructure as code, Zero Trust networking, local and remote servers, and
+  credential custody.
 
 ## Education
 
@@ -206,10 +235,6 @@ University of Montana, Missoula, MT
 2013
 Dissertation: Peripherally-Multiplicative Spectral Preservers Between Function
 Algebras.
-
-B.A., Mathematics
-Humboldt State University
-2004
 
 ## Publications
 

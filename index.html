@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: PORTFOLIO-QUICK.md; refreshed: 2026-06-05 -->
+<!-- source: PORTFOLIO-QUICK.md; refreshed: 2026-07-15 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer</title>
-    <meta name="description" content="Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.">
+    <meta name="description" content="Evaluations and agent-governance engineer building systems that make AI-assisted work measurable, governable, and auditable.">
     <link rel="canonical" href="https://jvjohnson.dev/">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
@@ -16,7 +16,7 @@
 
     <!-- Open Graph / LinkedIn Preview Tags -->
     <meta property="og:title" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
-    <meta property="og:description" content="Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.">
+    <meta property="og:description" content="I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether evidence supports a change to preserving evidence and human review.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/">
     <meta property="og:site_name" content="jvjohnson.dev">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
-    <meta name="twitter:description" content="Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.">
+    <meta name="twitter:description" content="I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether evidence supports a change to preserving evidence and human review.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
     <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
 
@@ -40,12 +40,12 @@
           "name": "Jeffrey V. Johnson",
           "honorificSuffix": "Ph.D.",
           "jobTitle": "Evaluations and agent-governance engineer",
-          "description": "Evaluations and agent-governance engineer pairing probabilistic AI tooling with deterministic, machine-checkable verification.",
+          "description": "I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.",
           "url": "https://jvjohnson.dev/",
           "image": "https://jvjohnson.dev/og-default.png",
           "email": "jeffrey@jvjohnson.dev",
           "homeLocation": { "@type": "Place", "name": "Homer, Alaska" },
-          "knowsAbout": ["Agentic AI evaluation", "Agent governance", "Machine-checkable verification", "Policy as code", "Functional analysis", "Applied statistics"],
+          "knowsAbout": ["Evaluation evidence contracts", "Independent recompute-or-refuse verification", "Agent governance and authority boundaries", "Machine-checkable verification", "Policy as code", "Evidence-first audit methodology", "Functional analysis", "Applied statistics"],
           "subjectOf": [
             {
               "@type": "CreativeWork",
@@ -98,18 +98,21 @@
             <div class="container">
                 <h1>Jeffrey V. Johnson, Ph.D.</h1>
                 <p class="hero-title">Evaluations and agent-governance engineer</p>
-                <p class="hero-pitch">Probabilistic AI tooling with deterministic, machine-checkable verification.</p>
+                <p class="hero-pitch">I pair probabilistic AI tooling with deterministic, machine-checkable verification.</p>
 
                 <div class="hero-bio">
-                    <p>Ph.D. mathematician and backend-oriented systems builder focused on agentic AI evaluation, governance, and systems engineering. My current portfolio has two pillars: an Agentic-Coding Evaluation Lab for empirical model and harness evaluation, and an anonymized governance/security case study for agent authority, policy-as-code, safeguards, and evidence-first audit.</p>
+                    <p>I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.</p>
+
+                    <p>I am also a Ph.D. mathematician and backend-oriented systems researcher. The mathematics supports the work through abstraction, statistical discipline, patience with difficult systems, and clear technical communication.</p>
 
                     <p class="location">Homer, Alaska</p>
                 </div>
 
                 <p class="hero-selected">
-                    <span class="hero-selected__label">Evidence pillars</span>
-                    <a href="#evidence">Evaluation methodology</a>
-                    <a href="#evidence">Governance and agent security</a>
+                    <span class="hero-selected__label">Selected evidence</span>
+                    <a href="#evaluation-lab">Evaluation Lab</a>
+                    <a href="#governance-agent-control">Agent-control architecture</a>
+                    <a href="#budget-triage">Budget Triage</a>
                 </p>
 
                 <div class="hero-links">
@@ -191,7 +194,7 @@
                         <ul class="skill-snapshot-list">
                             <li>
                                 <strong>Evaluations and agentic AI</strong>
-                                <span>Model and harness evaluation, statistical promotion gates, coding-agent workflows, LLM gateways, trace, provenance, and evidence pipelines.</span>
+                                <span>Evaluation contracts, evidence pipelines, independent recompute-or-refuse verification, coding-agent workflows, LLM gateways, provenance, sandboxing, and egress policy.</span>
                             </li>
                             <li>
                                 <strong>Governance and policy-as-code</strong>
@@ -217,67 +220,73 @@
 
         <section id="evidence" class="evidence-section">
             <div class="container container--wide">
-                <h2>Primary evidence</h2>
-                <p class="section-intro">Two portfolio pillars lead the page: empirical evaluation methodology, and governance/security for agent authority, safeguards, and policy-as-code.</p>
+                <h2>Selected evidence</h2>
+                <p class="section-intro">Three examples show one research-engineering method: measure uncertain systems, bound their authority, preserve their evidence, and test those disciplines in implemented software.</p>
 
-                <ul class="pillar-grid">
-                    <li class="pillar-card">
-                        <span class="pillar-card__label">Pillar 1</span>
-                        <h3>Evaluation methodology</h3>
-                        <p>Agentic-Coding Evaluation Lab: empirical model and harness evaluation as the evaluation and evidence layer of a local stack that separates transport, editing, measurement, and evidence, with statistical promotion gates and an evidence-based no-go decision.</p>
-                    </li>
-                    <li class="pillar-card">
-                        <span class="pillar-card__label">Pillar 2</span>
-                        <h3>Governance and agent security</h3>
-                        <p>An anonymized governance/security case study: agent authority boundaries, policy-as-code, safeguards, evidence-first audit, and explicit enforcing/advisory/planned status labels.</p>
-                    </li>
-                </ul>
-
-                <div class="approach-grid primary-evidence-list">
-                    <article class="approach-card approach-card--flagship">
+                <div class="approach-grid">
+                    <article id="evaluation-lab" class="approach-card approach-card--flagship">
                         <div class="approach-header">
                             <h3>Agentic-Coding Evaluation Lab</h3>
-                            <span class="approach-flagship-tag">Pillar 1</span>
                         </div>
-                        <p class="approach-thesis">Empirical coding-agent evaluation: the evaluation and evidence layer of a local stack that separates transport, editing, measurement, and evidence. Uses Wilson intervals, seeded bootstrap confidence intervals, and paired sign tests behind a promotion gate, plus provenance verification, allowlisting, isolated workspaces, egress boundaries, and a no-commit fitness gate.</p>
-                    </article>
-
-                    <article class="approach-card">
-                        <div class="approach-header">
-                            <h3>audit-spec</h3>
-                        </div>
-                        <p class="approach-thesis">Evidence-first audit methodology for AI-agent-operated codebases: discovery before judgment, an 11-dimension rubric, JSON schemas, severity/confidence/weight prioritization, deterministic drift linting, and negative self-tests.</p>
-                    </article>
-
-                    <article class="approach-card">
-                        <div class="approach-header">
-                            <h3>Host Capability Substrate</h3>
-                        </div>
-                        <p class="approach-thesis">Typed governance layer for host-level AI agents: Zod and JSON Schema models for capabilities, policy decisions, provenance-typed evidence, audit chains, and scoped authorization grants.</p>
+                        <p class="approach-thesis">Fail-closed evidence and reporting for model evaluation.</p>
+                        <p><strong>What is this?</strong> A framework for deciding whether an evaluation contains enough valid evidence to support changing a model or coding-agent configuration.</p>
+                        <p><strong>What is it for?</strong> It provides a repeatable, inspectable alternative to informal model selection and prevents incomplete experiments from being mistaken for deployment evidence.</p>
+                        <p><strong>How is it used?</strong> A team defines the systems, tasks, study design, and required decision criteria. The framework validates the evidence and produces a report; a separate verifier recomputes the result or refuses it when evidence is missing or altered.</p>
+                        <p><strong>Why does it matter?</strong> It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.</p>
+                        <p><strong>Evidence and status:</strong> Public prototype with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed <code>NOT_EVALUABLE</code> refusal. It does not establish real-model performance or a promotion recommendation.</p>
                         <div class="approach-case-study">
-                            <a href="/projects/host-capability-substrate.html" class="case-study-link">Host Capability Substrate →</a>
+                            <a href="https://jvjohnson.dev/eval-lab-methodology/" class="case-study-link">Explore the methodology, worked examples, and evidence →</a>
                         </div>
                     </article>
 
-                    <article class="approach-card">
+                    <article id="governance-agent-control" class="approach-card">
                         <div class="approach-header">
-                            <h3>Governance-first infrastructure</h3>
+                            <h3>Governance and agent-control architecture</h3>
                         </div>
-                        <p class="approach-thesis">Anonymized private multi-repo governance estate: OpenTofu plan-to-JSON gates, OPA/conftest deny rules, GitHub branch protection as code, drift detection, and Cloudflare Zero Trust contract tests.</p>
-                    </article>
-
-                    <article class="approach-card">
-                        <div class="approach-header">
-                            <h3>ScopeCam</h3>
-                        </div>
-                        <p class="approach-thesis">Native USB-microscopy systems proof point: Android/Kotlin over C/C++/JNI, libusb/libuvc/libjpeg-turbo, zero-copy ring-buffer work, and native teardown debugging. Commercial licensing and SDK discussion is in progress; this is not a shipped product.</p>
+                        <p class="approach-thesis">Federated authority and evidence controls for AI-assisted engineering.</p>
+                        <p><strong>What is this?</strong> An anonymized governance architecture for AI-assisted work across multiple repositories, services, credentials, and operating environments.</p>
+                        <p><strong>What is it for?</strong> It makes identity, delegated authority, evidence, and safe refusal explicit before agents or automation can change code, infrastructure, or organizational state.</p>
+                        <p><strong>How is it used?</strong> Human principles are translated into machine-readable standards, authorization contracts, infrastructure policy checks, runtime-admission prototypes, and project-local restatements.</p>
+                        <p><strong>Why does it matter?</strong> Organizations need reliable answers to who may act, under what mandate, on which resource, with what evidence, and when the correct result is to stop or escalate.</p>
+                        <p><strong>Evidence and status:</strong> Selected policy-as-code, infrastructure, validation, and scheduled drift controls operate today. Identity, synthetic-decision, and runtime-admission layers include substantial contracts and tested prototypes but are not organization-wide live enforcement. This is a single-operator case study, not an enterprise-adoption claim.</p>
                         <div class="approach-case-study">
-                            <a href="/projects/scopecam.html" class="case-study-link">ScopeCam →</a>
+                            <a href="/projects/governance-agent-control.html" class="case-study-link">Review the anonymized case study →</a>
+                        </div>
+                    </article>
+
+                    <article id="budget-triage" class="approach-card">
+                        <div class="approach-header">
+                            <h3>Budget Triage — financial evidence workbench</h3>
+                        </div>
+                        <p class="approach-thesis">Traceable financial records with uncertainty routed to human review.</p>
+                        <p><strong>What is this?</strong> A private full-stack prototype that turns statements, receipts, and connected-account data into structured, traceable transactions.</p>
+                        <p><strong>What is it for?</strong> It helps an owner-operator resolve uncertain or conflicting financial facts without silently converting extraction into truth.</p>
+                        <p><strong>How is it used?</strong> The system runs deterministic extraction first, optionally uses models as auditors or comparison tools, and routes low-confidence or conflicting results to human review.</p>
+                        <p><strong>Why does it matter?</strong> Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.</p>
+                        <p><strong>Evidence and status:</strong> Current remote <code>main</code> passed full validation. A synthetic known-answer harness exercises service-layer code, but its 6-pass / 9-pending result is incomplete and uncertified. No production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim is made.</p>
+                        <div class="approach-case-study">
+                            <a href="/projects/budget-triage.html" class="case-study-link">Budget Triage →</a>
                         </div>
                     </article>
                 </div>
 
-                <p class="approach-more"><a href="/projects/">Older and supporting work remains in the full project archive →</a></p>
+                <h3>Supporting implementation evidence</h3>
+                <ul class="skill-snapshot-list">
+                    <li>
+                        <strong>audit-spec</strong>
+                        <span>A public evidence-first audit method for AI-agent-operated codebases. <b>Demonstrates:</b> machine-readable contracts, deterministic drift checking, and bias-aware workflows. <b>Evidence and status:</b> 2,075-line specification, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. <a href="https://github.com/verlyn13/agentic-architecture-audit" aria-label="Agentic Architecture Audit project on GitHub">Inspect the public project →</a></span>
+                    </li>
+                    <li>
+                        <strong>Host Capability Substrate</strong>
+                        <span>A public schema-driven layer that turns implicit host access into explicit capabilities and authorization. <b>Demonstrates:</b> typed authority, provenance, scoped grants, and CI-enforced architecture. <b>Evidence and status:</b> 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, and a composed CI gate. <a href="/projects/host-capability-substrate.html">Examine the implementation →</a></span>
+                    </li>
+                    <li>
+                        <strong>ScopeCam</strong>
+                        <span>A private Android/Kotlin/C++ UVC microscopy application. <b>Demonstrates:</b> native systems engineering, USB lifecycle debugging, rendering, diagnostics, and client delivery. <b>Evidence and status:</b> signed <code>0.1-alpha</code> client build delivered in June 2026; current version <code>0.1.1-alpha</code>, intentionally unlinked and not broadly released, with broader acceptance open. <a href="/projects/scopecam.html">Read the public-safe case study →</a></span>
+                    </li>
+                </ul>
+
+                <p class="approach-more"><a href="/projects/">Explore the full body of work →</a></p>
             </div>
         </section>
 

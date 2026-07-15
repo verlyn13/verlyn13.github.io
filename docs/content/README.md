@@ -43,5 +43,5 @@ npm run content:check   # integrity gate: registry, files, hashes, ids, markers,
 - **Deletes need a tombstone.** Record removals in `changes.yaml`; do not silently delete a mirrored
   file whose ID is in the registry.
 
-All 15 authored pages are mirrored (`pull_only`); `dicee.overview` is the first `two_way` region.
+All 16 authored pages are mirrored (`pull_only`); `dicee.overview` is the first `two_way` region.
 See the rollout and contract in `docs/markdown-mirror.md`.

@@ -12,5 +12,14 @@ https://jvjohnson.dev/content/resume-ai-scanner.md
 Homepage:
 https://jvjohnson.dev/
 
+Evaluation methodology:
+https://jvjohnson.dev/eval-lab-methodology/
+
+Anonymized governance case study:
+https://jvjohnson.dev/projects/governance-agent-control.html
+
+Full body of work:
+https://jvjohnson.dev/projects/
+
 Notes:
-Jeffrey V. Johnson, Ph.D. is presented as an evaluations and agent-governance engineer. The public portfolio emphasizes agentic AI evaluation, agent governance, safeguards, policy-as-code, evidence-first audit, infrastructure, systems engineering, and applied statistics. Private governance-estate details are intentionally anonymized.
+Jeffrey V. Johnson, Ph.D. is presented as an evaluations and agent-governance engineer. The portfolio connects fail-closed evaluation evidence, bounded agent authority, and evidence-preserving human review in consequential software. Private project repositories remain intentionally unlinked.

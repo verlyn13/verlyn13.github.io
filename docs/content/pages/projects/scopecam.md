@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: 75247bc57facb683136992a8053b9898070aca28c74444d0d0c904b0978decb5
-html_hash: a0d174b97013b394cb7f672982ebc7c57ab724bca170dd59393a311a7058e5f8
+content_hash: 6583160c032b029f7ab22ad3eebd357d7cf8d80e66033685de2baf5c991915e2
+html_hash: b430aff4635e8856111cb6eb7b77c32dae63aa3ad20f03758cb54b6012025809
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,75 +13,70 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Safety-Critical Systems
+[Evidence](/#evidence) · Native Android and physical-device engineering
 
 # ScopeCam
 
-USB Microscope Camera App
+Private Android UVC microscope application
 
-Alpha · v0.1
+Client-delivered alpha · Current app 0.1.1-alpha
 
-## Overview
+## What is this?
 
-Alpha-stage Android app and multi-module runtime for USB microscope cameras (UVC standard) — built for serious microscopy workflows, not generic phone-camera use. Solo-built; currently a personal-profile v0.1-alpha.
+ScopeCam is a private proprietary Android application and multi-module camera runtime for UVC USB microscope cameras. It combines a Jetpack Compose interface, Kotlin orchestration, and a C++/JNI camera engine.
 
-The work lives in the boundary between Android, USB camera behavior, and native libraries: a vendored stack (libusb, libuvc, libjpeg-turbo) behind a descriptor-first capability layer, with session-based capture that records scientific metadata (sample IDs, magnification, calibration, operator identity).
+## What is it for?
 
-## Technical Details
+It supports mobile microscopy workflows that standard phone-camera APIs do not address: discovering and connecting a specialized USB camera, reaching live preview, capturing photos or video, preserving session and scientific metadata, and reviewing committed media.
 
-### Platform & Stack
+## How is it used?
 
-- Android (Kotlin), Jetpack Compose UI, foreground camera service
-- Vendored native stack (libusb, libuvc, libjpeg-turbo) via JNI/NDK
-- Six Gradle modules plus an ArchUnit architecture-test module
-- Room + MediaStore persistence; descriptor-first UVC handling
+An Android device acts as the USB host. The operator connects a supported microscope camera, grants permission, previews the stream, captures or records, and reviews the result. Debug and QA builds add local REST/WebSocket telemetry and diagnostics; release builds bind a no-op implementation instead of starting that service.
 
-### Technical Challenges
+## Why does it matter?
 
-- USB OTG communication protocols
-- Native library integration (C → Kotlin via JNI)
-- Memory pooling for efficient frame processing
-- Camera initialization and configuration management
-- Real-time frame delivery pipeline
+The project crosses Android UI, Kotlin orchestration, native C++, USB lifecycle, render synchronization, persistence, observability, and physical-device testing. Its strongest case study traced a camera-replug ANR across the JVM/native boundary and implemented a bounded, device-verified recovery while documenting the remaining leak tradeoff.
 
-## Why This Matters
+## Evidence and status
 
-### Architecture Discipline
+- A signed `0.1-alpha` client build was delivered on 2026-06-09; the current application is `0.1.1-alpha`.
+- Fresh `just verify` and native-inclusive QA APK builds passed on 2026-07-14, packaging the native engine for both supported ABIs.
+- Device verification recovered streaming after the replug deadlock without a new ANR. A timed-out recovery can still leave the stuck camera and threads until process restart.
+- The source is private and intentionally unlinked; the application is not broadly released.
+- Broader hardware and release acceptance remain open.
 
-Six Gradle modules with ArchUnit guardrails enforcing boundaries between app, domain, native, and platform code.
+### What this does not demonstrate
 
-### Hardware Integration
+No arbitrary UVC compatibility, general performance guarantee, end-to-end zero-copy pipeline, seamless or leak-free hot-plug recovery, shipped SDK, or production readiness is claimed.
 
-Working with USB protocols and native hardware interfaces, not just high-level APIs.
+## Technical shape
 
-### Performance Optimization
+### Android and native camera stack
 
-Real-time frame processing with memory management constraints on mobile hardware.
+- Android, Kotlin, Jetpack Compose, and a foreground camera service.
+- C++20 JNI/NDK engine built with CMake for ARM64 and ARMv7.
+- Vendored `libusb`, `libuvc`, and `libjpeg-turbo` linked into the native engine.
+- Room and MediaStore persistence with descriptor-first UVC handling.
 
-### Test Coverage
+### Scoped render-path optimization
 
-1,790 tests passing on the verified baseline, with Crashlytics and OpenTelemetry instrumentation.
+An `AHardwareBuffer`-backed triple-buffer path uses EGLImage texture binding and fence synchronization to avoid an additional CPU copy between the native frame buffer and GPU texture. This is a boundary-specific optimization, not an end-to-end zero-copy claim.
 
-## Development Context
+### Evidence-oriented diagnostics
 
-This project emerged from a practical need: getting USB microscope cameras to work reliably on Android for real microscopy workflows. The hard parts are real — UVC descriptor handling, the Kotlin-to-native boundary, memory churn during real-time capture, and physical-device testing.
+Debug and QA builds expose local telemetry, snapshots, and protected diagnostic actions. Release builds use a no-op implementation, so this is not a production REST-service claim.
 
-It sits at the intersection of hardware protocols, native libraries, and Android development, and is governed like a serious system: ADRs (a kotlin-Result migration, a design-system ontology), an SDK-extraction plan, and a documentation-governance plan. Apache 2.0.
+## What the work demonstrates
 
-## Technical Depth
-
-This project demonstrates understanding of:
-
-- Android platform development and architecture
-- USB OTG protocols and device communication
-- JNI/NDK for native library integration
-- Memory management in performance-critical contexts
-- Real-time data processing pipelines
-- Hardware compatibility and driver-level work
+- Native Android, Kotlin, C++, JNI, and NDK systems engineering.
+- USB lifecycle and physical-device integration.
+- Cross-boundary concurrency and teardown debugging.
+- Evidence-oriented diagnostics and device verification.
+- Client delivery with explicit compatibility and maturity boundaries.
 
 ## Interested in this work?
 
-Happy to talk about this project or the research practice behind it.
+Happy to discuss the public-safe engineering case study, verification approach, and documented limits.
 
 Email me about this →
 

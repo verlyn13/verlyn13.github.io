@@ -1,6 +1,6 @@
 # ADR-0009: Project-Intelligence feed — presentation, cadence, and the delivery gate
 
-- Status: Accepted · Date: 2026-06-16 · Clarified: 2026-06-17 · Currentness pass: 2026-06-29
+- Status: Accepted · Date: 2026-06-16 · Clarified: 2026-06-17 · Currentness pass: 2026-07-15
 
 ## Context
 The project feed (`public/data/projects.json`; its pipeline is described by ADR-0008 / `colophon.html`)
@@ -25,7 +25,9 @@ render the feed.
 4. **Presentation: a dense, build-time-grouped index — not a card grid — with no interactive filter at
    this scale.** Research (DeepMind / Karpathy / Gwern / al-folio exemplars; Baymard + NN/g on filtering)
    shows faceted filtering is clutter below exploratory (hundreds-plus) scale: facets are printed inline
-   labels, grouping proves breadth, drill-down is the per-project page. A curated front tier leads.
+   labels, grouping proves breadth, and drill-down is the per-project page. The generated index stays a
+   neutral breadth layer; the hand-authored homepage owns editorial hierarchy so the feed cannot create
+   a competing flagship.
    Interactive filtering is deferred — and if ever added, a small progressive-enhancement JS filter
    (never CSS-only `:has()`, for screen-reader result announcement), which would be ask-first.
 5. **Render at build time.** A feed→HTML prebuild (like `build-tokens.mjs`) emits the index + per-project
@@ -47,6 +49,9 @@ render the feed.
   no-op'ing the wrong one.
 - A new build input (the feed templater) enters the repo; the single-stylesheet + no-JS rules still hold.
 - The decision retires the earlier "faceted card gallery" sketch in favor of the dense grouped index.
+- The July 2026 portfolio reconciliation retires the generated curated-front-tier treatment. The dated
+  design brief remains historical context; current code and the active design-system docs define the
+  neutral grouped index.
 - No new tokens, palette, theming, or dependencies are introduced by this decision; any the design pass
   proposes are ask-first.
 

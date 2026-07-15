@@ -3,7 +3,7 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.1
+version: 0.1.3
 last_updated: 2026-07-15
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
@@ -19,8 +19,10 @@ authority, which are historical handoffs, and where plans live.
 
 - **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as an evaluations and
   agent-governance engineer pairing probabilistic AI tooling with deterministic,
-  machine-checkable verification. The broader mathematical researcher and systems-builder identity is
-  supporting context, not the landing-page headline.
+  machine-checkable verification. The connected narrative is measurable evaluation evidence,
+  governable agent authority, and auditable human review in consequential software. The broader
+  mathematical researcher and systems-builder identity is supporting context, not the landing-page
+  headline.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
@@ -50,18 +52,16 @@ authority, which are historical handoffs, and where plans live.
 
 ## Active plans
 
-### Resume and skills landing refresh
+### Recruiter-facing narrative
 
-- `docs/resume-skills-landing-handoff-2026-07-07.md` is the active handoff for
-  adapting the landing page to the current `new-direction-2026` application
-  strategy. The target is a resume/skills-first homepage with two evidence
-  pillars: Agentic-Coding Evaluation Lab for eval methodology, and an anonymized
-  governance/security case study for agent security, safeguards, control, and
-  policy-as-code work.
-- This handoff supersedes older homepage emphasis where the first screen leads
-  with "Independent researcher and systems builder," Budget Triage, Flux, Dicee,
-  or broad project-gallery framing. Those materials can remain as supporting
-  pages, but they should not be the homepage lead.
+- The homepage leads with Agentic-Coding Evaluation Lab, Governance and agent-control architecture,
+  and Budget Triage — financial evidence workbench. It then uses compact entries for `audit-spec`, Host
+  Capability Substrate, and ScopeCam.
+- `docs/resume-skills-landing-handoff-2026-07-07.md` records the implemented July 7 baseline. It is a
+  historical handoff, not the current copy authority; the July 15 source reconciliation superseded its
+  two-pillar first layer.
+- The homepage owns primary-evidence selection and ordering. The generated project index is a grouped
+  body-of-work archive and does not define a competing flagship or primary tier.
 
 ### Fleet coordination (2026-07 audit remediation)
 
@@ -73,8 +73,9 @@ authority, which are historical handoffs, and where plans live.
 ### Project-intelligence feed
 
 - **Done on the website:** P0 build-time body-of-work index; adopted top-level `portfolio{}` aggregate;
-  curated front tier; full-envelope admission; `client-deliverable` grouping; no-link deployment URL
-  suppression; generated `/projects/`; S3 per-project design-structure hook wired and absent-tolerant.
+  grouped archive without parallel flagship curation; full-envelope admission; `client-deliverable`
+  grouping; no-link deployment URL suppression; generated `/projects/`; S3 per-project
+  design-structure hook wired and absent-tolerant.
 - **Awaiting upstream feed richness:** per-project `scope{}`, `decisions[]`, `activity[]`, and `method{}`.
   The website must not derive those from private sibling repos.
 - **Policy boundary:** event-driven refresh and any feed-only auto-publish path remain future-state until
@@ -83,7 +84,7 @@ authority, which are historical handoffs, and where plans live.
 ### Content mirror (Markdown sidecar)
 
 - **Active (pull-only):** a committed Markdown mirror under `docs/content/` complements the
-  authoritative HTML — for portability, search, and downstream tooling. All 15 authored pages are
+  authoritative HTML — for portability, search, and downstream tooling. All 16 authored pages are
   mirrored (`projects/index.html` excluded as generated). Contract in `docs/markdown-mirror.md`;
   rationale in `docs/adr/0010-structured-markdown-mirror.md`.
 - **Model:** HTML is provenance. Sync is intentional and directional (`content:pull` / `push` /
@@ -109,9 +110,11 @@ authority, which are historical handoffs, and where plans live.
 ### Content and IA
 
 - **Current:** homepage direction now routes through
-  `docs/resume-skills-landing-handoff-2026-07-07.md`: resume/skills first, two evidence pillars,
-  and primary evidence ordered as Agentic-Coding Evaluation Lab, audit-spec, Host Capability
-  Substrate, anonymized governance/security case study, and ScopeCam.
+  the accepted career source: resume/skills first; the connected measurable, governable, and auditable
+  narrative; three lead examples in the order Evaluation Lab, Governance and agent-control
+  architecture, and Budget Triage; then compact implementation evidence.
+- **Archive boundary:** `/projects/` groups the full body of work by evidence class. It does not
+  define another flagship or primary-evidence order.
 - **Watch:** historical audit/directive docs may quote older titles because they preserve past baselines.
   Do not rewrite those quotes unless the task is specifically to revise the historical record.
 
@@ -121,6 +124,8 @@ These files are useful context but not current instructions by themselves:
 
 - `docs/landing-refresh-directive-2026-06-05.md` — completed landing-page directive with P2 backlog
   notes.
+- `docs/resume-skills-landing-handoff-2026-07-07.md` — implemented July 7 baseline superseded by the
+  July 15 narrative reconciliation; preserve its dated mismatch and two-pillar language as history.
 - `docs/design-critique-2026-06-05.md` — addressed critique; read for rationale, not pending work.
 - `docs/ia-content-consistency-audit-2026-06-17.md` — dated baseline; table values are historical.
 - `docs/status-pill-contrast-design-brief-2026-06-17.md` — handoff that was implemented by PR #9.
