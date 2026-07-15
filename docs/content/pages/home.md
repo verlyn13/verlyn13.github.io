@@ -5,7 +5,7 @@ source_file: index.html
 source_selector: main
 route: /
 content_hash: f9a1403eef0a65add883732cc04f4a90ba8cd06318dea4d3ad163054ce307a0c
-html_hash: ce9e37e5af085e7c7ea6706f4116c978d92d8a68a9c0066bf68f31dfff73dc8b
+html_hash: 6f8fd696673edf89e6306bd5395fccbc50dc6ff8e21de3f82e8c33d279fb8bd8
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]

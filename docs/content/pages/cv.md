@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 5499aeb2c32495b22b53bcf2ac5c838f3685c744b1014794d56d037cbaf6cc20
-html_hash: a4cbd0e22ec1fe2fa755c05e343b6bc02fc9bb8ab47be2f9f35af8e4e2818b6d
+content_hash: 7462bd4b947c1733aa56cc56f4bc3c8d8391e1e96d7aaf4fb4c44e769a42af66
+html_hash: f57e7013c2164aa48a91c2bbeb89068fd92382eedfa8ff027d7bad93799fa031
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -36,7 +36,7 @@ Ph.D. mathematician and self-directed systems researcher with a backend orientat
 
 ## Selected systems and research evidence
 
-### [Agentic-Coding Evaluation Lab](/eval-lab-methodology/) — fail-closed evaluation evidence
+### [Agentic-Coding Evaluation Lab](https://jvjohnson.dev/eval-lab-methodology/) — fail-closed evaluation evidence
 
 Python · Quarto · JSON contracts · private gateway, harness, and trace integrations
 
