@@ -3,7 +3,7 @@ title: Project Intelligence — the feed-driven project presentation system
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.3.1
+version: 0.3.2
 last_updated: 2026-07-15
 tags: [project-intelligence, feed, meta-inventory, provenance, presentation, breadth]
 priority: high
@@ -16,9 +16,10 @@ audience: coding agent + design agent
 > `public/data/projects.json`, and the website P0 presentation is implemented: `build-feed.mjs`
 > generates `/projects/` at build time, including the feed-owned top-level `portfolio{}` aggregate.
 > `scripts/design-structure.mjs` is wired for pending per-project richness and renders nothing when those
-> fields are absent. The July 15 producer candidate is clean/current but remains on intake HOLD because
-> ScopeCam lacks an accepted default-branch manifest; the cross-repo owner boundary and exact admission
-> rules are in `docs/meta-inventory-website-contract.md`.
+> fields are absent. ScopeCam default-main manifest coverage is complete, and the refreshed July 15
+> producer candidate in draft PR #14 is gate-green. Intake remains on HOLD until that producer state is
+> accepted on `meta-inventory` `origin/main`; the cross-repo owner boundary and exact admission rules are
+> in `docs/meta-inventory-website-contract.md`.
 
 ## 1. Premise
 The feed is the **instrument, not the exhibit**. Its job is to keep each project's depth, scope, key
@@ -97,7 +98,7 @@ Design intentionality is the differentiator — and much of it already lives in 
   `tier{portfolioVisibility,primaryAudience,status}`, and
   `provenance{kbSha,kbDirty,generatedAt,source}`.
 - Consumer support is implemented for additive `operationalState` and `publicLinkable` fields. They are
-  present in the held producer candidate but not yet in the accepted website feed copy.
+  present in the pending producer candidate but not yet in the accepted website feed copy.
 
 ### 5.2 Pending per-project additions
 - **Per project:**

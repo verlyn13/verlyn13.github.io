@@ -113,42 +113,27 @@ integrity; model-risk controls; human review.
 Technology: Bun, TypeScript, Hono, PostgreSQL, Zod, Decimal.js, Plaid,
 Infisical, OpenTelemetry.
 
+Private financial evidence workbench combining deterministic-first document
+processing, provenance, tenant isolation, exact monetary semantics, and
+fail-closed human review. Private technical walkthrough available during an
+interview process.
+
 Evidence:
 
-- Built a deterministic-first financial-document workflow that preserves
-  provenance for optional model-assisted comparison and routes uncertain or
-  invalid output to human review before acceptance.
 - Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
   append-only decisions, authentication, connected-account, secret-custody, and
-  observability surfaces.
-- Current remote-main CI is green across more than 11,000 named-suite test cases.
+  observability surfaces; the independently verified Phase 3b receipt passed
+  full validation.
 - A merged synthetic known-answer certification slice reports 6 passing and 9
   pending assertions; it remains incomplete and uncertified.
+- Established bounded synthetic Phase 3b browser-to-service correlation. This
+  does not prove UI state, production operation, financial correctness, or
+  source-through-tax execution.
 - Private/no-link working prototype. No production, real-user,
-  financial-outcome, live-provider-performance, or completed source-through-tax
-  claim.
+  financial-outcome, live-provider-performance, tax-readiness, or completed
+  source-through-tax claim.
 
 Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
-
-### audit-spec
-
-Role and domain: evidence-first audit methodology for AI-agent-operated
-codebases; governance; safeguards; agent security.
-
-Technology: specification authoring, Python tooling, JSON schemas, pre-commit,
-CI.
-
-Evidence:
-
-- Authored a two-stage, evidence-first audit specification of 2,075 lines that
-  separates discovery from judgment to counter LLM confirmation bias.
-- Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
-  confidence x weight priority model.
-- Built a stdlib-only Python drift linter with 10 deterministic checks,
-  including content-hash binding of derived documents to specification bytes.
-- Wired a 27-case negative self-test into pre-commit and CI.
-
-Public proof: https://github.com/verlyn13/agentic-architecture-audit
 
 ### Host Capability Substrate
 
@@ -168,26 +153,43 @@ Evidence:
 
 Public proof: https://github.com/jefahnierocks/host-capability-substrate
 
-### ScopeCam
+### Agentic Architecture Audit
 
-Role and domain: private Android UVC camera application; physical-device systems
-engineering; signed client alpha delivery.
+Role and domain: evidence-first audit methodology for AI-agent-operated
+codebases; governance; safeguards; agent security.
 
-Technology: Android, Kotlin, Jetpack Compose, C, C++, JNI, NDK, USB, UVC,
-libusb, libuvc, libjpeg-turbo, hardware buffers, EGL, REST, WebSocket.
+Technology: specification authoring, Python tooling, JSON schemas, pre-commit,
+CI.
 
 Evidence:
 
-- Built a multi-module Android application with a C++/JNI UVC engine, vendored
-  USB/image libraries, synchronized hardware-buffer rendering, persistence, and
-  debug/QA telemetry.
-- Traced a replug ANR across the JVM/native teardown boundary and implemented a
-  bounded, device-verified recovery with its remaining leak tradeoff documented.
-- Delivered a signed client `0.1-alpha` build in June 2026. Current application
-  is `0.1.1-alpha`; private/no-link, not broadly released, with broader
-  device/release acceptance still open.
+- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines that
+  separates discovery from judgment to counter LLM confirmation bias.
+- Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
+  confidence x weight priority model.
+- Built a stdlib-only Python drift linter with 10 deterministic checks,
+  including content-hash binding of derived documents to specification bytes.
+- Wired a 27-case negative self-test into pre-commit and CI.
 
-Public-safe case study: https://jvjohnson.dev/projects/scopecam.html
+Public proof: https://github.com/verlyn13/agentic-architecture-audit
+
+### Dicee
+
+Role and domain: representative delivered software; live family multiplayer game
+for mobile browsers.
+
+Technology: Rust, WebAssembly, SvelteKit, Cloudflare Durable Objects,
+WebSockets.
+
+Evidence:
+
+- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules
+  engine, realtime state through Cloudflare Durable Objects and WebSockets, and
+  a SvelteKit client.
+- Public source and a live deployment demonstrate end-to-end delivery. Traffic,
+  performance, bundle-size, and current test-count claims remain withheld.
+
+Public project: https://jvjohnson.dev/projects/dicee.html
 
 ## Professional experience
 

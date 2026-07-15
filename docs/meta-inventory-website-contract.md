@@ -3,7 +3,7 @@ title: Meta-inventory / website project-intelligence contract
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.2.0
+version: 0.2.1
 last_updated: 2026-07-15
 tags: [project-intelligence, meta-inventory, website, feed, provenance, responsibility]
 priority: high
@@ -41,9 +41,11 @@ Current contract:
 - Website compatibility code and feed delivery use separate PRs. A compatibility PR starts from clean
   remote website `main`; a later feed-only PR starts only after every producer gate passes.
 
-Current intake verdict (2026-07-15): **HOLD**. The producer candidate is clean and current, but it is
-not admissible because the selected ScopeCam record has no accepted default-branch manifest. Do not copy
-that candidate into this repository or use an active dirty website checkout as a delivery target.
+Current intake verdict (2026-07-15): **HOLD**. ScopeCam default-main manifest coverage is complete, and
+the refreshed producer candidate in draft PR #14 passes its enforced gates, but that state is not yet
+accepted on `meta-inventory` `origin/main`. Do not copy the candidate into this narrative branch or use
+an active dirty website checkout as a delivery target. Feed delivery begins only after the producer
+change is accepted on its default branch and the gates pass from that accepted state.
 
 Target evolution:
 
@@ -111,7 +113,8 @@ Already adopted in the accepted feed:
   only for older schema-0 feeds that omit it.
 - Verified `deploymentUrls[]` for public-linkable deployed systems.
 
-Consumer support implemented for the held candidate (not yet present in the accepted website copy):
+Consumer support implemented for the gate-green producer candidate (not yet accepted upstream or
+present in the accepted website copy):
 
 - Per-project `operationalState` and `publicLinkable`. Runtime state does not imply a public URL;
   `publicLinkable=false` suppresses every deployment link regardless of other link fields.

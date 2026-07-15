@@ -3,7 +3,7 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.3
+version: 0.1.4
 last_updated: 2026-07-15
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
@@ -34,9 +34,11 @@ authority, which are historical handoffs, and where plans live.
 - **Feed delivery:** the website consumes `public/data/projects.json`. The complete envelope is validated
   even when no rendered `feed:` comments exist. Feed updates are PR-delivered and operator-merged;
   checker/model changes are website-owned and land separately. Policy auto-publish is future-state only.
-- **Feed intake HOLD (2026-07-15):** do not copy the current meta-inventory candidate. The feed is clean
-  and current, but ScopeCam lacks an accepted default-branch manifest, so producer gate (c) remains red.
-  A feed-only delivery PR must wait for all producer gates to pass.
+- **Feed intake HOLD (2026-07-15):** ScopeCam default-main manifest coverage is complete, and the
+  refreshed producer candidate in draft PR #14 is gate-green. It remains pending acceptance on
+  `meta-inventory` `origin/main`, so do not copy it in a narrative branch. A feed-only delivery PR starts
+  only from the accepted producer default branch after the enforced generation and gate-report checks
+  pass there.
 - **Visual system:** tokens are authored in `tokens/*.tokens.json`; component CSS uses semantic tokens in
   `assets/jeffrey.css`. Do not hand-edit `assets/tokens.generated.css`.
 
@@ -55,8 +57,9 @@ authority, which are historical handoffs, and where plans live.
 ### Recruiter-facing narrative
 
 - The homepage leads with Agentic-Coding Evaluation Lab, Governance and agent-control architecture,
-  and Budget Triage — financial evidence workbench. It then uses compact entries for `audit-spec`, Host
-  Capability Substrate, and ScopeCam.
+  and Budget Triage — financial evidence workbench. It then uses compact public implementation entries
+  for Host Capability Substrate and Agentic Architecture Audit, followed by Dicee as representative
+  delivery evidence. ScopeCam remains in the grouped breadth layer.
 - `docs/resume-skills-landing-handoff-2026-07-07.md` records the implemented July 7 baseline. It is a
   historical handoff, not the current copy authority; the July 15 source reconciliation superseded its
   two-pillar first layer.

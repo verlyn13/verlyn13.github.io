@@ -263,26 +263,30 @@
                         <p><strong>What is it for?</strong> It helps an owner-operator resolve uncertain or conflicting financial facts without silently converting extraction into truth.</p>
                         <p><strong>How is it used?</strong> The system runs deterministic extraction first, optionally uses models as auditors or comparison tools, and routes low-confidence or conflicting results to human review.</p>
                         <p><strong>Why does it matter?</strong> Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.</p>
-                        <p><strong>Evidence and status:</strong> Current remote <code>main</code> passed full validation. A synthetic known-answer harness exercises service-layer code, but its 6-pass / 9-pending result is incomplete and uncertified. No production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim is made.</p>
+                        <p><strong>Evidence and status:</strong> Current accepted <code>main</code> passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made.</p>
                         <div class="approach-case-study">
                             <a href="/projects/budget-triage.html" class="case-study-link">Budget Triage →</a>
                         </div>
                     </article>
                 </div>
 
-                <h3>Supporting implementation evidence</h3>
+                <h3>Public implementation evidence</h3>
                 <ul class="skill-snapshot-list">
-                    <li>
-                        <strong>audit-spec</strong>
-                        <span>A public evidence-first audit method for AI-agent-operated codebases. <b>Demonstrates:</b> machine-readable contracts, deterministic drift checking, and bias-aware workflows. <b>Evidence and status:</b> 2,075-line specification, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. <a href="https://github.com/verlyn13/agentic-architecture-audit" aria-label="Agentic Architecture Audit project on GitHub">Inspect the public project →</a></span>
-                    </li>
                     <li>
                         <strong>Host Capability Substrate</strong>
                         <span>A public schema-driven layer that turns implicit host access into explicit capabilities and authorization. <b>Demonstrates:</b> typed authority, provenance, scoped grants, and CI-enforced architecture. <b>Evidence and status:</b> 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, and a composed CI gate. <a href="/projects/host-capability-substrate.html">Examine the implementation →</a></span>
                     </li>
                     <li>
-                        <strong>ScopeCam</strong>
-                        <span>A private Android/Kotlin/C++ UVC microscopy application. <b>Demonstrates:</b> native systems engineering, USB lifecycle debugging, rendering, diagnostics, and client delivery. <b>Evidence and status:</b> signed <code>0.1-alpha</code> client build delivered in June 2026; current version <code>0.1.1-alpha</code>, intentionally unlinked and not broadly released, with broader acceptance open. <a href="/projects/scopecam.html">Read the public-safe case study →</a></span>
+                        <strong>Agentic Architecture Audit</strong>
+                        <span>A public evidence-first audit method for AI-agent-operated codebases. <b>Demonstrates:</b> machine-readable contracts, deterministic drift checking, and bias-aware workflows. <b>Evidence and status:</b> 2,075-line <code>audit-spec</code>, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. <a href="https://github.com/verlyn13/agentic-architecture-audit" aria-label="Agentic Architecture Audit project on GitHub">Inspect the public project →</a></span>
+                    </li>
+                </ul>
+
+                <h3>Representative delivery evidence</h3>
+                <ul class="skill-snapshot-list">
+                    <li>
+                        <strong>Dicee</strong>
+                        <span>A live family multiplayer game for mobile browsers, built as a complete public system. <b>Demonstrates:</b> Rust-to-WebAssembly delivery, realtime state through Cloudflare Durable Objects and WebSockets, SvelteKit, persistence, and end-to-end deployment. <b>Evidence and status:</b> public source and a live deployment at the verified canonical URL; traffic, performance, bundle-size, and current test-count claims remain withheld. <a href="/projects/dicee.html">Review the delivered system →</a></span>
                     </li>
                 </ul>
 

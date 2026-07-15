@@ -20,8 +20,8 @@ judgment, evidence discipline, and clear boundaries around agentic systems.
 
 The first three projects show the throughline from evaluation evidence, to agent
 authority, to an applied financial workflow. The remaining projects provide
-focused evidence in audit methodology, typed authorization, and native systems
-engineering.
+focused evidence in typed authorization, audit methodology, and delivered
+software.
 
 ### Agentic-Coding Evaluation Lab - fail-closed evaluation evidence
 
@@ -66,35 +66,25 @@ Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
 
 **Private Bun/TypeScript/Hono/PostgreSQL working prototype**
 
-- Built a workflow that runs deterministic financial-document extraction first,
-  preserves provenance for optional model-assisted comparison, and routes
-  uncertain or invalid output to human review before acceptance.
+Private financial evidence workbench combining deterministic-first document
+processing, provenance, tenant isolation, exact monetary semantics, and
+fail-closed human review. Private technical walkthrough available during an
+interview process.
+
 - Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
-  append-only categorization decisions, authentication, Plaid, Infisical, and
-  OpenTelemetry surfaces; current remote-main CI is green across more than
-  11,000 named-suite test cases.
+  append-only categorization decisions, authentication, connected-account,
+  secret-custody, and OpenTelemetry surfaces; the independently verified Phase
+  3b receipt passed full validation.
 - Added a merged synthetic known-answer certification slice with rollback
   validation and structured service-level evidence events; its current result is
   6 passing and 9 pending assertions, explicitly incomplete and uncertified.
+- Established bounded synthetic Phase 3b browser-to-service correlation; this
+  does not prove UI state, production operation, financial correctness, or
+  source-through-tax execution.
 - Makes no production, real-user, financial-outcome, live-provider-performance,
-  or completed source-through-tax claim; private source is intentionally
-  unlinked.
+  tax-readiness, or completed source-through-tax claim.
 
 Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
-
-### audit-spec - evidence-first audit methodology for AI-agent-operated codebases
-
-**Specification and Python tooling**
-
-- Authored a two-stage, evidence-first audit specification of 2,075
-  lines that separates discovery from judgment to counter LLM confirmation bias.
-- Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
-  confidence x weight priority model.
-- Built a stdlib-only Python drift linter with 10 deterministic checks,
-  including content-hash binding of derived documents to specification bytes.
-- Wired a 27-case negative self-test into pre-commit and CI.
-
-Public proof: https://github.com/verlyn13/agentic-architecture-audit
 
 ### Host Capability Substrate - typed governance layer for host-level AI agents
 
@@ -112,20 +102,31 @@ Public proof: https://github.com/verlyn13/agentic-architecture-audit
 
 Public proof: https://github.com/jefahnierocks/host-capability-substrate
 
-### ScopeCam - native Android UVC camera application
+### Agentic Architecture Audit - evidence-first audit methodology for AI-agent-operated codebases
 
-**Happy Patterns LLC; private proprietary alpha**
+**Specification and Python tooling**
 
-- Built a multi-module Android/Kotlin/Compose application with a C++/JNI UVC
-  engine, vendored USB/image libraries, synchronized hardware-buffer rendering,
-  persistence, and debug/QA telemetry.
-- Traced a replug ANR across the JVM/native teardown boundary and implemented a
-  bounded, device-verified recovery with its remaining leak tradeoff documented.
-- Delivered a signed client `0.1-alpha` build in June 2026. The current
-  application is `0.1.1-alpha`; private/no-link and not broadly released, with
-  broader device/release acceptance still open.
+- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines that separates
+  discovery from judgment to counter LLM confirmation bias.
+- Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
+  confidence x weight priority model.
+- Built a stdlib-only Python drift linter with 10 deterministic checks,
+  including content-hash binding of derived documents to specification bytes.
+- Wired a 27-case negative self-test into pre-commit and CI.
 
-Public-safe case study: https://jvjohnson.dev/projects/scopecam.html
+Public proof: https://github.com/verlyn13/agentic-architecture-audit
+
+### Dicee - representative delivered software
+
+**Rust, WebAssembly, SvelteKit, Cloudflare Durable Objects, WebSockets**
+
+- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules
+  engine, realtime state through Cloudflare Durable Objects and WebSockets, and
+  a SvelteKit client.
+- Public source and a live deployment demonstrate end-to-end delivery; traffic,
+  performance, bundle-size, and current test-count claims remain withheld.
+
+Public project: https://jvjohnson.dev/projects/dicee.html
 
 ## Technical skills
 

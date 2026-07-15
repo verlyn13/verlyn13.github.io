@@ -35,16 +35,6 @@ systems.
 Evaluation is not enough if agents operate inside vague authority. My governance
 work makes the action surface explicit.
 
-**audit-spec** is a two-stage, evidence-first audit methodology for
-AI-agent-operated codebases. It separates discovery from judgment to counter LLM
-confirmation bias, defines structured output schemas, and uses deterministic
-drift checks to keep derived documents bound to the specification.
-
-**Host Capability Substrate** models local-machine authority for host-level AI
-agents. It treats capabilities, policy decisions, provenance-typed evidence,
-audit chains, and scoped authorization grants as typed objects rather than
-implicit shell access.
-
 The **governance and agent-control architecture** applies the same discipline
 across people, agents, repositories, credentials, infrastructure, and runtime
 systems. Its design separates decision rights, bounded mandates, authorization,
@@ -60,9 +50,26 @@ and the anonymized case study makes no enterprise-adoption claim.
 ideas outside the agent-control layer. It preserves extraction provenance, exact
 monetary semantics, tenant isolation, append-only decisions, and human acceptance
 of uncertain data. A merged synthetic known-answer slice exercises rollback and
-structured service-level evidence, but its current result remains incomplete and
-uncertified. It is not evidence of production use, financial outcomes, or
-completed source-through-tax certification.
+structured service-level evidence; its 6 passing / 9 pending result remains
+incomplete and uncertified. Bounded Phase 3b evidence preserves
+browser-to-service correlation for one local synthetic authenticated,
+tenant-scoped, read-only request, but does not prove UI state, production,
+financial correctness, or source-through-tax execution. Private source.
+Sanitized architecture materials, synthetic evidence, and a guided technical
+walkthrough are available for relevant hiring conversations.
+
+## Public implementation evidence
+
+**Host Capability Substrate** models local-machine authority for host-level AI
+agents. It treats capabilities, policy decisions, provenance-typed evidence,
+audit chains, and scoped authorization grants as typed objects rather than
+implicit shell access.
+
+**Agentic Architecture Audit** applies the two-stage, evidence-first
+`audit-spec` to AI-agent-operated codebases. It separates discovery from
+judgment to counter LLM confirmation bias, defines structured output schemas,
+and uses deterministic drift checks to keep derived documents bound to the
+specification.
 
 ## Mathematical habit
 
