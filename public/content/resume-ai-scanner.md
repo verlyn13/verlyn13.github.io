@@ -122,13 +122,12 @@ Evidence:
 
 - Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
   append-only decisions, authentication, connected-account, secret-custody, and
-  observability surfaces; the independently verified Phase 3b receipt passed
-  full validation.
+  observability surfaces; accepted main passed full validation.
 - A merged synthetic known-answer certification slice reports 6 passing and 9
   pending assertions; it remains incomplete and uncertified.
-- Established bounded synthetic Phase 3b browser-to-service correlation. This
-  does not prove UI state, production operation, financial correctness, or
-  source-through-tax execution.
+- Established an independently verified, bounded synthetic browser-to-service
+  observation with matching correlation evidence. This does not prove UI state,
+  production operation, financial correctness, or source-through-tax execution.
 - Private/no-link working prototype. No production, real-user,
   financial-outcome, live-provider-performance, tax-readiness, or completed
   source-through-tax claim.

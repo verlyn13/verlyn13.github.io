@@ -73,14 +73,14 @@ interview process.
 
 - Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
   append-only categorization decisions, authentication, connected-account,
-  secret-custody, and OpenTelemetry surfaces; the independently verified Phase
-  3b receipt passed full validation.
+  secret-custody, and OpenTelemetry surfaces; accepted `main` passed full
+  validation.
 - Added a merged synthetic known-answer certification slice with rollback
   validation and structured service-level evidence events; its current result is
   6 passing and 9 pending assertions, explicitly incomplete and uncertified.
-- Established bounded synthetic Phase 3b browser-to-service correlation; this
-  does not prove UI state, production operation, financial correctness, or
-  source-through-tax execution.
+- Established an independently verified, bounded synthetic browser-to-service
+  observation with matching correlation evidence; this does not prove UI state,
+  production operation, financial correctness, or source-through-tax execution.
 - Makes no production, real-user, financial-outcome, live-provider-performance,
   tax-readiness, or completed source-through-tax claim.
 

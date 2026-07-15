@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: bf851849a987580a917c18030029ee1d5a9f1cfab92bad180ec23280818db0c8
-html_hash: 2c8e2f6845e19a7c6cf96fd8904240489f7c0b8b959c2bfaf35c910e6309d539
+content_hash: 6d7dda655e84f2b572c999ee74a87a5046ce3ccecc69ba34907c4a07db2a6bd7
+html_hash: 623dccbc4c6b491ca5cb67f425f8fdff4ee16cc79247d1f8f010b52e97dec18b
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -23,7 +23,7 @@ I am also a Ph.D. mathematician and backend-oriented systems researcher. The mat
 
 Homer, Alaska
 
-Selected evidence [Evaluation Lab](#evaluation-lab) [Agent-control architecture](#governance-agent-control) [Budget Triage](#budget-triage)
+Selected evidence [Agentic-Coding Evaluation Lab — model-change evidence](#evaluation-lab) [Governance and agent-control architecture — bounded authority](#governance-agent-control) [Budget Triage — traceable financial evidence](#budget-triage)
 
 Current résumé ↓
 

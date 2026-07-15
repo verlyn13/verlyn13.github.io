@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 240fa47c45ba7f18ee812d46abab6d1f3a1bb82556b7215bfc60137324fa9b25
-html_hash: 7e27f9a11ff30a4e93f4fd29ec70bf83e77f0f93c89b9dd384be9f149108ef14
+content_hash: 7d4b75d312e126f0b9a126d6324870eeeb63c7db7652a56c277c40559e9ab9e2
+html_hash: 8368954cb9a41bbee9bfc458a1c1c5829687699d0b4ace7b4c1ed10f2b85b720
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -60,9 +60,9 @@ Private Bun · TypeScript · Hono · PostgreSQL working prototype
 
 Private financial evidence workbench combining deterministic-first document processing, provenance, tenant isolation, exact monetary semantics, and fail-closed human review. Private technical walkthrough available during an interview process.
 
-- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only categorization decisions, authentication, connected-account, secret-custody, and OpenTelemetry surfaces; the independently verified Phase 3b receipt passed full validation.
+- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only categorization decisions, authentication, connected-account, secret-custody, and OpenTelemetry surfaces; accepted `main` passed full validation.
 - Added a merged synthetic known-answer certification slice with rollback validation and structured service-level evidence events; its current result is 6 passing and 9 pending assertions, explicitly incomplete and uncertified.
-- Established bounded synthetic Phase 3b browser-to-service correlation; this does not prove UI state, production operation, financial correctness, or source-through-tax execution.
+- Established an independently verified, bounded synthetic browser-to-service observation with matching correlation evidence; this does not prove UI state, production operation, financial correctness, or source-through-tax execution.
 - Makes no production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim.
 
 ### [Host Capability Substrate](/projects/host-capability-substrate.html) — typed governance for host-level AI agents
