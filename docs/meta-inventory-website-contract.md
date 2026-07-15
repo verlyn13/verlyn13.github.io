@@ -3,7 +3,7 @@ title: Meta-inventory / website project-intelligence contract
 category: architecture
 component: project-intelligence-feed
 status: active
-version: 0.2.0
+version: 0.2.2
 last_updated: 2026-07-15
 tags: [project-intelligence, meta-inventory, website, feed, provenance, responsibility]
 priority: high
@@ -41,9 +41,19 @@ Current contract:
 - Website compatibility code and feed delivery use separate PRs. A compatibility PR starts from clean
   remote website `main`; a later feed-only PR starts only after every producer gate passes.
 
-Current intake verdict (2026-07-15): **HOLD**. The producer candidate is clean and current, but it is
-not admissible because the selected ScopeCam record has no accepted default-branch manifest. Do not copy
-that candidate into this repository or use an active dirty website checkout as a delivery target.
+Current intake verdict (2026-07-15): **PRODUCER ACCEPTED; FEED-ONLY DELIVERY READY**. `meta-inventory`
+PR #14 merged to `origin/main` at `447ac1c37c77b4b03c42f95fcfee0625e5cf1ea8`. The accepted tree passes
+`generate_feed.py --check` and the enforced gate report: criteria (a)–(e) pass; 27 physical / 27 unique
+manifests are valid, joined, and graph-clean; selected-manifest missing/disagreement counts are `0/0`;
+and `kbDirty`, feed-wide `stale`, and `degradedNoManifests` are all false. Two stale and four unknown-age
+project records remain visibly flagged and nonblocking.
+
+Accepted producer receipt: source lock SHA-256
+`b33c564c4f3ec4b182bbc16406bbe8137c29ef4690dc4e3790fb4372adf6032e`, manifest snapshot SHA-256
+`a91dee80d987ca7167c9720a5b38077545112bad63b9499663dc1092a70ca853`, and 15-project feed SHA-256
+`780af01d9cc9abc9f5abade0a96052495921c4b8e586b5b61e3d6e5c4d0c0b3a`. The website's accepted feed
+copy remains unchanged in this narrative PR. Deliver that producer artifact only from a clean website
+worktree in a separate PR changing `public/data/projects.json`; operator merge approval remains required.
 
 Target evolution:
 
@@ -111,7 +121,8 @@ Already adopted in the accepted feed:
   only for older schema-0 feeds that omit it.
 - Verified `deploymentUrls[]` for public-linkable deployed systems.
 
-Consumer support implemented for the held candidate (not yet present in the accepted website copy):
+Consumer support implemented for the accepted producer feed (not yet present in the accepted website
+copy):
 
 - Per-project `operationalState` and `publicLinkable`. Runtime state does not imply a public URL;
   `publicLinkable=false` suppresses every deployment link regardless of other link fields.

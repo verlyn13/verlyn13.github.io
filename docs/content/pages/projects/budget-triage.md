@@ -4,8 +4,8 @@ type: page
 source_file: projects/budget-triage.html
 source_selector: main
 route: /projects/budget-triage.html
-content_hash: 3595bbf30a4603eb7275742b7e1e1b1a4ddc95e2331d29b6c05c7b691019e68f
-html_hash: 291bfc836186c4995ab915fb69f15bd1f97771cae7543479058012bd377c3a28
+content_hash: 614a1f8b2ad1f21a5487c0e3d102f9152d1185e9247b91c0155a664ba21749a9
+html_hash: 9a5a06b13bbdbbf3fe2c55b34669ccd3e14a2a7cd8440e727300690ebc812c08
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -39,13 +39,17 @@ Financial automation needs provenance, exact arithmetic, tenant isolation, human
 
 ## Evidence and status
 
-- Accepted remote `main` at `c4b399db` passed its complete validation suite in run `29431070131`.
-- The merged synthetic known-answer and service-observation harness reports 6 pass and 9 pending; it is explicitly incomplete and uncertified.
-- The repository is private and intentionally unlinked.
+- Accepted remote `main` at `a451189590ee55d53fb5b3b4695505e1a1a49a18`, merged through PR #285, passed full validation in run `29450681929`.
+- The Phase 3b-specific claim receipt remains PR #284 at `427ce40e3bc80c45c151f2f62357405e49f9e5ee`, with successful full-validation run `29437790176`.
+- The merged synthetic known-answer and service-observation harness reports 6 passing / 9 pending; it is explicitly incomplete and uncertified.
+- A bounded synthetic Phase 3b observation preserves matching correlation across one local synthetic authenticated, tenant-scoped, read-only browser request, backend observation, response, client log, and diagnostic timeline. It does not prove UI state, production telemetry, financial correctness, or source-through-tax execution.
+- The bounded Phase 4 CSV sub-slice on current `main` passed independent source review and its governed synthetic-corpus check. It does not establish real-data performance, broader Phase 4 completion, or product readiness.
+
+Private source. Sanitized architecture materials, synthetic evidence, and a guided technical walkthrough are available for relevant hiring conversations.
 
 ### What this does not demonstrate
 
-No production deployment, public application, real-user adoption, financial outcome, live-provider performance, tax-filing readiness, HTTP/browser observation, or completed source-through-tax certification is claimed.
+No production deployment, public application, real-user adoption, financial outcome, live-provider performance, tax-filing readiness, financial correctness, real-data performance, broader Phase 4 completion, or completed source-through-tax certification is claimed.
 
 ## Technical shape
 

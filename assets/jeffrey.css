@@ -718,6 +718,10 @@ em {
   border-bottom: var(--border);
 }
 
+.skill-snapshot-list--single > li {
+  grid-column: 1 / -1;
+}
+
 .skill-snapshot-list strong {
   display: block;
   margin-bottom: var(--space-1);

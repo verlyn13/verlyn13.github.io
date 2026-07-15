@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: e8b391b3313dd1ea357a622d3e8ac4d7804820f433249a345d9968db299bbd16
-html_hash: ccdfc753ab9dab03e9405b7cdb2416b900143789b590996fab677eed9f0f097d
+content_hash: 522b4b363f4298ba9a44a656d8811762011a864f63e60f9b9a198bc06922d84a
+html_hash: 6982b42e601081203c724f702c1862691e887de6dceb3694f064331ca8ec41a3
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -53,11 +53,11 @@ Bounded authority, evidence-preserving delegation, policy-as-code, safe refusal,
 
 Governance
 
-ScopeCam
+Budget Triage
 
-Private Android/Kotlin/C++ UVC microscopy application; a signed client alpha was delivered in June 2026, with broader release acceptance still open.
+Private financial evidence workbench with provenance, exact monetary semantics, tenant isolation, and fail-closed human review. Its synthetic known-answer result remains incomplete and uncertified.
 
-Development
+Applied evidence
 
 ### Technical Proficiency
 

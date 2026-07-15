@@ -19,10 +19,10 @@ The recruiter-facing first layer uses three connected examples:
 - **Budget Triage** — provenance, exact monetary handling, uncertainty, observability, and human review
   in a private financial evidence workbench.
 
-`audit-spec`, Host Capability Substrate, and ScopeCam provide compact supporting evidence. The grouped
-`/projects/` index presents the wider body of work without creating a second portfolio hierarchy.
-Academic experience, publications, applied statistics, teaching, and earlier systems work remain
-available as relevant background.
+Host Capability Substrate and Agentic Architecture Audit provide compact public implementation
+evidence. Dicee follows as representative delivery evidence; ScopeCam and the remaining projects sit
+in the grouped `/projects/` breadth layer. Academic experience, publications, applied statistics,
+teaching, and earlier systems work remain available as relevant background.
 
 ## Architecture
 

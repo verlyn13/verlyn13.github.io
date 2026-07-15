@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: f9a1403eef0a65add883732cc04f4a90ba8cd06318dea4d3ad163054ce307a0c
-html_hash: 6f8fd696673edf89e6306bd5395fccbc50dc6ff8e21de3f82e8c33d279fb8bd8
+content_hash: 6d7dda655e84f2b572c999ee74a87a5046ce3ccecc69ba34907c4a07db2a6bd7
+html_hash: 623dccbc4c6b491ca5cb67f425f8fdff4ee16cc79247d1f8f010b52e97dec18b
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -23,7 +23,7 @@ I am also a Ph.D. mathematician and backend-oriented systems researcher. The mat
 
 Homer, Alaska
 
-Selected evidence [Evaluation Lab](#evaluation-lab) [Agent-control architecture](#governance-agent-control) [Budget Triage](#budget-triage)
+Selected evidence [Agentic-Coding Evaluation Lab — model-change evidence](#evaluation-lab) [Governance and agent-control architecture — bounded authority](#governance-agent-control) [Budget Triage — traceable financial evidence](#budget-triage)
 
 Current résumé ↓
 
@@ -103,15 +103,18 @@ Traceable financial records with uncertainty routed to human review.
 
 **Why does it matter?** Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.
 
-**Evidence and status:** Current remote `main` passed full validation. A synthetic known-answer harness exercises service-layer code, but its 6-pass / 9-pending result is incomplete and uncertified. No production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim is made.
+**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made.
 
 Budget Triage →
 
-### Supporting implementation evidence
+### Public implementation evidence
 
-- **audit-spec** A public evidence-first audit method for AI-agent-operated codebases. **Demonstrates:** machine-readable contracts, deterministic drift checking, and bias-aware workflows. **Evidence and status:** 2,075-line specification, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. [Inspect the public project →](https://github.com/verlyn13/agentic-architecture-audit)
 - **Host Capability Substrate** A public schema-driven layer that turns implicit host access into explicit capabilities and authorization. **Demonstrates:** typed authority, provenance, scoped grants, and CI-enforced architecture. **Evidence and status:** 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, and a composed CI gate. [Examine the implementation →](/projects/host-capability-substrate.html)
-- **ScopeCam** A private Android/Kotlin/C++ UVC microscopy application. **Demonstrates:** native systems engineering, USB lifecycle debugging, rendering, diagnostics, and client delivery. **Evidence and status:** signed `0.1-alpha` client build delivered in June 2026; current version `0.1.1-alpha`, intentionally unlinked and not broadly released, with broader acceptance open. [Read the public-safe case study →](/projects/scopecam.html)
+- **Agentic Architecture Audit** A public evidence-first audit method for AI-agent-operated codebases. **Demonstrates:** machine-readable contracts, deterministic drift checking, and bias-aware workflows. **Evidence and status:** 2,075-line `audit-spec`, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. [Inspect the public project →](https://github.com/verlyn13/agentic-architecture-audit)
+
+### Representative delivery evidence
+
+- **Dicee** A live family multiplayer game for mobile browsers, built as a complete public system. **Demonstrates:** Rust-to-WebAssembly delivery, realtime state through Cloudflare Durable Objects and WebSockets, SvelteKit, persistence, and end-to-end deployment. **Evidence and status:** public source and a live deployment at the verified canonical URL; traffic, performance, bundle-size, and current test-count claims remain withheld. [Review the delivered system →](/projects/dicee.html)
 
 [Explore the full body of work →](/projects/)
 

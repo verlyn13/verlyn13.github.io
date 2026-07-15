@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 7462bd4b947c1733aa56cc56f4bc3c8d8391e1e96d7aaf4fb4c44e769a42af66
-html_hash: f57e7013c2164aa48a91c2bbeb89068fd92382eedfa8ff027d7bad93799fa031
+content_hash: 7d4b75d312e126f0b9a126d6324870eeeb63c7db7652a56c277c40559e9ab9e2
+html_hash: 8368954cb9a41bbee9bfc458a1c1c5829687699d0b4ace7b4c1ed10f2b85b720
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -58,17 +58,12 @@ An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudf
 
 Private Bun · TypeScript · Hono · PostgreSQL working prototype
 
-- Built a workflow that runs deterministic financial-document extraction first, preserves provenance for optional model-assisted comparison, and routes uncertain or invalid output to human review before acceptance.
-- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only categorization decisions, authentication, Plaid, Infisical, and OpenTelemetry surfaces; current remote-main CI is green across more than 11,000 named-suite test cases.
+Private financial evidence workbench combining deterministic-first document processing, provenance, tenant isolation, exact monetary semantics, and fail-closed human review. Private technical walkthrough available during an interview process.
+
+- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only categorization decisions, authentication, connected-account, secret-custody, and OpenTelemetry surfaces; accepted `main` passed full validation.
 - Added a merged synthetic known-answer certification slice with rollback validation and structured service-level evidence events; its current result is 6 passing and 9 pending assertions, explicitly incomplete and uncertified.
-- Makes no production, real-user, financial-outcome, live-provider-performance, or completed source-through-tax claim; private source is intentionally unlinked.
-
-### [audit-spec](https://github.com/verlyn13/agentic-architecture-audit) — evidence-first audit methodology
-
-Specification · Python tooling
-
-- Authored a two-stage, evidence-first audit specification of 2,075 lines with an 11-dimension rubric and 12 JSON output schemas.
-- Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test wired into pre-commit and CI.
+- Established an independently verified, bounded synthetic browser-to-service observation with matching correlation evidence; this does not prove UI state, production operation, financial correctness, or source-through-tax execution.
+- Makes no production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim.
 
 ### [Host Capability Substrate](/projects/host-capability-substrate.html) — typed governance for host-level AI agents
 
@@ -77,13 +72,19 @@ TypeScript · Zod · JSON Schema
 - Designed 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about 500 tests.
 - Modeled capabilities, policy decisions, provenance-typed evidence, audit chains, and scoped authorization grants under a 19-invariant governance charter and composed CI gate.
 
-### [ScopeCam](/projects/scopecam.html) — private Android UVC camera application
+### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) — evidence-first audit methodology
 
-Happy Patterns LLC · Android · Kotlin · Jetpack Compose · C++/JNI
+Specification · Python tooling
 
-- Built a multi-module Android application with a C++/JNI UVC engine, synchronized hardware-buffer rendering, persistence, and debug/QA telemetry.
-- Traced a replug ANR across the JVM/native teardown boundary and implemented a bounded, device-verified recovery with its remaining leak tradeoff documented.
-- Delivered a signed client `0.1-alpha` build in June 2026. The current application is `0.1.1-alpha`; private/no-link and not broadly released, with broader device/release acceptance still open.
+- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines with an 11-dimension rubric and 12 JSON output schemas.
+- Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test wired into pre-commit and CI.
+
+### [Dicee](/projects/dicee.html) — representative delivered software
+
+Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
+
+- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules engine, realtime state through Cloudflare Durable Objects and WebSockets, and a SvelteKit client.
+- Public source and a live deployment demonstrate end-to-end delivery; traffic, performance, bundle-size, and current test-count claims remain withheld.
 
 ## Technical skills
 

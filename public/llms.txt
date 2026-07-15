@@ -18,6 +18,18 @@ https://jvjohnson.dev/eval-lab-methodology/
 Anonymized governance case study:
 https://jvjohnson.dev/projects/governance-agent-control.html
 
+Budget Triage public-safe case study:
+https://jvjohnson.dev/projects/budget-triage.html
+
+Host Capability Substrate:
+https://jvjohnson.dev/projects/host-capability-substrate.html
+
+Agentic Architecture Audit:
+https://github.com/verlyn13/agentic-architecture-audit
+
+Representative delivery evidence — Dicee:
+https://jvjohnson.dev/projects/dicee.html
+
 Full body of work:
 https://jvjohnson.dev/projects/
 
