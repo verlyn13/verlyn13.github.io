@@ -19,6 +19,9 @@ html {
   color-scheme: light;
   font-size: 16px;
   scroll-behavior: smooth;
+  /* Offset in-page anchor targets by the sticky-nav height (.site-nav min-height: 64px) so
+     focused/linked sections are not hidden beneath it — WCAG 2.2 SC 2.4.11. */
+  scroll-padding-top: calc(64px + var(--space-2));
 }
 
 body {
@@ -82,7 +85,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 3px solid var(--ring);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -2794,7 +2797,7 @@ th {
    Focus: accessibility as a quiet default
    ------------------------------------------------------------ */
 :focus-visible {
-  outline: 3px solid var(--ring);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
   border-radius: 10px;
 }
