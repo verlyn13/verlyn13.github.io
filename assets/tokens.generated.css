@@ -5,15 +5,15 @@
 
 :root {
   --ink: hsl(220 18% 18%);
-  --paper: hsl(45 25% 97%);
+  --paper: hsl(44 20% 97%);
   --muted: hsl(220 12% 45%);
-  --accent: hsl(212 85% 45%);
-  --accent-light: hsl(212 85% 90%);
-  --accent-subtle: hsl(212 85% 96%);
-  --accent-dark: hsl(212 85% 35%);
-  --accent-2: hsl(160 55% 35%);
+  --accent: hsl(220 70% 44%);
+  --accent-light: hsl(220 70% 90%);
+  --accent-subtle: hsl(220 70% 96%);
+  --accent-dark: hsl(220 70% 35%);
+  --accent-2: hsl(155 50% 33%);
   --warn: hsl(22 90% 52%);
-  --ok: hsl(140 55% 35%);
+  --ok: hsl(155 50% 33%);
   --heading: hsl(220 18% 26%); /** h3 ink */
   --heading-2: hsl(220 18% 30%); /** h4 ink */
   --surface: hsl(0 0% 100% / 0.75); /** raised card surface */
@@ -21,25 +21,25 @@
   --surface-hover: hsl(0 0% 100% / 0.9); /** pill/card hover surface */
   --on-accent: hsl(0 0% 100%); /** text/icon on an accent fill */
   --ink-print: #000; /** pure black for @media print */
-  --inset-warm: hsl(45 25% 96%); /** warm inset/section background */
+  --inset-warm: hsl(44 20% 96%); /** warm inset/section background */
   --inset-cool: hsl(220 25% 96%); /** cool neutral chip background */
   --code-bg: hsl(220 25% 98%);
-  --paper-deep: hsl(45 25% 95%); /** body-gradient end */
-  --paper-deeper: hsl(45 25% 94%);
-  --ring: hsl(212 85% 45% / 0.35); /** focus ring + accent border */
-  --accent-tint: hsl(212 85% 45% / 0.06); /** callout tint */
-  --rule-highlight: hsl(212 85% 45% / 0.15); /** rule-of-thumb highlight */
+  --paper-deep: hsl(44 20% 95%); /** body-gradient end */
+  --paper-deeper: hsl(44 20% 94%);
+  --ring: hsl(220 70% 44% / 0.35); /** focus ring + accent border */
+  --accent-tint: hsl(220 70% 44% / 0.06); /** callout tint */
+  --rule-highlight: hsl(220 70% 44% / 0.15); /** rule-of-thumb highlight */
   --border-faint: hsl(220 18% 18% / 0.06);
   --border-soft: hsl(220 18% 18% / 0.08);
   --border-hairline: hsl(220 18% 18% / 0.1);
-  --ok-bg: hsl(140 55% 90%);
-  --ok-tint: hsl(140 55% 35% / 0.08);
-  --green-bg: hsl(160 55% 88%);
+  --ok-bg: hsl(155 45% 88%);
+  --ok-tint: hsl(155 50% 33% / 0.08);
+  --green-bg: hsl(155 45% 88%);
   --amber-bg: hsl(45 90% 88%);
   --amber-ink: hsl(22 90% 35%);
-  --ok-ink: hsl(140 55% 30%); /** live-pill text on --ok-bg (AA 4.76:1) */
-  --accent-ink: hsl(212 85% 40%); /** development-pill text on --accent-light (AA 4.71:1) */
-  --green-ink: hsl(160 55% 29%); /** production-pill text on --green-bg (AA 4.79:1) */
+  --ok-ink: hsl(155 50% 28%); /** live-pill text on --ok-bg (merged green ramp; AA verified by check:contrast) */
+  --accent-ink: hsl(220 70% 40%); /** development-pill text on --accent-light (AA verified by check:contrast) */
+  --green-ink: hsl(155 50% 28%); /** production-pill text on --green-bg (AA verified by check:contrast) */
   --warn-tint: hsl(22 90% 52% / 0.1);
   --border: 1px solid hsl(220 18% 88%);
   --shadow: 0 10px 30px hsl(220 25% 15% / 0.1);
@@ -49,7 +49,28 @@
   --shadow-float: 0 4px 12px hsl(220 25% 15% / 0.1); /** back-to-top button */
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --lh: 1.55;
+  --lh: 1.55; /** body default line-height (alias of --lh-base) */
+  --text-3xs: 0.75rem; /** uppercase eyebrow labels; flagship/status/badge tags; smallest mono facets */
+  --text-2xs: 0.8125rem; /** meta rows, captions, mono stack/source/axis, small pill labels */
+  --text-xs: 0.9375rem; /** secondary body, card thesis/description, list items, section intro, location */
+  --text-sm: 1rem; /** base body */
+  --text-md: 1.0625rem; /** lead/supporting paragraphs, hero bio/pitch, colophon lead, h4 */
+  --text-lg: 1.1875rem; /** h3, subtitles, evidence-card value */
+  --text-h2: clamp(1.35rem, 1.3vw + 1rem, 1.85rem); /** section-divider headings */
+  --text-h1: clamp(1.8rem, 2.2vw + 1rem, 2.6rem); /** page titles */
+  --text-display: clamp(2.35rem, 4.5vw + 1rem, 3.5rem); /** the home positioning claim only (type-as-signature) */
+  --lh-display: 1.05; /** display claim + large clamped headings */
+  --lh-heading: 1.15; /** h1-h4 */
+  --lh-snug: 1.4; /** compact UI, badges, stat captions */
+  --lh-base: 1.55; /** body default */
+  --lh-relaxed: 1.6; /** long prose */
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-strong: 650; /** house 'warm-but-not-squishy' emphasis weight */
+  --tracking-tight: -0.02em; /** display + headings */
+  --tracking-normal: 0.01em; /** body */
+  --tracking-label: 0.05em; /** uppercase eyebrows */
   --radius: 14px;
   --radius-sm: 10px;
   --space-1: 0.35rem;
@@ -57,6 +78,8 @@
   --space-3: 0.95rem;
   --space-4: 1.4rem;
   --space-5: 2rem;
+  --space-6: 3rem;
+  --section-gap: clamp(2.5rem, 6vw, 4rem); /** standard major-section rhythm (global; was experience-page-only) */
   --measure: 72ch;
   --measure-wide: 1080px;
 }
