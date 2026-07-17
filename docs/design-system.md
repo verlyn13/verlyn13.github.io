@@ -46,17 +46,17 @@ hardcode** (spacing especially — no arbitrary px). Colors are authored in mode
 | Token | Value | Role |
 |---|---|---|
 | `--ink` | `hsl(220 18% 18%)` | Primary text |
-| `--paper` | `hsl(45 25% 97%)` | Page background (warm white); `body` is a gradient `--paper → hsl(45 25% 95%)` |
+| `--paper` | `hsl(44 20% 97%)` | Page background (warm paper-white); `body` is a gradient `--paper → hsl(44 20% 95%)` |
 | `--muted` | `hsl(220 12% 45%)` | Secondary/subdued text, hero kicker, meta, captions |
-| `--accent` | `hsl(212 85% 45%)` | **Primary blue** — links, emphasis, the one primary CTA, the flagship. **Reserved** (see §5). |
-| `--accent-light` | `hsl(212 85% 90%)` | Light accent background (e.g., `status.development`) |
-| `--accent-subtle` | `hsl(212 85% 96%)` | Subtle accent tint — flagship card bg, "Now" band, soft hover |
-| `--accent-dark` | `hsl(212 85% 35%)` | Accent emphasis/hover — primary-CTA hover, "Now" label |
-| `--accent-2` | `hsl(160 55% 35%)` | Secondary green — "ship it" / production accents |
+| `--accent` | `hsl(220 70% 44%)` | **Primary blue** — links, emphasis, the one primary CTA, the flagship. **Reserved** (see §5). |
+| `--accent-light` | `hsl(220 70% 90%)` | Light accent background (e.g., `status.development`) |
+| `--accent-subtle` | `hsl(220 70% 96%)` | Subtle accent tint — flagship card bg, "Now" band, soft hover |
+| `--accent-dark` | `hsl(220 70% 35%)` | Accent emphasis/hover — primary-CTA hover, "Now" label |
+| `--accent-2` | `hsl(155 50% 33%)` | Secondary green — "ship it" / production accents (one green ramp) |
 | `--warn` | `hsl(22 90% 52%)` | Practical caution (orange) |
-| `--ok` | `hsl(140 55% 35%)` | Success (green) |
+| `--ok` | `hsl(155 50% 33%)` | Success (green) — merged with `--accent-2` into one 155° ramp |
 
-White on `--accent` is the standard inverted pairing (≈5.1:1, AA-pass). See §7.
+White on `--accent` is the standard inverted pairing (≈6.7:1, AA-pass). See §7.
 
 ### 2.2 Spacing (rem scale — never arbitrary px)
 

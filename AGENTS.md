@@ -138,7 +138,7 @@ mise run clean               # Remove dist/ and node_modules/
 > (Style Dictionary, `npm run tokens`), `@import`ed by `jeffrey.css`. See the invariants below.
 
 - **Spacing**: Rem-based scale via `--space-1` through `--space-5`. Never use arbitrary pixel values.
-- **Colors**: Blue accent `hsl(212 85% 45%)` (`--accent`), green secondary `hsl(160 55% 35%)` (`--accent-2`). Use semantic variables: `--ink` (text), `--paper` (bg), `--muted` (secondary text), `--accent` (links/emphasis).
+- **Colors**: Blue accent `hsl(220 70% 44%)` (`--accent`), green secondary `hsl(155 50% 33%)` (`--accent-2`). Use semantic variables: `--ink` (text), `--paper` (bg), `--muted` (secondary text), `--accent` (links/emphasis).
 - **Typography**: System sans-serif (`ui-sans-serif, system-ui`) via `--font`. Monospace via `--mono`. No web fonts.
 - **Layout**: `72ch` prose max-width (`--measure`); `--measure-wide` (1080px) widens the home Approach 2-up gallery only (ADR-0007). 768px mobile breakpoint.
 - **Borders/Shadows**: `--border`, `--shadow`, `--shadow-hard`, `--radius` (14px), `--radius-sm` (10px).

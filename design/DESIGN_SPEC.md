@@ -6,7 +6,7 @@ build: build-tokens.mjs # `npm run tokens`
 layers: [tokens, base, components, patterns, pages] # see layers.json
 themes: [light] # light-only today (docs/adr/0004-theming.md)
 human_reference: docs/design-system.md
-last_updated: 2026-07-15
+last_updated: 2026-07-16
 ---
 
 # DESIGN_SPEC — jvjohnson.dev
@@ -29,7 +29,11 @@ internal — the practical enforcement of "components never touch primitives").
 `border-faint` `border-soft` `border-hairline` `ok-bg` `ok-tint` `green-bg` `amber-bg` `amber-ink`
 `warn-tint` `ink-print`
 Shape/space/type: `border` `shadow` `shadow-hard` `shadow-lift` `shadow-soft` `shadow-float`
-`radius` `radius-sm` `space-1..5` `measure` `measure-wide` `font` `mono` `lh`
+`radius` `radius-sm` `space-1..6` `section-gap` `measure` `measure-wide` `font` `mono` `lh`
+Type scale: `text-3xs` `text-2xs` `text-xs` `text-sm` `text-md` `text-lg` `text-h2` `text-h1`
+`text-display` · line-height `lh-display` `lh-heading` `lh-snug` `lh-base` `lh-relaxed` · weight
+`fw-normal` `fw-medium` `fw-semibold` `fw-strong` · tracking `tracking-tight` `tracking-normal`
+`tracking-label`
 
 ## Voice / visual principles
 Rigorous, practical, systems-minded, warm-but-not-squishy. Academic credibility over commercial

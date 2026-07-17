@@ -2,11 +2,11 @@
   "palette": {
     "$type": "color",
     "blue": {
-      "strong": { "$value": "hsl(212 85% 35%)" },
-      "base": { "$value": "hsl(212 85% 45%)" },
-      "ink": { "$value": "hsl(212 85% 40%)" },
-      "light": { "$value": "hsl(212 85% 90%)" },
-      "subtle": { "$value": "hsl(212 85% 96%)" }
+      "strong": { "$value": "hsl(220 70% 35%)" },
+      "base": { "$value": "hsl(220 70% 44%)" },
+      "ink": { "$value": "hsl(220 70% 40%)" },
+      "light": { "$value": "hsl(220 70% 90%)" },
+      "subtle": { "$value": "hsl(220 70% 96%)" }
     },
     "ink": {
       "900": { "$value": "hsl(220 18% 18%)" },
@@ -21,21 +21,16 @@
       "shadow": { "$value": "hsl(220 25% 15%)" }
     },
     "paper": {
-      "97": { "$value": "hsl(45 25% 97%)" },
-      "96": { "$value": "hsl(45 25% 96%)" },
-      "95": { "$value": "hsl(45 25% 95%)" },
-      "94": { "$value": "hsl(45 25% 94%)" },
+      "97": { "$value": "hsl(44 20% 97%)" },
+      "96": { "$value": "hsl(44 20% 96%)" },
+      "95": { "$value": "hsl(44 20% 95%)" },
+      "94": { "$value": "hsl(44 20% 94%)" },
       "amber": { "$value": "hsl(45 90% 88%)" }
     },
     "green": {
-      "base": { "$value": "hsl(160 55% 35%)" },
-      "ink": { "$value": "hsl(160 55% 29%)" },
-      "bg": { "$value": "hsl(160 55% 88%)" }
-    },
-    "ok": {
-      "base": { "$value": "hsl(140 55% 35%)" },
-      "ink": { "$value": "hsl(140 55% 30%)" },
-      "bg": { "$value": "hsl(140 55% 90%)" }
+      "base": { "$value": "hsl(155 50% 33%)" },
+      "ink": { "$value": "hsl(155 50% 28%)" },
+      "bg": { "$value": "hsl(155 45% 88%)" }
     },
     "orange": {
       "base": { "$value": "hsl(22 90% 52%)" },
@@ -50,7 +45,8 @@
       "2": { "$value": "0.6rem" },
       "3": { "$value": "0.95rem" },
       "4": { "$value": "1.4rem" },
-      "5": { "$value": "2rem" }
+      "5": { "$value": "2rem" },
+      "6": { "$value": "3rem" }
     },
     "radius": {
       "sm": { "$value": "10px" },

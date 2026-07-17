@@ -8,7 +8,7 @@
   "accent-dark": { "$type": "color", "$value": "{palette.blue.strong}" },
   "accent-2": { "$type": "color", "$value": "{palette.green.base}" },
   "warn": { "$type": "color", "$value": "{palette.orange.base}" },
-  "ok": { "$type": "color", "$value": "{palette.ok.base}" },
+  "ok": { "$type": "color", "$value": "{palette.green.base}" },
 
   "heading": { "$type": "color", "$value": "{palette.ink.800}", "$description": "h3 ink" },
   "heading-2": { "$type": "color", "$value": "{palette.ink.750}", "$description": "h4 ink" },
@@ -59,17 +59,17 @@
 
   "ring": {
     "$type": "color",
-    "$value": "hsl(212 85% 45% / 0.35)",
+    "$value": "hsl(220 70% 44% / 0.35)",
     "$description": "focus ring + accent border"
   },
   "accent-tint": {
     "$type": "color",
-    "$value": "hsl(212 85% 45% / 0.06)",
+    "$value": "hsl(220 70% 44% / 0.06)",
     "$description": "callout tint"
   },
   "rule-highlight": {
     "$type": "color",
-    "$value": "hsl(212 85% 45% / 0.15)",
+    "$value": "hsl(220 70% 44% / 0.15)",
     "$description": "rule-of-thumb highlight"
   },
 
@@ -77,25 +77,25 @@
   "border-soft": { "$type": "color", "$value": "hsl(220 18% 18% / 0.08)" },
   "border-hairline": { "$type": "color", "$value": "hsl(220 18% 18% / 0.1)" },
 
-  "ok-bg": { "$type": "color", "$value": "{palette.ok.bg}" },
-  "ok-tint": { "$type": "color", "$value": "hsl(140 55% 35% / 0.08)" },
+  "ok-bg": { "$type": "color", "$value": "{palette.green.bg}" },
+  "ok-tint": { "$type": "color", "$value": "hsl(155 50% 33% / 0.08)" },
   "green-bg": { "$type": "color", "$value": "{palette.green.bg}" },
   "amber-bg": { "$type": "color", "$value": "{palette.paper.amber}" },
   "amber-ink": { "$type": "color", "$value": "{palette.orange.dark}" },
   "ok-ink": {
     "$type": "color",
-    "$value": "{palette.ok.ink}",
-    "$description": "live-pill text on --ok-bg (AA 4.76:1)"
+    "$value": "{palette.green.ink}",
+    "$description": "live-pill text on --ok-bg (merged green ramp; AA verified by check:contrast)"
   },
   "accent-ink": {
     "$type": "color",
     "$value": "{palette.blue.ink}",
-    "$description": "development-pill text on --accent-light (AA 4.71:1)"
+    "$description": "development-pill text on --accent-light (AA verified by check:contrast)"
   },
   "green-ink": {
     "$type": "color",
     "$value": "{palette.green.ink}",
-    "$description": "production-pill text on --green-bg (AA 4.79:1)"
+    "$description": "production-pill text on --green-bg (AA verified by check:contrast)"
   },
   "warn-tint": { "$type": "color", "$value": "hsl(22 90% 52% / 0.1)" },
 
@@ -121,7 +121,56 @@
   "mono": {
     "$value": "ui-monospace, SFMono-Regular, Menlo, Consolas, \"Liberation Mono\", monospace"
   },
-  "lh": { "$value": "1.55" },
+  "lh": { "$value": "1.55", "$description": "body default line-height (alias of --lh-base)" },
+
+  "text-3xs": {
+    "$value": "0.75rem",
+    "$description": "uppercase eyebrow labels; flagship/status/badge tags; smallest mono facets"
+  },
+  "text-2xs": {
+    "$value": "0.8125rem",
+    "$description": "meta rows, captions, mono stack/source/axis, small pill labels"
+  },
+  "text-xs": {
+    "$value": "0.9375rem",
+    "$description": "secondary body, card thesis/description, list items, section intro, location"
+  },
+  "text-sm": { "$value": "1rem", "$description": "base body" },
+  "text-md": {
+    "$value": "1.0625rem",
+    "$description": "lead/supporting paragraphs, hero bio/pitch, colophon lead, h4"
+  },
+  "text-lg": { "$value": "1.1875rem", "$description": "h3, subtitles, evidence-card value" },
+  "text-h2": {
+    "$value": "clamp(1.35rem, 1.3vw + 1rem, 1.85rem)",
+    "$description": "section-divider headings"
+  },
+  "text-h1": {
+    "$value": "clamp(1.8rem, 2.2vw + 1rem, 2.6rem)",
+    "$description": "page titles"
+  },
+  "text-display": {
+    "$value": "clamp(2.35rem, 4.5vw + 1rem, 3.5rem)",
+    "$description": "the home positioning claim only (type-as-signature)"
+  },
+
+  "lh-display": { "$value": "1.05", "$description": "display claim + large clamped headings" },
+  "lh-heading": { "$value": "1.15", "$description": "h1-h4" },
+  "lh-snug": { "$value": "1.4", "$description": "compact UI, badges, stat captions" },
+  "lh-base": { "$value": "1.55", "$description": "body default" },
+  "lh-relaxed": { "$value": "1.6", "$description": "long prose" },
+
+  "fw-normal": { "$value": "400" },
+  "fw-medium": { "$value": "500" },
+  "fw-semibold": { "$value": "600" },
+  "fw-strong": {
+    "$value": "650",
+    "$description": "house 'warm-but-not-squishy' emphasis weight"
+  },
+
+  "tracking-tight": { "$value": "-0.02em", "$description": "display + headings" },
+  "tracking-normal": { "$value": "0.01em", "$description": "body" },
+  "tracking-label": { "$value": "0.05em", "$description": "uppercase eyebrows" },
 
   "radius": { "$value": "{scale.radius.md}" },
   "radius-sm": { "$value": "{scale.radius.sm}" },
@@ -130,6 +179,11 @@
   "space-3": { "$value": "{scale.space.3}" },
   "space-4": { "$value": "{scale.space.4}" },
   "space-5": { "$value": "{scale.space.5}" },
+  "space-6": { "$value": "{scale.space.6}" },
+  "section-gap": {
+    "$value": "clamp(2.5rem, 6vw, 4rem)",
+    "$description": "standard major-section rhythm (global; was experience-page-only)"
+  },
   "measure": { "$value": "72ch" },
   "measure-wide": { "$value": "1080px" }
 }
