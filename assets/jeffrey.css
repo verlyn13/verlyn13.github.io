@@ -30,7 +30,7 @@ body {
   background: linear-gradient(180deg, var(--paper), var(--paper-deep));
   font-family: var(--font);
   line-height: var(--lh);
-  letter-spacing: 0.01em;
+  letter-spacing: var(--tracking-normal);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ li {
 }
 
 .nav-left {
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--ink);
   text-decoration: none;
   border: none;
@@ -237,30 +237,30 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.15;
+  line-height: var(--lh-heading);
   margin: 0 0 var(--space-3) 0;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 h1 {
-  font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem);
-  letter-spacing: -0.02em;
+  font-size: var(--text-h1);
+  letter-spacing: var(--tracking-tight);
 }
 
 h2 {
-  font-size: clamp(1.35rem, 1.3vw + 1rem, 1.9rem);
+  font-size: var(--text-h2);
   border-bottom: var(--border);
   padding-bottom: var(--space-2);
   margin-bottom: var(--space-4);
 }
 
 h3 {
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
   color: var(--heading);
 }
 
 h4 {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   color: var(--heading-2);
 }
 
@@ -281,7 +281,7 @@ small,
 }
 
 strong {
-  font-weight: 650;
+  font-weight: var(--fw-strong);
 }
 
 em {
@@ -297,8 +297,8 @@ em {
 
 /* Name reads as a kicker; the positioning claim is the visual lead. */
 .hero-home h1 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
   color: var(--muted);
   letter-spacing: 0.02em;
   margin-bottom: var(--space-1);
@@ -308,15 +308,15 @@ em {
   font-size: clamp(1.5rem, 1.5vw + 1rem, 1.75rem);
   color: var(--ink);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: var(--lh-heading);
   margin-bottom: var(--space-2);
   overflow-wrap: break-word;
 }
 
 .hero-pitch {
   max-width: 64ch;
-  font-size: 1.08rem;
-  font-weight: 650;
+  font-size: var(--text-md);
+  font-weight: var(--fw-strong);
   color: var(--heading);
   margin-bottom: var(--space-3);
   overflow-wrap: break-word;
@@ -328,15 +328,15 @@ em {
 }
 
 .hero-bio p {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-3);
   overflow-wrap: break-word;
 }
 
 .location {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 /* Selected-work rail — surfaces proof (flagship + key projects) above the fold. */
@@ -346,14 +346,14 @@ em {
   align-items: baseline;
   gap: var(--space-2) var(--space-3);
   margin-bottom: var(--space-4);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 .hero-selected__label {
-  font-size: 0.78rem;
-  font-weight: 650;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-strong);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
 }
 
@@ -418,7 +418,7 @@ em {
 }
 
 .link-arrow {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
 }
 
 /* "Now" line: a measured, work-focused signal of current activity. */
@@ -428,17 +428,17 @@ em {
   border-left: 3px solid var(--accent);
   background: var(--accent-subtle);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   color: var(--ink);
   max-width: 68ch;
 }
 
 .hero-now__label {
-  font-weight: 650;
+  font-weight: var(--fw-strong);
   color: var(--accent-dark);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.78rem;
+  letter-spacing: var(--tracking-label);
+  font-size: var(--text-2xs);
   margin-right: var(--space-2);
 }
 
@@ -456,8 +456,8 @@ em {
 }
 
 .background-summary p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-3);
 }
 
@@ -516,11 +516,11 @@ em {
 .project-status {
   display: inline-block;
   padding: 4px 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-semibold);
   border-radius: 999px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--tracking-label);
 }
 
 .project-status.live {
@@ -544,8 +544,8 @@ em {
 }
 
 .project-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   color: var(--ink);
   margin-bottom: var(--space-3);
 }
@@ -560,7 +560,7 @@ em {
 .tech-tag {
   padding: 4px 10px;
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: var(--text-2xs);
   background: var(--inset-cool);
   border: var(--border);
   border-radius: var(--radius-sm);
@@ -574,8 +574,8 @@ em {
 }
 
 .project-link {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
   color: var(--accent);
 }
 
@@ -631,14 +631,14 @@ em {
 
 .resume-format-copy h4 {
   margin-bottom: var(--space-1);
-  font-size: 1rem;
+  font-size: var(--text-sm);
   color: var(--heading);
 }
 
 .resume-format-copy p {
   max-width: 62ch;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--muted);
   overflow-wrap: break-word;
 }
@@ -667,8 +667,8 @@ em {
   min-height: 44px;
   padding: 10px 16px;
   font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
   color: var(--accent);
   background: var(--surface);
   border: 1px solid var(--accent);
@@ -694,8 +694,8 @@ em {
   gap: var(--space-1);
   max-width: 100%;
   min-height: 44px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-semibold);
   color: var(--muted);
 }
 
@@ -729,13 +729,13 @@ em {
   display: block;
   margin-bottom: var(--space-1);
   color: var(--heading);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 .skill-snapshot-list span {
   display: block;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--ink);
   overflow-wrap: break-word;
 }
@@ -813,12 +813,12 @@ em {
 
 .approach-header h3 {
   margin-bottom: 0;
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
 }
 
 .approach-thesis {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--text-sm);
+  line-height: var(--lh-relaxed);
   color: var(--ink);
 }
 
@@ -840,25 +840,25 @@ em {
 }
 
 .case-study-link {
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   color: var(--accent);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 /* Quiet wayfinding to the full body of work below the trimmed gallery. */
 .approach-more {
   margin-top: var(--space-4);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 .approach-more a {
   color: var(--accent);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 /* Case study context labels on project detail pages */
 .case-study-context {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin-bottom: var(--space-2);
 }
@@ -891,8 +891,8 @@ em {
 
 .experience-hero__title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
   margin: 0 0 var(--space-2);
   color: var(--ink);
 }
@@ -916,7 +916,7 @@ em {
 }
 
 .experience-hero__hint {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin: 0;
 }
@@ -943,8 +943,8 @@ em {
 
 .era-section__title {
   font-size: clamp(1.25rem, 3vw, 1.5rem);
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
   margin: 0 0 var(--space-1);
   color: var(--ink);
 }
@@ -953,7 +953,7 @@ em {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-3);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   color: var(--muted);
 }
 
@@ -964,7 +964,7 @@ em {
 }
 
 .era-section__body {
-  line-height: 1.65;
+  line-height: var(--lh-relaxed);
 }
 
 .era-section__body p {
@@ -1006,16 +1006,16 @@ em {
 }
 
 .bento-card__title {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
   margin: 0 0 var(--space-2);
 }
 
 .bento-card__content {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   color: var(--ink);
 }
 
@@ -1029,17 +1029,17 @@ em {
 }
 
 .role__title {
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   margin: 0 0 var(--space-1);
 }
 
 .role__org {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
 }
 
 .role__detail {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin: var(--space-1) 0 0;
 }
@@ -1064,12 +1064,12 @@ em {
 }
 
 .project__name {
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  font-size: var(--text-xs);
 }
 
 .project__desc {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin: var(--space-1) 0 0;
 }
@@ -1077,10 +1077,10 @@ em {
 /* Status badges */
 .badge {
   display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--tracking-label);
   padding: 0.2em 0.6em;
   border-radius: 999px;
   white-space: nowrap;
@@ -1122,7 +1122,7 @@ em {
 }
 
 .highlights li {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   padding-left: 1.2em;
   position: relative;
@@ -1145,8 +1145,8 @@ em {
   border: 1px solid var(--border-hairline);
   border-radius: 999px;
   padding: var(--space-2) var(--space-3);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-medium);
   color: var(--muted);
   cursor: pointer;
   opacity: 0;
@@ -1200,8 +1200,8 @@ em {
 }
 
 .page-subtitle {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-normal);
   color: var(--muted);
   margin-top: var(--space-2);
 }
@@ -1222,7 +1222,7 @@ em {
 }
 
 .highlight-stat h3 {
-  font-size: 2.2rem;
+  font-size: var(--text-h2);
   color: var(--accent);
   margin-bottom: var(--space-1);
   border: none;
@@ -1230,15 +1230,15 @@ em {
 }
 
 .highlight-stat p {
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-snug);
   color: var(--ink);
   margin-bottom: 0;
 }
 
 .stat-detail {
   display: block;
-  font-size: 0.75rem;
+  font-size: var(--text-3xs);
   color: var(--muted);
   margin-top: 4px;
 }
@@ -1264,13 +1264,13 @@ em {
 }
 
 .institution {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: 4px;
 }
 
 .dates {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
 }
 
@@ -1296,8 +1296,8 @@ em {
   background: var(--inset-warm);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
 }
 
 .course-cat strong {
@@ -1330,7 +1330,7 @@ em {
 }
 
 .service-card h3 {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   margin-bottom: var(--space-2);
   border: none;
   padding: 0;
@@ -1359,8 +1359,8 @@ ol {
 .depth-list li,
 .question-list li,
 .education-list li {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-2);
 }
 
@@ -1393,7 +1393,7 @@ ol {
 .arrow {
   font-size: 1.5rem;
   color: var(--accent);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 @media (max-width: 768px) {
@@ -1414,7 +1414,7 @@ ol {
 
 .from-skill h4,
 .to-skill h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   margin-bottom: var(--space-1);
 }
 
@@ -1430,9 +1430,9 @@ ol {
 
 .from-skill p,
 .to-skill p {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
-  line-height: 1.5;
+  line-height: var(--lh-base);
 }
 
 /* ------------------------------------------------------------
@@ -1456,20 +1456,20 @@ ol {
 }
 
 .dev-item h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   margin-bottom: var(--space-2);
 }
 
 .year {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--accent);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   margin-bottom: var(--space-2);
 }
 
 .dev-item p {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   color: var(--muted);
 }
 
@@ -1477,27 +1477,27 @@ ol {
    Research Page
    ------------------------------------------------------------ */
 .publication h3 {
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
   margin-bottom: var(--space-2);
   border: none;
   padding: 0;
 }
 
 .authors {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: 4px;
 }
 
 .publication-venue {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin-bottom: 4px;
 }
 
 .doi {
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: var(--text-2xs);
   color: var(--accent);
   margin-bottom: var(--space-2);
 }
@@ -1511,36 +1511,36 @@ ol {
 }
 
 .publication-details p {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   margin-bottom: var(--space-1);
 }
 
 .publication-summary {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   color: var(--muted);
 }
 
 .dissertation-title {
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   margin-bottom: var(--space-2);
 }
 
 .field {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
 }
 
 .dissertation-link {
   display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
 }
 
 .coming-soon {
-  font-size: 0.8rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   font-style: italic;
   margin-top: 4px;
@@ -1568,7 +1568,7 @@ ol {
 }
 
 .topic-area h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   margin-bottom: var(--space-2);
   color: var(--accent);
 }
@@ -1578,8 +1578,8 @@ ol {
 }
 
 .topic-area li {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
 }
 
 .education-section,
@@ -1598,14 +1598,14 @@ ol {
 }
 
 .degree h3 {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   margin-bottom: var(--space-2);
   border: none;
   padding: 0;
 }
 
 .advisor {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
 }
 
@@ -1619,8 +1619,8 @@ ol {
 }
 
 .project-subtitle {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: var(--text-lg);
+  font-weight: var(--fw-normal);
   color: var(--muted);
   margin-bottom: var(--space-2);
 }
@@ -1633,8 +1633,8 @@ ol {
 }
 
 .external-link {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
 }
 
 .external-link::after {
@@ -1656,7 +1656,7 @@ ol {
 }
 
 .architecture-section h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   margin-bottom: var(--space-2);
   border: none;
   padding: 0;
@@ -1667,8 +1667,8 @@ ol {
 }
 
 .architecture-section li {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-2);
 }
 
@@ -1686,7 +1686,7 @@ ol {
 }
 
 .significance-point h3 {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   margin-bottom: var(--space-2);
   color: var(--accent);
   border: none;
@@ -1694,8 +1694,8 @@ ol {
 }
 
 .significance-point p {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   color: var(--muted);
 }
 
@@ -1712,7 +1712,7 @@ ol {
 }
 
 .theory-area h3 {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   margin-bottom: var(--space-2);
   color: var(--accent);
   border: none;
@@ -1720,8 +1720,8 @@ ol {
 }
 
 .theory-area p {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   color: var(--muted);
 }
 
@@ -1736,7 +1736,7 @@ ol {
 .project-links-footer h2 {
   border: none;
   padding: 0;
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
   margin-bottom: var(--space-2);
 }
 
@@ -1744,7 +1744,7 @@ ol {
   max-width: 60ch;
   margin: 0 auto var(--space-4);
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
 }
 
 .project-cta-actions {
@@ -1758,8 +1758,8 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
   color: var(--on-accent);
   background: var(--accent);
   text-decoration: none;
@@ -1798,7 +1798,7 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
   border: 1px solid var(--ring);
@@ -1903,7 +1903,7 @@ th {
 }
 
 .section-intro {
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: var(--space-4);
 }
@@ -1914,7 +1914,7 @@ th {
 }
 
 .tech-project-card h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   margin-bottom: var(--space-2);
   border: none;
   padding: 0;
@@ -1923,11 +1923,11 @@ th {
 .status-badge,
 .tech-badge {
   padding: 4px 10px;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-semibold);
   border-radius: 999px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--tracking-label);
 }
 
 .status-badge {
@@ -1942,13 +1942,13 @@ th {
 }
 
 .project-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-2);
 }
 
 .project-impact {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   font-style: italic;
   color: var(--ink);
   margin-top: var(--space-2);
@@ -1975,7 +1975,7 @@ th {
   text-decoration: none;
   border: none;
   border-radius: 0 0 var(--radius-sm) 0;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   transition: top 0.2s ease;
 }
 
@@ -2009,10 +2009,10 @@ th {
 }
 
 .contact-block h2 {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
   margin: 0 0 var(--space-2);
   border: none;
@@ -2020,12 +2020,12 @@ th {
 }
 
 .contact-block p {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   margin: 0;
 }
 
 .contact-block a {
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 .profile-links {
@@ -2042,7 +2042,7 @@ th {
 }
 
 .profile-links a {
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 /* ------------------------------------------------------------
@@ -2053,7 +2053,7 @@ th {
 }
 
 .cv-subtitle {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: var(--muted);
   margin-bottom: var(--space-4);
 }
@@ -2063,7 +2063,7 @@ th {
   background: var(--inset-warm);
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-5);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
 }
 
 .cv-download p {
@@ -2103,7 +2103,7 @@ th {
 }
 
 .cv-entry h3 {
-  font-size: 1rem;
+  font-size: var(--text-sm);
   margin-bottom: var(--space-1);
   border: none;
   padding: 0;
@@ -2111,24 +2111,24 @@ th {
 
 .cv-institution {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   margin-bottom: var(--space-1);
 }
 
 .cv-details {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: var(--space-1);
 }
 
 .cv-publication {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
 }
 
 .cv-more {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
   margin-top: var(--space-3);
 }
 
@@ -2137,8 +2137,8 @@ th {
 }
 
 .cv-list li {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-2);
 }
 
@@ -2156,9 +2156,9 @@ th {
 }
 
 .resume-identity {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: var(--heading);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   margin-bottom: var(--space-1);
 }
 
@@ -2166,7 +2166,7 @@ th {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1) var(--space-3);
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   color: var(--muted);
   margin: 0;
   padding: 0;
@@ -2198,7 +2198,7 @@ th {
 
 .resume-actions .button,
 .resume-actions .cred-copy {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   white-space: nowrap;
 }
 
@@ -2219,7 +2219,7 @@ th {
 }
 
 .resume-entry h3 {
-  font-size: 1rem;
+  font-size: var(--text-sm);
   margin-bottom: var(--space-1);
   overflow-wrap: anywhere;
 }
@@ -2235,13 +2235,13 @@ th {
 }
 
 .resume-entry__role {
-  font-weight: 400;
+  font-weight: var(--fw-normal);
   color: var(--muted);
 }
 
 .resume-entry__stack {
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin: 0 0 var(--space-2);
   overflow-wrap: anywhere;
@@ -2253,8 +2253,8 @@ th {
 }
 
 .resume-entry li {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin-bottom: var(--space-1);
 }
 
@@ -2270,8 +2270,8 @@ th {
 }
 
 .resume-note p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: var(--lh-relaxed);
   margin: 0;
 }
 
@@ -2283,8 +2283,8 @@ th {
 }
 
 .colophon-lead {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
   max-width: 68ch;
   margin-bottom: var(--space-5);
 }
@@ -2313,10 +2313,10 @@ th {
 
 .pipeline-lane__label {
   flex: 0 0 9rem;
-  font-size: 0.7rem;
-  font-weight: 650;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-strong);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
 }
 
@@ -2333,7 +2333,7 @@ th {
 .pipeline-step {
   margin: 0;
   padding: var(--space-1) var(--space-3);
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   background: var(--surface);
   border: var(--border);
   border-radius: var(--radius-sm);
@@ -2351,7 +2351,7 @@ th {
   border-color: var(--accent);
   background: var(--accent-subtle);
   color: var(--accent-dark);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 /* The live, public endpoint — green "ship it" signal via border + tint; ink text keeps AA contrast. */
@@ -2359,7 +2359,7 @@ th {
   border-color: var(--accent-2);
   background: var(--green-bg);
   color: var(--ink);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 /* Evidence blocks: compact, factual cards describing the live feed. */
@@ -2388,24 +2388,24 @@ th {
 }
 
 .evidence-card__label {
-  font-size: 0.7rem;
-  font-weight: 650;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-strong);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
   margin-bottom: var(--space-1);
 }
 
 .evidence-card__value {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
   color: var(--ink);
   margin: 0 0 var(--space-1);
 }
 
 .evidence-card__note {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   color: var(--muted);
   margin: 0;
 }
@@ -2423,8 +2423,8 @@ th {
   position: relative;
   margin: 0;
   padding-left: 1.7rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--ink);
 }
 
@@ -2453,15 +2453,15 @@ th {
 }
 
 .portfolio-overview__lead {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
   color: var(--ink);
   margin: 0;
 }
 
 /* Counts read as data, not decoration: same ink, heavier weight, tabular figures. */
 .portfolio-overview__metric {
-  font-weight: 650;
+  font-weight: var(--fw-strong);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -2470,17 +2470,17 @@ th {
 /* Recurring-methods line (lights up when the feed provides portfolio.recurringMethods). */
 .portfolio-overview__methods {
   margin: var(--space-2) 0 0;
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--muted);
 }
 
 .portfolio-overview__methods-label {
   margin-right: var(--space-2);
-  font-size: 0.7rem;
-  font-weight: 650;
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-strong);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-label);
   color: var(--muted);
 }
 
@@ -2502,8 +2502,8 @@ th {
 }
 
 .dswork__count {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-medium);
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
@@ -2533,8 +2533,8 @@ th {
 
 /* Title links to the detail page; padded for a tall hit target. Reuses base `a`. */
 .ds-row__title {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: var(--text-md);
+  font-weight: var(--fw-semibold);
   color: var(--accent);
   padding: var(--space-1) 0;
 }
@@ -2547,14 +2547,14 @@ th {
 .ds-row__thesis {
   flex: 1 1 32ch;
   min-width: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--ink);
 }
 
 .ds-row__live {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--text-2xs);
+  font-weight: var(--fw-semibold);
   white-space: nowrap;
   padding: var(--space-1) 0;
 }
@@ -2570,8 +2570,8 @@ th {
   align-items: baseline;
   gap: var(--space-1) var(--space-2);
   margin-top: var(--space-1);
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   color: var(--muted);
 }
 
@@ -2583,7 +2583,7 @@ th {
 
 .ds-row__facet--tech {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: var(--text-3xs);
 }
 
 @media (max-width: 768px) {
@@ -2628,15 +2628,15 @@ th {
 }
 
 .decision__title {
-  font-size: 1rem;
-  font-weight: 650;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-strong);
   color: var(--ink);
   margin: 0 0 var(--space-1);
 }
 
 .decision__summary {
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: var(--text-xs);
+  line-height: var(--lh-base);
   color: var(--muted);
   margin: 0;
 }
@@ -2645,7 +2645,7 @@ th {
   display: inline-block;
   margin-top: var(--space-1);
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
 }
 
@@ -2702,7 +2702,7 @@ th {
   justify-content: space-between;
   margin-top: var(--space-1);
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: var(--text-3xs);
   color: var(--muted);
 }
 
@@ -2711,7 +2711,7 @@ th {
   flex-wrap: wrap;
   gap: var(--space-1) var(--space-3);
   margin-top: var(--space-2);
-  font-size: 0.78rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
 }
 
@@ -2738,8 +2738,8 @@ th {
 
 /* Quiet provenance line linking the colophon. */
 .project-provenance {
-  font-size: 0.85rem;
-  line-height: 1.55;
+  font-size: var(--text-2xs);
+  line-height: var(--lh-base);
   color: var(--muted);
   margin-top: var(--space-3);
 }
@@ -2755,7 +2755,7 @@ th {
 }
 
 .site-footer p {
-  font-size: 0.85rem;
+  font-size: var(--text-2xs);
   color: var(--muted);
   margin: 0;
 }
@@ -2769,7 +2769,7 @@ th {
 .site-footer .footer-cta {
   max-width: 60ch;
   margin: 0 auto var(--space-3);
-  font-size: 0.95rem;
+  font-size: var(--text-xs);
   color: var(--ink);
 }
 
@@ -2810,7 +2810,7 @@ th {
 }
 
 .rule-of-thumb {
-  font-weight: 650;
+  font-weight: var(--fw-strong);
   background: linear-gradient(
     180deg,
     transparent 55%,
@@ -2891,7 +2891,7 @@ th {
 
   body {
     font-size: 11pt;
-    line-height: 1.45;
+    line-height: var(--lh-snug);
     background: var(--paper);
   }
 
