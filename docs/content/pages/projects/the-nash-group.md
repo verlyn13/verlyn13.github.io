@@ -4,8 +4,8 @@ type: page
 source_file: projects/the-nash-group.html
 source_selector: main
 route: /projects/the-nash-group.html
-content_hash: b5ea377e2de661b01a4820f894dd364940349df732d09fb59001df4c6f562e17
-html_hash: d711593f90cf76e12b5ef9778e263d5c9f945f1b0fd767d93ad9d769a0bb09b7
+content_hash: cafef64e9a14ca33acdc4c01fd9834698367ccb21a45ef8baba64665b8e73aa1
+html_hash: 2c0e0292d5828f627cb7e254bd2bd7e4dd860f04edfc7a49d9593af782329e28
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -17,10 +17,10 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Project page moved
 
-This case study now appears under its public-safe title.
+This page has moved.
 
-## Continue to the current case study
+## Continue to the work index
 
-The current page presents the work as an anonymized private case study, with its evidence and maturity boundaries stated explicitly.
+The material previously at this address is organized under the Work index.
 
-[Open Governance and agent-control architecture →](/projects/governance-agent-control.html)
+[Open the Work index →](/projects/)

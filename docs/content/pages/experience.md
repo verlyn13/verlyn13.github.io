@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: c8884ad91344fffd2f4ad5537371b68c60695f3bc8079c1f5ea0f8962589ed27
-html_hash: e49e2de5e6acc53d4c6e0585153f4cb5f3916032a4130f8326c636ae95e1e561
+content_hash: 1ed2f3264029a09c3675b45397a1435808207a4ec5f1b014414722f197a07328
+html_hash: 5c43c22352c6839c7f087760fd94a88000398bc9f17e01b00cefcc45ec4529e3
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -91,23 +91,23 @@ This is what thirty years of continuous work produces: the ability to move betwe
 
 ## International
 
-2015-2017
+2014-2017
 
 Cairo, Egypt
 
-Associate Professor of Mathematics at the American University in Cairo. Taught calculus and upper-division mathematics to an international student body. Continued research in functional analysis, attending a multi-day conference on Lineability in the Czech Republic.
+Assistant Professor of Mathematics at the American University in Cairo. Taught calculus and upper-division mathematics to an international student body. Continued research in functional analysis, attending a multi-day conference on Lineability in the Czech Republic.
 
-Two years of navigating cross-cultural academic environments, adapting pedagogy for students from dozens of countries, and maintaining research productivity while teaching a full course load.
+Three years of navigating cross-cultural academic environments, adapting pedagogy for students from dozens of countries, and maintaining research productivity while teaching a full course load.
 
 ## Deep Theory
 
-2008-2015
+2008-2014
 
 Missoula, Montana
 
 PhD in Mathematics from the University of Montana, specializing in commutative Banach algebras. Published research in Communications in Mathematics and Applications. Presented at conferences. Six years of deep immersion in abstract mathematics.
 
-Teaching assistant for Applied Statistics, Applied Calculus, and Calculus III throughout the program. Postdoctoral lecturer in 2014-2015, coordinating large lecture sections and managing teaching assistants.
+Teaching assistant for Applied Statistics, Applied Calculus, and Calculus III throughout the program. Postdoctoral lecturer in 2013-2014, coordinating large lecture sections and managing teaching assistants.
 
 Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick- algebraic topology and topological combinatorics.
 
@@ -157,3 +157,15 @@ Six years of continuous employment before graduating high school. Farm work, res
 - Heavy equipment certified before driving age
 - First computer build, age 16
 - Technology interest begins-and never stops
+
+## Selected service and community
+
+2012-present
+
+A sample of a longer service record that runs alongside the eras above, from graduate school through the present — committee work, community roles, and sustained mentorship.
+
+- Economic Development Council, Homer, Alaska — member, 2020-2022.
+- MathCounts coach, 2017-present — weekly sessions with middle-school students and the annual chapter competition in Anchorage.
+- Multi-year one-on-one mentorship of a gifted high-school student, 2023-present — abstract algebra, type theory, and applied cryptography.
+- University committees: Program Review Committee, UAA (2019); Accessibility Committee, KPC (2017-2020); Calculus Restructuring, Mathematics Major Recruitment, External Review Implementation, and Safety and Security committees, American University in Cairo (2014-2017); Student Evaluation Committee chair, University of Montana (2012).
+- Upward Bound/TRIO summer mathematics for Native American high-school students (2013) and Math Circle director for gifted high-school students (2012), University of Montana.

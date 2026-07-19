@@ -4,8 +4,8 @@ type: page
 source_file: projects/budget-triage.html
 source_selector: main
 route: /projects/budget-triage.html
-content_hash: 0cf8ff34e390e3867bc572e3e3636b46a8d07f484caa4bc1c5dad93340acbbe5
-html_hash: e90d260233f1142c4530beeb13664b447d57343fc45014379515a1f89d66a7a9
+content_hash: 4c67032a58cdc9a966932018b09bbad3a74e000911d78ce4c442b75506108912
+html_hash: aab1f580a65b48c420a5ae96b0e24767a472c482837fab2f1ae843754fe2cb66
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -51,6 +51,16 @@ Private source today; a sanitized public release is in final review. Sanitized a
 ### What this does not demonstrate
 
 No production deployment, public application, real-user adoption, financial outcome, live-provider performance, tax-filing readiness, financial correctness, real-data performance, broader Phase 4 completion, or completed source-through-tax certification is claimed.
+
+## How it was built
+
+The depth of this project is in the process as much as the product. It is developed under a versioned, cross-tool agentic development framework: reusable skills, specialist agents bound by machine-readable authority manifests and boundary contracts (per-agent tool, scope, and command policies; secrets and personal or financial data are forbidden inputs by contract), and fail-closed pre-write governance hooks that block architectural anti-patterns at edit time.
+
+- Executable governance: 19 YAML spec contracts and registries (CI, config, environment, secrets, logging, metrics, runtime, toolchain, tests) with on-disk validators, and a documentation check that fails on dangling path references.
+- A value-blind personal-data scanner reports only locators and counts — never matched text — with a ratchet-toward-zero allowlist requiring owner, reason, and expiry on every exception.
+- Engineering record: 125 SQL migrations, 85 architecture decision records in the private lineage, and a 34-gate validation chain that runs identically in local development and secretless CI.
+
+These figures are validated by the project's own executable gates and recorded status; they are not yet independently inspectable at a public link.
 
 ## Technical shape
 

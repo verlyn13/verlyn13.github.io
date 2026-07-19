@@ -100,6 +100,17 @@
 
                 <!-- @design-structure: budget-triage-fintech -->
 
+                <section class="project-context">
+                    <h2>How it was built</h2>
+                    <p>The depth of this project is in the process as much as the product. It is developed under a versioned, cross-tool agentic development framework: reusable skills, specialist agents bound by machine-readable authority manifests and boundary contracts (per-agent tool, scope, and command policies; secrets and personal or financial data are forbidden inputs by contract), and fail-closed pre-write governance hooks that block architectural anti-patterns at edit time.</p>
+                    <ul class="depth-list">
+                        <li>Executable governance: 19 YAML spec contracts and registries (CI, config, environment, secrets, logging, metrics, runtime, toolchain, tests) with on-disk validators, and a documentation check that fails on dangling path references.</li>
+                        <li>A value-blind personal-data scanner reports only locators and counts — never matched text — with a ratchet-toward-zero allowlist requiring owner, reason, and expiry on every exception.</li>
+                        <li>Engineering record: 125 SQL migrations, 85 architecture decision records in the private lineage, and a 34-gate validation chain that runs identically in local development and secretless CI.</li>
+                    </ul>
+                    <p>These figures are validated by the project's own executable gates and recorded status; they are not yet independently inspectable at a public link.</p>
+                </section>
+
                 <section class="project-architecture">
                     <h2>Technical shape</h2>
 
