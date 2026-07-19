@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: 6583160c032b029f7ab22ad3eebd357d7cf8d80e66033685de2baf5c991915e2
-html_hash: b430aff4635e8856111cb6eb7b77c32dae63aa3ad20f03758cb54b6012025809
+content_hash: 212312907ab540c0c4bf8f926bcf2b1bef49f2c366e01d340971b25275f97e27
+html_hash: a1e94c4441856c2b366140c16868cbb0201b92d541e3cb18306e061e54713857
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -79,5 +79,3 @@ Debug and QA builds expose local telemetry, snapshots, and protected diagnostic 
 Happy to discuss the public-safe engineering case study, verification approach, and documented limits.
 
 Email me about this →
-
-← Back to Evidence

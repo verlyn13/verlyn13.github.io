@@ -4,8 +4,8 @@ type: page
 source_file: projects/budget-triage.html
 source_selector: main
 route: /projects/budget-triage.html
-content_hash: 614a1f8b2ad1f21a5487c0e3d102f9152d1185e9247b91c0155a664ba21749a9
-html_hash: 9a5a06b13bbdbbf3fe2c55b34669ccd3e14a2a7cd8440e727300690ebc812c08
+content_hash: 0cf8ff34e390e3867bc572e3e3636b46a8d07f484caa4bc1c5dad93340acbbe5
+html_hash: e90d260233f1142c4530beeb13664b447d57343fc45014379515a1f89d66a7a9
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -19,7 +19,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 Traceable financial records with uncertainty routed to human review
 
-Private working prototype · No public source link
+Private working prototype · Sanitized public release candidate in final review · No public source link yet
 
 ## What is this?
 
@@ -44,8 +44,9 @@ Financial automation needs provenance, exact arithmetic, tenant isolation, human
 - The merged synthetic known-answer and service-observation harness reports 6 passing / 9 pending; it is explicitly incomplete and uncertified.
 - A bounded synthetic Phase 3b observation preserves matching correlation across one local synthetic authenticated, tenant-scoped, read-only browser request, backend observation, response, client log, and diagnostic timeline. It does not prove UI state, production telemetry, financial correctness, or source-through-tax execution.
 - The bounded Phase 4 CSV sub-slice on current `main` passed independent source review and its governed synthetic-corpus check. It does not establish real-data performance, broader Phase 4 completion, or product readiness.
+- A sanitized, MIT-licensed public release candidate — rebuilt without history from the private repository and aligned with the organization's secure-repo-lifecycle standard — passed its full public-candidate validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks. A first personal-identifier audit checkpoint has been completed and remediated. Publication awaits final operator review.
 
-Private source. Sanitized architecture materials, synthetic evidence, and a guided technical walkthrough are available for relevant hiring conversations.
+Private source today; a sanitized public release is in final review. Sanitized architecture materials, synthetic evidence, and a guided technical walkthrough are available for relevant hiring conversations.
 
 ### What this does not demonstrate
 
@@ -86,5 +87,3 @@ No production deployment, public application, real-user adoption, financial outc
 Happy to discuss the public-safe architecture, evidence workflow, and verification boundaries behind this private prototype.
 
 Email me about this →
-
-← Back to Evidence

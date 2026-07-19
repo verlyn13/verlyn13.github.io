@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: d39d21a94c994a5353f9c60026d05c9bcc55dd7dd6549fe934fdeab82b132031
-html_hash: 6b7696cadb5ce5a9f511c892d62dcb94b158fcbad58e079a6973223337beed8a
+content_hash: f3ea841d69ab312236d318cf1b9751f70744328dbc94398f842bd851e347fc8c
+html_hash: bd886e60e7e5e6e71196697fb7816efae4c557503947e4cb53341cf6c1e97a59
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -82,5 +82,3 @@ Explore the public implementation or get in touch to discuss host-level agent au
 Email me about this →
 
 Public repository ↗
-
-← Back to Evidence

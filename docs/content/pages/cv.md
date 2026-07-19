@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 7d4b75d312e126f0b9a126d6324870eeeb63c7db7652a56c277c40559e9ab9e2
-html_hash: 8368954cb9a41bbee9bfc458a1c1c5829687699d0b4ace7b4c1ed10f2b85b720
+content_hash: 26269b0ee86c9631f89a951f5211a031da7046d3edf745629595563392825a39
+html_hash: 122a70658166d4efd63c19f5cc10e4071cf683b2b6281f35976dd25470d5a356
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Evaluations and agent-governance engineer
+Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure
 
 - Homer, Alaska
 - [jeffrey@jvjohnson.dev](mailto:jeffrey@jvjohnson.dev)
@@ -32,11 +32,11 @@ AI/ATS↓
 
 ## Summary
 
-Ph.D. mathematician and self-directed systems researcher with a backend orientation. My strongest fit is evaluations and agent-governance engineering: pairing probabilistic AI tooling with deterministic, machine-checkable verification. I build systems that make AI-assisted work measurable, governable, and auditable: deciding whether model evidence supports a change, defining what agents may do, and preserving evidence and human review in consequential workflows.
+Ph.D. mathematician and self-directed systems researcher with a backend orientation. My strongest fit is Research Engineer (model evaluations, agent systems, evaluation infrastructure)ing: pairing probabilistic AI tooling with deterministic, machine-checkable verification. I build systems that make AI-assisted work measurable, governable, and auditable: deciding whether model evidence supports a change, defining what agents may do, and preserving evidence and human review in consequential workflows.
 
 ## Selected systems and research evidence
 
-### [Agentic-Coding Evaluation Lab](https://jvjohnson.dev/eval-lab-methodology/) — fail-closed evaluation evidence
+### [Agentic-Coding Evaluation Lab](https://github.com/verlyn13/eval-lab-methodology) — fail-closed evaluation evidence
 
 Python · Quarto · JSON contracts · private gateway, harness, and trace integrations
 

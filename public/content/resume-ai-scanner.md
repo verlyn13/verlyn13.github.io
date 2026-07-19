@@ -1,6 +1,6 @@
 # Jeffrey V. Johnson, Ph.D.
 
-Evaluations and agent-governance engineer
+Research Engineer — Model Evaluations, Agent Systems, Evaluation Infrastructure
 
 Location: Homer, Alaska
 Email: jeffrey@jvjohnson.dev

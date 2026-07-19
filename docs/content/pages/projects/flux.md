@@ -4,8 +4,8 @@ type: page
 source_file: projects/flux.html
 source_selector: main
 route: /projects/flux.html
-content_hash: 02cb0d3d8530c4f8f05cc06960019b35387180d1a2f13ba8ce93a9ec8adee92a
-html_hash: 63fb12e649bd2e34136491d9d50f143bcefae5e10ca980b3515690187976d441
+content_hash: 2b2549cadde7f2c051d5de067fe573315a4f7cb884ef9af183a1d5dfdd24a931
+html_hash: 8e3725a5697c693f687471cfd65ea5c2667e7377caa159d50993b16024250caa
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -67,5 +67,3 @@ Flux does not implement the previously described compiler/IR. Its MCP surface va
 Happy to talk about this project or the research practice behind it.
 
 Email me about this →
-
-← Back to Evidence

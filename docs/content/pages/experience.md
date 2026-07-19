@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: 522b4b363f4298ba9a44a656d8811762011a864f63e60f9b9a198bc06922d84a
-html_hash: 6982b42e601081203c724f702c1862691e887de6dceb3694f064331ca8ec41a3
+content_hash: c8884ad91344fffd2f4ad5537371b68c60695f3bc8079c1f5ea0f8962589ed27
+html_hash: e49e2de5e6acc53d4c6e0585153f4cb5f3916032a4130f8326c636ae95e1e561
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -16,12 +16,6 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 2017-present
 
 Homer, Alaska
-
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
 The threads converge. A tenured mathematics professor developing online pedagogy while building evaluation, governance, and systems-engineering tools. The logic of the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
 
@@ -101,12 +95,6 @@ This is what thirty years of continuous work produces: the ability to move betwe
 
 Cairo, Egypt
 
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
-
 Associate Professor of Mathematics at the American University in Cairo. Taught calculus and upper-division mathematics to an international student body. Continued research in functional analysis, attending a multi-day conference on Lineability in the Czech Republic.
 
 Two years of navigating cross-cultural academic environments, adapting pedagogy for students from dozens of countries, and maintaining research productivity while teaching a full course load.
@@ -116,12 +104,6 @@ Two years of navigating cross-cultural academic environments, adapting pedagogy 
 2008-2015
 
 Missoula, Montana
-
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
 PhD in Mathematics from the University of Montana, specializing in commutative Banach algebras. Published research in Communications in Mathematics and Applications. Presented at conferences. Six years of deep immersion in abstract mathematics.
 
@@ -135,12 +117,6 @@ Summer programs included the AARMS mathematics institute in Fredericton, New Bru
 
 South Africa
 
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
-
 Peace Corps education volunteer and teacher trainer. Project management workshops, community improvement initiatives, and daily classroom teaching. Secured a Dell Computers Success Grant for a partner school-one of the early programs bringing technology to rural South African education.
 
 This is where teaching became more than a job. Two years of learning how to communicate complex ideas to people with entirely different frames of reference. The human experience taking precedence over abstraction.
@@ -150,12 +126,6 @@ This is where teaching became more than a job. Two years of learning how to comm
 2001-2005
 
 Eureka, California
-
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
 Moved 2,000 miles from family at 21. BA in Mathematics from Humboldt State University, 2004. Entered the graduate program in Mathematical Modeling of Environmental Systems- stochastic processes, dynamic systems, abstract algebra. Left before thesis work; pure mathematics was the real draw.
 
@@ -169,12 +139,6 @@ Moved 2,000 miles from family at 21. BA in Mathematics from Humboldt State Unive
 
 Duluth, Minnesota
 
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
-
 University of Minnesota Duluth. First exposure to higher mathematics-the moment when abstraction clicked. Full-time student, part-time worker: midnight stock shifts at Kohl's, summer landscaping, evenings at Pizza Hut.
 
 - First higher mathematics coursework
@@ -186,12 +150,6 @@ University of Minnesota Duluth. First exposure to higher mathematics-the moment 
 1992-1998
 
 Grantsburg, Wisconsin
-
-This is not a standard tech background. I am the first in my family to attend college. My technical education didn't begin in a university lab; it began by reinstalling MS-DOS from 5¼-inch floppy disks, navigating hardware IRQ conflicts, and running an FTP server from a 1998 dorm room.
-
-Below is the braided timeline of that journey. It traces three tracks over thirty years: the **experiential** grit of early labor, the **analytical** rigor of a Ph.D. in pure mathematics, and the **technical** thread of self-taught engineering that recently converged into evaluating and governing agentic systems.
-
-*The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.*
 
 Six years of continuous employment before graduating high school. Farm work, restaurant kitchen (mower to dishwasher to prep cook to line cook), landscaping with heavy equipment operation. First in family to attend college. Built first computer in 1996. Co-system operator for the high school BBS, 1996-1997.
 

@@ -4,8 +4,8 @@ type: page
 source_file: projects/dicee.html
 source_selector: main
 route: /projects/dicee.html
-content_hash: 2263fdd57e793d6ef8148d84a21559366ec75ef2d2a130889042f5e464c16443
-html_hash: d7a4204f141d8b1a651c525730fac4000a76229cf44d521b1efd84c73cc16eca
+content_hash: e068bc7999e6b179ae7b50700d22706556f476e2ee2cdbfc40824107d3391844
+html_hash: 2230b0c4fc06f1d1a35ff9c7c6a4e3619ae5a46afc8d637f238c500807f8af8a
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -70,5 +70,3 @@ Happy to talk about this project or the research practice behind it.
 Email me about this →
 
 Visit live site ↗
-
-← Back to Evidence
