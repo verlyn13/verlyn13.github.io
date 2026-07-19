@@ -4,8 +4,8 @@ type: page
 source_file: projects/maat.html
 source_selector: main
 route: /projects/maat.html
-content_hash: 9543f16119697e2dcb3b16459dd9f00e8893561efa6f59d674ad3f00c79810d1
-html_hash: c17de20d8879df3fea0b365046143f0f386e669372723b5922a8101c72c87824
+content_hash: 8900063966de03fb9797a8642860e758d077e99214487a10a2ec8c7000acc07e
+html_hash: 119cf1367e976dd61723603cff2cb0b299c63e73cbc37255625d53e17aaec495
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -56,5 +56,3 @@ No current-product, active-development, tension-mediation, gRPC, MCP, observabil
 Happy to talk about this project or the research practice behind it.
 
 Email me about this →
-
-← Back to Evidence

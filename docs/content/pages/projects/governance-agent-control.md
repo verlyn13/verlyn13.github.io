@@ -4,8 +4,8 @@ type: page
 source_file: projects/governance-agent-control.html
 source_selector: main
 route: /projects/governance-agent-control.html
-content_hash: 9b8d3d58e0658f3b1d715cc60709877592f61cd7ddfd91d30a41cc6aa5fe0529
-html_hash: ea6ac23b3f62c41e8a111b548ee5a5805580bc08ef5fc313bcb1c8ec50acda5d
+content_hash: 7146e5ec7434873fb628202d9c4ecf510ff5c7edc7d3b74d8f3ce8ad79d2f148
+html_hash: 1cdc9dc5bb0ba62864facff2ea4793cb32fd4dff0dba694aad1a3dacf7fc2e1f
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -73,5 +73,3 @@ This is a self-directed, principally single-operator research and implementation
 Happy to discuss the public-safe architecture, methods, and maturity boundaries behind this case study.
 
 Email me about this →
-
-← Back to Evidence

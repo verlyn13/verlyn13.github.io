@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 6d7dda655e84f2b572c999ee74a87a5046ce3ccecc69ba34907c4a07db2a6bd7
-html_hash: 623dccbc4c6b491ca5cb67f425f8fdff4ee16cc79247d1f8f010b52e97dec18b
+content_hash: 27c0bb2da137a24e247d119e09866972095e44382ddb7f35fd9d027acd486d8a
+html_hash: fad5ba7f08ca4d50874ef115a297cb7eb62baa6ec39574f67d42372786b4ac40
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,17 +13,19 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Evaluations and agent-governance engineer
+Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure
 
-I pair probabilistic AI tooling with deterministic, machine-checkable verification.
+I build systems that make AI-assisted work measurable, governable, and auditable.
 
 I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.
 
-I am also a Ph.D. mathematician and backend-oriented systems researcher. The mathematics supports the work through abstraction, statistical discipline, patience with difficult systems, and clear technical communication.
+I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (*Pediatric Physical Therapy*, 2023;35(3):326-331): 1,593 children ages 5 to 17 across a rural Alaska school district, a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data, producing normative reference values for assessing children with disabilities.
+
+The projects below are extensive, self-directed work: systems built end to end to develop and demonstrate working fluency with AI coding frameworks, model evaluation, and agent governance. Each states its evidence boundary beside its claim.
 
 Homer, Alaska
 
-Selected evidence [Agentic-Coding Evaluation Lab — model-change evidence](#evaluation-lab) [Governance and agent-control architecture — bounded authority](#governance-agent-control) [Budget Triage — traceable financial evidence](#budget-triage)
+Selected evidence [Agentic-Coding Evaluation Lab — model-change evidence](#evaluation-lab) [Budget Triage — traceable financial evidence](#budget-triage)
 
 Current résumé ↓
 
@@ -39,12 +41,12 @@ Email →
 
 ## Resume and skills
 
-Current resume formats and target skill signals for evals, agent governance, safeguards, and control roles.
+Current resume formats and skill signals for research-engineering roles in model evaluation, agent systems, and evaluation infrastructure.
 
 ### Resume formats
 
 - Rendered resume Full human-readable page with evidence links and print styling. [Open resume→](/cv.html)
-- Markdown resume Current evals/governance version for application packets and direct review. Copy [Download↓](/content/resume.md)
+- Markdown resume Current research-engineer version for application packets and direct review. Copy [Download↓](/content/resume.md)
 - AI/ATS Markdown Scanner-ready plain Markdown for portals and automated screeners. Copy [Download↓](/content/resume-ai-scanner.md)
 
 ### Skills snapshot
@@ -57,7 +59,7 @@ Current resume formats and target skill signals for evals, agent governance, saf
 
 ## Selected evidence
 
-Three examples show one research-engineering method: measure uncertain systems, bound their authority, preserve their evidence, and test those disciplines in implemented software.
+Two featured projects show one research-engineering method: measure uncertain systems, bound their authority, preserve their evidence, and test those disciplines in implemented software.
 
 ### Agentic-Coding Evaluation Lab
 
@@ -71,25 +73,9 @@ Fail-closed evidence and reporting for model evaluation.
 
 **Why does it matter?** It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.
 
-**Evidence and status:** Public prototype with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed `NOT_EVALUABLE` refusal. It does not establish real-model performance or a promotion recommendation.
+**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. In active development — local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
 
 Explore the methodology, worked examples, and evidence →
-
-### Governance and agent-control architecture
-
-Federated authority and evidence controls for AI-assisted engineering.
-
-**What is this?** An anonymized governance architecture for AI-assisted work across multiple repositories, services, credentials, and operating environments.
-
-**What is it for?** It makes identity, delegated authority, evidence, and safe refusal explicit before agents or automation can change code, infrastructure, or organizational state.
-
-**How is it used?** Human principles are translated into machine-readable standards, authorization contracts, infrastructure policy checks, runtime-admission prototypes, and project-local restatements.
-
-**Why does it matter?** Organizations need reliable answers to who may act, under what mandate, on which resource, with what evidence, and when the correct result is to stop or escalate.
-
-**Evidence and status:** Selected policy-as-code, infrastructure, validation, and scheduled drift controls operate today. Identity, synthetic-decision, and runtime-admission layers include substantial contracts and tested prototypes but are not organization-wide live enforcement. This is a single-operator case study, not an enterprise-adoption claim.
-
-Review the anonymized case study →
 
 ### Budget Triage — financial evidence workbench
 
@@ -103,18 +89,18 @@ Traceable financial records with uncertainty routed to human review.
 
 **Why does it matter?** Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.
 
-**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made.
+**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate — rebuilt without history from the private repository — passed its full public-candidate validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks; publication awaits final operator review, so there is no public source link yet.
 
 Budget Triage →
 
-### Public implementation evidence
+### Also part of the portfolio
 
+- **Governance and agent-control architecture** An anonymized governance architecture for AI-assisted work: identity, delegated authority, evidence, and safe refusal made explicit before agents or automation can act. **Evidence and status:** selected policy-as-code, infrastructure, validation, and scheduled drift controls operate today; a single-operator case study, not an enterprise-adoption claim. [Review the anonymized case study →](/projects/governance-agent-control.html)
 - **Host Capability Substrate** A public schema-driven layer that turns implicit host access into explicit capabilities and authorization. **Demonstrates:** typed authority, provenance, scoped grants, and CI-enforced architecture. **Evidence and status:** 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, and a composed CI gate. [Examine the implementation →](/projects/host-capability-substrate.html)
 - **Agentic Architecture Audit** A public evidence-first audit method for AI-agent-operated codebases. **Demonstrates:** machine-readable contracts, deterministic drift checking, and bias-aware workflows. **Evidence and status:** 2,075-line `audit-spec`, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. [Inspect the public project →](https://github.com/verlyn13/agentic-architecture-audit)
 
-### Representative delivery evidence
-
-- **Dicee** A live family multiplayer game for mobile browsers, built as a complete public system. **Demonstrates:** Rust-to-WebAssembly delivery, realtime state through Cloudflare Durable Objects and WebSockets, SvelteKit, persistence, and end-to-end deployment. **Evidence and status:** public source and a live deployment at the verified canonical URL; traffic, performance, bundle-size, and current test-count claims remain withheld. [Review the delivered system →](/projects/dicee.html)
+- **Dicee** A live family multiplayer game for mobile browsers, built as a complete public system. **Demonstrates:** Rust-to-WebAssembly delivery, realtime state through Cloudflare Durable Objects and WebSockets, SvelteKit, persistence, and end-to-end deployment. **Evidence and status:** public source and a [live deployment](https://dicee.games/); traffic, performance, bundle-size, and current test-count claims remain withheld. [Review the delivered system →](/projects/dicee.html)
+- **ScopeCam** A private, proprietary Android/Kotlin/C++ USB-microscopy application with a vendored UVC camera stack. **Evidence and status:** a signed `0.1-alpha` client build was delivered in June 2026; no public source link and no broad release. [Details available on request →](/contact.html)
 
 [Explore the full body of work →](/projects/)
 

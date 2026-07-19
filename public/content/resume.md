@@ -1,6 +1,6 @@
 # Jeffrey V. Johnson, Ph.D.
 
-**Evaluations and agent-governance engineer**
+**Research Engineer — Model Evaluations · Agent Systems · Evaluation Infrastructure**
 Agentic AI, evaluation and alignment, machine-checkable verification
 Homer, Alaska · jeffrey@jvjohnson.dev · github.com/verlyn13 ·
 linkedin.com/in/drjeffreyjohnson

@@ -4,8 +4,8 @@ type: page
 source_file: projects/symmetry-groups.html
 source_selector: main
 route: /projects/symmetry-groups.html
-content_hash: ee2e8d95bcb6d47a5fe8cc53dfec23e141d8389b0d0ad958bfe6f2c85222cd9e
-html_hash: 90f1eac985ac13983159b873feaf2d46f74b3f84298df4ea5029b00c02cc43a8
+content_hash: 5f8c53394ece3981154dfa09e08a74d425358b74c93c4db48a9d818ef6f71046
+html_hash: 8cb1691d432b930b5d253f7e13080cbe71a0d586aa6c63413769387ddb843c12
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -50,5 +50,3 @@ No active-status, capability, implementation, authorship-origin, educational-use
 Happy to talk about this project or the research practice behind it.
 
 Email me about this →
-
-← Back to Evidence
