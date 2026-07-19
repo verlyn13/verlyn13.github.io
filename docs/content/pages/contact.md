@@ -4,8 +4,8 @@ type: page
 source_file: contact.html
 source_selector: main
 route: /contact.html
-content_hash: 913d411cdcd82bc0a55292df607aeb4092a470e0389d4912e64f94df3e999814
-html_hash: 94ae2bc8ba523996cd95c69b83aab46b1579ced37a827215c737f72e60f542f6
+content_hash: 39e2ac80d77baba5abc600f85985aeb48a8d50649d5f7a7c4c33e45fbf914121
+html_hash: e8f84293728f0791616bfdae3390fc1edb823babb2e3a86de42bf3cd5ce76365
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -17,9 +17,9 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 [jeffrey@jvjohnson.dev](mailto:jeffrey@jvjohnson.dev)
 
-## Office
+## Reaching me
 
-Kenai Peninsula College Kachemak Bay Campus P.O. Box 1543 Homer, Alaska
+Email is the best way to reach me — I read it and I answer. From there I'm glad to set up a call. Once I know who I'm talking with, I'll share whatever a real conversation needs: references, private project details, the longer story.
 
 ## Professional Profiles
 
