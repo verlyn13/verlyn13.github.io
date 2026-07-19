@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: 1ed2f3264029a09c3675b45397a1435808207a4ec5f1b014414722f197a07328
-html_hash: 5c43c22352c6839c7f087760fd94a88000398bc9f17e01b00cefcc45ec4529e3
+content_hash: cf2b3c58a7c56bed48f19bd7c156f70429eb7560e21fd4cd41a2ee01c3e09a84
+html_hash: 77ba27df5ae7a3125df762a5f4804c8c302ee3b63a6ee417e628a791afc205d6
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -18,6 +18,8 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 Homer, Alaska
 
 The threads converge. A tenured mathematics professor developing online pedagogy while building evaluation, governance, and systems-engineering tools. The logic of the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
+
+The turn from mathematical research and teaching to agentic development happened inside a project. ScopeCam started as a plan to build an Android application for USB microscope cameras, and I began it the classic way — solo development, reading documentation, building an early working prototype by hand. Right about then the first ChatGPT came out. I started using it for code help and context, and I have been riding the front wave of agentic development ever since — exploring everything it has to offer in engineering concepts, and using the tools first-hand to gain the experience.
 
 ### Roles
 
