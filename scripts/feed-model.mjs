@@ -26,10 +26,10 @@ const MANIFEST_ERROR_COUNT_FIELDS = [
 // evidenceClass -> display label + sort order (the §S2 grouping). Editorial defaults:
 // the design pass may revise labels/order; membership is the feed's, not ours.
 const KINDS = [
-  { key: 'deployed-system', label: 'Shipped systems' },
-  { key: 'client-deliverable', label: 'Client deliverables' },
   { key: 'working-prototype', label: 'Working prototypes' },
+  { key: 'client-deliverable', label: 'Client deliverables' },
   { key: 'public-package', label: 'Released packages' },
+  { key: 'deployed-system', label: 'Shipped systems' },
   { key: 'published-artifact', label: 'Published research' },
   { key: 'course-taught', label: 'Teaching' },
 ]

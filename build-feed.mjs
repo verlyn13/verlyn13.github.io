@@ -82,10 +82,6 @@ function overviewBand(portfolio) {
   if (portfolio.firstActive) {
     tail.push(`built continuously since ${String(portfolio.firstActive).slice(0, 4)}`)
   }
-  if (portfolio.deployedCount === 1) tail.push('one of them deployed and live')
-  else if (portfolio.deployedCount > 1) {
-    tail.push(`${portfolio.deployedCount} of them deployed and live`)
-  }
   const clause = tail.length ? ` — ${tail.join(', ')}` : ''
   // Methods line lights up only when the feed provides portfolio.recurringMethods (v1).
   const methods = portfolio.recurringMethods.length
