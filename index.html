@@ -16,7 +16,7 @@
 
     <!-- Open Graph / LinkedIn Preview Tags -->
     <meta property="og:title" content="Jeffrey V. Johnson, Ph.D. — Research Engineer">
-    <meta property="og:description" content="I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether evidence supports a change to preserving evidence and human review.">
+    <meta property="og:description" content="I build systems that make AI-assisted work measurable, governable, and auditable.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/">
     <meta property="og:site_name" content="jvjohnson.dev">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Research Engineer">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jeffrey V. Johnson, Ph.D. — Research Engineer">
-    <meta name="twitter:description" content="I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether evidence supports a change to preserving evidence and human review.">
+    <meta name="twitter:description" content="I build systems that make AI-assisted work measurable, governable, and auditable.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
     <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Research Engineer">
 
@@ -40,7 +40,7 @@
           "name": "Jeffrey V. Johnson",
           "honorificSuffix": "Ph.D.",
           "jobTitle": "Research Engineer",
-          "description": "I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.",
+          "description": "I build systems that make AI-assisted work measurable, governable, and auditable. I build and align systems based on strict criteria and specification, searching for quality, verifiable results in agentic development.",
           "url": "https://jvjohnson.dev/",
           "image": "https://jvjohnson.dev/og-default.png",
           "email": "jeffrey@jvjohnson.dev",
@@ -100,11 +100,11 @@
                 <p class="hero-pitch">I build systems that make AI-assisted work measurable, governable, and auditable.</p>
 
                 <div class="hero-bio">
-                    <p>I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.</p>
+                    <p>I build and align systems based on strict criteria and specification, searching for quality, verifiable results in agentic development.</p>
 
-                    <p>I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (<em>Pediatric Physical Therapy</em>, 2023;35(3):326-331): 1,593 children ages 5 to 17 across a rural Alaska school district, a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data, producing normative reference values for assessing children with disabilities.</p>
+                    <p>I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (<em>Pediatric Physical Therapy</em>, 2023;35(3):326-331). The study covered 1,593 children ages 5 to 17 in a rural Alaska school district and used a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data to produce normative reference values for assessing children with disabilities.</p>
 
-                    <p>The projects below are extensive, self-directed work: systems built end to end to develop and demonstrate working fluency with AI coding frameworks, model evaluation, and agent governance. Each states its evidence boundary beside its claim.</p>
+                    <p>The projects below are extensive self-directed work. I built them end to end to learn and demonstrate AI coding frameworks, model evaluation, and agent governance. Each one states its evidence boundary next to its claim.</p>
 
                     <p class="location">Homer, Alaska</p>
                 </div>
@@ -233,7 +233,7 @@
                         <p><strong>What is it for?</strong> It provides a repeatable, inspectable alternative to informal model selection and prevents incomplete experiments from being mistaken for deployment evidence.</p>
                         <p><strong>How is it used?</strong> A team defines the systems, tasks, study design, and required decision criteria. The framework validates the evidence and produces a report; a separate verifier recomputes the result or refuses it when evidence is missing or altered.</p>
                         <p><strong>Why does it matter?</strong> It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.</p>
-                        <p><strong>Evidence and status:</strong> Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed <code>NOT_EVALUABLE</code> refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public <code>main</code>. In active development — local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.</p>
+                        <p><strong>Evidence and status:</strong> Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed <code>NOT_EVALUABLE</code> refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public <code>main</code>. It is in active development; local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.</p>
                         <div class="approach-case-study">
                             <a href="https://github.com/verlyn13/eval-lab-methodology" class="case-study-link">Explore the methodology, worked examples, and evidence →</a>
                         </div>
@@ -248,7 +248,7 @@
                         <p><strong>What is it for?</strong> It helps an owner-operator resolve uncertain or conflicting financial facts without silently converting extraction into truth.</p>
                         <p><strong>How is it used?</strong> The system runs deterministic extraction first, optionally uses models as auditors or comparison tools, and routes low-confidence or conflicting results to human review.</p>
                         <p><strong>Why does it matter?</strong> Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.</p>
-                        <p><strong>Evidence and status:</strong> Current accepted <code>main</code> passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate — rebuilt without history from the private repository — passed its full public-candidate validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks; publication awaits final operator review, so there is no public source link yet.</p>
+                        <p><strong>Evidence and status:</strong> Current accepted <code>main</code> passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate passed its full validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks. It was rebuilt without history from the private repository. Publication awaits final operator review, so there is no public source link yet.</p>
                         <div class="approach-case-study">
                             <a href="/projects/budget-triage.html" class="case-study-link">Budget Triage →</a>
                         </div>
@@ -313,7 +313,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, and evaluation infrastructure — including safeguards and agent-governance work — where probabilistic AI tooling needs deterministic verification. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+            <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <p>&copy; 2026 Jeffrey Johnson &middot; Homer, Alaska &middot; <a href="/colophon.html">Colophon</a></p>
         </div>
     </footer>

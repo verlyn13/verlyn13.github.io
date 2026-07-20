@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: cf2b3c58a7c56bed48f19bd7c156f70429eb7560e21fd4cd41a2ee01c3e09a84
-html_hash: 77ba27df5ae7a3125df762a5f4804c8c302ee3b63a6ee417e628a791afc205d6
+content_hash: 10bff1f18a1438964091cee0d285472dbb15d80503aaddec716a83d906b48df7
+html_hash: a2494f5383288d011630c5f0a2549224e17e980481c4b2192a58b7b601b2007b
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -19,7 +19,7 @@ Homer, Alaska
 
 The threads converge. A tenured mathematics professor developing online pedagogy while building evaluation, governance, and systems-engineering tools. The logic of the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
 
-The turn from mathematical research and teaching to agentic development happened inside a project. ScopeCam started as a plan to build an Android application for USB microscope cameras, and I began it the classic way — solo development, reading documentation, building an early working prototype by hand. Right about then the first ChatGPT came out. I started using it for code help and context, and I have been riding the front wave of agentic development ever since — exploring everything it has to offer in engineering concepts, and using the tools first-hand to gain the experience.
+The turn from mathematical research and teaching to agentic development happened inside a project. ScopeCam started as a plan to build an Android application for USB microscope cameras, and I began it the classic way: solo development, reading documentation, building an early working prototype by hand. Right about then the first ChatGPT came out. I started using it for code help and context, and I have been riding the front wave of agentic development ever since, exploring everything it has to offer in engineering concepts and using the tools first-hand to gain the experience.
 
 ### Roles
 
@@ -164,10 +164,10 @@ Six years of continuous employment before graduating high school. Farm work, res
 
 2012-present
 
-A sample of a longer service record that runs alongside the eras above, from graduate school through the present — committee work, community roles, and sustained mentorship.
+A sample of a longer service record that runs alongside the eras above, from graduate school through the present: committee work, community roles, and sustained mentorship.
 
-- Economic Development Council, Homer, Alaska — member, 2020-2022.
-- MathCounts coach, 2017-present — weekly sessions with middle-school students and the annual chapter competition in Anchorage.
-- Multi-year one-on-one mentorship of a gifted high-school student, 2023-present — abstract algebra, type theory, and applied cryptography.
+- Economic Development Council, Homer, Alaska: member, 2020-2022.
+- MathCounts coach, 2017-present: weekly sessions with middle-school students and the annual chapter competition in Anchorage.
+- Multi-year one-on-one mentorship of a gifted high-school student, 2023-present: abstract algebra, type theory, and applied cryptography.
 - University committees: Program Review Committee, UAA (2019); Accessibility Committee, KPC (2017-2020); Calculus Restructuring, Mathematics Major Recruitment, External Review Implementation, and Safety and Security committees, American University in Cairo (2014-2017); Student Evaluation Committee chair, University of Montana (2012).
 - Upward Bound/TRIO summer mathematics for Native American high-school students (2013) and Math Circle director for gifted high-school students (2012), University of Montana.
