@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 27c0bb2da137a24e247d119e09866972095e44382ddb7f35fd9d027acd486d8a
-html_hash: fad5ba7f08ca4d50874ef115a297cb7eb62baa6ec39574f67d42372786b4ac40
+content_hash: eec2cabd778630a43ddac289537598029b312d949fb0cc5dd56f2fc8cce43151
+html_hash: e0e2eb48e770ef0af993252b1aa15ed9e73b136bf56b27e70598eff81115bc4d
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -17,11 +17,11 @@ Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastruct
 
 I build systems that make AI-assisted work measurable, governable, and auditable.
 
-I build systems that make AI-assisted work measurable, governable, and auditable—from deciding whether model evidence supports a change, to defining what agents may do, to preserving evidence and human review in consequential software.
+I build and align systems based on strict criteria and specification, searching for quality, verifiable results in agentic development.
 
-I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (*Pediatric Physical Therapy*, 2023;35(3):326-331): 1,593 children ages 5 to 17 across a rural Alaska school district, a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data, producing normative reference values for assessing children with disabilities.
+I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (*Pediatric Physical Therapy*, 2023;35(3):326-331). The study covered 1,593 children ages 5 to 17 in a rural Alaska school district and used a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data to produce normative reference values for assessing children with disabilities.
 
-The projects below are extensive, self-directed work: systems built end to end to develop and demonstrate working fluency with AI coding frameworks, model evaluation, and agent governance. Each states its evidence boundary beside its claim.
+The projects below are extensive self-directed work. I built them end to end to learn and demonstrate AI coding frameworks, model evaluation, and agent governance. Each one states its evidence boundary next to its claim.
 
 Homer, Alaska
 
@@ -73,7 +73,7 @@ Fail-closed evidence and reporting for model evaluation.
 
 **Why does it matter?** It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.
 
-**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. In active development — local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
+**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. It is in active development; local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
 
 Explore the methodology, worked examples, and evidence →
 
@@ -89,7 +89,7 @@ Traceable financial records with uncertainty routed to human review.
 
 **Why does it matter?** Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.
 
-**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate — rebuilt without history from the private repository — passed its full public-candidate validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks; publication awaits final operator review, so there is no public source link yet.
+**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate passed its full validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks. It was rebuilt without history from the private repository. Publication awaits final operator review, so there is no public source link yet.
 
 Budget Triage →
 
