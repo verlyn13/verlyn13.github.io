@@ -1,10 +1,10 @@
 # jvjohnson.dev — Evaluations and agent-governance portfolio
 
-**Jeffrey V. Johnson, Ph.D.** — evaluations and agent-governance engineer.
+**Jeffrey V. Johnson, Ph.D.**, evaluations and agent-governance engineer.
 
-I build systems that make AI-assisted work measurable, governable, and auditable—from deciding
-whether model evidence supports a change, to defining what agents may do, to preserving evidence and
-human review in consequential software.
+I build systems that hold work to specification and evidence, whether the work comes from people,
+models, or agents: deciding whether model evidence supports a change, defining what agents may do,
+and preserving evidence and human review in consequential software.
 
 Live site: <https://jvjohnson.dev>
 

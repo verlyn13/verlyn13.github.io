@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: 6964c0c8dc4ce1f09b3a23d414373996035ef5e64888d01b09c8784bf871a23e
-html_hash: 703519fbfac5bea6047d45ed05e9fce337e022307708ea5270d927fb76d90693
+content_hash: ee3b504e2f19421fc0f905b18b52caec36b65b32e27acd4a03f98e7dbf367886
+html_hash: 6bf819f91ef76298140655ff0094520dbc3b128b7cfdeea78e9196076ea2c879
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -19,7 +19,7 @@ Evaluation methodology, applied statistics, and mathematical foundations
 
 ## Agentic AI Evaluation and Governance
 
-Current independent research focuses on making agentic systems measurable, governable, and auditable.
+Current independent research holds agentic systems to specification and evidence.
 
 - Evaluation contracts, independent evidence recomputation, and fail-closed refusal when scientific prerequisites do not support a decision.
 - Evidence-first audit methods that separate discovery from judgment and bind conclusions to reproducible artifacts.

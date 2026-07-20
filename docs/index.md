@@ -3,8 +3,8 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.5
-last_updated: 2026-07-15
+version: 0.1.6
+last_updated: 2026-07-20
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -17,12 +17,13 @@ authority, which are historical handoffs, and where plans live.
 
 ## Current operating truth
 
-- **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as an evaluations and
-  agent-governance engineer pairing probabilistic AI tooling with deterministic,
-  machine-checkable verification. The connected narrative is measurable evaluation evidence,
-  governable agent authority, and auditable human review in consequential software. The broader
-  mathematical researcher and systems-builder identity is supporting context, not the landing-page
-  headline.
+- **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as a Research Engineer with one
+  identity line (2026-07-20): "I build systems that hold work to specification and evidence, whether
+  the work comes from people, models, or agents. A result counts only when it can be verified."
+  Discipline is general; AI/agent market keywords live in the role line, skills, and project
+  evidence, not the identity sentence. Copy voice: simple, direct, first person, no em-dashes.
+  The broader mathematical researcher and systems-builder identity is supporting context, not the
+  landing-page headline.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
@@ -113,8 +114,8 @@ authority, which are historical handoffs, and where plans live.
 ### Content and IA
 
 - **Current:** homepage direction now routes through
-  the accepted career source: resume/skills first; the connected measurable, governable, and auditable
-  narrative; three lead examples in the order Evaluation Lab, Governance and agent-control
+  the accepted career source: resume/skills first; the specification-and-evidence narrative;
+  three lead examples in the order Evaluation Lab, Governance and agent-control
   architecture, and Budget Triage; then compact implementation evidence.
 - **Archive boundary:** `/projects/` groups the full body of work by evidence class. It does not
   define another flagship or primary-evidence order.

@@ -1,20 +1,20 @@
 # Jeffrey V. Johnson, Ph.D.
 
-**Research Engineer — Model Evaluations · Agent Systems · Evaluation Infrastructure**
+**Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure**
 Agentic AI, evaluation and alignment, machine-checkable verification
 Homer, Alaska · jeffrey@jvjohnson.dev · github.com/verlyn13 ·
 linkedin.com/in/drjeffreyjohnson
 
 ## Summary
 
-Ph.D. mathematician and self-directed systems researcher with a backend
-orientation. My strongest fit is evaluations and agent-governance engineering:
-pairing probabilistic AI tooling with deterministic, machine-checkable
-verification. I build systems that make AI-assisted work measurable,
-governable, and auditable: deciding whether model evidence supports a change,
-defining what agents may do, and preserving evidence and human review in
-consequential workflows. I am strongest where the work needs engineering
-judgment, evidence discipline, and clear boundaries around agentic systems.
+Ph.D. mathematician and systems builder with a backend orientation. I build
+systems that hold work to specification and evidence, whether the work comes
+from people, models, or agents: deciding whether model evidence supports a
+change, defining what agents may do, and preserving evidence and human review
+in consequential workflows. My strongest fit is research engineering in model
+evaluations, agent systems, and evaluation infrastructure. The underlying
+skills are general: engineering practice, mathematical training, and clear
+communication.
 
 ## Selected systems and research evidence
 
