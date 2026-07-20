@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: acc523d3f56e30ba5a20d0c90ddacbc9a21ee5c0fc9f277a30d26765197276bb
-html_hash: 5cc6920a5c95b7706b53fed8c64975daf694cafc73aed918b79b9f423bc53841
+content_hash: e44b7ec64e2d1b06c3ec85050aea005911c733abcd40b16b5598cc6afbe7807b
+html_hash: 6360b7191c92b9e1966a5e3d679c2c4f8b3889d0815768e8255c84bb222880e1
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure
+Building infrastructure for model evaluation and agent systems
 
 - Homer, Alaska
 - [jeffrey@jvjohnson.dev](mailto:jeffrey@jvjohnson.dev)
