@@ -1,6 +1,6 @@
 # Jeffrey V. Johnson, Ph.D.
 
-Research Engineer — Model Evaluations, Agent Systems, Evaluation Infrastructure
+Research Engineer | Model Evaluations, Agent Systems, Evaluation Infrastructure
 
 Location: Homer, Alaska
 Email: jeffrey@jvjohnson.dev
@@ -16,13 +16,14 @@ infrastructure engineer; research engineer; policy-as-code engineer.
 
 ## Summary
 
-Ph.D. mathematician and self-directed systems researcher with a backend
-orientation. Strongest fit: evaluations and agent-governance engineering,
-pairing probabilistic AI tooling with deterministic, machine-checkable
-verification. Builds systems that make AI-assisted work measurable, governable,
-and auditable: deciding whether model evidence supports a change, defining what
-agents may do, and preserving evidence and human review in consequential
-workflows.
+Ph.D. mathematician and systems builder with a backend orientation. Builds
+systems that hold work to specification and evidence, whether the work comes
+from people, models, or agents: deciding whether model evidence supports a
+change, defining what agents may do, and preserving evidence and human review
+in consequential workflows. Strongest fit: research engineering in model
+evaluations, agent systems, and evaluation infrastructure. Underlying skills
+are general: engineering practice, mathematical training, and clear
+communication.
 
 ## Core skills
 

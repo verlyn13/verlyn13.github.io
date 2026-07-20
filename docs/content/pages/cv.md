@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 26269b0ee86c9631f89a951f5211a031da7046d3edf745629595563392825a39
-html_hash: 122a70658166d4efd63c19f5cc10e4071cf683b2b6281f35976dd25470d5a356
+content_hash: acc523d3f56e30ba5a20d0c90ddacbc9a21ee5c0fc9f277a30d26765197276bb
+html_hash: 5cc6920a5c95b7706b53fed8c64975daf694cafc73aed918b79b9f423bc53841
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -32,7 +32,7 @@ AI/ATS↓
 
 ## Summary
 
-Ph.D. mathematician and self-directed systems researcher with a backend orientation. My strongest fit is Research Engineer (model evaluations, agent systems, evaluation infrastructure)ing: pairing probabilistic AI tooling with deterministic, machine-checkable verification. I build systems that make AI-assisted work measurable, governable, and auditable: deciding whether model evidence supports a change, defining what agents may do, and preserving evidence and human review in consequential workflows.
+Ph.D. mathematician and systems builder with a backend orientation. I build systems that hold work to specification and evidence, whether the work comes from people, models, or agents: deciding whether model evidence supports a change, defining what agents may do, and preserving evidence and human review in consequential workflows. My strongest fit is research engineering in model evaluations, agent systems, and evaluation infrastructure. The underlying skills are general: engineering practice, mathematical training, and clear communication.
 
 ## Selected systems and research evidence
 

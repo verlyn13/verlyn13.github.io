@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: eec2cabd778630a43ddac289537598029b312d949fb0cc5dd56f2fc8cce43151
-html_hash: e0e2eb48e770ef0af993252b1aa15ed9e73b136bf56b27e70598eff81115bc4d
+content_hash: c521a4d060449b8a4c49cf1bee8c6ef8f0bcdf247a6ac05b58ede7eaa3e2edc2
+html_hash: 068fea88d79a0facbeef2a428522157aeb20c3a420cf06ef4bf0fd4ba6f15ec9
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -15,17 +15,17 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure
 
-I build systems that make AI-assisted work measurable, governable, and auditable.
+I build systems that hold work to specification and evidence, whether the work comes from people, models, or agents. A result counts only when it can be verified.
 
-I build and align systems based on strict criteria and specification, searching for quality, verifiable results in agentic development.
+I work daily with modern agentic tools and know them in practice: what they do well, where they fail, and when their output should not be trusted without checking.
 
-I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for Cadieux, Pyhala, and Johnson, “Pediatric Walking Speed Normal Reference Values in a Local Population” (*Pediatric Physical Therapy*, 2023;35(3):326-331). The study covered 1,593 children ages 5 to 17 in a rural Alaska school district and used a 13×2×2 factorial ANOVA with Type III sums of squares on unbalanced data to produce normative reference values for assessing children with disabilities.
+I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for a 2023 study in *Pediatric Physical Therapy* that produced walking-speed reference values from 1,593 children in a rural Alaska school district. The full citation and methods are on the [research page](/research/).
 
-The projects below are extensive self-directed work. I built them end to end to learn and demonstrate AI coding frameworks, model evaluation, and agent governance. Each one states its evidence boundary next to its claim.
+The projects below are self-directed. I built them end to end to learn and demonstrate AI coding frameworks, model evaluation, and agent governance. Each one states its evidence boundary next to its claim.
 
 Homer, Alaska
 
-Selected evidence [Agentic-Coding Evaluation Lab — model-change evidence](#evaluation-lab) [Budget Triage — traceable financial evidence](#budget-triage)
+Selected evidence [Agentic-Coding Evaluation Lab: model-change evidence](#evaluation-lab) [Budget Triage: traceable financial evidence](#budget-triage)
 
 Current résumé ↓
 
@@ -41,7 +41,7 @@ Email →
 
 ## Resume and skills
 
-Current resume formats and skill signals for research-engineering roles in model evaluation, agent systems, and evaluation infrastructure.
+Current resume formats and a skills summary for research-engineering roles in model evaluation, agent systems, and evaluation infrastructure.
 
 ### Resume formats
 
@@ -59,7 +59,7 @@ Current resume formats and skill signals for research-engineering roles in model
 
 ## Selected evidence
 
-Two featured projects show one research-engineering method: measure uncertain systems, bound their authority, preserve their evidence, and test those disciplines in implemented software.
+Two featured projects show one method: measure uncertain systems, bound their authority, and preserve the evidence.
 
 ### Agentic-Coding Evaluation Lab
 
@@ -73,11 +73,11 @@ Fail-closed evidence and reporting for model evaluation.
 
 **Why does it matter?** It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.
 
-**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic, independently recomputed `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit reproduced the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. It is in active development; local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
+**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit ran the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. It is in active development; local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
 
 Explore the methodology, worked examples, and evidence →
 
-### Budget Triage — financial evidence workbench
+### Budget Triage: financial evidence workbench
 
 Traceable financial records with uncertainty routed to human review.
 
@@ -89,7 +89,7 @@ Traceable financial records with uncertainty routed to human review.
 
 **Why does it matter?** Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.
 
-**Evidence and status:** Current accepted `main` passed full validation. The synthetic known-answer result remains 6 passing / 9 pending, incomplete and uncertified. A separately verified, bounded synthetic observation preserves browser-to-service correlation, but does not prove UI state, production operation, financial correctness, or the source-through-tax path. No real-user, financial-outcome, live-provider-performance, tax-readiness, or completed-certification claim is made. A sanitized, MIT-licensed public release candidate passed its full validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks. It was rebuilt without history from the private repository. Publication awaits final operator review, so there is no public source link yet.
+**Evidence and status:** The accepted `main` branch passes full validation. A sanitized, MIT-licensed public release candidate passed its validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks; it was rebuilt without history from the private repository. The synthetic known-answer harness is incomplete: 6 assertions pass and 9 are pending, so it is uncertified. I claim no real-user results, financial outcomes, live-provider performance, tax readiness, or completed certification. Publication waits on my final review, so there is no public source link yet.
 
 Budget Triage →
 
@@ -106,7 +106,7 @@ Budget Triage →
 
 ## Academic and publication context
 
-Tenured associate professor of mathematics with 17+ years teaching mathematics and statistics. Ph.D. in Mathematics from the University of Montana, 2013; 2023 *Pediatric Physical Therapy* publication with statistical-analysis role; 2012 pure-math publication. This supports the evaluation and governance work without replacing it as the main pitch.
+Tenured associate professor of mathematics with 17+ years teaching mathematics and statistics. Ph.D. in Mathematics, University of Montana, 2013; statistical lead for the 2023 *Pediatric Physical Therapy* study; a 2012 pure-mathematics publication. That background supports the evaluation and governance work above.
 
 Teaching & Leadership →
 
