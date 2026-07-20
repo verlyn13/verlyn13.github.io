@@ -1,6 +1,6 @@
 # Jeffrey V. Johnson, Ph.D.
 
-**Evaluations and agent-governance engineer**
+**Building evaluation and agent-governance infrastructure**
 
 I build systems that hold work to specification and evidence, whether the work
 comes from people, models, or agents: deciding whether model evidence supports

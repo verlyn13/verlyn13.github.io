@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: c521a4d060449b8a4c49cf1bee8c6ef8f0bcdf247a6ac05b58ede7eaa3e2edc2
-html_hash: 068fea88d79a0facbeef2a428522157aeb20c3a420cf06ef4bf0fd4ba6f15ec9
+content_hash: 087da19141a68d8d5f47cb39f1c89c7e25b75d26a9094fd349164a5f4d23358c
+html_hash: 3ba4c890670eb5ab2153bfe499e463398d3ebf74534362488777f62f525af890
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Research Engineer | Model Evaluations · Agent Systems · Evaluation Infrastructure
+Building infrastructure for model evaluation and agent systems
 
 I build systems that hold work to specification and evidence, whether the work comes from people, models, or agents. A result counts only when it can be verified.
 

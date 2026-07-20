@@ -3,7 +3,7 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.6
+version: 0.1.7
 last_updated: 2026-07-20
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
@@ -17,13 +17,15 @@ authority, which are historical handoffs, and where plans live.
 
 ## Current operating truth
 
-- **Public positioning:** Jeffrey V. Johnson, Ph.D. is presented as a Research Engineer with one
-  identity line (2026-07-20): "I build systems that hold work to specification and evidence, whether
-  the work comes from people, models, or agents. A result counts only when it can be verified."
-  Discipline is general; AI/agent market keywords live in the role line, skills, and project
-  evidence, not the identity sentence. Copy voice: simple, direct, first person, no em-dashes.
-  The broader mathematical researcher and systems-builder identity is supporting context, not the
-  landing-page headline.
+- **Public positioning:** headlines claim the work, not a title (operator decision 2026-07-20,
+  source-repo ADR-0012): the headline is "Building infrastructure for model evaluation and agent
+  systems", and no unheld occupational label (e.g. "Research Engineer") leads a headline, bio, or
+  structured-data jobTitle. The identity line stays: "I build systems that hold work to
+  specification and evidence, whether the work comes from people, models, or agents. A result
+  counts only when it can be verified." AI/agent market keywords live in the headline, skills, and
+  project evidence, not the identity sentence. Copy voice: simple, direct, first person, no
+  em-dashes. The broader mathematical researcher and systems-builder identity is supporting
+  context, not the landing-page headline.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
