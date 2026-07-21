@@ -10,69 +10,54 @@ LinkedIn: https://linkedin.com/in/drjeffreyjohnson
 
 ## Target roles
 
-Evaluations engineer; AI evaluation engineer; agent-governance engineer;
-safeguards engineer; AI control engineer; agent-security engineer; AI
-infrastructure engineer; research engineer; policy-as-code engineer.
+Research engineer; model evaluation engineer; agent systems engineer; evaluation
+infrastructure engineer; safeguards engineer.
 
 ## Summary
 
-Ph.D. mathematician and systems builder with a backend orientation. Builds the
-foundations that let agents contribute reliable, specification-conforming work:
-typed contracts, bounded authority, reproducible tool and runtime environments,
-deterministic gates, and evidence-preserving handbacks. Tests those foundations
-by using them to build complex applications, data pipelines, evaluation systems,
-and infrastructure. Strongest fit: research engineering in model evaluations,
-agent systems, and evaluation infrastructure.
+Ph.D. mathematician and systems builder focused on the infrastructure that makes
+agent-assisted development reliable: typed contracts, explicit permissions,
+reproducible environments, automated checks, and reviewable evidence. Applies
+these controls while building applications, data pipelines, evaluation systems,
+and infrastructure. Strongest fit: agent systems, developer infrastructure,
+model evaluation, and safeguards.
 
 ## Core skills
 
-Specifications and verification: typed contracts, Zod, JSON Schema, executable
-specifications, ADRs, decision ledgers, deterministic fitness gates, conformance
-gates, independent recompute-or-refuse verification, provenance,
-evidence-preserving handbacks, evidence-first audit methodology.
+Languages: Python, TypeScript, SQL, Bash, Kotlin, C, C++, Ruby.
 
-Agent systems and bounded authority: capability models, operation models,
-execution contexts, agent mandates, scoped authorization grants, approvals,
-leases, audit chains, sandboxing, egress policy, default-deny command
-allowlisting, no-commit gates, safeguards infrastructure, AI control.
+Contracts and controls: Zod, JSON Schema, OPA, Rego, OpenTofu, typed
+authorization, sandboxing, egress policy, provenance, schema drift checks,
+policy checks, CI-enforced conformance.
 
-Reproducible environments and policy-as-code: managed human and agent shell
-modes, mise, direnv, tool resolution, runtime resolution, OPA, Rego, OpenTofu,
-GitHub-provider governance-as-code, static policy checks, schema drift checks.
+Agent and evaluation systems: model evaluation, harness evaluation, evidence
+contracts, independent result verification, OpenAI-compatible LLM gateways,
+provider routing, coding-agent workflows, trace pipelines, provenance pipelines.
 
-Model evaluation and agent infrastructure: model evaluation, harness evaluation,
-evidence contracts, evaluation pipelines, coding-agent workflows,
-OpenAI-compatible LLM gateways, capability aliasing, provider resolution,
-per-client policy, budget controls, Ollama, trace pipelines, provenance
-pipelines, evidence pipelines.
+Infrastructure and data: PostgreSQL, Supabase, TimescaleDB, Redis, pgvector,
+Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted
+runners, OpenTelemetry, Infisical, 1Password.
 
-Infrastructure and platform: Cloudflare Zero Trust, Cloudflare Gateway,
-Cloudflare WARP, Cloudflare Access, Cloudflare Tunnel, Cloudflare Pages,
-Cloudflare DNS, Hetzner, Proxmox VE, Docker, Docker Compose, Traefik, GitHub
-Actions, self-hosted runners, OpenTelemetry, Infisical, 1Password custody.
+Native and application systems: Android, Kotlin, Jetpack Compose, USB, UVC,
+libusb, libuvc, JNI, NDK, CMake, WebAssembly.
 
-Data and native systems: PostgreSQL, Supabase, TimescaleDB, Redis Stack,
-RedisJSON, RediSearch, pgvector, Android, Kotlin, Jetpack Compose, USB, UVC,
-libusb, libuvc, JNI, NDK, C, C++, CMake.
+Mathematics and statistics: functional analysis, applied statistics, Wilson
+intervals, bootstrap confidence intervals, paired sign tests, statistical
+inference.
 
-Languages and statistics: Python, TypeScript, Kotlin, C, C++, Ruby, SQL, Bash,
-Wilson intervals, bootstrap confidence intervals, paired sign tests, applied
-statistics, statistical inference.
-
-## Foundation and public implementation evidence
+## Agent-development infrastructure
 
 ### Host Capability Substrate
 
-Role and domain: typed capability, operation, execution-context, policy,
-evidence, approval, lease, audit, and authorization contracts for host-level
-agent work.
+Typed contracts for host capabilities, operations, execution contexts, policy
+decisions, evidence, approvals, leases, audits, and authorization.
 
 Technology: TypeScript, Zod, JSON Schema, GitHub Actions.
 
 Evidence:
 
-- Designed 46 Zod entity schemas compiled to 67 generated JSON Schemas, with
-  about 500 tests.
+- Built 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about
+  500 tests.
 - Modeled host capabilities, operations, execution contexts, policy decisions,
   provenance-typed evidence, approvals, leases, audit chains, and scoped
   authorization grants.
@@ -86,60 +71,56 @@ Public proof: https://github.com/jefahnierocks/host-capability-substrate
 
 ### Governance and agent-control architecture
 
-Role and domain: anonymized private case study; control framework for
-agent-assisted work; agent governance; safeguards; policy-as-code.
+An anonymized private case study in agent governance, safeguards, and
+policy-as-code.
 
 Technology: OpenTofu, OPA, Rego, TypeScript, Cloudflare, Hetzner, Proxmox,
 GitHub governance-as-code.
 
 Evidence:
 
-- Designed a multi-repository architecture that separates human policy and
-  decision rights, agent mandates, capability and credential reach,
+- Designed a multi-repository architecture that separates human decision rights,
+  agent permissions, capability and credential reach,
   infrastructure enforcement, runtime admission, and repository-local authority.
-- Modeled effective agent authority as the intersection of mandate, available
-  capability, and credential reach, with value-blind handbacks when human
-  judgment or privileged action is required.
-- Connected the design to managed human and agent shell modes, reproducible tool
-  and runtime resolution, 26 OPA/conftest plan rules, governance as code, Zero
-  Trust infrastructure, and scheduled drift checks.
-- Selected controls operate today; runtime admission remains source-tested rather
-  than a live request-path gate. Single-operator case study; no enterprise-
-  adoption claim. Private organization name intentionally omitted.
+- Modeled agent authority as the intersection of mandate, available capability,
+  and credential reach, with structured, secret-free handbacks for human
+  judgment or privileged work.
+- Implemented selected controls including 26 OPA/conftest plan rules,
+  repository governance as code, Zero Trust infrastructure, and scheduled drift
+  checks.
+- Selected controls are operational; runtime admission is source-tested rather
+  than deployed across the organization. Single-operator case study; no
+  enterprise-adoption claim.
 
 Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
 
 ### Agentic Architecture Audit
 
-Role and domain: independent specification and drift verification for
-agent-operated codebases; governance; safeguards; agent security.
+Specification and drift verification for agent-operated codebases.
 
 Technology: specification authoring, Python tooling, JSON schemas, pre-commit,
 CI.
 
 Evidence:
 
-- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines that
-  separates discovery from judgment to counter LLM confirmation bias.
-- Defined an 11-dimension rubric, 12 JSON output schemas, and a severity x
-  confidence x weight priority model.
+- Authored a two-stage `audit-spec` of 2,075 lines that keeps evidence collection
+  separate from judgment.
+- Defined an 11-dimension rubric, 12 JSON output schemas, and a prioritization
+  model based on severity, confidence, and weight.
 - Built a stdlib-only Python drift linter with 10 deterministic checks,
   including content-hash binding of derived documents to specification bytes.
 - Wired a 27-case negative self-test into pre-commit and CI.
-- Converted audit findings into repeatable fitness functions while keeping
-  evidence-first discovery separate from human judgment.
 
 Public proof: https://github.com/verlyn13/agentic-architecture-audit
 
-## Proving grounds and delivery evidence
+## Selected applications and evaluations
 
 ### Agentic-Coding Evaluation Lab
 
-Role and domain: specialized proving ground for fail-closed model-evaluation
-evidence, evidence contracts, and independent verification.
+Public methodology and verification prototype for fail-closed model-evaluation
+evidence.
 
-Technology: Python, Quarto, JSON contracts; private gateway, harness, and trace
-integrations.
+Technology: Python, Quarto, JSON contracts.
 
 Evidence:
 
@@ -156,36 +137,31 @@ Public methodology: https://jvjohnson.dev/eval-lab-methodology/
 
 ### Budget Triage
 
-Role and domain: private financial application and development-substrate proving
-ground; backend and data integrity; model-risk controls; human review.
+Private financial evidence workbench for backend data integrity, model-risk
+controls, and human review. Not deployed to production.
 
 Technology: Bun, TypeScript, Hono, PostgreSQL, Zod, Decimal.js, Plaid,
 Infisical, OpenTelemetry.
 
 Evidence:
 
-- Developed under 19 executable specification contracts, machine-readable agent
-  authority boundaries, fail-closed pre-write hooks, and a 34-gate validation
-  chain shared across local and secretless CI contexts.
-- Implemented tenant isolation, exact monetary arithmetic, atomic persistence,
-  append-only decisions, authentication, connected-account, secret-custody, and
-  observability surfaces.
+- Built workflows for statements, receipts, and connected-account data with
+  deterministic-first processing and human review.
+- Implemented exact monetary arithmetic, tenant-scoped atomic persistence,
+  append-only decision records, authentication, Plaid, Infisical, and
+  OpenTelemetry.
+- Built a synthetic known-answer and service-observation harness. Current result:
+  6 passing and 9 pending assertions; incomplete and uncertified.
 - Prepared a sanitized, MIT-licensed public source candidate that passed its
   full validation gate on 2026-07-18. It is intended for employer exploration
   after final operator review; no public source link or contribution policy is
   available yet.
-- Synthetic known-answer result: 6 passing and 9 pending assertions; incomplete
-  and uncertified.
-- Private/no-link working prototype. No production, real-user,
-  financial-outcome, live-provider-performance, tax-readiness, or completed
-  source-through-tax claim.
 
 Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
 
 ### ScopeCam
 
-Role and domain: native Android application and physical-evidence proving ground;
-USB/UVC microscope camera runtime; client-delivered alpha.
+Private Android USB/UVC microscope application and client-delivered alpha.
 
 Technology: Android, Kotlin, Jetpack Compose, C++20, JNI, NDK, USB, UVC.
 
@@ -194,17 +170,16 @@ Evidence:
 - Built a multi-module Android microscope application spanning Compose UI,
   Kotlin orchestration, a native C++ camera engine, USB lifecycle, persistence,
   diagnostics, and physical-device verification.
-- Used repository operating contracts and explicit PASS/FAIL handbacks to keep
-  static validation separate from hardware evidence.
-- Delivered a signed client alpha. Private/no-link source; no broad release,
-  arbitrary-device compatibility, or production-readiness claim.
+- Diagnosed a camera-replug ANR across the JVM/native teardown boundary and
+  implemented a device-verified recovery with the remaining leak tradeoff
+  documented.
+- Delivered a signed client alpha. Private source; not broadly released.
 
 Public-safe project page: https://jvjohnson.dev/projects/scopecam.html
 
 ### Dicee
 
-Role and domain: representative delivered software; live family multiplayer game
-for mobile browsers.
+Live family multiplayer game for mobile browsers.
 
 Technology: Rust, WebAssembly, SvelteKit, Cloudflare Durable Objects,
 WebSockets.
@@ -247,12 +222,11 @@ Self-directed; Happy Patterns LLC product entity
 Homer, Alaska
 2023-present
 
-- Develop the specification, authority, environment, and verification foundations
-  for reliable agent-assisted software engineering across a multi-repository
-  research program.
-- Test the substrate by building applications, data pipelines, evaluation
-  systems, and infrastructure, with repository contracts, status records,
-  decision logs, and deterministic gates as the control surface.
+- Build and maintain a multi-repository engineering program for reliable,
+  specification-driven agent development across applications, data pipelines,
+  evaluation systems, and infrastructure.
+- Develop repository contracts, managed human and agent shell environments,
+  typed authority models, and automated verification gates.
 - Designed and operate selected controls from an anonymized, single-operator
   governance and agent-control architecture spanning policy-as-code,
   infrastructure as code, Zero Trust networking, local and remote servers, and
@@ -275,11 +249,3 @@ Speed Normal Reference Values in a Local Population. Pediatric Physical Therapy,
 Johnson, J. V., and Tonev, T. (2012). Spectral Conditions for Composition
 Operators on Algebras of Functions. Communications in Mathematics and
 Applications, 3(1).
-
-## Candid fit note
-
-Academic and self-directed background rather than corporate engineering
-background. Systems have not yet been tested at production scale. Strengths:
-complete end-to-end system building, fast reading of unfamiliar stacks,
-evidence discipline, explicit authority boundaries, and explicit failure-mode
-analysis.
