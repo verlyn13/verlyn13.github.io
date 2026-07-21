@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: 212312907ab540c0c4bf8f926bcf2b1bef49f2c366e01d340971b25275f97e27
-html_hash: a1e94c4441856c2b366140c16868cbb0201b92d541e3cb18306e061e54713857
+content_hash: 4b7eb22053fa48d375002a7d2402cd2aad83e1369db44a774cfb5664749d92f5
+html_hash: 52b7a37cf94afe880e1b0f0b2705bfd0ab67149c11122d5af6d85d45c2f4b0e1
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -35,7 +35,7 @@ An Android device acts as the USB host. The operator connects a supported micros
 
 ## Why does it matter?
 
-The project crosses Android UI, Kotlin orchestration, native C++, USB lifecycle, render synchronization, persistence, observability, and physical-device testing. Its strongest case study traced a camera-replug ANR across the JVM/native boundary and implemented a bounded, device-verified recovery while documenting the remaining leak tradeoff.
+The project is a proving ground for specification-driven agent-assisted development across Android UI, Kotlin orchestration, native C++, USB lifecycle, render synchronization, persistence, observability, and physical-device testing. Its strongest case study traced a camera-replug ANR across the JVM/native boundary and implemented a bounded, device-verified recovery while documenting the remaining leak tradeoff.
 
 ## Evidence and status
 
@@ -66,11 +66,16 @@ An `AHardwareBuffer`-backed triple-buffer path uses EGLImage texture binding and
 
 Debug and QA builds expose local telemetry, snapshots, and protected diagnostic actions. Release builds use a no-op implementation, so this is not a production REST-service claim.
 
+### Specification and handback discipline
+
+A repository operating contract separates source validation from physical-device evidence. Specialized workflows return explicit PASS or FAIL handbacks with the observation method, unresolved risks, and the next responsible actor, so a static check cannot silently stand in for USB negotiation or camera behavior.
+
 ## What the work demonstrates
 
 - Native Android, Kotlin, C++, JNI, and NDK systems engineering.
 - USB lifecycle and physical-device integration.
 - Cross-boundary concurrency and teardown debugging.
+- Specification-driven, cross-tool agent workflows with evidence-preserving handbacks.
 - Evidence-oriented diagnostics and device verification.
 - Client delivery with explicit compatibility and maturity boundaries.
 

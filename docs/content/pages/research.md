@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: ee3b504e2f19421fc0f905b18b52caec36b65b32e27acd4a03f98e7dbf367886
-html_hash: 6bf819f91ef76298140655ff0094520dbc3b128b7cfdeea78e9196076ea2c879
+content_hash: a1e7d2b57a1fbdf5980bb34aa42239b330aa185291aa7d8aa80fbc2f1969cce3
+html_hash: a534c72d47f94edd1b2b14fc7aaa3804c7895feec104dcd4ea1be47686c5aa50
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -15,12 +15,14 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Research & Publications
 
-Evaluation methodology, applied statistics, and mathematical foundations
+Reliable agent-development foundations, evaluation methodology, applied statistics, and mathematics
 
-## Agentic AI Evaluation and Governance
+## Reliable agent systems and evaluation
 
-Current independent research holds agentic systems to specification and evidence.
+Current independent research develops the specifications, authority boundaries, execution environments, and verification needed for reliable agent-assisted work.
 
+- Typed capability, operation, execution-context, evidence, approval, lease, audit, and authorization contracts.
+- Reproducible human and agent shell modes, tool and runtime resolution, and cross-tool repository contracts.
 - Evaluation contracts, independent evidence recomputation, and fail-closed refusal when scientific prerequisites do not support a decision.
 - Evidence-first audit methods that separate discovery from judgment and bind conclusions to reproducible artifacts.
 - Agent authority boundaries, policy-as-code, provenance, safe escalation, and explicit tested, advisory, and operating status.

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-20 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Host Capability Substrate — Typed Governance for Host-Level AI Agents | Jeffrey Johnson</title>
-    <meta name="description" content="A public TypeScript, Zod, and JSON Schema implementation that models host capabilities, policy evidence, and authorization for AI agents as typed objects.">
+    <title>Host Capability Substrate — Typed Capability and Evidence Contracts | Jeffrey Johnson</title>
+    <meta name="description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
     <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
@@ -13,20 +13,20 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/host-capability-substrate.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Host Capability Substrate — Typed Governance for Host-Level AI Agents">
-    <meta property="og:description" content="A public TypeScript, Zod, and JSON Schema implementation that models host capabilities, policy evidence, and authorization for AI agents as typed objects.">
+    <meta property="og:title" content="Host Capability Substrate — Typed Capability and Evidence Contracts">
+    <meta property="og:description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/host-capability-substrate.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Host Capability Substrate — Typed Governance for Host-Level AI Agents">
-    <meta name="twitter:description" content="A public TypeScript, Zod, and JSON Schema implementation that models host capabilities, policy evidence, and authorization for AI agents as typed objects.">
+    <meta name="twitter:title" content="Host Capability Substrate — Typed Capability and Evidence Contracts">
+    <meta name="twitter:description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. — Evaluations and agent-governance engineer">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -55,7 +55,7 @@
                         <a href="/#evidence">Evidence</a> · Public implementation
                     </p>
                     <h1>Host Capability Substrate</h1>
-                    <p class="project-subtitle">Typed governance for host-level AI agents</p>
+                    <p class="project-subtitle">Typed capability, execution-context, authority, and evidence contracts</p>
                     <div class="project-meta">
                         <span class="project-status development">Public repository · Verified implementation</span>
                     </div>
@@ -63,22 +63,22 @@
 
                 <section class="project-overview">
                     <h2>What is this?</h2>
-                    <p>Host Capability Substrate models what a local machine can safely expose to an AI agent. It treats host capabilities, policy decisions, evidence, and authorization grants as typed objects instead of implicit shell access.</p>
+                    <p>Host Capability Substrate models the conditions under which work may occur on a local machine. It treats host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.</p>
                 </section>
 
                 <section class="project-context">
                     <h2>What is it for?</h2>
-                    <p>It gives an agent and its operator a machine-checkable description of what can be inspected, what can be modified, what evidence is required, and what still needs explicit approval.</p>
+                    <p>It gives an agent, its operator, and surrounding tooling a machine-checkable description of what can be inspected, what can be modified, which environment applies, what evidence is required, and what still needs explicit approval.</p>
                 </section>
 
                 <section class="project-context">
                     <h2>How is it used?</h2>
-                    <p>Host facts and capability declarations are represented with Zod types and generated JSON Schemas. Policy and evidence objects describe the authority behind an action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.</p>
+                    <p>Host and execution-context declarations are represented with Zod types and generated JSON Schemas. Policy, evidence, approval, lease, and audit objects preserve the basis for action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.</p>
                 </section>
 
                 <section class="project-significance">
                     <h2>Why does it matter?</h2>
-                    <p>Agentic tools are most useful when they can act and most risky when their authority is implicit. Typed capability and authorization boundaries make local automation inspectable, testable, and easier to refuse safely.</p>
+                    <p>Agent tools are instruments inside a larger development system. Typed capability, environment, authorization, and evidence boundaries make their work inspectable, testable, reproducible, and easier to refuse safely.</p>
                 </section>
 
                 <section class="project-context">
@@ -92,7 +92,7 @@
                         <li class="evidence-card">
                             <p class="evidence-card__label">Verification</p>
                             <p class="evidence-card__value">About 500 tests</p>
-                            <p class="evidence-card__note">Exercises schemas, policy decisions, evidence, audit records, and grants.</p>
+                            <p class="evidence-card__note">Exercises schemas, execution contexts, policy decisions, evidence, audit records, and grants.</p>
                         </li>
                         <li class="evidence-card">
                             <p class="evidence-card__label">Governance</p>
@@ -121,7 +121,7 @@
                     <div class="architecture-section">
                         <h3>Capability and evidence model</h3>
                         <ul>
-                            <li>TypeScript and Zod define host facts, capabilities, evidence, policy decisions, and authorization grants.</li>
+                            <li>TypeScript and Zod define host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization grants.</li>
                             <li>Generated JSON Schemas make the contracts portable and inspectable outside the TypeScript runtime.</li>
                             <li>Provenance-typed evidence, an authority hierarchy, and tamper-evident audit chains keep decisions attached to their basis.</li>
                             <li>Scoped, expiring grants express bounded authorization instead of permanent ambient access.</li>
@@ -143,7 +143,7 @@
                     <ul class="depth-list">
                         <li>Type-driven systems design.</li>
                         <li>Host-level security and capability modeling.</li>
-                        <li>Agent authority and evidence boundaries.</li>
+                        <li>Agent authority, execution-context, and evidence boundaries.</li>
                         <li>JSON Schema and Zod contract design.</li>
                         <li>Governance implemented as executable CI discipline.</li>
                     </ul>

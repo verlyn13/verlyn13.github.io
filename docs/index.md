@@ -3,7 +3,7 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.7
+version: 0.1.8
 last_updated: 2026-07-20
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
@@ -18,14 +18,16 @@ authority, which are historical handoffs, and where plans live.
 ## Current operating truth
 
 - **Public positioning:** headlines claim the work, not a title (operator decision 2026-07-20,
-  source-repo ADR-0012): the headline is "Building infrastructure for model evaluation and agent
-  systems", and no unheld occupational label (e.g. "Research Engineer") leads a headline, bio, or
-  structured-data jobTitle. The identity line stays: "I build systems that hold work to
-  specification and evidence, whether the work comes from people, models, or agents. A result
-  counts only when it can be verified." AI/agent market keywords live in the headline, skills, and
-  project evidence, not the identity sentence. Copy voice: simple, direct, first person, no
-  em-dashes. The broader mathematical researcher and systems-builder identity is supporting
-  context, not the landing-page headline.
+  source-repo ADR-0012 and ADR-0013): the headline is "Building foundations for reliable,
+  specification-driven agentic development", and no unheld occupational label (e.g. "Research
+  Engineer") leads a headline, bio, or structured-data jobTitle. The substrate-first throughline is:
+  "I build the foundations that let agents contribute reliable, specification-conforming work:
+  typed contracts, bounded authority,
+  reproducible tool and runtime environments, deterministic gates, and evidence-preserving
+  handbacks. I test those foundations by using them to build complex applications, data pipelines,
+  evaluation systems, and infrastructure." AI and coding agents are instruments inside this system,
+  not the identity or source of quality. Market keywords remain in the headline, skills, project
+  evidence, targeted resume, and footer. Copy voice: simple, direct, first person, no em-dashes.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
@@ -59,10 +61,14 @@ authority, which are historical handoffs, and where plans live.
 
 ### Recruiter-facing narrative
 
-- The homepage leads with Agentic-Coding Evaluation Lab, Governance and agent-control architecture,
-  and Budget Triage — financial evidence workbench. It then uses compact public implementation entries
-  for Host Capability Substrate and Agentic Architecture Audit, followed by Dicee as representative
-  delivery evidence. ScopeCam remains in the grouped breadth layer.
+- The homepage leads with the foundation and control substrate: Host Capability Substrate and the
+  anonymized Governance and agent-control architecture, followed by Agentic Architecture Audit as
+  independent public verification evidence.
+- Agentic-Coding Evaluation Lab, Budget Triage, ScopeCam, and Dicee are proving grounds and delivery
+  evidence. Eval Lab remains the model-evaluation specialization; it is not the universal flagship.
+- The skills taxonomy begins with specifications and verification, bounded agent systems, and
+  reproducible environments before listing model-evaluation, platform, native, data, and statistical
+  tools.
 - `docs/resume-skills-landing-handoff-2026-07-07.md` records the implemented July 7 baseline. It is a
   historical handoff, not the current copy authority; the July 15 source reconciliation superseded its
   two-pillar first layer.
@@ -115,10 +121,9 @@ authority, which are historical handoffs, and where plans live.
 
 ### Content and IA
 
-- **Current:** homepage direction now routes through
-  the accepted career source: resume/skills first; the specification-and-evidence narrative;
-  three lead examples in the order Evaluation Lab, Governance and agent-control
-  architecture, and Budget Triage; then compact implementation evidence.
+- **Current:** homepage direction routes through the accepted career source: resume/skills first;
+  substrate-first narrative; foundation/control substrate; independent public verification; then
+  proving grounds and delivery evidence.
 - **Archive boundary:** `/projects/` groups the full body of work by evidence class. It does not
   define another flagship or primary-evidence order.
 - **Watch:** historical audit/directive docs may quote older titles because they preserve past baselines.
