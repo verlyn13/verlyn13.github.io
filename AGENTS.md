@@ -2,7 +2,7 @@
 
 ## Project snapshot
 
-- **Purpose**: Academic and research-engineering portfolio for Dr. Jeffrey Johnson — evaluations and agent-governance engineer, targeting research-engineering roles
+- **Purpose**: Academic and research-engineering portfolio for Dr. Jeffrey Johnson, centered on the specification, authority, environment, and verification foundations for reliable agent-assisted development; targeting research-engineering roles
 - **Stack**: Vanilla HTML/CSS, Vite 8 (build), Biome 2.5+ (lint/format), Node 24 (via mise)
 - **Production URL**: https://jvjohnson.dev
 - **Deployment**: GitHub Pages via Actions (auto-deploy on push to `main`)
@@ -95,6 +95,19 @@ mise run clean               # Remove dist/ and node_modules/
 - If requirements are ambiguous, stop and ask before coding.
 - Run `mise run ci` before considering any change complete.
 - Preview changes visually — this is a portfolio site, appearance matters.
+
+## Public narrative contract
+
+- Lead with the engineering foundation: typed contracts, bounded authority, reproducible tool and
+  runtime environments, deterministic gates, and evidence-preserving handbacks.
+- Present Host Capability Substrate, the anonymized governance architecture, and Agentic Architecture
+  Audit as foundation and public implementation evidence.
+- Present Eval Lab, Budget Triage, ScopeCam, data pipelines, Dicee, and other applications as proving
+  grounds for the method. Eval Lab is the evaluation specialization, not the universal flagship.
+- Treat AI and coding agents as instruments inside the system, never as the source of quality or a
+  substitute for the engineering contribution.
+- Keep research-engineering, model-evaluation, agent-systems, safeguards, and governance keywords in
+  targeted resume, footer, metadata, and search surfaces without using an unheld job title as identity.
 
 ## Boundaries (hard rules)
 

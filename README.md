@@ -1,27 +1,29 @@
-# jvjohnson.dev — Evaluations and agent-governance portfolio
+# jvjohnson.dev — Reliable agent-development systems portfolio
 
-**Jeffrey V. Johnson, Ph.D.**, evaluations and agent-governance engineer.
+**Jeffrey V. Johnson, Ph.D.** builds foundations for reliable, specification-driven agentic
+development.
 
-I build systems that hold work to specification and evidence, whether the work comes from people,
-models, or agents: deciding whether model evidence supports a change, defining what agents may do,
-and preserving evidence and human review in consequential software.
+I build the foundations that let agents contribute reliable, specification-conforming work: typed
+contracts, bounded authority, reproducible tool and runtime environments, deterministic gates, and
+evidence-preserving handbacks. I test those foundations by using them to build complex applications,
+data pipelines, evaluation systems, and infrastructure.
 
 Live site: <https://jvjohnson.dev>
 
 ## What the site emphasizes
 
-The recruiter-facing first layer uses three connected examples:
+The recruiter-facing first layer presents the foundation and its public implementation evidence:
 
-- **Agentic-Coding Evaluation Lab** — independent recomputation and fail-closed refusal when evidence
-  does not support a model or agent change;
+- **Host Capability Substrate** — typed capabilities, execution contexts, policy evidence, approvals,
+  leases, audits, and bounded authorization;
 - **Governance and agent-control architecture** — bounded authority, evidence-preserving delegation,
-  policy controls, and safe escalation; and
-- **Budget Triage** — provenance, exact monetary handling, uncertainty, observability, and human review
-  in a private financial evidence workbench.
+  reproducible environments, policy controls, deterministic gates, and safe escalation; and
+- **Agentic Architecture Audit** — independent conformance and drift verification against explicit
+  specifications.
 
-Host Capability Substrate and Agentic Architecture Audit provide compact public implementation
-evidence. Dicee follows as representative delivery evidence; ScopeCam and the remaining projects sit
-in the grouped `/projects/` breadth layer. Academic experience, publications, applied statistics,
+Agentic-Coding Evaluation Lab, Budget Triage, ScopeCam, data-cleaning pipelines, Dicee, and other
+applications are presented as proving grounds for the method. AI tools remain instruments inside the
+system, not the identity or source of quality. Academic experience, publications, applied statistics,
 teaching, and earlier systems work remain available as relevant background.
 
 ## Architecture

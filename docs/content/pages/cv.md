@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: e44b7ec64e2d1b06c3ec85050aea005911c733abcd40b16b5598cc6afbe7807b
-html_hash: 6360b7191c92b9e1966a5e3d679c2c4f8b3889d0815768e8255c84bb222880e1
+content_hash: d3a168ba75dc3fb027d2bc7c6b8a8141af860c33832a99650548ea10563601ed
+html_hash: 81e51b3979388f632d11399aa109b0696279345bd608904d0f624c4da9d674db
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Building infrastructure for model evaluation and agent systems
+Building foundations for reliable, specification-driven agentic development
 
 - Homer, Alaska
 - [jeffrey@jvjohnson.dev](mailto:jeffrey@jvjohnson.dev)
@@ -32,9 +32,37 @@ AI/ATS↓
 
 ## Summary
 
-Ph.D. mathematician and systems builder with a backend orientation. I build systems that hold work to specification and evidence, whether the work comes from people, models, or agents: deciding whether model evidence supports a change, defining what agents may do, and preserving evidence and human review in consequential workflows. My strongest fit is research engineering in model evaluations, agent systems, and evaluation infrastructure. The underlying skills are general: engineering practice, mathematical training, and clear communication.
+Ph.D. mathematician and systems builder with a backend orientation. I build the foundations that let agents contribute reliable, specification-conforming work: typed contracts, bounded authority, reproducible tool and runtime environments, deterministic gates, and evidence-preserving handbacks. I test those foundations by using them to build complex applications, data pipelines, evaluation systems, and infrastructure. My strongest fit is research engineering in model evaluations, agent systems, and evaluation infrastructure.
 
-## Selected systems and research evidence
+## Foundation and public implementation evidence
+
+### [Host Capability Substrate](/projects/host-capability-substrate.html) — typed capability and evidence contracts
+
+TypeScript · Zod · JSON Schema · GitHub Actions
+
+- Designed 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about 500 tests.
+- Modeled host capabilities, operations, execution contexts, policy decisions, provenance-typed evidence, approvals, leases, audit chains, and scoped authorization grants.
+- Authored a 19-invariant governance charter and four-ring architecture with a composed CI gate for policy, boundary, secret, and schema-drift checks.
+- Kept the evidence boundary explicit: public typed model and enforced source boundaries, not universal host-level runtime enforcement.
+
+### [Governance and agent-control architecture](/projects/governance-agent-control.html) — control framework for agent-assisted work
+
+An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudflare · Hetzner · Proxmox
+
+- Designed a multi-repository architecture that separates human policy and decision rights, agent mandates, capability and credential reach, infrastructure enforcement, runtime admission, and repository-local authority.
+- Modeled effective agent authority as the intersection of mandate, available capability, and credential reach, with value-blind handbacks when human judgment or privileged action is required.
+- Connected the design to managed human and agent shell modes, reproducible tool and runtime resolution, 26 OPA/conftest plan rules, governance as code, Zero Trust infrastructure, and scheduled drift checks.
+- Kept maturity boundaries explicit: selected controls operate today, while runtime admission remains source-tested rather than a live request-path gate; the case study is single-operator and makes no enterprise-adoption claim.
+
+### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) — independent specification and drift verification
+
+Specification · JSON Schema · Python tooling
+
+- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines with an 11-dimension rubric and 12 JSON output schemas.
+- Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test wired into pre-commit and CI.
+- Converted audit findings into repeatable fitness functions while keeping evidence-first discovery separate from human judgment.
+
+## Proving grounds and delivery evidence
 
 ### [Agentic-Coding Evaluation Lab](https://github.com/verlyn13/eval-lab-methodology) — fail-closed evaluation evidence
 
@@ -42,42 +70,26 @@ Python · Quarto · JSON contracts · private gateway, harness, and trace integr
 
 - Built and published a model-evaluation methodology and verification prototype that preserves evidence and withholds a recommendation when scientific prerequisites are incomplete.
 - Built a draft evidence contract and a separate verifier that independently recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing, inconsistent, or altered evidence.
-- Connected private evaluation components with byte-for-byte contract checks and controls that keep scored runs disabled until prerequisites are met; kept operational trace data separate from the authoritative study record.
 - Documented the evidence boundary explicitly: tested framework behavior and synthetic conformance, with no powered real-model result or promotion claim.
 
-### [Governance and agent-control architecture](/projects/governance-agent-control.html) — federated authority for AI-assisted work
-
-An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudflare · Hetzner · Proxmox
-
-- Designed a multi-repository architecture that separates human policy and decision rights, agent mandates, identity and authorization, infrastructure enforcement, runtime admission, and repository-local authority.
-- Modeled effective agent authority as the intersection of mandate, available capability, and credential reach, with value-blind handbacks when human judgment or privileged action is required.
-- Connected the design to selected operational controls: 26 OPA/conftest plan rules, branch and repository governance as code, same-run saved-plan promotion, Zero Trust infrastructure, and scheduled drift checks across four workspaces.
-- Kept maturity boundaries explicit: selected controls operate today, while runtime admission remains source-tested rather than a live request-path gate; the case study is single-operator and makes no enterprise-adoption claim.
-
-### [Budget Triage](/projects/budget-triage.html) — financial evidence workbench
+### [Budget Triage](/projects/budget-triage.html) — financial application and development-substrate proving ground
 
 Private Bun · TypeScript · Hono · PostgreSQL working prototype
 
 Private financial evidence workbench combining deterministic-first document processing, provenance, tenant isolation, exact monetary semantics, and fail-closed human review. Private technical walkthrough available during an interview process.
 
-- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only categorization decisions, authentication, connected-account, secret-custody, and OpenTelemetry surfaces; accepted `main` passed full validation.
-- Added a merged synthetic known-answer certification slice with rollback validation and structured service-level evidence events; its current result is 6 passing and 9 pending assertions, explicitly incomplete and uncertified.
-- Established an independently verified, bounded synthetic browser-to-service observation with matching correlation evidence; this does not prove UI state, production operation, financial correctness, or source-through-tax execution.
-- Makes no production, real-user, financial-outcome, live-provider-performance, tax-readiness, or completed source-through-tax claim.
+- Developed under 19 executable specification contracts, machine-readable agent authority boundaries, fail-closed pre-write hooks, and a 34-gate validation chain shared across local and secretless CI contexts.
+- Implemented tenant isolation, exact monetary arithmetic, atomic persistence, append-only decisions, authentication, connected-account, secret-custody, and OpenTelemetry surfaces.
+- Prepared a sanitized, MIT-licensed public source candidate that passed its full validation gate on 2026-07-18. It is intended for employer exploration after final operator review; no public source link or contribution policy is available yet.
+- Its synthetic known-answer result is 6 passing and 9 pending assertions, explicitly incomplete and uncertified; no production, financial-outcome, live-provider-performance, or source-through-tax claim.
 
-### [Host Capability Substrate](/projects/host-capability-substrate.html) — typed governance for host-level AI agents
+### [ScopeCam](/projects/scopecam.html) — native application and physical-evidence proving ground
 
-TypeScript · Zod · JSON Schema
+Private Android · Kotlin · Jetpack Compose · C++20 · JNI/NDK · USB/UVC
 
-- Designed 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about 500 tests.
-- Modeled capabilities, policy decisions, provenance-typed evidence, audit chains, and scoped authorization grants under a 19-invariant governance charter and composed CI gate.
-
-### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) — evidence-first audit methodology
-
-Specification · Python tooling
-
-- Authored a two-stage, evidence-first `audit-spec` of 2,075 lines with an 11-dimension rubric and 12 JSON output schemas.
-- Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test wired into pre-commit and CI.
+- Built a multi-module Android microscope application spanning Compose UI, Kotlin orchestration, a native C++ camera engine, USB lifecycle, persistence, diagnostics, and physical-device verification.
+- Used repository operating contracts and explicit PASS/FAIL handbacks to keep static validation separate from hardware evidence.
+- Delivered a signed client alpha; no public source, broad release, arbitrary-device compatibility, or production-readiness claim.
 
 ### [Dicee](/projects/dicee.html) — representative delivered software
 
@@ -88,10 +100,10 @@ Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
 
 ## Technical skills
 
-- **Evaluations and agentic AI:** model and harness evaluation, evidence contracts, recompute-or-refuse verification, coding-agent workflows, OpenAI-compatible LLM gateways, capability aliasing, provider resolution, per-client policy, budget controls, Ollama, trace, provenance, and evidence pipelines.
-- **Safety and governance controls:** sandboxing, egress policy, provenance verification, default-deny command allowlisting, no-commit gates, typed authorization grants, audit chains, and evidence-first audit methodology.
-- **Policy-as-code and contracts:** OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, ADRs, decision ledgers, fitness gates, and conformance gates.
-- **Infrastructure and platform:** Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Cloudflare Pages/DNS, Hetzner, Proxmox VE, Docker, Docker Compose, Traefik, GitHub Actions CI/CD, self-hosted runners, OpenTelemetry, Infisical, and 1Password custody.
+- **Specifications and verification:** typed contracts, Zod, JSON Schema, executable specifications, ADRs, decision ledgers, deterministic fitness and conformance gates, independent recompute-or-refuse verification, provenance, and evidence-preserving handbacks.
+- **Agent systems and bounded authority:** capability and operation models, execution contexts, agent mandates, scoped authorization grants, approvals, leases, audit chains, sandboxing, egress policy, default-deny command allowlisting, and no-commit gates.
+- **Reproducible environments and policy-as-code:** managed human and agent shell modes, mise, direnv, tool and runtime resolution, OPA/Rego, OpenTofu, GitHub-provider governance-as-code, and CI policy checks.
+- **Model evaluation and infrastructure:** model and harness evaluation, evidence contracts, evaluation pipelines, coding-agent workflows, OpenAI-compatible LLM gateways, provider resolution, per-client policy, Cloudflare Zero Trust, Hetzner, Proxmox VE, Docker, GitHub Actions CI/CD, self-hosted runners, and OpenTelemetry.
 - **Data and systems:** PostgreSQL, Supabase, TimescaleDB, Redis Stack, RedisJSON, RediSearch, pgvector, Android, Kotlin, Jetpack Compose, USB/UVC, JNI/NDK, C/C++, and CMake.
 - **Languages and statistics:** Python as primary, TypeScript, Kotlin, C/C++, Ruby, SQL, Bash, Wilson intervals, bootstrap confidence intervals, paired sign tests, applied statistics, and statistical inference.
 
@@ -107,12 +119,12 @@ Previously American University in Cairo, 2014-2017; University of Montana, 2008-
 - Consult for local non-profit organizations on statistical interpretation and study design.
 - Communicate technical and mathematical ideas to audiences with widely varying backgrounds.
 
-### Independent systems engineer and applied-AI researcher (self-directed)
+### Independent systems engineer and researcher (self-directed)
 
 Self-directed; Happy Patterns LLC product entity · Homer, Alaska · 2023-present
 
-- Pursue a multi-repository self-directed research program in agentic AI, evaluation and alignment, systems engineering, and machine-checkable governance.
-- Use AI agents to build and stress-test software-engineering systems end to end, with repository contracts, status records, decision logs, and verification gates as the control surface.
+- Develop the specification, authority, environment, and verification foundations for reliable agent-assisted software engineering across a multi-repository research program.
+- Test the substrate by building applications, data pipelines, evaluation systems, and infrastructure, with repository contracts, status records, decision logs, and deterministic gates as the control surface.
 - Designed and operate selected controls from an anonymized, single-operator governance and agent-control architecture spanning policy-as-code, IaC, Zero Trust networking, local and remote servers, and credential custody.
 
 ## Education

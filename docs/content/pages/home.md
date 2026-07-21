@@ -4,8 +4,8 @@ type: page
 source_file: index.html
 source_selector: main
 route: /
-content_hash: 087da19141a68d8d5f47cb39f1c89c7e25b75d26a9094fd349164a5f4d23358c
-html_hash: 3ba4c890670eb5ab2153bfe499e463398d3ebf74534362488777f62f525af890
+content_hash: 0e7602efedf0e599e9d8f68130a767a9348cbb3f1f7894a51cfd844fc94e3490
+html_hash: d2e90a8b2b8decd8fbd02626fe4dd50eaa9b88dbeda370b327df8b313e659531
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,19 +13,19 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Building infrastructure for model evaluation and agent systems
+Building foundations for reliable, specification-driven agentic development
 
-I build systems that hold work to specification and evidence, whether the work comes from people, models, or agents. A result counts only when it can be verified.
+I build the foundations that let agents contribute reliable, specification-conforming work: typed contracts, bounded authority, reproducible tool and runtime environments, deterministic gates, and evidence-preserving handbacks.
 
-I work daily with modern agentic tools and know them in practice: what they do well, where they fail, and when their output should not be trusted without checking.
+I test those foundations by using them to build complex applications, data pipelines, evaluation systems, and infrastructure. Agent tools are instruments inside the system; quality comes from the contracts, environments, gates, and verification around their work.
 
 I am also a Ph.D. mathematician (University of Montana, 2013). I led the statistical analysis for a 2023 study in *Pediatric Physical Therapy* that produced walking-speed reference values from 1,593 children in a rural Alaska school district. The full citation and methods are on the [research page](/research/).
 
-The projects below are self-directed. I built them end to end to learn and demonstrate AI coding frameworks, model evaluation, and agent governance. Each one states its evidence boundary next to its claim.
+The projects below show the foundation first, then the systems used to test it. Each one states its evidence and maturity boundary next to its claim.
 
 Homer, Alaska
 
-Selected evidence [Agentic-Coding Evaluation Lab: model-change evidence](#evaluation-lab) [Budget Triage: traceable financial evidence](#budget-triage)
+Foundation evidence [Host Capability Substrate: typed capabilities and evidence](#host-capability-substrate) [Governance architecture: bounded authority and handbacks](#governance-substrate)
 
 Current résumé ↓
 
@@ -51,62 +51,64 @@ Current resume formats and a skills summary for research-engineering roles in mo
 
 ### Skills snapshot
 
-- **Evaluations and agentic AI** Evaluation contracts, evidence pipelines, independent recompute-or-refuse verification, coding-agent workflows, LLM gateways, provenance, sandboxing, and egress policy.
-- **Governance and policy-as-code** OPA/Rego, OpenTofu, GitHub-provider governance-as-code, Zod, JSON Schema, audit methodology, CI fitness gates, and status honesty.
-- **Infrastructure and platform** Cloudflare Zero Trust, Gateway, WARP, Access, Tunnel, Pages/DNS, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.
+- **Specifications and verification** Typed contracts, JSON Schema, executable specifications, deterministic fitness and conformance gates, independent verification, provenance, and evidence-preserving handbacks.
+- **Agent systems and bounded authority** Capability models, scoped authorization, agent mandates, repository-local authority, sandboxing, egress policy, OPA/Rego, OpenTofu, and policy-as-code.
+- **Reproducible environments and platform** Human and agent shell modes, mise, direnv, tool and runtime resolution, Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, and self-hosted runners.
 - **Systems, data, and native** Python, TypeScript, Kotlin, C/C++, Bash, PostgreSQL, Redis, Android, USB/UVC, and JNI/NDK.
-- **Mathematics and statistics** Functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.
+- **Evaluation, mathematics, and statistics** Model and harness evaluation, evidence contracts, functional analysis, commutative Banach algebras, Wilson intervals, bootstrap confidence intervals, paired sign tests, and applied statistics.
 
-## Selected evidence
+## Foundation and control substrate
 
-Two featured projects show one method: measure uncertain systems, bound their authority, and preserve the evidence.
+The work begins with the conditions under which agent contributions can be trusted: explicit contracts, bounded authority, reproducible execution contexts, and evidence that survives handoff.
 
-### Agentic-Coding Evaluation Lab
+### Host Capability Substrate
 
-Fail-closed evidence and reporting for model evaluation.
+Typed capability, authority, and evidence contracts for host-level work.
 
-**What is this?** A framework for deciding whether an evaluation contains enough valid evidence to support changing a model or coding-agent configuration.
+**What is this?** A public substrate that models host facts, capabilities, policy decisions, evidence, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.
 
-**What is it for?** It provides a repeatable, inspectable alternative to informal model selection and prevents incomplete experiments from being mistaken for deployment evidence.
+**What is it for?** It makes the conditions for agent action inspectable: what may be observed, what may be changed, which execution context applies, what evidence is required, and what still needs human approval.
 
-**How is it used?** A team defines the systems, tasks, study design, and required decision criteria. The framework validates the evidence and produces a report; a separate verifier recomputes the result or refuses it when evidence is missing or altered.
+**How is it used?** Zod types compile to portable JSON Schemas; scoped grants bound authority; layered imports preserve the direction of control; and a composed verification gate checks policy, secrets, boundaries, and schema drift.
 
-**Why does it matter?** It helps model-testing, safety, and model-risk teams avoid unsupported model changes and leaves an auditable record of why a decision was made or withheld.
+**Why does it matter?** Reliable agent-assisted development requires more than giving a tool shell access. The substrate makes authority and evidence explicit enough to validate, refuse, and audit.
 
-**Evidence and status:** Public, open-source (Apache-2.0) framework with tested statistical, contract, and reporting code. Its strongest current proof is a synthetic `NOT_EVALUABLE` refusal: on 2026-07-14 an independent audit ran the full 194-test suite and recomputed that refusal from an isolated clone of public `main`. It is in active development; local calibration is the next milestone. It does not establish real-model performance or a promotion recommendation.
+**Evidence and status:** Public implementation with 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, a 19-invariant charter, and a composed CI gate. It demonstrates the typed model and enforced source boundaries, not universal host-level runtime enforcement.
 
-Explore the methodology, worked examples, and evidence →
+Examine the public implementation →
 
-### Budget Triage: financial evidence workbench
+### Governance and agent-control architecture
 
-Traceable financial records with uncertainty routed to human review.
+Federated authority and evidence-preserving delegation across repositories and runtimes.
 
-**What is this?** A private full-stack prototype that turns statements, receipts, and connected-account data into structured, traceable transactions.
+**What is this?** An anonymized architecture that separates human decision rights, agent mandates, capability and credential reach, infrastructure enforcement, runtime admission, and repository-local authority.
 
-**What is it for?** It helps an owner-operator resolve uncertain or conflicting financial facts without silently converting extraction into truth.
+**What is it for?** It provides a common contract for agents, tools, shells, services, and CI without pretending that access to a capability is permission to use it.
 
-**How is it used?** The system runs deterministic extraction first, optionally uses models as auditors or comparison tools, and routes low-confidence or conflicting results to human review.
+**How is it used?** Human intent becomes schemas, policy checks, approval boundaries, deterministic gates, and structured handbacks. Managed execution environments make tool and runtime context observable while privileged or judgment-heavy work returns to the responsible human.
 
-**Why does it matter?** Financial automation needs exact monetary arithmetic, tenant isolation, traceable decisions, observability, and fail-closed human confirmation.
+**Why does it matter?** Quality depends on the whole development environment: authority, execution context, specifications, validation, and evidence must agree before work can count as complete.
 
-**Evidence and status:** The accepted `main` branch passes full validation. A sanitized, MIT-licensed public release candidate passed its validation gate on 2026-07-18, including 1,070 integration tests and full secret-history checks; it was rebuilt without history from the private repository. The synthetic known-answer harness is incomplete: 6 assertions pass and 9 are pending, so it is uncertified. I claim no real-user results, financial outcomes, live-provider performance, tax readiness, or completed certification. Publication waits on my final review, so there is no public source link yet.
+**Evidence and status:** Selected policy-as-code, infrastructure, validation, and scheduled drift controls operate today. Identity and runtime-admission layers have tested contracts and prototypes but are not organization-wide live enforcement. This is a principally single-operator case study, not an enterprise-adoption claim.
 
-Budget Triage →
+Review the anonymized case study →
 
-### Also part of the portfolio
+### Independent verification
 
-- **Governance and agent-control architecture** An anonymized governance architecture for AI-assisted work: identity, delegated authority, evidence, and safe refusal made explicit before agents or automation can act. **Evidence and status:** selected policy-as-code, infrastructure, validation, and scheduled drift controls operate today; a single-operator case study, not an enterprise-adoption claim. [Review the anonymized case study →](/projects/governance-agent-control.html)
-- **Host Capability Substrate** A public schema-driven layer that turns implicit host access into explicit capabilities and authorization. **Demonstrates:** typed authority, provenance, scoped grants, and CI-enforced architecture. **Evidence and status:** 46 Zod entity schemas, 67 generated JSON Schemas, about 500 tests, and a composed CI gate. [Examine the implementation →](/projects/host-capability-substrate.html)
-- **Agentic Architecture Audit** A public evidence-first audit method for AI-agent-operated codebases. **Demonstrates:** machine-readable contracts, deterministic drift checking, and bias-aware workflows. **Evidence and status:** 2,075-line `audit-spec`, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. [Inspect the public project →](https://github.com/verlyn13/agentic-architecture-audit)
+- **Agentic Architecture Audit** A public method for checking whether agent-built systems conform to their own specifications. **Demonstrates:** evidence-first discovery, machine-readable contracts, deterministic drift checks, and conversion of findings into fitness functions. **Evidence and status:** 2,075-line `audit-spec`, 12 JSON schemas, 10 deterministic checks, and a 27-case negative self-test; broader adoption remains unclaimed. [Inspect the public project →](https://github.com/verlyn13/agentic-architecture-audit)
 
+### Proving grounds
+
+- **Agentic-Coding Evaluation Lab** A specialized proving ground for model-change evidence and fail-closed reporting. **Evidence and status:** public tested framework behavior and an independently recomputed synthetic `NOT_EVALUABLE` result; no real-model performance or promotion claim. [Explore the methodology and evidence →](https://github.com/verlyn13/eval-lab-methodology)
+- **Budget Triage** A private financial evidence workbench built under cross-tool specifications, authority manifests, pre-write hooks, and a 34-gate validation chain. **Evidence and status:** exact and provenance-aware application behavior plus an incomplete 6 passing / 9 pending synthetic known-answer result. A validated public source candidate intended for employer exploration is in final operator review; no public source link or production, financial-outcome, or certification claim yet. [Review the proving ground →](/projects/budget-triage.html)
+- **ScopeCam** A private Android/Kotlin/C++ application that tests the method against native code, USB hardware, concurrency, release boundaries, and physical-device evidence. **Evidence and status:** signed client alpha delivered; no public source link, broad release, arbitrary-device compatibility, or production-readiness claim. [Review the engineering case study →](/projects/scopecam.html)
 - **Dicee** A live family multiplayer game for mobile browsers, built as a complete public system. **Demonstrates:** Rust-to-WebAssembly delivery, realtime state through Cloudflare Durable Objects and WebSockets, SvelteKit, persistence, and end-to-end deployment. **Evidence and status:** public source and a [live deployment](https://dicee.games/); traffic, performance, bundle-size, and current test-count claims remain withheld. [Review the delivered system →](/projects/dicee.html)
-- **ScopeCam** A private, proprietary Android/Kotlin/C++ USB-microscopy application with a vendored UVC camera stack. **Evidence and status:** a signed `0.1-alpha` client build was delivered in June 2026; no public source link and no broad release. [Details available on request →](/contact.html)
 
 [Explore the full body of work →](/projects/)
 
 ## Academic and publication context
 
-Tenured associate professor of mathematics with 17+ years teaching mathematics and statistics. Ph.D. in Mathematics, University of Montana, 2013; statistical lead for the 2023 *Pediatric Physical Therapy* study; a 2012 pure-mathematics publication. That background supports the evaluation and governance work above.
+Tenured associate professor of mathematics with 17+ years teaching mathematics and statistics. Ph.D. in Mathematics, University of Montana, 2013; statistical lead for the 2023 *Pediatric Physical Therapy* study; a 2012 pure-mathematics publication. That background supports the specification, systems, and verification work above.
 
 Teaching & Leadership →
 

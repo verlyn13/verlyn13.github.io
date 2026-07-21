@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: f3ea841d69ab312236d318cf1b9751f70744328dbc94398f842bd851e347fc8c
-html_hash: bd886e60e7e5e6e71196697fb7816efae4c557503947e4cb53341cf6c1e97a59
+content_hash: 9510dce565e2ddee561ebf3d4b5a73dd15547fd7680cb20ae52f7180aa2fb610
+html_hash: 6c31c1a166623aaa71b1780c261f35b61c29e53909749673323097c8e8df8859
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -17,30 +17,30 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Host Capability Substrate
 
-Typed governance for host-level AI agents
+Typed capability, execution-context, authority, and evidence contracts
 
 Public repository · Verified implementation
 
 ## What is this?
 
-Host Capability Substrate models what a local machine can safely expose to an AI agent. It treats host capabilities, policy decisions, evidence, and authorization grants as typed objects instead of implicit shell access.
+Host Capability Substrate models the conditions under which work may occur on a local machine. It treats host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.
 
 ## What is it for?
 
-It gives an agent and its operator a machine-checkable description of what can be inspected, what can be modified, what evidence is required, and what still needs explicit approval.
+It gives an agent, its operator, and surrounding tooling a machine-checkable description of what can be inspected, what can be modified, which environment applies, what evidence is required, and what still needs explicit approval.
 
 ## How is it used?
 
-Host facts and capability declarations are represented with Zod types and generated JSON Schemas. Policy and evidence objects describe the authority behind an action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.
+Host and execution-context declarations are represented with Zod types and generated JSON Schemas. Policy, evidence, approval, lease, and audit objects preserve the basis for action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.
 
 ## Why does it matter?
 
-Agentic tools are most useful when they can act and most risky when their authority is implicit. Typed capability and authorization boundaries make local automation inspectable, testable, and easier to refuse safely.
+Agent tools are instruments inside a larger development system. Typed capability, environment, authorization, and evidence boundaries make their work inspectable, testable, reproducible, and easier to refuse safely.
 
 ## Evidence and status
 
 - Typed ontology 46 Zod entity schemas Compiled into 67 generated JSON Schemas.
-- Verification About 500 tests Exercises schemas, policy decisions, evidence, audit records, and grants.
+- Verification About 500 tests Exercises schemas, execution contexts, policy decisions, evidence, audit records, and grants.
 - Governance 19 invariants · four rings Import boundaries preserve the direction of authority.
 - Merge-time gate A dozen static scanners Policy, boundary, secret, and schema-drift checks run together.
 
@@ -56,7 +56,7 @@ The public implementation and CI evidence show a typed governance model and enfo
 
 ### Capability and evidence model
 
-- TypeScript and Zod define host facts, capabilities, evidence, policy decisions, and authorization grants.
+- TypeScript and Zod define host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization grants.
 - Generated JSON Schemas make the contracts portable and inspectable outside the TypeScript runtime.
 - Provenance-typed evidence, an authority hierarchy, and tamper-evident audit chains keep decisions attached to their basis.
 - Scoped, expiring grants express bounded authorization instead of permanent ambient access.
@@ -71,7 +71,7 @@ The public implementation and CI evidence show a typed governance model and enfo
 
 - Type-driven systems design.
 - Host-level security and capability modeling.
-- Agent authority and evidence boundaries.
+- Agent authority, execution-context, and evidence boundaries.
 - JSON Schema and Zod contract design.
 - Governance implemented as executable CI discipline.
 
