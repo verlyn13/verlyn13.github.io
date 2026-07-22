@@ -1,8 +1,10 @@
 {
-  "banners": [],
-  "generatedAt": "2026-06-29T13:49:03Z",
+  "banners": [
+    "PROJECT FRESHNESS: 2 selected project record(s) are more than 30 days old and 4 have unknown age; see each project's freshness fields."
+  ],
+  "generatedAt": "2026-07-15T00:00:21Z",
   "portfolio": {
-    "deployedCount": 1,
+    "deployedCount": 2,
     "domains": [
       "agents",
       "android",
@@ -40,11 +42,12 @@
       "Shell",
       "TypeScript"
     ],
-    "lastActive": "2026-06-29T13:49:03Z",
-    "projectCount": 14,
+    "lastActive": "2026-07-15T00:00:21Z",
+    "projectCount": 15,
     "recurringMethods": [
       "agentic-dev-evolution",
       "education-as-research",
+      "family-business-tech",
       "governance-driven-development",
       "infrastructure-discipline",
       "international-academic-career",
@@ -62,23 +65,25 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": "unknown",
+        "maxUpdatedAt": "unknown",
+        "source": "unknown",
         "stale": false
       },
       "id": "academic-career-auc",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "taught",
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "academic-career-auc",
       "statusLine": "Faculty appointment, completed",
@@ -104,41 +109,43 @@
         "security"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
-        "stale": false
+        "ageDays": 38,
+        "maxUpdatedAt": "2026-06-11",
+        "source": "manifest.as_of",
+        "stale": true
       },
       "id": "agentic-architecture-audit",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "published-package",
         "evidenceClass": "public-package"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "agentic-architecture-audit",
-      "statusLine": "Released, Apache-2.0 (v1.4.0)",
+      "statusLine": "Released, Apache-2.0 (v1.5.0)",
       "tech": [
         "Python"
       ],
       "thesis": "A self-developed, released methodology that audits agent-built systems in eleven evidence-first phases — every finding cites the exact path, line range, and command that produced it.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "public",
+        "status": "active"
       },
       "title": "Agentic Architecture Audit — versioned profile + audit directive package"
     },
     {
-      "asOf": "2026-06-28",
+      "asOf": "2026-07-15",
       "deploymentUrls": [],
-      "displayName": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)",
+      "displayName": "Budget Triage — financial evidence workbench",
       "domains": [
         "finance",
         "web",
@@ -148,36 +155,38 @@
         "infrastructure-as-code"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 4,
+        "maxUpdatedAt": "2026-07-15",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "budget-triage-fintech",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "prototype",
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": false,
       "schemaVersion": "0",
       "slug": "budget-triage-fintech",
-      "statusLine": "Working prototype, private pre-public-flip",
+      "statusLine": "Private working prototype; incomplete and uncertified",
       "tech": [
         "TypeScript"
       ],
-      "thesis": "A self-hosted personal-finance system that treats correctness as policy you can prove, using cross-surface governance gates and a synthetic-data extraction harness rather than promises.",
+      "thesis": "A private financial evidence workbench combining deterministic-first document processing, provenance, tenant isolation, exact monetary semantics, and fail-closed human review.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "personal",
+        "status": "active"
       },
-      "title": "Budget Triage — deeply-governed self-hosted personal fintech (the wedge's shipped case)"
+      "title": "Budget Triage — financial evidence workbench"
     },
     {
       "asOf": "2026-06-11",
@@ -192,23 +201,25 @@
         "gaming"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
-        "stale": false
+        "ageDays": 38,
+        "maxUpdatedAt": "2026-06-11",
+        "source": "manifest.as_of",
+        "stale": true
       },
       "id": "dicee",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": true,
         "badge": "deployed",
         "evidenceClass": "deployed-system"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "dicee",
       "statusLine": "Deployed and live",
@@ -218,8 +229,8 @@
       "thesis": "A solo-built, install-free multiplayer dice game taken from architecture through deployment — a deterministic Rust/WASM engine paired with real-time edge infrastructure for live play.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "public",
+        "status": "active"
       },
       "title": "Dicee / Game Lobby — solo-built multiplayer dice game with Rust/WASM engine"
     },
@@ -231,23 +242,25 @@
         "mathematics"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": "unknown",
+        "maxUpdatedAt": "unknown",
+        "source": "unknown",
         "stale": false
       },
       "id": "dissertation-2013",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "published",
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "dissertation-2013",
       "statusLine": "Published 2013",
@@ -261,7 +274,7 @@
       "title": "Peripherally-Multiplicative Spectral Preservers Between Function Algebras (Ph.D. dissertation, 2013)"
     },
     {
-      "asOf": "2026-06-28",
+      "asOf": "2026-07-14",
       "deploymentUrls": [],
       "displayName": "Flux — multi-provider image-generation control plane (successor authority)",
       "domains": [
@@ -273,39 +286,41 @@
         "mcp"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "flux",
+      "operationalState": "production-live",
       "posture": {
-        "allowsLive": false,
-        "badge": "prototype",
-        "evidenceClass": "working-prototype"
+        "allowsLive": true,
+        "badge": "deployed",
+        "evidenceClass": "deployed-system"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": false,
       "schemaVersion": "0",
       "slug": "flux",
-      "statusLine": "Working prototype, pre-cutover",
+      "statusLine": "Production-live, access-gated successor control plane",
       "tech": [
         "Python"
       ],
-      "thesis": "A control plane for AI image generation that compiles a single intent across a registry of providers, streams results, and captures full artifact and curation lineage in content-addressed storage.",
+      "thesis": "A production-live image-generation control plane that validates typed generation intents, routes them across provider accounts, streams provider events, and finalizes outputs into manifest-backed, SHA-256-verified artifact storage.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "personal",
+        "status": "active"
       },
       "title": "Flux — multi-provider image-generation control plane (successor authority)"
     },
     {
-      "asOf": "2026-06-28",
+      "asOf": "2026-06-30",
       "deploymentUrls": [],
       "displayName": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation",
       "domains": [
@@ -317,23 +332,25 @@
         "documentation"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 19,
+        "maxUpdatedAt": "2026-06-30",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "host-capability-substrate",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "prototype",
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "host-capability-substrate",
       "statusLine": "Working prototype, Ring-0 ontology complete",
@@ -343,54 +360,13 @@
       "thesis": "An operations kernel that gives every agent on a workstation a shared substrate for ground-truth, capability exposure, policy, approval, and audited execution — designed ring-by-ring with imports enforced in CI from the first commit.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "public",
+        "status": "active"
       },
       "title": "Host Capability Substrate (HCS) — horizontal operations kernel for the macOS workstation"
     },
     {
-      "asOf": "2026-02-10T22:59:15Z",
-      "deploymentUrls": [],
-      "displayName": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs",
-      "domains": [
-        "gaming",
-        "web",
-        "ml"
-      ],
-      "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
-        "stale": false
-      },
-      "id": "hubofwyn-games",
-      "posture": {
-        "allowsLive": false,
-        "badge": "prototype",
-        "evidenceClass": "working-prototype"
-      },
-      "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
-        "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
-        "source": "meta-inventory feed v0"
-      },
-      "schemaVersion": "0",
-      "slug": "hubofwyn-games",
-      "statusLine": "Working prototype; suite actively developed",
-      "tech": [
-        "JavaScript"
-      ],
-      "thesis": "A family-facing game suite built as agentic-framework output — proof that an AI-assisted development practice can produce coherent, tested software, from a 2D platformer to a Phaser monorepo side-scroller and an AI asset pipeline.",
-      "tier": {
-        "portfolioVisibility": "public-available",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
-      },
-      "title": "Hub of Wyn games — WynIsBuff2 + Wyn der Schrank (+ Studio), agentic-framework game outputs"
-    },
-    {
-      "asOf": "2025-07-06T04:12:16Z",
+      "asOf": "2026-07-14",
       "deploymentUrls": [],
       "displayName": "KPC/UAA mathematics & statistics course series (2017 → 2025)",
       "domains": [
@@ -401,32 +377,36 @@
         "instructional-design"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "math-course-series-kpc-2017-2025",
+      "operationalState": "retired",
       "posture": {
         "allowsLive": false,
         "badge": "taught",
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "math-course-series-kpc-2017-2025",
-      "statusLine": "Taught 2017–2025",
-      "tech": [],
+      "statusLine": "Taught 2017–2025; retained public archive",
+      "tech": [
+        "Python"
+      ],
       "thesis": "Eight years of sustained undergraduate instruction across calculus, statistics, differential equations, and modern algebra — 13+ courses and 50+ sections with documented pedagogy and versioned materials.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "public",
+        "status": "active"
       },
       "title": "KPC/UAA mathematics & statistics course series (2017 → 2025)"
     },
@@ -440,23 +420,25 @@
         "course-operations"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": "unknown",
+        "maxUpdatedAt": "unknown",
+        "source": "unknown",
         "stale": false
       },
       "id": "peace-corps-south-africa",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "taught",
         "evidenceClass": "course-taught"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "peace-corps-south-africa",
       "statusLine": "Completed (two-year service)",
@@ -479,23 +461,25 @@
         "health-sciences"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": "unknown",
+        "maxUpdatedAt": "unknown",
+        "source": "unknown",
         "stale": false
       },
       "id": "pediatric-walking-speed-study-2023",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "published",
         "evidenceClass": "published-artifact"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "pediatric-walking-speed-study-2023",
       "statusLine": "Published 2023 (peer-reviewed)",
@@ -509,48 +493,50 @@
       "title": "Pediatric walking-speed reference norms — Pediatric Physical Therapy, 2023"
     },
     {
-      "asOf": "2026-06-11",
+      "asOf": "2026-07-14",
       "deploymentUrls": [],
-      "displayName": "ScopeCam — Android + native multi-module app for UVC USB microscope cameras",
+      "displayName": "ScopeCam — proprietary Android/Kotlin/C++ UVC microscopy application",
       "domains": [
         "mobile",
         "android",
         "vision"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "scopecam",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
-        "badge": "prototype",
-        "evidenceClass": "working-prototype"
+        "badge": "delivered",
+        "evidenceClass": "client-deliverable"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": false,
       "schemaVersion": "0",
       "slug": "scopecam",
-      "statusLine": "Alpha (working prototype)",
+      "statusLine": "Client deliverable; signed 0.1-alpha build delivered, broader acceptance open",
       "tech": [
         "Kotlin"
       ],
-      "thesis": "A solo-built Android app for serious USB-microscopy workflows — a multi-module architecture over a vendored native imaging stack with session-based scientific capture and ArchUnit-enforced boundaries.",
+      "thesis": "A private, proprietary Android/Kotlin/C++ application for UVC microscopy workflows, with explicit hardware-capability handling, traceable capture/session records, native integration, and evidence-gated release acceptance.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "personal",
+        "status": "active"
       },
-      "title": "ScopeCam — Android + native multi-module app for UVC USB microscope cameras"
+      "title": "ScopeCam — proprietary Android/Kotlin/C++ UVC microscopy application"
     },
     {
-      "asOf": "2026-05-23T18:46:21Z",
+      "asOf": "2026-07-14",
       "deploymentUrls": [],
       "displayName": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners",
       "domains": [
@@ -558,23 +544,25 @@
         "cli"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "shelltutor",
+      "operationalState": "unknown",
       "posture": {
         "allowsLive": false,
         "badge": "prototype",
         "evidenceClass": "working-prototype"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "shelltutor",
       "statusLine": "Working prototype, pre-release (public repo)",
@@ -584,14 +572,16 @@
       "thesis": "A dependency-free, single-file shell tutor that teaches absolute beginners the prerequisites for vimtutor through five mastery-gated stages, portable across Linux and macOS.",
       "tier": {
         "portfolioVisibility": "public-available",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "public",
+        "status": "active"
       },
       "title": "shelltutor — single-file vimtutor-prerequisite shell tutor for beginners"
     },
     {
-      "asOf": "2026-06-29T13:49:03Z",
-      "deploymentUrls": [],
+      "asOf": "2026-07-14",
+      "deploymentUrls": [
+        "https://jefahnierocks.github.io/symmetry-groups/"
+      ],
       "displayName": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")",
       "domains": [
         "mathematics",
@@ -600,50 +590,148 @@
         "web"
       ],
       "freshness": {
-        "ageDays": 2,
-        "maxUpdatedAt": "2026-06-29T13:49:03Z",
-        "source": "last_commit_date",
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
         "stale": false
       },
       "id": "symmetry-groups",
+      "operationalState": "staging-live",
       "posture": {
-        "allowsLive": false,
-        "badge": "prototype",
-        "evidenceClass": "working-prototype"
+        "allowsLive": true,
+        "badge": "deployed",
+        "evidenceClass": "deployed-system"
       },
       "provenance": {
-        "generatedAt": "2026-06-29T13:49:03Z",
+        "generatedAt": "2026-07-15T00:00:21Z",
         "kbDirty": false,
-        "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
         "source": "meta-inventory feed v0"
       },
+      "publicLinkable": true,
       "schemaVersion": "0",
       "slug": "symmetry-groups",
-      "statusLine": "Working prototype, playable locally",
+      "statusLine": "Public tester staging-live on GitHub Pages",
       "tech": [
         "TypeScript"
       ],
       "thesis": "An educational game that teaches finite group theory through interactive symmetry and Cayley-table discovery, built on a genuine, axiom-tested group-theory domain.",
       "tier": {
         "portfolioVisibility": "public-promoted",
-        "primaryAudience": "unknown",
-        "status": "untriaged"
+        "primaryAudience": "personal",
+        "status": "active"
       },
       "title": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")"
+    },
+    {
+      "asOf": "2026-07-14",
+      "deploymentUrls": [],
+      "displayName": "Wyn der Schrank — Phaser side-scroller and minigame experiment",
+      "domains": [
+        "gaming",
+        "web"
+      ],
+      "freshness": {
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
+        "stale": false
+      },
+      "id": "wyn-der-schrank",
+      "operationalState": "unknown",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-07-15T00:00:21Z",
+        "kbDirty": false,
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
+        "source": "meta-inventory feed v0"
+      },
+      "publicLinkable": true,
+      "schemaVersion": "0",
+      "slug": "wyn-der-schrank",
+      "statusLine": "Working prototype; current development activity unverified",
+      "tech": [
+        "TypeScript"
+      ],
+      "thesis": "A family-facing Phaser game built as an independent, schema-governed TypeScript monorepo — evidence that an AI-assisted development practice can produce coherent, tested game software without inflating prototype status into deployment.",
+      "tier": {
+        "portfolioVisibility": "public-available",
+        "primaryAudience": "personal",
+        "status": "maintenance"
+      },
+      "title": "Wyn der Schrank — Phaser side-scroller and minigame experiment"
+    },
+    {
+      "asOf": "2026-07-14",
+      "deploymentUrls": [],
+      "displayName": "WynIsBuff2 — Phaser 3 physics platformer",
+      "domains": [
+        "gaming",
+        "web"
+      ],
+      "freshness": {
+        "ageDays": 5,
+        "maxUpdatedAt": "2026-07-14",
+        "source": "manifest.as_of",
+        "stale": false
+      },
+      "id": "wyn-is-buff-2",
+      "operationalState": "unknown",
+      "posture": {
+        "allowsLive": false,
+        "badge": "prototype",
+        "evidenceClass": "working-prototype"
+      },
+      "provenance": {
+        "generatedAt": "2026-07-15T00:00:21Z",
+        "kbDirty": false,
+        "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
+        "source": "meta-inventory feed v0"
+      },
+      "publicLinkable": true,
+      "schemaVersion": "0",
+      "slug": "wyn-is-buff-2",
+      "statusLine": "Working prototype; current development activity unverified",
+      "tech": [
+        "JavaScript"
+      ],
+      "thesis": "An original JavaScript and Phaser 3 platformer combining triple-jump mechanics, Rapier physics, deterministic testing, and structured observability in a modular game architecture.",
+      "tier": {
+        "portfolioVisibility": "public-available",
+        "primaryAudience": "personal",
+        "status": "active"
+      },
+      "title": "WynIsBuff2 — Phaser 3 physics platformer"
     }
   ],
   "provenance": {
     "degradedNoManifests": false,
-    "freshnessSource": "last_commit_date",
+    "freshnessSource": "pushedAt",
     "kbDirty": false,
-    "kbSha": "e004119b59d18efb968f2852502a5ad074a449e1",
+    "kbSha": "ead7a960351d53ffa1419d193879dc56bfb9f2c2",
     "manifestHealth": {
-      "checked": 22,
+      "checked": 27,
+      "duplicateConflictCount": 0,
+      "duplicateCount": 0,
       "errorCount": 0,
-      "status": "pass"
+      "graphErrorCount": 0,
+      "missingIdCount": 0,
+      "physicalChecked": 27,
+      "remoteAmbiguityCount": 0,
+      "status": "pass",
+      "unjoinedCount": 0,
+      "validationErrorCount": 0
     },
-    "maxUpdatedAt": "2026-06-29T13:49:03Z",
-    "stale": false
+    "maxUpdatedAt": "2026-07-15T00:00:21Z",
+    "selectedManifestDisagreementCount": 0,
+    "selectedManifestMissingCount": 0,
+    "stale": false,
+    "staleProjectCount": 2,
+    "unknownFreshnessProjectCount": 4
   },
   "schemaVersion": "0"
 }
