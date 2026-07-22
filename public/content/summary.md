@@ -1,16 +1,17 @@
 # Jeffrey V. Johnson, Ph.D.
 
-**Building foundations for reliable, specification-driven agentic development**
+**Building infrastructure for model evaluation and agent systems**
 
-I build the foundations that let agents contribute reliable,
-specification-conforming work: typed contracts, bounded authority, reproducible
-tool and runtime environments, deterministic gates, and evidence-preserving
-handbacks. I test those foundations by using them to build complex applications,
-data pipelines, evaluation systems, and infrastructure.
+I build software and development infrastructure for reliable agent-assisted
+work. My focus is clear specifications, explicit permissions, reproducible
+environments, automated checks, and evidence that can be reviewed. I use that
+infrastructure to build applications, data pipelines, evaluation systems, and
+developer tools.
 
-I am also a Ph.D. mathematician and backend-oriented systems researcher. The
-mathematics supports the work through abstraction, statistical discipline,
-patience with difficult systems, and clear technical communication.
+I am a tenured associate professor of mathematics with a Ph.D. from the
+University of Montana. That work supports the engineering through abstraction,
+statistical discipline, patience with difficult systems, and clear technical
+communication.
 
 ## The 20-second version
 

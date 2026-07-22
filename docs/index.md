@@ -3,8 +3,8 @@ title: Documentation index and current-truth map
 category: operations
 component: docs-index
 status: active
-version: 0.1.8
-last_updated: 2026-07-20
+version: 0.2.0
+last_updated: 2026-07-21
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -17,17 +17,12 @@ authority, which are historical handoffs, and where plans live.
 
 ## Current operating truth
 
-- **Public positioning:** headlines claim the work, not a title (operator decision 2026-07-20,
-  source-repo ADR-0012 and ADR-0013): the headline is "Building foundations for reliable,
-  specification-driven agentic development", and no unheld occupational label (e.g. "Research
-  Engineer") leads a headline, bio, or structured-data jobTitle. The substrate-first throughline is:
-  "I build the foundations that let agents contribute reliable, specification-conforming work:
-  typed contracts, bounded authority,
-  reproducible tool and runtime environments, deterministic gates, and evidence-preserving
-  handbacks. I test those foundations by using them to build complex applications, data pipelines,
-  evaluation systems, and infrastructure." AI and coding agents are instruments inside this system,
-  not the identity or source of quality. Market keywords remain in the headline, skills, project
-  evidence, targeted resume, and footer. Copy voice: simple, direct, first person, no em-dashes.
+- **Public positioning:** headlines claim the work, not a title (operator decisions 2026-07-20 and
+  2026-07-21, source-repo ADR-0012 and ADR-0014): the headline is "Building infrastructure for model evaluation and agent
+  systems", and no unheld occupational label (e.g. "Research Engineer") leads a headline, bio, or
+  structured-data jobTitle. Supporting copy should explain the work in plain language: clear
+  specifications, explicit permissions, reproducible environments, automated checks, and evidence
+  that can be reviewed. Copy voice: simple, direct, first person, no em-dashes.
 - **Deployment:** merge to `main` deploys through GitHub Pages Actions. `main` is protected by a
   repository ruleset ("main protection"): **direct pushes are blocked — all changes go through a PR**
   with `Code Quality` + `Build Site` + `pre-commit (all files)` green, signed commits, and linear
@@ -46,6 +41,17 @@ authority, which are historical handoffs, and where plans live.
   separate feed-only PR that changes `public/data/projects.json` and still requires operator approval.
 - **Visual system:** tokens are authored in `tokens/*.tokens.json`; component CSS uses semantic tokens in
   `assets/jeffrey.css`. Do not hand-edit `assets/tokens.generated.css`.
+- **Budget Triage publication boundary (2026-07-21):** the sanitized employer-facing source snapshot
+  is public at https://github.com/jefahnierocks/budget-triage. Active development remains private.
+  Publication is not deployment or an open contribution surface. Reverify snapshot-specific GitHub
+  state live rather than copying CI, advisory, or pull-request counts into durable site claims.
+- **Public Markdown discovery:** `public/content/resume.md`, `resume-ai-scanner.md`,
+  `research-statement.md`, and `summary.md` are intentional public resources. Resume controls expose
+  the resume files; `public/llms.txt` and the sitemap declare all four for direct discovery.
+- **Website coherence candidate (2026-07-21):** local authored pages now use the ADR-0014 work-first
+  identity, corrected publication pagination, a concise evidence pattern, and shared Experience CSS/JS.
+  `mise run ci` passes. Browser QA, commit/PR review, merge, deployment, and the separate accepted-feed
+  delivery have not happened.
 
 ## Agent read order
 

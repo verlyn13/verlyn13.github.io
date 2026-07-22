@@ -1,5 +1,5 @@
 /**
- * Copy-as-Markdown — landing-page credential buttons.
+ * Copy-as-Markdown for resume controls.
  * Preloads each Markdown payload so the clipboard write happens synchronously
  * inside the click gesture (robust across browsers). Falls back to fetch-on-click,
  * then to opening the file, if the Clipboard API is unavailable.

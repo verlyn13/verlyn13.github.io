@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- source: timeline-component-spec.md; refreshed: 2026-05-25 -->
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-21 -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +9,18 @@
 
   <title>Experience | Jeffrey Johnson</title>
 
-  <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="/assets/jeffrey.css">
   <script type="module" src="/assets/menu.js"></script>
+  <script type="module" src="/assets/experience.js"></script>
 
     <link rel="canonical" href="https://jvjohnson.dev/experience/">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Experience — Jeffrey V. Johnson, Ph.D.">
+    <meta property="og:title" content="Experience | Jeffrey V. Johnson, Ph.D.">
     <meta property="og:description" content="A career journey from mathematics and teaching to evaluations, agent governance, and systems engineering.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/experience/">
@@ -24,12 +28,12 @@
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D.">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Experience — Jeffrey V. Johnson, Ph.D.">
+    <meta name="twitter:title" content="Experience | Jeffrey V. Johnson, Ph.D.">
     <meta name="twitter:description" content="A career journey from mathematics and teaching to evaluations, agent governance, and systems engineering.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D.">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson portfolio">
 </head>
 
 <body class="experience-page">
@@ -52,13 +56,15 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <!-- ============================================
        HERO / BRAID NAVIGATOR
        ============================================ -->
 
   <header class="experience-hero" id="top">
     <h1 class="experience-hero__title">Experience</h1>
-    <p class="experience-hero__subtitle">Mathematician · Systems Builder · Educator</p>
+    <p class="experience-hero__subtitle">Mathematics · Software systems · Teaching</p>
 
     <nav class="braid-container" aria-label="Career timeline navigation">
       <svg class="braid-svg" id="braid-timeline-svg" width="1000" height="200" aria-labelledby="braid-title braid-desc" viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg">
@@ -70,150 +76,15 @@
           <filter id="shadow-filter" width="140%" height="140%" x="-20%" y="-20%">
             <feDropShadow dx="0" dy="2" flood-opacity=".25" stdDeviation="2"/>
           </filter>
-          <style id="style1">
-    /* Timeline Intro Styles */
-    .timeline-intro {
-      max-width: 800px;
-      margin: 2rem auto 3rem;
-      padding: 2rem;
-      border-radius: 12px;
-      border-left: 4px solid var(--accent);
-    }
-    .timeline-intro p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-      color: var(--ink);
-    }
-    .timeline-intro p:last-child {
-      margin-bottom: 0;
-    }
-    .timeline-intro strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .timeline-intro em {
-      font-style: italic;
-      color: var(--muted);
-    }
-
-            /* Timing & Easing */
-            #braid-timeline-svg {
-              --t-fast: 120ms;
-              --t-normal: 200ms;
-              --t-slow: 350ms;
-              --ease-out: cubic-bezier(0.2, 0, 0, 1);
-            }
-
-            /* Strands */
-            .strand {
-              fill: none;
-              stroke-width: 5;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              transition: opacity var(--t-normal) var(--ease-out);
-            }
-            .strand-analytical { stroke: hsl(212, 85%, 45%); }
-            .strand-technical { stroke: hsl(160, 55%, 35%); }
-            .strand-experiential { stroke: hsl(22, 90%, 52%); }
-
-            /* Hit Areas - invisible until needed */
-            .era-hitarea {
-              fill: transparent;
-              stroke: none;
-              cursor: pointer;
-              outline: none;
-              transition: fill var(--t-normal) var(--ease-out), stroke var(--t-normal) var(--ease-out);
-            }
-            .era-hitarea:hover {
-              fill: hsla(45, 30%, 50%, 0.08);
-            }
-            .era-hitarea:active {
-              fill: hsla(212, 85%, 45%, 0.1);
-            }
-            .era-hitarea:focus-visible {
-              fill: hsla(212, 85%, 45%, 0.08);
-              stroke: hsl(212, 85%, 45%);
-              stroke-width: 1.5;
-              stroke-opacity: 0.5;
-            }
-            .era-hitarea.active {
-              fill: hsla(212, 85%, 45%, 0.08);
-            }
-            /* Slower exit transition */
-            .era-hitarea:not(:hover):not(:active):not(.active) {
-              transition: fill var(--t-slow) var(--ease-out);
-            }
-
-            /* Labels */
-            .era-label {
-              font-family: system-ui, -apple-system, sans-serif;
-              font-size: 11px;
-              font-weight: 600;
-              fill: hsl(220, 18%, 18%);
-              text-anchor: middle;
-              cursor: pointer;
-              outline: none;
-              transition: fill var(--t-fast) var(--ease-out);
-            }
-            .era-label:hover,
-            .era-label:focus-visible,
-            .era-label.active {
-              fill: hsl(212, 85%, 45%);
-            }
-            .era-label:active {
-              fill: hsl(212, 85%, 38%);
-            }
-
-            /* Year markers - non-interactive */
-            .year-marker {
-              font-family: ui-monospace, monospace;
-              font-size: 9px;
-              fill: hsl(220, 12%, 45%);
-              text-anchor: middle;
-              pointer-events: none;
-              user-select: none;
-            }
-
-            /* Convergence ring with subtle pulse */
-            .convergence-ring {
-              fill: none;
-              stroke: hsl(220, 18%, 18%);
-              stroke-width: 1.5;
-            }
-            #convergence-inner { opacity: 0.3; }
-            #convergence-outer {
-              opacity: 0.12;
-              transform-origin: 980px 68px;
-              animation: convergence-pulse 3s ease-in-out infinite;
-            }
-            @keyframes convergence-pulse {
-              0%, 100% { opacity: 0.08; transform: scale(1); }
-              50% { opacity: 0.15; transform: scale(1.05); }
-            }
-
-            /* Accessibility: reduce motion */
-            @media (prefers-reduced-motion: reduce) {
-              #convergence-outer { animation: none; opacity: 0.12; }
-              .strand, .era-hitarea, .era-label { transition-duration: 0.01ms; }
-            }
-
-            /* High contrast mode */
-            @media (prefers-contrast: high) {
-              .era-hitarea:hover { fill: hsla(212, 85%, 45%, 0.2); }
-              .era-hitarea:focus-visible { stroke-width: 2; stroke-opacity: 0.8; }
-              .era-label:hover, .era-label.active { fill: hsl(212, 100%, 35%); }
-            }
-          </style>
         </defs>
         <g id="layer-hitareas">
-          <rect id="hitarea-wisconsin" width="135" height="115" x="20" y="30" class="era-hitarea" data-era="wisconsin" rx="4"/>
-          <rect id="hitarea-duluth" width="115" height="115" x="155" y="30" class="era-hitarea" data-era="duluth" rx="4"/>
-          <rect id="hitarea-california" width="130" height="115" x="270" y="30" class="era-hitarea" data-era="california" rx="4"/>
-          <rect id="hitarea-peacecorps" width="90" height="115" x="400" y="30" class="era-hitarea" data-era="peacecorps" rx="4"/>
-          <rect id="hitarea-montana" width="205" height="115" x="490" y="30" class="era-hitarea" data-era="montana" rx="4"/>
-          <rect id="hitarea-cairo" width="55" height="115" x="695" y="30" class="era-hitarea" data-era="cairo" rx="4"/>
-          <rect id="hitarea-alaska" width="230" height="115" x="750" y="30" class="era-hitarea" data-era="alaska" rx="4"/>
+          <a href="#wisconsin" class="era-link" data-era="wisconsin" aria-label="Jump to Work ethic section"><rect id="hitarea-wisconsin" width="135" height="115" x="20" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#duluth" class="era-link" data-era="duluth" aria-label="Jump to First proofs section"><rect id="hitarea-duluth" width="115" height="115" x="155" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#california" class="era-link" data-era="california" aria-label="Jump to Identity section"><rect id="hitarea-california" width="130" height="115" x="270" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#peacecorps" class="era-link" data-era="peacecorps" aria-label="Jump to Service section"><rect id="hitarea-peacecorps" width="90" height="115" x="400" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#montana" class="era-link" data-era="montana" aria-label="Jump to Deep theory section"><rect id="hitarea-montana" width="205" height="115" x="490" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#cairo" class="era-link" data-era="cairo" aria-label="Jump to International section"><rect id="hitarea-cairo" width="55" height="115" x="695" y="30" class="era-hitarea" rx="4"/></a>
+          <a href="#alaska" class="era-link" data-era="alaska" aria-label="Jump to Synthesis section"><rect id="hitarea-alaska" width="230" height="115" x="750" y="30" class="era-hitarea" rx="4"/></a>
         </g>
         <g id="layer-strands">
           <g id="strand-experiential-group">
@@ -231,13 +102,13 @@
           <circle id="convergence-outer" cx="980" cy="68" r="14" class="convergence-ring" opacity=".12"/>
         </g>
         <g id="layer-labels">
-          <text id="label-wisconsin" x="87" y="158" class="era-label" data-era="wisconsin">Work ethic</text>
-          <text id="label-duluth" x="212" y="158" class="era-label" data-era="duluth">First proofs</text>
-          <text id="label-california" x="335" y="158" class="era-label" data-era="california">Identity</text>
-          <text id="label-peacecorps" x="445" y="158" class="era-label" data-era="peacecorps">Service</text>
-          <text id="label-montana" x="592" y="158" class="era-label" data-era="montana">Deep theory</text>
-          <text id="label-cairo" x="722" y="158" class="era-label" data-era="cairo">International</text>
-          <text id="label-alaska" x="865" y="158" class="era-label" data-era="alaska">Synthesis</text>
+          <text id="label-wisconsin" x="87" y="158" class="era-label">Work ethic</text>
+          <text id="label-duluth" x="212" y="158" class="era-label">First proofs</text>
+          <text id="label-california" x="335" y="158" class="era-label">Identity</text>
+          <text id="label-peacecorps" x="445" y="158" class="era-label">Service</text>
+          <text id="label-montana" x="592" y="158" class="era-label">Deep theory</text>
+          <text id="label-cairo" x="722" y="158" class="era-label">International</text>
+          <text id="label-alaska" x="865" y="158" class="era-label">Synthesis</text>
         </g>
         <g id="layer-years">
           <text id="year-1992" x="20" y="178" class="year-marker">1992</text>
@@ -252,14 +123,14 @@
       </svg>
     </nav>
 
-    <p class="experience-hero__hint">Three threads. Thirty years. Click any era to explore.</p>
+    <p class="experience-hero__hint">Three threads. More than thirty years. Choose an era to explore.</p>
   </header>
 
     <div class="container">
       <div class="timeline-intro">
-        <p>I started university as a computer science major but found the coding tedious. Mathematics is still my preferred language, but the new AI tools make that less of a barrier and <strong>the ideas</strong> more accessible. I am the first in my family to attend college. I have a Ph.D. in mathematics, and I have spent more of my life learning computer systems by breaking and fixing things. It started when I broke the <code>autoexec.bat</code> file on our MS-DOS computer, and I have been breaking and fixing my own machines ever since. I built my first computer in 1995 and have preferred to build my own systems since.</p>
-        <p>Below is the braided timeline of that journey. It traces three tracks over thirty years: the <strong>experiential</strong> grit of early labor, the <strong>analytical</strong> rigor of a Ph.D. in pure mathematics, and the <strong>technical</strong> thread of self-taught engineering that recently converged into evaluating and governing agentic systems.</p>
-        <p><em>The timeline defaults to the most recent era (The Convergence). Click any point on the braid to explore the foundation beneath it.</em></p>
+        <p>I started university as a computer science major before switching to mathematics. I am the first in my family to attend college. I earned a Ph.D. in mathematics, and I learned computer systems by building, breaking, and repairing my own machines. That started with an <code>autoexec.bat</code> mistake on our MS-DOS computer. I built my first computer in 1995 and have preferred to understand and configure my own systems since.</p>
+        <p>The timeline traces three threads across more than thirty years: the <strong>experiential</strong> discipline of early labor, the <strong>analytical</strong> rigor of pure mathematics, and the <strong>technical</strong> work that now includes model evaluation, agent systems, applications, and infrastructure.</p>
+        <p><em>The timeline defaults to the most recent era (Synthesis). Choose any point on the braid to explore the foundation beneath it.</em></p>
       </div>
     </div>
 
@@ -269,7 +140,7 @@
        MAIN CONTENT - ERA SECTIONS
        ============================================ -->
 
-  <main id="main-content" class="experience-content">
+  <div class="experience-content">
 
     <!-- ==========================================
          ALASKA: SYNTHESIS (2017-present)
@@ -292,14 +163,13 @@
           the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
         </p>
         <p>
-          The turn from mathematical research and teaching to agentic development happened
-          inside a project. ScopeCam started as a plan to build an Android application for
-          USB microscope cameras, and I began it the classic way: solo development, reading
-          documentation, building an early working prototype by hand. Right about then the
-          first ChatGPT came out. I started using it for code help and context, and I have
-          been riding the front wave of agentic development ever since, exploring everything
-          it has to offer in engineering concepts and using the tools first-hand to gain
-          the experience.
+          The engineering transition became concrete in ScopeCam. I designed and built a
+          multi-module Android application for USB microscope cameras, taking responsibility
+          for the interface, Kotlin orchestration, C++/JNI camera engine, USB lifecycle,
+          concurrency, persistence, diagnostics, and physical-device verification. As I used
+          coding agents in that work, I also built the specifications, permission boundaries,
+          reproducible environments, automated checks, and evidence handbacks needed to keep
+          their contributions reviewable.
         </p>
       </div>
 
@@ -311,15 +181,15 @@
           <div class="bento-card__content">
 
             <div class="role">
-              <p class="role__title">Associate Professor of Mathematics <span class="badge badge--tenured">Tenured</span></p>
+              <p class="role__title">Associate Professor of Mathematics <span class="project-status production">Tenured</span></p>
               <p class="role__org">Kenai Peninsula College · University of Alaska</p>
               <p class="role__detail">Calculus I, Applied Calculus, Applied Statistics. Online course development and pedagogical technology.</p>
             </div>
 
             <div class="role">
-              <p class="role__title">Independent Systems Builder</p>
-              <p class="role__org">Self-directed research · Happy Patterns LLC product work</p>
-              <p class="role__detail">Agentic evaluation, governance, infrastructure, and mobile/native systems work, with maturity stated per project.</p>
+              <p class="role__title">Independent project work</p>
+              <p class="role__org">Self-directed research · Happy Patterns LLC</p>
+              <p class="role__detail">Model evaluation, agent systems, infrastructure, and mobile/native application work, with maturity stated per project.</p>
             </div>
 
           </div>
@@ -333,9 +203,9 @@
             <div class="project">
               <div>
                 <p class="project__name">Agentic-Coding Evaluation Lab</p>
-                <p class="project__desc">Fail-closed evaluation contracts with independent recomputation and a synthetic <code>NOT_EVALUABLE</code> refusal when evidence is incomplete.</p>
+                <p class="project__desc">Fail-closed evaluation contracts with separate-verifier recomputation and a synthetic <code>NOT_EVALUABLE</code> refusal when evidence is incomplete.</p>
               </div>
-              <span class="badge badge--development">Evaluation</span>
+              <span class="category-label">Evaluation</span>
             </div>
 
             <div class="project">
@@ -343,15 +213,15 @@
                 <p class="project__name">Governance and agent-control architecture</p>
                 <p class="project__desc">Bounded authority, evidence-preserving delegation, policy-as-code, safe refusal, and tested admission prototypes in an anonymized private case study.</p>
               </div>
-              <span class="badge badge--development">Governance</span>
+              <span class="category-label">Agent governance</span>
             </div>
 
             <div class="project">
               <div>
                 <p class="project__name">Budget Triage</p>
-                <p class="project__desc">Private financial evidence workbench with provenance, exact monetary semantics, tenant isolation, and fail-closed human review. Its synthetic known-answer result remains incomplete and uncertified.</p>
+                <p class="project__desc">Financial evidence workbench with provenance, exact monetary semantics, tenant isolation, and fail-closed human review. A <a href="https://github.com/jefahnierocks/budget-triage">sanitized public source snapshot</a> is available; active development remains private. Its synthetic known-answer result remains incomplete and uncertified.</p>
               </div>
-              <span class="badge badge--development">Applied evidence</span>
+              <span class="category-label">Applied system</span>
             </div>
 
           </div>
@@ -359,40 +229,28 @@
 
         <!-- Tech Stack Card - spans full width -->
         <div class="bento-card bento-grid__item--wide">
-          <h3 class="bento-card__title">Technical Proficiency</h3>
+          <h3 class="bento-card__title">Tools used across projects</h3>
           <div class="bento-card__content">
-            <div class="tech-stack">
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Go</span>
-              <span class="tech-tag">Rust</span>
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Android/JNI</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">Cloudflare Workers</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">Terraform</span>
-              <span class="tech-tag">Git workflows</span>
-              <span class="tech-tag">CI/CD</span>
-              <span class="tech-tag">OpenTelemetry</span>
-            </div>
+            <p><strong>Primary:</strong> Python, TypeScript, SQL, Bash, PostgreSQL, Git, and CI.</p>
+            <p><strong>Working:</strong> Kotlin, C/C++, React, Android/JNI, Docker, Cloudflare Workers, OpenTofu, OPA/Rego, and OpenTelemetry.</p>
+            <p><strong>Project-specific:</strong> Rust/WebAssembly, Go, USB/UVC, Redis, and native build toolchains.</p>
           </div>
         </div>
 
         <!-- Narrative Card -->
         <div class="bento-card bento-grid__item--wide">
-          <h3 class="bento-card__title">The Convergence</h3>
+          <h3 class="bento-card__title">Current work</h3>
           <div class="bento-card__content">
             <p>
-              Current work brings mathematical reasoning into agentic AI evaluation and governance:
-              evaluation contracts, independent recomputation, evidence-first audit, typed authority
+              Current work brings mathematical reasoning into model evaluation and agent systems:
+              evaluation contracts, separate-verifier recomputation, evidence-first audit, typed authority
               boundaries, and policy-as-code. Applied-statistics publication work and native
               Android/USB systems engineering remain supporting evidence for that practice.
             </p>
-            <p style="margin-top: var(--space-3);">
-              This is what thirty years of continuous work produces: the ability to move between
-              domains, to see systems clearly, to build things that work.
+            <p class="convergence-summary">
+              The throughline is sustained work across teaching, mathematics, software, and
+              infrastructure, with increasing responsibility for the systems and evidence behind
+              each result.
             </p>
           </div>
         </div>
@@ -447,7 +305,7 @@
 
       <div class="era-section__body">
         <p>
-          PhD in Mathematics from the University of Montana, specializing in commutative
+          Ph.D. in Mathematics from the University of Montana, specializing in commutative
           Banach algebras. Published research in Communications in Mathematics and Applications.
           Presented at conferences. Six years of deep immersion in abstract mathematics.
         </p>
@@ -457,8 +315,8 @@
           lecture sections and managing teaching assistants.
         </p>
         <p>
-          Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick-
-          algebraic topology and topological combinatorics.
+          Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick,
+          with courses in algebraic topology and topological combinatorics.
         </p>
       </div>
     </section>
@@ -482,7 +340,7 @@
         <p>
           Peace Corps education volunteer and teacher trainer. Project management workshops,
           community improvement initiatives, and daily classroom teaching. Secured a Dell
-          Computers Success Grant for a partner school-one of the early programs bringing
+          Computers Success Grant for a partner school, one of the early programs bringing
           technology to rural South African education.
         </p>
         <p>
@@ -511,8 +369,8 @@
       <div class="era-section__body">
         <p>
           Moved 2,000 miles from family at 21. BA in Mathematics from Humboldt State University,
-          2004. Entered the graduate program in Mathematical Modeling of Environmental Systems-
-          stochastic processes, dynamic systems, abstract algebra. Left before thesis work;
+          2004. Entered the graduate program in Mathematical Modeling of Environmental Systems,
+          studying stochastic processes, dynamic systems, and abstract algebra. Left before thesis work;
           pure mathematics was the real draw.
         </p>
         <ul class="highlights">
@@ -540,13 +398,13 @@
 
       <div class="era-section__body">
         <p>
-          University of Minnesota Duluth. First exposure to higher mathematics-the moment
+          University of Minnesota Duluth. First exposure to higher mathematics was the moment
           when abstraction clicked. Full-time student, part-time worker: midnight stock
           shifts at Kohl's, summer landscaping, evenings at Pizza Hut.
         </p>
         <ul class="highlights">
           <li>First higher mathematics coursework</li>
-          <li>Linux servers and self-hosting begins in earnest</li>
+          <li>Linux servers and self-hosting began in earnest</li>
           <li>Working nights to pay for school</li>
         </ul>
       </div>
@@ -572,13 +430,13 @@
           Six years of continuous employment before graduating high school. Farm work,
           restaurant kitchen (mower to dishwasher to prep cook to line cook), landscaping
           with heavy equipment operation. First in family to attend college.
-          Built first computer in 1996. Co-system operator for the high school BBS, 1996-1997.
+          Built first computer in 1995. Co-system operator for the high school BBS, 1996-1997.
         </p>
         <ul class="highlights">
           <li>Blue-collar foundation</li>
           <li>Heavy equipment certified before driving age</li>
           <li>First computer build, age 16</li>
-          <li>Technology interest begins-and never stops</li>
+          <li>Technology interest began and continued</li>
         </ul>
       </div>
     </section>
@@ -607,6 +465,7 @@
       </div>
     </section>
 
+  </div>
   </main>
 
 
@@ -616,7 +475,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+<p class="footer-cta">Open to research-engineering roles in model evaluation, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
       <nav class="footer-links" aria-label="Footer">
         <a href="/">← Back to portfolio</a>
         <a href="/contact.html">Contact</a>
@@ -634,134 +493,6 @@
     ↑ Timeline
   </button>
 
-
-  <!-- ============================================
-       JAVASCRIPT
-       ============================================ -->
-
-  <script>
-    (() => {
-      // ----------------------------------------
-      // BRAID NAVIGATION
-      // Click era → scroll to section
-      // ----------------------------------------
-
-      const hitareas = document.querySelectorAll('.era-hitarea');
-      const labels = document.querySelectorAll('.era-label');
-
-      [...hitareas, ...labels].forEach(el => {
-        const era = el.dataset.era;
-        if (!era) return;
-
-        // Make keyboard accessible
-        el.setAttribute('tabindex', '0');
-        el.setAttribute('role', 'link');
-        el.setAttribute('aria-label', `Jump to ${era} section`);
-
-        // Click handler
-        el.addEventListener('click', () => {
-          const target = document.getElementById(era);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, '', `#${era}`);
-          }
-        });
-
-        // Keyboard handler (Enter or Space)
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            el.click();
-          }
-        });
-      });
-
-
-      // ----------------------------------------
-      // BACK TO TOP BUTTON
-      // Show when scrolled past braid
-      // ----------------------------------------
-
-      const backToTop = document.getElementById('back-to-top');
-      const hero = document.querySelector('.experience-hero');
-
-      if (backToTop && hero) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                backToTop.classList.remove('visible');
-              } else {
-                backToTop.classList.add('visible');
-              }
-            });
-          },
-          { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
-        );
-
-        observer.observe(hero);
-
-        backToTop.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          history.pushState(null, '', window.location.pathname);
-        });
-      }
-
-
-      // ----------------------------------------
-      // ACTIVE ERA HIGHLIGHTING
-      // Update braid to show current section
-      // ----------------------------------------
-
-      const sections = document.querySelectorAll('.era-section');
-
-      const sectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const era = entry.target.dataset.era;
-
-              // Remove active class from all
-              document.querySelectorAll('.era-hitarea').forEach(h => {
-                h.classList.remove('active')
-              });
-              document.querySelectorAll('.era-label').forEach(l => {
-                l.classList.remove('active')
-              });
-
-              // Add active class to current
-              const hitarea = document.querySelector(`.era-hitarea[data-era="${era}"]`);
-              const label = document.querySelector(`.era-label[data-era="${era}"]`);
-
-              if (hitarea) hitarea.classList.add('active');
-              if (label) label.classList.add('active');
-            }
-          });
-        },
-        { threshold: 0.3, rootMargin: '-20% 0px -20% 0px' }
-      );
-
-      sections.forEach(section => { sectionObserver.observe(section) });
-
-
-      // ----------------------------------------
-      // HANDLE DIRECT HASH NAVIGATION
-      // If URL has #era, scroll to it on load
-      // ----------------------------------------
-
-      if (window.location.hash) {
-        const targetId = window.location.hash.slice(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          // Slight delay to let page render
-          setTimeout(() => {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
-        }
-      }
-
-    })();
-  </script>
 
 </body>
 </html>

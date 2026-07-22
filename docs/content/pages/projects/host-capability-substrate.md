@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: 9510dce565e2ddee561ebf3d4b5a73dd15547fd7680cb20ae52f7180aa2fb610
-html_hash: 6c31c1a166623aaa71b1780c261f35b61c29e53909749673323097c8e8df8859
+content_hash: 8d16b28bc3b319508f83ec73d25e43324af51eb49e7c12577186f13b214f09c2
+html_hash: 02d335a2238c571c3756067b79449e966dbb7f66e814639f51d364b5513c7761
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -19,25 +19,13 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 Typed capability, execution-context, authority, and evidence contracts
 
-Public repository · Verified implementation
+Working public implementation
 
-## What is this?
+## Summary
 
 Host Capability Substrate models the conditions under which work may occur on a local machine. It treats host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.
 
-## What is it for?
-
-It gives an agent, its operator, and surrounding tooling a machine-checkable description of what can be inspected, what can be modified, which environment applies, what evidence is required, and what still needs explicit approval.
-
-## How is it used?
-
-Host and execution-context declarations are represented with Zod types and generated JSON Schemas. Policy, evidence, approval, lease, and audit objects preserve the basis for action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.
-
-## Why does it matter?
-
-Agent tools are instruments inside a larger development system. Typed capability, environment, authorization, and evidence boundaries make their work inspectable, testable, reproducible, and easier to refuse safely.
-
-## Evidence and status
+## Strongest proof
 
 - Typed ontology 46 Zod entity schemas Compiled into 67 generated JSON Schemas.
 - Verification About 500 tests Exercises schemas, execution contexts, policy decisions, evidence, audit records, and grants.
@@ -46,11 +34,13 @@ Agent tools are instruments inside a larger development system. Typed capability
 
 [Inspect the public repository](https://github.com/jefahnierocks/host-capability-substrate)
 
-Host Capability Substrate is maintained in [Jefahnierocks](https://github.com/jefahnierocks), a public home for independently governed engineering and learning projects. Governance is currently repository-local; organization-wide controls remain conditional rather than active enforcement.
+## Technical decision
 
-### What this does not demonstrate
+Zod types compile to portable JSON Schemas. Scoped, expiring grants bound authority, and layered imports preserve the direction of control. A composed CI gate checks policy, secrets, boundaries, and schema drift.
 
-The public implementation and CI evidence show a typed governance model and enforced source boundaries. They do not prove that every modeled capability is deployed as universal host-level runtime enforcement.
+## Current limit
+
+The public source and CI evidence demonstrate the typed model and enforced repository boundaries. They do not show universal host-level runtime enforcement.
 
 ## Technical shape
 

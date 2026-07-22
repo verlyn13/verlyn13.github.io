@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 2f19a469f503803dd523cc67dad7bea7cc490c9c932e1b422bf38e521ac3880a
-html_hash: 2adbd3c4423a92c89cf03e3882911eb30c922b0663a4a53a8c57bb0ebf113141
+content_hash: 472d42f496af54262067428ac7aab034cb35482914eed051cb7e6adaaee6fa9b
+html_hash: 52197a778a037080e54eaea6c573aff9ae45b3fc39da463fe562ae512ad4064e
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 # Jeffrey V. Johnson, Ph.D.
 
-Building foundations for reliable, specification-driven agentic development
+Building infrastructure for model evaluation and agent systems
 
 - Homer, Alaska
 - [jeffrey@jvjohnson.dev](mailto:jeffrey@jvjohnson.dev)
@@ -36,7 +36,7 @@ Ph.D. mathematician and systems builder focused on the infrastructure that makes
 
 ## Agent-development infrastructure
 
-### [Host Capability Substrate](/projects/host-capability-substrate.html) — typed capability and evidence contracts
+### [Host Capability Substrate](/projects/host-capability-substrate.html) : typed capability and evidence contracts
 
 TypeScript · Zod · JSON Schema · GitHub Actions
 
@@ -45,7 +45,7 @@ TypeScript · Zod · JSON Schema · GitHub Actions
 - Wrote a 19-invariant governance charter and four-ring architecture, enforced by import boundaries and one CI gate for policy, boundary, secret, and schema-drift checks.
 - The public repository demonstrates the typed model and source boundaries, not universal host-level runtime enforcement.
 
-### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) — specification and drift checks for agent-operated codebases
+### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) : specification and drift checks for agent-operated codebases
 
 Specification · JSON Schema · Python tooling
 
@@ -53,7 +53,7 @@ Specification · JSON Schema · Python tooling
 - Defined an 11-dimension rubric, 12 JSON output schemas, and a prioritization model based on severity, confidence, and weight.
 - Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test in pre-commit and CI.
 
-### [Governance and agent-control architecture](/projects/governance-agent-control.html) — federated authority for agent-assisted work
+### [Governance and agent-control architecture](/projects/governance-agent-control.html) : federated authority for agent-assisted work
 
 An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudflare · Hetzner · Proxmox
 
@@ -64,24 +64,24 @@ An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudf
 
 ## Selected applications and evaluations
 
-### [Agentic-Coding Evaluation Lab](https://github.com/verlyn13/eval-lab-methodology) — fail-closed evaluation evidence
+### [Agentic-Coding Evaluation Lab](https://github.com/verlyn13/eval-lab-methodology) : fail-closed evaluation evidence
 
 Public methodology and verification prototype · Python · Quarto · JSON contracts
 
 - Built and published a model-evaluation methodology and verification prototype that preserves evidence and withholds a recommendation when scientific prerequisites are incomplete.
-- Built a draft evidence contract and a separate verifier that independently recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing, inconsistent, or altered evidence.
+- Built a draft evidence contract and a separate verifier that recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing, inconsistent, or altered evidence.
 - Current evidence covers framework behavior and synthetic conformance, not a powered real-model result or promotion recommendation.
 
-### [Budget Triage](/projects/budget-triage.html) — financial evidence workbench
+### [Budget Triage](/projects/budget-triage.html) : financial evidence workbench
 
-Private working prototype · Bun · TypeScript · Hono · PostgreSQL · not deployed to production
+Public employer-facing source snapshot · active development private · Bun · TypeScript · Hono · PostgreSQL · not deployed
 
 - Built a financial evidence workbench for statements, receipts, and connected-account data with deterministic-first processing and human review.
 - Implemented exact monetary arithmetic, tenant-scoped atomic persistence, append-only decision records, authentication, Plaid, Infisical, and OpenTelemetry.
 - Built a synthetic known-answer and service-observation harness. Its current result is 6 passing and 9 pending assertions, so it remains incomplete and uncertified.
-- Prepared a sanitized, MIT-licensed public source candidate that passed its full validation gate on 2026-07-18. It is intended for employer exploration after final operator review; no public source link or contribution policy is available yet.
+- Published a sanitized, MIT-licensed source snapshot for employer review on 2026-07-21. Active development remains private; publication is not deployment or an open contribution surface. [Explore the public source.](https://github.com/jefahnierocks/budget-triage)
 
-### [ScopeCam](/projects/scopecam.html) — native Android UVC camera application
+### [ScopeCam](/projects/scopecam.html) : native Android UVC camera application
 
 Private Android · Kotlin · Jetpack Compose · C++20 · JNI/NDK · USB/UVC
 
@@ -89,11 +89,11 @@ Private Android · Kotlin · Jetpack Compose · C++20 · JNI/NDK · USB/UVC
 - Diagnosed a camera-replug ANR across the JVM/native teardown boundary and implemented a device-verified recovery with the remaining leak tradeoff documented.
 - Delivered a signed client alpha; the private product is not broadly released.
 
-### [Dicee](/projects/dicee.html) — representative delivered software
+### [Dicee](/projects/dicee.html) : representative delivered software
 
 Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
 
-- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules engine, realtime state through Cloudflare Durable Objects and WebSockets, and a SvelteKit client.
+- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules engine, real-time state through Cloudflare Durable Objects and WebSockets, and a SvelteKit client.
 - Public source and a live deployment demonstrate end-to-end delivery; traffic, performance, bundle-size, and current test-count claims remain withheld.
 
 ## Technical skills
@@ -135,6 +135,6 @@ Dissertation: *Peripherally-Multiplicative Spectral Preservers Between Function 
 
 ## Publications
 
-Cadieux, J. M., Pyhala, S. L., & Johnson, J. V. (2023). Pediatric Walking Speed Normal Reference Values in a Local Population. *Pediatric Physical Therapy*, 35(3), 326-331. Led the statistical analysis.
+Cadieux, J. M., Pyhala, S. L., & Johnson, J. V. (2023). Pediatric Walking Speed Normal Reference Values in a Local Population. *Pediatric Physical Therapy*, 35(3), 314-320. Led the statistical analysis.
 
 Johnson, J. V., & Tonev, T. (2012). Spectral Conditions for Composition Operators on Algebras of Functions. *Communications in Mathematics and Applications*, 3(1).

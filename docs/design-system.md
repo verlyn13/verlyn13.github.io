@@ -170,9 +170,8 @@ Rule: **exactly one primary (filled) action per view**; everything else is a sec
 |---|---|
 | `.approach-tag` | Muted descriptor chip in an approach card header |
 | `.aspect-tag` | Mono inset chip (sub-capabilities) |
-| `.tech-tag`, `.tech-badge`, `.status-badge` | Mono/neutral tech & status chips |
+| `.tech-tag`, `.category-label` | Neutral technology and topical labels |
 | `.project-status` (`.live` / `.development` / `.mvp` / `.production`) | Status pills (green/blue/amber/green-2) |
-| `.badge--*` (`production` / `live` / `development` / `tenured`) | Solid status badges (Experience) |
 
 ### 4.6 Callouts — `.callout` (+ `.ok`, `.warn`)
 Left-accent panel with tinted background. `.service-card` shares the treatment. The "Now" band reuses
@@ -328,7 +327,8 @@ entries proves method; the per-project page (and the S3 panel) carries depth on 
 - `!important` (Biome `noImportantStyles`) or descending-specificity selectors (Biome
   `noDescendingSpecificity`); never disable a Biome rule to silence it.
 - Arbitrary px for spacing; raw colors for new work (use tokens).
-- Add JS beyond `assets/menu.js` without asking.
+- Add JS beyond the approved `assets/menu.js`, `assets/copy-md.js`, and `assets/experience.js`
+  assets without asking.
 
 **Ask first**
 - Any change to tokens, palette, type scale, spacing scale, or a named pattern (§5).
@@ -386,7 +386,7 @@ with `mise run ci` (lint + format-check + conformance + tokens-fresh + build).
 
 - Machine-readable spec: `design/DESIGN_SPEC.md`. Token sources: `tokens/*.tokens.json` → `assets/tokens.generated.css`.
 - Implementation: `assets/jeffrey.css` (component rules; `@import`s the generated tokens).
-- Mobile nav behavior: `assets/menu.js`.
+- Mobile nav behavior: `assets/menu.js`; Experience timeline behavior: `assets/experience.js`.
 - Project contract & boundaries: `AGENTS.md`, `CLAUDE.md`.
 - Editor rules: `.cursor/rules/css.mdc`, `.cursor/rules/html.mdc`, `.cursor/rules/project.mdc`.
 - Origin of the §5 patterns: `docs/landing-refresh-directive-2026-06-05.md`; the §5.7 grouped index:

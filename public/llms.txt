@@ -27,11 +27,17 @@ https://jvjohnson.dev/projects/host-capability-substrate.html
 Agentic Architecture Audit:
 https://github.com/verlyn13/agentic-architecture-audit
 
-Representative delivery evidence — Dicee:
+Representative delivery evidence, Dicee:
 https://jvjohnson.dev/projects/dicee.html
 
-Full body of work:
+Selected project index:
 https://jvjohnson.dev/projects/
 
+Public research statement:
+https://jvjohnson.dev/content/research-statement.md
+
+Plain-language professional summary:
+https://jvjohnson.dev/content/summary.md
+
 Notes:
-Jeffrey V. Johnson, Ph.D. is presented as an evaluations and agent-governance engineer. The portfolio connects fail-closed evaluation evidence, bounded agent authority, and evidence-preserving human review in consequential software. Private project repositories remain intentionally unlinked.
+Jeffrey V. Johnson, Ph.D. builds infrastructure for model evaluation and agent systems. The portfolio connects specifications, bounded authority, reproducible environments, automated checks, and reviewable evidence. Private project repositories remain intentionally unlinked.

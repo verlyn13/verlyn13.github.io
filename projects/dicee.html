@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dicee — Live Multiplayer Dice Game | Jeffrey Johnson</title>
+    <title>Dicee: Live Multiplayer Dice Game | Jeffrey Johnson</title>
     <meta name="description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
-    <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
 
     <link rel="canonical" href="https://jvjohnson.dev/projects/dicee.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Dicee — Live Multiplayer Dice Game">
+    <meta property="og:title" content="Dicee: Live Multiplayer Dice Game">
     <meta property="og:description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/dicee.html">
@@ -21,12 +24,12 @@
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dicee — Live Multiplayer Dice Game">
+    <meta name="twitter:title" content="Dicee: Live Multiplayer Dice Game">
     <meta name="twitter:description" content="A live family-friendly multiplayer dice game for mobile browsers, built with Rust/WebAssembly, SvelteKit, Cloudflare Durable Objects, and WebSockets.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson portfolio">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -58,12 +61,12 @@
                     <p class="project-subtitle">Family-friendly multiplayer game for mobile browsers</p>
                     <div class="project-meta">
                         <span class="project-status live">Live public deployment</span>
-                        <a href="https://dicee.games/" class="external-link" target="_blank" rel="noopener">dicee.games →</a>
+                        <a href="https://dicee.games/" class="external-link" target="_blank" rel="noopener" aria-label="Open the live Dicee game">dicee.games →</a>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>What is this?</h2>
+                    <h2>Summary</h2>
                     <!-- content-sync:start dicee.overview -->
                     <p>Dicee is a family-friendly multiplayer dice game that runs in a mobile browser without an app install. Its game engine is written in Rust and compiled to WebAssembly.</p>
                     <p>The deployed system combines a SvelteKit interface with Cloudflare Durable Objects and WebSockets for real-time room state.</p>
@@ -71,30 +74,18 @@
                 </section>
 
                 <section class="project-context">
-                    <h2>What is it for?</h2>
-                    <p>It provides a usable game while serving as delivery evidence for cross-language browser software, real-time coordination, and serverless state management.</p>
-                </section>
-
-                <section class="project-context">
-                    <h2>How is it used?</h2>
-                    <p>Players open <a href="https://dicee.games/" target="_blank" rel="noopener">dicee.games</a> in a browser, create or join a game, and exchange state through WebSockets backed by Cloudflare Durable Objects. Supabase provides persistent data services.</p>
+                    <h2>Strongest proof</h2>
+                    <p>Both the <a href="https://dicee.games/" target="_blank" rel="noopener" aria-label="Open the live Dicee game">live deployment</a> and the <a href="https://github.com/verlyn13/dicee" target="_blank" rel="noopener" aria-label="Open the Dicee public source repository">public source</a> are available for review.</p>
                 </section>
 
                 <section class="project-significance">
-                    <h2>Why does it matter?</h2>
-                    <p>Dicee demonstrates end-to-end delivery across a Rust/WebAssembly engine, a SvelteKit client, real-time edge coordination, persistence, and a public deployment.</p>
+                    <h2>Technical decision</h2>
+                    <p>The rules engine is written in Rust and compiled to WebAssembly, while Cloudflare Durable Objects and WebSockets coordinate real-time room state across browser clients.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>Evidence and status</h2>
-                    <ul class="depth-list">
-                        <li>The canonical public deployment at <a href="https://dicee.games/" target="_blank" rel="noopener">dicee.games</a> returned HTTP 200 during the accepted source review on 2026-07-14.</li>
-                        <li>Tracked source supports the Rust/WebAssembly engine, SvelteKit client, Cloudflare Durable Objects, WebSockets, and Supabase architecture.</li>
-                    </ul>
-                    <div class="callout warn">
-                        <h3>What this does not demonstrate</h3>
-                        <p>No exact binary-size, test-count, user, traffic, latency, or general performance claim is made. Those figures require a fresh source-local build or operational review before outward use.</p>
-                    </div>
+                    <h2>Current limit</h2>
+                    <p>The public evidence supports the architecture and live delivery. It does not establish traffic, latency, or general performance at scale.</p>
                 </section>
 
                 <!-- @design-structure: dicee -->
@@ -125,7 +116,8 @@
                     <p>Happy to talk about this project or the research practice behind it.</p>
                     <div class="project-cta-actions">
                         <a href="mailto:jeffrey@jvjohnson.dev?subject=Dicee" class="primary-link">Email me about this →</a>
-                        <a href="https://dicee.games/" class="section-link" target="_blank" rel="noopener">Visit live site ↗</a>
+                        <a href="https://dicee.games/" class="section-link" target="_blank" rel="noopener" aria-label="Open the live Dicee game">Visit live site ↗</a>
+                        <a href="https://github.com/verlyn13/dicee" class="section-link" target="_blank" rel="noopener" aria-label="Open the Dicee public source repository">Public source ↗</a>
                     </div>
                 </section>
             </div>
@@ -134,7 +126,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+<p class="footer-cta">Open to research-engineering roles in model evaluation, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <nav class="footer-links" aria-label="Footer">
                 <a href="/">← Back to portfolio</a>
                 <a href="/contact.html">Contact</a>

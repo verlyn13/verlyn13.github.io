@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Host Capability Substrate — Typed Capability and Evidence Contracts | Jeffrey Johnson</title>
+    <title>Host Capability Substrate: Typed Capability and Evidence Contracts | Jeffrey Johnson</title>
     <meta name="description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
-    <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
 
     <link rel="canonical" href="https://jvjohnson.dev/projects/host-capability-substrate.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Host Capability Substrate — Typed Capability and Evidence Contracts">
+    <meta property="og:title" content="Host Capability Substrate: Typed Capability and Evidence Contracts">
     <meta property="og:description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/host-capability-substrate.html">
@@ -21,12 +24,12 @@
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Host Capability Substrate — Typed Capability and Evidence Contracts">
+    <meta name="twitter:title" content="Host Capability Substrate: Typed Capability and Evidence Contracts">
     <meta name="twitter:description" content="A public TypeScript, Zod, and JSON Schema substrate for explicit host capabilities, execution contexts, policy evidence, approvals, and bounded authorization.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson portfolio">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -57,32 +60,17 @@
                     <h1>Host Capability Substrate</h1>
                     <p class="project-subtitle">Typed capability, execution-context, authority, and evidence contracts</p>
                     <div class="project-meta">
-                        <span class="project-status development">Public repository · Verified implementation</span>
+                        <span class="project-status development">Working public implementation</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>What is this?</h2>
+                    <h2>Summary</h2>
                     <p>Host Capability Substrate models the conditions under which work may occur on a local machine. It treats host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>What is it for?</h2>
-                    <p>It gives an agent, its operator, and surrounding tooling a machine-checkable description of what can be inspected, what can be modified, which environment applies, what evidence is required, and what still needs explicit approval.</p>
-                </section>
-
-                <section class="project-context">
-                    <h2>How is it used?</h2>
-                    <p>Host and execution-context declarations are represented with Zod types and generated JSON Schemas. Policy, evidence, approval, lease, and audit objects preserve the basis for action, while scoped, expiring grants bound what an agent may do. A layered architecture and merge-time CI gate check schema drift, policy rules, secret boundaries, and forbidden dependencies.</p>
-                </section>
-
-                <section class="project-significance">
-                    <h2>Why does it matter?</h2>
-                    <p>Agent tools are instruments inside a larger development system. Typed capability, environment, authorization, and evidence boundaries make their work inspectable, testable, reproducible, and easier to refuse safely.</p>
-                </section>
-
-                <section class="project-context">
-                    <h2>Evidence and status</h2>
+                    <h2>Strongest proof</h2>
                     <ul class="evidence-grid">
                         <li class="evidence-card">
                             <p class="evidence-card__label">Typed ontology</p>
@@ -106,11 +94,16 @@
                         </li>
                     </ul>
                     <p><a href="https://github.com/jefahnierocks/host-capability-substrate" class="external-link" target="_blank" rel="noopener" aria-label="Inspect the Host Capability Substrate public repository">Inspect the public repository</a></p>
-                    <p>Host Capability Substrate is maintained in <a href="https://github.com/jefahnierocks" class="external-link" target="_blank" rel="noopener" aria-label="Open the Jefahnierocks public organization profile">Jefahnierocks</a>, a public home for independently governed engineering and learning projects. Governance is currently repository-local; organization-wide controls remain conditional rather than active enforcement.</p>
-                    <div class="callout warn">
-                        <h3>What this does not demonstrate</h3>
-                        <p>The public implementation and CI evidence show a typed governance model and enforced source boundaries. They do not prove that every modeled capability is deployed as universal host-level runtime enforcement.</p>
-                    </div>
+                </section>
+
+                <section class="project-significance">
+                    <h2>Technical decision</h2>
+                    <p>Zod types compile to portable JSON Schemas. Scoped, expiring grants bound authority, and layered imports preserve the direction of control. A composed CI gate checks policy, secrets, boundaries, and schema drift.</p>
+                </section>
+
+                <section class="project-context">
+                    <h2>Current limit</h2>
+                    <p>The public source and CI evidence demonstrate the typed model and enforced repository boundaries. They do not show universal host-level runtime enforcement.</p>
                 </section>
 
                 <!-- @design-structure: host-capability-substrate -->
@@ -163,7 +156,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+<p class="footer-cta">Open to research-engineering roles in model evaluation, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <nav class="footer-links" aria-label="Footer">
                 <a href="/">← Back to portfolio</a>
                 <a href="/contact.html">Contact</a>

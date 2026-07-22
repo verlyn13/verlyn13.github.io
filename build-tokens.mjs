@@ -19,7 +19,7 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerFileHeader({
   name: 'no-timestamp',
   fileHeader: () => [
-    'DO NOT EDIT — generated from tokens/*.tokens.json by build-tokens.mjs (Style Dictionary).',
+    'DO NOT EDIT. Generated from tokens/*.tokens.json by build-tokens.mjs (Style Dictionary).',
     'Run `npm run tokens` to regenerate. Edit the .tokens.json sources instead.',
   ],
 })
@@ -28,7 +28,7 @@ const sd = new StyleDictionary({
   source: ['tokens/**/*.tokens.json'],
   platforms: {
     css: {
-      // Name transform ONLY — no value/color transforms, so values pass through verbatim
+      // Name transform only; no value/color transforms, so values pass through verbatim
       // (guarantees zero visual diff vs. the hand-authored :root block).
       transforms: ['name/leaf'],
       buildPath: process.env.TOKENS_OUTDIR || 'assets/',
