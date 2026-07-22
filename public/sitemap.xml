@@ -2,87 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jvjohnson.dev/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/experience/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/research/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/cv.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/content/resume.md</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/content/resume-ai-scanner.md</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/contact.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/colophon.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/budget-triage.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/flux.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/dicee.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/scopecam.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/maat.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/governance-agent-control.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/host-capability-substrate.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://jvjohnson.dev/projects/symmetry-groups.html</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jvjohnson.dev/content/research-statement.md</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jvjohnson.dev/content/summary.md</loc>
+    <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

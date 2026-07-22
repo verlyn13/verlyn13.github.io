@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: a1e7d2b57a1fbdf5980bb34aa42239b330aa185291aa7d8aa80fbc2f1969cce3
-html_hash: a534c72d47f94edd1b2b14fc7aaa3804c7895feec104dcd4ea1be47686c5aa50
+content_hash: f69d55992bdaa883beea3cc42192a2e9b43b579bad4936085092910311ae057c
+html_hash: 7360cc49314c6ffe8e6fe87513d878497f72eb5df47ee609a7e6aec3c2bca0f3
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,41 +13,46 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to Portfolio
 
-# Research & Publications
+# Research and publications
 
-Reliable agent-development foundations, evaluation methodology, applied statistics, and mathematics
+Model evaluation, agent systems, applied statistics, and mathematics
 
-## Reliable agent systems and evaluation
+## Current research questions
 
-Current independent research develops the specifications, authority boundaries, execution environments, and verification needed for reliable agent-assisted work.
+My current work asks how agent-assisted development can produce results that remain inspectable after the agent session ends.
 
-- Typed capability, operation, execution-context, evidence, approval, lease, audit, and authorization contracts.
-- Reproducible human and agent shell modes, tool and runtime resolution, and cross-tool repository contracts.
-- Evaluation contracts, independent evidence recomputation, and fail-closed refusal when scientific prerequisites do not support a decision.
-- Evidence-first audit methods that separate discovery from judgment and bind conclusions to reproducible artifacts.
-- Agent authority boundaries, policy-as-code, provenance, safe escalation, and explicit tested, advisory, and operating status.
+- **Authority:** How should capabilities, permissions, execution context, approvals, and evidence be represented so an agent can act only within an explicit mandate?
+- **Evaluation:** What evidence is sufficient to compare model or harness changes, and when should an evaluation refuse to produce a decision?
+- **Verification:** How can a separate verifier recompute a result from durable artifacts instead of trusting the reporting path that produced it?
+- **Development systems:** Which specifications, environment controls, and automated checks make agent-assisted work reproducible across tools and repositories?
 
-## Clinical Research
+## Public methods and implementations
+
+- [Host Capability Substrate](https://github.com/jefahnierocks/host-capability-substrate): typed capability, authority, execution-context, and evidence contracts with generated JSON Schemas and CI checks.
+- [Agentic-Coding Evaluation Lab methodology](https://github.com/verlyn13/eval-lab-methodology): fail-closed evaluation contracts and a synthetic `NOT_EVALUABLE` result recomputed by a separate verifier in the same program.
+- [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit): a public specification and deterministic checks for testing whether agent-built systems conform to their declared architecture.
+
+## Applied statistics publication
 
 ### Pediatric Walking Speed Normal Reference Values in a Local Population
 
 Cadieux JM, Pyhala SL, **Johnson JV**
 
-*Pediatric Physical Therapy*, 2023;35(3):326-331
+*Pediatric Physical Therapy*, 2023;35(3):314-320
 
-doi:10.1097/PEP.0000000000001015
+[doi:10.1097/PEP.0000000000001015](https://doi.org/10.1097/PEP.0000000000001015)
 
-**My Role:** Statistical analysis and methodology (third author)
+**My role:** Led the statistical analysis (third author)
 
 **Methods:** R (version 4.1.3), IBM SPSS
 
 **Analysis:** 13×2×2 factorial ANOVA with Type III sum of squares, 1,593 participants ages 5-17
 
-**Impact:** Normative reference values for assessing children with disabilities in rural Alaska school district
+**Result:** Normal reference values for children ages 5-17 in one rural Alaska school district
 
 Interdisciplinary collaboration applying statistical methods to clinical physical therapy research. Large dataset management (1,593 children) and rigorous factorial analysis examining main effects and two-way interactions for age, sex, and footwear.
 
-## Pure Mathematics
+## Pure mathematics
 
 ### Spectral Conditions for Composition Operators on Algebras of Functions
 
@@ -69,75 +74,9 @@ Field: Commutative Banach Algebras, Functional Analysis
 
 Established general sufficient conditions for maps between function algebras to be composition or weighted composition operators. Defined and characterized weakly peripherally-multiplicative and almost peripherally-multiplicative maps. Extended theory to function algebras without unit on locally compact Hausdorff spaces.
 
-## Theoretical Computer Science Exploration
+## Related study and teaching
 
-Collaborative study begun in 2023
-
-### Collaborative Study
-
-Recurring theoretical-computer-science study sessions with a student collaborator over more than one year.
-
-### Topics Explored
-
-#### Theoretical Foundations
-
-- Lambda calculus and mathematical representation
-- Formal languages and automata theory
-- Propositional logic and proof systems
-
-#### Abstract Algebra
-
-- Field and ring theory
-- Galois fields (cryptographic applications)
-- Quotient objects and representatives
-
-#### Applied Cryptography
-
-- Elliptic curve cryptography
-- Mathematical representations in finite fields
-- Rust implementation considerations
-
-#### Computational Mathematics
-
-- Computational linear algebra
-- Matrix operations and performance
-- Dimension and complexity constraints
-
-### Theory Informing Practice
-
-These explorations directly inform implementation work:
-
-- Abstract algebra → cryptographic implementations
-- Lambda calculus → functional paradigms in distributed systems
-- Category theory → composable system design
-- Formal methods → policy verification (across agent-architecture experiments)
-
-## Education
-
-### Ph.D. Mathematical Sciences
-
-University of Montana, 2008–2013
-
-Advisor: Dr. Thomas Tonev
-
-Commutative Banach Algebras, Functional Analysis
-
-### M.S. Coursework — Mathematical Modeling
-
-Humboldt State University, 2004–2005
-
-Environmental Systems
-
-### B.A. Mathematics
-
-Humboldt State University, 2002–2004
-
-## Continuing Education
-
-- **Machine Learning** (completed with certificate) — Andrew Ng, Stanford University/Coursera. Supervised learning, neural networks, unsupervised learning, ML system design.
-- **OLC Online Teaching Certificate Program** (2019) — Foundations + electives (retention strategies, gamification, accessibility). Applied to Applied Calculus online course.
-- **AARMS Graduate Summer School** (2010) — Atlantic Association of Research and Mathematical Sciences. University of New Brunswick, Canada. Courses: Topological Combinatorics, Algebraic Topology.
-- **Function Spaces and Lineability IX** (2015) — Spring School on Analysis, Charles University, Czech Republic.
+Since 2023, I have held recurring theoretical-computer-science study sessions with a student collaborator, covering lambda calculus, formal languages, abstract algebra, and applied cryptography. This is independent study and mentoring, not a publication claim. My degrees, teaching record, and continuing education are listed in the [Resume](/cv.html) and [Experience](/experience/) pages.
 
 Teaching & Leadership →
 

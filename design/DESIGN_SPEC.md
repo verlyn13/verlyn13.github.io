@@ -46,7 +46,7 @@ appeal. One accent (`--accent`), **reserved for the primary action and the flags
   gallery at ≥769px, editorial lead full-width without a visible taxonomy label — ADR-0007) →
   `surface`, `border`, `accent`, `accent-subtle`, `inset-warm`, `inset-cool`, `shadow-lift`
 - **cards** (`.card`, `.project-card`, `.bento-card`) → `surface`, `border`, `shadow`, `shadow-hard`, `shadow-lift`
-- **status/badges** (`.project-status.*`, `.badge--*`, `.tech-tag`) → `ok-bg`, `green-bg`, `amber-bg`, `amber-ink`, `inset-cool`, `accent`, `on-accent`
+- **status and labels** (`.project-status.*`, `.category-label`, `.tech-tag`) → `ok-bg`, `green-bg`, `amber-bg`, `amber-ink`, `inset-cool`, `accent`, `muted`
 - **callouts** (`.callout[.ok/.warn]`) → `accent-tint`, `ok-tint`, `warn-tint`, `accent`, `ok`, `warn`
 - **nav / footer** (`.site-footer` → `.footer-cta` email line + `.footer-links` back-nav + colophon) →
   `paper`, `inset-warm`, `border`, `border-faint`, `muted`, `accent`, `ink`, `shadow-soft`

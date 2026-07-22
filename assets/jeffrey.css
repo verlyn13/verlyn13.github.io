@@ -4,7 +4,7 @@
    warm-but-not-squishy, and always aiming for "make it solid."
    ============================================================ */
 
-/* Design tokens — generated from tokens/*.tokens.json (DTCG) by Style Dictionary.
+/* Design tokens generated from tokens/*.tokens.json (DTCG) by Style Dictionary.
    Edit the .tokens.json sources + run `npm run tokens`; never hand-edit the generated file. */
 @import "./tokens.generated.css";
 
@@ -20,7 +20,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   /* Offset in-page anchor targets by the sticky-nav height (.site-nav min-height: 64px) so
-     focused/linked sections are not hidden beneath it — WCAG 2.2 SC 2.4.11. */
+     focused/linked sections are not hidden beneath it. WCAG 2.2 SC 2.4.11. */
   scroll-padding-top: calc(64px + var(--space-2));
 }
 
@@ -180,8 +180,8 @@ li {
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -339,7 +339,7 @@ em {
   font-size: var(--text-xs);
 }
 
-/* Selected-work rail — surfaces proof (flagship + key projects) above the fold. */
+/* Selected-work rail surfaces proof (flagship + key projects) above the fold. */
 .hero-selected {
   display: flex;
   flex-wrap: wrap;
@@ -592,7 +592,7 @@ em {
 }
 
 /* ------------------------------------------------------------
-   Resume and skills — compact formats plus target skill signals
+   Resume and skills: compact formats plus target skill signals
    ------------------------------------------------------------ */
 .credentials {
   padding: var(--space-5) 0;
@@ -748,7 +748,7 @@ em {
 }
 
 /* ------------------------------------------------------------
-   Evidence — current public proof structure
+   Evidence: current public proof structure
    ------------------------------------------------------------ */
 .evidence-section {
   padding: var(--space-5) 0;
@@ -910,9 +910,143 @@ em {
 }
 
 .braid-svg {
+  --t-fast: 120ms;
+  --t-normal: 200ms;
+  --t-slow: 350ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
   width: 100%;
   height: auto;
   display: block;
+}
+
+.timeline-intro {
+  max-width: var(--measure);
+  margin: var(--space-5) auto var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+}
+
+.timeline-intro p {
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-3);
+  color: var(--ink);
+}
+
+.timeline-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-intro strong {
+  color: var(--accent-ink);
+  font-weight: var(--fw-semibold);
+}
+
+.timeline-intro em {
+  color: var(--muted);
+}
+
+.strand {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity var(--t-normal) var(--ease-out);
+}
+
+.strand-analytical {
+  stroke: var(--accent);
+}
+
+.strand-technical {
+  stroke: var(--accent-2);
+}
+
+.strand-experiential {
+  stroke: var(--warn);
+}
+
+.era-hitarea {
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    fill var(--t-normal) var(--ease-out),
+    stroke var(--t-normal) var(--ease-out);
+}
+
+.era-link:hover .era-hitarea,
+.era-link.active .era-hitarea {
+  fill: var(--accent-tint);
+}
+
+.era-link:active .era-hitarea {
+  fill: var(--rule-highlight);
+}
+
+.era-link:focus-visible .era-hitarea {
+  fill: var(--accent-tint);
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-opacity: 0.8;
+}
+
+.era-link:not(:hover):not(:active):not(.active) .era-hitarea {
+  transition: fill var(--t-slow) var(--ease-out);
+}
+
+.era-label {
+  font-family: var(--font);
+  font-size: var(--text-3xs);
+  font-weight: var(--fw-semibold);
+  fill: var(--ink);
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill var(--t-fast) var(--ease-out);
+}
+
+.era-label.active {
+  fill: var(--accent);
+}
+
+.year-marker {
+  font-family: var(--mono);
+  font-size: var(--text-3xs);
+  fill: var(--muted);
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
+}
+
+.convergence-ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+#convergence-inner {
+  opacity: 0.3;
+}
+
+#convergence-outer {
+  opacity: 0.12;
+  transform-origin: 980px 68px;
+  animation: convergence-pulse 3s ease-in-out infinite;
+}
+
+@keyframes convergence-pulse {
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.15;
+    transform: scale(1.05);
+  }
 }
 
 .experience-hero__hint {
@@ -1074,8 +1208,8 @@ em {
   margin: var(--space-1) 0 0;
 }
 
-/* Status badges */
-.badge {
+/* Neutral topical labels. Status uses the shared .project-status component. */
+.category-label {
   display: inline-block;
   font-size: var(--text-3xs);
   font-weight: var(--fw-semibold);
@@ -1084,26 +1218,13 @@ em {
   padding: 0.2em 0.6em;
   border-radius: 999px;
   white-space: nowrap;
+  color: var(--muted);
+  background: var(--inset-cool);
+  border: 1px solid var(--border-hairline);
 }
 
-.badge--production {
-  background: var(--ok);
-  color: white;
-}
-
-.badge--live {
-  background: var(--accent-2);
-  color: white;
-}
-
-.badge--development {
-  background: var(--accent);
-  color: white;
-}
-
-.badge--tenured {
-  background: var(--accent);
-  color: white;
+.convergence-summary {
+  margin-top: var(--space-3);
 }
 
 /* Light sections (earlier eras) */
@@ -1920,27 +2041,6 @@ th {
   padding: 0;
 }
 
-.status-badge,
-.tech-badge {
-  padding: 4px 10px;
-  font-size: var(--text-3xs);
-  font-weight: var(--fw-semibold);
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-}
-
-.status-badge {
-  background: var(--ok-bg);
-  color: var(--ok);
-}
-
-.tech-badge {
-  background: var(--inset-cool);
-  color: var(--muted);
-  border: var(--border);
-}
-
 .project-desc {
   font-size: var(--text-xs);
   line-height: var(--lh-relaxed);
@@ -2143,7 +2243,7 @@ th {
 }
 
 /* ------------------------------------------------------------
-   Resume destination — full résumé at /cv.html
+   Resume destination: full resume at /cv.html
    ------------------------------------------------------------ */
 .resume-header {
   padding-bottom: var(--space-4);
@@ -2276,7 +2376,7 @@ th {
 }
 
 /* ------------------------------------------------------------
-   Colophon — the publishing-system page (pipeline + evidence + guarantees)
+   Colophon: the publishing-system page (pipeline + evidence + guarantees)
    ------------------------------------------------------------ */
 .colophon-page {
   padding: var(--space-4) 0 var(--space-5);
@@ -2346,7 +2446,7 @@ th {
   color: var(--muted);
 }
 
-/* The single human decision point — the governance pivot. Reserve --accent for it. */
+/* The single human decision point is the governance pivot. Reserve --accent for it. */
 .pipeline-step--gate {
   border-color: var(--accent);
   background: var(--accent-subtle);
@@ -2354,7 +2454,7 @@ th {
   font-weight: var(--fw-semibold);
 }
 
-/* The live, public endpoint — green "ship it" signal via border + tint; ink text keeps AA contrast. */
+/* The live, public endpoint uses a green signal via border and tint; ink text keeps AA contrast. */
 .pipeline-step--live {
   border-color: var(--accent-2);
   background: var(--green-bg);
@@ -2437,13 +2537,13 @@ th {
 }
 
 /* ------------------------------------------------------------
-   Project-intelligence — body-of-work index (S1 overview + S2 index)
+   Project intelligence: project index (S1 overview + S2 index)
    Folded from the design handback (docs/project-intelligence-design-spec-2026-06-16.md);
    token-only, grouped without local flagship curation. S3 (per-project design structure)
    lands with feed v1.
    ------------------------------------------------------------ */
 
-/* S1 — Portfolio overview band: a definitional line, not a stats hero. */
+/* S1. Portfolio overview band: a definitional line, not a stats hero. */
 .portfolio-overview {
   max-width: var(--measure);
   margin: var(--space-4) auto var(--space-5);
@@ -2484,7 +2584,7 @@ th {
   color: var(--muted);
 }
 
-/* S2 — Body-of-work index + the design-structure row. Grouping proves breadth;
+/* S2. Project index and the design-structure row. Grouping proves breadth;
    the uniform row skeleton across many entries is the proof of method. */
 .dswork {
   max-width: var(--measure);
@@ -2604,7 +2704,7 @@ th {
 }
 
 /* ------------------------------------------------------------
-   Project-intelligence — per-project design structure (S3)
+   Project intelligence: per-project design structure (S3)
    Folded from the design handback; token-only. Scope reuses .evidence-grid (colophon).
    Wired in now but absent-tolerant: renders only when the feed carries scope/decisions/
    activity (v1). The activity rail buckets magnitude into height-level classes (no inline styles).
@@ -2613,7 +2713,7 @@ th {
   margin-bottom: var(--space-5);
 }
 
-/* Key decisions — the differentiator. Hairline rule, NOT accent (accent stays reserved). */
+/* Key decisions are the differentiator. Hairline rule, not accent (accent stays reserved). */
 .decision-list {
   list-style: none;
   margin: var(--space-3) 0 var(--space-4);
@@ -2649,7 +2749,7 @@ th {
   color: var(--muted);
 }
 
-/* Activity rail — the experience braid idiom at single-project scale; build-time, zero JS. */
+/* Activity rail uses the experience braid idiom at single-project scale; build-time, zero JS. */
 .activity-rail {
   margin: var(--space-3) 0 var(--space-2);
 }
@@ -2692,7 +2792,7 @@ th {
   height: 100%;
 }
 
-/* Release month — the green "ship it" signal (a real dimension, deliberately encoded). */
+/* Release month uses the green "ship it" signal (a real dimension, deliberately encoded). */
 .activity-bar--release {
   background: var(--accent-2);
 }
@@ -2764,7 +2864,7 @@ th {
   color: var(--accent);
 }
 
-/* Email CTA line — the footer's primary conversion element (more prominent than the muted colophon).
+/* Email CTA line: the footer's primary conversion element (more prominent than the muted colophon).
    Scoped under .site-footer to outrank the `.site-footer p` defaults (color/size/margin). */
 .site-footer .footer-cta {
   max-width: 60ch;
@@ -2865,6 +2965,10 @@ th {
   .footer-links a,
   .primary-link {
     transition: none;
+  }
+
+  #convergence-outer {
+    animation: none;
   }
 }
 

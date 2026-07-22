@@ -4,8 +4,8 @@ type: page
 source_file: colophon.html
 source_selector: main
 route: /colophon.html
-content_hash: 0251c20450f8107bb459e2b74f5853fcbfb4d7713e34ab383760642a74bede9b
-html_hash: 695f6b0eaae8ccc699e9d96c5d6fc5b7c585bfc03db573e4a7c63f38e6e465cf
+content_hash: a82f397b0aad74cf333219fc9f222d895a8717b41121d5872f921a1f75a01f51
+html_hash: 9d1c5bbc496d64f7a0a37a0dc8421159bd7d1b80e4225846e1cb5ff26e5f26c4
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -17,48 +17,48 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 How this portfolio is published
 
-The portfolio's project feed is machine-generated, provenance-checked, and approval-gated. What was once a hand-maintained surface is now a governed feed: source data is validated, transformed into a public JSON feed, checked for provenance and accidental disclosure, delivered only when its content changes, and published to this site only after human review.
+The project index is built from a public JSON feed. A separate inventory repository produces and validates candidate feed updates. This website validates the accepted copy again, renders it at build time, and deploys only after operator review.
 
 ## The publishing pipeline
 
-A scheduled job turns a controlled inventory into the feed and proposes the update. The automation prepares the change; the operator decides what deploys.
+The current path is feed-only pull-request delivery. The producer prepares a candidate artifact; the operator reviews and merges any website update.
 
-The publishing pipeline runs in three stages. Source of truth: a controlled inventory is validated. Automation: a feed is generated, an unchanged feed is suppressed by a no-op diff gate, and a draft change is opened carrying provenance and leak checks. Public site: the operator merges the change, which deploys to the live site.
+The publishing pipeline runs in three stages. Source: a controlled inventory is validated and a public feed candidate is generated. Delivery: a feed-only pull request is prepared when configured. Website: the operator reviews and merges the change, then the site validates, builds, and deploys it.
 
 Source of truth
 
 1. meta-inventory
 2. validate
 
-Automation
+Delivery
 
-1. generate feed
-2. no-op diff gate
-3. draft change + checks
+1. generate feed candidate
+2. feed-only pull request
 
 Public site
 
-1. human merge
-2. jvjohnson.dev
+1. operator review
+2. validate and build
+3. jvjohnson.dev
 
-Each run regenerates the feed from a pinned source revision, compares it against what is already published, and opens a draft change only when the content actually differs. That draft carries a provenance and leak check; merging it is a deliberate, manual step.
+The producer can open a draft feed-only pull request when its delivery target and credentials are configured. That is not an automatic publication path. Website checks cover provenance, disclosure boundaries, schema compatibility, formatting, tests, and the production build. Merging remains a deliberate operator action.
 
 ## What the feed carries
 
 The feed is a public artifact with a stable shape. Each record states what it is, how current it is, and where it came from.
 
 - Current live feed Public JSON feed Published at [`/data/projects.json`](/data/projects.json) with a versioned schema.
-- Freshness Scheduled cadence Refreshed on a schedule with content-change detection; every record carries an `asOf` date.
-- Deployment gate Merge to deploy Automation opens a draft change; merging it to the live site is a manual step.
-- No-op behavior Suppressed when unchanged A refresh whose content is identical opens no change at all.
+- Freshness Dated records Every record carries an `asOf` date. A newer accepted producer feed may remain pending until its separate website review is complete.
+- Deployment gate Merge to deploy Feed delivery uses a separate pull request; merging it to the live site is a manual step.
+- Current boundary No automatic publication Policy-based automatic publication is a possible future change, not current behavior.
 
 ## Guarantees
 
 - The feed records whether its source was clean (`kbDirty: false`); a build from an unclean source is blocked.
 - Every record is provenance-stamped with the exact source revision and the time it was generated.
 - A provenance and leak check runs on every change before it can merge.
-- Nothing reaches the live site without human review — the merge is the gate.
+- Nothing reaches the live site without operator review. The merge is the gate.
 
 ## The feed is public
 
-Freshness here is a scheduled cadence with content-change detection — not a real-time stream. Because the feed is public, the claims above are checkable: read the raw JSON at [`/data/projects.json`](/data/projects.json).
+The published feed is a dated, reviewed artifact, not a real-time stream. Read the raw JSON at [`/data/projects.json`](/data/projects.json).

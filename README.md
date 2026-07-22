@@ -1,12 +1,10 @@
-# jvjohnson.dev — Reliable agent-development systems portfolio
+# jvjohnson.dev — Model evaluation and agent systems portfolio
 
-**Jeffrey V. Johnson, Ph.D.** builds foundations for reliable, specification-driven agentic
-development.
+**Jeffrey V. Johnson, Ph.D.** builds infrastructure for model evaluation and agent systems.
 
-I build the foundations that let agents contribute reliable, specification-conforming work: typed
-contracts, bounded authority, reproducible tool and runtime environments, deterministic gates, and
-evidence-preserving handbacks. I test those foundations by using them to build complex applications,
-data pipelines, evaluation systems, and infrastructure.
+I build software and development infrastructure for reliable agent-assisted work. My focus is clear
+specifications, explicit permissions, reproducible environments, automated checks, and evidence that
+can be reviewed.
 
 Live site: <https://jvjohnson.dev>
 
@@ -36,8 +34,8 @@ The site intentionally stays small:
 - one shared component stylesheet, `assets/jeffrey.css`;
 - DTCG token sources compiled into `assets/tokens.generated.css`;
 - build-time project-feed rendering with no client-side feed application; and
-- two sanctioned browser scripts: `assets/menu.js` for navigation and `assets/copy-md.js` for
-  copy-as-Markdown actions.
+- three sanctioned browser scripts: `assets/menu.js` for navigation, `assets/copy-md.js` for
+  copy-as-Markdown actions, and `assets/experience.js` for the keyboard-accessible timeline.
 
 ## Evidence and privacy boundaries
 

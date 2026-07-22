@@ -4,29 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flux — Image Generation Control Plane | Jeffrey Johnson</title>
-    <meta name="description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
-    <link rel="icon" href="/assets/icons/jvj_16.svg" type="image/svg+xml">
+    <title>Flux: Image Generation Control Plane | Jeffrey Johnson</title>
+    <meta name="description" content="An active private operator deployment for image generation with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <link rel="stylesheet" href="/assets/jeffrey.css">
     <script type="module" src="/assets/menu.js"></script>
 
     <link rel="canonical" href="https://jvjohnson.dev/projects/flux.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Flux — Image Generation Control Plane">
-    <meta property="og:description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
+    <meta property="og:title" content="Flux: Image Generation Control Plane">
+    <meta property="og:description" content="An active private operator deployment for image generation with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/flux.html">
     <meta property="og:site_name" content="jvjohnson.dev">
     <meta property="og:image" content="https://jvjohnson.dev/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta property="og:image:alt" content="Jeffrey V. Johnson portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Flux — Image Generation Control Plane">
-    <meta name="twitter:description" content="A private, production-live image-generation control plane with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
+    <meta name="twitter:title" content="Flux: Image Generation Control Plane">
+    <meta name="twitter:description" content="An active private operator deployment for image generation with typed intents, provider dispatch, streamed events, and manifest-backed artifact evidence.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
-    <meta name="twitter:image:alt" content="Jeffrey V. Johnson, Ph.D. | Reliable Agentic Development">
+    <meta name="twitter:image:alt" content="Jeffrey V. Johnson portfolio">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -57,42 +60,28 @@
                     <h1>Flux</h1>
                     <p class="project-subtitle">Image Generation Control Plane</p>
                     <div class="project-meta">
-                        <span class="project-status live">Production-live · Private and intentionally unlinked</span>
+                        <span class="project-status live">Active private operator deployment · Intentionally unlinked</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
-                    <h2>What is this?</h2>
+                    <h2>Summary</h2>
                     <p>Flux is a private creation-and-curation control plane for image generation. It validates a request into a typed generation intent, selects an eligible provider account, streams provider events, and finalizes completed outputs into manifest-backed storage and run projections.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>What is it for?</h2>
-                    <p>It gives local and remote image-generation providers one governed dispatch surface while preserving privacy checks, provider constraints, artifact hashes, sidecars, and a manifest digest.</p>
-                </section>
-
-                <section class="project-context">
-                    <h2>How is it used?</h2>
-                    <p>A validated intent moves through provider and account resolution, support and privacy guards, a common <code>execute(intent)</code> event stream, and manifest-backed finalization. Current adapters cover Fal, Replicate, local <code>mflux</code> on Apple Silicon, and readiness-gated RunPod-BYO.</p>
+                    <h2>Strongest proof</h2>
+                    <p>The active private operator deployment finalizes outputs with SHA-256 hashes, sizes, sidecars, and a manifest digest. Twenty accepted architecture decision records document the current control plane.</p>
                 </section>
 
                 <section class="project-significance">
-                    <h2>Why does it matter?</h2>
-                    <p>Provider abstraction is useful only when execution and evidence stay inspectable. Flux keeps provider-specific wire shapes behind a typed boundary and records finalized outputs with SHA-256 evidence rather than presenting a successful API call as sufficient provenance.</p>
+                    <h2>Technical decision</h2>
+                    <p>A validated intent moves through provider and account resolution, privacy guards, a common <code>execute(intent)</code> event stream, and manifest-backed finalization. Provider-specific wire formats stay behind the typed boundary.</p>
                 </section>
 
                 <section class="project-context">
-                    <h2>Evidence and status</h2>
-                    <ul class="depth-list">
-                        <li>The successor control plane is production-live and documented through 20 accepted architecture decision records.</li>
-                        <li>Finalized artifacts record hashes, sizes, sidecars, and a manifest digest; output object keys remain run-scoped rather than content-addressed.</li>
-                        <li>The repository is private and intentionally unlinked.</li>
-                        <li>Some RunPod-BYO production wiring remains incomplete.</li>
-                    </ul>
-                    <div class="callout warn">
-                        <h3>What this does not demonstrate</h3>
-                        <p>Flux does not implement the previously described compiler/IR. Its MCP surface validates providers and replays fixtures rather than submitting live generation. No additional runtime, traffic, adoption, or performance claim is made.</p>
-                    </div>
+                    <h2>Current limit</h2>
+                    <p>The repository is private and intentionally unlinked. Some RunPod-BYO wiring remains incomplete, and no traffic, adoption, or performance-at-scale claim is made.</p>
                 </section>
 
                 <!-- @design-structure: flux -->
@@ -129,7 +118,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-cta">Open to research-engineering roles in model evaluations, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
+<p class="footer-cta">Open to research-engineering roles in model evaluation, agent systems, evaluation infrastructure, safeguards, and agent governance. The fastest way to reach me is email: <a href="mailto:jeffrey@jvjohnson.dev">jeffrey@jvjohnson.dev</a>.</p>
             <nav class="footer-links" aria-label="Footer">
                 <a href="/">← Back to portfolio</a>
                 <a href="/contact.html">Contact</a>

@@ -27,6 +27,8 @@
     toggle.className = 'nav-toggle'
     toggle.setAttribute('aria-label', 'Toggle navigation menu')
     toggle.setAttribute('aria-expanded', 'false')
+    if (!navLinks.id) navLinks.id = 'site-navigation'
+    toggle.setAttribute('aria-controls', navLinks.id)
     toggle.innerHTML = `
       <span class="nav-toggle__bar"></span>
       <span class="nav-toggle__bar"></span>
@@ -69,16 +71,19 @@
 
     links.forEach((link) => {
       link.classList.remove('active')
+      link.removeAttribute('aria-current')
       const href = link.getAttribute('href')
 
       // Exact match or starts with (for sections)
       if (href === path || (href !== '/' && path.startsWith(href.replace(/\/$/, '')))) {
         link.classList.add('active')
+        link.setAttribute('aria-current', 'page')
       }
 
       // Special case: Evidence anchor on homepage
       if (href === '/#evidence' && path === '/' && window.location.hash === '#evidence') {
         link.classList.add('active')
+        link.setAttribute('aria-current', 'page')
       }
     })
   }

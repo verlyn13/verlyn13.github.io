@@ -1,6 +1,6 @@
 # Jeffrey V. Johnson, Ph.D.
 
-Building foundations for reliable, specification-driven agentic development
+Building infrastructure for model evaluation and agent systems
 
 Location: Homer, Alaska
 Email: jeffrey@jvjohnson.dev
@@ -31,7 +31,7 @@ authorization, sandboxing, egress policy, provenance, schema drift checks,
 policy checks, CI-enforced conformance.
 
 Agent and evaluation systems: model evaluation, harness evaluation, evidence
-contracts, independent result verification, OpenAI-compatible LLM gateways,
+contracts, separate-verifier result recomputation, OpenAI-compatible LLM gateways,
 provider routing, coding-agent workflows, trace pipelines, provenance pipelines.
 
 Infrastructure and data: PostgreSQL, Supabase, TimescaleDB, Redis, pgvector,
@@ -127,7 +127,7 @@ Evidence:
 - Built and published a model-evaluation methodology and verification prototype
   that preserves evidence and withholds a recommendation when scientific
   prerequisites are incomplete.
-- Built a draft evidence contract and a separate verifier that independently
+- Built a draft evidence contract and a separate verifier that
   recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing,
   inconsistent, or altered evidence.
 - Current proof is tested framework behavior and synthetic conformance, with no
@@ -137,8 +137,9 @@ Public methodology: https://jvjohnson.dev/eval-lab-methodology/
 
 ### Budget Triage
 
-Private financial evidence workbench for backend data integrity, model-risk
-controls, and human review. Not deployed to production.
+Financial evidence workbench for backend data integrity, model-risk controls,
+and human review. A sanitized public source snapshot is available; active
+development remains private. Not deployed.
 
 Technology: Bun, TypeScript, Hono, PostgreSQL, Zod, Decimal.js, Plaid,
 Infisical, OpenTelemetry.
@@ -152,10 +153,9 @@ Evidence:
   OpenTelemetry.
 - Built a synthetic known-answer and service-observation harness. Current result:
   6 passing and 9 pending assertions; incomplete and uncertified.
-- Prepared a sanitized, MIT-licensed public source candidate that passed its
-  full validation gate on 2026-07-18. It is intended for employer exploration
-  after final operator review; no public source link or contribution policy is
-  available yet.
+- Published a sanitized, MIT-licensed source snapshot for employer review on
+  2026-07-21. Publication is not deployment or an open contribution surface.
+- Public source: https://github.com/jefahnierocks/budget-triage
 
 Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
 
@@ -187,7 +187,7 @@ WebSockets.
 Evidence:
 
 - Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules
-  engine, realtime state through Cloudflare Durable Objects and WebSockets, and
+  engine, real-time state through Cloudflare Durable Objects and WebSockets, and
   a SvelteKit client.
 - Public source and a live deployment demonstrate end-to-end delivery. Traffic,
   performance, bundle-size, and current test-count claims remain withheld.
@@ -244,7 +244,7 @@ Algebras.
 
 Cadieux, J. M., Pyhala, S. L., and Johnson, J. V. (2023). Pediatric Walking
 Speed Normal Reference Values in a Local Population. Pediatric Physical Therapy,
-35(3), 326-331. Statistical analysis.
+35(3), 314-320. Led the statistical analysis.
 
 Johnson, J. V., and Tonev, T. (2012). Spectral Conditions for Composition
 Operators on Algebras of Functions. Communications in Mathematics and

@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: 4b7eb22053fa48d375002a7d2402cd2aad83e1369db44a774cfb5664749d92f5
-html_hash: 52b7a37cf94afe880e1b0f0b2705bfd0ab67149c11122d5af6d85d45c2f4b0e1
+content_hash: 70c6da222d5abf5c88a999ccbd32c6ef45d9e18fa82d53160d81bf6545664d1c
+html_hash: 48d2ba8b8c85ac3b3f23094b971ee885e25d0ef184070a24e26d3dc1962a0265
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -21,33 +21,21 @@ Private Android UVC microscope application
 
 Client-delivered alpha · Current app 0.1.1-alpha
 
-## What is this?
+## Summary
 
 ScopeCam is a private proprietary Android application and multi-module camera runtime for UVC USB microscope cameras. It combines a Jetpack Compose interface, Kotlin orchestration, and a C++/JNI camera engine.
 
-## What is it for?
+## Strongest proof
 
-It supports mobile microscopy workflows that standard phone-camera APIs do not address: discovering and connecting a specialized USB camera, reaching live preview, capturing photos or video, preserving session and scientific metadata, and reviewing committed media.
+A signed `0.1-alpha` client build was delivered on 2026-06-09. Physical-device testing also verified recovery from a camera-replug deadlock without a new application-not-responding failure.
 
-## How is it used?
+## Technical decision
 
-An Android device acts as the USB host. The operator connects a supported microscope camera, grants permission, previews the stream, captures or records, and reviews the result. Debug and QA builds add local REST/WebSocket telemetry and diagnostics; release builds bind a no-op implementation instead of starting that service.
+The application separates Android UI and Kotlin orchestration from a C++/JNI camera engine. Debug and QA builds include local diagnostics, while release builds bind a no-op implementation instead of starting that service.
 
-## Why does it matter?
+## Current limit
 
-The project is a proving ground for specification-driven agent-assisted development across Android UI, Kotlin orchestration, native C++, USB lifecycle, render synchronization, persistence, observability, and physical-device testing. Its strongest case study traced a camera-replug ANR across the JVM/native boundary and implemented a bounded, device-verified recovery while documenting the remaining leak tradeoff.
-
-## Evidence and status
-
-- A signed `0.1-alpha` client build was delivered on 2026-06-09; the current application is `0.1.1-alpha`.
-- Fresh `just verify` and native-inclusive QA APK builds passed on 2026-07-14, packaging the native engine for both supported ABIs.
-- Device verification recovered streaming after the replug deadlock without a new ANR. A timed-out recovery can still leave the stuck camera and threads until process restart.
-- The source is private and intentionally unlinked; the application is not broadly released.
-- Broader hardware and release acceptance remain open.
-
-### What this does not demonstrate
-
-No arbitrary UVC compatibility, general performance guarantee, end-to-end zero-copy pipeline, seamless or leak-free hot-plug recovery, shipped SDK, or production readiness is claimed.
+The source is private and the application is not broadly released. Hardware coverage remains limited, and a timed-out camera recovery can still require a process restart.
 
 ## Technical shape
 

@@ -4,8 +4,8 @@ type: page
 source_file: projects/governance-agent-control.html
 source_selector: main
 route: /projects/governance-agent-control.html
-content_hash: 00f5fb28f4cadc0020faf7f331e1d38af256591505b24bf324acbfc69e1a9d44
-html_hash: 94cc026fffaf489785152be47e0e70b09585768b677054d8a5fb0f65d4262e70
+content_hash: b3b6cf2eca847bb5fb0af3de5b018677448ec2be48159ff44b7cafae081a5703
+html_hash: 1bf3e6607f02322f3ff95c724d6beb656fe062ae73f1017bad3bdca495071035
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -21,29 +21,21 @@ The control framework around specification-conforming agent work
 
 An anonymized private case study
 
-## What is this?
+## Summary
 
 An anonymized governance architecture for agent-assisted work across repositories, services, credentials, shells, and operating environments. It treats specifications, authority, execution context, evidence, and safe action as system properties rather than assumptions hidden in prompts or tool access.
 
-## What is it for?
+## Strongest proof
 
-It establishes the foundation in which agents can contribute reliable work: identity and mandate, typed contracts, reproducible tools and runtimes, bounded authority, deterministic gates, evidence, and safe refusal before code, infrastructure, or organizational state can change.
+Selected managed-workstation, policy-as-code, infrastructure, validation, and scheduled drift-detection controls operate today. Public implementations show the typed capability and architecture-audit parts of the wider approach.
 
-## How is it used?
+## Technical decision
 
-Human principles are translated into machine-readable standards, identity and authorization contracts, managed shell and tool configuration, infrastructure policy checks, tested runtime-admission prototypes, and project-local rules. Delegated work carries explicit scope, environment, evidence, approval, validation, and handback requirements, while the human authority retains the decision.
+Access to a capability is kept separate from permission to use it. Delegated work carries explicit scope, environment, evidence, approval, validation, and handback requirements, while the responsible human retains the decision.
 
-## Why does it matter?
+## Current limit
 
-Agents with tools can create real effects, but the tools are not the source of quality. A governable development system needs reliable answers to which specification controls, who may act, in which environment, on which resource, with what evidence, and when the correct result is to stop or escalate.
-
-## Evidence and status
-
-Selected managed workstation, policy-as-code, infrastructure, validation, and scheduled drift-detection controls operate today. Identity, synthetic-decision, and runtime-admission layers have substantial contracts and tested prototypes, but they are not organization-wide live enforcement.
-
-### What this does not demonstrate
-
-This is a self-directed, principally single-operator research and implementation case study. It does not establish enterprise-scale adoption, independent-principal governance outcomes, a fully deployed identity and authorization runtime, or a finished commercial platform.
+Identity and runtime-admission layers are tested prototypes, not organization-wide live enforcement. This is principally a single-operator case study, so it does not establish enterprise adoption.
 
 ## Technical shape
 

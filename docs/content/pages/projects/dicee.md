@@ -4,8 +4,8 @@ type: page
 source_file: projects/dicee.html
 source_selector: main
 route: /projects/dicee.html
-content_hash: e068bc7999e6b179ae7b50700d22706556f476e2ee2cdbfc40824107d3391844
-html_hash: 2230b0c4fc06f1d1a35ff9c7c6a4e3619ae5a46afc8d637f238c500807f8af8a
+content_hash: 7b896edaf30d494320aaef4accd2fdf3fec20511ca68868f5567dbead19b91e6
+html_hash: af35cc7a3c1fd864e19cba158264511469ef9dc5c4d594d6267e9ef691fca2dc
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -23,32 +23,23 @@ Live public deployment
 
 dicee.games →
 
-## What is this?
+## Summary
 
 Dicee is a family-friendly multiplayer dice game that runs in a mobile browser without an app install. Its game engine is written in Rust and compiled to WebAssembly.
 
 The deployed system combines a SvelteKit interface with Cloudflare Durable Objects and WebSockets for real-time room state.
 
-## What is it for?
+## Strongest proof
 
-It provides a usable game while serving as delivery evidence for cross-language browser software, real-time coordination, and serverless state management.
+Both the [live deployment](https://dicee.games/) and the [public source](https://github.com/verlyn13/dicee) are available for review.
 
-## How is it used?
+## Technical decision
 
-Players open [dicee.games](https://dicee.games/) in a browser, create or join a game, and exchange state through WebSockets backed by Cloudflare Durable Objects. Supabase provides persistent data services.
+The rules engine is written in Rust and compiled to WebAssembly, while Cloudflare Durable Objects and WebSockets coordinate real-time room state across browser clients.
 
-## Why does it matter?
+## Current limit
 
-Dicee demonstrates end-to-end delivery across a Rust/WebAssembly engine, a SvelteKit client, real-time edge coordination, persistence, and a public deployment.
-
-## Evidence and status
-
-- The canonical public deployment at [dicee.games](https://dicee.games/) returned HTTP 200 during the accepted source review on 2026-07-14.
-- Tracked source supports the Rust/WebAssembly engine, SvelteKit client, Cloudflare Durable Objects, WebSockets, and Supabase architecture.
-
-### What this does not demonstrate
-
-No exact binary-size, test-count, user, traffic, latency, or general performance claim is made. Those figures require a fresh source-local build or operational review before outward use.
+The public evidence supports the architecture and live delivery. It does not establish traffic, latency, or general performance at scale.
 
 ## Technical shape
 
@@ -70,3 +61,5 @@ Happy to talk about this project or the research practice behind it.
 Email me about this →
 
 Visit live site ↗
+
+Public source ↗
