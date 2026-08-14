@@ -73,29 +73,15 @@ ${rows}
       </section>`
 }
 
-// Feed recurringMethods are slug labels (e.g. "governance-driven-development"); humanize for display.
-const humanize = (s) => s.replace(/-/g, ' ')
-
-function overviewBand(portfolio) {
-  const dCount = portfolio.domains.length
-  const domains = dCount >= 20 ? `${Math.floor(dCount / 10) * 10}+ domains` : `${dCount} domains`
-  const tail = []
-  if (portfolio.firstActive) {
-    tail.push(`built continuously since ${String(portfolio.firstActive).slice(0, 4)}`)
-  }
-  const clause = tail.length ? `; ${tail.join(', ')}` : ''
-  // Methods line lights up only when the feed provides portfolio.recurringMethods (v1).
-  const methods = portfolio.recurringMethods.length
-    ? `\n        <p class="portfolio-overview__methods"><span class="portfolio-overview__methods-label">Recurring methods</span>${esc(portfolio.recurringMethods.map(humanize).join(' · '))}</p>`
-    : ''
-  return `      <div class="portfolio-overview">
-        <p class="portfolio-overview__lead">
-          <span class="portfolio-overview__metric">${portfolio.projectCount} projects</span> across
-          <span class="portfolio-overview__metric">${domains}</span> in
-          <span class="portfolio-overview__metric">${portfolio.languages.length} languages</span>${clause}.
-        </p>${methods}
-      </div>`
-}
+// No aggregate rollup band is rendered. The computed project/domain/language counts and the
+// "built continuously since YYYY" clause were removed deliberately:
+//   - ADR-0009 keeps exact portfolio counts non-public.
+//   - The language count (5, from feed data) contradicted the resume's language list (7).
+//   - "since 2009" contradicted /experience/, which documents Linux self-hosting from 1998
+//     and a first computer build in 1995.
+//   - portfolio.recurringMethods are inventory taxonomy slugs (e.g. "post-academic-transition"),
+//     not public-facing copy.
+// The feed still carries these fields; the site simply does not publish them.
 
 const NAV = [
   ['/projects/', 'Work', true],
@@ -157,8 +143,6 @@ ${nav}
       <div class="container">
         <h1>Project index</h1>
         <p class="section-intro">Selected work in model evaluation, agent systems, applications, infrastructure, research, and teaching. Grouped by kind, newest first.</p>
-
-${overviewBand(model.portfolio)}
 
 ${groups}
       </div>
