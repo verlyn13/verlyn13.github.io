@@ -133,7 +133,7 @@ Evidence:
 - Current proof is tested framework behavior and synthetic conformance, with no
   powered real-model result or promotion claim.
 
-Public methodology: https://github.com/verlyn13/eval-lab-methodology
+Public methodology: https://jvjohnson.dev/eval-lab-methodology/
 
 ### Budget Triage
 

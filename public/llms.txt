@@ -13,7 +13,7 @@ Homepage:
 https://jvjohnson.dev/
 
 Evaluation methodology:
-https://github.com/verlyn13/eval-lab-methodology
+https://jvjohnson.dev/eval-lab-methodology/
 
 Anonymized governance case study:
 https://jvjohnson.dev/projects/governance-agent-control.html
