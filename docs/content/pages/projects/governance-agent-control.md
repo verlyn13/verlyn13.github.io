@@ -4,8 +4,8 @@ type: page
 source_file: projects/governance-agent-control.html
 source_selector: main
 route: /projects/governance-agent-control.html
-content_hash: b3b6cf2eca847bb5fb0af3de5b018677448ec2be48159ff44b7cafae081a5703
-html_hash: 1bf3e6607f02322f3ff95c724d6beb656fe062ae73f1017bad3bdca495071035
+content_hash: e6f79aea37ca4005846462f0f2f6a96cca75bde089585f50507647a4d220afc9
+html_hash: d559ba2b6779d392a8f2f02f9d4ed5bfc6afb9177aca253ca81288c7ea58970f
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -27,7 +27,7 @@ An anonymized governance architecture for agent-assisted work across repositorie
 
 ## Strongest proof
 
-Selected managed-workstation, policy-as-code, infrastructure, validation, and scheduled drift-detection controls operate today. Public implementations show the typed capability and architecture-audit parts of the wider approach.
+Selected managed-workstation, policy-as-code, infrastructure, validation, and scheduled drift-detection controls operate today. The case study itself is anonymized, but two parts of the wider approach are public and can be read directly: [Host Capability Substrate](https://github.com/jefahnierocks/host-capability-substrate) is the typed capability layer, and [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) is the specification and deterministic drift tooling.
 
 ## Technical decision
 
@@ -71,3 +71,7 @@ Identity and runtime-admission layers are tested prototypes, not organization-wi
 Happy to discuss the public-safe architecture, methods, and maturity boundaries behind this case study.
 
 Email me about this →
+
+Audit specification and drift tooling ↗
+
+Host Capability Substrate ↗

@@ -422,7 +422,7 @@
       "slug": "math-course-series-kpc-2017-2025",
       "statusLine": "Taught 2017–2025",
       "tech": [],
-      "thesis": "Eight years of sustained undergraduate instruction across calculus, statistics, differential equations, and modern algebra — 13+ courses and 50+ sections with documented pedagogy and versioned materials.",
+      "thesis": "Eight years of sustained undergraduate instruction at KPC/UAA across calculus, statistics, differential equations, and modern algebra, with documented pedagogy and versioned course materials.",
       "tier": {
         "portfolioVisibility": "public-promoted",
         "primaryAudience": "unknown",
@@ -591,7 +591,9 @@
     },
     {
       "asOf": "2026-06-29T13:49:03Z",
-      "deploymentUrls": [],
+      "deploymentUrls": [
+        "https://jefahnierocks.github.io/symmetry-groups/"
+      ],
       "displayName": "Symmetry Groups — finite-group learning game (D4 \"Square Quest\")",
       "domains": [
         "mathematics",
@@ -619,11 +621,11 @@
       },
       "schemaVersion": "0",
       "slug": "symmetry-groups",
-      "statusLine": "Working prototype, playable locally",
+      "statusLine": "Working prototype; playable MVP deployed for testing",
       "tech": [
         "TypeScript"
       ],
-      "thesis": "An educational game that teaches finite group theory through interactive symmetry and Cayley-table discovery, built on a genuine, axiom-tested group-theory domain.",
+      "thesis": "Finite-group theory taught through play, on a generic FiniteGroup domain whose axioms are enforced as tests: 328 tests across 30 files, all passing. A playable MVP build is deployed for testing; the source repository is private.",
       "tier": {
         "portfolioVisibility": "public-promoted",
         "primaryAudience": "unknown",

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-07-15 -->
+<!-- source: ACTIVE-PROJECTS-PORTFOLIO.md; refreshed: 2026-08-13 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symmetry Groups: Evidence Review Pending | Jeffrey Johnson</title>
-    <meta name="description" content="A retained project record with public capability and maturity claims withheld pending clean-feed acceptance and source review.">
+    <title>Symmetry Groups | Jeffrey Johnson</title>
+    <meta name="description" content="A finite-group learning game built on a generic FiniteGroup domain whose axioms are enforced as tests: 328 tests across 30 files, with a playable MVP build deployed for testing.">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
     <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -16,8 +16,8 @@
     <link rel="canonical" href="https://jvjohnson.dev/projects/symmetry-groups.html">
 
     <!-- Open Graph / LinkedIn Preview Tags -->
-    <meta property="og:title" content="Symmetry Groups: Evidence Review Pending">
-    <meta property="og:description" content="A retained project record with public capability and maturity claims withheld pending clean-feed acceptance and source review.">
+    <meta property="og:title" content="Symmetry Groups">
+    <meta property="og:description" content="A finite-group learning game built on a generic FiniteGroup domain whose axioms are enforced as tests: 328 tests across 30 files, with a playable MVP build deployed for testing.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jvjohnson.dev/projects/symmetry-groups.html">
     <meta property="og:site_name" content="jvjohnson.dev">
@@ -26,8 +26,8 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Jeffrey V. Johnson portfolio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Symmetry Groups: Evidence Review Pending">
-    <meta name="twitter:description" content="A retained project record with public capability and maturity claims withheld pending clean-feed acceptance and source review.">
+    <meta name="twitter:title" content="Symmetry Groups">
+    <meta name="twitter:description" content="A finite-group learning game built on a generic FiniteGroup domain whose axioms are enforced as tests: 328 tests across 30 files, with a playable MVP build deployed for testing.">
     <meta name="twitter:image" content="https://jvjohnson.dev/og-default.png">
     <meta name="twitter:image:alt" content="Jeffrey V. Johnson portfolio">
 </head>
@@ -55,51 +55,60 @@
             <div class="container">
                 <header class="project-header-detail">
                     <p class="case-study-context">
-                        <a href="/projects/">Supporting work</a> · Evidence review
+                        <a href="/projects/">Supporting work</a> · Source-verified 2026-08-13
                     </p>
                     <h1>Symmetry Groups</h1>
-                    <p class="project-subtitle">Project identity retained pending source verification</p>
+                    <p class="project-subtitle">Finite-group theory taught through play, with the axioms enforced as tests</p>
                     <div class="project-meta">
-                        <span class="project-status development">Evidence review pending · No current capability claim</span>
+                        <span class="project-status mvp">Working prototype · playable MVP deployed for testing</span>
                     </div>
                 </header>
 
                 <section class="project-overview">
                     <h2>What is this?</h2>
-                    <p>This page retains the public identity and stable URL for a project called Symmetry Groups while its current source, status, and outward claims are reviewed.</p>
+                    <p>A learning game for finite group theory. A player manipulates the symmetries of a shape, composes them, and progressively fills in a Cayley table. The first playable target is D4, the symmetry group of the square; S3 and D3 are seeded.</p>
+                    <p>Underneath the game is a generic <code>FiniteGroup&lt;ElementId&gt;</code> domain rather than a hard-coded table for one group, so additional families can be added without rewriting the rules.</p>
                 </section>
 
                 <section class="project-context">
                     <h2>What is it for?</h2>
-                    <p>It preserves an existing route without allowing an older presentation to stand in for current evidence.</p>
-                </section>
-
-                <section class="project-context">
-                    <h2>How is it used?</h2>
-                    <p>No present-day use is asserted. The record remains subordinate to the source-verified projects and research evidence elsewhere in this portfolio.</p>
+                    <p>Group theory is usually taught symbolically before it is taught structurally. The intent here is to let the structure be manipulated first, so that closure, identity, inverses, and associativity are observed before they are stated.</p>
                 </section>
 
                 <section class="project-significance">
-                    <h2>Why does it matter?</h2>
-                    <p>A public portfolio should distinguish a known project identity from verified capability, maturity, and use. This page makes that boundary visible instead of filling the gap with inherited copy.</p>
+                    <h2>Technical decision</h2>
+                    <p>The mathematical content is expressed as tests rather than as prose. The group axioms are enforced against the domain, so a change that breaks the algebra fails the build instead of producing a game that is playable but wrong. The same suite carries governance fitness-function tests alongside the mathematical ones.</p>
                 </section>
 
                 <section class="project-context">
                     <h2>Evidence and status</h2>
-                    <p>The accepted career authority holds Symmetry Groups for identity and status review. A clean producer feed and a source-local check are still required before outward technical or maturity claims are restored.</p>
-                    <div class="callout warn">
-                        <h3>Claims intentionally withheld</h3>
-                        <p>No active-status, capability, implementation, authorship-origin, educational-use, performance, adoption, or deployment claim is made on this page.</p>
-                    </div>
+                    <ul>
+                        <li>30 test files, 328 tests, all passing. Verified by running the suite on 2026-08-13.</li>
+                        <li>Roughly 600 lines of domain and runtime code, in TypeScript with React 19 and Vite.</li>
+                        <li>Six architecture decision records.</li>
+                        <li>Continuous integration runs type checking, tests, and lint on the default branch.</li>
+                        <li>A playable build is deployed and publicly reachable.</li>
+                    </ul>
+                </section>
+
+                <section class="project-context">
+                    <h2>What it does not do</h2>
+                    <ul>
+                        <li>The deployment is staging-live for MVP testing. It is not a production service, and no uptime or availability claim is made.</li>
+                        <li>No classroom use, adoption, learning-outcome, or pedagogical-effectiveness result is claimed. It has not been studied.</li>
+                        <li>Only D4 is a complete playable target. S3 and D3 are seeded; cyclic, alternating, and product families are not built.</li>
+                        <li>The source repository is private, so the test counts above are stated rather than independently checkable. The deployed build is the part a reader can open.</li>
+                    </ul>
                 </section>
 
                 <!-- @design-structure: symmetry-groups -->
 
                 <section class="project-links-footer" aria-label="What next">
                     <h2>Interested in this work?</h2>
-                    <p>Happy to talk about this project or the research practice behind it.</p>
+                    <p>The deployed build is open to anyone. Happy to talk about the domain model, the axiom tests, or the instructional design behind it.</p>
                     <div class="project-cta-actions">
                         <a href="mailto:jeffrey@jvjohnson.dev?subject=Symmetry%20Groups" class="primary-link">Email me about this →</a>
+                        <a href="https://jefahnierocks.github.io/symmetry-groups/" class="section-link" target="_blank" rel="noopener" aria-label="Open the playable Symmetry Groups build">Open the playable build ↗</a>
                     </div>
                 </section>
             </div>

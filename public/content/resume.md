@@ -81,7 +81,7 @@ Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
 - Current evidence covers framework behavior and synthetic conformance, not a
   powered real-model result or promotion recommendation.
 
-Methodology and evidence: https://jvjohnson.dev/eval-lab-methodology/
+Methodology and evidence: https://github.com/verlyn13/eval-lab-methodology
 
 ### Budget Triage - financial evidence workbench
 
@@ -131,7 +131,7 @@ Public project: https://jvjohnson.dev/projects/dicee.html
 
 ## Technical skills
 
-- **Languages:** Python, TypeScript, SQL, Bash, Kotlin, C/C++, Ruby.
+- **Languages:** Python, TypeScript, Rust, SQL, Bash, Kotlin, C/C++.
 - **Contracts and controls:** Zod, JSON Schema, OPA/Rego, OpenTofu, typed
   authorization, sandboxing, egress policy, provenance, and CI-enforced
   conformance checks.
