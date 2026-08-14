@@ -168,7 +168,7 @@
                             <ul>
                                 <li>Designed a multi-repository architecture that separates human decision rights, agent permissions, identity and authorization, infrastructure enforcement, runtime admission, and repository-local authority.</li>
                                 <li>Modeled agent authority as the intersection of mandate, available capability, and credential reach, with structured, secret-free handbacks for human judgment or privileged work.</li>
-                                <li>Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks.</li>
+                                <li>Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.</li>
                                 <li>Selected controls are operational; runtime admission is source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.</li>
                             </ul>
                         </div>
@@ -221,7 +221,7 @@
                     <section class="cv-block">
                         <h2>Technical skills</h2>
                         <ul class="cv-list">
-                            <li><strong>Languages:</strong> Python, TypeScript, SQL, Bash, Kotlin, C/C++, Ruby.</li>
+                            <li><strong>Languages:</strong> Python, TypeScript, Rust, SQL, Bash, Kotlin, C/C++.</li>
                             <li><strong>Contracts and controls:</strong> Zod, JSON Schema, OPA/Rego, OpenTofu, typed authorization, sandboxing, egress policy, provenance, and CI-enforced conformance checks.</li>
                             <li><strong>Agent and evaluation systems:</strong> model and harness evaluation, evidence contracts, OpenAI-compatible gateways, provider routing, coding-agent workflows, and trace/provenance pipelines.</li>
                             <li><strong>Infrastructure and data:</strong> PostgreSQL, Supabase, TimescaleDB, Redis, pgvector, Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted runners, OpenTelemetry, Infisical, and 1Password.</li>

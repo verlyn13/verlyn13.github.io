@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 472d42f496af54262067428ac7aab034cb35482914eed051cb7e6adaaee6fa9b
-html_hash: 52197a778a037080e54eaea6c573aff9ae45b3fc39da463fe562ae512ad4064e
+content_hash: 56cd99f6f37e11b81e8b8188773a8fd93a2bdd8c43521864ded34dfb933743ff
+html_hash: 923d62ddcd5358a6a51b8ac5bfb5435c69bd0be3ed7de326f093d162ab997030
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -59,7 +59,7 @@ An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudf
 
 - Designed a multi-repository architecture that separates human decision rights, agent permissions, identity and authorization, infrastructure enforcement, runtime admission, and repository-local authority.
 - Modeled agent authority as the intersection of mandate, available capability, and credential reach, with structured, secret-free handbacks for human judgment or privileged work.
-- Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks.
+- Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.
 - Selected controls are operational; runtime admission is source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.
 
 ## Selected applications and evaluations
@@ -98,7 +98,7 @@ Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
 
 ## Technical skills
 
-- **Languages:** Python, TypeScript, SQL, Bash, Kotlin, C/C++, Ruby.
+- **Languages:** Python, TypeScript, Rust, SQL, Bash, Kotlin, C/C++.
 - **Contracts and controls:** Zod, JSON Schema, OPA/Rego, OpenTofu, typed authorization, sandboxing, egress policy, provenance, and CI-enforced conformance checks.
 - **Agent and evaluation systems:** model and harness evaluation, evidence contracts, OpenAI-compatible gateways, provider routing, coding-agent workflows, and trace/provenance pipelines.
 - **Infrastructure and data:** PostgreSQL, Supabase, TimescaleDB, Redis, pgvector, Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted runners, OpenTelemetry, Infisical, and 1Password.
