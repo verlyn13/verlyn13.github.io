@@ -4,8 +4,8 @@ type: page
 source_file: cv.html
 source_selector: main
 route: /cv.html
-content_hash: 56cd99f6f37e11b81e8b8188773a8fd93a2bdd8c43521864ded34dfb933743ff
-html_hash: 923d62ddcd5358a6a51b8ac5bfb5435c69bd0be3ed7de326f093d162ab997030
+content_hash: bef07a44b789541eefb85fe611f2767874415a7b3b8c3dfa5621559368498abf
+html_hash: e0287f44b30c0a8100e47136dcad583b35594ec21c737816490c1a05555ac694
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -32,26 +32,28 @@ AI/ATS↓
 
 ## Summary
 
-Ph.D. mathematician and systems builder focused on the infrastructure that makes agent-assisted development reliable: typed contracts, explicit permissions, reproducible environments, automated checks, and reviewable evidence. I apply these controls while building applications, data pipelines, evaluation systems, and infrastructure. My strongest fit is research engineering in agent systems, developer infrastructure, model evaluation, and safeguards.
+Ph.D. mathematician and systems builder working across native applications, data pipelines, web systems, and agent infrastructure. Builds verification tools, investigates failures across system boundaries, and directs and reviews agent-assisted implementation. Combines that engineering practice with published mathematical and statistical research, university teaching, and large-course coordination. Seeking research engineering work with meaningful ownership on a specialized team.
 
 ## Agent-development infrastructure
 
+Independent, unpaid projects developed alongside a full-time faculty appointment, using coding agents in implementation and test development.
+
 ### [Host Capability Substrate](/projects/host-capability-substrate.html) : typed capability and evidence contracts
 
-TypeScript · Zod · JSON Schema · GitHub Actions
+TypeScript · Zod · JSON Schema · GitHub Actions · Public source
 
-- Built 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about 500 tests.
+- Built typed capability and evidence contracts with generated JSON Schemas and automated checks.
 - Modeled host capabilities, operations, execution contexts, policy decisions, provenance-typed evidence, approvals, leases, audit chains, and scoped authorization grants.
-- Wrote a 19-invariant governance charter and four-ring architecture, enforced by import boundaries and one CI gate for policy, boundary, secret, and schema-drift checks.
+- Defined architecture boundaries and a governance charter, with CI checks for policy, imports, secrets, and schema drift.
 - The public repository demonstrates the typed model and source boundaries, not universal host-level runtime enforcement.
 
 ### [Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit) : specification and drift checks for agent-operated codebases
 
-Specification · JSON Schema · Python tooling
+Specification · JSON Schema · Python tooling · Public source
 
-- Authored a two-stage `audit-spec` of 2,075 lines that keeps evidence collection separate from judgment.
-- Defined an 11-dimension rubric, 12 JSON output schemas, and a prioritization model based on severity, confidence, and weight.
-- Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test in pre-commit and CI.
+- Authored a two-stage `audit-spec` that keeps evidence collection separate from judgment.
+- Defined a structured review rubric, JSON output contracts, and a prioritization model based on severity, confidence, and weight.
+- Built a Python drift linter that binds derived documentation to specification content, with negative self-tests in pre-commit and CI.
 
 ### [Governance and agent-control architecture](/projects/governance-agent-control.html) : federated authority for agent-assisted work
 
@@ -59,8 +61,8 @@ An anonymized private case study · OpenTofu · OPA/Rego · TypeScript · Cloudf
 
 - Designed a multi-repository architecture that separates human decision rights, agent permissions, identity and authorization, infrastructure enforcement, runtime admission, and repository-local authority.
 - Modeled agent authority as the intersection of mandate, available capability, and credential reach, with structured, secret-free handbacks for human judgment or privileged work.
-- Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.
-- Selected controls are operational; runtime admission is source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.
+- Implemented selected controls including OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.
+- The July 15, 2026 review found selected controls operational; runtime admission was source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.
 
 ## Selected applications and evaluations
 
@@ -78,7 +80,9 @@ Public employer-facing source snapshot · active development private · Bun · T
 
 - Built a financial evidence workbench for statements, receipts, and connected-account data with deterministic-first processing and human review.
 - Implemented exact monetary arithmetic, tenant-scoped atomic persistence, append-only decision records, authentication, Plaid, Infisical, and OpenTelemetry.
-- Built a synthetic known-answer and service-observation harness. Its current result is 6 passing and 9 pending assertions, so it remains incomplete and uncertified.
+- Implemented context-specific data relationships with explicit transitions, tenant checks, database row locks, and stale-update protection.
+- Diagnosed an authentication test that failed on database reuse, tracing the interaction between rollback and persistent audit records.
+- Built a synthetic known-answer and service-observation harness. The July 15, 2026 review recorded 6 passing and 9 pending assertions, an incomplete and uncertified result.
 - Published a sanitized, MIT-licensed source snapshot for employer review on 2026-07-21. Active development remains private; publication is not deployment or an open contribution surface. [Explore the public source.](https://github.com/jefahnierocks/budget-triage)
 
 ### [ScopeCam](/projects/scopecam.html) : native Android UVC camera application
@@ -87,7 +91,8 @@ Private Android · Kotlin · Jetpack Compose · C++20 · JNI/NDK · USB/UVC
 
 - Built a multi-module Android microscope application spanning Compose UI, Kotlin orchestration, a native C++ camera engine, USB lifecycle, persistence, diagnostics, and physical-device verification.
 - Diagnosed a camera-replug ANR across the JVM/native teardown boundary and implemented a device-verified recovery with the remaining leak tradeoff documented.
-- Delivered a signed client alpha; the private product is not broadly released.
+- Delivered a signed client alpha in June 2026; the private product is not broadly released.
+- Corrected a CI dependency gap that could report success after an upstream failure skipped the actual checks. Source change reviewed in September 2026.
 
 ### [Dicee](/projects/dicee.html) : representative delivered software
 
@@ -96,9 +101,20 @@ Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
 - Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules engine, real-time state through Cloudflare Durable Objects and WebSockets, and a SvelteKit client.
 - Public source and a live deployment demonstrate end-to-end delivery; traffic, performance, bundle-size, and current test-count claims remain withheld.
 
+## Additional systems
+
+- **Agent-runtime experiments:** Built Python/C request-guard and process-launch experiments with faulty senders, receiver-side checks, and paired event-order tests. Source and recorded bounded experiments support failure analysis; overall runtime acceptance remains open.
+- **Fall course publishing:** Built a registry-driven pipeline with isolated public output, checksummed manifests, and executable checks for broken links and accidental source publication.
+
+## Upstream contribution
+
+### [Inspect Scout](https://github.com/meridianlabs-ai/inspect_scout/pull/632) : reliability correction under review
+
+Submitted a Python correction for provider-error diagnostics lost between spawned workers and the parent process, with regression evidence for the proposed change. I responded to maintainer scope feedback with further validation on September 12, 2026. The PR remains under review, awaiting a reply.
+
 ## Technical skills
 
-- **Languages:** Python, TypeScript, Rust, SQL, Bash, Kotlin, C/C++.
+- **Languages:** Python, TypeScript, Rust, SQL, R, Bash, Kotlin, C/C++.
 - **Contracts and controls:** Zod, JSON Schema, OPA/Rego, OpenTofu, typed authorization, sandboxing, egress policy, provenance, and CI-enforced conformance checks.
 - **Agent and evaluation systems:** model and harness evaluation, evidence contracts, OpenAI-compatible gateways, provider routing, coding-agent workflows, and trace/provenance pipelines.
 - **Infrastructure and data:** PostgreSQL, Supabase, TimescaleDB, Redis, pgvector, Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted runners, OpenTelemetry, Infisical, and 1Password.
@@ -107,31 +123,44 @@ Rust · WebAssembly · SvelteKit · Cloudflare Durable Objects · WebSockets
 
 ## Professional experience
 
-### Associate Professor of Mathematics (tenured)
+### Kenai Peninsula College, University of Alaska Anchorage
 
-Kenai Peninsula College, University of Alaska Anchorage · Homer, Alaska · August 2017-present
+Associate Professor of Mathematics (tenured), 2023-present
 
-Previously American University in Cairo, 2014-2017; University of Montana, 2008-2014.
+Assistant Professor of Mathematics, 2017-2023 · Homer, Alaska
 
-- Teach undergraduate mathematics and statistics, including calculus and applied statistics; full teaching-and-service appointment; awarded tenure in 2023.
-- Consult for local non-profit organizations on statistical interpretation and study design.
-- Communicate technical and mathematical ideas to audiences with widely varying backgrounds.
+- Teach mathematics and statistics, develop course materials, and communicate technical ideas to audiences with varied backgrounds.
+- Developed a five-part introductory R module for applied statistics and online instructional materials for computational methods.
+- Led statistical analysis for a peer-reviewed study of 1,593 children and adolescents, collaborating with physical therapy researchers.
+- Contribute to institutional service and mathematics outreach.
 
-### Independent systems engineer and researcher (self-directed)
+### American University in Cairo
 
-Self-directed; Happy Patterns LLC product entity · Homer, Alaska · 2023-present
+Assistant Professor of Mathematics, 2014-2017
 
-- Build and maintain a multi-repository engineering program for reliable, specification-driven agent development across applications, data pipelines, evaluation systems, and infrastructure.
-- Develop repository contracts, managed human and agent shell environments, typed authority models, and automated verification gates.
-- Designed and operate selected controls from an anonymized, single-operator governance and agent-control architecture spanning policy-as-code, IaC, Zero Trust networking, local and remote servers, and credential custody.
+Taught calculus, differential equations, and advanced undergraduate independent studies; contributed to curriculum development and external-review implementation.
+
+### University of Montana
+
+Post-doctoral Lecturer, 2012-2014 · Course Coordinator, 2013 · Instructor, 2008-2012
+
+Coordinated two statistics lectures serving 480 students, supervised lab instructors and graduate teaching assistants, and developed teaching materials. Conducted doctoral research in functional analysis and co-authored a peer-reviewed mathematics paper.
 
 ## Education
 
-### Ph.D., Mathematics
+### Ph.D., Mathematical Sciences
 
 University of Montana, Missoula, MT · 2013
 
 Dissertation: *Peripherally-Multiplicative Spectral Preservers Between Function Algebras*.
+
+### B.A., Mathematics
+
+Humboldt State University · 2004
+
+## Service
+
+U.S. Peace Corps, Republic of South Africa, 2005-2007; MathCounts coaching; Economic Development Council, Homer, Alaska, 2020-2022.
 
 ## Publications
 

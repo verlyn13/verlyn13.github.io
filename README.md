@@ -4,7 +4,11 @@
 
 I build software and development infrastructure for reliable agent-assisted work. My focus is clear
 specifications, explicit permissions, reproducible environments, automated checks, and evidence that
-can be reviewed.
+can be reviewed. My projects span native applications, data pipelines, web software, and evaluation tools. I define
+tasks, guide and review agent-assisted implementation, investigate failures, and check whether the
+evidence supports the result. This is independent, unpaid engineering work alongside a full-time
+faculty appointment. I am seeking research engineering and systems work with meaningful ownership
+on a specialized team.
 
 Live site: <https://jvjohnson.dev>
 

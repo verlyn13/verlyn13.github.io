@@ -4,8 +4,8 @@ type: page
 source_file: experience/index.html
 source_selector: main
 route: /experience/
-content_hash: 8a36b5b43d0f4ff7c936094bbdb328f96bb2369d7cc9f283d8c5c9c77295c01a
-html_hash: 8c7b630a16cc1402f125fa7f7f2581b1fdc15ea0b3ca391bba6d2f6f5b6b9970
+content_hash: 257f90c32b68e54267e5b7004027d8874a1bae162331a5cdfc01ea0f68f330ad
+html_hash: 26b5a3810ebbd6fc3211fc9f57307283453ef3c106af5cfd157b08de063d438c
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -29,7 +29,7 @@ The timeline traces three threads across more than thirty years: the **experient
 
 Homer, Alaska
 
-The threads converge. A tenured mathematics professor developing online pedagogy while building evaluation, governance, and systems-engineering tools. The logic of the Ph.D., the grit of early labor, and the architecture of code are now inseparable.
+I teach mathematics and statistics at Kenai Peninsula College/UAA and build software for agent systems, evaluation, and practical applications. Research, teaching, and engineering share a focus on precise questions and evidence that others can examine.
 
 The engineering transition became concrete in ScopeCam. I designed and built a multi-module Android application for USB microscope cameras, taking responsibility for the interface, Kotlin orchestration, C++/JNI camera engine, USB lifecycle, concurrency, persistence, diagnostics, and physical-device verification. As I used coding agents in that work, I also built the specifications, permission boundaries, reproducible environments, automated checks, and evidence handbacks needed to keep their contributions reviewable.
 
@@ -37,13 +37,13 @@ The engineering transition became concrete in ScopeCam. I designed and built a m
 
 Associate Professor of Mathematics Tenured
 
-Kenai Peninsula College · University of Alaska
+Kenai Peninsula College · University of Alaska Anchorage
 
-Calculus I, Applied Calculus, Applied Statistics. Online course development and pedagogical technology.
+Associate Professor, 2023-present; Assistant Professor, 2017-2023. Mathematics and statistics, introductory R curriculum, and online course development.
 
 Independent project work
 
-Self-directed research · Happy Patterns LLC
+Unpaid, self-directed projects outside faculty employment
 
 Model evaluation, agent systems, infrastructure, and mobile/native application work, with maturity stated per project.
 
@@ -87,9 +87,9 @@ The throughline is sustained work across teaching, mathematics, software, and in
 
 Cairo, Egypt
 
-Assistant Professor of Mathematics at the American University in Cairo. Taught calculus and upper-division mathematics to an international student body. Continued research in functional analysis, attending a multi-day conference on Lineability in the Czech Republic.
+Assistant Professor of Mathematics at the American University in Cairo. Taught calculus and upper-division mathematics to an international student body. Participated in the 2015 Spring School on Analysis at Charles University in the Czech Republic as professional development.
 
-Three years of navigating cross-cultural academic environments, adapting pedagogy for students from dozens of countries, and maintaining research productivity while teaching a full course load.
+Developed course materials, supervised advanced undergraduate independent studies, and contributed to curriculum development and external-review implementation in an international academic environment.
 
 ## Deep Theory
 
@@ -97,9 +97,9 @@ Three years of navigating cross-cultural academic environments, adapting pedagog
 
 Missoula, Montana
 
-Ph.D. in Mathematics from the University of Montana, specializing in commutative Banach algebras. Published research in Communications in Mathematics and Applications. Presented at conferences. Six years of deep immersion in abstract mathematics.
+Ph.D. in Mathematical Sciences from the University of Montana in 2013, specializing in commutative Banach algebras. Published research in Communications in Mathematics and Applications. Presented at conferences. Six years of deep immersion in abstract mathematics.
 
-Teaching assistant for Applied Statistics, Applied Calculus, and Calculus III throughout the program. Postdoctoral lecturer in 2013-2014, coordinating large lecture sections and managing teaching assistants.
+Instructor, 2008-2012; Post-doctoral Lecturer, 2012-2014. As Course Coordinator in 2013, I coordinated two introductory statistics lectures serving 480 students and supervised lab instructors and graduate teaching assistants.
 
 Summer programs included the AARMS mathematics institute in Fredericton, New Brunswick, with courses in algebraic topology and topological combinatorics.
 
@@ -109,7 +109,7 @@ Summer programs included the AARMS mathematics institute in Fredericton, New Bru
 
 South Africa
 
-Peace Corps education volunteer and teacher trainer. Project management workshops, community improvement initiatives, and daily classroom teaching. Secured a Dell Computers Success Grant for a partner school, one of the early programs bringing technology to rural South African education.
+Peace Corps education volunteer and teacher trainer. Project management workshops, community improvement initiatives, and daily classroom teaching. Secured a Dell Computers Success Grant for a partner school.
 
 This is where teaching became more than a job. Two years of learning how to communicate complex ideas to people with entirely different frames of reference. The human experience taking precedence over abstraction.
 
@@ -158,6 +158,6 @@ A sample of a longer service record that runs alongside the eras above, from gra
 
 - Economic Development Council, Homer, Alaska: member, 2020-2022.
 - MathCounts coach, 2017-present: weekly sessions with middle-school students and the annual chapter competition in Anchorage.
-- Multi-year one-on-one mentorship of a gifted high-school student, 2023-present: abstract algebra, type theory, and applied cryptography.
+- Advanced-student mentorship documented from 2023: collaborative study in abstract algebra, type theory, and applied cryptography.
 - University committees: Program Review Committee, UAA (2019); Accessibility Committee, KPC (2017-2020); Calculus Restructuring, Mathematics Major Recruitment, External Review Implementation, and Safety and Security committees, American University in Cairo (2014-2017); Student Evaluation Committee chair, University of Montana (2012).
 - Upward Bound/TRIO summer mathematics for Native American high-school students (2013) and Math Circle director for gifted high-school students (2012), University of Montana.

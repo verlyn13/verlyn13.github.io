@@ -4,8 +4,8 @@ type: page
 source_file: research/index.html
 source_selector: main
 route: /research/
-content_hash: f69d55992bdaa883beea3cc42192a2e9b43b579bad4936085092910311ae057c
-html_hash: 7360cc49314c6ffe8e6fe87513d878497f72eb5df47ee609a7e6aec3c2bca0f3
+content_hash: dfd03777967eaff543840ee72bb46cb64c272bf28bee422b7e59de57820b157d
+html_hash: 7c68652cf576e00ae1e3ab9c927dcfe2cfd1e5873a049eac5190f7ea637fb0b6
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -50,7 +50,7 @@ Cadieux JM, Pyhala SL, **Johnson JV**
 
 **Result:** Normal reference values for children ages 5-17 in one rural Alaska school district
 
-Interdisciplinary collaboration applying statistical methods to clinical physical therapy research. Large dataset management (1,593 children) and rigorous factorial analysis examining main effects and two-way interactions for age, sex, and footwear.
+I led the statistical analysis for this collaboration with physical therapy researchers. The factorial analysis examined age, gender, and walking-speed condition (normal/fast), including interaction effects, in 1,593 children and adolescents.
 
 ## Pure mathematics
 
@@ -76,7 +76,7 @@ Established general sufficient conditions for maps between function algebras to 
 
 ## Related study and teaching
 
-Since 2023, I have held recurring theoretical-computer-science study sessions with a student collaborator, covering lambda calculus, formal languages, abstract algebra, and applied cryptography. This is independent study and mentoring, not a publication claim. My degrees, teaching record, and continuing education are listed in the [Resume](/cv.html) and [Experience](/experience/) pages.
+Advanced-student mentorship documented from 2023 includes collaborative study of lambda calculus, formal languages, abstract algebra, and applied cryptography. My degrees and teaching record are listed in the [Resume](/cv.html) and [Experience](/experience/) pages.
 
 Teaching & Leadership →
 

@@ -4,8 +4,8 @@ type: page
 source_file: projects/host-capability-substrate.html
 source_selector: main
 route: /projects/host-capability-substrate.html
-content_hash: 8d16b28bc3b319508f83ec73d25e43324af51eb49e7c12577186f13b214f09c2
-html_hash: 02d335a2238c571c3756067b79449e966dbb7f66e814639f51d364b5513c7761
+content_hash: 85ea538fce47beb8d1d502e0ab120806062b3e1abcb79fd6e9221862b30ba9ff
+html_hash: abd76e4195658c83e259c279ed4fe171deece1e9fdc604b308e7f39b564f3282
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Public implementation
+[Evidence](/#work) · Public implementation
 
 # Host Capability Substrate
 
@@ -26,6 +26,8 @@ Working public implementation
 Host Capability Substrate models the conditions under which work may occur on a local machine. It treats host facts, capabilities, operations, execution contexts, evidence, policy decisions, approvals, leases, audits, and authorization as typed objects instead of implicit shell access.
 
 ## Strongest proof
+
+Evidence baseline: July 8, 2026. Test totals are approximate source counts from that review.
 
 - Typed ontology 46 Zod entity schemas Compiled into 67 generated JSON Schemas.
 - Verification About 500 tests Exercises schemas, execution contexts, policy decisions, evidence, audit records, and grants.

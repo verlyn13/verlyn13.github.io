@@ -10,235 +10,198 @@ LinkedIn: https://linkedin.com/in/drjeffreyjohnson
 
 ## Target roles
 
-Research engineer; model evaluation engineer; agent systems engineer; evaluation
-infrastructure engineer; safeguards engineer.
+Research engineer; model evaluation engineer; agent systems engineer;
+evaluation infrastructure engineer; specialized systems engineer.
+These are target roles, not previously held appointments.
 
 ## Summary
 
-Ph.D. mathematician and systems builder focused on the infrastructure that makes
-agent-assisted development reliable: typed contracts, explicit permissions,
-reproducible environments, automated checks, and reviewable evidence. Applies
-these controls while building applications, data pipelines, evaluation systems,
-and infrastructure. Strongest fit: agent systems, developer infrastructure,
-model evaluation, and safeguards.
+Ph.D. mathematician and systems builder working across native applications,
+data pipelines, web systems, and agent infrastructure. Builds verification
+tools, investigates failures across system boundaries, and directs and reviews
+agent-assisted implementation. Combines that engineering practice with
+published mathematical and statistical research, university teaching, and
+large-course coordination. Seeking research engineering and systems work with
+meaningful ownership on a specialized team.
 
 ## Core skills
 
-Languages: Python, TypeScript, Rust, SQL, Bash, Kotlin, C, C++.
+Languages: Python, TypeScript, JavaScript, SQL, R, Bash, Kotlin, C++, Rust.
 
-Contracts and controls: Zod, JSON Schema, OPA, Rego, OpenTofu, typed
-authorization, sandboxing, egress policy, provenance, schema drift checks,
-policy checks, CI-enforced conformance.
+Systems and data: Android, JNI, NDK, PostgreSQL, Redis, Docker, Cloudflare,
+GitHub Actions, OpenTelemetry.
 
-Agent and evaluation systems: model evaluation, harness evaluation, evidence
-contracts, separate-verifier result recomputation, OpenAI-compatible LLM gateways,
-provider routing, coding-agent workflows, trace pipelines, provenance pipelines.
+Verification and controls: Zod, JSON Schema, OPA, Rego, OpenTofu, CI checks,
+evidence provenance, negative controls, prototype evaluation tooling.
 
-Infrastructure and data: PostgreSQL, Supabase, TimescaleDB, Redis, pgvector,
-Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted
-runners, OpenTelemetry, Infisical, 1Password.
+Agent-assisted engineering: task decomposition, context preparation, bounded
+delegation, implementation review, failure analysis, validation of agent-produced
+work.
 
-Native and application systems: Android, Kotlin, Jetpack Compose, USB, UVC,
-libusb, libuvc, JNI, NDK, CMake, WebAssembly.
-
-Mathematics and statistics: functional analysis, applied statistics, Wilson
-intervals, bootstrap confidence intervals, paired sign tests, statistical
-inference.
+Research and communication: functional analysis, applied statistics,
+experimental design, technical writing, cross-disciplinary teaching.
 
 ## Agent-development infrastructure
 
+Independent, unpaid projects developed alongside a full-time faculty
+appointment, using coding agents in implementation and test development.
+
 ### Host Capability Substrate
 
-Typed contracts for host capabilities, operations, execution contexts, policy
-decisions, evidence, approvals, leases, audits, and authorization.
+Technology: TypeScript, Zod, JSON Schema. Public source.
 
-Technology: TypeScript, Zod, JSON Schema, GitHub Actions.
+- Modeled host capabilities, authorization, policy decisions, and evidence as
+  explicit typed contracts, with schema and architecture checks.
+- Made execution contexts, scoped permissions, approvals, and evidence
+  provenance inspectable in the public model.
+- Evidence covers implemented contracts and source checks; organization-wide
+  runtime enforcement remains unestablished.
 
-Evidence:
-
-- Built 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about
-  500 tests.
-- Modeled host capabilities, operations, execution contexts, policy decisions,
-  provenance-typed evidence, approvals, leases, audit chains, and scoped
-  authorization grants.
-- Authored a 19-invariant governance charter and four-ring architecture.
-- Enforced merge-time discipline with a composed CI policy, boundary, secret,
-  and schema-drift gate.
-- Public typed model and enforced source boundaries; no universal host-level
-  runtime-enforcement claim.
-
-Public proof: https://github.com/jefahnierocks/host-capability-substrate
-
-### Governance and agent-control architecture
-
-An anonymized private case study in agent governance, safeguards, and
-policy-as-code.
-
-Technology: OpenTofu, OPA, Rego, TypeScript, Cloudflare, Hetzner, Proxmox,
-GitHub governance-as-code.
-
-Evidence:
-
-- Designed a multi-repository architecture that separates human decision rights,
-  agent permissions, capability and credential reach,
-  infrastructure enforcement, runtime admission, and repository-local authority.
-- Modeled agent authority as the intersection of mandate, available capability,
-  and credential reach, with structured, secret-free handbacks for human
-  judgment or privileged work.
-- Implemented selected controls including 26 OPA/conftest plan rules,
-  repository governance as code, Zero Trust infrastructure, and scheduled drift
-  checks.
-- Selected controls are operational; runtime admission is source-tested rather
-  than deployed across the organization. Single-operator case study; no
-  enterprise-adoption claim.
-
-Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
+Public source: https://github.com/jefahnierocks/host-capability-substrate
 
 ### Agentic Architecture Audit
 
-Specification and drift verification for agent-operated codebases.
+Technology: specification authoring, Python, JSON Schema. Public source.
 
-Technology: specification authoring, Python tooling, JSON schemas, pre-commit,
-CI.
+- Authored an audit method separating evidence collection from judgment and
+  producing structured findings.
+- Built a Python drift linter that binds derived documentation to specification
+  content and checks conformance, with negative self-tests.
 
-Evidence:
+Public source: https://github.com/verlyn13/agentic-architecture-audit
 
-- Authored a two-stage `audit-spec` of 2,075 lines that keeps evidence collection
-  separate from judgment.
-- Defined an 11-dimension rubric, 12 JSON output schemas, and a prioritization
-  model based on severity, confidence, and weight.
-- Built a stdlib-only Python drift linter with 10 deterministic checks,
-  including content-hash binding of derived documents to specification bytes.
-- Wired a 27-case negative self-test into pre-commit and CI.
+### Governance and agent-control architecture
 
-Public proof: https://github.com/verlyn13/agentic-architecture-audit
+Technology: OpenTofu, OPA, Rego, TypeScript. Anonymized private case study.
+
+- Designed a multi-repository architecture separating human decision rights,
+  agent permissions, identity and authorization, infrastructure controls,
+  runtime admission, and repository-local authority.
+- Modeled agent authority through mandate, available capability, and credential
+  reach, with structured handbacks for human judgment and privileged work.
+- Implemented selected policy-as-code, repository-governance, and drift controls.
+  Runtime admission is source-tested; this single-operator case study does not
+  establish organization-wide deployment or enterprise adoption.
+
+Public case study: https://jvjohnson.dev/projects/governance-agent-control.html
 
 ## Selected applications and evaluations
 
-### Agentic-Coding Evaluation Lab
+### ScopeCam
 
-Public methodology and verification prototype for fail-closed model-evaluation
-evidence.
+Technology: Kotlin, Jetpack Compose, C++, JNI, USB, UVC.
+Private proprietary Android microscope application; client-delivered alpha.
 
-Technology: Python, Quarto, JSON contracts.
+- Built a multi-module application spanning camera discovery, preview,
+  photo/video capture, media review, native rendering, persistence, and debug/QA
+  telemetry.
+- Traced a camera-replug deadlock across Kotlin, JNI, and native teardown;
+  implemented bounded recovery and documented its resource-leak tradeoff after
+  timeout.
+- Delivered a signed client alpha in June 2026; broader release remains open.
+- Corrected a CI dependency gap that could report success after an upstream
+  failure skipped the actual checks. Source change reviewed in September 2026.
 
-Evidence:
-
-- Built and published a model-evaluation methodology and verification prototype
-  that preserves evidence and withholds a recommendation when scientific
-  prerequisites are incomplete.
-- Built a draft evidence contract and a separate verifier that
-  recalculates a synthetic `NOT_EVALUABLE` outcome and rejects missing,
-  inconsistent, or altered evidence.
-- Current proof is tested framework behavior and synthetic conformance, with no
-  powered real-model result or promotion claim.
-
-Public methodology: https://jvjohnson.dev/eval-lab-methodology/
+Public case study: https://jvjohnson.dev/projects/scopecam.html
 
 ### Budget Triage
 
-Financial evidence workbench for backend data integrity, model-risk controls,
-and human review. A sanitized public source snapshot is available; active
-development remains private. Not deployed.
+Technology: TypeScript, Hono, React, PostgreSQL.
+Public source snapshot; active development private.
 
-Technology: Bun, TypeScript, Hono, PostgreSQL, Zod, Decimal.js, Plaid,
-Infisical, OpenTelemetry.
+- Built document-processing and review workflows that retain provenance, use
+  exact monetary arithmetic, and route uncertain extraction to human review.
+- Implemented context-specific data relationships with explicit transitions,
+  tenant checks, database row locks, and stale-update protection.
+- Diagnosed an authentication test that failed on database reuse, tracing the
+  interaction between rollback and persistent audit records.
+- Implemented synthetic known-answer and browser/API observation harnesses.
+  Recorded evidence covers bounded workflows; end-to-end financial
+  certification and production operation remain unestablished.
 
-Evidence:
+Public source snapshot: https://github.com/jefahnierocks/budget-triage
 
-- Built workflows for statements, receipts, and connected-account data with
-  deterministic-first processing and human review.
-- Implemented exact monetary arithmetic, tenant-scoped atomic persistence,
-  append-only decision records, authentication, Plaid, Infisical, and
-  OpenTelemetry.
-- Built a synthetic known-answer and service-observation harness. Current result:
-  6 passing and 9 pending assertions; incomplete and uncertified.
-- Published a sanitized, MIT-licensed source snapshot for employer review on
-  2026-07-21. Publication is not deployment or an open contribution surface.
-- Public source: https://github.com/jefahnierocks/budget-triage
+### Agentic-Coding Evaluation Lab
 
-Public-safe project page: https://jvjohnson.dev/projects/budget-triage.html
+Technology: Python, Quarto, JSON contracts.
+Public methodology and verifier prototype.
 
-### ScopeCam
+- Built evaluation reporting and a separate verifier that recomputes a synthetic
+  NOT_EVALUABLE result and rejects missing, inconsistent, or altered evidence.
+- Distinguished framework verification from scientific findings: the public
+  sample does not establish a powered real-model comparison.
 
-Private Android USB/UVC microscope application and client-delivered alpha.
+Public methodology and source: https://github.com/verlyn13/eval-lab-methodology
 
-Technology: Android, Kotlin, Jetpack Compose, C++20, JNI, NDK, USB, UVC.
+### Additional systems
 
-Evidence:
+- Agent-runtime experiments: built Python/C request-guard and process-launch
+  experiments with faulty senders, receiver-side checks, and paired event-order
+  tests. Source and recorded bounded experiments support failure analysis;
+  overall runtime acceptance remains open.
+- Dicee: built and deployed a multiplayer browser game using Rust, WebAssembly,
+  SvelteKit, Cloudflare Durable Objects, and WebSockets.
+  Live game: https://dicee.games/
+- Fall course publishing: built a registry-driven pipeline with isolated public
+  output, checksummed manifests, and executable checks for broken links and
+  accidental source publication.
 
-- Built a multi-module Android microscope application spanning Compose UI,
-  Kotlin orchestration, a native C++ camera engine, USB lifecycle, persistence,
-  diagnostics, and physical-device verification.
-- Diagnosed a camera-replug ANR across the JVM/native teardown boundary and
-  implemented a device-verified recovery with the remaining leak tradeoff
-  documented.
-- Delivered a signed client alpha. Private source; not broadly released.
+## Upstream contribution
 
-Public-safe project page: https://jvjohnson.dev/projects/scopecam.html
+### Inspect Scout reliability correction
 
-### Dicee
+Technology: Python, multiprocessing, pytest. Upstream PR under review.
 
-Live family multiplayer game for mobile browsers.
+Submitted a correction on September 10, 2026, for provider-error diagnostics lost
+between spawned workers and the parent process. The proposed change includes
+baseline-versus-patch regression evidence and checks for worker execution,
+parent-visible diagnostics, cleanup, and cancellation. Responded to maintainer
+scope feedback with further validation and a proposal to narrow the change.
+As of September 12, the PR remains under review, awaiting the maintainer's
+response; merge and successful Linux CI remain unestablished.
 
-Technology: Rust, WebAssembly, SvelteKit, Cloudflare Durable Objects,
-WebSockets.
-
-Evidence:
-
-- Built and deployed a family multiplayer game with a Rust-to-WebAssembly rules
-  engine, real-time state through Cloudflare Durable Objects and WebSockets, and
-  a SvelteKit client.
-- Public source and a live deployment demonstrate end-to-end delivery. Traffic,
-  performance, bundle-size, and current test-count claims remain withheld.
-
-Public project: https://jvjohnson.dev/projects/dicee.html
+Submitted contribution: https://github.com/meridianlabs-ai/inspect_scout/pull/632
 
 ## Professional experience
 
-Associate Professor of Mathematics, tenured
-Kenai Peninsula College, University of Alaska Anchorage
-Homer, Alaska
-August 2017-present
+### Kenai Peninsula College, University of Alaska Anchorage
 
-- Teach undergraduate mathematics and statistics, including calculus and applied
-  statistics.
-- Full teaching-and-service appointment; awarded tenure in 2023.
-- Consult for local non-profit organizations on statistical interpretation and
-  study design.
-- Communicate technical and mathematical ideas to audiences with widely varying
-  backgrounds.
+Associate Professor of Mathematics, tenured, 2023-present.
+Assistant Professor of Mathematics, 2017-2023.
 
-Assistant Professor of Mathematics
-American University in Cairo
-2014-2017
+- Teach mathematics and statistics, develop course materials, and communicate
+  technical ideas to audiences with varied backgrounds.
+- Developed a five-part introductory R module for applied statistics and
+  online instructional materials for computational methods.
+- Led statistical analysis for a peer-reviewed study of 1,593 children and
+  adolescents, collaborating with physical therapy researchers using R and SPSS.
+- Contribute to institutional service and mathematics outreach.
 
-Post-doctoral Lecturer / Course Coordinator
-University of Montana
-2008-2014
+### American University in Cairo
 
-Independent systems engineer and researcher
-Self-directed; Happy Patterns LLC product entity
-Homer, Alaska
-2023-present
+Assistant Professor of Mathematics, 2014-2017.
 
-- Build and maintain a multi-repository engineering program for reliable,
-  specification-driven agent development across applications, data pipelines,
-  evaluation systems, and infrastructure.
-- Develop repository contracts, managed human and agent shell environments,
-  typed authority models, and automated verification gates.
-- Designed and operate selected controls from an anonymized, single-operator
-  governance and agent-control architecture spanning policy-as-code,
-  infrastructure as code, Zero Trust networking, local and remote servers, and
-  credential custody.
+- Taught mathematics from calculus through advanced courses; contributed to
+  curriculum development and external-review implementation.
+
+### University of Montana
+
+Post-doctoral Lecturer, 2012-2014.
+Course Coordinator, 2013.
+Instructor, 2008-2012.
+
+- Coordinated two statistics lectures serving 480 students; supervised lab
+  instructors and graduate teaching assistants and developed teaching materials.
+- Conducted doctoral research in functional analysis and co-authored a
+  peer-reviewed mathematics paper.
 
 ## Education
 
-Ph.D., Mathematics
-University of Montana, Missoula, MT
-2013
+Ph.D., Mathematical Sciences, University of Montana, 2013.
 Dissertation: Peripherally-Multiplicative Spectral Preservers Between Function
 Algebras.
+
+B.A., Mathematics, Humboldt State University, 2004.
 
 ## Publications
 
@@ -249,3 +212,8 @@ Speed Normal Reference Values in a Local Population. Pediatric Physical Therapy,
 Johnson, J. V., and Tonev, T. (2012). Spectral Conditions for Composition
 Operators on Algebras of Functions. Communications in Mathematics and
 Applications, 3(1).
+
+## Service
+
+U.S. Peace Corps, Republic of South Africa, 2005-2007; MathCounts coaching;
+Economic Development Council, Homer, Alaska, 2020-2022.
