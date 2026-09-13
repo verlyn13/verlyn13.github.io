@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: evals-governance-resume.md; refreshed: 2026-07-21 -->
+<!-- source: evals-governance-resume.md; refreshed: 2026-09-12 -->
+<!-- source: research-engineer-resume.md; refreshed: 2026-09-12 -->
+<!-- source: CV-COMPREHENSIVE-EXTRACT.md; refreshed: 2026-09-12 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,30 +137,31 @@
                 <div class="cv-content">
                     <section class="cv-block">
                         <h2>Summary</h2>
-                        <p>Ph.D. mathematician and systems builder focused on the infrastructure that makes agent-assisted development reliable: typed contracts, explicit permissions, reproducible environments, automated checks, and reviewable evidence. I apply these controls while building applications, data pipelines, evaluation systems, and infrastructure. My strongest fit is research engineering in agent systems, developer infrastructure, model evaluation, and safeguards.</p>
+                        <p>Ph.D. mathematician and systems builder working across native applications, data pipelines, web systems, and agent infrastructure. Builds verification tools, investigates failures across system boundaries, and directs and reviews agent-assisted implementation. Combines that engineering practice with published mathematical and statistical research, university teaching, and large-course coordination. Seeking research engineering work with meaningful ownership on a specialized team.</p>
                     </section>
 
                     <section class="cv-block">
                         <h2>Agent-development infrastructure</h2>
+                        <p>Independent, unpaid projects developed alongside a full-time faculty appointment, using coding agents in implementation and test development.</p>
 
                         <div class="resume-entry">
                             <h3><a href="/projects/host-capability-substrate.html">Host Capability Substrate</a> <span class="resume-entry__role">: typed capability and evidence contracts</span></h3>
-                            <p class="resume-entry__stack">TypeScript · Zod · JSON Schema · GitHub Actions</p>
+                            <p class="resume-entry__stack">TypeScript · Zod · JSON Schema · GitHub Actions · Public source</p>
                             <ul>
-                                <li>Built 46 Zod entity schemas compiled to 67 generated JSON Schemas, with about 500 tests.</li>
+                                <li>Built typed capability and evidence contracts with generated JSON Schemas and automated checks.</li>
                                 <li>Modeled host capabilities, operations, execution contexts, policy decisions, provenance-typed evidence, approvals, leases, audit chains, and scoped authorization grants.</li>
-                                <li>Wrote a 19-invariant governance charter and four-ring architecture, enforced by import boundaries and one CI gate for policy, boundary, secret, and schema-drift checks.</li>
+                                <li>Defined architecture boundaries and a governance charter, with CI checks for policy, imports, secrets, and schema drift.</li>
                                 <li>The public repository demonstrates the typed model and source boundaries, not universal host-level runtime enforcement.</li>
                             </ul>
                         </div>
 
                         <div class="resume-entry">
                             <h3><a href="https://github.com/verlyn13/agentic-architecture-audit" aria-label="Agentic Architecture Audit project on GitHub">Agentic Architecture Audit</a> <span class="resume-entry__role">: specification and drift checks for agent-operated codebases</span></h3>
-                            <p class="resume-entry__stack">Specification · JSON Schema · Python tooling</p>
+                            <p class="resume-entry__stack">Specification · JSON Schema · Python tooling · Public source</p>
                             <ul>
-                                <li>Authored a two-stage <code>audit-spec</code> of 2,075 lines that keeps evidence collection separate from judgment.</li>
-                                <li>Defined an 11-dimension rubric, 12 JSON output schemas, and a prioritization model based on severity, confidence, and weight.</li>
-                                <li>Built a stdlib-only Python drift linter with 10 deterministic checks and a 27-case negative self-test in pre-commit and CI.</li>
+                                <li>Authored a two-stage <code>audit-spec</code> that keeps evidence collection separate from judgment.</li>
+                                <li>Defined a structured review rubric, JSON output contracts, and a prioritization model based on severity, confidence, and weight.</li>
+                                <li>Built a Python drift linter that binds derived documentation to specification content, with negative self-tests in pre-commit and CI.</li>
                             </ul>
                         </div>
 
@@ -168,8 +171,8 @@
                             <ul>
                                 <li>Designed a multi-repository architecture that separates human decision rights, agent permissions, identity and authorization, infrastructure enforcement, runtime admission, and repository-local authority.</li>
                                 <li>Modeled agent authority as the intersection of mandate, available capability, and credential reach, with structured, secret-free handbacks for human judgment or privileged work.</li>
-                                <li>Implemented selected controls including 26 OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.</li>
-                                <li>Selected controls are operational; runtime admission is source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.</li>
+                                <li>Implemented selected controls including OPA/conftest plan rules, repository governance as code, Zero Trust infrastructure, and scheduled drift checks. The plan gate is workflow-level enforcement; it is not proven as a required status check across every repository.</li>
+                                <li>The July 15, 2026 review found selected controls operational; runtime admission was source-tested rather than deployed across the organization. This is a single-operator case study, not an enterprise-adoption claim.</li>
                             </ul>
                         </div>
                     </section>
@@ -193,7 +196,9 @@
                             <ul>
                                 <li>Built a financial evidence workbench for statements, receipts, and connected-account data with deterministic-first processing and human review.</li>
                                 <li>Implemented exact monetary arithmetic, tenant-scoped atomic persistence, append-only decision records, authentication, Plaid, Infisical, and OpenTelemetry.</li>
-                                <li>Built a synthetic known-answer and service-observation harness. Its current result is 6 passing and 9 pending assertions, so it remains incomplete and uncertified.</li>
+                                <li>Implemented context-specific data relationships with explicit transitions, tenant checks, database row locks, and stale-update protection.</li>
+                                <li>Diagnosed an authentication test that failed on database reuse, tracing the interaction between rollback and persistent audit records.</li>
+                                <li>Built a synthetic known-answer and service-observation harness. The July 15, 2026 review recorded 6 passing and 9 pending assertions, an incomplete and uncertified result.</li>
                                 <li>Published a sanitized, MIT-licensed source snapshot for employer review on 2026-07-21. Active development remains private; publication is not deployment or an open contribution surface. <a href="https://github.com/jefahnierocks/budget-triage">Explore the public source.</a></li>
                             </ul>
                         </div>
@@ -204,7 +209,8 @@
                             <ul>
                                 <li>Built a multi-module Android microscope application spanning Compose UI, Kotlin orchestration, a native C++ camera engine, USB lifecycle, persistence, diagnostics, and physical-device verification.</li>
                                 <li>Diagnosed a camera-replug ANR across the JVM/native teardown boundary and implemented a device-verified recovery with the remaining leak tradeoff documented.</li>
-                                <li>Delivered a signed client alpha; the private product is not broadly released.</li>
+                                <li>Delivered a signed client alpha in June 2026; the private product is not broadly released.</li>
+                                <li>Corrected a CI dependency gap that could report success after an upstream failure skipped the actual checks. Source change reviewed in September 2026.</li>
                             </ul>
                         </div>
 
@@ -219,9 +225,25 @@
                     </section>
 
                     <section class="cv-block">
+                        <h2>Additional systems</h2>
+                        <ul class="cv-list">
+                            <li><strong>Agent-runtime experiments:</strong> Built Python/C request-guard and process-launch experiments with faulty senders, receiver-side checks, and paired event-order tests. Source and recorded bounded experiments support failure analysis; overall runtime acceptance remains open.</li>
+                            <li><strong>Fall course publishing:</strong> Built a registry-driven pipeline with isolated public output, checksummed manifests, and executable checks for broken links and accidental source publication.</li>
+                        </ul>
+                    </section>
+
+                    <section class="cv-block">
+                        <h2>Upstream contribution</h2>
+                        <div class="resume-entry">
+                            <h3><a href="https://github.com/meridianlabs-ai/inspect_scout/pull/632" aria-label="Inspect Scout pull request on GitHub">Inspect Scout</a> <span class="resume-entry__role">: reliability correction under review</span></h3>
+                            <p>Submitted a Python correction for provider-error diagnostics lost between spawned workers and the parent process, with regression evidence for the proposed change. I responded to maintainer scope feedback with further validation on September 12, 2026. The PR remains under review, awaiting a reply.</p>
+                        </div>
+                    </section>
+
+                    <section class="cv-block">
                         <h2>Technical skills</h2>
                         <ul class="cv-list">
-                            <li><strong>Languages:</strong> Python, TypeScript, Rust, SQL, Bash, Kotlin, C/C++.</li>
+                            <li><strong>Languages:</strong> Python, TypeScript, Rust, SQL, R, Bash, Kotlin, C/C++.</li>
                             <li><strong>Contracts and controls:</strong> Zod, JSON Schema, OPA/Rego, OpenTofu, typed authorization, sandboxing, egress policy, provenance, and CI-enforced conformance checks.</li>
                             <li><strong>Agent and evaluation systems:</strong> model and harness evaluation, evidence contracts, OpenAI-compatible gateways, provider routing, coding-agent workflows, and trace/provenance pipelines.</li>
                             <li><strong>Infrastructure and data:</strong> PostgreSQL, Supabase, TimescaleDB, Redis, pgvector, Cloudflare Zero Trust, Hetzner, Proxmox, Docker, GitHub Actions, self-hosted runners, OpenTelemetry, Infisical, and 1Password.</li>
@@ -234,34 +256,45 @@
                         <h2>Professional experience</h2>
 
                         <div class="cv-entry">
-                            <h3>Associate Professor of Mathematics (tenured)</h3>
-                            <p class="cv-institution">Kenai Peninsula College, University of Alaska Anchorage · Homer, Alaska · August 2017-present</p>
-                            <p class="cv-details">Previously American University in Cairo, 2014-2017; University of Montana, 2008-2014.</p>
+                            <h3>Kenai Peninsula College, University of Alaska Anchorage</h3>
+                            <p class="cv-institution">Associate Professor of Mathematics (tenured), 2023-present</p>
+                            <p class="cv-details">Assistant Professor of Mathematics, 2017-2023 · Homer, Alaska</p>
                             <ul class="cv-list">
-                                <li>Teach undergraduate mathematics and statistics, including calculus and applied statistics; full teaching-and-service appointment; awarded tenure in 2023.</li>
-                                <li>Consult for local non-profit organizations on statistical interpretation and study design.</li>
-                                <li>Communicate technical and mathematical ideas to audiences with widely varying backgrounds.</li>
+                                <li>Teach mathematics and statistics, develop course materials, and communicate technical ideas to audiences with varied backgrounds.</li>
+                                <li>Developed a five-part introductory R module for applied statistics and online instructional materials for computational methods.</li>
+                                <li>Led statistical analysis for a peer-reviewed study of 1,593 children and adolescents, collaborating with physical therapy researchers.</li>
+                                <li>Contribute to institutional service and mathematics outreach.</li>
                             </ul>
+                        </div>
+                        <div class="cv-entry">
+                            <h3>American University in Cairo</h3>
+                            <p class="cv-institution">Assistant Professor of Mathematics, 2014-2017</p>
+                            <p>Taught calculus, differential equations, and advanced undergraduate independent studies; contributed to curriculum development and external-review implementation.</p>
+                        </div>
+                        <div class="cv-entry">
+                            <h3>University of Montana</h3>
+                            <p class="cv-institution">Post-doctoral Lecturer, 2012-2014 · Course Coordinator, 2013 · Instructor, 2008-2012</p>
+                            <p>Coordinated two statistics lectures serving 480 students, supervised lab instructors and graduate teaching assistants, and developed teaching materials. Conducted doctoral research in functional analysis and co-authored a peer-reviewed mathematics paper.</p>
                         </div>
 
-                        <div class="cv-entry">
-                            <h3>Independent systems engineer and researcher (self-directed)</h3>
-                            <p class="cv-institution">Self-directed; Happy Patterns LLC product entity · Homer, Alaska · 2023-present</p>
-                            <ul class="cv-list">
-                                <li>Build and maintain a multi-repository engineering program for reliable, specification-driven agent development across applications, data pipelines, evaluation systems, and infrastructure.</li>
-                                <li>Develop repository contracts, managed human and agent shell environments, typed authority models, and automated verification gates.</li>
-                                <li>Designed and operate selected controls from an anonymized, single-operator governance and agent-control architecture spanning policy-as-code, IaC, Zero Trust networking, local and remote servers, and credential custody.</li>
-                            </ul>
-                        </div>
                     </section>
 
                     <section class="cv-block">
                         <h2>Education</h2>
                         <div class="cv-entry">
-                            <h3>Ph.D., Mathematics</h3>
+                            <h3>Ph.D., Mathematical Sciences</h3>
                             <p class="cv-institution">University of Montana, Missoula, MT · 2013</p>
                             <p class="cv-details">Dissertation: <em>Peripherally-Multiplicative Spectral Preservers Between Function Algebras</em>.</p>
                         </div>
+                        <div class="cv-entry">
+                            <h3>B.A., Mathematics</h3>
+                            <p class="cv-institution">Humboldt State University · 2004</p>
+                        </div>
+                    </section>
+
+                    <section class="cv-block">
+                        <h2>Service</h2>
+                        <p>U.S. Peace Corps, Republic of South Africa, 2005-2007; MathCounts coaching; Economic Development Council, Homer, Alaska, 2020-2022.</p>
                     </section>
 
                     <section class="cv-block">

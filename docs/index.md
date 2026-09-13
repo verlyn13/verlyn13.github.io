@@ -4,7 +4,7 @@ category: operations
 component: docs-index
 status: active
 version: 0.2.0
-last_updated: 2026-07-21
+last_updated: 2026-09-12
 tags: [documentation, agents, current-state, housekeeping]
 priority: high
 audience: coding agent + design agent + operator
@@ -16,6 +16,15 @@ This file is the repo's housekeeping map. It tells agents which documents are cu
 authority, which are historical handoffs, and where plans live.
 
 ## Current operating truth
+
+- **September career refresh (2026-09-12):** the release aligns the homepage,
+  resume page and public Markdown, experience, and research with reviewed career
+  sources. It corrects faculty ranks and dates, study factors, mentorship wording,
+  and Scout review status, and restores Selected work return links. The operator
+  requested publication through the existing PR and Pages workflow. See
+  [release scope and validation](career-refresh-2026-09-12.md). Feed renderer and
+  producer-data changes remain separate; this release does not refresh project
+  runtime evidence.
 
 - **Public positioning:** headlines claim the work, not a title (operator decisions 2026-07-20 and
   2026-07-21, source-repo ADR-0012 and ADR-0014): the headline is "Building infrastructure for model evaluation and agent
@@ -48,10 +57,9 @@ authority, which are historical handoffs, and where plans live.
 - **Public Markdown discovery:** `public/content/resume.md`, `resume-ai-scanner.md`,
   `research-statement.md`, and `summary.md` are intentional public resources. Resume controls expose
   the resume files; `public/llms.txt` and the sitemap declare all four for direct discovery.
-- **Website coherence candidate (2026-07-21):** local authored pages now use the ADR-0014 work-first
-  identity, corrected publication pagination, a concise evidence pattern, and shared Experience CSS/JS.
-  `mise run ci` passes. Browser QA, commit/PR review, merge, deployment, and the separate accepted-feed
-  delivery have not happened.
+- **Historical July coherence candidate:** the July 21 working copy is a dated
+  baseline. The September release above governs current career copy; producer
+  feed delivery remains a separate tracked task.
 
 ## Agent read order
 

@@ -3016,8 +3016,53 @@ th {
     padding: 0;
   }
 
+  .cv-section .container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv-content {
+    display: block;
+  }
+
+  .cv-block {
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+  }
+
+  .cv-content p,
+  .cv-content li {
+    font-size: var(--text-xs);
+    line-height: var(--lh-snug);
+    margin-bottom: var(--space-1);
+    orphans: 3;
+    widows: 3;
+  }
+
+  .cv-content h2 {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-2);
+    padding-bottom: var(--space-1);
+  }
+
+  .cv-content h3 {
+    font-size: var(--text-sm);
+    margin: 0 0 var(--space-1);
+    break-after: avoid;
+  }
+
   .resume-header {
     border-bottom: 1px solid var(--ink-print);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .resume-header h1 {
+    font-size: var(--text-h2);
+  }
+
+  .resume-identity {
+    font-size: var(--text-sm);
   }
 
   .resume-entry h3 a {
@@ -3038,11 +3083,18 @@ th {
   .resume-note {
     page-break-inside: avoid;
     break-inside: avoid;
+    margin-bottom: var(--space-2);
   }
 
-  .cv-block h2 {
+  .cv-block h2,
+  .cv-block > p,
+  .cv-content .resume-entry__stack {
     page-break-after: avoid;
     break-after: avoid;
+  }
+
+  .cv-content .resume-entry__stack {
+    font-size: var(--text-2xs);
   }
 
   .resume-note {

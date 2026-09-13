@@ -4,8 +4,8 @@ type: page
 source_file: projects/governance-agent-control.html
 source_selector: main
 route: /projects/governance-agent-control.html
-content_hash: e6f79aea37ca4005846462f0f2f6a96cca75bde089585f50507647a4d220afc9
-html_hash: d559ba2b6779d392a8f2f02f9d4ed5bfc6afb9177aca253ca81288c7ea58970f
+content_hash: 345bd1f83111184ca0a2ea1ebfde6663f1d2023e4af70ec02f76782227a7b336
+html_hash: edfb47cecd6faefc371b88f069a899e2bb9ef743ed0a3445ef4c7e3d6507a9cb
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Anonymized private case study
+[Evidence](/#work) · Anonymized private case study
 
 # Governance and agent-control architecture
 

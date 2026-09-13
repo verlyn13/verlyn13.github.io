@@ -1,7 +1,6 @@
 # Research statement: infrastructure for model evaluation and agent systems
 
-**Jeffrey V. Johnson, Ph.D.** | Agent systems, developer infrastructure,
-evaluation, and safeguards
+**Jeffrey V. Johnson, Ph.D.**
 
 I build software and development infrastructure for reliable agent-assisted
 work. My focus is clear specifications, explicit permissions, reproducible
@@ -9,130 +8,135 @@ environments, automated checks, and evidence that can be reviewed. I use that
 infrastructure to build applications, data pipelines, evaluation systems, and
 developer tools.
 
-Agents are actors within an engineering system. Quality comes from the
-architecture around their work:
-clear specifications, explicit authority, controlled execution, observable
-state, and separate-verifier recomputation.
+I investigate how specifications, authority boundaries, observable execution,
+and separate verification can make agent-assisted work easier to inspect and
+test. The practical question is whether a system behaves as intended and
+whether its evidence supports the claimed result.
 
 I am a tenured associate professor of mathematics, trained in commutative
-Banach algebras. Alongside that work, I have built a sustained engineering
-program spanning frameworks for agent-assisted development,
-policy-as-code, developer environments, infrastructure, applications, data
-workflows, and model evaluation.
+Banach algebras. These engineering projects are independent, unpaid work
+alongside my full-time faculty appointment, using coding agents for
+implementation and verification. Their shared methods emerged through varied
+practical and exploratory projects.
 
-## The research program
+## Research direction
 
-The central question is practical: what project foundations make agent-assisted
-development dependable enough for difficult work? I approach that question at
-three layers.
+What project foundations make agent-assisted development dependable enough for
+difficult work? I approach that question at three layers:
 
-1. **Foundation:** define authority, interfaces, execution contexts, state,
-   evidence, and failure behavior before an agent acts.
-2. **Public implementation:** turn those concepts into typed schemas, audit
-   methods, CI gates, and reproducible tooling that another reviewer can inspect.
-3. **Proving grounds:** use the foundation to build applications, data
-   pipelines, evaluation systems, and infrastructure, then record both what the
-   evidence establishes and what it does not.
+1. Define authority, interfaces, execution contexts, state, evidence, and failure
+   behavior before an agent acts.
+2. Turn those concepts into typed schemas, audit methods, CI checks, and
+   reproducible tooling that another reviewer can inspect.
+3. Apply them to applications, data pipelines, evaluation systems, and
+   infrastructure, then record what the evidence establishes and what remains
+   unresolved.
 
 ## Authority, contracts, and execution
 
-The **governance and agent-control architecture** is an anonymized private case
-study in applying this model across people, agents, repositories, credentials,
-infrastructure, and runtime systems. It separates decision rights, bounded
-mandates, identity and authorization, infrastructure enforcement, runtime
-admission, and repository-local authority. Value-blind handbacks return
-privileged or judgment-heavy work to a human without exposing secret values.
+The [governance and agent-control architecture](https://jvjohnson.dev/projects/governance-agent-control.html)
+is an anonymized private case study spanning people, agents, repositories,
+credentials, infrastructure, and runtime systems. It separates decision rights,
+bounded mandates, identity and authorization, infrastructure controls, runtime
+admission, and repository-local authority. Structured handbacks return work
+requiring human judgment or privileges without exposing secret values.
 
-Selected policy-as-code, branch-governance, promotion, Zero Trust, and drift
-controls operate today. Runtime admission remains source-tested rather than a
-live request-path gate, and the case study is single-operator; it makes no
-enterprise-adoption claim.
+A July 15, 2026 review found selected policy-as-code, branch-governance,
+promotion, Zero Trust, and drift controls operational. Runtime admission was
+source-tested; organization-wide live enforcement remains unestablished. This
+is a single-operator case study, not evidence of enterprise adoption.
 
-The same method applies to development environments. Shells, package managers,
+Development environments are part of this problem. Shells, package managers,
 repository locations, local services, credentials, and model/tool integrations
-are part of the execution context, not incidental setup. Making that context
-reproducible and observable is part of the specification; better prompting alone
-does not make an ambiguous environment reproducible.
+shape what an agent can do. Making that context reproducible and observable
+helps make the work itself inspectable.
 
 ## Public implementation evidence
 
-**Host Capability Substrate** models local-machine capabilities, policy
-decisions, provenance-typed evidence, audit chains, and scoped authorization
-grants as typed objects rather than implicit shell access. Its public
-schema-first implementation and CI boundary checks are substantial; live
-runtime enforcement is not implemented.
+[Host Capability Substrate](https://github.com/jefahnierocks/host-capability-substrate)
+models host capabilities, policy decisions, evidence provenance, and scoped
+authorization grants as typed objects. Public schemas and automated boundary
+checks establish implemented contracts and source conformance; they do not
+establish universal live runtime enforcement.
 
-**Agentic Architecture Audit** turns a two-stage, evidence-first `audit-spec`
-into deterministic drift tooling and structured findings. It separates
-discovery from judgment to counter confirmation bias, binds derived documents to
-the specification, and uses negative self-tests to make architectural claims
-reviewable.
+[Agentic Architecture Audit](https://github.com/verlyn13/agentic-architecture-audit)
+combines a two-stage audit method with Python drift tooling and structured
+findings. It separates discovery from judgment, binds derived documents to
+specification content, and uses negative self-tests to check the verifier.
 
-Together, these projects show how normative intent can become schemas,
-contracts, gates, tests, and evidence without pretending that every control is
-already operational.
+Together, these projects turn written requirements into schemas, contracts,
+tests, and evidence. Source controls and runtime acceptance are assessed
+separately.
 
-## Proving grounds
+## Applications and evaluation work
 
-**Budget Triage** tests the foundation in a financial evidence workbench with a
-sanitized public source snapshot. It preserves extraction provenance, exact
-monetary semantics, tenant isolation, append-only decisions, and human
-acceptance of uncertain data. A
-merged synthetic known-answer slice exercises rollback and structured
-service-level evidence; its 6 passing / 9 pending result remains incomplete and
-uncertified. A bounded test preserves browser-to-service correlation for one
-local synthetic authenticated, tenant-scoped, read-only request, but
-does not prove UI state, production, financial correctness, or source-through-
-tax execution. The public snapshot is available at
-https://github.com/jefahnierocks/budget-triage; active development remains
-private.
+[Budget Triage](https://github.com/jefahnierocks/budget-triage) is a financial
+evidence workbench with extraction provenance, exact monetary arithmetic,
+tenant-scoped records, append-only decisions, and human review of uncertain
+data. Synthetic known-answer and browser/API observation harnesses provide
+bounded workflow evidence. The recorded known-answer result remains incomplete
+and uncertified; production operation and end-to-end financial correctness
+remain unestablished. A sanitized source snapshot is public, while active
+development remains private.
 
-**ScopeCam** tests the approach against native Android/Kotlin/C++ hardware
-integration. Its multi-module architecture, USB/UVC runtime, JNI boundary, and
-device-verified replug recovery require the development substrate to
-survive physical-device evidence and cross-language failure modes. A signed
-client alpha was delivered in June 2026; the private, intentionally unlinked
-application is not broadly released, and broader device/release acceptance
-remains open.
+[ScopeCam](https://jvjohnson.dev/projects/scopecam.html) applies the same
+engineering discipline to Android/Kotlin/C++ hardware integration. Camera
+capture, native rendering, USB lifecycle, persistence, and diagnostics meet at
+the managed/native boundary. A camera-replug deadlock investigation led to
+bounded recovery with an explicit resource-leak tradeoff after timeout. A signed
+client alpha was delivered in June 2026; broader device acceptance and release
+remain open.
 
-**Email Corpus** tests the same foundation in a private data-cleaning pipeline:
-canonical records and validators, resumable transformations, shared pipeline
-state, lineage fingerprints, privacy-gated releases, and a draft-only serving
-design with a never-send boundary. It is evidence that the substrate can
-preserve structure and provenance across a long-running data workflow; it is not
-a claim that private corpus data is publishable.
+Email Corpus provides experience with a private data pipeline: canonical
+records and validators, resumable transformations, lineage, holdout isolation,
+and checksummed release packaging. Its value is in preserving structure and
+provenance across data processing; the private source and data are not public
+work samples.
 
-For evaluation-specific roles, the **Agentic-Coding Evaluation Lab** is a
-specialized proving ground. Its public methodology and verification prototype
-preserve decision inputs and use a separate verifier to recompute a result from
-frozen bytes. The current draft example returns `NOT_EVALUABLE` because the
-scientific method, repetition policy, and decision threshold are not approved.
-That synthetic result demonstrates fail-closed reporting, not real-model
-performance or a promotion recommendation.
+The [Agentic-Coding Evaluation Lab](https://github.com/verlyn13/eval-lab-methodology)
+focuses on whether an experiment contains enough valid evidence to support a
+model-change decision. Its public methodology and verifier prototype preserve
+decision inputs and recompute a result from bound evidence. The synthetic
+example returns `NOT_EVALUABLE` when scientific prerequisites are incomplete.
+That demonstrates framework behavior and refusal to overinterpret evidence;
+it does not establish real-model performance or a promotion recommendation.
 
-Across these proving grounds, the evidence establishes implemented contracts,
-failure controls, and bounded system behavior. It does not yet establish a
-comparative improvement in agent productivity, reliability, or outcome quality.
+Across these projects, the evidence establishes implemented contracts, failure
+controls, and bounded system behavior. Comparative improvement in agent
+productivity, reliability, or outcome quality remains a question to test.
 
-## Mathematical habit
+## Upstream contribution
+
+On September 10, 2026, I submitted a Python reliability correction to
+[Inspect Scout](https://github.com/meridianlabs-ai/inspect_scout/pull/632) for
+provider-error diagnostics lost between spawned workers and the parent process.
+The proposed change includes baseline-versus-patch regression evidence and
+checks for worker execution, parent-visible diagnostics, cleanup, and
+cancellation. I responded to maintainer scope feedback with further validation
+and a proposal to narrow the change. As of September 12, it remains under review,
+awaiting the maintainer's response; merge and successful Linux CI remain
+unestablished.
+
+## Mathematical and collaborative foundation
 
 My doctoral work studied maps between algebras of functions and the conditions
-that force their structure. The habit from that work is to define the objects,
-state the constraints, and understand what follows. That transfers directly to
-agent systems: an agent is an actor inside a structure of tools, permissions,
-state, and evidence. The design problem is to make that structure explicit
-enough to inspect and test.
+that force their structure. It developed the habit of defining objects,
+stating constraints, and understanding what follows from an assumption. Those
+habits carry into software design and verification.
 
-## What I bring
+I also led statistical analysis for a published study of 1,593 children and
+adolescents, using R and SPSS in collaboration with physical therapy
+researchers. Teaching mathematics in the United States and Egypt and
+coordinating statistics lectures serving 480 students developed technical
+explanation, shared planning, and responsibility for work others depend on.
 
-I bring mathematical maturity, applied statistical discipline, years of
-teaching and technical communication, and sustained self-directed engineering
-practice. I have not worked inside a large private engineering organization,
-and these systems have not yet been tested at production scale. I want to test
-and extend these methods within a larger engineering team and under real
-organizational and production constraints.
+## Intended contribution
 
-The strongest fit is research and systems engineering for agent-assisted
-development infrastructure, model evaluation, safeguards/control systems,
-developer platforms, or AI governance where specifications, reproducible
-execution, bounded authority, and inspectable evidence matter.
+I bring mathematical research, applied statistical discipline, systems
+development, and experience explaining technical work to varied audiences.
+I am seeking research engineering or specialized systems work where I can
+apply that combination to a shared technical problem and develop it through
+collaboration and external review. Evaluation tooling, agent infrastructure,
+and developer systems are the strongest current directions.
+
+[Resume](https://jvjohnson.dev/cv.html) | [Research and publications](https://jvjohnson.dev/research/)

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- source: PORTFOLIO-QUICK.md; refreshed: 2026-07-21 -->
+<!-- source: PORTFOLIO-QUICK.md; refreshed: 2026-09-12 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,10 +99,11 @@
             <div class="container">
                 <h1>Jeffrey V. Johnson, Ph.D.</h1>
                 <p class="hero-title">Building infrastructure for model evaluation and agent systems</p>
-                <p class="hero-pitch">I build software and development infrastructure for agent-assisted work: clear specifications, explicit permissions, reproducible environments, automated checks, and evidence that can be reviewed.</p>
+                <p class="hero-pitch">I build software and development infrastructure for reliable agent-assisted work, from native applications and data pipelines to web systems and evaluation tools.</p>
 
                 <div class="hero-bio">
-                    <p>My current work includes model-evaluation methods, agent controls, data pipelines, applications, and developer tooling.</p>
+                    <p>I define tasks, guide and review agent-assisted implementation, investigate failures, and check whether the evidence supports the result.</p>
+                    <p><strong>Seeking research engineering and systems work with meaningful ownership on a specialized team.</strong></p>
                     <p class="location">Tenured associate professor of mathematics, Kenai Peninsula College/UAA &middot; Homer, Alaska</p>
                 </div>
 
@@ -126,12 +127,16 @@
         <section id="work" class="evidence-section">
             <div class="container">
                 <h2>Selected work</h2>
-                <p class="section-intro">A few projects show the work directly. Each project page separates what is implemented from what remains open.</p>
+                <p class="section-intro">Independent, unpaid projects developed alongside my faculty appointment. The code and case studies show what I built, how I investigated failures, and what the evidence establishes.</p>
 
                 <ul class="skill-snapshot-list">
                     <li>
                         <strong>Host Capability Substrate</strong>
-                        <span>Public TypeScript implementation of explicit host capabilities, authority, policy decisions, and evidence. It includes 46 Zod entity schemas, 67 generated JSON Schemas, and about 500 tests. <a href="/projects/host-capability-substrate.html">Examine the public implementation →</a></span>
+                        <span>TypeScript prototype for defining what agents may do and recording evidence behind authorization decisions. Public schemas and automated architecture checks make the design inspectable. <a href="/projects/host-capability-substrate.html">Examine the public implementation →</a></span>
+                    </li>
+                    <li>
+                        <strong>ScopeCam</strong>
+                        <span>Android microscope application spanning Kotlin, Compose, C++, JNI, and USB camera integration. Built capture and media workflows and diagnosed a camera-replug deadlock across the managed/native boundary. Signed client alpha delivered in June 2026; source is private and recovery retains a resource-leak tradeoff after timeout. <a href="/projects/scopecam.html">Read the native engineering case study →</a></span>
                     </li>
                     <li>
                         <strong>Budget Triage</strong>
@@ -139,7 +144,7 @@
                     </li>
                     <li>
                         <strong>Agentic-Coding Evaluation Lab</strong>
-                        <span>Public fail-closed model-evaluation method. A separate verifier recomputes a synthetic <code>NOT_EVALUABLE</code> result when required evidence is missing. It does not establish real-model performance. <a href="https://github.com/verlyn13/eval-lab-methodology">Explore the method and evidence →</a></span>
+                        <span>Evaluation methodology and a separate verifier that checks whether experiment evidence supports a model-change decision. Public synthetic examples refuse a conclusion when evidence is missing; real-model results remain to be established. <a href="https://github.com/verlyn13/eval-lab-methodology">Explore the method and evidence →</a></span>
                     </li>
                     <li>
                         <strong>Dicee</strong>
@@ -147,7 +152,9 @@
                     </li>
                 </ul>
 
-                <p class="approach-more"><strong>More relevant work:</strong> <a href="/projects/governance-agent-control.html">Governance and agent-control architecture</a> &middot; <a href="https://github.com/verlyn13/agentic-architecture-audit">Agentic Architecture Audit</a> &middot; <a href="/projects/scopecam.html">ScopeCam</a> &middot; <a href="/projects/">Full project index</a></p>
+                <p><strong>Recent upstream contribution:</strong> Submitted a Python correction for provider-error diagnostics lost between spawned workers and the parent process, with regression evidence for the proposed change. I responded to maintainer scope feedback with further validation on September 12, 2026. The PR remains under review, awaiting a reply. <a href="https://github.com/meridianlabs-ai/inspect_scout/pull/632" aria-label="Read the submitted Inspect Scout pull request on GitHub">Review the Inspect Scout pull request →</a></p>
+
+                <p class="approach-more"><strong>More relevant work:</strong> <a href="/projects/governance-agent-control.html">Governance and agent-control architecture</a> &middot; <a href="https://github.com/verlyn13/agentic-architecture-audit">Agentic Architecture Audit</a> &middot; <a href="/projects/">Full project index</a></p>
             </div>
         </section>
 
@@ -156,7 +163,7 @@
                 <h2>Skills and background</h2>
                 <div class="background-summary">
                     <p><strong>Core tools:</strong> Python, TypeScript, SQL/PostgreSQL, Kotlin, C/C++, JSON Schema, Zod, OPA/Rego, Docker, GitHub Actions, Cloudflare, Linux, and macOS.</p>
-                    <p><strong>Background:</strong> Ph.D. in mathematics; 17+ years teaching mathematics and statistics; led the statistical analysis for a 2023 <em>Pediatric Physical Therapy</em> study of 1,593 children.</p>
+                    <p><strong>Background:</strong> Ph.D. in Mathematical Sciences; university teaching in the United States and Egypt; led statistical analysis for a published study of 1,593 children and adolescents. Earlier service includes Peace Corps education work in South Africa.</p>
                 </div>
                 <div class="background-links">
                     <a href="/experience/" class="background-link">

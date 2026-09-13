@@ -4,8 +4,8 @@ type: page
 source_file: projects/budget-triage.html
 source_selector: main
 route: /projects/budget-triage.html
-content_hash: 66e0a1e2aeb2a87de6c22fee3557cd720b17cee3c0a808deef9a5d408282cab0
-html_hash: 509124b41b2e75d5a93ff569f923727784921a22d6186541ac4b6714f0719c9b
+content_hash: cbfc3aeb019e86641a2118f1beef68797559823393d98985f085a60fd6ad6d5b
+html_hash: a63141820a29e48c8eaa5a6b5a0e127d81f6ac052fb05f70eb2e453407011958
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Applied evidence engineering
+[Evidence](/#work) · Applied evidence engineering
 
 # Budget Triage: financial evidence workbench
 
@@ -27,7 +27,7 @@ Budget Triage is a full-stack workbench for turning statements, receipts, and fe
 
 ## Strongest proof
 
-The synthetic known-answer and service-observation harness currently reports 6 passing and 9 pending assertions. The result is incomplete and uncertified. A sanitized, MIT-licensed [public source snapshot](https://github.com/jefahnierocks/budget-triage) lets reviewers inspect the application, agent configuration, specifications, validators, and synthetic fixtures.
+The July 15, 2026 review of the synthetic known-answer and service-observation harness recorded 6 passing and 9 pending assertions. The result is incomplete and uncertified. A sanitized, MIT-licensed [public source snapshot](https://github.com/jefahnierocks/budget-triage) lets reviewers inspect the application, agent configuration, specifications, validators, and synthetic fixtures.
 
 ## Technical decisions
 

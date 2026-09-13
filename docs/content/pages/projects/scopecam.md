@@ -4,8 +4,8 @@ type: page
 source_file: projects/scopecam.html
 source_selector: main
 route: /projects/scopecam.html
-content_hash: 70c6da222d5abf5c88a999ccbd32c6ef45d9e18fa82d53160d81bf6545664d1c
-html_hash: 48d2ba8b8c85ac3b3f23094b971ee885e25d0ef184070a24e26d3dc1962a0265
+content_hash: 3baf44bfacfb6ee26d1198ca85350927a72a574fd8a18f65ccf64bdf347a0251
+html_hash: 377cc2f9be461d5c4cd72e75ee0e87441279275bb91537ce8323afaa815507dd
 normalizer_version: 1
 sync_direction: html_to_markdown
 protected_fields: [id, type, source_file, source_selector, normalizer_version]
@@ -13,7 +13,7 @@ protected_fields: [id, type, source_file, source_selector, normalizer_version]
 
 ← Back to work
 
-[Evidence](/#evidence) · Native Android and physical-device engineering
+[Evidence](/#work) · Native Android and physical-device engineering
 
 # ScopeCam
 
